@@ -1,0 +1,19 @@
+<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
+ 	<p-header>
+			<div class="row">
+				<div class="ui-helper-clearfix col-sm-1">
+					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> CSV</button>
+				</div>
+				<div class="col-sm-2">
+					<input #gb type="text" class="form-control form-control-sm col-sm-2" placeholder="search">
+				</div>
+			</div>
+    </p-header>
+    <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+    <p-column field="production.controlPoint.code" header="Control Point" [sortable]="true" ></p-column>
+    <p-column field="production.productionDate" header="Production Date" [sortable]="true" ></p-column>
+    <p-column field="production.shift.name" header="Shift" [sortable]="true" ></p-column>
+    <p-column field="manpowerType.type" header="Manpower Type" [sortable]="true"></p-column>
+    <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true" ></p-column>
+    <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true"  ></p-column>
+</p-dataTable>

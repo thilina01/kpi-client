@@ -1,0 +1,32 @@
+<ba-card title="Production List">
+	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]"
+	 selectionMode="single" (onRowSelect)="selected($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="productions"
+	 [globalFilter]="gb">
+		<p-header>
+			<div class="row">
+				<div class="ui-helper-clearfix col-sm-1">
+					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> CSV</button>
+				</div>
+				<div class="col-sm-2">
+					<input #gb type="text" class="form-control form-control-sm col-sm-2" placeholder="search">
+				</div>
+			</div>
+		</p-header>
+		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+		<p-column field="controlPoint.code" header="Control Point" [sortable]="true"></p-column>
+		<p-column field="productionDate" header="Production Date" [sortable]="true"></p-column>
+		<p-column field="shift.name" header="Shift" [sortable]="true"></p-column>
+		<p-column field="plannedDuration" header="Planned Duration" [sortable]="true"></p-column>
+		<p-column field="actualDuration" header="Actual Duration" [sortable]="true"></p-column>
+		<p-column header="Action" [style]="{'width':'80px'}">
+			<template let-data="rowData" pTemplate="body">
+				<a [routerLink]="'/pages/production/form/'+data.id">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
+				</a>
+				&nbsp; &nbsp;
+				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+			</template>
+		</p-column>
+	</p-dataTable>
+</ba-card>
+<!-- (click)="edit(data.id)"  -->

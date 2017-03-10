@@ -1,0 +1,74 @@
+<ba-card title="Job Plan">
+<div class="row">
+
+	<form [formGroup]="jobFormGroup">
+		<div class="col-sm-3">
+			<div class="form-group">
+				<label for="inputFirstName">Job Number</label> <select
+					id="jobSelector" class="form-control" formControlName="job">
+					<option *ngFor="let job of jobs" [ngValue]="job">{{job.jobNo}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-sm-3">
+			<div class="form-group">
+				<label for="inputFirstName">Product Type</label> <select
+					class="form-control" formControlName="productType">
+					<option *ngFor="let productType of productTypes"
+						[ngValue]="productType">{{productType.description}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-sm-3">
+			<div class="form-group">
+				<label for="inputFirstName">Operation Type</label> <select
+					class="form-control" formControlName="operationType">
+					<option *ngFor="let operationType of operationTypes"
+						[ngValue]="operationType">{{operationType.description}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="col-sm-3">
+			<div class="form-group"
+				[ngClass]="{'has-error': (!jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched), 'has-success': (jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched)}">
+				<label for="inputFirstName">Quantity</label> <input type="text"
+					class="form-control " placeholder="quantity" #plannedQuantity
+					(keyup.enter)="onEnter(plannedQuantity.value)"
+					formControlName="plannedQuantity">
+			</div>
+		</div>
+	</form>
+</div>
+<div class="row">
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+				<th>#</th>
+				<th>Item</th>
+				<th>Job</th>
+				<th>Product Type</th>
+				<th>Operation Type</th>
+				<th>Quantity</th>
+				<th>Job Quantity</th>
+				<th></th>
+			</tr>
+			<tr *ngFor="let operation of formGroup.value.operationList let i = index;">
+				<td>{{i+1}}</td>
+				<td>{{operation.job.item.code}}</td>
+				<td>{{operation.job.jobNo}}</td>
+				<td>{{operation.productType.description}}</td>
+				<td>{{operation.operationType.description}}</td>
+				<td>{{operation.plannedQuantity}}</td>
+				<td>{{operation.job.quantity}}</td>
+				<td><button type="button" class="btn btn-danger btn-sm"
+						(click)="removeOperation(i)">
+						<i class="fa fa-times" ng-reflect-class-name="fa fa-times"></i>
+					</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
+</ba-card>

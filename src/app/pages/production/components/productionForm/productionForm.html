@@ -1,0 +1,348 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <ba-card title="Production Information">
+        <!--
+        <br/>
+        <div *ngIf="production != undefined">{{ production | json}}</div>
+        <hr/>
+        <br/>
+-->
+        <div class="row">
+          <div class="col-sm-2">
+            <a [routerLink]="'/pages/production/form/'+(production.id-1)"> <span class="fa fa-backward"></span></a>
+            |
+            <a [routerLink]="'/pages/production/form/'+(production.id+1)"><span class="fa fa-forward"></span></a> |
+            <span class="fa fa-search" (click)="displaySearch()"></span> |
+            <span class="fa fa-print" (click)="print()"></span>
+          </div>
+          <div class="col-sm-1">
+
+          </div>
+        </div>
+        <br/>
+
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" novalidate>
+          <div class='row'>
+
+            <div class="col-sm-1">
+              <label>ID: {{production.id}}</label>
+            </div>
+
+            <div class="col-sm-2">
+              <label>Date: {{production.productionDate}}</label>
+            </div>
+
+            <div class="col-sm-2">
+              <label *ngIf="production.shift != undefined">Shift: {{production.shift.code}} {{production.shift.name}} </label>
+            </div>
+            <div class="col-sm-3">
+              <label *ngIf="production.controlPoint != undefined">Control Point: {{production.controlPoint.code}} {{production.controlPoint.name}}</label>
+            </div>
+            <div class="col-sm-2">
+              <label>Planned Duration: {{production.plannedDuration}}</label>
+            </div>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" placeholder="Actual Duration" formControlName="actualDuration">
+            </div>
+          </div>
+          <br/>
+
+          <div class='row' *ngIf="production.operationList != undefined">
+            <ba-card title="Operations">
+              <p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
+                expandableRows="true">
+                <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+                <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
+                <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
+                <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
+                <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
+                <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
+                <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
+
+                <template let-car pTemplate="rowexpansion">
+                  <p-dataTable #dt1 [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true">
+                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="job.jobNo" header="Job Number"></p-column>
+                  </p-dataTable>
+                </template>
+
+              </p-dataTable>
+            </ba-card>
+          </div>
+
+          <div class='row' *ngIf="production.manpowerList != undefined">
+            <ba-card title="Manpower">
+              <p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true">
+                <p-column field="manpowerType.type" header="Manpower Type" [sortable]="true"></p-column>
+                <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
+                <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
+              </p-dataTable>
+            </ba-card>
+          </div>
+
+          <!--
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control " placeholder="ID" formControlName="id">
+          </div>
+          <div class="form-group">
+            <label for="productionDate">Production Date</label>
+            <input type="text" class="form-control " placeholder="Production Date" formControlName="productionDate">
+          </div>
+          <div formGroupName="shift">
+            <div class="form-group">
+              <label for="code">Shift Code</label>
+              <input type="text" class="form-control " placeholder="Shift Code" formControlName="code">
+            </div>
+            <div class="form-group">
+              <label for="name">Shift name</label>
+              <input type="text" class="form-control " placeholder="Shift name" formControlName="name">
+            </div>
+          </div>
+          <div formGroupName="controlPoint">
+            <div class="form-group">
+              <label for="code">Control Point Code</label>
+              <input type="text" class="form-control " placeholder="Control Point Code" formControlName="code">
+            </div>
+            <div class="form-group">
+              <label for="name">Control Point name</label>
+              <input type="text" class="form-control " placeholder="Control Point name" formControlName="name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="plannedDuration">Planned Duration</label>
+            <input type="text" class="form-control " placeholder="Duration" formControlName="plannedDuration">
+          </div>
+          <div class="form-group">
+            <label for="actualDuration">Actual Duration</label>
+            <input type="text" class="form-control " placeholder="Actual Duration" formControlName="actualDuration">
+          </div>
+-->
+          <div class="row">
+            <div class="col-sm-1">
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+            </div>
+          </div>
+
+        </form>
+
+      </ba-card>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Select" [(visible)]="display" modal="modal" responsive="true">
+  <p-calendar id="productionDatePicker" [(ngModel)]="productionDate" showIcon="true" dateFormat="yy-mm-dd" [inline]="true">
+  </p-calendar>
+  <br/>
+  <select class="form-control" [(ngModel)]="shift">				
+			<option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
+	</select>
+  <br/>
+  <select class="form-control" [(ngModel)]="controlPoint">
+			<option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}} {{c.name}}</option>
+	</select>
+  <br/>
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="searchProduction()"><span class="fa fa-search"> Search</span></button>
+  </div>
+</p-dialog>
+
+<!-- Print Layout *************************************************************************************************** -->
+<div id="print-section" hidden>
+  <div class="container-fluid ">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class='row '>
+          <h4 class="col-xs-12 text-center">TRW LANKA (PVT) LIMITED</h4>
+        </div>
+        <div class='row'>
+          <h5 class="col-xs-12 text-center"> DAILY PRODUCTION REPORT </h5>
+        </div>
+        <br/>
+        <!--
+        <div class='row'>
+          <div class="col-xs-1 text-center">
+            <label>ID: {{production.id}}</label>
+          </div>
+
+          <div class="col-xs-2 nopadding">
+            <label>Date: {{production.productionDate}}</label>
+          </div>
+
+          <div class="col-xs-3 nopadding">
+            <label *ngIf="production.shift != undefined">Shift: {{production.shift.code}} {{production.shift.name}} </label>
+          </div>
+          <div class="col-xs-4 nopadding">
+            <label *ngIf="production.controlPoint != undefined">Control Point: {{production.controlPoint.code}} {{production.controlPoint.name}}</label>
+          </div>
+          <div class="col-xs-2 nopadding">
+            <label>Planned Duration: {{production.plannedDuration}}</label>
+          </div>
+        </div>
+-->
+        <div class="row">
+          <table class="table table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Shift</th>
+                <th>Section</th>
+                <th>Control Point</th>
+                <th colspan="2">Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan=2>{{production.id}}</td>
+                <td rowspan=2>{{production.productionDate}}</td>
+                <td rowspan=2>
+                  <p *ngIf="production.shift != undefined">{{production.shift.code}} | {{production.shift.name}} </p>
+                </td>
+                <td rowspan=2>
+
+                  <p *ngIf="production.controlPoint != undefined"> {{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}</p>
+                </td>
+                <td rowspan=2>
+                  <p *ngIf="production.controlPoint != undefined"> {{production.controlPoint.code}} | {{production.controlPoint.name}}</p>
+                </td>
+                <td> Planned</td>
+                <td class="text-right"> {{production.plannedDuration}} </td>
+              </tr>
+              <tr>
+                <td> Actual</td>
+                <td> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+          <table class="table table-condensed table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Job</th>
+                <th>Item</th>
+                <th>Product Type</th>
+                <th>Operation Type</th>
+                <th>Planned</th>
+                <th>Actual</th>
+                <th class="col-xs-5">Loss Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let operation of production.operationList">
+                <td>{{operation.job.jobNo}}</td>
+                <td>{{operation.job.item.code}}</td>
+                <td>{{operation.productType.description}}</td>
+                <td>{{operation.operationType.description}}</td>
+                <td class="text-right">{{operation.plannedQuantity}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4" class="text-right">Total</td>
+                <td class="text-right">{{totalPlannedProductionQuantity}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-4" style="padding-left: 0;">
+            <p class="col-xs-12 text-center"> Manpower </p>
+            <table class="table table-condensed table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Planned</th>
+                  <th>Actual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let mapower of production.manpowerList">
+                  <td>{{mapower.manpowerType.type}}</td>
+                  <td class="text-right">{{mapower.plannedQuantity}}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Total</td>
+                  <td class="text-right">{{totalPlannedManpowerQuantity}}</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-xs-4">
+            <p class="col-xs-12 text-center"> Quality </p>
+            <table class="table table-condensed table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Job</th>
+                  <th>Defect</th>
+                  <th>Scrap</th>
+                  <th class="col-xs-6">Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let operation of production.operationList">
+                  <td>{{operation.job.jobNo}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-xs-4" style="padding-right: 0;">
+            <p class="col-xs-12 text-center"> Breakdown </p>
+            <table class="table table-condensed table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Count</th>
+                  <th>Duration</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td> &nbsp; </td>
+                  <td> &nbsp; </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divFooter">
+      <div class="row">
+        <div class="col-xs-3 text-center">
+          <hr/>
+        </div>
+        <div class="col-xs-3 text-center">
+          <hr/>
+        </div>
+        <div class="col-xs-3 text-center">
+          <hr/>
+        </div>
+        <div class="col-xs-3 text-center">
+          <hr/>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 text-center">Filled By</div>
+        <div class="col-xs-3 text-center">Control Point Leader</div>
+        <div class="col-xs-3 text-center">Checked By Planner</div>
+        <div class="col-xs-3 text-center">Approved By Production Manager</div>
+      </div>
+    </div>
+  </div>
