@@ -22,7 +22,7 @@
         </div>
         <br/>
 
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" novalidate>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" novalidate>
           <div class='row'>
 
             <div class="col-sm-1">
@@ -52,25 +52,102 @@
             <ba-card title="Operations">
               <p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
                 expandableRows="true">
+
+                <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
                 <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
                 <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
                 <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
                 <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
                 <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
                 <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
+                <p-column field="lossQuantity" header="Loss Quantity" [sortable]="true"></p-column>
+                <!--
                 <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
-
-                <template let-car pTemplate="rowexpansion">
-                  <p-dataTable #dt1 [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true">
-                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-                    <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-                    <p-column field="job.jobNo" header="Job Number"></p-column>
+-->
+                <template let-operation pTemplate="rowexpansion">
+                  <p-header>Loss Details</p-header>
+                  <p-dataTable [value]="operation.lossList" selectionMode="single">
+                    <p-column field="" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="lossReason.lossType.type" [style]="{'width':'150px'}"></p-column>
+                    <p-column field="lossReason.reason"></p-column>
+                    <p-column field="quantity" [style]="{'width':'100px'}"></p-column>
                   </p-dataTable>
+
                 </template>
 
               </p-dataTable>
+            </ba-card>
+          </div>
+
+          <div class='row' *ngIf="production.operationList != undefined">
+            <ba-card title="Quality">
+              <div class="row">
+                <form [formGroup]="qualityFormGroup" (ngSubmit)="onQualityFormSubmit(qualityFormGroup.value)" novalidate>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>Job</label>
+                      <select formControlName="operation" class="form-control">				
+				                <option *ngFor="let operation of production.operationList" [ngValue]="operation">{{operation.job.jobNo}}</option>
+			                </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>Loss Type</label>
+                      <select formControlName="lossType" class="form-control">				
+				                <option *ngFor="let l of lossTypes" [ngValue]="l">{{l.type}}</option>
+			                </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <label>Reason</label>
+                      <select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
+                        formControlName="lossReason" class="form-control">				
+				                <option *ngFor="let lr of qualityFormGroup.value.lossType.lossReasonList" [ngValue]="lr">{{lr.reason}}</option>
+			                </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="form-group">
+                      <label>Quantity</label>
+                      <input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined" type="text"
+                        class="form-control" formControlName="quantity">
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <br/>
+                    <button [disabled]="!qualityFormGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i>Add</button>
+                  </div>
+                </form>
+              </div>
+              <!--
+              <div class="row">
+                <div class="col-sm-12">
+                  <p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
+                    expandableRows="true">
+                    <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
+                    <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
+                    <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
+                    <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
+                    <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
+                
+                    <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
+
+                    <template let-car pTemplate="rowexpansion">
+                    <p-dataTable #dt1 [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true">
+                        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                        <p-column field="job.jobNo" header="Job Number"></p-column>
+                    </p-dataTable>
+                    </template>
+ 
+                  </p-dataTable>
+                </div>
+              </div>   -->
             </ba-card>
           </div>
 
@@ -202,14 +279,22 @@
                 <td rowspan=2>{{production.id}}</td>
                 <td rowspan=2>{{production.productionDate}}</td>
                 <td rowspan=2>
-                  <p *ngIf="production.shift != undefined">{{production.shift.code}} | {{production.shift.name}} </p>
+                  <p *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.code}} | {{production.shift.name}} </p>
                 </td>
                 <td rowspan=2>
 
-                  <p *ngIf="production.controlPoint != undefined"> {{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}</p>
+                  <p *ngIf="
+                  production.controlPoint != undefined && 
+                  production.controlPoint.workCenter != undefined && 
+                  production.controlPoint.workCenter.costCenter != undefined && 
+                  production.controlPoint.workCenter.costCenter.section != undefined && 
+                  production.controlPoint.workCenter.costCenter.section.code != undefined">
+                    {{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
+                  </p>
+
                 </td>
                 <td rowspan=2>
-                  <p *ngIf="production.controlPoint != undefined"> {{production.controlPoint.code}} | {{production.controlPoint.name}}</p>
+                  <p *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined"> {{production.controlPoint.code}} | {{production.controlPoint.name}}</p>
                 </td>
                 <td> Planned</td>
                 <td class="text-right"> {{production.plannedDuration}} </td>
@@ -245,6 +330,27 @@
                 <td></td>
                 <td></td>
               </tr>
+              
+              <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <td>&nbsp;</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              
               <tr>
                 <td colspan="4" class="text-right">Total</td>
                 <td class="text-right">{{totalPlannedProductionQuantity}}</td>

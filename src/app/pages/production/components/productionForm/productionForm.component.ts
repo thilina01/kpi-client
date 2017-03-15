@@ -7,6 +7,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { ProductionService } from '../../../../services/production.service';
 import { SharedService } from '../../../../services/shared.service';
 import { ShiftService } from '../../../../services/shift.service';
+import { LossTypeService } from '../../../../services/lossType.service';
 import { ControlPointService } from '../../../../services/controlPoint.service';
 
 @Component({
@@ -16,24 +17,28 @@ import { ControlPointService } from '../../../../services/controlPoint.service';
     templateUrl: './productionForm.html',
 })
 export class ProductionForm {
+    JSON: any = JSON;
 
     public formGroup: FormGroup;
+    public qualityFormGroup: FormGroup;
     production: any = {};
     subscription: Subscription;
     display: boolean = false;
 
-    totalPlannedProductionQuantity = 0;    
+    totalPlannedProductionQuantity = 0;
     totalPlannedManpowerQuantity = 0;
 
     controlPoints: Array<Object>;
     shifts: Object[];
+    lossTypes: Object[];
 
     productionDate: Date;
     shift: any = {}
     controlPoint: any = {}
+    lossType: any = {}
 
 
-    constructor(protected service: ProductionService, private route: ActivatedRoute, fb: FormBuilder, private sharedService: SharedService, private controlPointService: ControlPointService, private shiftService: ShiftService) {
+    constructor(protected service: ProductionService, private route: ActivatedRoute, fb: FormBuilder, private sharedService: SharedService, private controlPointService: ControlPointService, private shiftService: ShiftService, private lossTypeService: LossTypeService) {
         this.formGroup = fb.group({
             // id:'',
             // productionDate:'',
@@ -42,6 +47,14 @@ export class ProductionForm {
             // plannedDuration:0,
             actualDuration: 0,
         });
+        this.qualityFormGroup = fb.group({
+            operation: {},
+            lossType: {},
+            lossReason: {},
+            quantity: ''
+        });
+
+
     }
 
     displaySearch(): void {
@@ -74,10 +87,16 @@ export class ProductionForm {
     getShifts(): void {
         this.shiftService.getAll().then(shifts => this.shifts = shifts);
     }
+
+    getLossTypes(): void {
+        this.lossTypeService.getAll().then(lossTypes => this.lossTypes = lossTypes);
+    }
+
     ngOnInit(): void {
 
         this.getControlPoints();
         this.getShifts();
+        this.getLossTypes();
 
         this.route.params.subscribe(
             (params: Params) => {
@@ -96,9 +115,11 @@ export class ProductionForm {
         if (data != null) {
             this.production = data;
         }
-        this.formGroup.patchValue(this.production, { onlySelf: true });
         this.calculateTotalPlannedProductionQuantity();
         this.calculateTotalPlannedManpowerQuantity();
+        this.calculateTotalLossQuantity();
+        this.setOperationIdOnLoss();
+        this.formGroup.patchValue(this.production, { onlySelf: true });
     }
 
     calculateTotalPlannedProductionQuantity() {
@@ -111,7 +132,32 @@ export class ProductionForm {
             }
         }
     }
-    
+
+    calculateTotalLossQuantity() {
+        if (this.production.operationList) {
+            for (let operation of this.production.operationList) {
+                if (operation.lossList) {
+                    let lossQuantity = 0;
+                    for (let rowLoss of operation.lossList) {
+                        lossQuantity += +rowLoss.quantity;
+                    }
+                    operation.lossQuantity = lossQuantity;
+                }
+            }
+        }
+    }
+    setOperationIdOnLoss() {
+        if (this.production.operationList) {
+            for (let operation of this.production.operationList) {
+                if (operation.lossList) {
+                    for (let loss of operation.lossList) {
+                        loss.operation = { id: operation.id }
+                    }
+                }
+            }
+        }
+    }
+
     calculateTotalPlannedManpowerQuantity() {
         this.totalPlannedManpowerQuantity = 0;
         if (this.production.operationList) {
@@ -122,15 +168,39 @@ export class ProductionForm {
             }
         }
     }
-    public onSubmit(values: any): void {
+    public onSubmit(values: any, event: Event): void {
+        alert("on Submit");
+        event.preventDefault();
         this.production.actualDuration = values.actualDuration
+        console.log(this.production);
         this.service.save(this.production).then(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
             }
         );
     }
-    
+
+    public onQualityFormSubmit(values: any): void {
+        if (!values.operation.lossList) {
+            values.operation.lossList = [];
+        }
+        values.lossReason.lossType = { type: values.lossType.type };
+        let loss = {
+            operation: { id: values.operation.id },
+            lossReason: values.lossReason,
+            quantity: values.quantity,
+        }
+        values.operation.lossList.push(loss);
+
+        let lossQuantity = 0;
+        for (let rowLoss of values.operation.lossList) {
+            lossQuantity += +rowLoss.quantity;
+        }
+        values.operation.lossQuantity = lossQuantity;
+        this.qualityFormGroup.reset();
+        this.sharedService.addMessage({ severity: 'info', summary: 'Added', detail: 'Loss Detail Added' });
+        //alert(JSON.stringify(values.operation));
+    }
 
     print(): void {
         let printContents, popupWin;
