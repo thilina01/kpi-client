@@ -25,7 +25,7 @@ export class ProductionTable {
 
     constructor(protected service: ProductionService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
         this.loadData();
-         //sharedService.msgs$.subscribe(msgs=>this.msgs = msgs);
+        //sharedService.msgs$.subscribe(msgs=>this.msgs = msgs);
     }
 
     loadData() {
@@ -33,14 +33,16 @@ export class ProductionTable {
             this.rows = data;
         });
     }
-    
+
     selected(data: any) {
         //this.service.setSelected(data.id);
         //        this.service.getSelected().then((data) => {
         //            this.production = data;
         //        });
     }
-
+    onRowDblclick(data: any): void {
+            this.router.navigate(['/pages/production/form/'+data.id]);
+    }
     /*
         edit(id: number) {
             this.service.setSelected(id);

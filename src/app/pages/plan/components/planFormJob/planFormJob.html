@@ -16,7 +16,7 @@
 				<label for="inputFirstName">Product Type</label> <select
 					class="form-control" formControlName="productType">
 					<option *ngFor="let productType of productTypes"
-						[ngValue]="productType">{{productType.description}}</option>
+						[ngValue]="productType">{{productType.code}} | {{productType.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 				<label for="inputFirstName">Operation Type</label> <select
 					class="form-control" formControlName="operationType">
 					<option *ngFor="let operationType of operationTypes"
-						[ngValue]="operationType">{{operationType.description}}</option>
+						[ngValue]="operationType">{{operationType.code}} | {{operationType.description}}</option>
 				</select>
 			</div>
 		</div>
@@ -59,8 +59,8 @@
 				<td>{{i+1}}</td>
 				<td>{{operation.job.item.code}}</td>
 				<td>{{operation.job.jobNo}}</td>
-				<td>{{operation.productType.description}}</td>
-				<td>{{operation.operationType.description}}</td>
+				<td>{{operation.productType.code}} | {{operation.productType.description}}</td>
+				<td>{{operation.operationType.code}} | {{operation.operationType.description}}</td>
 				<td>{{operation.plannedQuantity}}</td>
 				<td>{{operation.job.quantity}}</td>
 				<td><button type="button" class="btn btn-danger btn-sm"

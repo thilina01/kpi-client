@@ -38,12 +38,17 @@ export class PlanFormHr {
   }
 
   public removeManpower(id: number) {
-    this.formGroup.value.manpowerList.splice(id, 1);
+    if (this.formGroup.value.manpowerList != null) {
+      this.formGroup.value.manpowerList.splice(id, 1);
+    }
   }
 
   public onEnter(plannedQuantity: string) {
     if (this.hrFormGroup.valid) {
       let values = this.hrFormGroup.value;
+      if (this.formGroup.value.manpowerList == null) {
+        this.formGroup.value.manpowerList = [];
+      }
       this.formGroup.value.manpowerList.push(values);
       this.hrFormGroup.reset();
       document.getElementById('manpowerTypeSelector').focus();

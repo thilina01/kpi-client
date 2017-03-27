@@ -1,0 +1,72 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<ba-card class="section" title="Schedule Adherence">
+			<ba-am-chart baAmChartClass="my-chart" [(baAmChartConfiguration)]="chartData" (onChartReady)="initChart($event)"></ba-am-chart>
+		</ba-card>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<ba-card class="section" title="Loss By Day">
+			<p-dataTable #dt [value]="lossReasonDailyCountData" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true"
+			 [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" [(selection)]="selectedDay" (onRowSelect)="onRowSelect($event)" sortMode="multiple" resizableColumns="true" >
+				<p-column field="day" header="Day" [sortable]="true"></p-column>
+				<p-column field="count" header="Total" [sortable]="true"></p-column>
+			</p-dataTable>
+		</ba-card>
+	</div>
+	<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-xs-12">
+		<ba-card class="section" title="Day Loss By Reason">
+			<p-dataTable #dt [value]="dateLossReasonSummaryData" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true"
+			 [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true">
+				<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'80px'}"></p-column>
+				<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="total" header="Total" [sortable]="true" [style]="{'width':'80px'}"></p-column>
+			</p-dataTable>
+		</ba-card>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<ba-card class="section" title="Loss By Reason">
+			<ba-am-chart baAmChartClass="my-chart" [(baAmChartConfiguration)]="lossByReasonChartData" (onChartReady)="initLossByReasonChart($event)"></ba-am-chart>
+		</ba-card>
+	</div>
+</div>
+
+<div class="row">
+	<!-- 
+	<div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-xs-12">
+		<ba-card class="section" title="Schedule Adherence">
+			<p-dataTable #dt [value]="dataProvider" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5"
+			 [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true">
+				<p-column field="category" header="{{categoryTitle}}" [sortable]="true"></p-column>
+				<p-column field="plannedTotal" header="Planned Total" [sortable]="true"></p-column>
+				<p-column field="actualTotal" header="Actual Total" [sortable]="true"></p-column>
+				<p-column field="value" header="Adherence" [sortable]="true"></p-column>
+			</p-dataTable>
+		</ba-card>
+	</div>
+	-->
+	<div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-xs-12">
+		<ba-card class="section" title="Loss By Reason">
+			<p-dataTable #dt [value]="lossReasonSummaryData" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true"
+			 [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" (onRowSelect)="onLossByRedonRowSelect($event)" sortMode="multiple" resizableColumns="true">
+				<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'70px'}"></p-column>
+				<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="total" header="Total" [sortable]="true" [style]="{'width':'70px'}"></p-column>
+			</p-dataTable>
+		</ba-card>
+	</div>
+	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-12">
+		<ba-card class="section" title="Loss By Day">
+			<p-dataTable #dt [value]="dateLossReasonSummaryByLossReasonData" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true"
+			 [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" [(selection)]="selectedDay" (onRowSelect)="onRowSelect($event)" sortMode="multiple" resizableColumns="true" >
+				<p-column field="day" header="Day" [sortable]="true"></p-column>
+				<p-column field="count" header="Total" [sortable]="true"></p-column>
+			</p-dataTable>
+		</ba-card>
+	</div>
+</div>

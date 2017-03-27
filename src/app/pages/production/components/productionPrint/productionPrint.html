@@ -51,12 +51,11 @@
           <div class='row' *ngIf="production.operationList != undefined">
             <ba-card title="Operations">
               <p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
-                expandableRows="true" (onEditComplete)="onEditComplete($event)">
+                expandableRows="true">
 
                 <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
                 <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
                 <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
-                <p-column field="job.item.code" header="Item" [sortable]="true"></p-column>
                 <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
                 <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
                 <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
@@ -105,7 +104,7 @@
                       <label>Reason</label>
                       <select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
                         formControlName="lossReason" class="form-control">				
-				                <option *ngFor="let lr of qualityFormGroup.value.lossType.lossReasonList" [ngValue]="lr">{{lr.code}} | {{lr.reason}}</option>
+				                <option *ngFor="let lr of qualityFormGroup.value.lossType.lossReasonList" [ngValue]="lr">{{lr.reason}}</option>
 			                </select>
                     </div>
                   </div>

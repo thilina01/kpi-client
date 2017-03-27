@@ -1,19 +1,3 @@
-/*import { Routes, RouterModule }  from '@angular/router';
-
-import { Production } from './production.component';
-import { ModuleWithProviders } from '@angular/core';
-
-// noinspection TypeScriptValidateTypes
-export const routes: Routes = [
-  {
-    path: '',
-    component: Production
-  }
-];
-
-export const routing: ModuleWithProviders = RouterModule.forChild(routes);
-*/
-
 import { Routes, RouterModule }  from '@angular/router';
 
 import { Production } from './production.component';

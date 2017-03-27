@@ -1,6 +1,6 @@
-<div class="row"  [formGroup]="formGroup">
+<div class="row" [formGroup]="formGroup">
 	<div class="col-sm-3">
-		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}">		
+		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}">
 			<label for="productionDate">Date</label>
 			<p-calendar id="productionDatePicker" class="form-control" formControlName="productionDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
 		</div>
@@ -8,26 +8,25 @@
 
 	<div class="col-sm-3">
 		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shift'].valid && formGroup.controls['shift'].touched), 'has-success': (formGroup.controls['shift'].valid && formGroup.controls['shift'].touched)}">
-			<label for="shift">Shift</label> 
+			<label for="shift">Shift</label>
 			<!-- 
 			<br/>
 			<p-autoComplete inputStyleClass="form-control col-sm-12" styleClass="col-sm-12" formControlName="shift" [suggestions]="shifts" (completeMethod)="search($event)" field="name"></p-autoComplete>
 				-->
-			<select formControlName="shift"
-				class="form-control">				
+			<select formControlName="shift" class="form-control">				
 				<option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
-			</select> 
-		
+			</select>
+
 		</div>
 	</div>
 
 	<div class="col-sm-3">
-		<div class="form-group"  [ngClass]="{'has-error': (!formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched), 'has-success': (formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched)}">
-			<label for="plannedDuration">Duration</label> <input type="text"
-				class="form-control " placeholder="Duration" formControlName="plannedDuration" [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
+		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched), 'has-success': (formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched)}">
+			<label for="plannedDuration">Duration</label> <input type="text" class="form-control " placeholder="Duration" formControlName="plannedDuration"
+			 [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
 		</div>
 	</div>
-	
+
 	<div class="col-sm-3">
 		<div class="form-group col-sm-12" [ngClass]="{'has-error': (!formGroup.controls['controlPoint'].valid && formGroup.controls['controlPoint'].touched), 'has-success': (formGroup.controls['controlPoint'].valid && formGroup.controls['controlPoint'].touched)}">
 			<label for="controlPoint">Control point</label>
@@ -40,11 +39,10 @@
 		    </template>
 			</p-autoComplete>
 			 -->
-			<select formControlName="controlPoint"
-				class="form-control">
+			<select formControlName="controlPoint" class="form-control">
 				<option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}} {{c.name}}</option>
 			</select>
 		</div>
 	</div>
-	
+
 </div>

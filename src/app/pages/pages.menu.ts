@@ -16,6 +16,19 @@ export const PAGES_MENU = [
         }
       },
       {
+        path: 'chart',
+        data: {
+          menu: {
+            name: 'Chart',
+            title: 'Charts',
+            icon: 'ion-edit',
+            selected: false,
+            expanded: false,
+            order: 10
+          }
+        }
+      },
+      {
         path: 'plan',
         data: {
           menu: {

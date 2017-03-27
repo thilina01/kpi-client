@@ -58,15 +58,22 @@ export class PlanFormJob {
   }
 
   public removeOperation(id: number) {
-    this.formGroup.value.manpowerList.splice(id, 1);
+    if (this.formGroup.value.operationList != null) {
+      this.formGroup.value.operationList.splice(id, 1);
+    }
   }
 
   public onEnter(plannedQuantity: string) {
     if (this.jobFormGroup.valid) {
       let values = this.jobFormGroup.value;
+      if (this.formGroup.value.operationList == null) {
+        this.formGroup.value.operationList = [];
+      }
+
       this.formGroup.value.operationList.push(values);
       this.jobFormGroup.reset();
       document.getElementById('jobSelector').focus();
+
     } else {
       console.log(this.jobFormGroup.errors);
     }
