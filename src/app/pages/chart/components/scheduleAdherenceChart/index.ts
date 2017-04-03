@@ -1,2 +1,1 @@
-export * from './scheduleAdherenceChart
-.component';
+export * from './scheduleAdherenceChart.component';
