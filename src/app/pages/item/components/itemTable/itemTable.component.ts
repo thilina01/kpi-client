@@ -9,6 +9,7 @@ import { LocalDataSource } from 'ng2-smart-table';
   styleUrls: ['./itemTable.scss'],
   templateUrl: './itemTable.html',
 })
+
 export class ItemTable {
   rows = [];
   timeout: any;
@@ -24,7 +25,6 @@ export class ItemTable {
       this.rows = data;
     });
   }
-
 
   onPage(event) {
     clearTimeout(this.timeout);
