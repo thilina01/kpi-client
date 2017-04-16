@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Subject }    from 'rxjs/Subject';
+import { Subject } from 'rxjs/Subject';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
@@ -27,19 +27,26 @@ export class ProductionService {
             .catch(this.handleError);
     }
 
+    getPage(page, size): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+    
     getOne(id: number): Promise<Object> {
         return this.http.get(this.apiUrl + id)
             .toPromise()
             .then(response => response.json() as Object)
             .catch(this.handleError);
     }
-findByProductionDateAndShiftAndControlPoint(object: Object): Promise<Object>{
-     return this.http
-            .post(this.apiUrl+"ByProductionDateAndShiftAndControlPoint", JSON.stringify(object), { headers: this.headers })
+    findByProductionDateAndShiftAndControlPoint(object: Object): Promise<Object> {
+        return this.http
+            .post(this.apiUrl + "ByProductionDateAndShiftAndControlPoint", JSON.stringify(object), { headers: this.headers })
             .toPromise()
             .then(response => response.json() as Object)
             .catch(this.handleError);
-}
+    }
     setSelected(id: number) {
         this.selectedId = id;
         this.getSelected().then((data) => {

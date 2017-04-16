@@ -13,6 +13,7 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 export class ProductionTable {
 
     //msgs: Message[];
+    totalRecords: number;
     production = {};
     rows = [];
     timeout: any;
@@ -29,8 +30,9 @@ export class ProductionTable {
     }
 
     loadData() {
-        this.service.getAll().then((data) => {
-            this.rows = data;
+        this.service.getPage(0, 15).then((data: any) => {
+            this.rows = data.content;
+            this.totalRecords = data.totalElements;
         });
     }
 
@@ -41,7 +43,7 @@ export class ProductionTable {
         //        });
     }
     onRowDblclick(data: any): void {
-            this.router.navigate(['/pages/production/form/'+data.id]);
+        this.router.navigate(['/pages/production/form/' + data.id]);
     }
     /*
         edit(id: number) {
@@ -61,6 +63,18 @@ export class ProductionTable {
                 );
             }
         });
+    }
+
+    lazy(event: any, table: any) {
+        const search = table.globalFilter ? table.globalFilter.value : null;
+        this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
+            this.rows = data.content;
+            this.totalRecords = data.totalElements;
+        });
+        /*
+        this.service.getAll().then((data) => {
+          this.rows = data;
+        });*/
     }
 
     onPage(event) {

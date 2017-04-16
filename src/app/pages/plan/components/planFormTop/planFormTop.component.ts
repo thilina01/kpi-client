@@ -40,7 +40,7 @@ export class PlanFormTop {
     }
 
     getControlPoints(): void {
-        this.controlPointService.getAll().then(controlPoints => this.controlPoints = controlPoints);
+        this.controlPointService.getCombo().then(controlPoints => this.controlPoints = controlPoints);
     }
 
     getShifts(): void {
