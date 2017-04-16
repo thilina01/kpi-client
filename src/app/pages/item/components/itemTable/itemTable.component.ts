@@ -9,6 +9,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./itemTable.scss'],
   templateUrl: './itemTable.html',
 })
+
 export class ItemTable {
   rows = [];
   timeout: any;
@@ -28,7 +29,6 @@ export class ItemTable {
       this.totalRecords = data.totalElements;
     });
   }
-
 
   lazy(event: any, table: any) {
     //in a real application, make a remote request to load data using state metadata from event
