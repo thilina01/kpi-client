@@ -34,13 +34,15 @@ export class BreakdownTable {
 
     selected(data: any) {
     }
+
     onRowDblclick(data: any): void {
-            this.router.navigate(['/pages/breakdown/form/'+data.id]);
+        this.router.navigate(['/pages/breakdown/form/' + data.id]);
     }
-    
-    navigateToForm(id:any): void {        
+
+    navigateToForm(id: any): void {
         this.router.navigate(['/pages/breakdown/form/' + id]);
     }
+
     delete(id: number) {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to Delete?',

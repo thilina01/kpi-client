@@ -5,13 +5,13 @@ import 'rxjs/add/operator/toPromise';
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
 @Injectable()
-export class ItemService {
+export class ControlPointTypeService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) {
-    this.apiUrl = config.apiEndpoint + 'items/';
+    this.apiUrl = config.apiEndpoint + 'controlPointTypes/';
     this.headers = new Headers(config.jsonHeaders);
   }
 

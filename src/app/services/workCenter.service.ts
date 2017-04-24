@@ -5,13 +5,13 @@ import 'rxjs/add/operator/toPromise';
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
 @Injectable()
-export class ItemService {
+export class WorkCenterService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) {
-    this.apiUrl = config.apiEndpoint + 'items/';
+    this.apiUrl = config.apiEndpoint + 'workCenters/';
     this.headers = new Headers(config.jsonHeaders);
   }
 
@@ -21,9 +21,16 @@ export class ItemService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
-  
-  getPage(page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"page?page="+page+"&size="+size)
+
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getCombo(): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "combo")
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);

@@ -21,8 +21,16 @@ export class ControlPointService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
+
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
   getCombo(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"combo")
+    return this.http.get(this.apiUrl + "combo")
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);

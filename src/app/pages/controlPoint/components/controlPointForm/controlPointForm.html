@@ -1,0 +1,74 @@
+<div class="widgets">
+  <div class="row">
+    <div class="col-md-12">
+      <ba-card title="ControlPoint Form">
+        <div class="row">
+          <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+            <div class="col-sm-12">
+
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="code">Code</label>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" formControlName="code">
+                </div>
+              </div>
+              <br/>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="name">Name</label>
+                </div>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" formControlName="name">
+                </div>
+              </div>
+              <br/>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="controlPointType">Type</label>
+                </div>
+                <div class="col-sm-3">
+                  <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
+					        <option *ngFor="let controlPointType of controlPointTypes" [ngValue]="controlPointType">{{controlPointType.code}}</option>
+				        </select>
+                </div>
+                <div class="col-sm-6"  *ngIf="formGroup.value.controlPointType != null">
+                  <label >{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
+                </div>
+              </div>
+              <br/>
+
+              <div class="row">
+                <div class="col-sm-3">
+                  <label for="workCenter">Work Center</label>
+                </div>
+                <div class="col-sm-3">
+                  <select id="workCenterSelector" class="form-control" formControlName="workCenter">
+					        <option *ngFor="let workCenter of workCenters" [ngValue]="workCenter">{{workCenter.code}}</option>
+				        </select>
+                </div>
+                <div class="col-sm-6" *ngIf="formGroup.value.workCenter != null">
+                  <label >{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
+                </div>
+              </div>
+              <br/>
+
+              <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-3">
+                  <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+                  <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </ba-card>
+    </div>
+  </div>
+</div>
