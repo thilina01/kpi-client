@@ -81,6 +81,20 @@ export const PAGES_MENU = [
           }
         }
       },
+      {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Control Point Type",
+            "title": "Control Point Type List",
+            url: "#/pages/controlPointType/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
       /*{
         "path": "production",
         "data": {
