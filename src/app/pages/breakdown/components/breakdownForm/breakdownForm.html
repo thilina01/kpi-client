@@ -26,7 +26,7 @@
 					        <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
 				        </select>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
                   <label >{{formGroup.value.machine.code}} | {{formGroup.value.machine.name}}</label>
                 </div>
               </div>

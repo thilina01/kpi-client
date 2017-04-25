@@ -36,7 +36,7 @@
 					        <option *ngFor="let controlPointType of controlPointTypes" [ngValue]="controlPointType">{{controlPointType.code}}</option>
 				        </select>
                 </div>
-                <div class="col-sm-6"  *ngIf="formGroup.value.controlPointType != null">
+                <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
                   <label >{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
                 </div>
               </div>
