@@ -55,11 +55,12 @@ export const PAGES_MENU = [
         }
       },
       {
-        "path": "item",
+        "path": "",
         "data": {
           "menu": {
             "name": "Item",
             "title": "Item List",
+            url: "#/pages/item/table",
             "icon": "ion-edit",
             "selected": false,
             "expanded": false,
