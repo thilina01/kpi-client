@@ -1,114 +1,114 @@
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Schedule Adherence"> <schedule-adherence-chart></schedule-adherence-chart>
 		</ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Schedule Adherence Last Three Months"> <schedule-adherence-three-months-chart></schedule-adherence-three-months-chart>
 		</ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Factory Schedule Adherence Last Six Months">
 		<schedule-adherence-factory-six-months-chart></schedule-adherence-factory-six-months-chart>
 		</ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="MTBF"> <mtbf-chart></mtbf-chart> </ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="MTTR"> <mttr-chart></mttr-chart> </ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="MDT"> <mdt-chart></mdt-chart> </ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="MTBF/MTTR 6 Months"> <mtbf-mttr-6months-chart></mtbf-mttr-6months-chart>
 		</ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="MDT 6 Months"> <mdt-6Months-chart></mdt-6Months-chart>
 		</ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Reworks"> <md-tab-group> <md-tab
 			label="AWL">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'awlReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'awlReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="CWL">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'cwlReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'cwlReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="DWL">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'dwlReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'dwlReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="Shot Blast">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'shotBlastReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'shotBlastReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="Paint Line">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'paintLineReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'paintLineReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="Machine shop">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart
 					[dataSource]="'machineShopReworks'"></reworks-chart> </ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart
 					[dataSource]="'machineShopReworks'" [chartType]="'pieChart'"></reworks-chart>
 				</ba-card>
@@ -116,22 +116,22 @@
 		</div>
 		</md-tab> <md-tab label="Shearing">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'shearingReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'shearingReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="Steel band">
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'steelBandReworks'"></reworks-chart>
 				</ba-card>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<ba-card> <reworks-chart [dataSource]="'steelBandReworks'"
 					[chartType]="'pieChart'"></reworks-chart> </ba-card>
 			</div>
@@ -140,17 +140,17 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Scrap"> <md-tab-group> <md-tab
 			label="This Month">
 		<div class="row">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<ba-card> <scrap-chart></scrap-chart> </ba-card>
 			</div>
 		</div>
 		</md-tab> <md-tab label="Past 6 Months Cost">
 		<div class="row">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 				<ba-card> <scrap-6Months-chart></scrap-6Months-chart> </ba-card>
 			</div>
 		</div>
@@ -158,7 +158,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Defects"> 
 			<md-tab-group>
 				<md-tab label="By Section"> 
@@ -181,12 +181,12 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Rework / Scrap / Production"> <rework-scrap-production-chart></rework-scrap-production-chart> </ba-card>
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Energy - Main"> 
 			<md-tab-group>
 				<md-tab label="KWH / KVA"> 
@@ -204,7 +204,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Energy - Paint"> 
 			<md-tab-group>
 				<md-tab label="KWH / KVA"> 

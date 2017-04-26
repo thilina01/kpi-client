@@ -34,9 +34,9 @@
 			<br/>
 			<p-autoComplete inputStyleClass="form-control col-sm-12" styleClass="col-sm-12" formControlName="controlPoint" [suggestions]="controlPoints" (completeMethod)="searchControlPoint($event)" (onSelect)="a()" field="name">
 						
-			 <template let-controlPoint pTemplate="controlPoint">		       
+			 <ng-template let-controlPoint pTemplate="controlPoint">		       
 		            {{controlPoint.code}} {{controlPoint.name}}		      
-		    </template>
+		    </ng-template>
 			</p-autoComplete>
 			 -->
 			<select formControlName="controlPoint" class="form-control">

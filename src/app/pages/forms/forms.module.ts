@@ -5,7 +5,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { routing }       from './forms.routing';
 
-import { RatingModule } from 'ng2-bootstrap';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { Forms } from './forms.component';
 import { Inputs } from './components/inputs';
 import { Layouts } from './components/layouts';
@@ -28,7 +28,7 @@ import { WithoutLabelsForm } from './components/layouts/components/withoutLabels
     CommonModule,
     AngularFormsModule,
     NgaModule,
-    RatingModule.forRoot(),
+    NgbRatingModule,
     routing
   ],
   declarations: [

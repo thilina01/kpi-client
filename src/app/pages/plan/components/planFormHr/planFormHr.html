@@ -1,46 +1,42 @@
 <ba-card title="HR Plan">
-<div class="row">
-
-	<form [formGroup]="hrFormGroup">
-		<div class="col-sm-3">
-			<div class="form-group">
-				<label for="manpowerType">Manpower Type</label> <select
-					id="manpowerTypeSelector" class="form-control" formControlName="manpowerType">
+	<div class="row col-12">
+		<form [formGroup]="hrFormGroup">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="manpowerType">Manpower Type</label> <select id="manpowerTypeSelector" class="form-control" formControlName="manpowerType">
 					<option *ngFor="let manpowerType of manpowerTypes" [ngValue]="manpowerType">{{manpowerType.type}}</option>
 				</select>
+					</div>
+				</div>
+
+				<div class="col-sm-6">
+					<div class="form-group" [ngClass]="{'has-error': (!hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched), 'has-success': (hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched)}">
+						<label for="inputFirstName">Quantity</label> <input type="text" class="form-control " placeholder="quantity" #plannedQuantity
+						 (keyup.enter)="onEnter(plannedQuantity.value)" formControlName="plannedQuantity">
+					</div>
+				</div>
 			</div>
-		</div>
-		
-		<div class="col-sm-3">
-			<div class="form-group"
-				[ngClass]="{'has-error': (!hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched), 'has-success': (hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched)}">
-				<label for="inputFirstName">Quantity</label> <input type="text"
-					class="form-control " placeholder="quantity" #plannedQuantity
-					(keyup.enter)="onEnter(plannedQuantity.value)"
-					formControlName="plannedQuantity">
-			</div>
-		</div>
-	</form>
-</div>
-<div class="row">
-	<div class="table-responsive">
-		<table class="table">
-			<tr>
-				<th>#</th>
-				<th>Manpower Type</th>
-				<th>Quantity</th>
-			</tr>
-			
-			<tr *ngFor="let manpower of formGroup.value.manpowerList let i = index;">
-				<td>{{i+1}}</td>
-				<td>{{manpower.manpowerType.type}}</td>
-				<td>{{manpower.plannedQuantity}}</td>
-				<td><button type="button" class="btn btn-danger btn-sm"
-						(click)="removeManpower(i)">
+		</form>
+	</div>
+	<div class="row col-12">
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<th>#</th>
+					<th>Manpower Type</th>
+					<th>Quantity</th>
+				</tr>
+
+				<tr *ngFor="let manpower of formGroup.value.manpowerList let i = index;">
+					<td>{{i+1}}</td>
+					<td>{{manpower.manpowerType.type}}</td>
+					<td>{{manpower.plannedQuantity}}</td>
+					<td><button type="button" class="btn btn-danger btn-sm" (click)="removeManpower(i)">
 						<i class="fa fa-times" ng-reflect-class-name="fa fa-times"></i>
 					</button></td>
-			</tr>
-		</table>
+				</tr>
+			</table>
+		</div>
 	</div>
-</div>
 </ba-card>

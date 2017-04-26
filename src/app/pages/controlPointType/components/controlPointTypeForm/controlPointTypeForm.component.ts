@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { ControlPointTypeService } from '../../../../services/controlPointType.service';
 import { SharedService } from '../../../../services/shared.service';
 
@@ -19,10 +18,7 @@ export class ControlPointTypeForm {
     public formGroup: FormGroup;
     controlPointType: any = {};
     subscription: Subscription;
-
     controlPointTypes: any;
-
-
 
     constructor(protected service: ControlPointTypeService,
         private route: ActivatedRoute,
@@ -35,7 +31,6 @@ export class ControlPointTypeForm {
             name: ['', Validators.required]
         });
     }
-
     
     ngOnInit(): void {
         this.route.params.subscribe(

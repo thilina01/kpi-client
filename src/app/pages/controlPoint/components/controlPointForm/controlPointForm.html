@@ -1,13 +1,13 @@
 <div class="widgets">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <ba-card title="ControlPoint Form">
-        <div class="row">
-          <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
-            <div class="col-sm-12">
 
+        <div class="row">
+          <div class="col-sm-12">
+            <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <label for="code">Code</label>
                 </div>
                 <div class="col-sm-3">
@@ -17,7 +17,7 @@
               <br/>
 
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <label for="name">Name</label>
                 </div>
                 <div class="col-sm-3">
@@ -27,7 +27,7 @@
               <br/>
 
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <label for="controlPointType">Type</label>
                 </div>
                 <div class="col-sm-3">
@@ -36,13 +36,13 @@
 				        </select>
                 </div>
                 <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
-                  <label >{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
+                  <label>{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
                 </div>
               </div>
               <br/>
 
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                   <label for="workCenter">Work Center</label>
                 </div>
                 <div class="col-sm-3">
@@ -51,22 +51,21 @@
 				        </select>
                 </div>
                 <div class="col-sm-6" *ngIf="formGroup.value.workCenter != null">
-                  <label >{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
+                  <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
                 </div>
               </div>
               <br/>
 
               <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                 </div>
                 <div class="col-sm-3">
                   <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
                   <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
                 </div>
               </div>
-              
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </ba-card>
     </div>

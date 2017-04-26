@@ -65,7 +65,7 @@
                 <!--
                 <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
 -->
-                <template let-operation pTemplate="rowexpansion">
+                <ng-template let-operation pTemplate="rowexpansion">
                   <p-header>Loss Details</p-header>
                   <p-dataTable [value]="operation.lossList" selectionMode="single">
                     <p-column field="" [style]="{'width':'50px'}"></p-column>
@@ -74,54 +74,55 @@
                     <p-column field="quantity" [style]="{'width':'100px'}"></p-column>
                   </p-dataTable>
 
-                </template>
+                </ng-template>
 
               </p-dataTable>
             </ba-card>
           </div>
 
           <div class='row' *ngIf="production.operationList != undefined">
-            <ba-card title="Quality">
-              <div class="row">
+            <ba-card class='col-12' title="Quality">
                 <form [formGroup]="qualityFormGroup" (ngSubmit)="onQualityFormSubmit(qualityFormGroup.value)" novalidate>
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Job</label>
-                      <select formControlName="operation" class="form-control">				
+
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Job</label>
+                        <select formControlName="operation" class="form-control">				
 				                <option *ngFor="let operation of production.operationList" [ngValue]="operation">{{operation.job.jobNo}}</option>
 			                </select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Loss Type</label>
-                      <select formControlName="lossType" class="form-control">				
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Loss Type</label>
+                        <select formControlName="lossType" class="form-control">				
 				                <option *ngFor="let l of lossTypes" [ngValue]="l">{{l.type}}</option>
 			                </select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-3">
-                    <div class="form-group">
-                      <label>Reason</label>
-                      <select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
-                        formControlName="lossReason" class="form-control">				
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>Reason</label>
+                        <select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
+                          formControlName="lossReason" class="form-control">				
 				                <option *ngFor="let lr of qualityFormGroup.value.lossType.lossReasonList" [ngValue]="lr">{{lr.code}} | {{lr.reason}}</option>
 			                </select>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <div class="form-group">
-                      <label>Quantity</label>
-                      <input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined" type="text"
-                        class="form-control" formControlName="quantity">
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                        <label>Quantity</label>
+                        <input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined" type="text"
+                          class="form-control" formControlName="quantity">
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-sm-2">
-                    <br/>
-                    <button [disabled]="!qualityFormGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i>Add</button>
+                    <div class="col-sm-2">
+                      <br/>
+                      <button [disabled]="!qualityFormGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i>Add</button>
+                    </div>
                   </div>
                 </form>
-              </div>
               <!--
               <div class="row">
                 <div class="col-sm-12">
@@ -136,7 +137,7 @@
                 
                     <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
 
-                    <template let-car pTemplate="rowexpansion">
+                    <ng-template let-car pTemplate="rowexpansion">
                     <p-dataTable #dt1 [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true">
                         <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
                         <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
@@ -144,7 +145,7 @@
                         <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
                         <p-column field="job.jobNo" header="Job Number"></p-column>
                     </p-dataTable>
-                    </template>
+                    </ng-template>
  
                   </p-dataTable>
                 </div>
@@ -234,31 +235,31 @@
 <div id="print-section" hidden>
   <div class="container-fluid ">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-12">
         <div class='row '>
-          <h4 class="col-xs-12 text-center">TRW LANKA (PVT) LIMITED</h4>
+          <h4 class="col-12 text-center">TRW LANKA (PVT) LIMITED</h4>
         </div>
         <div class='row'>
-          <h5 class="col-xs-12 text-center"> DAILY PRODUCTION REPORT </h5>
+          <h5 class="col-12 text-center"> DAILY PRODUCTION REPORT </h5>
         </div>
         <br/>
         <!--
         <div class='row'>
-          <div class="col-xs-1 text-center">
+          <div class="col-1 text-center">
             <label>ID: {{production.id}}</label>
           </div>
 
-          <div class="col-xs-2 nopadding">
+          <div class="col-2 nopadding">
             <label>Date: {{production.productionDate}}</label>
           </div>
 
-          <div class="col-xs-3 nopadding">
+          <div class="col-3 nopadding">
             <label *ngIf="production.shift != undefined">Shift: {{production.shift.code}} {{production.shift.name}} </label>
           </div>
-          <div class="col-xs-4 nopadding">
+          <div class="col-4 nopadding">
             <label *ngIf="production.controlPoint != undefined">Control Point: {{production.controlPoint.code}} {{production.controlPoint.name}}</label>
           </div>
-          <div class="col-xs-2 nopadding">
+          <div class="col-2 nopadding">
             <label>Planned Duration: {{production.plannedDuration}}</label>
           </div>
         </div>
@@ -318,7 +319,7 @@
                 <th>Operation Type</th>
                 <th>Planned</th>
                 <th>Actual</th>
-                <th class="col-xs-5">Loss Reason</th>
+                <th class="col-5">Loss Reason</th>
               </tr>
             </thead>
             <tbody>
@@ -331,7 +332,7 @@
                 <td></td>
                 <td></td>
               </tr>
-              
+
               <tr>
                 <td>&nbsp;</td>
                 <td></td>
@@ -341,7 +342,7 @@
                 <td></td>
                 <td></td>
               </tr>
-              
+
               <tr>
                 <td>&nbsp;</td>
                 <td></td>
@@ -351,7 +352,7 @@
                 <td></td>
                 <td></td>
               </tr>
-              
+
               <tr>
                 <td colspan="4" class="text-right">Total</td>
                 <td class="text-right">{{totalPlannedProductionQuantity}}</td>
@@ -363,8 +364,8 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-4" style="padding-left: 0;">
-            <p class="col-xs-12 text-center"> Manpower </p>
+          <div class="col-4" style="padding-left: 0;">
+            <p class="col-12 text-center"> Manpower </p>
             <table class="table table-condensed table-bordered table-striped">
               <thead>
                 <tr>
@@ -388,15 +389,15 @@
             </table>
           </div>
 
-          <div class="col-xs-4">
-            <p class="col-xs-12 text-center"> Quality </p>
+          <div class="col-4">
+            <p class="col-12 text-center"> Quality </p>
             <table class="table table-condensed table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Job</th>
                   <th>Defect</th>
                   <th>Scrap</th>
-                  <th class="col-xs-6">Reason</th>
+                  <th class="col-6">Reason</th>
                 </tr>
               </thead>
               <tbody>
@@ -410,8 +411,8 @@
             </table>
           </div>
 
-          <div class="col-xs-4" style="padding-right: 0;">
-            <p class="col-xs-12 text-center"> Breakdown </p>
+          <div class="col-4" style="padding-right: 0;">
+            <p class="col-12 text-center"> Breakdown </p>
             <table class="table table-condensed table-bordered table-striped">
               <thead>
                 <tr>
@@ -432,24 +433,24 @@
     </div>
     <div class="divFooter">
       <div class="row">
-        <div class="col-xs-3 text-center">
+        <div class="col-3 text-center">
           <hr/>
         </div>
-        <div class="col-xs-3 text-center">
+        <div class="col-3 text-center">
           <hr/>
         </div>
-        <div class="col-xs-3 text-center">
+        <div class="col-3 text-center">
           <hr/>
         </div>
-        <div class="col-xs-3 text-center">
+        <div class="col-3 text-center">
           <hr/>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-3 text-center">Filled By</div>
-        <div class="col-xs-3 text-center">Control Point Leader</div>
-        <div class="col-xs-3 text-center">Checked By Planner</div>
-        <div class="col-xs-3 text-center">Approved By Production Manager</div>
+        <div class="col-3 text-center">Filled By</div>
+        <div class="col-3 text-center">Control Point Leader</div>
+        <div class="col-3 text-center">Checked By Planner</div>
+        <div class="col-3 text-center">Approved By Production Manager</div>
       </div>
     </div>
   </div>

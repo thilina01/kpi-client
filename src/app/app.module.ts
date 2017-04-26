@@ -4,8 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-import { ConfirmDialogModule,GrowlModule,ConfirmationService } from 'primeng/primeng';
+import { ConfirmDialogModule, GrowlModule, ConfirmationService } from 'primeng/primeng';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -18,6 +19,7 @@ import { APP_CONFIG, AppConfig } from './app.config';
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 
 import { SharedService } from './services/shared.service';
@@ -42,11 +44,13 @@ export type StoreType = {
   declarations: [App],
   imports: [ // import Angular's modules
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
+    NgbModule.forRoot(),
     PagesModule,
     GrowlModule,
     ConfirmDialogModule,
