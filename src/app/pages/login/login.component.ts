@@ -35,8 +35,9 @@ export class Login {
         if (this.form.valid) {
             this.authService.login(values).then(() => {
                 if (this.authService.isLoggedIn) {
-                    let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/crisis-center/admin';
+                    let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
                     this.router.navigate([redirect]);
+                    //window.location.href = '/#' + redirect;
                 }
             });
         }
