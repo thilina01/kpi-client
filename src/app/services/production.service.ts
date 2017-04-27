@@ -42,7 +42,7 @@ export class ProductionService {
     }
     findByProductionDateAndShiftAndControlPoint(object: Object): Promise<Object> {
         return this.http
-            .post(this.apiUrl + "ByProductionDateAndShiftAndControlPoint", JSON.stringify(object), { headers: this.headers })
+            .post(this.apiUrl + "ByProductionDateAndShiftAndControlPoint", JSON.stringify(object), { headers: this.config.getJsonHeaders() })
             .toPromise()
             .then(response => response.json() as Object)
             .catch(this.handleError);
@@ -60,7 +60,7 @@ export class ProductionService {
 
     save(object: Object): Promise<Object> {
         return this.http
-            .post(this.apiUrl, JSON.stringify(object), { headers: this.headers })
+            .post(this.apiUrl, JSON.stringify(object), { headers: this.config.getJsonHeaders() })
             .toPromise()
             .then(res => res.json().data)
             .catch(this.handleError);
@@ -68,7 +68,7 @@ export class ProductionService {
 
     delete(id: number): Promise<Object> {
         return this.http
-            .delete(this.apiUrl + id, { headers: this.headers })
+            .delete(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
             .toPromise()
             .catch(this.handleError);
     }

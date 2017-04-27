@@ -26,7 +26,7 @@ export class AuthService {
 
   loginx(values: any): Observable<boolean> {
     return this.http
-      .post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.headers })
+      .post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.config.getJsonHeaders() })
       .map(response => {
         if (response.text() === 'true') {
           Cookie.set('email', values.email)
@@ -40,12 +40,13 @@ export class AuthService {
   login(values: any): Promise<boolean> {
     let result: boolean = false;
     return this.http
-      .post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.headers })
+      .post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => {
         let text = response.text();
         if (text === 'true') {
           Cookie.set('email', values.email)
+          this.config.setJsonHeaders();
           return true;
         }
         return false;
@@ -57,7 +58,7 @@ export class AuthService {
     let email = Cookie.get('email')
     if (email == undefined) return;
     this.http
-      .post(this.apiUrl + 'logout', { email: email }, { headers: this.headers })
+      .post(this.apiUrl + 'logout', { email: email }, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => {
         Cookie.delete('email');

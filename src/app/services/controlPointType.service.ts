@@ -21,9 +21,9 @@ export class ControlPointTypeService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
-  
-  getPage(page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"page?page="+page+"&size="+size)
+
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
@@ -37,9 +37,8 @@ export class ControlPointTypeService {
   }
 
   save(object: Object): Promise<Object> {
-
     return this.http
-      .post(this.apiUrl, JSON.stringify(object), { headers: this.headers })
+      .post(this.apiUrl, JSON.stringify(object), { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
@@ -48,7 +47,7 @@ export class ControlPointTypeService {
   delete(id: number): Promise<Object> {
 
     return this.http
-      .delete(this.apiUrl + id, { headers: this.headers })
+      .delete(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .catch(this.handleError);
   }

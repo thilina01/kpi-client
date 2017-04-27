@@ -29,7 +29,7 @@ export class JobService {
   
   delete(id: number): Promise<Object> {
         return this.http
-            .delete(this.apiUrl + id, { headers: this.headers })
+            .delete(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
             .toPromise()
             .catch(this.handleError);
     }
