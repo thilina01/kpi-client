@@ -96,6 +96,34 @@ export const PAGES_MENU = [
           }
         }
       },
+      {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Machine",
+            "title": "Machine List",
+            url: "#/pages/machine/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Control Point Machine",
+            "title": "Control Point Machine List",
+            url: "#/pages/controlPointMachine/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
       /*{
         "path": "production",
         "data": {
