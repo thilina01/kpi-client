@@ -1,94 +1,96 @@
+<p-panel header="Item Form">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="code">Code</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="code">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="description">Description</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="description">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="size">Size</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="size">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="weight">Weight</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="weight">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="itemType">Type</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="itemTypeSelector" class="form-control" formControlName="itemType">
+					        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code}}</option>
+				        </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.itemType != null">
+            <label>{{formGroup.value.itemType.code}} | {{formGroup.value.itemType.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="paint">Paint</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="paintSelector" class="form-control" formControlName="paint">
+					        <option *ngFor="let paint of paints" [ngValue]="paint">{{paint.code}}</option>
+				        </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.paint != null">
+            <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3">
+            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
+<!--
 <div class="widgets">
   <div class="row">
     <div class="col-sm-12">
-      
-      <p-panel header="Item Form">
 
-        <div class="row">
-          <div class="col-sm-12">
-            <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
-              <div class="row">
-                <div class="col-sm-2">
-                  <label for="code">Code</label>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" formControlName="code">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                  <label for="description">Description</label>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" formControlName="description">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                  <label for="size">Size</label>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" formControlName="size">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                  <label for="weight">Weight</label>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" formControlName="weight">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                  <label for="itemType">Type</label>
-                </div>
-                <div class="col-sm-3">
-                  <select id="itemTypeSelector" class="form-control" formControlName="itemType">
-					        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code}}</option>
-				        </select>
-                </div>
-                <div class="col-sm-6" *ngIf="formGroup.value.itemType != null">
-                  <label>{{formGroup.value.itemType.code}} | {{formGroup.value.itemType.name}}</label>
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                  <label for="paint">Paint</label>
-                </div>
-                <div class="col-sm-3">
-                  <select id="paintSelector" class="form-control" formControlName="paint">
-					        <option *ngFor="let paint of paints" [ngValue]="paint">{{paint.code}}</option>
-				        </select>
-                </div>
-                <div class="col-sm-6" *ngIf="formGroup.value.paint != null">
-                  <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.name}}</label>
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                </div>
-                <div class="col-sm-3">
-                  <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-                  <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </p-panel>
     </div>
   </div>
 </div>
+-->
