@@ -1,4 +1,4 @@
-<ba-card title="Item List">
+<p-panel header="Item List">
 	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
 	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="items" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
@@ -29,4 +29,4 @@
 			</ng-template>
 		</p-column>
 	</p-dataTable>
-</ba-card>
+</p-panel>
