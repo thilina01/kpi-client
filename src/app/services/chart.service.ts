@@ -33,8 +33,21 @@ export class ChartService {
             .catch(this.handleError);
     }
 
+    getScheduleAdherenceBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'scheduleAdherenceBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+
     getLossReasonSummaryBySection(startDate: string, endDate: string, section: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'lossReasonSummaryBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+    getLossReasonSummaryBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'lossReasonSummaryBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
@@ -47,6 +60,13 @@ export class ChartService {
             .catch(this.handleError);
     }
 
+    getLossReasonSummaryByLossType(startDate: string, endDate: string, lossTypeId: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'lossReasonSummaryByLossType?startDate=' + startDate + '&endDate=' + endDate + '&lossType=' + lossTypeId)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+
     getLossReasonDailyCountBySection(startDate: string, endDate: string, section: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'lossReasonDailyCountBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
             .toPromise()
@@ -54,8 +74,22 @@ export class ChartService {
             .catch(this.handleError);
     }
 
+    getLossReasonDailyCountBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'lossReasonDailyCountBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+
     getLossReasonDailyCount(startDate: string, endDate: string): Promise<Array<Object>> {
-        return this.http.get(this.apiUrl + 'lossReasonDailyCount?startDate=' + startDate + '&endDate=' + endDate )
+        return this.http.get(this.apiUrl + 'lossReasonDailyCount?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+
+    getLossReasonDailyCountByLossType(startDate: string, endDate: string, lossTypeId: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'lossReasonDailyCountByLossType?startDate=' + startDate + '&endDate=' + endDate + '&lossType=' + lossTypeId)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);

@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router'
 import { BaThemeConfigProvider } from '../../../../theme';
 
 import { ChartService } from '../../../../services/chart.service';
+import { LossTypeService } from '../../../../services/lossType.service';
 @Component({
   selector: 'schedule-adherence-chart',
   encapsulation: ViewEncapsulation.None,
@@ -111,8 +112,86 @@ export class ScheduleAdherenceChart {
     }
   };
 
+  lossTypes = [];
+  lossType: any;
 
-  constructor(private baConfig: BaThemeConfigProvider, private route: ActivatedRoute, private chartService: ChartService) {
+  constructor(private baConfig: BaThemeConfigProvider, private route: ActivatedRoute, private chartService: ChartService, private lossTypeService: LossTypeService) {
+    this.fillLossTypes();
+  }
+
+  fillLossTypes() {
+    this.lossTypeService.getAll().then((data) => {
+      this.lossTypes = data;
+      this.lossTypes.unshift({ "id": 0, "code": "ALL", "type": "All" });
+    });
+  }
+
+  onLossTypeChange(event: Event): void {
+    if (this.lossType) {
+      //alert(this.lossType.code);
+      this.clearData();
+      this.fillCharts();
+    }
+  }
+
+  fillCharts(): void {
+
+    if (this.section == '0') {
+
+      this.categoryTitle = "Section";
+
+      this.chartService.getScheduleAdherence(this.startDate, this.endDate).then((data) => {
+        this.setData(data)
+      });
+
+      if (this.lossType && this.lossType.id != 0) {
+        this.chartService.getLossReasonSummaryByLossType(this.startDate, this.endDate, this.lossType.id).then((data) => {
+          this.setLossReasonSummaryData(data)
+        });
+
+        this.chartService.getLossReasonDailyCountByLossType(this.startDate, this.endDate, this.lossType.id).then((data) => {
+          this.setLossReasonDailyCountData(data)
+        });
+
+      } else {
+        this.chartService.getLossReasonSummary(this.startDate, this.endDate).then((data) => {
+          this.setLossReasonSummaryData(data)
+        });
+
+        this.chartService.getLossReasonDailyCount(this.startDate, this.endDate).then((data) => {
+          this.setLossReasonDailyCountData(data)
+        });
+
+      }
+
+
+    } else {
+      this.categoryTitle = "Date";
+
+      this.chartService.getScheduleAdherenceBySection(this.startDate, this.endDate, this.section).then((data) => {
+        this.setData(data)
+      });
+
+      if (this.lossType && this.lossType.id != 0) {
+
+        this.chartService.getLossReasonSummaryBySectionAndLossType(this.startDate, this.endDate, this.section, this.lossType.id).then((data) => {
+          this.setLossReasonSummaryData(data)
+        });
+
+        this.chartService.getLossReasonDailyCountBySectionAndLossType(this.startDate, this.endDate, this.section, this.lossType.id).then((data) => {
+          this.setLossReasonDailyCountData(data)
+        });
+
+      } else {
+        this.chartService.getLossReasonSummaryBySection(this.startDate, this.endDate, this.section).then((data) => {
+          this.setLossReasonSummaryData(data)
+        });
+
+        this.chartService.getLossReasonDailyCountBySection(this.startDate, this.endDate, this.section).then((data) => {
+          this.setLossReasonDailyCountData(data)
+        });
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -122,36 +201,7 @@ export class ScheduleAdherenceChart {
         this.startDate = params['startDate'];
         this.endDate = params['endDate'];
         this.section = params['section'];
-        if (this.section == '0') {
-          this.chartService.getScheduleAdherence(this.startDate, this.endDate).then((data) => {
-            this.setData(data)
-          });
-
-          this.chartService.getLossReasonSummary(this.startDate, this.endDate).then((data) => {
-            this.setLossReasonSummaryData(data)
-          });
-
-          this.chartService.getLossReasonDailyCount(this.startDate, this.endDate).then((data) => {
-            this.setLossReasonDailyCountData(data)
-          });
-
-          this.categoryTitle = "Section";
-        } else {
-
-          this.categoryTitle = "Date";
-          this.chartService.getScheduleAdherenceBySection(this.startDate, this.endDate, this.section).then((data) => {
-            this.setData(data)
-          });
-
-          this.chartService.getLossReasonSummaryBySection(this.startDate, this.endDate, this.section).then((data) => {
-            this.setLossReasonSummaryData(data)
-          });
-
-          this.chartService.getLossReasonDailyCountBySection(this.startDate, this.endDate, this.section).then((data) => {
-            this.setLossReasonDailyCountData(data)
-          });
-
-        }
+        this.fillCharts();
       }
     );
   }
@@ -181,17 +231,31 @@ export class ScheduleAdherenceChart {
 
   onRowSelect(event) {
     if (this.section == '0') {
-      this.chartService.getLossReasonSummary(event.data.date, event.data.date).then((data) => {
-        this.dateLossReasonSummaryData = data;
-      });
+
+      if (this.lossType && this.lossType.id != 0) {
+        this.chartService.getLossReasonSummaryByLossType(event.data.date, event.data.date, this.lossType.id).then((data) => {
+          this.dateLossReasonSummaryData = data;
+        });
+      } else {
+        this.chartService.getLossReasonSummary(event.data.date, event.data.date).then((data) => {
+          this.dateLossReasonSummaryData = data;
+        });
+      }
     } else {
-      this.chartService.getLossReasonSummaryBySection(event.data.date, event.data.date, this.section).then((data) => {
-        this.dateLossReasonSummaryData = data;
-      });
+
+      if (this.lossType && this.lossType.id != 0) {
+        this.chartService.getLossReasonSummaryBySectionAndLossType(event.data.date, event.data.date, this.section, this.lossType.id).then((data) => {
+          this.dateLossReasonSummaryData = data;
+        });
+      } else {
+        this.chartService.getLossReasonSummaryBySection(event.data.date, event.data.date, this.section).then((data) => {
+          this.dateLossReasonSummaryData = data;
+        });
+      }
     }
   }
 
-  onLossByRedonRowSelect(event) {
+  onLossByReasonRowSelect(event) {
     if (this.section == '0') {
       this.chartService.getLossReasonDailyCountByLossReason(this.startDate, this.endDate, event.data.id).then((data) => {
         this.dateLossReasonSummaryByLossReasonData = data;
@@ -206,7 +270,7 @@ export class ScheduleAdherenceChart {
   initChart(chart: any) {
     this.amChart = chart;
   }
-  
+
   initLossByReasonChart(chart: any) {
     this.lossByReasonChart = chart;
   }

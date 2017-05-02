@@ -9,8 +9,8 @@ import { CalendarModule, DropdownModule, DataTableModule, SharedModule } from 'p
 import { Chart } from './chart.component';
 import { ItemService } from '../../services/item.service';
 import { ChartService } from '../../services/chart.service';
+import { LossTypeService } from '../../services/lossType.service';
 import { SectionService } from '../../services/section.service';
-import { ItemTable } from './components/itemTable/itemTable.component';
 import { ScheduleAdherenceChart } from './components/scheduleAdherenceChart/scheduleAdherenceChart.component';
 
 import { routing } from './chart.routing';
@@ -30,13 +30,13 @@ import { routing } from './chart.routing';
   ],
   declarations: [
     Chart,
-    ItemTable,
     ScheduleAdherenceChart
   ],
   providers: [
     ItemService,
     ChartService,
-    SectionService
+    SectionService,
+    LossTypeService
   ]
 })
 export class ChartModule { }
