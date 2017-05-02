@@ -33,4 +33,16 @@ export class SharedService {
     return [year, month, day].join('-');
   }
 
+
+  millisToDuration(millis: number) {
+    var days = Math.floor(millis / 86400000);
+    millis = (millis - days * 86400000);
+    var hours = Math.floor(millis / 3600000);
+    millis = (millis - hours * 3600000);
+    var minutes = Math.floor(millis / 60000);
+    let seconds: number = parseInt(((millis % 60000) / 1000).toFixed(0));
+    return (days < 10 ? '0' : '') + days + " " + (hours < 10 ? '0' : '') + hours + ":" + (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
+
 }
