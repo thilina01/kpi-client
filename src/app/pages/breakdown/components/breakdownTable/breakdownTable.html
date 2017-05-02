@@ -27,6 +27,11 @@
 				{{rowData.recoveryTime | date:'y-MM-dd HH:mm'}}
 			</ng-template>
 		</p-column>
+		<p-column field="duration" header="Duration">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{sharedService.millisToDuration(rowData.recoveryTime - rowData.breakdownTime) }}
+			</ng-template>
+		</p-column>
 		<!-- <p-column field="recoveryTime" header="Recovery Time" [sortable]="true"></p-column> -->
 		<p-column field="machine.code" header="Machine" [sortable]="true"></p-column>
 		<p-column field="breakdownNumber" header="Breakdown Number" [sortable]="true"></p-column>
