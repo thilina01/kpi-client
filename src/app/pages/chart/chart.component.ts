@@ -15,16 +15,8 @@ export class Chart {
       name: 'Schedule Adherence'
     },
     {
-      path: 'mtbf',
-      name: 'MTBF'
-    },
-    {
-      path: 'mttr',
-      name: 'MTTR'
-    },
-    {
-      path: 'mdt',
-      name: 'MDT'
+      path: 'breakdown',
+      name: 'Breakdown'
     }
   ]
   chart: any;

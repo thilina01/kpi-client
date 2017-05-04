@@ -17,6 +17,15 @@ export class ChartService {
         this.apiUrl = config.apiEndpoint + 'chart/';
         this.headers = new Headers(config.jsonHeaders);
     }
+    
+    getBreakdown(startDate: string, endDate: string): Promise<Array<Object>> {
+
+        return this.http.get(this.apiUrl + 'breakdown?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }
+
     //chart/scheduleAdherence?startDate=217-01-01&endDate=2017-03-31
     getScheduleAdherence(startDate: string, endDate: string): Promise<Array<Object>> {
 
@@ -24,8 +33,8 @@ export class ChartService {
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
-    }
-
+    }  
+    
     getScheduleAdherenceBySection(startDate: string, endDate: string, section: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'scheduleAdherenceBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
             .toPromise()

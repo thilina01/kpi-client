@@ -12,6 +12,7 @@ import { ChartService } from '../../services/chart.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { SectionService } from '../../services/section.service';
 import { ScheduleAdherenceChart } from './components/scheduleAdherenceChart/scheduleAdherenceChart.component';
+import { BreakdownChart } from './components/breakdownChart/breakdownChart.component';
 
 import { routing } from './chart.routing';
 
@@ -30,7 +31,8 @@ import { routing } from './chart.routing';
   ],
   declarations: [
     Chart,
-    ScheduleAdherenceChart
+    ScheduleAdherenceChart,
+    BreakdownChart
   ],
   providers: [
     ItemService,

@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<ba-card class="section" title="MTBF &emsp; {{startDate}} TO {{endDate}}">
+			<ba-am-chart baAmChartClass="my-chart" [(baAmChartConfiguration)]="chartData" (onChartReady)="initChart($event)"></ba-am-chart>
+		</ba-card>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<ba-card class="section" title="MTTR &emsp; {{startDate}} TO {{endDate}}">
+			<ba-am-chart baAmChartClass="my-chart" [(baAmChartConfiguration)]="mttrChartData" (onChartReady)="initMttrChart($event)"></ba-am-chart>
+		</ba-card>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<ba-card class="section" title="MDT &emsp; {{startDate}} TO {{endDate}}">
+			<ba-am-chart baAmChartClass="my-chart" [(baAmChartConfiguration)]="mdtChartData" (onChartReady)="initMdtChart($event)"></ba-am-chart>
+		</ba-card>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-12">
+		<ba-card class="section" title="Data">
+			<p-dataTable #dt [value]="dataProvider" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5"
+			 [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple"
+			 resizableColumns="true">
+				<p-column field="section" header="section" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="runDuration" header="Run Duration" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="breakdownDuration" header="Breakdown Duration" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="breakdownCount" header="Breakdown Count" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="mtbf" header="MTBF" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="mttr" header="MTTR" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="mdt" header="MDT" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="mtbfTarget" header="MTBF Target" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="mttrTarget" header="MTTR Target" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="mdtTarget" header="MDT Target (%)" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+			</p-dataTable>
+		</ba-card>
+	</div>
+</div>
