@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
 @Injectable()
-export class SectionService {
+export class SectionTypeService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
@@ -29,13 +29,6 @@ export class SectionService {
       .catch(this.handleError);
   }
 
-  getCombo(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "combo")
-      .toPromise()
-      .then(response => response.json() as Array<Object>)
-      .catch(this.handleError);
-  }
-
   getOne(id: number): Promise<Object> {
     return this.http.get(this.apiUrl + id)
       .toPromise()
@@ -44,7 +37,6 @@ export class SectionService {
   }
 
   save(object: Object): Promise<Object> {
-
     return this.http
       .post(this.apiUrl, JSON.stringify(object), { headers: this.config.getJsonHeaders() })
       .toPromise()

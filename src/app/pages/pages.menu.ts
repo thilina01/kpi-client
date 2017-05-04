@@ -72,6 +72,20 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Section",
+            "title": "Section List",
+            url: "#/pages/section/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Control Point",
             "title": "Control Point List",
             url: "#/pages/controlPoint/table",
