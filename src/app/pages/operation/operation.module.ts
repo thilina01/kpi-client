@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule } from 'primeng/primeng';
 
 import { Operation } from './operation.component';
 import { OperationService } from '../../services/operation.service';
+import { OperationTypeService } from '../../services/operationType.service';
+import { ItemService } from '../../services/item.service';
 import { OperationTable } from './components/operationTable/operationTable.component';
 
 import { routing } from './operation.routing';
@@ -15,8 +18,12 @@ import { routing } from './operation.routing';
   imports: [
     CommonModule,
     NgaModule,
+    FormsModule,
+    ReactiveFormsModule,
     DataTableModule,
     SharedModule,
+    PanelModule,
+    CalendarModule,
     routing
   ],
   declarations: [
@@ -24,7 +31,9 @@ import { routing } from './operation.routing';
     OperationTable
   ],
   providers: [
-    OperationService
+    OperationService,
+    OperationTypeService,
+    ItemService
   ]
 })
 export class OperationModule { }
