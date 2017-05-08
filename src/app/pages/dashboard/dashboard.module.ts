@@ -18,6 +18,9 @@ import { Calendar } from './calendar';
 import { CalendarService } from './calendar/calendar.service';
 import { FeedService } from './feed/feed.service';
 import { LineChartService } from './lineChart/lineChart.service';
+
+import { AbsenteeismChart } from './absenteeismChart';
+import { AbsenteeismChartService } from './absenteeismChart/absenteeismChart.service';
 import { ScrapChart } from './scrapChart';
 import { ScrapChartService } from './scrapChart/scrapChart.service';
 import { Scrap6MonthsChart } from './scrap6MonthsChart';
@@ -44,6 +47,8 @@ import { DefectsLast6MonthsChart } from './defectsLast6MonthsChart';
 import { DefectsLast6MonthsChartService } from './defectsLast6MonthsChart/defectsLast6MonthsChart.service';
 import { Line5ReworksPieChart } from './line5ReworksPieChart';
 import { Line5ReworksPieChartService } from './line5ReworksPieChart/line5ReworksPieChart.service';
+import { LabourTurnoverChart } from './labourTurnoverChart';
+import { LabourTurnoverChartService } from './labourTurnoverChart/labourTurnoverChart.service';
 import { MtbfMttr6MonthsChart } from './mtbfmttr6monthsChart';
 import { MtbfMttr6MonthsChartService } from './mtbfmttr6monthsChart/mtbfmttr6monthsChart.service';
 import { ReworkScrapProductionChart } from './reworkScrapProductionChart';
@@ -73,6 +78,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     TrafficChart,
     UsersMap,
     LineChart,
+    AbsenteeismChart,
     ScrapChart,
     MtbfChart,
     MttrChart,
@@ -87,6 +93,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     MtbfMttr6MonthsChart,
     Line5ReworksBarChart,
     Line5ReworksPieChart,
+    LabourTurnoverChart,
     ScheduleAdherenceChart,
     ReworkScrapProductionChart,
     ScheduleAdherenceThreeMonthsChart,
@@ -100,6 +107,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     CalendarService,
     FeedService,
     LineChartService,
+    AbsenteeismChartService,
     ScrapChartService,
     MtbfChartService,
     MttrChartService,
@@ -114,6 +122,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
     DefectsLast6MonthsChartService,
     Line5ReworksBarChartService,
     Line5ReworksPieChartService,
+    LabourTurnoverChartService,
     ScheduleAdherenceChartService,
     ReworkScrapProductionChartService,
     ScheduleAdherenceThreeMonthsChartService,
