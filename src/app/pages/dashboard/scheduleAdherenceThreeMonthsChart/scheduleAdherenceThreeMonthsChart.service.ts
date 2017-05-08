@@ -16,14 +16,14 @@ export class ScheduleAdherenceThreeMonthsChartService {
       "type": "serial",
       "theme": "blur",
       "dataProvider": [
-        { "section": "CWL", "Nov-16": 86, "Dec-16": 95, "Jan-17": 90 },
-        { "section": "Gas Cutting", "Nov-16": 100, "Dec-16": 100, "Jan-17": 98 },
-        { "section": "DWL", "Nov-16": 92, "Dec-16": 92, "Jan-17": 93 },
-        { "section": "Shearing", "Nov-16": 93, "Dec-16": 99, "Jan-17": 94 },
-        { "section": "AWL", "Nov-16": 84, "Dec-16": 93, "Jan-17": 93 },
-        { "section": "Painting", "Nov-16": 97, "Dec-16": 99, "Jan-17": 87 },
-        { "section": "Machining", "Nov-16": 93, "Dec-16": 95, "Jan-17": 96 },
-        { "section": "SBL", "Nov-16": 93, "Dec-16": 92, "Jan-17": 99 }
+        { "section": "CWL", "Feb-17": 91, "Mar-17": 98, "APR-17": 88 },
+        { "section": "BCL", "Feb-17": 97, "Mar-17": 100, "APR-17": 89 },
+        { "section": "DWL", "Feb-17": 81, "Mar-17": 86, "APR-17": 77 },
+        { "section": "PCL", "Feb-17": 92, "Mar-17": 91, "APR-17": 88 },
+        { "section": "AWL", "Feb-17": 95, "Mar-17": 95, "APR-17": 96 },
+        { "section": "PAL", "Feb-17": 75, "Mar-17": 100, "APR-17": 0 },
+        { "section": "MAS", "Feb-17": 87, "Mar-17": 83, "APR-17": 87 },
+        { "section": "SBL", "Feb-17": 89, "Mar-17": 93, "APR-17": 89 }
       ],
       creditsPosition: 'top-right',
       "valueAxes": [{
@@ -37,29 +37,29 @@ export class ScheduleAdherenceThreeMonthsChartService {
       "gridAboveGraphs": true,
       "startDuration": 1,
       "graphs": [{
-        "balloonText": "Nov-16: <b>[[Nov-16]]%</b>",
+        "balloonText": "Feb-17: <b>[[Feb-17]]%</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
-        "valueField": "Nov-16",
-        "labelText": "[[Nov-16]]%",
+        "valueField": "Feb-17",
+        "labelText": "[[Feb-17]]%",
         "fillColors": "#00abff"
       }, {
-        "balloonText": "Dec-16: <b>[[Dec-16]]%</b>",
+        "balloonText": "Mar-17: <b>[[Mar-17]]%</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
-        "valueField": "Dec-16",
-        "labelText": "[[Dec-16]]%",
+        "valueField": "Mar-17",
+        "labelText": "[[Mar-17]]%",
         "fillColors": "#0D52D1"
       }, {
-        "balloonText": "Jan-17: <b>[[Jan-17]]%</b>",
+        "balloonText": "APR-17: <b>[[APR-17]]%</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
-        "valueField": "Jan-17",
-        "labelText": "[[Jan-17]]%",
-        "fillColors": "#2A0CD0"
+        "valueField": "APR-17",
+        "labelText": "[[APR-17]]%",
+        "fillColors": "#0DCCD1"
       }],
       "chartCursor": {
         "categoryBalloonEnabled": false,
