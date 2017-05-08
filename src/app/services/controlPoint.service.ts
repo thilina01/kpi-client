@@ -16,28 +16,28 @@ export class ControlPointService {
   }
 
   getAll(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl)
+    return this.http.get(this.apiUrl, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getPage(page, size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getCombo(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "combo")
+    return this.http.get(this.apiUrl + "combo", { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getOne(id: number): Promise<Object> {
-    return this.http.get(this.apiUrl + id)
+    return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Object)
       .catch(this.handleError);
@@ -61,7 +61,13 @@ export class ControlPointService {
   }
 
   private handleError(error: any): Promise<any> {
+    
     console.error('An error occurred', error); // for demo purposes only
+    /*console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++'); // for demo purposes only
+    console.log(error); // for demo purposes only
+    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++'); // for demo purposes only
+    */
+    alert(JSON.parse(error._body).message);
     return Promise.reject(error.message || error);
   }
 }
