@@ -42,11 +42,38 @@ export const PAGES_MENU = [
         }
       },
       {
-        "path": "job",
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Production",
+            "title": "Production List",
+            url: "#/pages/production/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Breakdown",
+            "title": "Breakdown List",
+            url: "#/pages/breakdown/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
+        "path": "",
         "data": {
           "menu": {
             "name": "Job",
             "title": "Job List",
+            url: "#/pages/job/table",
             "icon": "ion-edit",
             "selected": false,
             "expanded": false,
@@ -175,38 +202,12 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
-            "name": "Production",
-            "title": "Production List",
-            url: "#/pages/production/table",
-            "icon": "ion-edit"
-            //"order": 800
-            //target: "_blank"
-          }
-        }
-      },
-      {
-        "path": "",
-        "data": {
-          "menu": {
-            "name": "Breakdown",
-            "title": "Breakdown List",
-            url: "#/pages/breakdown/table",
-            "icon": "ion-edit"
-            //"order": 800
-            //target: "_blank"
-          }
-        }
-      },
-      {
-        "path": "operation",
-        "data": {
-          "menu": {
             "name": "Operation",
             "title": "Operation List",
-            "icon": "ion-edit",
-            "selected": false,
-            "expanded": false,
-            "order": 10
+            url: "#/pages/operation/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
           }
         }
       },
