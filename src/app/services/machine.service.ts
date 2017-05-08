@@ -16,28 +16,28 @@ export class MachineService {
   }
 
   getAll(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl)
+    return this.http.get(this.apiUrl, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getPage(page, size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getCombo(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "combo")
+    return this.http.get(this.apiUrl + "combo", { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getOne(id: number): Promise<Object> {
-    return this.http.get(this.apiUrl + id)
+    return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Object)
       .catch(this.handleError);

@@ -16,7 +16,7 @@ export class ProductTypeService {
   }
 
   getAll(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl)
+    return this.http.get(this.apiUrl, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
