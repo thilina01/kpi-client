@@ -155,6 +155,20 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Shift",
+            "title": "Shift List",
+            url: "#/pages/shift/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Control Point Machine",
             "title": "Control Point Machine List",
             url: "#/pages/controlPointMachine/table",

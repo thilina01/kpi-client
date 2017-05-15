@@ -7,18 +7,56 @@ import { APP_CONFIG, IAppConfig } from '../app.config';
 @Injectable()
 export class ShiftService {
 
-  private headers: Object; //= new Headers({ 'Content-Type': 'application/json' });
+  private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) {
     this.apiUrl = config.apiEndpoint + 'shifts/';
-    this.headers = config.jsonHeaders;
+    this.headers = new Headers(config.jsonHeaders);
   }
 
   getAll(): Promise<Array<Object>> {
     return this.http.get(this.apiUrl, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.config.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getCombo(): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "combo", { headers: this.config.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getOne(id: number): Promise<Object> {
+    return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Object)
+      .catch(this.handleError);
+  }
+
+  save(object: Object): Promise<Object> {
+
+    return this.http
+      .post(this.apiUrl, JSON.stringify(object), { headers: this.config.getJsonHeaders() })
+      .toPromise()
+      .then(res => res.json().data)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<Object> {
+
+    return this.http
+      .delete(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
+      .toPromise()
       .catch(this.handleError);
   }
 
