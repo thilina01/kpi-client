@@ -1,0 +1,49 @@
+<ba-card title="ToolBreakdown List">
+	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]"
+	 selectionMode="single" (onRowSelect)="selected($event.data)" (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple"
+	 resizableColumns="true" exportFilename="toolBreakdowns" [globalFilter]="gb">
+		<p-header>
+			<div class="row">
+				<div class="ui-helper-clearfix col-sm-1">
+					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> CSV</button>
+				</div>
+				<div class="ui-helper-clearfix col-sm-1">
+					<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:left"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Form</button>
+				</div>
+				<div class="col-sm-2">
+					<input #gb type="text" class="form-control form-control-sm" placeholder="search">
+				</div>
+			</div>
+		</p-header>
+		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+		<!-- <p-column field="toolBreakdownTime" header="ToolBreakdown Time" [sortable]="true"></p-column> -->
+		<p-column field="toolBreakdownTime" header="ToolBreakdown Time">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.toolBreakdownTime | date:'y-MM-dd HH:mm'}}
+			</ng-template>
+		</p-column>
+		<p-column field="recoveryTime" header="Recovery Time">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.recoveryTime | date:'y-MM-dd HH:mm'}}
+			</ng-template>
+		</p-column>
+		<p-column field="duration" header="Duration">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{sharedService.millisToDuration(rowData.recoveryTime - rowData.toolBreakdownTime) }}
+			</ng-template>
+		</p-column>
+		<!-- <p-column field="recoveryTime" header="Recovery Time" [sortable]="true"></p-column> -->
+		<p-column field="tool.code" header="Tool" [sortable]="true"></p-column>
+		<p-column field="toolBreakdownNumber" header="ToolBreakdown Number" [sortable]="true"></p-column>
+		<p-column field="description" header="Descriptiom" [sortable]="true"></p-column>
+		<p-column header="Action" [style]="{'width':'80px'}">
+			<ng-template let-data="rowData" pTemplate="body">
+				<a [routerLink]="'/pages/toolBreakdown/form/'+data.id">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
+				</a>
+				&nbsp; &nbsp;
+				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+			</ng-template>
+		</p-column>
+	</p-dataTable>
+</ba-card>
