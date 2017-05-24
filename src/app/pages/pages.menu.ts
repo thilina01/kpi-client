@@ -71,6 +71,19 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Tool Breakdown",
+            "title": "Tool Breakdown List",
+            url: "#/pages/toolBreakdown/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Job",
             "title": "Job List",
             url: "#/pages/job/table",
@@ -144,6 +157,20 @@ export const PAGES_MENU = [
             "name": "Machine",
             "title": "Machine List",
             url: "#/pages/machine/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Tool",
+            "title": "Tool List",
+            url: "#/pages/tool/table",
             "icon": "ion-edit",
             "selected": false,
             "expanded": false,
