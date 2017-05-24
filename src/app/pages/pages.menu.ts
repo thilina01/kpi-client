@@ -237,7 +237,21 @@ export const PAGES_MENU = [
             "order": 10
           }
         }
-      },
+      },/*
+      {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "User",
+            "title": "User List",
+            url: "#/pages/user/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },*/
       {
         "path": ["/login"],
         "data": {

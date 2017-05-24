@@ -5,13 +5,13 @@ import 'rxjs/add/operator/toPromise';
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
 @Injectable()
-export class MachineService {
+export class UserService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) {
-    this.apiUrl = config.apiEndpoint + 'machines/';
+    this.apiUrl = config.apiEndpoint + 'users/';
     this.headers = new Headers(config.jsonHeaders);
   }
 
@@ -61,8 +61,7 @@ export class MachineService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only    
-    alert(JSON.parse(error._body).message);
+    console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
 }

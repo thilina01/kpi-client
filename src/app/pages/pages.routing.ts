@@ -44,6 +44,7 @@ export const routes: Routes = [
       { path: 'shift', canActivate: [AuthGuard], loadChildren: 'app/pages/shift/shift.module#ShiftModule' },
       { path: 'tables', canActivate: [AuthGuard], loadChildren: 'app/pages/tables/tables.module#TablesModule' },
       { path: 'ui', canActivate: [AuthGuard], loadChildren: 'app/pages/ui/ui.module#UiModule' },
+      { path: 'user', canActivate: [AuthGuard], loadChildren: 'app/pages/user/user.module#UserModule' },
 
     ]
   }
