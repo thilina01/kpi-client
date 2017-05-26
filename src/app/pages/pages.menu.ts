@@ -84,6 +84,19 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Energy Consumption",
+            "title": "Energy Consumption List",
+            url: "#/pages/energyConsumption/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Job",
             "title": "Job List",
             url: "#/pages/job/table",
@@ -258,6 +271,20 @@ export const PAGES_MENU = [
           "menu": {
             "name": "Manpower",
             "title": "Manpower List",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      {
+        "path": "location",
+        "data": {
+          "menu": {
+            "name": "Location",
+            "title": "Location List",
+            url: "#/pages/location/table",
             "icon": "ion-edit",
             "selected": false,
             "expanded": false,
