@@ -15,20 +15,23 @@ export class ToolBreakdownTable {
     toolBreakdown = {};
     rows = [];
     timeout: any;
-    columns = [
-        { prop: 'id', name: 'ID' },
-        { prop: 'code', name: 'Code' },
-        { prop: 'description', name: 'Description' },
-        { prop: 'toolBreakdownType.type', name: 'Type' }
-    ];
+    totalRecords: number;
 
     constructor(protected service: ToolBreakdownService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
         this.loadData();
     }
-
     loadData() {
-        this.service.getAll().then((data) => {
-            this.rows = data;
+        this.service.getPage(0, 15).then((data: any) => {
+            this.rows = data.content;
+            this.totalRecords = data.totalElements;
+        });
+    }
+
+    lazy(event: any, table: any) {
+        const search = table.globalFilter ? table.globalFilter.value : null;
+        this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
+            this.rows = data.content;
+            this.totalRecords = data.totalElements;
         });
     }
 
