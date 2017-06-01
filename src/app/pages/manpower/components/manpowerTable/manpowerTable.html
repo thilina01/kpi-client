@@ -1,4 +1,6 @@
-<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
+<p-panel header="Manpower List">
+<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
  	<p-header>
 			<div class="row">
 				<div class="ui-helper-clearfix col-sm-1">
@@ -17,3 +19,4 @@
     <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true" ></p-column>
     <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true"  ></p-column>
 </p-dataTable>
+</p-panel>
