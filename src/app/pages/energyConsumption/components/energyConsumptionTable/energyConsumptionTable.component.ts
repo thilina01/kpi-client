@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
 
 @Component({
-    selector: 'energyConsumption-table',
+    selector: 'energy-consumption-table',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./energyConsumptionTable.scss'],
     templateUrl: './energyConsumptionTable.html',

@@ -9,7 +9,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { LocationService } from '../../../../services/location.service';
 
 @Component({
-    selector: 'energyConsumption-form',
+    selector: 'energy-consumption-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./energyConsumptionForm.scss'],
     templateUrl: './energyConsumptionForm.html',
