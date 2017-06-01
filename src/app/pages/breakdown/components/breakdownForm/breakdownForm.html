@@ -1,81 +1,75 @@
-<div class="widgets">
+<p-panel header="Breakdown Form">
   <div class="row">
-    <div class="col-md-12">
-      <ba-card title="Breakdown Form">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-sm-12">
-            <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
-              <div class="row">
-                <div class="col-sm-3">
-                  <label for="breakdownNumber">Breakdown Number</label>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" formControlName="breakdownNumber">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-3">
-                  <label for="machine">Machine</label>
-                </div>
-                <div class="col-sm-3">
-                  <select id="machineSelector" class="form-control" formControlName="machine">
-					        <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
-				        </select>
-                </div>
-                <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
-                  <label>{{formGroup.value.machine.code}} | {{formGroup.value.machine.name}}</label>
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-3">
-                  <label for="breakdownTime">Breakdown Time</label>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['breakdownTime'].valid && formGroup.controls['breakdownTime'].touched), 'has-success': (formGroup.controls['breakdownTime'].valid && formGroup.controls['breakdownTime'].touched)}">
-                    <p-calendar id="breakdownTimePicker" class="form-control" formControlName="breakdownTime" showIcon="true" dateFormat="yy-mm-dd"
-                      showTime="showTime" hourFormat="24"></p-calendar>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-sm-3">
-                  <label for="recoveryTime">Recovery Time</label>
-                </div>
-                <div class="col-sm-3">
-                  <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
-                    <p-calendar id="recoveryTimePicker" class="form-control" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd"
-                      showTime="showTime" hourFormat="24"></p-calendar>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-sm-3">
-                  <label for="description">Description</label>
-                </div>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" formControlName="description">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-3">
-                </div>
-                <div class="col-sm-3">
-                  <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-                  <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
-                </div>
-              </div>
-            </form>
+          <div class="col-sm-3">
+            <label for="breakdownNumber">Breakdown Number</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="breakdownNumber">
           </div>
         </div>
-      </ba-card>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="machine">Machine</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="machineSelector" class="form-control" formControlName="machine">
+					        <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
+				        </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
+            <label>{{formGroup.value.machine.code}} | {{formGroup.value.machine.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="breakdownTime">Breakdown Time</label>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['breakdownTime'].valid && formGroup.controls['breakdownTime'].touched), 'has-success': (formGroup.controls['breakdownTime'].valid && formGroup.controls['breakdownTime'].touched)}">
+              <p-calendar id="breakdownTimePicker" class="form-control" formControlName="breakdownTime" showIcon="true" dateFormat="yy-mm-dd"
+                showTime="showTime" hourFormat="24"></p-calendar>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="recoveryTime">Recovery Time</label>
+          </div>
+          <div class="col-sm-3">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
+              <p-calendar id="recoveryTimePicker" class="form-control" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd"
+                showTime="showTime" hourFormat="24"></p-calendar>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <label for="description">Description</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="description">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-3">
+          </div>
+          <div class="col-sm-3">
+            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-</div>
+</p-panel>

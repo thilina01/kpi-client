@@ -22,6 +22,13 @@ export class BreakdownService {
       .catch(this.handleError);
   }
 
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.config.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
   getOne(id: number): Promise<Object> {
     return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
       .toPromise()

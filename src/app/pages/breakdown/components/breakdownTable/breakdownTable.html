@@ -1,5 +1,6 @@
-<ba-card title="Breakdown List">
-	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]"
+<p-panel header="Breakdown List">
+	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]"
 	 selectionMode="single" (onRowSelect)="selected($event.data)" (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple"
 	 resizableColumns="true" exportFilename="breakdowns" [globalFilter]="gb">
 		<p-header>
@@ -40,10 +41,9 @@
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/breakdown/form/'+data.id">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
-				</a>
-				&nbsp; &nbsp;
+				</a> &nbsp; &nbsp;
 				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
 			</ng-template>
 		</p-column>
 	</p-dataTable>
-</ba-card>
+</p-panel>
