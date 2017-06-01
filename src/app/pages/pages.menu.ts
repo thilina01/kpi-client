@@ -97,6 +97,19 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Labour Turnover",
+            "title": "Labour Turnover List",
+            url: "#/pages/labourTurnover/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Job",
             "title": "Job List",
             url: "#/pages/job/table",
