@@ -291,7 +291,22 @@ export const PAGES_MENU = [
             "order": 10
           }
         }
-      },/*
+      },
+      {
+        "path": "labourSource",
+        "data": {
+          "menu": {
+            "name": "Labour Source",
+            "title": "Labour Source List",
+            url: "#/pages/labourSource/table",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      /*
       {
         "path": "",
         "data": {
