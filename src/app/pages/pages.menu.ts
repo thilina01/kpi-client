@@ -110,6 +110,19 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Absenteeism",
+            "title": "Absenteeism List",
+            url: "#/pages/absenteeism/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Job",
             "title": "Job List",
             url: "#/pages/job/table",

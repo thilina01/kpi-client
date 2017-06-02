@@ -23,6 +23,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', canActivate: [AuthGuard], redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'absenteeism', canActivate: [AuthGuard], loadChildren: 'app/pages/absenteeism/absenteeism.module#AbsenteeismModule' },
       { path: 'breakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/breakdown/breakdown.module#BreakdownModule' },
       { path: 'chart', canActivate: [AuthGuard], loadChildren: 'app/pages/chart/chart.module#ChartModule' },
       { path: 'charts', canActivate: [AuthGuard], loadChildren: 'app/pages/charts/charts.module#ChartsModule' },
