@@ -9,9 +9,9 @@ export class EnergyCostMainChartService {
     { "month": " Oct-16", "cost": 1157336.7 },
     { "month": " Nov-16", "cost": 1157383.33 },
     { "month": " Dec-16", "cost": 1163750.58 },
-    { "month": " Jan-16", "cost": 851838.42 },
-    { "month": " Feb-16", "cost": 1371072.24 },
-    { "month": " Mar-16", "cost": 1343210.07 }
+    { "month": " Jan-17", "cost": 851838.42 },
+    { "month": " Feb-17", "cost": 1371072.24 },
+    { "month": " Mar-17", "cost": 1343210.07 }
   ];
   paintEnergyCostData = [
     { "month": " Jul-16", "cost": 476373.1 },
@@ -20,9 +20,9 @@ export class EnergyCostMainChartService {
     { "month": " Oct-16", "cost": 355097.75 },
     { "month": " Nov-16", "cost": 399425.8 },
     { "month": " Dec-16", "cost": 355091.75 },
-    { "month": " Jan-16", "cost": 274256.45},
-    { "month": " Feb-16", "cost": 468636.20 },
-    { "month": " Mar-16", "cost": 469097.15 }
+    { "month": " Jan-17", "cost": 274256.45},
+    { "month": " Feb-17", "cost": 468636.20 },
+    { "month": " Mar-17", "cost": 469097.15 }
   ];
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
