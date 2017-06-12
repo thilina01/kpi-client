@@ -3,6 +3,7 @@ import { BaThemeConfigProvider, colorHelper, layoutPaths } from '../../../theme'
 
 @Injectable()
 export class EnergyCostMainChartService {
+  /*
   mainEnergyCostData = [
     { "month": " Aug-16", "cost": 1601725.47 },
     { "month": " Sep-16", "cost": 1710207 },
@@ -23,21 +24,21 @@ export class EnergyCostMainChartService {
     { "month": " Jan-17", "cost": 274256.45},
     { "month": " Feb-17", "cost": 468636.20 },
     { "month": " Mar-17", "cost": 469097.15 }
-  ];
+  ];*/
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
-  getData(dataSource: string) {
+  getData(/*dataSource: string*/) {
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardEnergyCostMainChart;
-
+/*
     let dataProvider = [];
     if (dataSource === 'main') {
       dataProvider = this.mainEnergyCostData;
     } else if (dataSource === 'paint') {
       dataProvider = this.paintEnergyCostData;
     }
-
+*/
     return {
       "type": "serial",
       "addClassNames": true,
@@ -52,7 +53,7 @@ export class EnergyCostMainChartService {
       },
       "numberFormatter": { precision: -1, decimalSeparator: '.', thousandsSeparator: ',' },
 
-      "dataProvider": dataProvider,
+      "dataProvider": [],//dataProvider,
       "valueAxes": [{
         "id": "v2",
         "axisAlpha": 0,

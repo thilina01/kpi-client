@@ -3,6 +3,7 @@ import { BaThemeConfigProvider, colorHelper, layoutPaths } from '../../../theme'
 
 @Injectable()
 export class KwhKvaMainChartService {
+  /*
   mainKvhKvaData = [
     { "month": " Aug-16", "kwh": 100170, "kva": 570 },
     { "month": " Sep-16", "kwh": 99646, "kva": 623 },
@@ -24,21 +25,22 @@ export class KwhKvaMainChartService {
     { "month": " Jan-16", "kwh": 7037, "kva": 173 },
     { "month": " Feb-16", "kwh": 21441, "kva": 188 },
     { "month": " Mar-16", "kwh": 20318, "kva": 184 }
-  ];
+  ];*/
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
-  getData(dataSource: string) {
+  getData(/*dataSource: string*/) {
 
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardKwhKvaMainChart;
-
+/*
     let dataProvider = [];
     if (dataSource === 'main') {
       dataProvider = this.mainKvhKvaData;
     } else if (dataSource === 'paint') {
       dataProvider = this.paintKvhKvaData;
     }
+    */
     return {
       "type": "serial",
       "addClassNames": true,
@@ -52,7 +54,7 @@ export class KwhKvaMainChartService {
         "color": "#ffffff"
       },
 
-      "dataProvider": dataProvider,
+      "dataProvider": [],//dataProvider,
       "valueAxes": [{
         "id": "v1",
         "axisAlpha": 0,

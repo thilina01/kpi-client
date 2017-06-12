@@ -63,6 +63,7 @@ import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
+import { ChartService } from '../../services/chart.service'
 
 @NgModule({
   imports: [
@@ -130,7 +131,8 @@ import { UsersMapService } from './usersMap/usersMap.service';
     PieChartService,
     TodoService,
     TrafficChartService,
-    UsersMapService
+    UsersMapService,
+    ChartService
   ]
 })
 export class DashboardModule { }

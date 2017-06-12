@@ -5,13 +5,14 @@
 		</ba-card>
 	</div>
 </div>
--->
+
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Schedule Adherence Last Three Months"> <schedule-adherence-three-months-chart></schedule-adherence-three-months-chart>
 		</ba-card>
 	</div>
 </div>
+-->
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card title="Factory Schedule Adherence Last Six Months">
@@ -213,12 +214,12 @@
 			<md-tab-group>
 				<md-tab label="KWH / KVA"> 
 					<ba-card> 
-						<kwh-kva-main-chart  [dataSource]="'main'"></kwh-kva-main-chart>
+						<kwh-kva-main-chart  [dataSource]="'main'" [location]="'1'"></kwh-kva-main-chart>
 					</ba-card> 
 				</md-tab> 
 				<md-tab label="Cost"> 
 					<ba-card> 
-						<energy-cost-main-chart  [dataSource]="'main'"></energy-cost-main-chart>
+						<energy-cost-main-chart [dataSource]="'main'" [location]="'1'"></energy-cost-main-chart>
 					</ba-card> 
 				</md-tab> 
 			</md-tab-group> 
@@ -232,12 +233,12 @@
 			<md-tab-group>
 				<md-tab label="KWH / KVA"> 
 					<ba-card> 
-						<kwh-kva-main-chart  [dataSource]="'paint'"></kwh-kva-main-chart>
+						<kwh-kva-main-chart  [dataSource]="'paint'" [location]="'2'"></kwh-kva-main-chart>
 					</ba-card> 
 				</md-tab> 
 				<md-tab label="Cost"> 
 					<ba-card> 
-						<energy-cost-main-chart  [dataSource]="'paint'"></energy-cost-main-chart>
+						<energy-cost-main-chart  [dataSource]="'paint'" [location]="'2'"></energy-cost-main-chart>
 					</ba-card> 
 				</md-tab> 
 			</md-tab-group> 
