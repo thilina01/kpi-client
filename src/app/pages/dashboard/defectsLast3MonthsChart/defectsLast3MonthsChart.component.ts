@@ -18,6 +18,7 @@ export class DefectsLast3MonthsChart {
   ngOnInit(): void {
     this.chartData = this._defectsLast3MonthsChartService.getData();
   }
+
   initChart(chart: any) {
     let zoomChart = () => {
       //chart.zoomToDates(new Date(2013, 3), new Date(2014, 0));

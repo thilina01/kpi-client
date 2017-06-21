@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { AbsenteeismChartService } from './absenteeismChart.service';
+import { ChartService } from '../../../services/chart.service';
 
 import 'style-loader!./absenteeismChart.scss';
 
@@ -10,10 +11,21 @@ import 'style-loader!./absenteeismChart.scss';
 })
 export class AbsenteeismChart {
 
-  chartData: Object;
+  amChart: any;
 
-  constructor(private _absenteeismChartService: AbsenteeismChartService) {
-    this.chartData = this._absenteeismChartService.getData();
+  constructor(private _absenteeismChartService: AbsenteeismChartService, private chartService: ChartService) {
+    
+    var startDate = new Date();
+    startDate.setMonth(startDate.getMonth() - 6);
+    var startDateText = startDate.getFullYear()+"-"+((startDate.getMonth()+1)<10?"0"+startDate.getMonth()+1:startDate.getMonth()+1)+"-01";
+    
+    var endDate = new Date();
+    var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
+
+    this.chartService.getMonthlyAbsenteeism(startDateText, endDateText).then((data) => {
+      var chartData = this._absenteeismChartService.getChartData(data);
+      this.amChart = AmCharts.makeChart("absenteeismchartdiv",chartData);
+    });
   }
 
   initChart(chart: any) {

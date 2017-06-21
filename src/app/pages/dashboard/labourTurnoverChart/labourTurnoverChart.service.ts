@@ -7,10 +7,54 @@ export class LabourTurnoverChartService {
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
-  getData() {
+  getChartData(data) {
 
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardLabourTurnoverChart;
+
+  var graphMap = {};
+  var graphs = [];
+  var dataMap = {};
+  var dataProvider = [];
+  data.forEach(function(dataItem) {
+    //create a new graph if we did not already create one
+    if (graphMap[dataItem.source] === undefined) {
+      graphMap[dataItem.source] = 1;
+      graphs.push({
+        valueField: dataItem.source,
+        title: dataItem.source,
+        type: 'column',
+        labelText: '[[value]]%',
+        labelOffset: 10,
+        fillAlphas: 1,
+        balloonText: '<b>' + dataItem.source + '</b>: [[value]]%'
+      });
+    }
+    //create a new object for the month if not already created    
+    if (dataMap[dataItem.month] === undefined) {
+      dataMap[dataItem.month] = {month: dataItem.month};
+    }
+    //add new source information and set target information for that month.
+    dataMap[dataItem.month][dataItem.source] = dataItem.turnover;
+    dataMap[dataItem.month].target = dataItem.target;
+  });
+  //add the target line
+  graphs.push({
+    valueField: 'target',
+    title: 'Target',
+    lineThickness: 2,
+    labelText: '[[value]]%',
+    bullet: 'round',
+    balloonText: '<b>Target</b>: [[value]]'
+  });
+  
+  //convert dataMap to an array sorted by date
+  Object.keys(dataMap).sort(function(lhs, rhs) {
+    return new Date(lhs).getDate() - new Date(rhs).getDate();
+  }).forEach(function(month) {
+    dataProvider.push(dataMap[month]);
+  });
+    
 
     return {
       "type": "serial",
@@ -31,59 +75,22 @@ export class LabourTurnoverChartService {
         "position": "right",
         "useGraphSettings": true,
         "markerSize": 10
-      },
-      "dataProvider": [
-        { "month": " Mar(2017)  ", "TRW": 0, "Jayasinhe": 7.27, "target": 1 },
-        { "month": " Apr(2017)  ", "TRW": 2.22, "Jayasinhe": 1.53, "target": 1 }
-
-      ],
+      },      
+      "dataProvider":dataProvider ,
       "valueAxes": [{
         "id": "v1",
         "axisAlpha": 0,
         "position": "left"
       }],
       "startDuration": 1,
-      "graphs": [{
-        "alphaField": "alpha",
-        "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
-        "fillAlphas": 1,
-        "title": "TRW",
-        "type": "column",
-        "valueField": "TRW",
-        "labelText": "[[TRW]]%"
-      }, {
-        "alphaField": "alpha",
-        "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
-        "fillAlphas": 1,
-        "title": "Jayasinhe",
-        "type": "column",
-        "valueField": "Jayasinhe",
-        "labelText": "[[Jayasinhe]]%"
-      }, {
-        "id": "graph2",
-        "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
-        "bullet": "round",
-        "lineThickness": 3,
-        "bulletSize": 7,
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "useLineColorForBulletBorder": true,
-        "bulletBorderThickness": 3,
-        "fillAlphas": 0,
-        "lineAlpha": 1,
-        "title": "Target",
-        "valueField": "target",
-        "dashLengthField": "dashLengthLine",
-        "labelText": "[[target]]%",
-        //"labelRotation": -30,
-        "labelPosition": "top"
-      }],
+      "graphs": graphs,
       "categoryField": "month",
-      "categoryAxis": {
-        "gridPosition": "start",
-        "axisAlpha": 0,
-        "tickLength": 0
-      },
+    "dataDateFormat": 'YYYY-MM',
+      "categoryAxis":{
+      parseDates: true,
+      minPeriod: 'MM',
+      dateFormats: [{"period":"fff","format":"JJ:NN:SS"},{"period":"ss","format":"JJ:NN:SS"},{"period":"mm","format":"JJ:NN"},{"period":"hh","format":"JJ:NN"},{"period":"DD","format":"MMM DD"},{"period":"WW","format":"MMM DD"},{"period":"MM","format":"YYYY-MM"},{"period":"YYYY","format":"YYYY"}]
+    },
       "export": {
         "enabled": true
       }

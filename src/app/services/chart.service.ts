@@ -40,6 +40,18 @@ export class ChartService {
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }  
+    getMonthlyLabourTurnover(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyLabourTurnover?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+    getMonthlyAbsenteeism(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyAbsenteeism?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
     
     getMonthlyEnergyConsumptionByLocation(startDate: string, endDate: string, location: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlyEnergyConsumptionByLocation?startDate=' + startDate + '&endDate=' + endDate+ '&location=' + location)
