@@ -21,6 +21,7 @@ export class Plan {
       productionDate: ['', Validators.required],
       plannedDuration: ['', Validators.compose([Validators.required, CustomValidators.range([10, 1280])])],
       shift: [null, Validators.required],
+      shiftType: [null, Validators.required],
       controlPoint: [null, Validators.compose([Validators.required])],
       operationList: [[]],
       manpowerList: [[]]

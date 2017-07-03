@@ -6,7 +6,7 @@
 		</div>
 	</div>
 
-	<div class="col-sm-3">
+	<div class="col-sm-2">
 		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shift'].valid && formGroup.controls['shift'].touched), 'has-success': (formGroup.controls['shift'].valid && formGroup.controls['shift'].touched)}">
 			<label for="shift">Shift</label>
 			<!-- 
@@ -20,7 +20,21 @@
 		</div>
 	</div>
 
-	<div class="col-sm-3">
+	<div class="col-sm-2">
+		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shiftType'].valid && formGroup.controls['shiftType'].touched), 'has-success': (formGroup.controls['shiftType'].valid && formGroup.controls['shiftType'].touched)}">
+			<label for="shift">Shift type</label>
+			<!-- 
+			<br/>
+			<p-autoComplete inputStyleClass="form-control col-sm-12" styleClass="col-sm-12" formControlName="shift" [suggestions]="shifts" (completeMethod)="search($event)" field="name"></p-autoComplete>
+				-->
+			<select formControlName="shiftType" class="form-control">				
+				<option *ngFor="let c of shiftTypes" [ngValue]="c">{{c.name}}</option>
+			</select>
+
+		</div>
+	</div>
+
+	<div class="col-sm-2">
 		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched), 'has-success': (formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched)}">
 			<label for="plannedDuration">Duration</label> <input type="text" class="form-control " placeholder="Duration" formControlName="plannedDuration"
 			 [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">

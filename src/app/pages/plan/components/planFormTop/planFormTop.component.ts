@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 
 import { ControlPointService } from '../../../../services/controlPoint.service';
 import { ShiftService } from '../../../../services/shift.service';
+import { ShiftTypeService } from '../../../../services/shiftType.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { ShiftService } from '../../../../services/shift.service';
     templateUrl: './planFormTop.html',
     providers: [
         ControlPointService,
-        ShiftService
+        ShiftService,
+        ShiftTypeService
     ]
 })
 
@@ -18,10 +20,11 @@ export class PlanFormTop {
     @Input('formGroup')
     public formGroup: FormGroup;
 
-    controlPoints: Array<Object>;
-    shifts: Object[];
+    controlPoints: any[];
+    shifts: any[];
+    shiftTypes: any[];
 
-    constructor(private controlPointService: ControlPointService, private shiftService: ShiftService) { }
+    constructor(private controlPointService: ControlPointService, private shiftService: ShiftService, private shiftTypeService: ShiftTypeService) { }
 
 
     search(event) {
@@ -46,9 +49,13 @@ export class PlanFormTop {
     getShifts(): void {
         this.shiftService.getAll().then(shifts => this.shifts = shifts);
     }
+    getShiftTypes(): void {
+        this.shiftTypeService.getAll().then(shiftTypes => this.shiftTypes= shiftTypes);
+    }
     ngOnInit(): void {
         this.getControlPoints();
         this.getShifts();
+        this.getShiftTypes();
     }
 
 }
