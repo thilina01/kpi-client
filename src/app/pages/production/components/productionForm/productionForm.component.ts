@@ -28,9 +28,9 @@ export class ProductionForm {
     totalPlannedProductionQuantity = 0;
     totalPlannedManpowerQuantity = 0;
 
-    controlPoints: Array<Object>;
-    shifts: Object[];
-    lossTypes: Object[];
+    controlPoints: any[];
+    shifts: any[];
+    lossTypes: any[];
 
     productionDate: Date;
     shift: any = {}
@@ -245,12 +245,12 @@ hr {
     bottom: 0;
     font-size: 10px;
     width: 90%;
-    margin-bottom: 2.5em;
+    margin-bottom: 1em;
   }
 
   @page {                
     size: A4 landscape;
-    margin: 2.5em;
+    margin: 1em;
   }
 
   html, body {
