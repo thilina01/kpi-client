@@ -30,7 +30,7 @@ export class ProductionTable {
     }
 
     loadData() {
-        this.service.getPage(0, 15).then((data: any) => {
+        this.service.getPage(0, 20).then((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;
         });

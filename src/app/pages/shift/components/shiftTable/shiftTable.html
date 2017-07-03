@@ -1,11 +1,11 @@
 <p-panel header="Shift List">
-	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
-	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple"
+	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="shifts" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
 		<p-header>
 			<div class="row">
 				<div class="ui-helper-clearfix col-sm-1">
-					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> CSV</button>
+					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
 				</div>
 				<div class="ui-helper-clearfix col-sm-1">
 					<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:left"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Form</button>

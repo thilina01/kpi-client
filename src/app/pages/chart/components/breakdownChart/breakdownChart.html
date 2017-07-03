@@ -25,8 +25,8 @@
 <div class="row">
 	<div class="col-12">
 		<ba-card class="section" title="Data">
-			<p-dataTable #dt [value]="dataProvider" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5"
-			 [rowsPerPageOptions]="[15,50,100]" selectionMode="single" sortMode="multiple"
+			<p-dataTable #dt [value]="dataProvider" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [pageLinks]="5"
+			 [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple"
 			 resizableColumns="true">
 				<p-column field="section" header="section" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 				<p-column field="runDuration" header="Run Duration" [sortable]="true" [style]="{'width':'auto'}"></p-column>

@@ -1,11 +1,11 @@
 <ba-card title="Production List">
-	<p-dataTable #dt [value]="rows" [rows]="15" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="lazy($event,dt)"
-	 [pageLinks]="5" [rowsPerPageOptions]="[15,50,100]"	 selectionMode="single" (onRowSelect)="selected($event.data)" (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple"
+	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="lazy($event,dt)"
+	 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]"	 selectionMode="single" (onRowSelect)="selected($event.data)" (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple"
 	  resizableColumns="true" exportFilename="productions" [globalFilter]="gb">
 		<p-header>
 			<div class="row">
 				<div class="ui-helper-clearfix col-sm-1">
-					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> CSV</button>
+					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
 				</div>
 				<div class="col-sm-2">
 					<input #gb type="text" class="form-control form-control-sm" placeholder="search">
