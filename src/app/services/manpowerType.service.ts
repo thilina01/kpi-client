@@ -24,6 +24,7 @@ export class ManpowerTypeService {
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
+    alert(JSON.parse(error._body).message);
     return Promise.reject(error.message || error);
   }
 }
