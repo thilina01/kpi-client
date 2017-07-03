@@ -47,6 +47,7 @@ export const routes: Routes = [
       { path: 'production', canActivate: [AuthGuard], loadChildren: 'app/pages/production/production.module#ProductionModule' },
       { path: 'section', canActivate: [AuthGuard], loadChildren: 'app/pages/section/section.module#SectionModule' },
       { path: 'shift', canActivate: [AuthGuard], loadChildren: 'app/pages/shift/shift.module#ShiftModule' },
+      { path: 'shiftType', canActivate: [AuthGuard], loadChildren: 'app/pages/shiftType/shiftType.module#ShiftTypeModule' },
       { path: 'tables', canActivate: [AuthGuard], loadChildren: 'app/pages/tables/tables.module#TablesModule' },
       { path: 'tool', canActivate: [AuthGuard], loadChildren: 'app/pages/tool/tool.module#ToolModule' },
       { path: 'toolBreakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/toolBreakdown/toolBreakdown.module#ToolBreakdownModule' },
