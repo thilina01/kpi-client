@@ -44,6 +44,7 @@ export const routes: Routes = [
       { path: 'manpower', canActivate: [AuthGuard], loadChildren: 'app/pages/manpower/manpower.module#ManpowerModule' },
       { path: 'maps', canActivate: [AuthGuard], loadChildren: 'app/pages/maps/maps.module#MapsModule' },
       { path: 'operation', canActivate: [AuthGuard], loadChildren: 'app/pages/operation/operation.module#OperationModule' },
+      { path: 'operationType', canActivate: [AuthGuard], loadChildren: 'app/pages/operationType/operationType.module#OperationTypeModule' },
       { path: 'plan', canActivate: [AuthGuard], loadChildren: 'app/pages/plan/plan.module#PlanModule' },
       { path: 'production', canActivate: [AuthGuard], loadChildren: 'app/pages/production/production.module#ProductionModule' },
       { path: 'section', canActivate: [AuthGuard], loadChildren: 'app/pages/section/section.module#SectionModule' },

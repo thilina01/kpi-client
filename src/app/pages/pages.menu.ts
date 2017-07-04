@@ -320,6 +320,19 @@ export const PAGES_MENU = [
         }
       },
       {
+        "path": "",
+        "data": {
+          "menu": {
+            "name": "Operation Type",
+            "title": "Operation Type List",
+            url: "#/pages/operationType/table",
+            "icon": "ion-edit"
+            //"order": 800
+            //target: "_blank"
+          }
+        }
+      },
+      {
         "path": "manpower",
         "data": {
           "menu": {
