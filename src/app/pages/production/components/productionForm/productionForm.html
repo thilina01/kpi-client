@@ -29,7 +29,7 @@
 						</div>
 						<div class="col-sm-2 padding-0">
 							<label *ngIf="production.shiftType != undefined">Shift Type: {{production.shiftType.name}}</label>
-						</div> 
+						</div>
 						<div class="col-sm-3 padding-0">
 							<label *ngIf="production.controlPoint != undefined">Control
 							Point: {{production.controlPoint.code}}
@@ -46,8 +46,8 @@
 
 					<div class='row' *ngIf="production.operationList != undefined">
 						<ba-card title="Operations">
-							<p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true"
-							 [editable]="true" expandableRows="true" (onEditComplete)="onEditComplete($event)">
+							<p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
+							 expandableRows="true" (onEditComplete)="onEditComplete($event)">
 
 								<p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
 								<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
@@ -55,7 +55,7 @@
 								<p-column field="job.item.code" header="Item" [sortable]="true"></p-column>
 								<p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
 								<p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
-								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
+								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true" [editable]="true"></p-column>
 								<p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
 								<p-column field="lossQuantity" header="Loss Quantity" [sortable]="true"></p-column>
 								<!--
@@ -124,8 +124,7 @@
 
 					<div class='row' *ngIf="production.manpowerList != undefined">
 						<ba-card title="Manpower">
-							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true"
-							 [editable]="true">
+							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true">
 								<p-column field="manpowerType.type" header="Manpower Type" [sortable]="true"></p-column>
 								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
 								<p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
@@ -189,41 +188,38 @@
 							<th>Shift Type</th>
 							<th>Section</th>
 							<th>Control Point</th>
-							<th colspan="2">Duration</th>
+							<th>Planned Duration</th>
+							<th>Actual Duration</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td rowspan=2>{{production.id}}</td>
-							<td rowspan=2>{{production.productionDate}}</td>
-							<td rowspan=2>
-								<p *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</p>
+							<td >{{production.id}}</td>
+							<td >{{production.productionDate}}</td>
+							<td >
+								<div *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</div>
 							</td>
-							<td rowspan=2>
-								<p *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</p>
+							<td >
+								<div *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</div>
 							</td>
-							<td rowspan=2>
+							<td >
 
-								<p *ngIf="
+								<div *ngIf="
                                         production.controlPoint != undefined && 
                                         production.controlPoint.workCenter != undefined && 
                                         production.controlPoint.workCenter.costCenter != undefined && 
                                         production.controlPoint.workCenter.costCenter.section != undefined && 
                                         production.controlPoint.workCenter.costCenter.section.code != undefined">
 									{{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
-								</p>
+								</div>
 
 							</td>
-							<td rowspan=2>
-								<p *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
+							<td >
+								<div *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
 									{{production.controlPoint.code}} | {{production.controlPoint.name}}
-								</p>
+								</div>
 							</td>
-							<td>Planned</td>
 							<td class="text-right">{{production.plannedDuration}}</td>
-						</tr>
-						<tr>
-							<td>Actual</td>
 							<td></td>
 						</tr>
 					</tbody>
@@ -235,12 +231,14 @@
 					<thead>
 						<tr>
 							<th>Job</th>
-							<th>Item</th>
+							<th class="col-sm-2">Item</th>
 							<th>Product Type</th>
 							<th>Operation Type</th>
 							<th>Planned</th>
 							<th>Actual</th>
-							<th class="col-5">Loss Reason</th>
+							<th>Defect</th>
+							<th>Scrap</th>
+							<th class="col-sm-3">Reason</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -252,8 +250,9 @@
 							<td class="text-right">{{operation.plannedQuantity}}</td>
 							<td></td>
 							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-
 						<tr>
 							<td>&nbsp;</td>
 							<td></td>
@@ -262,8 +261,9 @@
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-
 						<tr>
 							<td>&nbsp;</td>
 							<td></td>
@@ -272,12 +272,71 @@
 							<td></td>
 							<td></td>
 							<td></td>
+							<td></td>
+							<td></td>
 						</tr>
-
 						<tr>
 							<td colspan="4" class="text-right">Total</td>
 							<td class="text-right">{{totalPlannedProductionQuantity}}</td>
 							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="pagebreak">			</div>			
+			<!-- Page Header -->
+			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
+				<h4 class="col-sm-12 text-center">OTR WHEEL ENGINEERING LANKA (PVT) LIMITED</h4>
+			</div>
+			<!-- Sub Header -->
+			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
+				<h5 class="col-sm-12 text-center">DAILY PRODUCTION REPORT</h5>
+			</div>
+			<div *ngIf="production.operationList != undefined && production.operationList.length >7"  class="row" style="margin-left: 10px">
+				<table class="table table-bordered table-condensed table-sm">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Date</th>
+							<th>Shift</th>
+							<th>Shift Type</th>
+							<th>Section</th>
+							<th>Control Point</th>
+							<th>Planned Duration</th>
+							<th>Actual Duration</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td >{{production.id}}</td>
+							<td >{{production.productionDate}}</td>
+							<td >
+								<p *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</p>
+							</td>
+							<td >
+								<p *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</p>
+							</td>
+							<td >
+
+								<p *ngIf="
+                                        production.controlPoint != undefined && 
+                                        production.controlPoint.workCenter != undefined && 
+                                        production.controlPoint.workCenter.costCenter != undefined && 
+                                        production.controlPoint.workCenter.costCenter.section != undefined && 
+                                        production.controlPoint.workCenter.costCenter.section.code != undefined">
+									{{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
+								</p>
+
+							</td>
+							<td >
+								<p *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
+									{{production.controlPoint.code}} | {{production.controlPoint.name}}
+								</p>
+							</td>
+							<td class="text-right">{{production.plannedDuration}}</td>
 							<td></td>
 						</tr>
 					</tbody>
@@ -308,7 +367,7 @@
 						</tbody>
 					</table>
 				</div>
-
+				<!--
 				<div class="col-sm-4">
 					<p class="text-center">Quality</p>
 					<table class="table table-condensed table-bordered table-striped table-sm">
@@ -337,7 +396,7 @@
 						</tbody>
 					</table>
 				</div>
-
+-->
 				<div class="col-sm-4" style="padding-right: 0;">
 					<p class="text-center">Breakdown</p>
 					<table class="table table-condensed table-bordered table-striped table-sm">
@@ -355,28 +414,90 @@
 						</tbody>
 					</table>
 				</div>
+				
+				<div class="col-sm-4">
+					<p class="text-center">Attendance</p>
+					<table class="table table-condensed table-bordered table-striped table-sm">
+						<thead>
+							<tr>
+								<th class="col-sm-4">Emp #</th>
+								<th>Name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="divFooter">
 		<div class="row" style="margin-left: 10px">
-			<div class="col-sm-3 text-center">
+			<div class="col-sm-1 text-center">
+			</div>
+			<div class="col-sm-2 text-center">
+				<hr />
+			</div>
+			<div class="col-sm-2 text-center">
+				<hr />
+			</div>
+			<div class="col-sm-2 text-center">
 				<hr />
 			</div>
 			<div class="col-sm-3 text-center">
 				<hr />
 			</div>
-			<div class="col-sm-3 text-center">
-				<hr />
-			</div>
-			<div class="col-sm-3 text-center">
+			<div class="col-sm-2 text-center">
 				<hr />
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-3 text-center">Filled By</div>
-			<div class="col-sm-3 text-center">Control Point Leader</div>
-			<div class="col-sm-3 text-center">Checked By Planner</div>
+			<div class="col-sm-1 text-center">
+			</div>
+			<div class="col-sm-2 text-center">Filled By</div>
+			<div class="col-sm-2 text-center">Control Point Leader</div>
+			<div class="col-sm-2 text-center">Checked By Planner</div>
 			<div class="col-sm-3 text-center">Approved By Production Manager</div>
+			<div class="col-sm-2 text-center">System Entered By </div>
 		</div>
 	</div>
