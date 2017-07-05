@@ -22,9 +22,9 @@ export class OperationTable {
   @ViewChild(DataTable) dataTable: DataTable;
 
   sections: any;
-  section: any = { id: '', code: '', name: '' }
+  section: any = { id: 0, "code": "ALL", "name": "All Sections" }
   shifts: any;
-  shift: any = { id: '', code: '', name: '' }
+  shift: any = { id: 0, "code": "ALL", "name": "All Shifts" }
 
   productionDate: Date;
 
@@ -35,7 +35,10 @@ export class OperationTable {
     this.getShifts();
   }
   getSections(): void {
-    this.sectionService.getCombo().then(sections => this.sections = sections);
+    this.sectionService.getCombo().then(sections => {
+      this.sections = sections;
+      this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections" });
+    });
   }
   getShifts(): void {
     this.shiftService.getCombo().then(shifts => this.shifts = shifts);
@@ -50,16 +53,23 @@ export class OperationTable {
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
 
-    console.log(this.section); // for demo purposes only    
-    if (this.section != undefined && this.section.id != undefined && this.section.id != "") {
-      //this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
-      this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    }else{      
+    console.log(this.section.id != "");
+    if (this.productionDate!=undefined && this.section != undefined && this.section.id != undefined ) {
+      console.log(this.section.id);
+      if (this.section.id == 0) {
+        this.service.getByProductionDateAndShiftPage(this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
+          this.rows = data.content;
+          this.totalRecords = data.totalElements;
+        });
+      } else {
+        this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
+          this.rows = data.content;
+          this.totalRecords = data.totalElements;
+        });
+      }
+    } else {
       this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
-      //this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
+        //this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
       });
