@@ -28,6 +28,12 @@ export class OperationService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
+  getBySectionAndProductionDateAndShiftPage(section,productionDate,shift,page,size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl+"sectionAndProductionDateAndShiftPage?section="+section+"&productionDate="+productionDate+"&shift="+shift+"&page="+page+"&size="+size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
 
   getOne(id: number): Promise<Object> {
     return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })

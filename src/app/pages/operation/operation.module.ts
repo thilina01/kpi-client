@@ -11,6 +11,8 @@ import { OperationTypeService } from '../../services/operationType.service';
 import { ItemService } from '../../services/item.service';
 import { OperationTable } from './components/operationTable/operationTable.component';
 
+import { SectionService } from '../../services/section.service';
+import { ShiftService } from '../../services/shift.service';
 import { routing } from './operation.routing';
 
 
@@ -33,7 +35,9 @@ import { routing } from './operation.routing';
   providers: [
     OperationService,
     OperationTypeService,
-    ItemService
+    SectionService,
+    ItemService,
+    ShiftService
   ]
 })
 export class OperationModule { }
