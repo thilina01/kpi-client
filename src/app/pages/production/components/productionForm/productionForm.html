@@ -17,28 +17,53 @@
 				<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" novalidate>
 					<div class='row'>
 
-						<div class="col-sm-1 padding-0">
-							<label>ID: {{production.id}}</label>
+						<div class="col-sm-1 ">
+							<label>ID</label>
 						</div>
 
-						<div class="col-sm-2 padding-0">
-							<label>Date: {{production.productionDate}}</label>
+						<div class="col-sm-1 ">
+							<label>Date</label>
 						</div>
-						<div class="col-sm-1 padding-0">
-							<label *ngIf="production.shift != undefined">Shift: {{production.shift.name}} </label>
+						<div class="col-sm-1 ">
+							<label *ngIf="production.shift != undefined">Shift </label>
 						</div>
-						<div class="col-sm-2 padding-0">
-							<label *ngIf="production.shiftType != undefined">Shift Type: {{production.shiftType.name}}</label>
+						<div class="col-sm-1 ">
+							<label *ngIf="production.shiftType != undefined">Shift Type</label>
 						</div>
-						<div class="col-sm-3 padding-0">
+						<div class="col-sm-4 ">
 							<label *ngIf="production.controlPoint != undefined">Control
-							Point: {{production.controlPoint.code}}
+							Point</label>
+						</div>
+						<div class="col-sm-2 ">
+							<label>Planned Duration</label>
+						</div>
+						<div class="col-sm-2 ">
+							<label>Actual Duration</label>
+						</div>
+					</div>
+					<div class='row'>
+
+						<div class="col-sm-1 ">
+							<label>{{production.id}}</label>
+						</div>
+
+						<div class="col-sm-1 ">
+							<label>{{production.productionDate}}</label>
+						</div>
+						<div class="col-sm-1 ">
+							<label *ngIf="production.shift != undefined">{{production.shift.name}} </label>
+						</div>
+						<div class="col-sm-1 ">
+							<label *ngIf="production.shiftType != undefined">{{production.shiftType.name}}</label>
+						</div>
+						<div class="col-sm-4 ">
+							<label *ngIf="production.controlPoint != undefined">{{production.controlPoint.code}}
 							{{production.controlPoint.name}}</label>
 						</div>
-						<div class="col-sm-2 padding-0">
-							<label>Planned Duration: {{production.plannedDuration}}</label>
+						<div class="col-sm-2 ">	
+							<input type="text" class="form-control form-control-sm" placeholder="Planned Duration" formControlName="plannedDuration">
 						</div>
-						<div class="col-sm-1 padding-0">
+						<div class="col-sm-2 ">
 							<input type="text" class="form-control form-control-sm" placeholder="Actual Duration" formControlName="actualDuration">
 						</div>
 					</div>

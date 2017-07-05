@@ -44,7 +44,7 @@ export class ProductionForm {
             // productionDate:'',
             // shift:fb.group({code:'',name:''}),
             // controlPoint:fb.group({code:'',name:''}),
-            // plannedDuration:0,
+            plannedDuration:0,
             actualDuration: 0,
         });
         this.qualityFormGroup = fb.group({
@@ -171,6 +171,7 @@ export class ProductionForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         this.production.actualDuration = values.actualDuration
+        this.production.plannedDuration = values.plannedDuration
         console.log(this.production);
         this.service.save(this.production).then(
             (data) => {
@@ -218,7 +219,7 @@ export class ProductionForm {
 
           <style>
           .table-condensed{
-  font-size: 10px;
+  font-size: 9px;
 }
 .table > tbody > tr > td {
      vertical-align: middle;
@@ -264,7 +265,10 @@ hr {
   body {
     margin: 0 auto;
   }
+  
 }
+
+.pagebreak { page-break-before: always; } /* page-break-after works, as well */
           </style>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
