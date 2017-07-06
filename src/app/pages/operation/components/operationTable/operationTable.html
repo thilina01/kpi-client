@@ -1,7 +1,7 @@
 <p-panel header="Operation List">
-	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
 	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single"
-	 sortMode="multiple" resizableColumns="true" exportFilename="operations" [globalFilter]="gb">
+	 sortMode="multiple" resizableColumns="true" exportFilename="operations" >
 		<p-header>
 			<div class="row">
 				<div class="ui-helper-clearfix col-sm-10 text-left">
@@ -32,15 +32,9 @@
 				<div class="ui-helper-clearfix col-sm-1">
 					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
 				</div>
-				<!--
-				<div class="col-sm-2">
-					<input #gb type="text" class="form-control form-control-sm" placeholder="search">
-				</div>
-				-->
 			</div>
 		</p-header>
 		<p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-		<!--  [sortable]="true" -->
 		<p-column field="production.controlPoint.code" header="Control Point"></p-column>
 		<p-column field="production.productionDate" header="Production Date"></p-column>
 		<p-column field="job.jobNo" header="Job"></p-column>
