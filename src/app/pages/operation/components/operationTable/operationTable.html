@@ -19,13 +19,11 @@
 					<select id="sectionSelector" [(ngModel)]="section" class="ui-inputtext ui-widget ui-state-default ui-corner-all input-sm">
 					        <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
 				        </select>
-
 					<button type="button" class="btn btn-primary btn-xs" (click)="search()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search</button>
 
 				</div>
 				<div class="ui-helper-clearfix col-sm-1">
 					<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-
 				</div>
 				<!--
 				<div class="col-sm-2">

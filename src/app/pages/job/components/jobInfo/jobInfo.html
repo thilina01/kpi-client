@@ -1,0 +1,47 @@
+<p-panel>
+
+  <p-header>
+    <div class="row">
+      <div class="col"> Job Number: </div>
+      <div class="col">
+        <input type="text" class="form-control form-control-sm" placeholder="Job Number" [(ngModel)]="jobNo" (keydown)="keyDown($event)"/>
+      </div>
+      <div class="ui-helper-clearfix">
+        <button type="button" class="btn btn-primary btn-xs" (click)="fill()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+      </div>
+      <div class="col"></div>
+      <div class="col">Date: {{job.jobDate}}</div>
+      <div class="col">Quantity: {{job.quantity}}</div>
+      <div class="col-3" *ngIf="job.item != undefined">Item: {{job.item.code}} </div>
+    </div>
+  </p-header>
+
+  <div class="row">
+    <p-tabView>
+      <p-tabPanel header="Summary">
+        <p-dataTable #dt1 [value]="operationSummaryList" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalOperationSummaryRecords"
+          [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true"
+          exportFilename="operationSummary">
+          <p-column field="productType.description" header="Product Type"></p-column>
+          <p-column field="operationType.description" header="Operation Type"></p-column>
+          <p-column field="quantity" header="Quantity" styleClass="text-right"></p-column>
+        </p-dataTable>
+      </p-tabPanel>
+      <p-tabPanel header="Operations">
+        <p-dataTable #dt2 [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+          [pageLinks]="5" [lazy]="true" (onLazyLoad)="lazyOperations($event,dt2)" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true"
+          exportFilename="operations">
+          <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+          <!--  [sortable]="true" -->
+          <p-column field="production.controlPoint.code" header="Control Point"></p-column>
+          <p-column field="production.productionDate" header="Production Date"></p-column>
+          <p-column field="plannedQuantity" header="Planned Quantity" styleClass="text-right"></p-column>
+          <p-column field="actualQuantity" header="Actual Quantity" styleClass="text-right"></p-column>
+          <p-column field="productType.description" header="Product Type"></p-column>
+          <p-column field="operationType.description" header="Operation Type"></p-column>
+        </p-dataTable>
+      </p-tabPanel>
+    </p-tabView>
+
+  </div>
+</p-panel>

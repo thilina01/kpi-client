@@ -137,6 +137,20 @@ export const PAGES_MENU = [
         "path": "",
         "data": {
           "menu": {
+            "name": "Job Info",
+            "title": "Job Info",
+            url: "#/pages/job/info",
+            "icon": "ion-edit",
+            "selected": false,
+            "expanded": false,
+            "order": 10
+          }
+        }
+      },
+      {
+        "path": "",
+        "data": {
+          "menu": {
             "name": "Job Type",
             "title": "Job Type List",
             url: "#/pages/jobType/table",

@@ -29,6 +29,20 @@ export class OperationService {
       .catch(this.handleError);
   }
 
+  getByJobPage(job,page,size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl+"jobPage?job="+job+"&page="+page+"&size="+size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getSummaryByJob(job,page,size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl+"summaryByJob?jobId="+job)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+  
   getByProductionDateAndShiftPage(productionDate,shift,page,size): Promise<Array<Object>> {
     return this.http.get(this.apiUrl+"productionDateAndShiftPage?productionDate="+productionDate+"&shift="+shift+"&page="+page+"&size="+size)
       .toPromise()

@@ -21,9 +21,9 @@ export class JobService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
-  
-  getPage(page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"page?page="+page+"&size="+size)
+
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
@@ -31,6 +31,12 @@ export class JobService {
 
   getOne(id: number): Promise<Object> {
     return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Object)
+      .catch(this.handleError);
+  }
+  getOneByJobNo(jobNo: any): Promise<Object> {
+    return this.http.get(this.apiUrl + "jobNo/" + jobNo, { headers: this.config.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Object)
       .catch(this.handleError);
