@@ -22,36 +22,61 @@ export class OperationService {
       .catch(this.handleError);
   }
 
-  getPage(page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"page?page="+page+"&size="+size)
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
-  getByJobPage(job,page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"jobPage?job="+job+"&page="+page+"&size="+size)
+  getByJobPage(job, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "jobPage?job=" + job + "&page=" + page + "&size=" + size)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
-  getSummaryByJob(job,page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"summaryByJob?jobId="+job)
-      .toPromise()
-      .then(response => response.json() as Array<Object>)
-      .catch(this.handleError);
-  }
-  
-  getByProductionDateAndShiftPage(productionDate,shift,page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"productionDateAndShiftPage?productionDate="+productionDate+"&shift="+shift+"&page="+page+"&size="+size)
+  getSummaryByJob(job, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "summaryByJob?jobId=" + job)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
-  getBySectionAndProductionDateAndShiftPage(section,productionDate,shift,page,size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl+"sectionAndProductionDateAndShiftPage?section="+section+"&productionDate="+productionDate+"&shift="+shift+"&page="+page+"&size="+size)
+  getByProductionDateAndShiftPage(productionDate, shift, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "productionDateAndShiftPage?productionDate=" + productionDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+  getByProductionDurationPage(startDate, endDate, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "productionDurationPage?startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+  getByProductionDurationAndShiftPage(startDate, endDate, shift, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "productionDurationAndShiftPage?startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getBySectionAndProductionDateAndShiftPage(section, productionDate, shift, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "sectionAndProductionDateAndShiftPage?section=" + section + "&productionDate=" + productionDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+  getBySectionAndProductionDurationAndShiftPage(section, startDate, endDate, shift, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "sectionAndProductionDurationAndShiftPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getBySectionAndProductionDurationPage(section, startDate, endDate, page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "sectionAndProductionDurationPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
@@ -73,7 +98,6 @@ export class OperationService {
   }
 
   delete(id: number): Promise<Object> {
-
     return this.http
       .delete(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
       .toPromise()

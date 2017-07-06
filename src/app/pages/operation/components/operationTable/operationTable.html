@@ -4,10 +4,13 @@
 	 sortMode="multiple" resizableColumns="true" exportFilename="operations" [globalFilter]="gb">
 		<p-header>
 			<div class="row">
-				<div class="ui-helper-clearfix col-sm-11 text-left">
-					<label>Date:</label>
+				<div class="ui-helper-clearfix col-sm-10 text-left">
+					<label>Duration:</label>
 					<div class="d-inline" style="padding-right: 35px; ">
-						<p-calendar id="datePicker" showIcon="true" [(ngModel)]="productionDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+						<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+					</div>
+					<div class="d-inline" style="padding-right: 35px; ">
+						<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
 					</div>
 
 					<label>Shift:</label>
@@ -20,6 +23,10 @@
 					        <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
 				        </select>
 					<button type="button" class="btn btn-primary btn-xs" (click)="search()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search</button>
+					&nbsp;&nbsp;{{totalRecords}}
+				</div>
+
+				<div class="ui-helper-clearfix col-sm-1">
 
 				</div>
 				<div class="ui-helper-clearfix col-sm-1">

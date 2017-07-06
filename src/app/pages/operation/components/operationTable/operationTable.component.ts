@@ -26,7 +26,8 @@ export class OperationTable {
   shifts: any;
   shift: any = { id: 0, "code": "ALL", "name": "All Shifts" }
 
-  productionDate: Date;
+  startDate: Date;
+  endDate: Date;
 
   constructor(protected service: OperationService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService,
     private sectionService: SectionService, private shiftService: ShiftService) {
@@ -41,7 +42,10 @@ export class OperationTable {
     });
   }
   getShifts(): void {
-    this.shiftService.getCombo().then(shifts => this.shifts = shifts);
+    this.shiftService.getCombo().then(shifts => {
+      this.shifts = shifts;
+      this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts" });
+    });
   }
   loadData() {
     this.service.getPage(0, 20).then((data: any) => {
@@ -51,29 +55,28 @@ export class OperationTable {
   }
 
   lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
-
-    console.log(this.section.id != "");
-    if (this.productionDate!=undefined && this.section != undefined && this.section.id != undefined ) {
-      console.log(this.section.id);
-      if (this.section.id == 0) {
-        this.service.getByProductionDateAndShiftPage(this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
-          this.rows = data.content;
-          this.totalRecords = data.totalElements;
-        });
-      } else {
-        this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
-          this.rows = data.content;
-          this.totalRecords = data.totalElements;
-        });
-      }
-    } else {
-      this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
-        //this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    }
+    console.log(event);
+    //const search = table.globalFilter ? table.globalFilter.value : null;
+    this.search((event.first / event.rows), event.rows);
+    // if (this.startDate != undefined && this.endDate != undefined && this.section != undefined && this.section.id != undefined) {
+    //   if (this.section.id == 0) {
+    //     this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
+    //       this.rows = data.content;
+    //       this.totalRecords = data.totalElements;
+    //     });
+    //   } else {
+    //     this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
+    //       this.rows = data.content;
+    //       this.totalRecords = data.totalElements;
+    //     });
+    //   }
+    // } else {
+    //   this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
+    //     //this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
+    //     this.rows = data.content;
+    //     this.totalRecords = data.totalElements;
+    //   });
+    // }
   }
 
   onPage(event) {
@@ -83,27 +86,48 @@ export class OperationTable {
     }, 100);
   }
 
-  search(): void {
+  search(first: number, pageSize: number): void {
+    if (this.startDate != undefined &&
+      this.endDate != undefined &&
+      this.section != undefined &&
+      this.section.id != undefined &&
+      this.shift != undefined &&
+      this.shift.id != undefined) {
+      //alert(this.section.id + " ~ " + this.shift.id);
+      if (this.section.id == 0 && this.shift.id == 0) {
+        this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).then((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.section.id == 0 && this.shift.id > 0) {
+        this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).then((data: any) => {
+          this.fillTable(data);
+        });
 
-    //alert("Searching: "+ this.section.id+" / "+this.sharedService.YYYYMMDD(this.operationDate)+" / "+this.shift.id);
-    /**/
-    this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, 0, 20).then((data: any) => {
-      this.rows = data.content;
-      this.totalRecords = data.totalElements;
-      let paging = {
-        first: (0),
-        rows: this.dataTable.rows
-      };
-      // the problem is that if we set sorting, the table is
-      // always going back to page 1, so we set a timer to go
-      // back to the current page ...
-      let timer = Observable.timer(100);
-      timer.subscribe(t => {
-        this.dataTable.paginate(paging);
-      });
-    });
-
+      } else if (this.section.id > 0 && this.shift.id == 0) {
+        this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).then((data: any) => {
+          this.fillTable(data);
+        });
+      } else {
+        this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).then((data: any) => {
+          this.fillTable(data);
+        });
+      }
+    }
   }
+
+  fillTable(data: any) {
+    this.rows = data.content;
+    this.totalRecords = data.totalElements;
+    // let paging = {
+    //   first: (0),
+    //   rows: this.dataTable.rows
+    // };
+    // let timer = Observable.timer(100);
+    // timer.subscribe(t => {
+    //   this.dataTable.paginate(paging);
+    // });
+  }
+
   onRowDblclick(data: any): void {
     this.router.navigate(['/pages/operation/form/' + data.id]);
   }
