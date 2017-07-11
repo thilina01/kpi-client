@@ -52,7 +52,7 @@
     "ng2-validation": "4.1.0",
     "ngx-uploader": "2.2.5",
     "normalize.css": "6.0.0",
-    "primeng": "4.0.0-rc.3",
+    "primeng": "^4.1.0-rc.3",
     "reflect-metadata": "0.1.10",
     "roboto-fontface": "0.7.0",
     "rxjs": "5.3.0",
