@@ -70,7 +70,7 @@ import { ChartService } from '../../services/chart.service'
     CommonModule,
     FormsModule,
     NgaModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     routing
   ],
   declarations: [

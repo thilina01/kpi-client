@@ -19,7 +19,7 @@ import { PlanFormHr } from './components/planFormHr/planFormHr.component';
     NgaModule,
     CalendarModule,
     AutoCompleteModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     routing,
     FormsModule,
     ReactiveFormsModule

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
-import {MaterialModule} from '@angular/material';
+import { MaterialModule } from '@angular/material';
 
 import { CalendarModule, DropdownModule, DataTableModule, SharedModule } from 'primeng/primeng';
 

@@ -26,7 +26,7 @@ import { routing } from './production.routing';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     SharedModule,
     routing
   ],

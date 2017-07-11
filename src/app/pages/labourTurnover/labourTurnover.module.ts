@@ -25,7 +25,7 @@ import { routing } from './labourTurnover.routing';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     SharedModule,
     PanelModule,
     routing

@@ -25,7 +25,7 @@ import { routing } from './energyConsumption.routing';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     SharedModule,
     PanelModule,
     routing
