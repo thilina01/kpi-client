@@ -18,17 +18,7 @@ import 'style-loader!./theme/initial.scss';
  */
 @Component({
   selector: 'app',
-  template: `
-  <!-- PrimeNG globals (Confirmation, Growl) -->
-    <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>
-    <p-growl [value]="msgs"></p-growl>
-  <!-- PrimeNG globals End -->
-
-    <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
-      <div class="additional-bg"></div>
-      <router-outlet></router-outlet>
-    </main>
-  `
+  templateUrl: './app.html'
 })
 export class App {
 
