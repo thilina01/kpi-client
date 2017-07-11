@@ -8,7 +8,7 @@ import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'pages',
-  styles: [],
+    styleUrls: ['./pages.scss'],
   templateUrl: './pages.html',
   providers: [SharedService]
 })
