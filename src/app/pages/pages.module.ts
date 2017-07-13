@@ -8,6 +8,8 @@ import { Pages } from './pages.component';
 
 import { AuthGuard } from '../services/auth-guard.service';
 import { AuthService } from '../services/auth.service';
+import { MenuService } from '../services/menu.service';
+import { UserMenuService } from "../services/userMenu.service";
 
 import { GrowlModule } from 'primeng/primeng';
 @NgModule({
@@ -20,7 +22,9 @@ import { GrowlModule } from 'primeng/primeng';
   declarations: [Pages],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    MenuService,
+    UserMenuService
   ]
 })
 export class PagesModule {
