@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -30,16 +29,29 @@ export class Login {
     ngOnInit() {
         this.authService.logout();
     }
+
+
+
     public onSubmit(values: Object): void {
         this.submitted = true;
         if (this.form.valid) {
-            this.authService.login(values).then(() => {
-                if (this.authService.isLoggedIn) {
+
+            this.authService.afLogin(values).then((res: any) => {
+                if (!res.code) {
                     let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
                     this.router.navigate([redirect]);
-                    //window.location.href = '/#' + redirect;
-                }
-            });
+                } else
+                    alert("Failed");
+            })
+
+            /*
+                        this.authService.login(values).then(() => {
+                            if (this.authService.isLoggedIn) {
+                                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
+                                this.router.navigate([redirect]);
+                                //window.location.href = '/#' + redirect;
+                            }
+                        });*/
         }
     }
 }

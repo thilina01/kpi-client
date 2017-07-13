@@ -11,6 +11,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
+import { AngularFireAuth } from "angularfire2/auth";
+import { Router } from '@angular/router';
 
 /*
  * App Component
@@ -30,7 +32,9 @@ export class App {
     private _spinner: BaThemeSpinner,
     private viewContainerRef: ViewContainerRef,
     private themeConfig: BaThemeConfig,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    public afAuth: AngularFireAuth,
+    public router: Router) {
 
     themeConfig.config();
 
@@ -41,6 +45,17 @@ export class App {
     });
     //this.msgs.push({);
     sharedService.messageSubject.subscribe(message => { this.msgs.push(message);});
+
+    this.afAuth.authState.subscribe(auth => {
+      if (auth) {
+        //this.rootPage = 'TabsPage';
+        this.router.navigate(["/pages/plan"]);
+      }
+      else {
+        //this.rootPage = 'LoginPage';
+        this.router.navigate(["/login"]);
+      }
+    });
   }
   /*
   ngOnDestroy() {
