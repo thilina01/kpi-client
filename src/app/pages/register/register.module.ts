@@ -6,6 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { Register } from './register.component';
 import { routing }       from './register.routing';
 
+import { UserService } from "../../services/user.service";
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { routing }       from './register.routing';
   ],
   declarations: [
     Register
+  ],
+  providers:[
+    UserService
   ]
 })
 export class RegisterModule {}

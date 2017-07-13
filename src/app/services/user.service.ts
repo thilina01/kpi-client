@@ -50,7 +50,6 @@ export class UserService {
   }
 
   save(object: Object): Promise<Object> {
-
     return this.http
       .post(this.apiUrl, JSON.stringify(object), { headers: this.getJsonHeaders() })
       .toPromise()
