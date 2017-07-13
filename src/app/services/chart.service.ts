@@ -4,6 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
+import { AuthService } from "./auth.service";
 
 @Injectable()
 export class ChartService {
@@ -13,9 +14,9 @@ export class ChartService {
 
     selectionChange: Subject<any> = new Subject<any>();
 
-    constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) {
+    constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
         this.apiUrl = config.apiEndpoint + 'chart/';
-        this.headers = new Headers(config.jsonHeaders);
+        //this.headers = new Headers(config.jsonHeaders);
     }
     
     getBreakdown(startDate: string, endDate: string): Promise<Array<Object>> {

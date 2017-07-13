@@ -3,34 +3,40 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
+import { AuthService } from "./auth.service";
 
 @Injectable()
 export class SectionTypeService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
-
-  constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig) {
+  private getJsonHeaders(): Headers{
+    return new Headers({
+      'Content-Type': 'application/json',
+      'email': this.authService.email
+    });
+  }; 
+  constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
     this.apiUrl = config.apiEndpoint + 'sections/';
-    this.headers = new Headers(config.jsonHeaders);
+    //this.headers = new Headers(config.jsonHeaders);
   }
 
   getAll(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl, { headers: this.config.getJsonHeaders() })
+    return this.http.get(this.apiUrl, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getPage(page, size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.config.getJsonHeaders() })
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getOne(id: number): Promise<Object> {
-    return this.http.get(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
+    return this.http.get(this.apiUrl + id, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Object)
       .catch(this.handleError);
@@ -38,7 +44,7 @@ export class SectionTypeService {
 
   save(object: Object): Promise<Object> {
     return this.http
-      .post(this.apiUrl, JSON.stringify(object), { headers: this.config.getJsonHeaders() })
+      .post(this.apiUrl, JSON.stringify(object), { headers: this.getJsonHeaders() })
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
@@ -47,7 +53,7 @@ export class SectionTypeService {
   delete(id: number): Promise<Object> {
 
     return this.http
-      .delete(this.apiUrl + id, { headers: this.config.getJsonHeaders() })
+      .delete(this.apiUrl + id, { headers: this.getJsonHeaders() })
       .toPromise()
       .catch(this.handleError);
   }
