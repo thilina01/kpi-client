@@ -1,0 +1,29 @@
+<p-panel header="Permission Form">
+    <div class="row">
+        <div class="col-2">
+            <label for="user">User</label>
+        </div>
+        <div class="col-4">
+            <select id="jobTypeSelector" class="form-control" [(ngModel)]="user" (change)="onUserChanged()">
+                          <option *ngFor="let user of users" [ngValue]="user">{{user.email}}</option>
+                      </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <p-dataTable #dt [value]="menus" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+            [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true"
+            exportFilename="menus" [globalFilter]="gb">
+            <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+            <!-- <p-column field="isActive" header="Status" [sortable]="true" [style]="{'width':'50px'}"></p-column> -->
+            <p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+            <p-column field="routerLink" header="Router Link" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+            <p-column header="Status" [style]="{'width':'80px'}">
+                <ng-template let-data="rowData" pTemplate="body">
+                    <p-checkbox (click)="onPermissionChanged(data.id)" binary="true" [(ngModel)]="data.isActive"></p-checkbox>
+                </ng-template>
+            </p-column>
+        </p-dataTable>
+    </div>
+    <br/>
+</p-panel>
