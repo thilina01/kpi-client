@@ -38,7 +38,7 @@ export class Pages {
     this.menuList = [];
     //let email = Cookie.get('email') !== undefined ? Cookie.get('email') : '';
 
-    this.userMenuService.getByUserEmail(this.authService.email).then((data: any) => {
+    this.userMenuService.getOwn().then((data: any) => {
       data.forEach(userMenu => {
         this.menuList.push(userMenu.menu)
       });

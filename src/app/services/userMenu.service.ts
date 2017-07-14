@@ -34,8 +34,8 @@ export class UserMenuService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
-  getByUserEmail(userEmail: string): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "userEmail/" + userEmail, { headers: this.getJsonHeaders() })
+  getOwn(): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "own", { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
