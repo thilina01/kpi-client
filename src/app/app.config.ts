@@ -15,8 +15,6 @@ export interface IAppConfig {
 let hostname = location.hostname;
 let apiEndpoint = hostname === 'kpi.trwlanka.com' || 'otr-kpi.firebaseapp.com' || 'otr-kpi.nanosl.com' ? 'http://tmsapi.trwlanka.com/' : hostname === '192.168.1.171' ? 'http://' + hostname + ':8080/file-manager-api/' : 'http://' + hostname + ':8080/';
 
-
-
 export const AppConfig: IAppConfig = {
   //apiEndpoint: 'http://tmsapi.trwlanka.com/',
   //apiEndpoint: 'http://localhost:8080/file-manager-api/'

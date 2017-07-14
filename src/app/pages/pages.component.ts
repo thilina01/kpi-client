@@ -18,6 +18,7 @@ import { AuthService } from "../services/auth.service";
 })
 export class Pages {
   msgs: Message[] = [];
+  logoPath = '/assets/img/logo.png'
   constructor(private _menuService: BaMenuService,
     private sharedService: SharedService,
     private menuService: MenuService,

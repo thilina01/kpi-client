@@ -36,6 +36,11 @@
     <a class="w3-bar-item w3-button" routerLink="/pages/jobType/table" routerLinkActive="selected">Job Type  </a>
     <a class="w3-bar-item w3-button" routerLink="/login" routerLinkActive="selected">Logout</a>
 -->
+    <br/>
+    <img [src]="logoPath" width="160px">
+    <br/>
+    <br/>
+    <br/>
     <ng-template ngFor let-menu [ngForOf]="menuList" let-i="index">
         <a class="w3-bar-item w3-button" [routerLink]="[menu.routerLink]" routerLinkActive="selected">{{menu.name}}</a>
     </ng-template>
