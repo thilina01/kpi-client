@@ -36,15 +36,15 @@ export class Login {
             this.authService.afLogin(values).then((res: any) => {
                 if (!res.code) {
                     this.authService.login(values).then((result: any) => {
-                        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/login';
                         if (result.status) {
-                            redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/dashboard';
+                            let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/dashboard';
+                            this.router.navigate([redirect]);
+                        } else {
+                            alert("Login Failed (API)")
                         }
-                        this.router.navigate([redirect]);
-
                     });
                 } else {
-                    alert("Failed");
+                    alert("Login Failed (External)");
                 }
             })
 
