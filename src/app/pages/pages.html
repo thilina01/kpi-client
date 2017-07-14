@@ -38,8 +38,10 @@
 -->
     <br/>
     <img [src]="logoPath" width="160px">
-    <br/>
-    <br/>
+    <br/>    
+    <br/>    
+    <a class="w3-bar-item w3-button" routerLink="/pages/dashboard" routerLinkActive="selected"><i class="fa fa-home"> </i> Home</a>
+    <a class="w3-bar-item w3-button" routerLink="/login" routerLinkActive="selected"><i class="fa fa-sign-out "> </i> Logout</a>
     <br/>
     <ng-template ngFor let-menu [ngForOf]="menuList" let-i="index">
         <a class="w3-bar-item w3-button" [routerLink]="[menu.routerLink]" routerLinkActive="selected">{{menu.name}}</a>
