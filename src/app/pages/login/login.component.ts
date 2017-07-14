@@ -30,18 +30,22 @@ export class Login {
         this.authService.logout();
     }
 
-
-
     public onSubmit(values: Object): void {
         this.submitted = true;
         if (this.form.valid) {
-
             this.authService.afLogin(values).then((res: any) => {
                 if (!res.code) {
-                    let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
-                    this.router.navigate([redirect]);
-                } else
+                    this.authService.login(values).then((result: any) => {
+                        let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/login';
+                        if (result.status) {
+                            redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
+                        } else {
+                            this.router.navigate([redirect]);
+                        }
+                    });
+                } else {
                     alert("Failed");
+                }
             })
 
             /*

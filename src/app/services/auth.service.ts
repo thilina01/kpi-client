@@ -1,13 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
-import 'rxjs/add/operator/toPromise';
+// import { Cookie } from 'ng2-cookies/ng2-cookies';
+// import 'rxjs/add/operator/toPromise';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+// import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/observable/of';
+// import 'rxjs/add/operator/do';
+// import 'rxjs/add/operator/delay';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -62,8 +62,8 @@ export class AuthService {
         .catch(this.handleError);
     }
   */
-  login(values: any): Promise<boolean> {
-    let result: boolean = false;
+  login(values: any): Promise<any> {
+    //let result: boolean = false;
     values.passwordAgain = values.password;
     return this.http
       .post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.getJsonHeaders() })
@@ -71,10 +71,14 @@ export class AuthService {
       .then(response => {
         let text = response.text();
         if (text === 'true') {
+          return { status: true };
         }
-        return false;
+        return { status: false };
       })
-      .catch(this.handleError);
+      .catch((error) => {
+        this.handleError(error);
+        return { status: false };
+      });
   }
 
   logout() {
@@ -100,8 +104,10 @@ export class AuthService {
   afLogin(credentials: any) {
     var promise = new Promise((resolve, reject) => {
       this.afireauth.auth.signInWithEmailAndPassword(credentials.email, credentials.password).then(() => {
-        this.login(credentials);
-        resolve(true);
+        // this.login(credentials).then(() => {
+        //   resolve(true);
+        // });
+        resolve(false);
       }).catch((err) => {
         reject(err);
       })
