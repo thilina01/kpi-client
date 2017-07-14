@@ -49,7 +49,7 @@ export class App {
     this.afAuth.authState.subscribe(auth => {
       if (auth) {
         //this.rootPage = 'TabsPage';
-        this.router.navigate(["/pages/plan"]);
+        this.router.navigate(["/pages/dashboard"]);
       }
       else {
         //this.rootPage = 'LoginPage';
