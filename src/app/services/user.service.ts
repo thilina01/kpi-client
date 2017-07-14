@@ -7,12 +7,12 @@ import { AuthService } from "./auth.service";
 
 @Injectable()
 export class UserService {
-  private getJsonHeaders(): Headers{
+  private getJsonHeaders(): Headers {
     return new Headers({
       'Content-Type': 'application/json',
       'email': this.authService.email
     });
-  }; 
+  };
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
@@ -69,5 +69,12 @@ export class UserService {
     console.error('An error occurred', error); // for demo purposes only
     alert(JSON.parse(error._body).message);
     return Promise.reject(error.message || error);
+  }
+
+  getOwn(): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "own", { headers: this.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
   }
 }

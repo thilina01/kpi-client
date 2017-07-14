@@ -35,7 +35,6 @@ export class App {
     private sharedService: SharedService,
     public afAuth: AngularFireAuth,
     public router: Router) {
-
     themeConfig.config();
 
     this._loadImages();
@@ -44,14 +43,13 @@ export class App {
       this.isMenuCollapsed = isCollapsed;
     });
     //this.msgs.push({);
-    sharedService.messageSubject.subscribe(message => { this.msgs.push(message);});
+    sharedService.messageSubject.subscribe(message => { this.msgs.push(message); });
 
     this.afAuth.authState.subscribe(auth => {
       if (auth) {
         //this.rootPage = 'TabsPage';
         this.router.navigate(["/pages/dashboard"]);
-      }
-      else {
+      } else {
         //this.rootPage = 'LoginPage';
         this.router.navigate(["/login"]);
       }

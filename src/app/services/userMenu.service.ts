@@ -11,12 +11,12 @@ export class UserMenuService {
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
-  private getJsonHeaders(): Headers{
+  private getJsonHeaders(): Headers {
     return new Headers({
       'Content-Type': 'application/json',
       'email': this.authService.email
     });
-  }; 
+  };
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
     this.apiUrl = config.apiEndpoint + 'userMenus/';
     //this.headers = new Headers(config.jsonHeaders);
@@ -40,7 +40,7 @@ export class UserMenuService {
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
-  
+
   getPage(page, size): Promise<Array<Object>> {
     return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
       .toPromise()

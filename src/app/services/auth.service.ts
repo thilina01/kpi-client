@@ -15,7 +15,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AuthService {
 
   isLoggedIn: boolean = false;
-  isActive: boolean = false;
   email: string = "";
   private getJsonHeaders(): Headers {
     return new Headers({
@@ -72,7 +71,6 @@ export class AuthService {
       .then(response => {
         let text = response.text();
         if (text === 'true') {
-          this.isActive = true;
           return { status: true };
         }
         return { status: false };
