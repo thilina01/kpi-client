@@ -38,10 +38,10 @@ export class Login {
                     this.authService.login(values).then((result: any) => {
                         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/login';
                         if (result.status) {
-                            redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
-                        } else {
-                            this.router.navigate([redirect]);
+                            redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/dashboard';
                         }
+                        this.router.navigate([redirect]);
+
                     });
                 } else {
                     alert("Failed");

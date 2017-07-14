@@ -15,6 +15,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AuthService {
 
   isLoggedIn: boolean = false;
+  isActive: boolean = false;
   email: string = "";
   private getJsonHeaders(): Headers {
     return new Headers({
@@ -71,6 +72,7 @@ export class AuthService {
       .then(response => {
         let text = response.text();
         if (text === 'true') {
+          this.isActive = true;
           return { status: true };
         }
         return { status: false };
@@ -82,7 +84,9 @@ export class AuthService {
   }
 
   logout() {
-    this.afireauth.auth.signOut();
+    if (this.afireauth.auth.currentUser) {
+      this.afireauth.auth.signOut();
+    }
     // let email = Cookie.get('email')
     // if (email == undefined) return;
     // this.http
@@ -94,12 +98,15 @@ export class AuthService {
     //   .catch(this.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
+  private handleError(error: any) {
     console.error('An error occurred', error); // for demo purposes only
-    alert(JSON.parse(error._body).message);
-    return Promise.reject(error.message || error);
+    if (error.message) {
+      alert(error.message);
+    } else if (error._body) {
+      alert(JSON.parse(error._body).message);
+    }
   }
-  /******************************** */
+  /*********************************/
 
   afLogin(credentials: any) {
     var promise = new Promise((resolve, reject) => {
@@ -109,6 +116,7 @@ export class AuthService {
         // });
         resolve(false);
       }).catch((err) => {
+        this.handleError(err);
         reject(err);
       })
     })
