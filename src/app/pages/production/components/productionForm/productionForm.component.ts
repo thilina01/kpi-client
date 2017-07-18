@@ -44,7 +44,7 @@ export class ProductionForm {
             // productionDate:'',
             // shift:fb.group({code:'',name:''}),
             // controlPoint:fb.group({code:'',name:''}),
-            plannedDuration:0,
+            plannedDuration: 0,
             actualDuration: 0,
         });
         this.qualityFormGroup = fb.group({
@@ -105,6 +105,7 @@ export class ProductionForm {
                 this.service.getOne(+id).then(
                     (data) => {
                         this.loadForm(data);
+                        this.qualityFormGroup.reset();
                     }
                 )
             }
@@ -146,6 +147,7 @@ export class ProductionForm {
             }
         }
     }
+
     setOperationIdOnLoss() {
         if (this.production.operationList) {
             for (let operation of this.production.operationList) {
