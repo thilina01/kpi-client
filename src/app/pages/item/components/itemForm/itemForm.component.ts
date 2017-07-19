@@ -17,7 +17,7 @@ import { PaintService } from '../../../../services/paint.service';
 })
 export class ItemForm {
     JSON: any = JSON;
-
+    checked: boolean = false;
     public formGroup: FormGroup;
     item: any = {};
     subscription: Subscription;
@@ -45,6 +45,10 @@ export class ItemForm {
             description: ['', Validators.required],
             size: [''],
             weight: [''],
+            volume: [''],
+            drawingVersion: [''],
+            drawingApproval: false,
+            productionToolAvailability: false,
             itemType: [this.itemType, Validators.required],
             paint: [this.paint, Validators.required]
         });
@@ -53,7 +57,7 @@ export class ItemForm {
     getItemTypes(): void {
         this.itemTypeService.getCombo().then(itemTypes => this.itemTypes = itemTypes);
     }
-    
+
     getPaints(): void {
         this.paintService.getCombo().then(paints => this.paints = paints);
     }
@@ -77,11 +81,12 @@ export class ItemForm {
     }
 
     loadForm(data: any) {
-        if (data != null) {
-            data.itemTime = new Date(data.itemTime);
-            data.recoveryTime = new Date(data.recoveryTime);
-            this.item = data;
+        if (data == null) {
+            return;
         }
+        this.item = data;
+        this.item.drawingApproval = this.item.drawingApproval === "yes" ? true : false;
+        this.item.productionToolAvailability = this.item.productionToolAvailability === "yes" ? true : false;
         this.formGroup.patchValue(this.item, { onlySelf: true });
         this.itemType = this.item.itemType;
     }
@@ -89,6 +94,9 @@ export class ItemForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
+
+        values.drawingApproval = values.drawingApproval ? "yes" : "no";
+        values.productionToolAvailability = values.productionToolAvailability ? "yes" : "no";
         this.service.save(values).then(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });

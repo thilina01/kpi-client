@@ -45,6 +45,47 @@
 
         <div class="row">
           <div class="col-sm-2">
+            <label for="weight">Volume (m<sup>3</sup>)</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="volume">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="weight">Drawing Version</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="drawingVersion">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="weight">Drawing Approval</label>
+          </div>
+          <div class="col-sm-3">
+            <p-checkbox binary="true" formControlName="drawingApproval" label="{{formGroup.value.drawingApproval?'Yes':'No'}}"> </p-checkbox>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="weight">Tool Availability</label>
+          </div>
+          <div class="col-sm-3">
+            <p-checkbox binary="true" formControlName="productionToolAvailability" label="{{formGroup.value.productionToolAvailability?'Yes':'No'}}"> </p-checkbox>
+
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
             <label for="itemType">Type</label>
           </div>
           <div class="col-sm-3">
@@ -68,7 +109,7 @@
 				        </select>
           </div>
           <div class="col-sm-6" *ngIf="formGroup.value.paint != null">
-            <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.name}}</label>
+            <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.description}}</label>
           </div>
         </div>
         <br/>
