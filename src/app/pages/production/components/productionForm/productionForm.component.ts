@@ -40,21 +40,15 @@ export class ProductionForm {
 
     constructor(protected service: ProductionService, private route: ActivatedRoute, fb: FormBuilder, private sharedService: SharedService, private controlPointService: ControlPointService, private shiftService: ShiftService, private lossTypeService: LossTypeService) {
         this.formGroup = fb.group({
-            // id:'',
-            // productionDate:'',
-            // shift:fb.group({code:'',name:''}),
-            // controlPoint:fb.group({code:'',name:''}),
             plannedDuration: 0,
             actualDuration: 0,
         });
         this.qualityFormGroup = fb.group({
-            operation: {},
-            lossType: {},
-            lossReason: {},
-            quantity: ''
+            operation: [null, Validators.required],
+            lossType:  [null, Validators.required],
+            lossReason:  [null, Validators.required],
+            quantity:  [null, Validators.required]
         });
-
-
     }
 
     displaySearch(): void {
@@ -78,7 +72,6 @@ export class ProductionForm {
             }
         )
     }
-
 
     getControlPoints(): void {
         this.controlPointService.getAll().then(controlPoints => this.controlPoints = controlPoints);
@@ -105,7 +98,6 @@ export class ProductionForm {
                 this.service.getOne(+id).then(
                     (data) => {
                         this.loadForm(data);
-                        this.qualityFormGroup.reset();
                     }
                 )
             }
@@ -185,10 +177,11 @@ export class ProductionForm {
         //alert(JSON.stringify(event));
     }
     public onQualityFormSubmit(values: any): void {
-        if (values.operation.lossList == null) {
-            values.operation.lossList = [];
+        if (!this.qualityFormGroup.valid) {
+            this.qualityFormGroup.reset();
+            return;
         }
-        values.lossReason.lossType = { type: values.lossType.type };
+
         let loss = {
             operation: { id: values.operation.id },
             lossReason: values.lossReason,
