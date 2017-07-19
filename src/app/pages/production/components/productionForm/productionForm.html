@@ -60,7 +60,7 @@
 							<label *ngIf="production.controlPoint != undefined">{{production.controlPoint.code}}
 							{{production.controlPoint.name}}</label>
 						</div>
-						<div class="col-sm-2 ">	
+						<div class="col-sm-2 ">
 							<input type="text" class="form-control form-control-sm" placeholder="Planned Duration" formControlName="plannedDuration">
 						</div>
 						<div class="col-sm-2 ">
@@ -116,7 +116,7 @@
 									<div class="col-sm-2">
 										<div class="form-group">
 											<label>Loss Type</label> <select formControlName="lossType" class="form-control">
-										<option *ngFor="let l of lossTypes" [ngValue]="l">{{l.type}}</option>
+										<option *ngFor="let lossType of lossTypes" [ngValue]="lossType">{{lossType.type}}</option>
 									</select>
 										</div>
 									</div>
@@ -125,21 +125,21 @@
 											<label>Reason</label> <select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
 											 formControlName="lossReason" class="form-control">
 										<option
-											*ngFor="let lr of qualityFormGroup.value.lossType.lossReasonList"
-											[ngValue]="lr">{{lr.code}} | {{lr.reason}}</option>
+											*ngFor="let lossReason of qualityFormGroup.value.lossType.lossReasonList"
+											[ngValue]="lossReason">{{lossReason.code}} | {{lossReason.reason}}</option>
 									</select>
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<div class="form-group">
 											<label>Quantity</label> <input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined"
-											 type="text" class="form-control" formControlName="quantity">
+											 type="number" class="form-control" formControlName="quantity">
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<br />
-										<button [disabled]="!qualityFormGroup.valid" type="submit" class="btn btn-primary">
-									<i class="icon-save"></i>Add
+										<button type="submit" class="btn btn-primary">
+									<i class="icon-save"></i>{{qualityFormGroup.valid?"Add":"Reset"}}
 								</button>
 									</div>
 								</div>
@@ -219,15 +219,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td >{{production.id}}</td>
-							<td >{{production.productionDate}}</td>
-							<td >
+							<td>{{production.id}}</td>
+							<td>{{production.productionDate}}</td>
+							<td>
 								<div *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</div>
 							</td>
-							<td >
+							<td>
 								<div *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</div>
 							</td>
-							<td >
+							<td>
 
 								<div *ngIf="
                                         production.controlPoint != undefined && 
@@ -239,7 +239,7 @@
 								</div>
 
 							</td>
-							<td >
+							<td>
 								<div *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
 									{{production.controlPoint.code}} | {{production.controlPoint.name}}
 								</div>
@@ -311,7 +311,7 @@
 				</table>
 			</div>
 
-			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="pagebreak">			</div>			
+			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="pagebreak"> </div>
 			<!-- Page Header -->
 			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
 				<h4 class="col-sm-12 text-center">OTR WHEEL ENGINEERING LANKA (PVT) LIMITED</h4>
@@ -320,7 +320,7 @@
 			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
 				<h5 class="col-sm-12 text-center">DAILY PRODUCTION REPORT</h5>
 			</div>
-			<div *ngIf="production.operationList != undefined && production.operationList.length >7"  class="row" style="margin-left: 10px">
+			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="row" style="margin-left: 10px">
 				<table class="table table-bordered table-condensed table-sm">
 					<thead>
 						<tr>
@@ -336,15 +336,15 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td >{{production.id}}</td>
-							<td >{{production.productionDate}}</td>
-							<td >
+							<td>{{production.id}}</td>
+							<td>{{production.productionDate}}</td>
+							<td>
 								<p *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</p>
 							</td>
-							<td >
+							<td>
 								<p *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</p>
 							</td>
-							<td >
+							<td>
 
 								<p *ngIf="
                                         production.controlPoint != undefined && 
@@ -356,7 +356,7 @@
 								</p>
 
 							</td>
-							<td >
+							<td>
 								<p *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
 									{{production.controlPoint.code}} | {{production.controlPoint.name}}
 								</p>
@@ -439,7 +439,7 @@
 						</tbody>
 					</table>
 				</div>
-				
+
 				<div class="col-sm-4">
 					<p class="text-center">Attendance</p>
 					<table class="table table-condensed table-bordered table-striped table-sm">
