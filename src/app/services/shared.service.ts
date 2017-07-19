@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
-import { Message } from 'primeng/primeng';
+//import { Message } from 'primeng/primeng';
 
 @Injectable()
 export class SharedService {
