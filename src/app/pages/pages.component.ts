@@ -81,6 +81,7 @@ export class Pages {
     { routerLink: "/pages/location/table", name: "Location", menuType: this.menuType },
     { routerLink: "/pages/machine/table", name: "Machine", menuType: this.menuType },
     { routerLink: "/pages/manpower", name: "Manpower", menuType: this.menuType },
+    { routerLink: "/pages/notifyParty/table", name: "Notify Party", menuType: this.menuType },
     { routerLink: "/pages/operation/table", name: "Operation", menuType: this.menuType },
     { routerLink: "/pages/operationType/table", name: "Operation Type", menuType: this.menuType },    
     { routerLink: "/pages/paymentTerm/table", name: "Payment Term", menuType: this.menuType },    
