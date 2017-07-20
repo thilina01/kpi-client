@@ -83,6 +83,7 @@ export class Pages {
     { routerLink: "/pages/manpower", name: "Manpower", menuType: this.menuType },
     { routerLink: "/pages/operation/table", name: "Operation", menuType: this.menuType },
     { routerLink: "/pages/operationType/table", name: "Operation Type", menuType: this.menuType },    
+    { routerLink: "/pages/paymentTerm/table", name: "Payment Term", menuType: this.menuType },    
     { routerLink: "/pages/permission/form", name: "Permission", menuType: this.menuType },
     { routerLink: "/pages/plan", name: "Plan", menuType: this.menuType },
     { routerLink: "/pages/production/table", name: "Production", menuType: this.menuType },
