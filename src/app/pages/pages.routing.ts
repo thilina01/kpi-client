@@ -31,6 +31,7 @@ export const routes: Routes = [
       { path: 'controlPointType', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointType/controlPointType.module#ControlPointTypeModule' },
       { path: 'controlPointMachine', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointMachine/controlPointMachine.module#ControlPointMachineModule' },
       { path: 'controlPoint', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPoint/controlPoint.module#ControlPointModule' },
+      { path: 'currency', canActivate: [AuthGuard], loadChildren: 'app/pages/currency/currency.module#CurrencyModule' },
       { path: 'customer', canActivate: [AuthGuard], loadChildren: 'app/pages/customer/customer.module#CustomerModule' },
       { path: 'customerType', canActivate: [AuthGuard], loadChildren: 'app/pages/customerType/customerType.module#CustomerTypeModule' },
       { path: 'dashboard', canActivate: [AuthGuard], loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
