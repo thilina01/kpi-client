@@ -1,0 +1,203 @@
+<p-panel header="Customer Form">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="code">Code</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="code">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="name">Name</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="shortName">Short Name</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="shortName">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="consignee">Consignee</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="consignee">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="continent">Continent</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlNamet="continent">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="specialRequirements">Special Requirments</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="specialRequirements">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="finalDestination">Final Destination</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="finalDestination">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="fax"> Fax</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="fax">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="note">Note</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="note">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="vatNo">VAT No</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="vatNo">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="sVatNo">SVAT No</label>
+          </div>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" formControlName="sVatNo">
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="customerType">Customer Type</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="customerTypeSelector" class="form-control" formControlName="customerType">
+                              <option *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.code}}</option>
+                            </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.customerType != null">
+            <label>{{formGroup.value.customerType.code}} | {{formGroup.value.customerType.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="currency">Currency</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="currencySelector" class="form-control" formControlName="currency">
+                                  <option *ngFor="let currency of currencyList" [ngValue]="currency">{{currency.code}}</option>
+                                </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.currency != null">
+            <label>{{formGroup.value.currency.code}} | {{formGroup.value.currency.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="incoterm">Incoterm</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="incotermSelector" class="form-control" formControlName="incoterm">
+                                    <option *ngFor="let incoterm of incotermList" [ngValue]="incoterm">{{incoterm.code}}</option>
+                                  </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.incoterm != null">
+            <label>{{formGroup.value.incoterm.code}} | {{formGroup.value.incoterm.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="notifyParty">Notify Party</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="notifyPartySelector" class="form-control" formControlName="notifyParty">
+                                      <option *ngFor="let notifyParty of notifyPartyList" [ngValue]="notifyParty">{{notifyParty.code}}</option>
+                                    </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.notifyParty != null">
+            <label>{{formGroup.value.notifyParty.code}} | {{formGroup.value.notifyParty.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+            <label for="paymentTerm">Payment Term</label>
+          </div>
+          <div class="col-sm-3">
+            <select id="paymentTermSelector" class="form-control" formControlName="paymentTerm">
+                                      <option *ngFor="let paymentTerm of paymentTermList" [ngValue]="paymentTerm">{{paymentTerm.code}}</option>
+                                    </select>
+          </div>
+          <div class="col-sm-6" *ngIf="formGroup.value.paymentTerm != null">
+            <label>{{formGroup.value.paymentTerm.code}} | {{formGroup.value.paymentTerm.name}}</label>
+          </div>
+        </div>
+        <br/>
+
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3">
+            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
