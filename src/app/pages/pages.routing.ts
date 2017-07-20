@@ -37,6 +37,7 @@ export const routes: Routes = [
       { path: 'dashboard', canActivate: [AuthGuard], loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'energyConsumption', canActivate: [AuthGuard], loadChildren: 'app/pages/energyConsumption/energyConsumption.module#EnergyConsumptionModule' },
       { path: 'forms', canActivate: [AuthGuard], loadChildren: 'app/pages/forms/forms.module#FormsModule' },
+      { path: 'incoterm', canActivate: [AuthGuard], loadChildren: 'app/pages/incoterm/incoterm.module#IncotermModule' },
       { path: 'item', canActivate: [AuthGuard], loadChildren: 'app/pages/item/item.module#ItemModule' },
       { path: 'job', canActivate: [AuthGuard], loadChildren: 'app/pages/job/job.module#JobModule' },
       { path: 'jobType', canActivate: [AuthGuard], loadChildren: 'app/pages/jobType/jobType.module#JobTypeModule' },

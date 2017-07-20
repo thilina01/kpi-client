@@ -71,6 +71,7 @@ export class Pages {
     { routerLink: "/pages/customerType/table", name: "Customer Type", menuType: this.menuType },
     { routerLink: "/pages/dashboard", name: "Home", menuType: this.menuType },
     { routerLink: "/pages/energyConsumption/table", name: "Energy Consumption", menuType: this.menuType },
+    { routerLink: "/pages/incoterm/table", name: "Incoterm", menuType: this.menuType },
     { routerLink: "/pages/item/table", name: "Item", menuType: this.menuType },
     { routerLink: "/pages/job/info", name: "Job Information", menuType: this.menuType },
     { routerLink: "/pages/job/table", name: "Job", menuType: this.menuType },
