@@ -52,13 +52,13 @@ export class ControlPointForm {
         this.controlPointTypeService.getAll().then(controlPointTypes => this.controlPointTypes = controlPointTypes);
     }
     
-    getWorkCenterss(): void {
+    getWorkCenters(): void {
         this.workCenterService.getCombo().then(workCenters => this.workCenters = workCenters);
     }
 
     ngOnInit(): void {
         this.getControlPointTypes();
-        this.getWorkCenterss();
+        this.getWorkCenters();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
