@@ -6,7 +6,7 @@ import { APP_CONFIG, IAppConfig } from '../app.config';
 import { AuthService } from "./auth.service";
 
 @Injectable()
-export class ManpowerTypeService {
+export class CountryService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
@@ -17,7 +17,7 @@ export class ManpowerTypeService {
     });
   }; 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
-    this.apiUrl = config.apiEndpoint + 'manpowerTypes/';
+    this.apiUrl = config.apiEndpoint + 'countries/';
     //this.headers = new Headers(config.jsonHeaders);
   }
 
