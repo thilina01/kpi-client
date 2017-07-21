@@ -31,6 +31,7 @@ export const routes: Routes = [
       { path: 'controlPointType', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointType/controlPointType.module#ControlPointTypeModule' },
       { path: 'controlPointMachine', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointMachine/controlPointMachine.module#ControlPointMachineModule' },
       { path: 'controlPoint', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPoint/controlPoint.module#ControlPointModule' },
+      { path: 'country', canActivate: [AuthGuard], loadChildren: 'app/pages/country/country.module#CountryModule' },
       { path: 'currency', canActivate: [AuthGuard], loadChildren: 'app/pages/currency/currency.module#CurrencyModule' },
       { path: 'customer', canActivate: [AuthGuard], loadChildren: 'app/pages/customer/customer.module#CustomerModule' },
       { path: 'customerType', canActivate: [AuthGuard], loadChildren: 'app/pages/customerType/customerType.module#CustomerTypeModule' },
@@ -45,8 +46,10 @@ export const routes: Routes = [
       { path: 'labourSource', canActivate: [AuthGuard], loadChildren: 'app/pages/labourSource/labourSource.module#LabourSourceModule' },
       { path: 'labourTurnover', canActivate: [AuthGuard], loadChildren: 'app/pages/labourTurnover/labourTurnover.module#LabourTurnoverModule' },
       { path: 'location', canActivate: [AuthGuard], loadChildren: 'app/pages/location/location.module#LocationModule' },
-      { path: 'machine', canActivate: [AuthGuard], loadChildren: 'app/pages/machine/machine.module#MachineModule' },
+      { path: 'lossType', canActivate: [AuthGuard], loadChildren: 'app/pages/lossType/lossType.module#LossTypeModule' },
+      { path: 'machine', canActivate: [AuthGuard], loadChildren: 'app/pages/machine/machine.module#MachineModule' },  
       { path: 'manpower', canActivate: [AuthGuard], loadChildren: 'app/pages/manpower/manpower.module#ManpowerModule' },
+      { path: 'manpowerType', canActivate: [AuthGuard], loadChildren: 'app/pages/manpowerType/manpowerType.module#ManpowerTypeModule' },
       { path: 'maps', canActivate: [AuthGuard], loadChildren: 'app/pages/maps/maps.module#MapsModule' },
       { path: 'notifyParty', canActivate: [AuthGuard], loadChildren: 'app/pages/notifyParty/notifyParty.module#NotifyPartyModule' },
       { path: 'operation', canActivate: [AuthGuard], loadChildren: 'app/pages/operation/operation.module#OperationModule' },
@@ -61,8 +64,10 @@ export const routes: Routes = [
       { path: 'shiftType', canActivate: [AuthGuard], loadChildren: 'app/pages/shiftType/shiftType.module#ShiftTypeModule' },
       { path: 'tables', canActivate: [AuthGuard], loadChildren: 'app/pages/tables/tables.module#TablesModule' },
       { path: 'tool', canActivate: [AuthGuard], loadChildren: 'app/pages/tool/tool.module#ToolModule' },
-      { path: 'toolBreakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/toolBreakdown/toolBreakdown.module#ToolBreakdownModule' },
+      { path: 'toolBreakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/toolBreakdown/toolBreakdown.module#ToolBreakdownModule' }, 
       { path: 'user', canActivate: [AuthGuard], loadChildren: 'app/pages/user/user.module#UserModule' },
+      { path: 'workCenter', canActivate: [AuthGuard], loadChildren: 'app/pages/workCenter/workCenter.module#WorkCenterModule' },
+
 
     ]
   }
