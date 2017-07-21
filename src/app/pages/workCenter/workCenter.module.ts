@@ -11,6 +11,7 @@ import { WorkCenterTable } from './components/workCenterTable/workCenterTable.co
 import { WorkCenterForm } from './components/workCenterForm/workCenterForm.component';
 
 import { routing } from './workCenter.routing';
+import { CostCenterService } from "../../services/costCenter.service";
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { routing } from './workCenter.routing';
     WorkCenterForm
   ],
   providers: [
-    WorkCenterService
+    WorkCenterService,
+    CostCenterService
   ]
 })
 export class WorkCenterModule { }
