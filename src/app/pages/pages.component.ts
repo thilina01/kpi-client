@@ -66,6 +66,7 @@ export class Pages {
     { routerLink: "/pages/controlPoint/table", name: "Control Point", menuType: this.menuType },
     { routerLink: "/pages/controlPointMachine/table", name: "Control Point Machine", menuType: this.menuType },
     { routerLink: "/pages/controlPointType/table", name: "Control Point Type", menuType: this.menuType },
+    { routerLink: "/pages/country/table", name: "Country", menuType: this.menuType },
     { routerLink: "/pages/currency/table", name: "Currency", menuType: this.menuType },
     { routerLink: "/pages/customer/table", name: "Customer", menuType: this.menuType },
     { routerLink: "/pages/customerType/table", name: "Customer Type", menuType: this.menuType },
@@ -79,9 +80,11 @@ export class Pages {
     { routerLink: "/pages/jobType/table", name: "Job Type", menuType: this.menuType },
     { routerLink: "/pages/labourSource/table", name: "Labour Source", menuType: this.menuType },
     { routerLink: "/pages/labourTurnover/table", name: "Labour Turnover", menuType: this.menuType },
+    { routerLink: "/pages/lossType/table", name: "Loss Type ", menuType: this.menuType },
     { routerLink: "/pages/location/table", name: "Location", menuType: this.menuType },
     { routerLink: "/pages/machine/table", name: "Machine", menuType: this.menuType },
     { routerLink: "/pages/manpower", name: "Manpower", menuType: this.menuType },
+    { routerLink: "/pages/manpowerType/table", name: "Manpower Type", menuType: this.menuType },
     { routerLink: "/pages/notifyParty/table", name: "Notify Party", menuType: this.menuType },
     { routerLink: "/pages/operation/table", name: "Operation", menuType: this.menuType },
     { routerLink: "/pages/operationType/table", name: "Operation Type", menuType: this.menuType },    
@@ -93,8 +96,9 @@ export class Pages {
     { routerLink: "/pages/section/table", name: "Section", menuType: this.menuType },
     { routerLink: "/pages/shift/table", name: "Shift", menuType: this.menuType },
     { routerLink: "/pages/shiftType/table", name: "Shift Type", menuType: this.menuType },
-    { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },
-    { routerLink: "/pages/toolBreakdown/table", name: "Tool Breakdown", menuType: this.menuType }
+    { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },                     
+    { routerLink: "/pages/toolBreakdown/table", name: "Tool Breakdown", menuType: this.menuType },
+    { routerLink: "/pages/workCenter/table", name: "Work Center", menuType: this.menuType }
   ];
   main;
   footer;
