@@ -28,6 +28,20 @@ export class LossTypeService {
       .catch(this.handleError);
   }
 
+  getPage(page, size): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
+  getCombo(): Promise<Array<Object>> {
+    return this.http.get(this.apiUrl + "combo", { headers: this.getJsonHeaders() })
+      .toPromise()
+      .then(response => response.json() as Array<Object>)
+      .catch(this.handleError);
+  }
+
   getOne(id: number): Promise<Object> {
     return this.http.get(this.apiUrl + id, { headers: this.getJsonHeaders() })
       .toPromise()
