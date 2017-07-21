@@ -2,18 +2,20 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-
+import { SectionService } from '../../../../services/section.service';
 
 import { CostCenterService } from '../../../../services/costCenter.service';
 import { SharedService } from '../../../../services/shared.service';
 
 @Component({
-    selector: 'customer-type-form',
+    selector: 'cost-center-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./costCenterForm.scss'],
     templateUrl: './costCenterForm.html',
 })
 export class CostCenterForm {
+    sections: any;
+    section:any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -28,22 +30,29 @@ export class CostCenterForm {
     recoveryTime: Date = new Date();
     costCenterType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
+     
 
 
     constructor(protected service: CostCenterService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
-        private sharedService: SharedService) {
+        private sharedService: SharedService,
+        private  sectionService: SectionService) {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            name: ['', Validators.required]
+            name: ['', Validators.required],
+            section: [this.section, Validators.required]
         });
     }
 
+    getSections(): void {
+        this.sectionService.getCombo().then(sections => this.sections = sections);
+    }
 
     ngOnInit(): void {
+        this. getSections();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];

@@ -29,12 +29,12 @@
             <label for=" section"> Section</label>
           </div>
           <div class="col-sm-3">
-            <select id=" sectionSelector" class="form-control" formControlName=" section">
-					        <option *ngFor="let  section of  sections" [ngValue]=" section">{{ section.code}}</option>
+            <select id=" sectionSelector" class="form-control" formControlName="section">
+					        <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value. section != null">
-            <label>{{formGroup.value. section.code}} | {{formGroup.value. section.description}}</label>
+          <div class="col-sm-6" *ngIf="formGroup.value.section != null">
+            <label>{{formGroup.value.section.code}} | {{formGroup.value.section.name}}</label>
           </div>
         </div>
         <br/>

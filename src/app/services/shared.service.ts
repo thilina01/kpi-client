@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
+    
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
 

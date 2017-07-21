@@ -11,6 +11,7 @@ import { CostCenterTable } from './components/costCenterTable/costCenterTable.co
 import { CostCenterForm } from './components/costCenterForm/costCenterForm.component';
 
 import { routing } from './costCenter.routing';
+import { SectionService } from "../../services/section.service";
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { routing } from './costCenter.routing';
     CostCenterForm
   ],
   providers: [
-    CostCenterService
+    CostCenterService,
+    SectionService
+    
   ]
 })
 export class CostCenterModule { }
