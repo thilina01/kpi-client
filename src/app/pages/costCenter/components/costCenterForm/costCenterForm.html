@@ -1,4 +1,4 @@
-<p-panel header="Work Center Form">
+<p-panel header="Cost Center Form">
 
   <div class="row">
     <div class="col-sm-12">
@@ -24,24 +24,21 @@
         <br/>
 
 
-
-     <div class="row">
+ <div class="row">
           <div class="col-sm-2">
-            <label for=" costCenter"> Cost Center</label>
+            <label for=" section"> Section</label>
           </div>
           <div class="col-sm-3">
-            <select id=" costCenterSelector" class="form-control" formControlName=" costCenter">
-					        <option *ngFor="let  costCenter of  costCenters" [ngValue]=" costCenter">{{ costCenter.code}}</option>
+            <select id=" sectionSelector" class="form-control" formControlName=" section">
+					        <option *ngFor="let  section of  sections" [ngValue]=" section">{{ section.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value. costCenter != null">
-            <label>{{formGroup.value. costCenter.code}} | {{formGroup.value. costCenter.description}}</label>
+          <div class="col-sm-6" *ngIf="formGroup.value. section != null">
+            <label>{{formGroup.value. section.code}} | {{formGroup.value. section.description}}</label>
           </div>
         </div>
         <br/>
-
-
-
+     
         <div class="row">
           <div class="col-sm-2">
           </div>
