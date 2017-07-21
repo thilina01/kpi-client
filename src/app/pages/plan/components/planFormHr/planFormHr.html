@@ -5,7 +5,7 @@
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label for="manpowerType">Manpower Type</label> <select id="manpowerTypeSelector" class="form-control" formControlName="manpowerType">
-					<option *ngFor="let manpowerType of manpowerTypes" [ngValue]="manpowerType">{{manpowerType.type}}</option>
+					<option *ngFor="let manpowerType of manpowerTypes" [ngValue]="manpowerType">{{manpowerType.name}}</option>
 				</select>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 
 				<tr *ngFor="let manpower of formGroup.value.manpowerList let i = index;">
 					<td>{{i+1}}</td>
-					<td>{{manpower.manpowerType.type}}</td>
+					<td>{{manpower.manpowerType.name}}</td>
 					<td>{{manpower.plannedQuantity}}</td>
 					<td><button type="button" class="btn btn-danger btn-sm" (click)="removeManpower(i)">
 						<i class="fa fa-times" ng-reflect-class-name="fa fa-times"></i>

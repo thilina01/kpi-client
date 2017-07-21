@@ -18,7 +18,7 @@
 		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
 		<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'200px'}"></p-column>
 		<p-column field="description" header="Description" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-		<p-column field="jobType.type" header="Type" [sortable]="true"></p-column>
+		<p-column field="jobType.name" header="Type" [sortable]="true"></p-column>
 		<p-column header="Action" [style]="{'width':'80px'}">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/job/form/'+data.id">
@@ -49,7 +49,7 @@
 		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
 		<p-column field="jobNo" header="Job Number" [sortable]="true"></p-column>
 		<p-column field="jobDate" header="Date" [sortable]="true"></p-column>
-		<p-column field="jobType.type" header="Type" [sortable]="true"></p-column>
+		<p-column field="jobType.name" header="Type" [sortable]="true"></p-column>
 		<p-column field="item.code" header="Item" [sortable]="true"></p-column>
 		<p-column header="Action" [style]="{'width':'80px'}">
 			<ng-template let-data="rowData" pTemplate="body">

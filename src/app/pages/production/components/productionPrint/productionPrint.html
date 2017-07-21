@@ -68,7 +68,7 @@
                   <p-header>Loss Details</p-header>
                   <p-dataTable [value]="operation.lossList" selectionMode="single">
                     <p-column field="" [style]="{'width':'50px'}"></p-column>
-                    <p-column field="lossReason.lossType.type" [style]="{'width':'150px'}"></p-column>
+                    <p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
                     <p-column field="lossReason.reason"></p-column>
                     <p-column field="quantity" [style]="{'width':'100px'}"></p-column>
                   </p-dataTable>
@@ -95,7 +95,7 @@
                     <div class="form-group">
                       <label>Loss Type</label>
                       <select formControlName="lossType" class="form-control">				
-				                <option *ngFor="let l of lossTypes" [ngValue]="l">{{l.type}}</option>
+				                <option *ngFor="let l of lossTypes" [ngValue]="l">{{l.name}}</option>
 			                </select>
                     </div>
                   </div>
@@ -154,7 +154,7 @@
           <div class='row' *ngIf="production.manpowerList != undefined">
             <ba-card title="Manpower">
               <p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true">
-                <p-column field="manpowerType.type" header="Manpower Type" [sortable]="true"></p-column>
+                <p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
                 <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
                 <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
               </p-dataTable>
@@ -374,7 +374,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let mapower of production.manpowerList">
-                  <td>{{mapower.manpowerType.type}}</td>
+                  <td>{{mapower.manpowerType.name}}</td>
                   <td class="text-right">{{mapower.plannedQuantity}}</td>
                   <td></td>
                 </tr>

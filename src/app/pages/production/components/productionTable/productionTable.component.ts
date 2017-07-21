@@ -21,7 +21,7 @@ export class ProductionTable {
         { prop: 'id', name: 'ID' },
         { prop: 'code', name: 'Code' },
         { prop: 'description', name: 'Description' },
-        { prop: 'productionType.type', name: 'Type' }
+        { prop: 'productionType.name', name: 'Type' }
     ];
 
     constructor(protected service: ProductionService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
