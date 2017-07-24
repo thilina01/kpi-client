@@ -1,4 +1,4 @@
-<ba-card title="Job Plan">
+<p-panel header="Job Plan">
 	<div class="row col-12">
 		<form [formGroup]="jobFormGroup">
 
@@ -39,9 +39,9 @@
 				<div class="col-sm-3">
 					<label for="inputFirstName">&nbsp;</label> 
 					<div class="form-group form-inline">
-						<button (click)="onEnter(plannedQuantity.value)"  type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add</button>
-						&nbsp;
-						<button type="button" class="btn btn-info" (click)="refresh()">Refresh</button>					
+						<button (click)="onEnter(plannedQuantity.value)" pButton  type="button" label="+ Add" ></button>
+						&nbsp;&nbsp;
+						<button type="button" pButton (click)="refresh()" class="ui-button-secondary" label="Refresh"></button>					
 					</div>
 				</div>
 			</div>
@@ -75,4 +75,4 @@
 			</table>
 		</div>
 	</div>
-</ba-card>
+</p-panel>
