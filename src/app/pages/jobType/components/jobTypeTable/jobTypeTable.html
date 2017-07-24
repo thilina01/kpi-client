@@ -17,7 +17,7 @@
 		</p-header>
 		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
 		<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'200px'}"></p-column>
-		<p-column field="type" header="Type" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+		<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column header="Action" [style]="{'width':'80px'}">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/jobType/form/'+data.id">

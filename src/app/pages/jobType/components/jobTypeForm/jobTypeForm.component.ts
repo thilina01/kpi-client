@@ -17,17 +17,10 @@ export class JobTypeForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    jobType: any = {};
     subscription: Subscription;
 
-    jobTypeTypes: any;
-    paints: any;
-
-    jobTypeDate: Date;
-    jobTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    jobTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    jobTypeList: any;
+    jobType: any = { id: '', code: '', name: '' };
 
 
     constructor(protected service: JobTypeService,
@@ -38,7 +31,7 @@ export class JobTypeForm {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            type: ['', Validators.required]
+            name: ['', Validators.required]
         });
     }
 
@@ -61,12 +54,9 @@ export class JobTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.jobTypeTime = new Date(data.jobTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.jobType = data;
         }
         this.formGroup.patchValue(this.jobType, { onlySelf: true });
-        this.jobTypeType = this.jobType.jobTypeType;
     }
 
     public onSubmit(values: any, event: Event): void {
