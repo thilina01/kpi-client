@@ -5,13 +5,14 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="form-group">
-						<label for="inputFirstName">Job Number</label> <select id="jobSelector" class="form-control" formControlName="job">
-					<option *ngFor="let job of jobs" [ngValue]="job">{{job.jobNo}}</option>
-				</select>
+						<label for="inputFirstName">Job Number</label> 
+						<select id="jobSelector" class="form-control" formControlName="job">
+							<option *ngFor="let job of jobs" [ngValue]="job">{{job.jobNo}}</option>
+						</select>
 					</div>
 				</div>
 
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<div class="form-group">
 						<label for="inputFirstName">Product Type</label> <select class="form-control" formControlName="productType">
 					<option *ngFor="let productType of productTypes"
@@ -20,7 +21,7 @@
 					</div>
 				</div>
 
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<div class="form-group">
 						<label for="inputFirstName">Operation Type</label> <select class="form-control" formControlName="operationType">
 					<option *ngFor="let operationType of operationTypes"
@@ -29,10 +30,18 @@
 					</div>
 				</div>
 
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<div class="form-group" [ngClass]="{'has-error': (!jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched), 'has-success': (jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched)}">
 						<label for="inputFirstName">Quantity</label> <input type="number" class="form-control " placeholder="quantity" #plannedQuantity
 						 (keyup.enter)="onEnter(plannedQuantity.value)" formControlName="plannedQuantity">
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<label for="inputFirstName">&nbsp;</label> 
+					<div class="form-group form-inline">
+						<button (click)="onEnter(plannedQuantity.value)"  type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; Add</button>
+						&nbsp;
+						<button type="button" class="btn btn-info" (click)="refresh()">Refresh</button>					
 					</div>
 				</div>
 			</div>

@@ -24,7 +24,7 @@ export class PlanFormHr {
   ) {
     this.hrFormGroup = fb.group({
       manpowerType: [{}, Validators.compose([Validators.required])],
-      plannedQuantity: ['', Validators.compose([Validators.required, , CustomValidators.range([1, 20])]
+      plannedQuantity: ['', Validators.compose([Validators.required,CustomValidators.range([1, 20])]
       )]
     });
   }

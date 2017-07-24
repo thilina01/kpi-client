@@ -20,9 +20,9 @@ export class PlanFormJob {
   @Input('formGroup')
   public formGroup: FormGroup;
   public jobFormGroup: FormGroup;
-  jobs: Array<Object>;
-  productTypes: Array<Object>;
-  operationTypes: Array<Object>;
+  jobs: Array<any>;
+  productTypes: Array<any>;
+  operationTypes: Array<any>;
 
   constructor(
     fb: FormBuilder,
@@ -39,6 +39,12 @@ export class PlanFormJob {
     });
   }
 
+  refresh(): void {    
+    this.getJobs();
+    this.getProductTypes();
+    this.getOperationTypes();
+  }
+
   getJobs(): void {
     this.jobService.getAll().then(jobs => this.jobs = jobs);
   }
@@ -52,9 +58,7 @@ export class PlanFormJob {
   }
 
   ngOnInit(): void {
-    this.getJobs();
-    this.getProductTypes();
-    this.getOperationTypes();
+    this.refresh();
   }
 
   public removeOperation(id: number) {
