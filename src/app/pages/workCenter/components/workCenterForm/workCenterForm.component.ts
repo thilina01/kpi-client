@@ -6,14 +6,20 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { WorkCenterService } from '../../../../services/workCenter.service';
 import { SharedService } from '../../../../services/shared.service';
+import { CostCenterService } from '../../../../services/costCenter.service';
 
 @Component({
-    selector: 'customer-type-form',
+    selector: 'work-center-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./workCenterForm.scss'],
     templateUrl: './workCenterForm.html',
 })
 export class WorkCenterForm {
+    
+
+    costCenters: any;
+    
+    costCenter: any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -22,28 +28,40 @@ export class WorkCenterForm {
 
     workCenterTypes: any;
     paints: any;
+    
 
     workCenterDate: Date;
     workCenterTime: Date = new Date();
     recoveryTime: Date = new Date();
     workCenterType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
+     
+    
 
 
     constructor(protected service: WorkCenterService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
-        private sharedService: SharedService) {
+        private sharedService: SharedService,
+        private costCenterService:CostCenterService) {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            name: ['', Validators.required]
+            name: ['', Validators.required],
+            costCenter: [this. costCenter, Validators.required]
+            
+            
         });
     }
 
+ getCostCenters(): void {
+        this.costCenterService.getCombo().then(costCenters => this.costCenters = costCenters);
+    }
 
+    
     ngOnInit(): void {
+        this. getCostCenters();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
