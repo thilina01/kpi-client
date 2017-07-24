@@ -34,7 +34,9 @@
             <label for="kwh">KWH</label>
           </div>
           <div class="col-sm-3">
-            <input type="text" class="form-control" formControlName="kwh">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched), 'has-success': (formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched)}">
+              <input type="number" class="form-control" formControlName="kwh">
+            </div>
           </div>
         </div>
         <br/>
@@ -44,7 +46,9 @@
             <label for="kva">KVA</label>
           </div>
           <div class="col-sm-3">
-            <input type="text" class="form-control" formControlName="kva">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kva'].valid && formGroup.controls['kva'].touched), 'has-success': (formGroup.controls['kva'].valid && formGroup.controls['kva'].touched)}">
+            <input type="number" class="form-control" formControlName="kva">
+          </div>
           </div>
         </div>
         <br/>
@@ -54,8 +58,10 @@
             <label for="cost">Cost</label>
           </div>
           <div class="col-sm-3">
-            <input type="text" class="form-control" formControlName="cost">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['cost'].valid && formGroup.controls['cost'].touched), 'has-success': (formGroup.controls['cost'].valid && formGroup.controls['cost'].touched)}">
+            <input type="number" class="form-control" formControlName="cost">
           </div>
+        </div>
         </div>
         <br/>
 

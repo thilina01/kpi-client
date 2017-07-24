@@ -34,8 +34,10 @@
             <label for="turnover">Turnover</label>
           </div>
           <div class="col-sm-3">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched), 'has-success': (formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched)}">
             <input type="number" class="form-control" formControlName="turnover">
           </div>
+        </div>
         </div>
         <br/>
 
@@ -44,8 +46,10 @@
             <label for="target">Target</label>
           </div>
           <div class="col-sm-3">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['target'].valid && formGroup.controls['target'].touched), 'has-success': (formGroup.controls['target'].valid && formGroup.controls['target'].touched)}">
             <input type="number" class="form-control" formControlName="target">
           </div>
+        </div>
         </div>
         <br/>
 
