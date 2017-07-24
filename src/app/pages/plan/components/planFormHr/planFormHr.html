@@ -12,7 +12,7 @@
 
 				<div class="col-sm-6">
 					<div class="form-group" [ngClass]="{'has-error': (!hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched), 'has-success': (hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched)}">
-						<label for="inputFirstName">Quantity</label> <input type="text" class="form-control " placeholder="quantity" #plannedQuantity
+						<label for="inputFirstName">Quantity</label> <input type="number" class="form-control " placeholder="quantity" #plannedQuantity
 						 (keyup.enter)="onEnter(plannedQuantity.value)" formControlName="plannedQuantity">
 					</div>
 				</div>

@@ -36,7 +36,7 @@
 
 	<div class="col-sm-2">
 		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched), 'has-success': (formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched)}">
-			<label for="plannedDuration">Duration</label> <input type="text" class="form-control " placeholder="Duration" formControlName="plannedDuration"
+			<label for="plannedDuration">Duration</label> <input type="number" class="form-control " placeholder="Duration" formControlName="plannedDuration"
 			 [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
 		</div>
 	</div>
