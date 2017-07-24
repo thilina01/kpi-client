@@ -63,6 +63,7 @@ export class LabourTurnoverForm {
             data.labourTurnoverTime = new Date(data.labourTurnoverTime);
             data.recoveryTime = new Date(data.recoveryTime);
             this.labourTurnover = data;
+            this.labourTurnover.effectiveMonth = new Date(data.effectiveMonth);
         }
         this.formGroup.patchValue(this.labourTurnover, { onlySelf: true });
         this.labourSource = this.labourTurnover.labourSource;

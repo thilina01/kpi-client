@@ -12,7 +12,7 @@
 					        <option *ngFor="let labourSource of labourSources" [ngValue]="labourSource">{{labourSource.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
+          <div class="col-sm-6" *ngIf="formGroup.value.labourSource != null">
             <label>{{formGroup.value.labourSource.code}} | {{formGroup.value.labourSource.name}}</label>
           </div>
         </div>
