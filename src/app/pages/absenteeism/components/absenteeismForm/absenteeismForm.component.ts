@@ -60,8 +60,7 @@ export class AbsenteeismForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.absenteeismTime = new Date(data.absenteeismTime);
-            data.recoveryTime = new Date(data.recoveryTime);
+            data.effectiveMonth = new Date(data.effectiveMonth);
             this.absenteeism = data;
         }
         this.formGroup.patchValue(this.absenteeism, { onlySelf: true });

@@ -62,8 +62,7 @@ export class EnergyConsumptionForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.energyConsumptionTime = new Date(data.energyConsumptionTime);
-            data.recoveryTime = new Date(data.recoveryTime);
+            data.effectiveMonth = new Date(data.effectiveMonth);
             this.energyConsumption = data;
         }
         this.formGroup.patchValue(this.energyConsumption, { onlySelf: true });

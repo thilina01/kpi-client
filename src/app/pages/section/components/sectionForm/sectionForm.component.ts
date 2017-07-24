@@ -13,7 +13,7 @@ import { WorkCenterService } from '../../../../services/workCenter.service';
     selector: 'section-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./sectionForm.scss'],
-    templateUrl: './sectionForm.html',
+    templateUrl: './sectionForm.html'
 })
 export class SectionForm {
     JSON: any = JSON;

@@ -12,7 +12,7 @@
 					        <option *ngFor="let location of locations" [ngValue]="location">{{location.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.controlPointType != null">
+          <div class="col-sm-6" *ngIf="formGroup.value.location != null">
             <label>{{formGroup.value.location.code}} | {{formGroup.value.location.name}}</label>
           </div>
         </div>
