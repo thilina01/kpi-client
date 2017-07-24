@@ -83,7 +83,7 @@ export class CustomerForm {
     }
 
     getNotifyPartyList(): void {
-        this.notifyPartyService.getCombo().then(notifypartyList => this.notifypartyList = notifypartyList);
+        this.notifyPartyService.getCombo().then(notifyPartyList => this.notifyPartyList = notifyPartyList);
     }
     
     getPaymentTermList(): void {
