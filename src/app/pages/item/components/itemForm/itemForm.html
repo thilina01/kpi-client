@@ -38,8 +38,10 @@
             <label for="weight">Weight</label>
           </div>
           <div class="col-sm-3">
-            <input type="text" class="form-control" formControlName="weight">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['weight'].valid && formGroup.controls['weight'].touched), 'has-success': (formGroup.controls['weight'].valid && formGroup.controls['weight'].touched)}">
+            <input type="number" class="form-control" formControlName="weight">
           </div>
+        </div>
         </div>
         <br/>
 
@@ -48,8 +50,10 @@
             <label for="weight">Volume (m<sup>3</sup>)</label>
           </div>
           <div class="col-sm-3">
-            <input type="text" class="form-control" formControlName="volume">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['volume'].valid && formGroup.controls['volume'].touched), 'has-success': (formGroup.controls['volume'].valid && formGroup.controls['volume'].touched)}">                                                                                                                   
+            <input type="number" class="form-control" formControlName="volume">
           </div>
+        </div>
         </div>
         <br/>
 
