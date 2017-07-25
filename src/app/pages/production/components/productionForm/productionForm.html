@@ -1,7 +1,7 @@
 <div class="widgets">
 	<div class="row">
 		<div class="col-sm-12">
-			<ba-card title="Production Information">
+			<p-panel header="Production Information">
 				<div class="row">
 					<div class="col-sm-2">
 						<a [routerLink]="'/pages/production/form/'+(production.id-1)">
@@ -67,10 +67,9 @@
 							<input type="text" class="form-control form-control-sm" placeholder="Actual Duration" formControlName="actualDuration">
 						</div>
 					</div>
-					<br />
-
-					<div class='row' *ngIf="production.operationList != undefined">
-						<ba-card title="Operations">
+					<br/>
+					<div class='row' *ngIf="production.operationList != undefined">						
+						<p-panel header="Operations">
 							<p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
 							 expandableRows="true" (onEditComplete)="onEditComplete($event)">
 
@@ -97,11 +96,11 @@
 									</p-dataTable>
 								</ng-template>
 							</p-dataTable>
-						</ba-card>
+						</p-panel>
 					</div>
-
-					<div class='row' *ngIf="production.operationList != undefined">
-						<ba-card class='col-sm-12' title="Quality">
+					<br/>
+					<div class='row' *ngIf="production.operationList != undefined">						
+						<p-panel header="Quality" class="col-sm-12">
 							<form [formGroup]="qualityFormGroup" (ngSubmit)="onQualityFormSubmit(qualityFormGroup.value)" novalidate>
 
 								<div class="row">
@@ -144,17 +143,17 @@
 									</div>
 								</div>
 							</form>
-						</ba-card>
-					</div>
-
-					<div class='row' *ngIf="production.manpowerList != undefined">
-						<ba-card title="Manpower">
+						</p-panel>
+					</div>					
+					<br/>
+					<div class='row' *ngIf="production.manpowerList != undefined">					
+						<p-panel header="Manpower">
 							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true">
 								<p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
 								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
 								<p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
 							</p-dataTable>
-						</ba-card>
+						</p-panel>
 					</div>
 
 					<div class="row">
@@ -167,7 +166,7 @@
 
 				</form>
 
-			</ba-card>
+			</p-panel>
 		</div>
 	</div>
 </div>
