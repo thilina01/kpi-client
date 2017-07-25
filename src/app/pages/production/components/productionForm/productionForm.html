@@ -88,11 +88,16 @@
 								<ng-template let-operation pTemplate="rowexpansion">
 									<p-header>Loss Details
 									</p-header>
-									<p-dataTable [value]="operation.lossList" selectionMode="single">
-										<p-column field="" [style]="{'width':'50px'}"></p-column>
+									<p-dataTable #dt2 [value]="operation.lossList" selectionMode="single">
+										<p-column field="id" [style]="{'width':'50px'}"></p-column>
 										<p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
 										<p-column field="lossReason.reason"></p-column>
 										<p-column field="quantity" [style]="{'width':'100px'}"></p-column>
+										<p-column [style]="{'width':'30px'}">
+											<ng-template let-data="rowData" pTemplate="body">
+												<i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)"ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+											</ng-template>
+										</p-column>
 									</p-dataTable>
 								</ng-template>
 							</p-dataTable>
