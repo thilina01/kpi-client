@@ -2,61 +2,33 @@
 
         <div class="row">
           <div class="col-sm-12">
+        
             <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
               <div class="row">
-                <div class="col-sm-2">
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="code">Code</label>
-                </div>
-                <div class="col-sm-3">
                   <input type="text" class="form-control" formControlName="code">
                 </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
+                <div class="col-md-8 col-sm-6 col-xs-12">
                   <label for="name">Name</label>
-                </div>
-                <div class="col-sm-3">
                   <input type="text" class="form-control" formControlName="name">
                 </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
+              
+                <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="mtbfTarget">MTBF Target</label>
-                </div>
-                <div class="col-sm-3">
                   <input type="text" class="form-control" formControlName="mtbfTarget">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
+                </div>              
+                <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="mttrTarget">MTTR Target</label>
-                </div>
-                <div class="col-sm-3">
                   <input type="text" class="form-control" formControlName="mttrTarget">
-                </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
+                </div>              
+                <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="mdtTarget">MDT Target</label>
-                </div>
-                <div class="col-sm-3">
                   <input type="text" class="form-control" formControlName="mdtTarget">
                 </div>
-              </div>
-              <br/>
-
-              <div class="row">
-                <div class="col-sm-2">
-                </div>
-                <div class="col-sm-3">
+              
+                <div class="col-md-12 col-sm-12 col-xs-12">
                   <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
                   <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
                 </div>
