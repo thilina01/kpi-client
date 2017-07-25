@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { ProductionService } from '../../../../services/production.service';
 import { SharedService } from '../../../../services/shared.service';
 import { ShiftService } from '../../../../services/shift.service';
@@ -152,6 +151,24 @@ export class ProductionForm {
         }
     }
 
+    deleteLoss(data:any,dataTable:any){        
+        if (this.production.operationList&&data.timestamp) {
+            for (let operation of this.production.operationList) {
+                if (operation.id===data.operation.id && operation.lossList) {
+                    for (let loss of operation.lossList) {         
+                        if(loss.timestamp === data.timestamp){
+                            let index = operation.lossList.indexOf(loss);
+                            operation.lossList.splice(index, 1);
+                            this.calculateTotalLossQuantity();
+                            this.sharedService.addMessage({ severity: 'warn', summary: 'Delete Success', detail: 'loss details deleted' });
+                            return;
+                        }               
+                    }
+                }
+            }
+        }        
+    }
+
     calculateTotalPlannedManpowerQuantity() {
         this.totalPlannedManpowerQuantity = 0;
         if (this.production.operationList) {
@@ -162,6 +179,7 @@ export class ProductionForm {
             }
         }
     }
+
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         this.production.actualDuration = values.actualDuration
@@ -173,9 +191,11 @@ export class ProductionForm {
             }
         );
     }
+
     public onEditComplete(event: Event): void {
         //alert(JSON.stringify(event));
     }
+    
     public onQualityFormSubmit(values: any): void {
         if (!this.qualityFormGroup.valid) {
             this.qualityFormGroup.reset();
@@ -186,6 +206,7 @@ export class ProductionForm {
             operation: { id: values.operation.id },
             lossReason: values.lossReason,
             quantity: values.quantity,
+            timestamp:new Date().getTime()
         }
         values.operation.lossList.push(loss);
 

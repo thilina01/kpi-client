@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, CalendarModule,PanelModule } from 'primeng/primeng';
 import { MaterialModule } from '@angular/material';
 
 import { Production } from './production.component';
@@ -26,6 +26,7 @@ import { routing } from './production.routing';
     DataTableModule,
     DialogModule,
     CalendarModule,
+    PanelModule,
     MaterialModule,
     SharedModule,
     routing
