@@ -21,6 +21,8 @@ import { LineChartService } from './lineChart/lineChart.service';
 
 import { AbsenteeismChart } from './absenteeismChart';
 import { AbsenteeismChartService } from './absenteeismChart/absenteeismChart.service';
+import { SalesWeightChart } from './salesWeightChart';
+import { SalesWeightChartService } from './salesWeightChart/salesWeightChart.service';
 import { ScrapChart } from './scrapChart';
 import { ScrapChartService } from './scrapChart/scrapChart.service';
 import { Scrap6MonthsChart } from './scrap6MonthsChart';
@@ -91,6 +93,7 @@ import { ChartService } from '../../services/chart.service'
     Scrap6MonthsChart,
     Mdt6MonthsChart,
     DefectsBySectionChart,
+    SalesWeightChart,
     MtbfMttr6MonthsChart,
     Line5ReworksBarChart,
     Line5ReworksPieChart,
@@ -114,6 +117,7 @@ import { ChartService } from '../../services/chart.service'
     MttrChartService,
     MdtChartService,
     KwhKvaMainChartService,
+    SalesWeightChartService,
     Scrap6MonthsChartService,
     Mdt6MonthsChartService,
     DefectsBySectionChartService,

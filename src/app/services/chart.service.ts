@@ -35,6 +35,12 @@ export class ChartService {
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }  
+    getMonthlySalesWeight(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlySalesWeight?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
     getMonthlyScheduleAdherence(startDate: string, endDate: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlyScheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
