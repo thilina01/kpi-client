@@ -94,7 +94,7 @@ export class Pages {
     { routerLink: "/pages/permission/form", name: "Permission", menuType: this.menuType },
     { routerLink: "/pages/plan", name: "Plan", menuType: this.menuType },
     { routerLink: "/pages/production/table", name: "Production", menuType: this.menuType },
-    { routerLink: "/page/salesValue/table", name: "Sales Value", menuType: this.menuType },
+    { routerLink: "/pages/salesValue/table", name: "Sales Value", menuType: this.menuType },
     { routerLink: "/pages/salesWeight/table", name: "Sales Weight", menuType: this.menuType },
     { routerLink: "/pages/section/table", name: "Section", menuType: this.menuType },
     { routerLink: "/pages/shift/table", name: "Shift", menuType: this.menuType },
