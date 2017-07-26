@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
 
 @Component({
-    selector: 'sales-Value-table',
+    selector: 'sales-value-table',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./salesValueTable.scss'],
     templateUrl: './salesValueTable.html',

@@ -1,38 +1,28 @@
-<p-panel header="SalesValue Form">
+<p-panel header="Sales Value Form">
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-8 col-sm-12 col-xs-12">
             <label for="effectiveMonth">Effective Month</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched), 'has-success': (formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched)}">
               <p-calendar id="effectiveMonthPicker" class="form-control" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
+          </div>          
+          <div class="col-md-4 hidden-sm-down">
           </div>
-          
-          <div class="col-md-4 col-sm-4 col-xs-12">
-          </div>
-
-
-          
 
         <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="actual">Budget</label>
-            <input type="text" class="form-control" formControlName="actual">
+            <label for="budget">Budget</label>
+            <input type="text" class="form-control" formControlName="budget">
           </div>
-  
-          
-
-          
-
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="actual">Actual</label>
             <input type="text" class="form-control" formControlName="actual">
+          </div>        
+          <div class="col-md-4 hidden-sm-down">
           </div>
-  
-
-
 
           <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>

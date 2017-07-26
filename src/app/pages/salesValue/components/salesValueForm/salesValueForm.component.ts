@@ -3,13 +3,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SalesValueService } from '../../../../services/salesValue.service';
 import { SharedService } from '../../../../services/shared.service';
 
-
 @Component({
-    selector: 'salesValue-form',
+    selector: 'sales-value-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./salesValueForm.scss'],
     templateUrl: './salesValueForm.html',
@@ -20,27 +18,18 @@ export class SalesValueForm {
     public formGroup: FormGroup;
     salesValue: any = {};
     subscription: Subscription;
-
-    labourSources: any;
-
     effectiveMonth: Date;
-    labourSource: any = { id: '', code: '' }
-
 
     constructor(protected service: SalesValueService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
-            effectiveMonth: [this.effectiveMonth, Validators.required],
-        
-            actual: ['', Validators.required],
-            budget: [this.labourSource, Validators.required]
+            effectiveMonth: [this.effectiveMonth, Validators.required],        
+            actual: ['', Validators.required],        
+            budget: ['', Validators.required]
         });
     }
 
-    
-
-    ngOnInit(): void {
-        
+    ngOnInit(): void {        
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -62,7 +51,6 @@ export class SalesValueForm {
             this.salesValue = data;
         }
         this.formGroup.patchValue(this.salesValue, { onlySelf: true });
-        this.labourSource = this.salesValue.labourSource;
     }
 
     public onSubmit(values: any, event: Event): void {
