@@ -4,81 +4,70 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
 
         <div class="row">
-          <div class="col-sm-3">
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="location">Location</label>
-          </div>
-          <div class="col-sm-3">
             <select id="locationSelector" class="form-control" formControlName="location">
 					        <option *ngFor="let location of locations" [ngValue]="location">{{location.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.location != null">
+          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.location != null">
+            <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.location.code}} | {{formGroup.value.location.name}}</label>
           </div>
-        </div>
-        <br/>
+       
 
-        <div class="row">
-          <div class="col-sm-3">
+        
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="effectiveMonth">Effective Month</label>
-          </div>
-          <div class="col-sm-3">
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched), 'has-success': (formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched)}">
               <p-calendar id="effectiveMonthPicker" class="form-control" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="kwh">KWH</label>
+          <div class="col-md-6 col-sm-6 col-xs-12">
           </div>
-          <div class="col-sm-3">
+        
+
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="kwh">KWH</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched), 'has-success': (formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched)}">
               <input type="number" class="form-control" formControlName="kwh">
             </div>
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-3">
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="kva">KVA</label>
-          </div>
-          <div class="col-sm-3">
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kva'].valid && formGroup.controls['kva'].touched), 'has-success': (formGroup.controls['kva'].valid && formGroup.controls['kva'].touched)}">
             <input type="number" class="form-control" formControlName="kva">
           </div>
           </div>
-        </div>
-        <br/>
+        
+       
 
-        <div class="row">
-          <div class="col-sm-3">
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="cost">Cost</label>
-          </div>
-          <div class="col-sm-3">
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['cost'].valid && formGroup.controls['cost'].touched), 'has-success': (formGroup.controls['cost'].valid && formGroup.controls['cost'].touched)}">
             <input type="number" class="form-control" formControlName="cost">
           </div>
         </div>
-        </div>
-        <br/>
+       
+        
 
-        <div class="row">
-          <div class="col-sm-3">
+        
+          <div class="col-md-6 col-sm-4 col-xs-12">
             <label for="reference">Reference</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="reference">
+             <div class="col-md-6 col-sm-6 col-xs-12">
           </div>
-        </div>
-        <br/>
+          </div>
+       
 
-        <div class="row">
-          <div class="col-sm-3">
-          </div>
-          <div class="col-sm-3">
+        
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
           </div>

@@ -4,69 +4,59 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-sm-2">
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="jobNo">Job Number</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="jobNo">
           </div>
-        </div>
-        <br/>
-
-        <div class="row">
-          <div class="col-sm-2">
+          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
+          </div>
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="jobDate">Job Date</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['jobDate'].valid && formGroup.controls['jobDate'].touched), 'has-success': (formGroup.controls['jobDate'].valid && formGroup.controls['jobDate'].touched)}">
+              <p-calendar id="jobDatePicker" class="form-control" formControlName="jobDate" showIcon="true" dateFormat="yy-mm"></p-calendar>
+            </div>
           </div>
-          <div class="col-sm-3">
-            <p-calendar id="breakdownTimePicker" class="form-control" formControlName="jobDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
-        </div>
-        <br/>
 
-        <div class="row">
-          <div class="col-sm-2">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="jobType">Type</label>
-          </div>
-          <div class="col-sm-3">
             <select id="jobTypeSelector" class="form-control" formControlName="jobType">
 					        <option *ngFor="let jobType of jobTypes" [ngValue]="jobType">{{jobType.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.jobType != null">
+          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.jobType != null">
+             <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.jobType.code}} | {{formGroup.value.jobType.name}}</label>
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="item">Item</label>
-          </div>
-          <div class="col-sm-3">
             <select id="itemSelector" class="form-control" formControlName="item">
 					        <option *ngFor="let item of items" [ngValue]="item">{{item.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.item != null">
+          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.item != null">
+             <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.item.code}} | {{formGroup.value.item.name}}</label>
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
+       
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="quantity">quantity</label>
-          </div>
-          <div class="col-sm-3">
             <input type="number" class="form-control" formControlName="quantity">
           </div>
-        </div>
-        <br/>
-
-        <div class="row">
-          <div class="col-sm-2">
+          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
-          <div class="col-sm-3">
+       
+
+       
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
           </div>

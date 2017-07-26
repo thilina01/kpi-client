@@ -4,124 +4,92 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-sm-2">
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="code">Code</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="code">
           </div>
-        </div>
-        <br/>
+       
 
-        <div class="row">
-          <div class="col-sm-2">
+       
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="description">Description</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="description">
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
+       
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="size">Size</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="size">
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Weight</label>
-          </div>
-          <div class="col-sm-3">
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['weight'].valid && formGroup.controls['weight'].touched), 'has-success': (formGroup.controls['weight'].valid && formGroup.controls['weight'].touched)}">
             <input type="number" class="form-control" formControlName="weight">
           </div>
         </div>
-        </div>
-        <br/>
+       
 
-        <div class="row">
-          <div class="col-sm-2">
+       
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Volume (m<sup>3</sup>)</label>
-          </div>
-          <div class="col-sm-3">
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['volume'].valid && formGroup.controls['volume'].touched), 'has-success': (formGroup.controls['volume'].valid && formGroup.controls['volume'].touched)}">                                                                                                                   
             <input type="number" class="form-control" formControlName="volume">
           </div>
         </div>
-        </div>
-        <br/>
+       
 
-        <div class="row">
-          <div class="col-sm-2">
+      
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Drawing Version</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="drawingVersion">
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Drawing Approval</label>
-          </div>
-          <div class="col-sm-3">
             <p-checkbox binary="true" formControlName="drawingApproval" label="{{formGroup.value.drawingApproval?'Yes':'No'}}"> </p-checkbox>
           </div>
-        </div>
-        <br/>
+       
 
-        <div class="row">
-          <div class="col-sm-2">
+        
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Tool Availability</label>
-          </div>
-          <div class="col-sm-3">
             <p-checkbox binary="true" formControlName="productionToolAvailability" label="{{formGroup.value.productionToolAvailability?'Yes':'No'}}"> </p-checkbox>
-
           </div>
-        </div>
-        <br/>
-
-        <div class="row">
-          <div class="col-sm-2">
+       
+        
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="itemType">Type</label>
-          </div>
-          <div class="col-sm-3">
             <select id="itemTypeSelector" class="form-control" formControlName="itemType">
 					        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code+' | '+itemType.name}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.itemType != null">
+          <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.itemType != null">
+            <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.itemType.code}} | {{formGroup.value.itemType.name}}</label>
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
+        
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="paint">Paint</label>
-          </div>
-          <div class="col-sm-3">
             <select id="paintSelector" class="form-control" formControlName="paint">
 					        <option *ngFor="let paint of paints" [ngValue]="paint">{{paint.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.paint != null">
+          <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.paint != null">
+            <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.description}}</label>
           </div>
-        </div>
-        <br/>
+        
 
-        <div class="row">
-          <div class="col-sm-2">
-          </div>
-          <div class="col-sm-3">
+        
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
           </div>
