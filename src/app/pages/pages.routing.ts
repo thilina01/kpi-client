@@ -60,6 +60,7 @@ export const routes: Routes = [
       { path: 'permission', canActivate: [AuthGuard], loadChildren: 'app/pages/permission/permission.module#PermissionModule' },
       { path: 'plan', canActivate: [AuthGuard], loadChildren: 'app/pages/plan/plan.module#PlanModule' },
       { path: 'production', canActivate: [AuthGuard], loadChildren: 'app/pages/production/production.module#ProductionModule' },
+      { path: 'salesValue', canActivate: [AuthGuard], loadChildren: 'app/pages/salesValue/salesValue.module#SalesValueModule' },
       { path: 'section', canActivate: [AuthGuard], loadChildren: 'app/pages/section/section.module#SectionModule' },
       { path: 'shift', canActivate: [AuthGuard], loadChildren: 'app/pages/shift/shift.module#ShiftModule' },
       { path: 'shiftType', canActivate: [AuthGuard], loadChildren: 'app/pages/shiftType/shiftType.module#ShiftTypeModule' },
