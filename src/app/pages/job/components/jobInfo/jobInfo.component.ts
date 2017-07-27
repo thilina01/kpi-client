@@ -1,10 +1,11 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 
 
 import { JobService } from '../../../../services/job.service';
 import { SharedService } from '../../../../services/shared.service';
 import { OperationService } from '../../../../services/operation.service';
+import { DataTable } from "primeng/primeng";
 @Component({
     selector: 'job-info',
     encapsulation: ViewEncapsulation.None,
@@ -12,6 +13,8 @@ import { OperationService } from '../../../../services/operation.service';
     templateUrl: './jobInfo.html',
 })
 export class JobInfo {
+
+    @ViewChild(DataTable) dataTableComponent: DataTable;
     JSON: any = JSON;
 
     jobNo: '';
@@ -45,10 +48,12 @@ export class JobInfo {
         this.totalRecords = 0;
         this.operationSummaryList = [];
         this.totalOperationSummaryRecords = 0;
+        this.dataTableComponent.reset();
     }
 
     keyDown(event) {
         if (event.keyCode == 13) {
+            this.clear();
             var undefined;
             this.fill(undefined);
         }
@@ -58,19 +63,23 @@ export class JobInfo {
         if (id == undefined) {
             this.service.getOneByJobNo(this.jobNo).then(
                 (data) => {
-                    this.job = data;
-                    this.jobNo = this.job.jobNo;
-                    this.fillOperations()
-                    this.fillOperationSummaries()
+                    if (data != null) {
+                        this.job = data;
+                        this.jobNo = this.job.jobNo;
+                        this.fillOperations()
+                        this.fillOperationSummaries()
+                    }
                 }
             )
         } else if (id != '0') {
             this.service.getOne(+id).then(
                 (data) => {
-                    this.job = data;
-                    this.jobNo = this.job.jobNo;
-                    this.fillOperations()
-                    this.fillOperationSummaries()
+                    if (data != null) {
+                        this.job = data;
+                        this.jobNo = this.job.jobNo;
+                        this.fillOperations()
+                        this.fillOperationSummaries()
+                    }
                 }
             )
         }
