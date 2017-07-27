@@ -8,32 +8,21 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="code">Code</label>
             <input type="text" class="form-control" formControlName="code">
-          </div>
-       
-
-       
-          <div class="col-md-4 col-sm-6 col-xs-12">
+            </div>       
+           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="description">Description</label>
             <input type="text" class="form-control" formControlName="description">
-          </div>
-        
-
-       
-          <div class="col-md-4 col-sm-6 col-xs-12">
+           </div>
+           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="size">Size</label>
             <input type="text" class="form-control" formControlName="size">
-          </div>
-        
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
+           </div>
+           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Weight</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['weight'].valid && formGroup.controls['weight'].touched), 'has-success': (formGroup.controls['weight'].valid && formGroup.controls['weight'].touched)}">
             <input type="number" class="form-control" formControlName="weight">
           </div>
-        </div>
-       
-
-       
+          </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Volume (m<sup>3</sup>)</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['volume'].valid && formGroup.controls['volume'].touched), 'has-success': (formGroup.controls['volume'].valid && formGroup.controls['volume'].touched)}">                                                                                                                   
