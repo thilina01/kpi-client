@@ -1,0 +1,35 @@
+<p-panel header="Labour Cost Per Kg Form">
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          
+          <div class="col-md-8 col-sm-12 col-xs-12">
+            <label for="effectiveMonth">Effective Month</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched), 'has-success': (formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched)}">
+              <p-calendar id="effectiveMonthPicker" class="form-control" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
+            </div>
+          </div>          
+          <div class="col-md-4 hidden-sm-down">
+          </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="budget">Budget</label>
+            <input type="text" class="form-control" formControlName="budget">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="actual">Actual</label>
+            <input type="text" class="form-control" formControlName="actual">
+          </div>        
+          <div class="col-md-4 hidden-sm-down">
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
