@@ -66,6 +66,22 @@ import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
 import { ChartService } from '../../services/chart.service'
+import { SalesValueChart } from './salesValueChart';
+import { SalesValueChartService } from './salesValueChart/salesValueChart.service';
+import { ConsumableCostPerKgChart } from './consumableCostPerKgChart';
+import { ConsumableCostPerKgChartService } from './consumableCostPerKgChart/consumableCostPerKgChart.service';
+import { CumulativeSalesPerKgChart } from './cumulativeSalesPerKgChart';
+import { CumulativeSalesPerKgChartService } from './cumulativeSalesPerKgChart/cumulativeSalesPerKgChart.service';
+import { ElectricityCostPerKgChart } from "./electricityCostPerKgChart";
+import { LabourCostPerKgChart } from "./labourCostPerKgChart";
+import { MaterialCostPerKgChart } from "./materialCostPerKgChart";
+import { ProductionOverheadCostPerKgChart } from "./productionOverheadCostPerKgChart";
+import { SalesPerKgChart } from "./salesPerKgChart";
+import { ElectricityCostPerKgChartService } from "./electricityCostPerKgChart/electricityCostPerKgChart.service";
+import { LabourCostPerKgChartService } from "./labourCostPerKgChart/labourCostPerKgChart.service";
+import { MaterialCostPerKgChartService } from "./materialCostPerKgChart/materialCostPerKgChart.service";
+import { ProductionOverheadCostPerKgChartService } from "./productionOverheadCostPerKgChart/productionOverheadCostPerKgChart.service";
+import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.service";
 
 @NgModule({
   imports: [
@@ -94,6 +110,14 @@ import { ChartService } from '../../services/chart.service'
     Mdt6MonthsChart,
     DefectsBySectionChart,
     SalesWeightChart,
+    ConsumableCostPerKgChart,
+    CumulativeSalesPerKgChart,
+    ElectricityCostPerKgChart,
+    LabourCostPerKgChart,
+    MaterialCostPerKgChart,
+    ProductionOverheadCostPerKgChart,
+    SalesPerKgChart,
+    SalesValueChart,
     MtbfMttr6MonthsChart,
     Line5ReworksBarChart,
     Line5ReworksPieChart,
@@ -118,6 +142,14 @@ import { ChartService } from '../../services/chart.service'
     MdtChartService,
     KwhKvaMainChartService,
     SalesWeightChartService,
+    ConsumableCostPerKgChartService,
+    CumulativeSalesPerKgChartService,
+    ElectricityCostPerKgChartService,
+    LabourCostPerKgChartService,
+    MaterialCostPerKgChartService,
+    ProductionOverheadCostPerKgChartService,
+    SalesPerKgChartService,
+    SalesValueChartService,
     Scrap6MonthsChartService,
     Mdt6MonthsChartService,
     DefectsBySectionChartService,

@@ -29,30 +29,89 @@ export class ChartService {
 
     //chart/scheduleAdherence?startDate=217-01-01&endDate=2017-03-31
     getScheduleAdherence(startDate: string, endDate: string): Promise<Array<Object>> {
-
         return this.http.get(this.apiUrl + 'scheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }  
+
     getMonthlySalesWeight(startDate: string, endDate: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlySalesWeight?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }  
+        
+    getMonthlySalesValue(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlySalesValue?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlyConsumableCostPerKgChart(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyConsumableCostPerKgChart?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlyCumulativeSalesPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyCumulativeSalesPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlyElectricityCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyElectricityCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlyLabourCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyLabourCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlyMaterialCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyMaterialCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlyProductionOverheadCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyProductionOverheadCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
+    getMonthlySalesPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlySalesPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
     getMonthlyScheduleAdherence(startDate: string, endDate: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlyScheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }  
+
     getMonthlyLabourTurnover(startDate: string, endDate: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlyLabourTurnover?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }  
+
     getMonthlyAbsenteeism(startDate: string, endDate: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlyAbsenteeism?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
@@ -87,6 +146,7 @@ export class ChartService {
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
     }
+
     getLossReasonSummaryBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'lossReasonSummaryBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
             .toPromise()
