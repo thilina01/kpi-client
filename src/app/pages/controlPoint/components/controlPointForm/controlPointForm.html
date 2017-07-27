@@ -15,8 +15,6 @@
                   <input type="text" class="form-control" formControlName="name">
                 </div>
               
-
-             
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <label for="controlPointType">Type</label>
                   <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
@@ -28,8 +26,6 @@
                   <label>{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
                 </div>
              
-
-             
                 <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="workCenter">Work Center</label>
                   <select id="workCenterSelector" class="form-control" formControlName="workCenter">
@@ -40,9 +36,7 @@
                    <p class="hidden-xs-down">&nbsp;</p>
                   <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
                 </div>
-              
-
-              
+                            
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
                   <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>

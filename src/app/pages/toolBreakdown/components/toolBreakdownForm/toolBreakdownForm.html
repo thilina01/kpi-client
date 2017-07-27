@@ -3,68 +3,57 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-sm-3">
+          
+          <div class="col-md-8 col-sm-8 col-xs-12">
             <label for="toolBreakdownNumber">ToolBreakdown Number</label>
-          </div>
-          <div class="col-sm-3">
             <input type="text" class="form-control" formControlName="toolBreakdownNumber">
           </div>
-        </div>
-        <br/>
-
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="tool">Tool</label>
+          <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-          <div class="col-sm-3">
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="tool">Tool</label>
+      
             <select id="toolSelector" class="form-control" formControlName="tool">
 					        <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.code}}</option>
 				        </select>
           </div>
-          <div class="col-sm-6" *ngIf="formGroup.value.tool != null">
+          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.tool != null">
+            <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.tool.code}} | {{formGroup.value.tool.name}}</label>
           </div>
-        </div>
-        <br/>
 
-        <div class="row">
-          <div class="col-sm-3">
+          <div class="col-md-8 col-sm-8 col-xs-12">
             <label for="toolBreakdownTime">ToolBreakdown Time</label>
-          </div>
-          <div class="col-sm-3">
+          
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched), 'has-success': (formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched)}">
               <p-calendar id="toolBreakdownTimePicker" class="form-control" formControlName="toolBreakdownTime" showIcon="true" dateFormat="yy-mm-dd"
                 showTime="showTime" hourFormat="24"></p-calendar>
             </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="recoveryTime">Recovery Time</label>
+           
+          <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-          <div class="col-sm-3">
+      
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <label for="recoveryTime">Recovery Time</label>
+      
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
               <p-calendar id="recoveryTimePicker" class="form-control" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd"
                 showTime="showTime" hourFormat="24"></p-calendar>
             </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-3">
-            <label for="description">Description</label>
+          <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-          <div class="col-sm-3">
+
+          <div class="col-md-8 col-sm-8 col-xs-12">
+            <label for="description">Description</label>
             <input type="text" class="form-control" formControlName="description">
           </div>
-        </div>
-        <br/>
-
-        <div class="row">
-          <div class="col-sm-3">
+           <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-          <div class="col-sm-3">
+
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
           </div>

@@ -4,37 +4,31 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="code">Code</label>
-            <input type="text" class="form-control" formControlName="code">
-          </div>
-        </div>
-        <br/>
 
-        <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="name">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+          <label for="code">Code</label>
+          <input type="text" class="form-control" formControlName="code">
           </div>
-        </div>
-        <br/>
+          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" formControlName="name">
+          </div>
+           <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+          <label for=" section"> Section</label>
+          <select id=" sectionSelector" class="form-control" formControlName="section">
+				  <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
+				  </select>
+          </div>
+          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.section != null">
+          <p class="hidden-xs-down">&nbsp;</p>
+          <label>{{formGroup.value.section.code}} | {{formGroup.value.section.name}}</label>
+          </div>
 
-
- <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for=" section"> Section</label>
-            <select id=" sectionSelector" class="form-control" formControlName="section">
-					        <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
-				        </select>
-          </div>
-          <div class="col-md-6 col-sm-10 col-xs-12" *ngIf="formGroup.value.section != null">
-            <label>{{formGroup.value.section.code}} | {{formGroup.value.section.name}}</label>
-          </div>
-        </div>
-        <br/>
-     
-        <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
           </div>
