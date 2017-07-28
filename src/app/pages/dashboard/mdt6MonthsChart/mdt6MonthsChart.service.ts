@@ -32,7 +32,7 @@ export class Mdt6MonthsChartService {
         { "month": " Feb(2017)  ", "mdt": 0.71, "target": 1.1 },
         { "month": " Mar(2017)  ", "mdt": 1.04, "target": 1.1 },
         { "month": " Apr(2017)  ", "mdt": 0.61, "target": 1.1 },
-        { "month": " May(2017)  ", "mdt": 2.18, "target": 1.1 },
+        { "month": " May(2017)  ", "mdt": 0.60, "target": 1.1 },
         { "month": " June(2017)  ", "mdt": 1.74, "target": 1.1 }
 
       ],
