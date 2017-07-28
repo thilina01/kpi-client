@@ -35,21 +35,21 @@ export class MaterialCostPerKgChartService {
       "gridAboveGraphs": true,
       "startDuration": 1,
       "graphs": [{
-        "balloonText": "Budget: <b>[[budget]]</b>",
+        "balloonText": "[[title]]: <b>[[value]]</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
         "valueField": "budget",
-        "labelText": "[[budget]]",
+        "labelText": "[[value]]",
         "title": "Budget"
       }, {
         "title": "Actual",
-        "balloonText": "Actual: <b>[[actual]]</b>",
+        "balloonText": "[[title]]: <b>[[value]]</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
         "valueField": "actual",
-        "labelText": "[[actual]]"
+        "labelText": "[[value]]"
       }],
       "chartCursor": {
         "categoryBalloonEnabled": false,

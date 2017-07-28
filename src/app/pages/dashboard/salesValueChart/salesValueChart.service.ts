@@ -7,7 +7,7 @@ export class SalesValueChartService {
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
- getChartData(data) {
+  getChartData(data) {
 
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardSalesValueChart;
@@ -35,21 +35,21 @@ export class SalesValueChartService {
       "gridAboveGraphs": true,
       "startDuration": 1,
       "graphs": [{
-        "balloonText": "Budget: <b>[[budget]]</b>",
+        "balloonText": "[[title]]: <b>[[value]]</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
         "valueField": "budget",
-        "labelText": "[[budget]]",
+        "labelText": "[[value]]",
         "title": "Budget"
       }, {
         "title": "Actual",
-        "balloonText": "Actual: <b>[[actual]]</b>",
+        "balloonText": "[[title]]: <b>[[value]]</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
         "type": "column",
         "valueField": "actual",
-        "labelText": "[[actual]]"
+        "labelText": "[[value]]"
       }],
       "chartCursor": {
         "categoryBalloonEnabled": false,
@@ -65,10 +65,13 @@ export class SalesValueChartService {
         color: layoutColors.defaultText,
         axisColor: layoutColors.defaultText
       },
+      "export": {
+        "enabled": true
+      },
       "legend": {
         "position": "top",
-        "valueWidth":100,
-        "valueAlign":"left"
+        "valueWidth": 100,
+        "valueAlign": "left"
       }
     };
   };
