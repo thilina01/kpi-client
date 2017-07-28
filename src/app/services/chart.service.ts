@@ -70,6 +70,13 @@ export class ChartService {
             .catch(this.handleError);
     }  
 
+    getMonthlyScrapCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+        return this.http.get(this.apiUrl + 'monthlyScrapCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
+            .toPromise()
+            .then(response => response.json() as Array<Object>)
+            .catch(this.handleError);
+    }  
+
     getMonthlyLabourCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
         return this.http.get(this.apiUrl + 'monthlyLabourCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
