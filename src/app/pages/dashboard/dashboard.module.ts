@@ -82,6 +82,8 @@ import { LabourCostPerKgChartService } from "./labourCostPerKgChart/labourCostPe
 import { MaterialCostPerKgChartService } from "./materialCostPerKgChart/materialCostPerKgChart.service";
 import { ProductionOverheadCostPerKgChartService } from "./productionOverheadCostPerKgChart/productionOverheadCostPerKgChart.service";
 import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.service";
+import { ScrapCostPerKgChartService } from "./scrapCostPerKgChart/scrapCostPerKgChart.service";
+import { ScrapCostPerKgChart } from "./scrapCostPerKgChart";
 
 @NgModule({
   imports: [
@@ -113,6 +115,7 @@ import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.servic
     ConsumableCostPerKgChart,
     CumulativeSalesPerKgChart,
     ElectricityCostPerKgChart,
+    ScrapCostPerKgChart,
     LabourCostPerKgChart,
     MaterialCostPerKgChart,
     ProductionOverheadCostPerKgChart,
@@ -145,6 +148,7 @@ import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.servic
     ConsumableCostPerKgChartService,
     CumulativeSalesPerKgChartService,
     ElectricityCostPerKgChartService,
+    ScrapCostPerKgChartService,
     LabourCostPerKgChartService,
     MaterialCostPerKgChartService,
     ProductionOverheadCostPerKgChartService,
