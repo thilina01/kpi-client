@@ -51,6 +51,7 @@ export const routes: Routes = [
       { path: 'labourSource', canActivate: [AuthGuard], loadChildren: 'app/pages/labourSource/labourSource.module#LabourSourceModule' },              
       { path: 'labourTurnover', canActivate: [AuthGuard], loadChildren: 'app/pages/labourTurnover/labourTurnover.module#LabourTurnoverModule' },
       { path: 'location', canActivate: [AuthGuard], loadChildren: 'app/pages/location/location.module#LocationModule' },
+      { path: 'lossReason ', canActivate: [AuthGuard], loadChildren: 'app/pages/lossReason/lossReason.module#LossReasonModule' },
       { path: 'lossType', canActivate: [AuthGuard], loadChildren: 'app/pages/lossType/lossType.module#LossTypeModule' },                                                                                  
       { path: 'materialCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/materialCostPerKg/materialCostPerKg.module#MaterialCostPerKgModule' }, 
       { path: 'machine', canActivate: [AuthGuard], loadChildren: 'app/pages/machine/machine.module#MachineModule' },  
