@@ -84,6 +84,7 @@ import { ProductionOverheadCostPerKgChartService } from "./productionOverheadCos
 import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.service";
 import { ScrapCostPerKgChartService } from "./scrapCostPerKgChart/scrapCostPerKgChart.service";
 import { ScrapCostPerKgChart } from "./scrapCostPerKgChart";
+import { PanelModule } from "primeng/primeng";
 
 @NgModule({
   imports: [
@@ -91,6 +92,7 @@ import { ScrapCostPerKgChart } from "./scrapCostPerKgChart";
     FormsModule,
     NgaModule,
     MaterialModule,
+    PanelModule,
     routing
   ],
   declarations: [
