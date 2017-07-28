@@ -69,6 +69,7 @@ export const routes: Routes = [
       { path: 'salesPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/salesPerKg/salesPerKg.module#SalesPerKgModule' },
       { path: 'salesValue', canActivate: [AuthGuard], loadChildren: 'app/pages/salesValue/salesValue.module#SalesValueModule' },
       { path: 'salesWeight', canActivate: [AuthGuard], loadChildren: 'app/pages/salesWeight/salesWeight.module#SalesWeightModule' },
+      { path: 'scrapCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/scrapCostPerKg/scrapCostPerKg.module#ScrapCostPerKgModule' },
       { path: 'section', canActivate: [AuthGuard], loadChildren: 'app/pages/section/section.module#SectionModule' },
       { path: 'shift', canActivate: [AuthGuard], loadChildren: 'app/pages/shift/shift.module#ShiftModule' },
       { path: 'shiftType', canActivate: [AuthGuard], loadChildren: 'app/pages/shiftType/shiftType.module#ShiftTypeModule' },

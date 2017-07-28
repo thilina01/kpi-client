@@ -102,6 +102,7 @@ export class Pages {
     { routerLink: "/pages/salesPerKg/table", name: "Sales Per Kg", menuType: this.menuType },
     { routerLink: "/pages/salesValue/table", name: "Sales Value", menuType: this.menuType },
     { routerLink: "/pages/salesWeight/table", name: "Sales Weight", menuType: this.menuType },
+    { routerLink: "/pages/scrapCostPerKg/table", name: "Scrap Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/section/table", name: "Section", menuType: this.menuType },
     { routerLink: "/pages/shift/table", name: "Shift", menuType: this.menuType },
     { routerLink: "/pages/shiftType/table", name: "Shift Type", menuType: this.menuType },
