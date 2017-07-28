@@ -50,7 +50,7 @@ export class ChartService {
     }  
 
     getMonthlyConsumableCostPerKgChart(startDate: string, endDate: string): Promise<Array<Object>> {
-        return this.http.get(this.apiUrl + 'monthlyConsumableCostPerKgChart?startDate=' + startDate + '&endDate=' + endDate)
+        return this.http.get(this.apiUrl + 'monthlyConsumableCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
             .toPromise()
             .then(response => response.json() as Array<Object>)
             .catch(this.handleError);
