@@ -40,8 +40,10 @@ export class SalesPerKgChartService {
         "lineAlpha": 0.2,
         "type": "column",
         "valueField": "budget",
-        "labelText": "[[budget]]"
-      },{
+        "labelText": "[[budget]]",
+        "title": "Budget"
+      }, {
+        "title": "Actual",
         "balloonText": "Actual: <b>[[actual]]</b>",
         "fillAlphas": 0.8,
         "lineAlpha": 0.2,
@@ -62,6 +64,11 @@ export class SalesPerKgChartService {
         "tickLength": 20,
         color: layoutColors.defaultText,
         axisColor: layoutColors.defaultText
+      },
+      "legend": {
+        "position": "top",
+        "valueWidth":100,
+        "valueAlign":"left"
       }
     };
   };
