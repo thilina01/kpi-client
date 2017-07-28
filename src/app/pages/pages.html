@@ -1,11 +1,11 @@
-<p-growl  [immutable] ="false" life ="3000" [(value)]="msgs">
+<p-growl [immutable]="false" life="3000" [(value)]="msgs">
 </p-growl>
 <!-- 
 <ba-sidebar></ba-sidebar>
 <ba-page-top></ba-page-top>-->
 
 <!-- ************ *************** -->
-<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left w3-black" style="display:none" id="mySidebar">
+<!-- <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left w3-black" style="display:none" id="mySidebar">
     <!-- <button class="w3-bar-item w3-button w3-large" (click)="w3_toggle()">Close &times;</button>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-search"> </i> Link 1</a>
     <a class="w3-bar-item w3-button" routerLink="/pages/dashboard" routerLinkActive="selected">Home</a>
@@ -35,14 +35,24 @@
     <a class="w3-bar-item w3-button" routerLink="/pages/labourSource/table" routerLinkActive="selected">Labour Source  </a>
     <a class="w3-bar-item w3-button" routerLink="/pages/jobType/table" routerLinkActive="selected">Job Type  </a>
     <a class="w3-bar-item w3-button" routerLink="/login" routerLinkActive="selected">Logout</a>
--->
+--*>
     <br/>
     <img [src]="logoPath" width="160px">
-    <br/>    
-    <br/>    
+    <br/>
+    <br/>
     <a class="w3-bar-item w3-button" routerLink="/pages/dashboard" routerLinkActive="selected"><i class="fa fa-home"> </i> Home</a>
     <a class="w3-bar-item w3-button" routerLink="/login" routerLinkActive="selected"><i class="fa fa-sign-out "> </i> Logout</a>
     <br/>
+    <!--
+    <p-listbox [options]="menuList" [style]="{'width':'190px','background-color':'black'}">
+        <ng-template let-menu pTemplate="item">
+            <a class="w3-bar-item w3-button" style="color: white;" [routerLink]="[menu.routerLink]" routerLinkActive="selected">{{menu.name}}</a>
+        </ng-template>
+    </p-listbox>
+--*>
+
+
+
     <ng-template ngFor let-menu [ngForOf]="menuList" let-i="index">
         <a class="w3-bar-item w3-button" [routerLink]="[menu.routerLink]" routerLinkActive="selected">{{menu.name}}</a>
     </ng-template>
@@ -58,17 +68,31 @@
     </div>
 
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-search"> </i> Link 3</a>
-    -->
-</div>
+    --*>
+</div> -->
 
 <!-- ************ *********** -->
 
 <div zclass="w3-main" class="al-main" id="main">
 
     <div class="w3-black">
-        <button class="w3-button w3-teal w3-large w3-black" (click)="w3_toggle()">&#9776;</button> &nbsp; KPI - OTR LANKA
-    </div>
+        <!-- <button class="w3-button w3-teal w3-large w3-black" (click)="w3_toggle()">&#9776;</button>--> 
+        <img [src]="logoPath" height="60px" style="padding: 5px;">
+        &nbsp; KPI - OTR LANKA &nbsp;&nbsp; 
+        
 
+<p-autoComplete [(ngModel)]="menu" field="name" [suggestions]="filteredMenus" (completeMethod)="filterMenus($event)" [size]="30"
+    [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)" (onSelect)="onSelect($event)">
+    <ng-template let-menu pTemplate="menu" >
+        <div class="ui-helper-clearfix" >
+            <div >{{menu.name}}</div>
+        </div>
+    </ng-template>
+</p-autoComplete>
+
+    <a class="w3-bar-item w3-button" routerLink="/pages/dashboard" ><i class="fa fa-home"> </i> </a>
+    <a class="w3-bar-item w3-button" routerLink="/login" ><i class="fa fa-sign-out "> </i> </a>
+    </div>
     <div class="al-content">
         <!-- <ba-content-top></ba-content-top> -->
         <router-outlet></router-outlet>

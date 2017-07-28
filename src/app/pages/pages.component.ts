@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Routes } from '@angular/router';
+import { Routes, Router } from '@angular/router';
 
 import { BaMenuService } from '../theme';
 import { MENU } from '../app.menu';
@@ -23,7 +23,8 @@ export class Pages {
     private sharedService: SharedService,
     private menuService: MenuService,
     private userMenuService: UserMenuService,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private router: Router) {
     sharedService.messageSubject.subscribe(
       message => {
         this.msgs.push(message);
@@ -51,7 +52,7 @@ export class Pages {
     //     this.menuList = data;
     //     this.w3_open();
     //   })
-    this.w3_open();
+    //this.w3_open();
     //this._menuService.updateMenuByRoutes(<Routes>MENU);
     //this.msgs.push({ severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks' });
   }
@@ -70,8 +71,8 @@ export class Pages {
     { routerLink: "/pages/country/table", name: "Country", menuType: this.menuType },
     { routerLink: "/pages/currency/table", name: "Currency", menuType: this.menuType },
     { routerLink: "/pages/customer/table", name: "Customer", menuType: this.menuType },
-    { routerLink: "/pages/customerType/table", name: "Customer Type", menuType: this.menuType }, 
-    { routerLink: "/pages/cumulativeSalesPerKg/table", name: "Cumulative Sales Per Kg", menuType: this.menuType },                 
+    { routerLink: "/pages/customerType/table", name: "Customer Type", menuType: this.menuType },
+    { routerLink: "/pages/cumulativeSalesPerKg/table", name: "Cumulative Sales Per Kg", menuType: this.menuType },
     { routerLink: "/pages/consumableCostPerKg/table", name: "Consumable Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/dashboard", name: "Home", menuType: this.menuType },
     { routerLink: "/pages/energyConsumption/table", name: "Energy Consumption", menuType: this.menuType },
@@ -87,15 +88,15 @@ export class Pages {
     { routerLink: "/pages/lossReason /table", name: "Loss Reason", menuType: this.menuType },
     { routerLink: "/pages/lossType/table", name: "Loss Type ", menuType: this.menuType },
     { routerLink: "/pages/location/table", name: "Location", menuType: this.menuType },
-    { routerLink: "/pages/machine/table", name: "Machine", menuType: this.menuType },                         
+    { routerLink: "/pages/machine/table", name: "Machine", menuType: this.menuType },
     { routerLink: "/pages/materialCostPerKg/table", name: "Material Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/manpower", name: "Manpower", menuType: this.menuType },
     { routerLink: "/pages/manpowerType/table", name: "Manpower Type", menuType: this.menuType },
     { routerLink: "/pages/notifyParty/table", name: "Notify Party", menuType: this.menuType },
     { routerLink: "/pages/operation/table", name: "Operation", menuType: this.menuType },
-    { routerLink: "/pages/operationType/table", name: "Operation Type", menuType: this.menuType },    
-    { routerLink: "/pages/paint/table", name: "Paint", menuType: this.menuType },        
-    { routerLink: "/pages/paymentTerm/table", name: "Payment Term", menuType: this.menuType },    
+    { routerLink: "/pages/operationType/table", name: "Operation Type", menuType: this.menuType },
+    { routerLink: "/pages/paint/table", name: "Paint", menuType: this.menuType },
+    { routerLink: "/pages/paymentTerm/table", name: "Payment Term", menuType: this.menuType },
     { routerLink: "/pages/permission/form", name: "Permission", menuType: this.menuType },
     { routerLink: "/pages/plan", name: "Plan", menuType: this.menuType },
     { routerLink: "/pages/production/table", name: "Production", menuType: this.menuType },
@@ -107,7 +108,7 @@ export class Pages {
     { routerLink: "/pages/section/table", name: "Section", menuType: this.menuType },
     { routerLink: "/pages/shift/table", name: "Shift", menuType: this.menuType },
     { routerLink: "/pages/shiftType/table", name: "Shift Type", menuType: this.menuType },
-    { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },                     
+    { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },
     { routerLink: "/pages/toolBreakdown/table", name: "Tool Breakdown", menuType: this.menuType },
     { routerLink: "/pages/workCenter/table", name: "Work Center", menuType: this.menuType }
   ];
@@ -137,5 +138,35 @@ export class Pages {
     this.footer.style.marginLeft = "0%";
     this.mySidebar.style.display = "none";
     //this.openNav.style.display = "inline-block";
+  }
+
+
+  //brands: string[] = ['Audi','BMW','Fiat','Ford','Honda','Jaguar','Mercedes','Renault','Volvo','VW'];
+
+  filteredMenus: any[];
+
+  filterMenus(event) {
+    this.filteredMenus = [];
+    for (let i = 0; i < this.menuList.length; i++) {
+      let menu = this.menuList[i];
+      if (menu.name.toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
+        this.filteredMenus.push(menu);
+      }
+    }
+  }
+
+  handleDropdownClick() {
+    this.filteredMenus = [];
+
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredMenus = this.menuList;
+    }, 100)
+  }
+  menu: any;
+  onSelect(menu: any) {
+    this.router.navigate([menu.routerLink]);
+    console.log(event)    
+    this.menu={name:""}
   }
 }

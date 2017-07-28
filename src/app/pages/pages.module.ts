@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { routing } from './pages.routing';
 import { NgaModule } from '../theme/nga.module';
-
+import {AutoCompleteModule} from 'primeng/primeng';
+import { FormsModule } from '@angular/forms';
 import { Pages } from './pages.component';
 
 import { AuthGuard } from '../services/auth-guard.service';
@@ -19,6 +20,8 @@ import { GrowlModule } from 'primeng/primeng';
     NgaModule,
     GrowlModule,
     routing,
+    AutoCompleteModule,
+    FormsModule
   ],
   declarations: [Pages],
   providers: [
