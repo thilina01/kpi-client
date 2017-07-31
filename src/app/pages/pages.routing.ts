@@ -41,8 +41,10 @@ export const routes: Routes = [
       { path: 'dashboard', canActivate: [AuthGuard], loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'energyConsumption', canActivate: [AuthGuard], loadChildren: 'app/pages/energyConsumption/energyConsumption.module#EnergyConsumptionModule' },                                                                                
       { path: 'electricityCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/electricityCostPerKg/electricityCostPerKg.module#ElectricityCostPerKgModule' },                                  
+      { path: 'financeKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/financeKpi/financeKpi.module#FinanceKpiModule' },
       { path: 'forms', canActivate: [AuthGuard], loadChildren: 'app/pages/forms/forms.module#FormsModule' },
       { path: 'home', canActivate: [AuthGuard], loadChildren: 'app/pages/home/home.module#HomeModule' },
+      { path: 'humanResourceKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/humanResourceKpi/humanResourceKpi.module#HumanResourceKpiModule' },
       { path: 'incoterm', canActivate: [AuthGuard], loadChildren: 'app/pages/incoterm/incoterm.module#IncotermModule' },
       { path: 'item', canActivate: [AuthGuard], loadChildren: 'app/pages/item/item.module#ItemModule' },
       { path: 'itemType', canActivate: [AuthGuard], loadChildren: 'app/pages/itemType/itemType.module#ItemTypeModule' },
@@ -67,7 +69,9 @@ export const routes: Routes = [
       { path: 'permission', canActivate: [AuthGuard], loadChildren: 'app/pages/permission/permission.module#PermissionModule' },
       { path: 'plan', canActivate: [AuthGuard], loadChildren: 'app/pages/plan/plan.module#PlanModule' },
       { path: 'production', canActivate: [AuthGuard], loadChildren: 'app/pages/production/production.module#ProductionModule' },
+      { path: 'productionKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/productionKpi/productionKpi.module#ProductionKpiModule' },
       { path: 'productionOverheadCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/productionOverheadCostPerKg/productionOverheadCostPerKg.module#ProductionOverheadCostPerKgModule' },
+      { path: 'salesKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/salesKpi/salesKpi.module#SalesKpiModule' },
       { path: 'salesPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/salesPerKg/salesPerKg.module#SalesPerKgModule' },
       { path: 'salesValue', canActivate: [AuthGuard], loadChildren: 'app/pages/salesValue/salesValue.module#SalesValueModule' },
       { path: 'salesWeight', canActivate: [AuthGuard], loadChildren: 'app/pages/salesWeight/salesWeight.module#SalesWeightModule' },
@@ -80,9 +84,7 @@ export const routes: Routes = [
       { path: 'tool', canActivate: [AuthGuard], loadChildren: 'app/pages/tool/tool.module#ToolModule' },
       { path: 'toolBreakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/toolBreakdown/toolBreakdown.module#ToolBreakdownModule' }, 
       { path: 'user', canActivate: [AuthGuard], loadChildren: 'app/pages/user/user.module#UserModule' },
-      { path: 'workCenter', canActivate: [AuthGuard], loadChildren: 'app/pages/workCenter/workCenter.module#WorkCenterModule' },
-
-
+      { path: 'workCenter', canActivate: [AuthGuard], loadChildren: 'app/pages/workCenter/workCenter.module#WorkCenterModule' }
     ]
   }
 ];

@@ -5,7 +5,7 @@
 		</div>
 	</p-header>
 	<div class="center">
-		<img [src]="bannerPath" width="800px" style="padding: 20px;">
+		<img [src]="bannerPath" width="50%" style="margin: 5px; min-width:300px;">
 	</div>
 </p-panel>
 <br/>
@@ -18,20 +18,35 @@
 	<div class="center">
 		<div class="row" style="padding-bottom:50px">
 			<div class="col center">
-				<img [src]="salesIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				<a routerLink="/pages/salesKpi">
+					<img [src]="salesIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				</a>
 				<h3> Sales </h3>
 			</div>
 			<div class="col center">
-				<img [src]="financeIconPath" height="160px" style="padding: 20px;" class="shakeIcon ">
+				<a routerLink="/pages/financeKpi">					
+					<img [src]="financeIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				</a>
 				<h3> Finance </h3>
 			</div>
 			<div class="col center">
-				<img [src]="productionIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				<a routerLink="/pages/productionKpi">
+					<img [src]="productionIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				</a>
 				<h3> Production </h3>
 			</div>
 			<div class="col center">
-				<img [src]="engineeringIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				<a routerLink="/pages/engineeringKpi">
+					<img [src]="engineeringIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				</a>
 				<h3> Engineering </h3>
+			</div>
+			<div class="col center">
+				<img [src]="humanResourceIconPath" height="160px" style="padding: 20px;" class="shakeIcon">
+				<!-- <a routerLink="/pages/humanResourceKpi">
+					
+				</a> -->
+				<h3> Human Resource </h3>
 			</div>
 		</div>
 	</div>
@@ -51,7 +66,6 @@
 		transform: translate3d(0, 0, 0);
 		backface-visibility: hidden;
 		perspective: 1000px;
-		
 	}
 
 	@keyframes shake {
@@ -75,7 +89,6 @@
 		60% {
 			transform: translate3d(4px, 0, 0);
 		}
-		
 	}
 	/* .test {
 

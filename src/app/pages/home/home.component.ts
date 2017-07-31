@@ -12,6 +12,7 @@ export class Home {
   financeIconPath = '/assets/img/finance.png';
   productionIconPath = '/assets/img/production.png';
   engineeringIconPath = '/assets/img/engineering.png';
+  humanResourceIconPath = '/assets/img/humanResource.png';
 
   constructor(private baConfig: BaThemeConfigProvider) {
   }
