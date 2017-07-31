@@ -76,22 +76,23 @@
 <div zclass="w3-main" class="al-main" id="main">
 
     <div class="w3-black">
-        <!-- <button class="w3-button w3-teal w3-large w3-black" (click)="w3_toggle()">&#9776;</button>--> 
+        <!-- <button class="w3-button w3-teal w3-large w3-black" (click)="w3_toggle()">&#9776;</button>  &nbsp; KPI - OTR LANKA &nbsp;&nbsp;
+-->
+        <a class="w3-bar-item w3-button" routerLink="/pages/home"> 
         <img [src]="logoPath" height="60px" style="padding: 5px;">
-        &nbsp; KPI - OTR LANKA &nbsp;&nbsp; 
-        
+       </a>
 
-<p-autoComplete [(ngModel)]="menu" field="name" [suggestions]="filteredMenus" (completeMethod)="filterMenus($event)" [size]="30"
-    [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)" (onSelect)="onSelect($event)">
-    <ng-template let-menu pTemplate="menu" >
-        <div class="ui-helper-clearfix" >
-            <div >{{menu.name}}</div>
-        </div>
-    </ng-template>
-</p-autoComplete>
+        <p-autoComplete [(ngModel)]="menu" field="name" [suggestions]="filteredMenus" (completeMethod)="filterMenus($event)" [size]="30"
+            [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)" (onSelect)="onSelect($event)">
+            <ng-template let-menu pTemplate="menu">
+                <div class="ui-helper-clearfix">
+                    <div>{{menu.name}}</div>
+                </div>
+            </ng-template>
+        </p-autoComplete>
 
-    <a class="w3-bar-item w3-button" routerLink="/pages/home" ><i class="fa fa-home"> </i> </a>
-    <a class="w3-bar-item w3-button" routerLink="/login" ><i class="fa fa-sign-out "> </i> </a>
+        <a class="w3-bar-item w3-button" routerLink="/pages/home"><i class="fa fa-home"> </i> </a>
+        <a class="w3-bar-item w3-button" routerLink="/login"><i class="fa fa-sign-out "> </i> </a>
     </div>
     <div class="al-content">
         <!-- <ba-content-top></ba-content-top> -->
