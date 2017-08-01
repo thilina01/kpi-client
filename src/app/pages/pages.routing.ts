@@ -39,6 +39,7 @@ export const routes: Routes = [
       { path: 'cumulativeSalesPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/cumulativeSalesPerKg/cumulativeSalesPerKg.module#CumulativeSalesPerKgModule' },                                                                                                      
       { path: 'consumableCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/consumableCostPerKg/consumableCostPerKg.module#ConsumableCostPerKgModule' },                               
       { path: 'dashboard', canActivate: [AuthGuard], loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
+      { path: 'department', canActivate: [AuthGuard], loadChildren: 'app/pages/department/department.module#DepartmentModule' },
       { path: 'energyConsumption', canActivate: [AuthGuard], loadChildren: 'app/pages/energyConsumption/energyConsumption.module#EnergyConsumptionModule' },                                                                                
       { path: 'electricityCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/electricityCostPerKg/electricityCostPerKg.module#ElectricityCostPerKgModule' },                                  
       { path: 'forms', canActivate: [AuthGuard], loadChildren: 'app/pages/forms/forms.module#FormsModule' },

@@ -74,6 +74,7 @@ export class Pages {
     { routerLink: "/pages/cumulativeSalesPerKg/table", name: "Cumulative Sales Per Kg", menuType: this.menuType },                 
     { routerLink: "/pages/consumableCostPerKg/table", name: "Consumable Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/dashboard", name: "Home", menuType: this.menuType },
+    { routerLink: "/pages/department/table", name: "Department", menuType: this.menuType },
     { routerLink: "/pages/energyConsumption/table", name: "Energy Consumption", menuType: this.menuType },
     { routerLink: "/pages/electricityCostPerKg/table", name: "Electricity Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/incoterm/table", name: "Incoterm", menuType: this.menuType },
