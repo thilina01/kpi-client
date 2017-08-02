@@ -1,15 +1,18 @@
-<p-panel header="Customer List">
+<p-panel>
+	<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>Customer List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+			</div>
+		</div>
+		</p-header>	
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
 	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="customers" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
-		<p-header>
-			<div class="row">
-                <div class="col">
-                    <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left; margin:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-                    <button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:left; margin:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Form</button>
-                </div>
-            </div>
-		</p-header>
 		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
 		<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'200px'}"></p-column>
 		<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>

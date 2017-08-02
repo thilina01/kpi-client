@@ -1,14 +1,17 @@
-<p-panel header="Manpower List">
-<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
-	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
- 	<p-header>
-			<div class="row">
-                <div class="col">
-                    <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:left; margin:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-                    <button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:left; margin:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Form</button>
-                </div>
-            </div>
+<p-panel>
+<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>"Manpower List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+			</div>
+		</div>
     </p-header>
+    <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
     <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
     <p-column field="production.controlPoint.code" header="Control Point" [sortable]="true" ></p-column>
     <p-column field="production.productionDate" header="Production Date" [sortable]="true" ></p-column>
