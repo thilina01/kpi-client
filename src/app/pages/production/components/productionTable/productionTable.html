@@ -18,9 +18,13 @@
 		<p-column field="shift.name" header="Shift" [sortable]="true"></p-column>
 		<p-column field="plannedDuration" header="Planned Duration" [sortable]="true"></p-column>
 		<p-column field="actualDuration" header="Actual Duration" [sortable]="true"></p-column>
-		<p-column header="Action" [style]="{'width':'80px'}">
+		<p-column header="Action" [style]="{'width':'100px'}">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/production/form/'+data.id">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil"></i>
+				</a>
+				&nbsp; &nbsp;
+				<a [routerLink]="'/pages/plan/'+data.id">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
 				</a>
 				&nbsp; &nbsp;
