@@ -84,5 +84,33 @@ export class LabourTurnoverForm {
     public resetForm() {
         this.formGroup.reset();
     }
+  /*================== Labour Source Filter ===================*/
+    filteredLabourSources: any[];
+    //labourSource: any;
 
+    filterLabourSources(event) {
+        let query = event.query.toLowerCase();
+        this.filteredLabourSources = [];
+        for (let i = 0; i < this.labourSources.length; i++) {
+            let labourSource = this.labourSources[i];
+            if (labourSource.code.toLowerCase().indexOf(query) == 0 || labourSource.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredLabourSources.push(labourSource);
+            }
+        }
+    }
+
+    handleLabourSourceDropdownClick() {
+        this.filteredLabourSources = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredLabourSources = this.labourSources;
+        }, 100)
+    }
+
+    onLabourSourceSelect(labourSource: any) {
+        console.log(event)
+    }
+    /*================== End Of Labour Source Filter ===================*/
 }
+
+

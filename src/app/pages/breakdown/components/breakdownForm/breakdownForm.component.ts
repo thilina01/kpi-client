@@ -85,6 +85,35 @@ export class BreakdownForm {
 
     public resetForm() {
         this.formGroup.reset();
+    }    
+             /*================== MachineFilter ===================*/
+    filteredMachines: any[];
+    //machine: any;
+
+    filterMachines(event) {
+        let query = event.query.toLowerCase();
+        this.filteredMachines = [];
+        for (let i = 0; i < this.machines.length; i++) {
+            let machine = this.machines[i];
+            if (machine.code.toLowerCase().indexOf(query) == 0 || machine.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredMachines.push(machine);
+            }
+        }
     }
 
+    handleMachineDropdownClick() {
+        this.filteredMachines = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredMachines = this.machines;
+        }, 100)
+    }
+
+    onMachineSelect(machine: any) {
+        console.log(event)
+    }
+    /*================== End Of MachineFilter ===================*/
 }
+
+
+

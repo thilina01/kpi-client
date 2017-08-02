@@ -15,9 +15,19 @@
 
           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label for="labourSource">Labour Source</label>
-            <select id="labourSourceSelector" class="form-control" formControlName="labourSource">
+             <br/>
+            <p-autoComplete formControlName="labourSource" field="name" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSources($event)"
+              [size]="30" [minLength]="1" placeholder="Labour Source : Search" (onDropdownClick)="handleLabourSourceDropdownClick($event)"
+              (onSelect)="onLabourSourceSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+           <!-- <select id="labourSourceSelector" class="form-control" formControlName="labourSource">
 					        <option *ngFor="let labourSource of labourSources" [ngValue]="labourSource">{{labourSource.code}}</option>
-				    </select>
+				    </select>-->
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.labourSource != null">
             <p class="hidden-xs-down">&nbsp;</p>

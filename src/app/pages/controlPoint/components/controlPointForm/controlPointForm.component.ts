@@ -99,7 +99,6 @@ export class ControlPointForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
     /*================== Control Point Type Filter ===================*/
     filteredControlPointTypes: any[];
     //controlPointType: any;

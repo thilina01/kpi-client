@@ -19,9 +19,19 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
           <label for=" section"> Section</label>
-          <select id=" sectionSelector" class="form-control" formControlName="section">
+           <br/>
+            <p-autoComplete formControlName="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
+              [size]="30" [minLength]="1" placeholder="Section : Search" [dropdown]="true" (onDropdownClick)="handleSectionDropdownClick($event)"
+              (onSelect)="onSectionSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+         <!--  <select id=" sectionSelector" class="form-control" formControlName="section">
 				  <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
-				  </select>
+				  </select> -->
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.section != null">
           <p class="hidden-xs-down">&nbsp;</p>

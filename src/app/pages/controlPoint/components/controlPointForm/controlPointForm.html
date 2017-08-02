@@ -22,7 +22,7 @@
             <label for="controlPointType">Type</label>
             <br/>
             <p-autoComplete formControlName="controlPointType" field="name" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
-              [size]="30" [minLength]="1" placeholder="Control Point Type : Search" [dropdown]="true" (onDropdownClick)="handleControlPointTypeDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleControlPointTypeDropdownClick($event)"
               (onSelect)="onControlPointTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

@@ -6,9 +6,19 @@
 
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="location">Location</label>
-            <select id="locationSelector" class="form-control" formControlName="location">
+             <br/>
+            <p-autoComplete formControlName="location" field="name" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleLocationDropdownClick($event)"
+              (onSelect)="onLocationSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+            <!--<select id="locationSelector" class="form-control" formControlName="location">
 					<option *ngFor="let location of locations" [ngValue]="location">{{location.code}}</option>
-				   </select>
+				   </select>-->
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.location != null">
             <p class="hidden-xs-down">&nbsp;</p>

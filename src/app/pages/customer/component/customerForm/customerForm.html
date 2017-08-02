@@ -57,31 +57,59 @@
 
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="customerType">Customer Type</label>
-            <select id="customerTypeSelector" class="form-control" formControlName="customerType">
+           <br/>
+            <p-autoComplete formControlName="customerType" field="name" [suggestions]="filteredCustomerTypes" (completeMethod)="filterCustomerTypes($event)"
+              [size]="30" [minLength]="1" placeholder=" Search"(onDropdownClick)="handleCustomerTypeDropdownClick($event)"
+              (onSelect)="onCustomerTypeSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+            <!-- <select id="customerTypeSelector" class="form-control" formControlName="customerType">
               <option *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.code}}</option>
-            </select>
+            </select>-->
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.customerType != null">
             <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.customerType.code}} | {{formGroup.value.customerType.name}}</label>
           </div>
-
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="currency">Currency</label>
-            <select id="currencySelector" class="form-control" formControlName="currency">
+            <br/>
+            <p-autoComplete formControlName="currency" field="name" [suggestions]="filteredCurrencys" (completeMethod)="filterCurrencys($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleCurrencyDropdownClick($event)"
+              (onSelect)="onCurrencySelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+             <!--<select id="currencySelector" class="form-control" formControlName="currency">
               <option *ngFor="let currency of currencyList" [ngValue]="currency">{{currency.code}}</option>
-            </select>
+            </select>-->
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.currency != null">
             <p class="hidden-xs-down">&nbsp;</p>
             <label>{{formGroup.value.currency.code}} | {{formGroup.value.currency.name}}</label>
           </div>
-
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="incoterm">Incoterm</label>
-            <select id="incotermSelector" class="form-control" formControlName="incoterm">
+             <br/>
+            <p-autoComplete formControlName="incoterm" field="name" [suggestions]="filteredIncoterms" (completeMethod)="filterIncoterms($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleIncotermDropdownClick($event)"
+              (onSelect)="onIncotermSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+            <!--<select id="incotermSelector" class="form-control" formControlName="incoterm">
               <option *ngFor="let incoterm of incotermList" [ngValue]="incoterm">{{incoterm.code}}</option>
-            </select>
+            </select>-->
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.incoterm != null">
             <p class="hidden-xs-down">&nbsp;</p>
@@ -90,9 +118,19 @@
 
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="notifyParty">Notify Party</label>
-            <select id="notifyPartySelector" class="form-control" formControlName="notifyParty">
+            <br/>
+            <p-autoComplete formControlName="notifyParty" field="name" [suggestions]="filteredNotifyPartys" (completeMethod)="filterNotifyPartys($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleNotifyPartyDropdownClick($event)"
+              (onSelect)="onNotifyPartySelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+            <!--<select id="notifyPartySelector" class="form-control" formControlName="notifyParty">
               <option *ngFor="let notifyParty of notifyPartyList" [ngValue]="notifyParty">{{notifyParty.code}}</option>
-            </select>
+            </select>-->
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.notifyParty != null">
             <p class="hidden-xs-down">&nbsp;</p>
@@ -101,9 +139,20 @@
 
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="paymentTerm">Payment Term</label>
-            <select id="paymentTermSelector" class="form-control" formControlName="paymentTerm">
+          <br/>
+            <p-autoComplete formControlName="paymentTerm" field="name" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handlePaymentTermDropdownClick($event)"
+              (onSelect)="onPaymentTermSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+
+           <!-- <select id="paymentTermSelector" class="form-control" formControlName="paymentTerm">
               <option *ngFor="let paymentTerm of paymentTermList" [ngValue]="paymentTerm">{{paymentTerm.code}}</option>
-            </select>
+            </select>-->
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.paymentTerm != null">
             <p class="hidden-xs-down">&nbsp;</p>

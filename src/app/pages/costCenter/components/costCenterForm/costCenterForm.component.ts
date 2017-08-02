@@ -94,4 +94,32 @@ export class CostCenterForm {
         this.formGroup.reset();
     }
 
+
+  /*================== Section Filter ===================*/
+    filteredSections: any[];
+    //section: any;
+
+    filterSection(event) {
+        let query = event.query.toLowerCase();
+        this.filteredSections = [];
+        for (let i = 0; i < this.sections.length; i++) {
+            let section = this.sections[i];
+            if (section.code.toLowerCase().indexOf(query) == 0 || section.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredSections.push(section);
+            }
+        }
+    }
+
+    handleSectionDropdownClick() {
+        this.filteredSections = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredSections = this.sections;
+        }, 100)
+    }
+
+    onSectionSelect(section: any) {
+        console.log(event)
+    }
+    /*================== End Of Section Filter ===================*/
 }

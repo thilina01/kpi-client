@@ -16,6 +16,7 @@ import { PaintService } from '../../../../services/paint.service';
     templateUrl: './itemForm.html',
 })
 export class ItemForm {
+    types: any;
     JSON: any = JSON;
     checked: boolean = false;
     public formGroup: FormGroup;
@@ -109,5 +110,60 @@ export class ItemForm {
     public resetForm() {
         this.formGroup.reset();
     }
+    
+ /*================== Type Filter ===================*/
+    filteredTypes: any[];
+    type: any;
 
+    filterTypes(event) {
+        let query = event.query.toLowerCase();
+        this.filteredTypes = [];
+        for (let i = 0; i < this.types.length; i++) {
+            let type = this.types[i];
+            if (type.code.toLowerCase().indexOf(query) == 0 || type.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredTypes.push(type);
+            }
+        }
+    }
+
+    handleTypeDropdownClick() {
+        this.filteredTypes = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredTypes = this.types;
+        }, 100)
+    }
+
+    onTypeSelect(type: any) {
+        console.log(event)
+    }
+    /*================== End Of Type Filter ===================*/
+    /*================== Paint Filter ===================*/
+    filteredPaints: any[];
+    //paint: any;
+
+    filterPaints(event) {
+        let query = event.query.toLowerCase();
+        this.filteredPaints = [];
+        for (let i = 0; i < this.paints.length; i++) {
+            let paint = this.paints[i];
+            if (paint.code.toLowerCase().indexOf(query) == 0 || paint.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredPaints.push(paint);
+            }
+        }
+    }
+
+    handlePaintDropdownClick() {
+        this.filteredPaints = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredPaints = this.paints;
+        }, 100)
+    }
+
+    onPaintSelect(paint: any) {
+        console.log(event)
+    }
+    /*================== End Of Paint Filter ===================*/
 }
+

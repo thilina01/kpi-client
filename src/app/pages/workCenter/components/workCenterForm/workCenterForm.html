@@ -21,9 +21,18 @@
              
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for=" costCenter"> Cost Center</label>
-            <select id=" costCenterSelector" class="form-control" formControlName=" costCenter">
+             <p-autoComplete formControlName="costCenter" field="name" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
+              [size]="30" [minLength]="1" placeholder="Cost Center : Search" [dropdown]="true" (onDropdownClick)="handleCostCenterDropdownClick($event)"
+              (onSelect)="onCostCenterSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+           <!--  <select id=" costCenterSelector" class="form-control" formControlName=" costCenter">
 					        <option *ngFor="let  costCenter of  costCenters" [ngValue]=" costCenter">{{ costCenter.code}}</option>
-				        </select>
+				        </select>  -->
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value. costCenter != null">
           <p class="hidden-xs-down">&nbsp;</p>

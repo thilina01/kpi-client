@@ -85,4 +85,35 @@ export class EnergyConsumptionForm {
         this.formGroup.reset();
     }
 
+
+    /*================== Location Filter ===================*/
+    filteredLocations: any[];
+    //location: any;
+
+    filterLocations(event) {
+        let query = event.query.toLowerCase();
+        this.filteredLocations = [];
+        for (let i = 0; i < this.locations.length; i++) {
+            let location = this.locations[i];
+            if (location.code.toLowerCase().indexOf(query) == 0 || location.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredLocations.push(location);
+            }
+        }
+    }
+
+    handleLocationDropdownClick() {
+        this.filteredLocations = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredLocations = this.locations;
+        }, 100)
+    }
+
+    onLocationSelect(location: any) {
+        console.log(event)
+    }
+    /*================== End Of Location Filter ===================*/
 }
+
+
+

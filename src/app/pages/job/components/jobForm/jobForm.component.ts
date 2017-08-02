@@ -16,6 +16,7 @@ import { ItemService } from '../../../../services/item.service';
     templateUrl: './jobForm.html',
 })
 export class JobForm {
+    types: any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -101,5 +102,58 @@ export class JobForm {
     public resetForm() {
         this.formGroup.reset();
     }
+     /*================== Type Filter ===================*/
+    filteredTypes: any[];
+    type: any;
 
+    filterTypes(event) {
+        let query = event.query.toLowerCase();
+        this.filteredTypes = [];
+        for (let i = 0; i < this.types.length; i++) {
+            let type = this.types[i];
+            if (type.code.toLowerCase().indexOf(query) == 0 || type.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredTypes.push(type);
+            }
+        }
+    }
+
+    handleTypeDropdownClick() {
+        this.filteredTypes = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredTypes = this.types;
+        }, 100)
+    }
+
+    onTypeSelect(type: any) {
+        console.log(event)
+    }
+    /*================== End Of Type Filter ===================*/
+  /*================== Item Filter ===================*/
+    filteredItems: any[];
+    //item: any;
+
+    filterItems(event) {
+        let query = event.query.toLowerCase();
+        this.filteredItems = [];
+        for (let i = 0; i < this.items.length; i++) {
+            let item = this.items[i];
+            if (item.code.toLowerCase().indexOf(query) == 0 || item.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredItems.push(item);
+            }
+        }
+    }
+
+    handleItemDropdownClick() {
+        this.filteredItems = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredItems = this.items;
+        }, 100)
+    }
+
+    onItemSelect(item: any) {
+        console.log(event)
+    }
+    /*================== End Of Item Filter ===================*/
 }

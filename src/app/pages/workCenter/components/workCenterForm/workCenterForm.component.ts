@@ -103,4 +103,33 @@ export class WorkCenterForm {
         this.formGroup.reset();
     }
 
+
+    /*================== Cost Center Filter ===================*/
+    filteredCostCenters: any[];
+    //costCenter: any;
+
+    filterCostCenters(event) {
+        let query = event.query.toLowerCase();
+        this.filteredCostCenters = [];
+        for (let i = 0; i < this.costCenters.length; i++) {
+            let costCenter = this.costCenters[i];
+            if (costCenter.code.toLowerCase().indexOf(query) == 0 || costCenter.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCostCenters.push(costCenter);
+            }
+        }
+    }
+
+    handleCostCenterDropdownClick() {
+        this.filteredCostCenters = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredCostCenters = this.costCenters;
+        }, 100)
+    }
+
+    onCostCenterSelect(costCenter: any) {
+        console.log(event)
+    }
+    /*================== End Of Cost Center Filter ===================*/
 }
+
