@@ -51,7 +51,7 @@ export class ControlPointForm {
     getControlPointTypes(): void {
         this.controlPointTypeService.getAll().then(controlPointTypes => this.controlPointTypes = controlPointTypes);
     }
-    
+
     getWorkCenters(): void {
         this.workCenterService.getCombo().then(workCenters => this.workCenters = workCenters);
     }
@@ -100,4 +100,58 @@ export class ControlPointForm {
         this.formGroup.reset();
     }
 
+    /*================== Control Point Type Filter ===================*/
+    filteredControlPointTypes: any[];
+    //controlPointType: any;
+
+    filterControlPointTypes(event) {
+        let query = event.query.toLowerCase();
+        this.filteredControlPointTypes = [];
+        for (let i = 0; i < this.controlPointTypes.length; i++) {
+            let controlPointType = this.controlPointTypes[i];
+            if (controlPointType.code.toLowerCase().indexOf(query) == 0 || controlPointType.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredControlPointTypes.push(controlPointType);
+            }
+        }
+    }
+
+    handleControlPointTypeDropdownClick() {
+        this.filteredControlPointTypes = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredControlPointTypes = this.controlPointTypes;
+        }, 100)
+    }
+
+    onControlPointTypeSelect(controlPointType: any) {
+        console.log(event)
+    }
+    /*================== End Of Control Point Type Filter ===================*/
+    /*================== Work Center Filter ===================*/
+    filteredWorkCenters: any[];
+    //workCenter: any;
+
+    filterWorkCenters(event) {
+        let query = event.query.toLowerCase();
+        this.filteredWorkCenters = [];
+        for (let i = 0; i < this.workCenters.length; i++) {
+            let workCenter = this.workCenters[i];
+            if (workCenter.code.toLowerCase().indexOf(query) == 0 || workCenter.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredWorkCenters.push(workCenter);
+            }
+        }
+    }
+
+    handleWorkCenterDropdownClick() {
+        this.filteredWorkCenters = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredWorkCenters = this.workCenters;
+        }, 100)
+    }
+
+    onWorkCenterSelect(workCenter: any) {
+        console.log(event)
+    }
+    /*================== End Of Work Center Filter ===================*/
 }
