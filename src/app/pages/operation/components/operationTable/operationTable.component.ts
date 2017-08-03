@@ -16,6 +16,7 @@ import { Observable } from "rxjs/Rx";
 })
 
 export class OperationTable {
+  filteredShifts: any;
   rows = [];
   timeout: any;
   totalRecords: number;
@@ -105,4 +106,56 @@ export class OperationTable {
     this.rows = data.content;
     this.totalRecords = data.totalElements;
   }
+
+   /*================== Shift Filter ===================*/
+    //shift: any;
+    filterShifts(event) {
+        let query = event.query.toLowerCase();
+        this.filteredShifts = [];
+        for (let i = 0; i < this.shifts.length; i++) {
+            let shift = this.shifts[i];
+            if (shift.code.toLowerCase().indexOf(query) == 0 ) {
+                this.filteredShifts.push(shift);
+            }
+        }
+    }
+
+    handleShiftDropdownClick() {
+        this.filteredShifts = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredShifts = this.shifts;
+        }, 100)
+    }
+
+    onShiftSelect(shift: any) {
+        console.log(event)
+    }
+    /*================== End Of Shift Filter ===================*/
+    /*================== Section Filter ===================*/
+    filteredSections: any[];
+    //section: any;
+    filterSections(event) {
+        let query = event.query.toLowerCase();
+        this.filteredSections = [];
+        for (let i = 0; i < this.sections.length; i++) {
+            let section = this.sections[i];
+            if (section.code.toLowerCase().indexOf(query) == 0) {
+                this.filteredSections.push(section);
+            }
+        }
+    }
+
+    handleSectionDropdownClick() {
+        this.filteredSections = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredSections = this.sections;
+        }, 100)
+    }
+
+    onSectionSelect(section: any) {
+        console.log(event)
+    }
+    /*================== End Of Section Filter ===================*/
 }

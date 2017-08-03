@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule,AutoCompleteModule } from 'primeng/primeng';
 import { MaterialModule } from '@angular/material';
 
 import { ToolBreakdown } from './toolBreakdown.component';
@@ -28,6 +28,7 @@ import { routing } from './toolBreakdown.routing';
     MaterialModule,
     SharedModule,
     PanelModule,
+    AutoCompleteModule,
     routing
   ],
   declarations: [

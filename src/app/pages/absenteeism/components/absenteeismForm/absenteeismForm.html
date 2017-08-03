@@ -17,7 +17,7 @@
             <label for="labourSource">Labour Source</label>
              <br/>
             <p-autoComplete formControlName="labourSource" field="name" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSources($event)"
-              [size]="30" [minLength]="1" placeholder="Labour Source : Search" (onDropdownClick)="handleLabourSourceDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLabourSourceDropdownClick($event)"
               (onSelect)="onLabourSourceSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

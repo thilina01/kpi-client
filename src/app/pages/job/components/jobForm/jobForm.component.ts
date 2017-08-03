@@ -16,6 +16,7 @@ import { ItemService } from '../../../../services/item.service';
     templateUrl: './jobForm.html',
 })
 export class JobForm {
+    jobtypes: any[];
     types: any;
     JSON: any = JSON;
 
@@ -102,30 +103,30 @@ export class JobForm {
     public resetForm() {
         this.formGroup.reset();
     }
-     /*================== Type Filter ===================*/
-    filteredTypes: any[];
+     /*================== JobTypeFilter ===================*/
+    filteredJobTypes: any[];
     type: any;
 
-    filterTypes(event) {
+    filterJobTypes(event) {
         let query = event.query.toLowerCase();
-        this.filteredTypes = [];
-        for (let i = 0; i < this.types.length; i++) {
-            let type = this.types[i];
-            if (type.code.toLowerCase().indexOf(query) == 0 || type.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredTypes.push(type);
+        this.filteredJobTypes = [];
+        for (let i = 0; i < this.jobTypes.length; i++) {
+            let jobtype = this.jobtypes[i];
+            if (jobtype.code.toLowerCase().indexOf(query) == 0 || jobtype.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredJobTypes.push(jobtype);
             }
         }
     }
 
-    handleTypeDropdownClick() {
-        this.filteredTypes = [];
+    handleJobTypeDropdownClick() {
+        this.filteredJobTypes = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredTypes = this.types;
+            this.filteredJobTypes = this.jobtypes;
         }, 100)
     }
 
-    onTypeSelect(type: any) {
+    onSelect(jobtype:any) {
         console.log(event)
     }
     /*================== End Of Type Filter ===================*/

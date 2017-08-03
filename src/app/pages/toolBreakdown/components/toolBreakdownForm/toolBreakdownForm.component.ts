@@ -86,5 +86,34 @@ export class ToolBreakdownForm {
     public resetForm() {
         this.formGroup.reset();
     }
+     /*================== Tool Filter ===================*/
+    filteredTools: any[];
+    //tool: any;
 
+    filterTools(event) {
+        let query = event.query.toLowerCase();
+        this.filteredTools = [];
+        for (let i = 0; i < this.tools.length; i++) {
+            let tool = this.tools[i];
+            if (tool.code.toLowerCase().indexOf(query) == 0 || tool.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredTools.push(tool);
+            }
+        }
+    }
+
+    handleToolDropdownClick() {
+        this.filteredTools = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredTools = this.tools;
+        }, 100)
+    }
+
+    onToolSelect(tool: any) {
+        console.log(event)
+    }
+    /*================== End Of Tool Filter ===================*/
 }
+
+
+

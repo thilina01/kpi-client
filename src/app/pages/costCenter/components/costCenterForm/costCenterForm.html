@@ -21,7 +21,7 @@
           <label for=" section"> Section</label>
            <br/>
             <p-autoComplete formControlName="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
-              [size]="30" [minLength]="1" placeholder="Section : Search" [dropdown]="true" (onDropdownClick)="handleSectionDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleSectionDropdownClick($event)"
               (onSelect)="onSectionSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

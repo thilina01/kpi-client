@@ -92,5 +92,58 @@ export class ControlPointMachineForm {
     public resetForm() {
         this.formGroup.reset();
     }
+ /*================== Control Point Filter ===================*/
+    filteredControlPoints: any[];
+    //controlPoint: any;
 
+    filterControlPoints(event) {
+        let query = event.query.toLowerCase();
+        this.filteredControlPoints = [];
+        for (let i = 0; i < this.controlPoints.length; i++) {
+            let controlPoint = this.controlPoints[i];
+            if (controlPoint.code.toLowerCase().indexOf(query) == 0 || controlPoint.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredControlPoints.push(controlPoint);
+            }
+        }
+    }
+
+    handleControlPointDropdownClick() {
+        this.filteredControlPoints = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredControlPoints = this.controlPoints;
+        }, 100)
+    }
+
+    onControlPointSelect(controlPoint: any) {
+        console.log(event)
+    }
+    /*================== End Of Control Point Filter ===================*/
+    /*================== Machine Filter ===================*/
+    filteredMachines: any[];
+    //machine: any;
+
+    filterMachines(event) {
+        let query = event.query.toLowerCase();
+        this.filteredMachines = [];
+        for (let i = 0; i < this.machines.length; i++) {
+            let machine = this.machines[i];
+            if (machine.code.toLowerCase().indexOf(query) == 0 || machine.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredMachines.push(machine);
+            }
+        }
+    }
+
+    handleMachineDropdownClick() {
+        this.filteredMachines = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredMachines = this.machines;
+        }, 100)
+    }
+
+    onMachineSelect(machine: any) {
+        console.log(event)
+    }
+    /*================== End Of Machine Filter ===================*/
 }

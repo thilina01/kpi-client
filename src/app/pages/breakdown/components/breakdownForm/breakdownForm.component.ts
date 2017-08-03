@@ -86,7 +86,7 @@ export class BreakdownForm {
     public resetForm() {
         this.formGroup.reset();
     }    
-             /*================== MachineFilter ===================*/
+    /*================== MachineFilter ===================*/
     filteredMachines: any[];
     //machine: any;
 

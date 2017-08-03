@@ -10,13 +10,21 @@
           </div>
           <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="tool">Tool</label>
-      
-            <select id="toolSelector" class="form-control" formControlName="tool">
+             <br/>
+            <p-autoComplete formControlName="tool" field="name" [suggestions]="filteredTools" (completeMethod)="filterTools($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleToolDropdownClick($event)"
+              (onSelect)="onToolSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+           <!-- <select id="toolSelector" class="form-control" formControlName="tool">
 					        <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.code}}</option>
-				        </select>
+				        </select> -->
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.tool != null">
             <p class="hidden-xs-down">&nbsp;</p>

@@ -81,13 +81,7 @@ export class AbsenteeismForm {
 
     public resetForm() {
         this.formGroup.reset();
-    }
-
-
-
-    
-
-    
+    }    
              /*================== Labour Source Filter ===================*/
     filteredLabourSources: any[];
     //labourSource: any;

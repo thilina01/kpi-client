@@ -4,7 +4,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
-import { CalendarModule, DropdownModule, DataTableModule, SharedModule } from 'primeng/primeng';
+import { CalendarModule, DropdownModule, DataTableModule, SharedModule,AutoCompleteModule } from 'primeng/primeng';
 
 import { Chart } from './chart.component';
 import { ItemService } from '../../services/item.service';
@@ -27,6 +27,7 @@ import { routing } from './chart.routing';
     DropdownModule,
     SharedModule,
     MaterialModule,
+    AutoCompleteModule,
     routing
   ],
   declarations: [

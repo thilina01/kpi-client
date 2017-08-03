@@ -22,7 +22,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for=" costCenter"> Cost Center</label>
              <p-autoComplete formControlName="costCenter" field="name" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
-              [size]="30" [minLength]="1" placeholder="Cost Center : Search" [dropdown]="true" (onDropdownClick)="handleCostCenterDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCostCenterDropdownClick($event)"
               (onSelect)="onCostCenterSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

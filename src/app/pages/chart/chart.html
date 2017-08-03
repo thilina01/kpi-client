@@ -1,21 +1,42 @@
 <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<ba-card class="section">
-			<div class="row">
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
 				<div class="form-group">
 					<label>Duration</label>
 					<p-calendar id="startDatePicker" [(ngModel)]="startDate" showIcon="true" dateFormat="yy-mm-dd" [style]="{'padding-right': '30px'}"></p-calendar>
 					<p-calendar id="endDatePicker" [(ngModel)]="endDate" showIcon="true" dateFormat="yy-mm-dd" [style]="{'padding-right': '30px'}"></p-calendar>
-				
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6"></div>
 					<label>Section</label>
-					<select [(ngModel)]="section" class="form-control-sm">				
+					<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6"></div>
+					 <br/>
+                        <p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+                          [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)"
+                            (onSelect)="onSectionSelect($event)">
+                               <ng-template let-option pTemplate="option">
+                                  <div class="ui-helper-clearfix">
+                                     <div>{{option.code}}</div>
+                                        </div>
+                                          </ng-template>
+                                             </p-autoComplete>
+						<!--<select [(ngModel)]="section" class="form-control-sm">				
 						<option *ngFor="let section of sections" [ngValue]="section" >{{section.code}} | {{section.name}}</option>
-					</select>			
-					
+					</select>-->			
 					<label>Chart</label>
-					<select [(ngModel)]="chart" class="form-control-sm">				
+					<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-6"></div>
+					<br/>
+                        <p-autoComplete [(ngModel)]="chart" field="name" [suggestions]="filteredCharts" (completeMethod)="filterCharts($event)"
+                          [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleChartDropdownClick($event)"
+                            (onSelect)="onChartSelect($event)">
+                               <ng-template let-option pTemplate="option">
+                                  <div class="ui-helper-clearfix">
+                                     <div>{{option.name}}</div>
+                                        </div>
+                                          </ng-template>
+                                             </p-autoComplete>
+					<!--<select [(ngModel)]="chart" class="form-control-sm">				
 						<option *ngFor="let chart of charts" [ngValue]="chart" >{{chart.name}}</option>
-					</select>
+					</select>-->
 					<button type="button" class="btn btn-info" (click)="loadChart()">Load</button>
 				</div>
 			</div>

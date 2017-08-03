@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule,AutoCompleteModule } from 'primeng/primeng';
 
 import { ControlPointMachine } from './controlPointMachine.component';
 import { ControlPointMachineService } from '../../services/controlPointMachine.service';
@@ -24,6 +24,7 @@ import { routing } from './controlPointMachine.routing';
     DataTableModule,
     SharedModule,
     PanelModule,
+    AutoCompleteModule,
     routing
   ],
   declarations: [

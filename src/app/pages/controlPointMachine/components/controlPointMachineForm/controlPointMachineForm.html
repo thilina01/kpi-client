@@ -7,9 +7,19 @@
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="controlPoint">Control Point</label>
-                  <select id="controlPointSelector" class="form-control" formControlName="controlPoint">
+                  <br/>
+               <p-autoComplete formControlName="controlPoint" field="name" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleControlPointDropdownClick($event)"
+              (onSelect)="onControlPointSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+                 <!--  <select id="controlPointSelector" class="form-control" formControlName="controlPoint">
 					        <option *ngFor="let controlPoint of controlPoints" [ngValue]="controlPoint">{{controlPoint.code}}</option>
-				        </select>
+				        </select>-->
                 </div>
                 <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.controlPoint != null">
                   <p class="hidden-xs-down">&nbsp;</p>
@@ -17,9 +27,19 @@
                 </div>
                 <div class="col-md-4 col-sm-6 col-xs-12">
                   <label for="machine">Machine</label>
-                  <select id="machineSelector" class="form-control" formControlName="machine">
+                   <br/>
+               <p-autoComplete formControlName="machine" field="name" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleMachineDropdownClick($event)"
+              (onSelect)="onMachineSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+                  <!--  <select id="machineSelector" class="form-control" formControlName="machine">
 					        <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
-                </select>
+                </select>-->
                 </div>
                 <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.machine != null">
                   <p class="hidden-xs-down">&nbsp;</p>

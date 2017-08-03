@@ -49,4 +49,64 @@ export class Chart {
       alert("Request not complete");
     }
   }
+ /*================== SectionFilter ===================*/
+    filteredSections: any[];
+    //section: any;
+
+    filterSections(event) {
+        let query = event.query.toLowerCase();
+        this.filteredSections = [];
+        for (let i = 0; i < this.sections.length; i++) {
+            let section = this.sections[i];
+            if (section.code.toLowerCase().indexOf(query) == 0) {
+                this.filteredSections.push(section);
+            }
+        }
+    }
+
+    handleSectionDropdownClick() {
+        this.filteredSections = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredSections = this.sections;
+        }, 100)
+    }
+
+    onSectionSelect(section: any) {
+        console.log(event)
+    }
+    /*================== End Of SectionFilter ===================*/     
+    /*================== ChartFilter ===================*/
+    filteredCharts: any[];
+    //chart: any;
+
+    filterCharts(event) {
+        let query = event.query.toLowerCase();
+        this.filteredCharts = [];
+        for (let i = 0; i < this.charts.length; i++) {
+            let chart = this.charts[i];
+            if (chart.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCharts.push(chart);
+            }
+        }
+    }
+
+    handleChartDropdownClick() {
+        this.filteredCharts = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredCharts = this.charts;
+        }, 100)
+    }
+
+    onChartSelect(chart: any) {
+        console.log(event)
+    }
+    /*================== End Of ChartFilter ===================*/
 }
+
+
+
+
+
+

@@ -15,7 +15,7 @@
             <label for="machine">Machine</label>
                 <br/>
             <p-autoComplete formControlName="machine" field="name" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
-              [size]="30" [minLength]="1" placeholder="Machine : Search"(onDropdownClick)="handleMachineDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleMachineDropdownClick($event)"
               (onSelect)="onMachineSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

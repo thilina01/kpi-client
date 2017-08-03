@@ -43,7 +43,7 @@
             <label for="workCenter">Work Center</label>
             <br/>
             <p-autoComplete formControlName="workCenter" field="name" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
-              [size]="30" [minLength]="1" placeholder="Work Center : Search" [dropdown]="true" (onDropdownClick)="handleWorkCenterDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder=" Search"(onDropdownClick)="handleWorkCenterDropdownClick($event)"
               (onSelect)="onWorkCenterSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
