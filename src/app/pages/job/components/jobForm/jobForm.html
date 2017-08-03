@@ -23,7 +23,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="jobType">Type</label>
              <br/>
-            <p-autoComplete formControlName=" jobType" field="name" [suggestions]="filteredJobTypes" (completeMethod)="filterJobTypes($event)"
+            <p-autoComplete formControlName="jobType" field="name" [suggestions]="filteredJobTypes" (completeMethod)="filterJobTypes($event)"
               [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleJobTypeDropdownClick($event)"
               (onSelect)="onJobTypeSelect($event)">
               <ng-template let-option pTemplate="option">

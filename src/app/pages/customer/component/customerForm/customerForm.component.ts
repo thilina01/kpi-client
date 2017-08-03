@@ -140,15 +140,44 @@ export class CustomerForm {
     public resetForm() {
         this.formGroup.reset();
     }
-     /*==================Customer TypeFilter ===================*/
+    
+  
+     /*================== CurrencyFilter ===================*/
+    filteredCurrencys: any[];
+    //currency: any;
+
+    filterCurrencies(event) {
+        let query = event.query.toLowerCase();
+        this.filteredCurrencies = [];
+        for (let i = 0; i < this. currencyList.length; i++) {
+            let currency = this. currencyList[i];
+            if (currency.code.toLowerCase().indexOf(query) == 0 || currency.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCurrencys.push(currency);
+            }
+        }
+    }
+
+    handleCurrencyDropdownClick() {
+        this.filteredCurrencies = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredCurrencies = this. currencyList;
+        }, 100)
+    }
+
+    onCurrencySelect(currency: any) {
+        console.log(event)
+    }
+
+     /*================== Customer TypeFilter ===================*/
     filteredCustomerTypes: any[];
     //customerType: any;
 
     filterCustomerTypes(event) {
         let query = event.query.toLowerCase();
         this.filteredCustomerTypes = [];
-        for (let i = 0; i < this.customerTypes.length; i++) {
-            let customerType = this.customerTypes[i];
+        for (let i = 0; i < this.customerTypeList.length; i++) {
+            let customerType = this.customerTypeList[i];
             if (customerType.code.toLowerCase().indexOf(query) == 0 || customerType.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredCustomerTypes.push(customerType);
             }
@@ -159,77 +188,23 @@ export class CustomerForm {
         this.filteredCustomerTypes = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredCustomerTypes = this.customerTypes;
+            this.filteredCustomerTypes = this.customerTypeList;
         }, 100)
     }
 
     onCustomerTypeSelect(customerType: any) {
         console.log(event)
     }
-    /*================== End OfCustomer TypeFilter ===================*/
-    /*==================CurrencyFilter ===================*/
-    filteredCurrencys: any[];
-    //currency: any;
-
-    filterCurrencys(event) {
-        let query = event.query.toLowerCase();
-        this.filteredCurrencys = [];
-        for (let i = 0; i < this.currencys.length; i++) {
-            let currency = this.currencys[i];
-            if (currency.code.toLowerCase().indexOf(query) == 0 || currency.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredCurrencys.push(currency);
-            }
-        }
-    }
-
-    handleCurrencyDropdownClick() {
-        this.filteredCurrencys = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCurrencys = this.currencys;
-        }, 100)
-    }
-
-    onCurrencySelect(currency: any) {
-        console.log(event)
-    }
-    /*================== End OfCurrencyFilter ===================*/
-   /*==================IncotermFilter ===================*/
-    filteredIncoterms: any[];
-    //incoterm: any;
-
-    filterIncoterms(event) {
-        let query = event.query.toLowerCase();
-        this.filteredIncoterms = [];
-        for (let i = 0; i < this.incoterms.length; i++) {
-            let incoterm = this.incoterms[i];
-            if (incoterm.code.toLowerCase().indexOf(query) == 0 || incoterm.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredIncoterms.push(incoterm);
-            }
-        }
-    }
-
-    handleIncotermDropdownClick() {
-        this.filteredIncoterms = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredIncoterms = this.incoterms;
-        }, 100)
-    }
-
-    onIncotermSelect(incoterm: any) {
-        console.log(event)
-    }
-    /*================== End OfIncotermFilter ===================*/
-/*==================Notify Party Filter ===================*/
+    /*================== End Of Customer TypeFilter ===================*/
+   /*================== Notify PartyFilter ===================*/
     filteredNotifyPartys: any[];
     //notifyParty: any;
 
     filterNotifyPartys(event) {
         let query = event.query.toLowerCase();
         this.filteredNotifyPartys = [];
-        for (let i = 0; i < this.notifyPartys.length; i++) {
-            let notifyParty = this.notifyPartys[i];
+        for (let i = 0; i < this.notifyPartyList.length; i++) {
+            let notifyParty = this.notifyPartyList[i];
             if (notifyParty.code.toLowerCase().indexOf(query) == 0 || notifyParty.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredNotifyPartys.push(notifyParty);
             }
@@ -240,23 +215,23 @@ export class CustomerForm {
         this.filteredNotifyPartys = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredNotifyPartys = this.notifyPartys;
+            this.filteredNotifyPartys = this.notifyPartyList;
         }, 100)
     }
 
     onNotifyPartySelect(notifyParty: any) {
         console.log(event)
     }
-    /*================== End Of  Notify PartyFilter ===================*/
-    /*==================Payment Term Filter ===================*/
+    /*================== End Of Notify PartyFilter ===================*/
+    /*================== Payment TermFilter ===================*/
     filteredPaymentTerms: any[];
     //paymentTerm: any;
 
     filterPaymentTerms(event) {
         let query = event.query.toLowerCase();
         this.filteredPaymentTerms = [];
-        for (let i = 0; i < this.paymentTerms.length; i++) {
-            let paymentTerm = this.paymentTerms[i];
+        for (let i = 0; i < this. paymentTermList.length; i++) {
+            let paymentTerm = this. paymentTermList[i];
             if (paymentTerm.code.toLowerCase().indexOf(query) == 0 || paymentTerm.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredPaymentTerms.push(paymentTerm);
             }
@@ -267,21 +242,40 @@ export class CustomerForm {
         this.filteredPaymentTerms = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredPaymentTerms = this.paymentTerms;
+            this.filteredPaymentTerms = this. paymentTermList;
         }, 100)
     }
 
     onPaymentTermSelect(paymentTerm: any) {
         console.log(event)
     }
-    /*================== End Of  Payment TermFilter ===================*/
+    /*================== End Of Payment TermFilter ===================*/
+  /*================== Incoterm Filter ===================*/
+    filteredIncoterms: any[];
+    //incoterm: any;
+
+    filterIncoterms(event) {
+        let query = event.query.toLowerCase();
+        this.filteredIncoterms = [];
+        for (let i = 0; i < this. incotermList.length; i++) {
+            let incoterm = this. incotermList[i];
+            if (incoterm.code.toLowerCase().indexOf(query) == 0 || incoterm.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredIncoterms.push(incoterm);
+            }
+        }
+    }
+
+    handleIncotermDropdownClick() {
+        this.filteredIncoterms = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredIncoterms = this. incotermList;
+        }, 100)
+    }
+
+    onIncotermSelect(incoterm: any) {
+        console.log(event)
+    }
+    /*================== End Of Incoterm Filter ===================*/
 }
-   
-
-
-
-
-   
-
-
 

@@ -57,9 +57,9 @@
 
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="customerType">Customer Type</label>
-           <br/>
+             <br/>
             <p-autoComplete formControlName="customerType" field="name" [suggestions]="filteredCustomerTypes" (completeMethod)="filterCustomerTypes($event)"
-              [size]="30" [minLength]="1" placeholder=" Search"(onDropdownClick)="handleCustomerTypeDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerTypeDropdownClick($event)"
               (onSelect)="onCustomerTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -67,7 +67,7 @@
                 </div>
               </ng-template>
             </p-autoComplete>
-            <!-- <select id="customerTypeSelector" class="form-control" formControlName="customerType">
+             <!-- <select id="customerTypeSelector" class="form-control" formControlName="customerType">
               <option *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.code}}</option>
             </select>-->
           </div>
@@ -78,8 +78,8 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="currency">Currency</label>
             <br/>
-            <p-autoComplete formControlName="currency" field="name" [suggestions]="filteredCurrencys" (completeMethod)="filterCurrencys($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleCurrencyDropdownClick($event)"
+            <p-autoComplete formControlName="currency" field="name" [suggestions]="filteredCurrencies" (completeMethod)="filterCurrencies($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCurrencyDropdownClick($event)"
               (onSelect)="onCurrencySelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -87,7 +87,7 @@
                 </div>
               </ng-template>
             </p-autoComplete>
-             <!--<select id="currencySelector" class="form-control" formControlName="currency">
+            <!--  <select id="currencySelector" class="form-control" formControlName="currency">
               <option *ngFor="let currency of currencyList" [ngValue]="currency">{{currency.code}}</option>
             </select>-->
           </div>
@@ -99,7 +99,7 @@
             <label for="incoterm">Incoterm</label>
              <br/>
             <p-autoComplete formControlName="incoterm" field="name" [suggestions]="filteredIncoterms" (completeMethod)="filterIncoterms($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleIncotermDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleIncotermDropdownClick($event)"
               (onSelect)="onIncotermSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -118,9 +118,9 @@
 
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="notifyParty">Notify Party</label>
-            <br/>
+              <br/>
             <p-autoComplete formControlName="notifyParty" field="name" [suggestions]="filteredNotifyPartys" (completeMethod)="filterNotifyPartys($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleNotifyPartyDropdownClick($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleNotifyPartyDropdownClick($event)"
               (onSelect)="onNotifyPartySelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -139,9 +139,9 @@
 
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="paymentTerm">Payment Term</label>
-          <br/>
-            <p-autoComplete formControlName="paymentTerm" field="name" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handlePaymentTermDropdownClick($event)"
+            <br/>
+            <p-autoComplete formControlName="PaymentTerm" field="name" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
+              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handlePaymentTermDropdownClick($event)"
               (onSelect)="onPaymentTermSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -149,8 +149,7 @@
                 </div>
               </ng-template>
             </p-autoComplete>
-
-           <!-- <select id="paymentTermSelector" class="form-control" formControlName="paymentTerm">
+            <!--<select id="paymentTermSelector" class="form-control" formControlName="paymentTerm">
               <option *ngFor="let paymentTerm of paymentTermList" [ngValue]="paymentTerm">{{paymentTerm.code}}</option>
             </select>-->
           </div>
