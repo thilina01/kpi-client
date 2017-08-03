@@ -43,9 +43,9 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="itemType">Type</label>
             <br/>
-            <p-autoComplete formControlName="type" field="name" [suggestions]="filteredTypes" (completeMethod)="filterTypes($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleTypeDropdownClick($event)"
-              (onSelect)="onTypeSelect($event)">
+            <p-autoComplete formControlName="itemType" field="name" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
+              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleItemTypeDropdownClick($event)"
+              (onSelect)="onItemTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>

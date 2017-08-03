@@ -16,14 +16,14 @@ import { PaintService } from '../../../../services/paint.service';
     templateUrl: './itemForm.html',
 })
 export class ItemForm {
-    types: any;
+    // itemTypes: any;
     JSON: any = JSON;
     checked: boolean = false;
     public formGroup: FormGroup;
     item: any = {};
     subscription: Subscription;
 
-    itemTypes: any;
+    itemTypeList: any;
     paints: any;
 
     itemDate: Date;
@@ -56,7 +56,7 @@ export class ItemForm {
     }
 
     getItemTypes(): void {
-        this.itemTypeService.getCombo().then(itemTypes => this.itemTypes = itemTypes);
+        this.itemTypeService.getCombo().then(itemTypeList => this.itemTypeList = itemTypeList);
     }
 
     getPaints(): void {
@@ -111,33 +111,33 @@ export class ItemForm {
         this.formGroup.reset();
     }
     
- /*================== Type Filter ===================*/
-    filteredTypes: any[];
-    type: any;
+ /*================== Item Type Filter ===================*/
+    filteredItemTypes: any[];
+    // itemType: any;
 
-    filterTypes(event) {
+    filterItemTypes(event) {
         let query = event.query.toLowerCase();
-        this.filteredTypes = [];
-        for (let i = 0; i < this.types.length; i++) {
-            let type = this.types[i];
-            if (type.code.toLowerCase().indexOf(query) == 0 || type.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredTypes.push(type);
+        this.filteredItemTypes = [];
+        for (let i = 0; i < this.itemTypeList.length; i++) {
+            let itemType = this.itemTypeList[i];
+            if (itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredItemTypes.push(itemType);
             }
         }
     }
 
-    handleTypeDropdownClick() {
-        this.filteredTypes = [];
+    handleItemTypeDropdownClick() {
+        this.filteredItemTypes = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredTypes = this.types;
+            this.filteredItemTypes = this.itemTypeList;
         }, 100)
     }
 
-    onTypeSelect(type: any) {
+    onItemTypeSelect(type: any) {
         console.log(event)
     }
-    /*================== End Of Type Filter ===================*/
+    /*================== End Of Item Type Filter ===================*/
     /*================== Paint Filter ===================*/
     filteredPaints: any[];
     //paint: any;
