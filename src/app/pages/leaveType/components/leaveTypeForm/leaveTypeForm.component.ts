@@ -61,8 +61,6 @@ export class LeaveTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.leaveTypeTime = new Date(data.leaveTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.leaveType = data;
         }
         this.formGroup.patchValue(this.leaveType, { onlySelf: true });

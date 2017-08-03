@@ -76,8 +76,6 @@ export class ControlPointForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.controlPointTime = new Date(data.controlPointTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.controlPoint = data;
         }
         this.formGroup.patchValue(this.controlPoint, { onlySelf: true });

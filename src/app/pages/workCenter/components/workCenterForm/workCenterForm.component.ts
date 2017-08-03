@@ -79,8 +79,6 @@ export class WorkCenterForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.workCenterTime = new Date(data.workCenterTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.workCenter = data;
         }
         this.formGroup.patchValue(this.workCenter, { onlySelf: true });

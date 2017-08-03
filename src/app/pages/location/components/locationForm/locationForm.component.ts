@@ -51,8 +51,6 @@ export class LocationForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.locationTime = new Date(data.locationTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.location = data;
         }
         this.formGroup.patchValue(this.location, { onlySelf: true });

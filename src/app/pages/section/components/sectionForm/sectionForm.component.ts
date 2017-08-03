@@ -77,8 +77,6 @@ export class SectionForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.sectionTime = new Date(data.sectionTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.section = data;
         }
         this.formGroup.patchValue(this.section, { onlySelf: true });

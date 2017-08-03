@@ -70,8 +70,6 @@ export class CostCenterForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.costCenterTime = new Date(data.costCenterTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.costCenter = data;
         }
         this.formGroup.patchValue(this.costCenter, { onlySelf: true });

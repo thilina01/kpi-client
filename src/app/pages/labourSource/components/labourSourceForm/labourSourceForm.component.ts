@@ -51,8 +51,6 @@ export class LabourSourceForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.labourSourceTime = new Date(data.labourSourceTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.labourSource = data;
         }
         this.formGroup.patchValue(this.labourSource, { onlySelf: true });

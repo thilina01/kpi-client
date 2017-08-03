@@ -61,8 +61,6 @@ export class OperationTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.operationTypeTime = new Date(data.operationTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.operationType = data;
         }
         this.formGroup.patchValue(this.operationType, { onlySelf: true });

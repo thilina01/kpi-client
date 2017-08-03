@@ -61,8 +61,6 @@ export class ShiftTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.shiftTypeTime = new Date(data.shiftTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.shiftType = data;
         }
         this.formGroup.patchValue(this.shiftType, { onlySelf: true });

@@ -61,8 +61,6 @@ export class PaymentTermForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.paymentTermTime = new Date(data.paymentTermTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.paymentTerm = data;
         }
         this.formGroup.patchValue(this.paymentTerm, { onlySelf: true });
