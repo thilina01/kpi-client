@@ -78,6 +78,7 @@ export class Pages {
     { routerLink: "/pages/department/table", name: "Department", menuType: this.menuType },
     { routerLink: "/pages/energyConsumption/table", name: "Energy Consumption", menuType: this.menuType },
     { routerLink: "/pages/electricityCostPerKg/table", name: "Electricity Cost Per Kg", menuType: this.menuType },
+    { routerLink: "/pages/employee/table", name: "Employee", menuType: this.menuType },
     { routerLink: "/pages/home", name: "Home", menuType: this.menuType },
     { routerLink: "/pages/incoterm/table", name: "Incoterm", menuType: this.menuType },
     { routerLink: "/pages/item/table", name: "Item", menuType: this.menuType },
@@ -111,6 +112,7 @@ export class Pages {
     { routerLink: "/pages/section/table", name: "Section", menuType: this.menuType },
     { routerLink: "/pages/shift/table", name: "Shift", menuType: this.menuType },
     { routerLink: "/pages/shiftType/table", name: "Shift Type", menuType: this.menuType },
+    { routerLink: "/pages/team/table", name: "Team", menuType: this.menuType },
     { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },
     { routerLink: "/pages/toolBreakdown/table", name: "Tool Breakdown", menuType: this.menuType },
     { routerLink: "/pages/workCenter/table", name: "Work Center", menuType: this.menuType }
