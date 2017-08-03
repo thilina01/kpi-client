@@ -66,8 +66,6 @@ export class UserForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.userTime = new Date(data.userTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.user = data;
         }
         this.formGroup.patchValue(this.user, { onlySelf: true });

@@ -79,8 +79,6 @@ export class JobForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.jobTime = new Date(data.jobTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.job = data;
         }
         this.formGroup.patchValue(this.job, { onlySelf: true });

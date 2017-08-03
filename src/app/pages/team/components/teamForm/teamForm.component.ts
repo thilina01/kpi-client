@@ -61,8 +61,6 @@ export class TeamForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.teamTime = new Date(data.teamTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.team = data;
         }
         this.formGroup.patchValue(this.team, { onlySelf: true });

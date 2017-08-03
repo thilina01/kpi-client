@@ -70,8 +70,6 @@ export class ControlPointMachineForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.controlPointMachineTime = new Date(data.controlPointMachineTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.controlPointMachine = data;
         }
         this.formGroup.patchValue(this.controlPointMachine, { onlySelf: true });

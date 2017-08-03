@@ -61,8 +61,6 @@ export class MachineForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.machineTime = new Date(data.machineTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.machine = data;
         }
         this.formGroup.patchValue(this.machine, { onlySelf: true });

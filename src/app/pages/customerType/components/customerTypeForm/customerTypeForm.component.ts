@@ -61,8 +61,6 @@ export class CustomerTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.customerTypeTime = new Date(data.customerTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.customerType = data;
         }
         this.formGroup.patchValue(this.customerType, { onlySelf: true });

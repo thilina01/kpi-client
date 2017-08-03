@@ -51,8 +51,6 @@ export class CountryForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.countryTime = new Date(data.countryTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.country = data;
         }
         this.formGroup.patchValue(this.country, { onlySelf: true });

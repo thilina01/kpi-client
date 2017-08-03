@@ -61,8 +61,6 @@ export class ItemTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.itemTypeTime = new Date(data.itemTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.itemType = data;
         }
         this.formGroup.patchValue(this.itemType, { onlySelf: true });

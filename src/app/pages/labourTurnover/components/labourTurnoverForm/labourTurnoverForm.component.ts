@@ -60,8 +60,6 @@ export class LabourTurnoverForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.labourTurnoverTime = new Date(data.labourTurnoverTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.labourTurnover = data;
             this.labourTurnover.effectiveMonth = new Date(data.effectiveMonth);
         }

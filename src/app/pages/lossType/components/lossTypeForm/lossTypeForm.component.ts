@@ -61,8 +61,6 @@ export class LossTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.lossTypeTime = new Date(data.lossTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.lossType = data;
         }
         this.formGroup.patchValue(this.lossType, { onlySelf: true });

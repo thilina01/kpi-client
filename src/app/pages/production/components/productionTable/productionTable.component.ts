@@ -83,4 +83,7 @@ export class ProductionTable {
             console.log('paged!', event);
         }, 100);
     }
+    navigateToForm(id: any): void {
+    this.router.navigate(['/pages/plan']);
+  }
 }

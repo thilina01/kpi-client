@@ -61,8 +61,6 @@ export class NotifyPartyForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.notifyPartyTime = new Date(data.notifyPartyTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.notifyParty = data;
         }
         this.formGroup.patchValue(this.notifyParty, { onlySelf: true });

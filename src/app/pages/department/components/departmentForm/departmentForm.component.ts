@@ -61,8 +61,6 @@ export class DepartmentForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.departmentTime = new Date(data.departmentTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.department = data;
         }
         this.formGroup.patchValue(this.department, { onlySelf: true });

@@ -61,8 +61,6 @@ export class PaintForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.paintTime = new Date(data.paintTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.paint = data;
         }
         this.formGroup.patchValue(this.paint, { onlySelf: true });

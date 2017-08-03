@@ -61,8 +61,6 @@ export class IncotermForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.incotermTime = new Date(data.incotermTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.incoterm = data;
         }
         this.formGroup.patchValue(this.incoterm, { onlySelf: true });

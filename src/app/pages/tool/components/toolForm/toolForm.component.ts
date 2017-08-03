@@ -61,8 +61,6 @@ export class ToolForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.toolTime = new Date(data.toolTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.tool = data;
         }
         this.formGroup.patchValue(this.tool, { onlySelf: true });

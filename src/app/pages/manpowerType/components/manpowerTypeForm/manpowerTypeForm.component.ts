@@ -61,8 +61,6 @@ export class ManpowerTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.manpowerTypeTime = new Date(data.manpowerTypeTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.manpowerType = data;
         }
         this.formGroup.patchValue(this.manpowerType, { onlySelf: true });

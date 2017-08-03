@@ -63,8 +63,6 @@ export class ToolBreakdownForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.toolBreakdownTime = new Date(data.toolBreakdownTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.toolBreakdown = data;
         }
         this.formGroup.patchValue(this.toolBreakdown, { onlySelf: true });

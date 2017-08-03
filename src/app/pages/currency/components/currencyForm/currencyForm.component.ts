@@ -61,8 +61,6 @@ export class CurrencyForm {
 
     loadForm(data: any) {
         if (data != null) {
-            data.currencyTime = new Date(data.currencyTime);
-            data.recoveryTime = new Date(data.recoveryTime);
             this.currency = data;
         }
         this.formGroup.patchValue(this.currency, { onlySelf: true });
