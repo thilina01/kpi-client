@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule,PanelModule,CheckboxModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule,PanelModule,CheckboxModule,AutoCompleteModule } from 'primeng/primeng';
 
 import { Permission } from './permission.component';
 import { PermissionTable } from './components/permissionTable/permissionTable.component';
@@ -14,6 +14,8 @@ import { UserService } from '../../services/user.service';
 import { UserMenuService } from '../../services/userMenu.service';
 
 import { routing } from './permission.routing';
+import { StatusService } from "../../services/status.service";
+import { TeamService } from "../../services/team.service";
 
 @NgModule({
   imports: [
@@ -25,6 +27,7 @@ import { routing } from './permission.routing';
     SharedModule,
     PanelModule,
     CheckboxModule,
+    AutoCompleteModule,
     routing
   ],
   declarations: [
@@ -35,7 +38,9 @@ import { routing } from './permission.routing';
   providers: [
     MenuService,
     UserService,
-    UserMenuService
+    UserMenuService,
+    StatusService,
+    TeamService
   ]
 })
 export class PermissionModule { }

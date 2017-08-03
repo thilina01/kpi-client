@@ -8,6 +8,8 @@ import { MenuService } from '../../../../services/menu.service';
 import { UserService } from '../../../../services/user.service';
 import { UserMenuService } from '../../../../services/userMenu.service';
 import { SharedService } from '../../../../services/shared.service';
+import { StatusService } from "../../../../services/status.service";
+import { TeamService } from "../../../../services/team.service";
 
 @Component({
     selector: 'permission-form',
@@ -17,16 +19,23 @@ import { SharedService } from '../../../../services/shared.service';
 })
 export class PermissionForm {
     users: any[] = [];
-    user = { id: 0, email: "" };
+    statusList: any[] = [];
+    teamList: any;
+    user: any;
 
     menusTemp = [];
     menus = [];
-    constructor(sharedService: SharedService,
+    constructor(
+        private sharedService: SharedService,
         private menuService: MenuService,
         private userService: UserService,
+        private teamService: TeamService,
+        private statusService: StatusService,
         private userMenuService: UserMenuService) {
         this.loadMenus();
         this.loadUsers();
+        this.loadStatusList();
+        this.loadTeamList();
     }
 
     loadMenus() {
@@ -60,6 +69,17 @@ export class PermissionForm {
         });
     }
 
+    loadStatusList() {
+        this.statusService.getAll().then((data: any) => {
+            this.statusList = data;
+        });
+    }
+
+    loadTeamList() {
+        this.teamService.getAll().then((data: any) => {
+            this.teamList = data;
+        });
+    }
     onUserChanged() {
         this.loadUserMenus();
     }
@@ -69,4 +89,111 @@ export class PermissionForm {
         this.userMenuService.toggle(this.user.id, menuId);
     }
 
+    /*================== User Filter ===================*/
+    filteredUsers: any[];
+    //user: any;
+
+    filterUsers(event) {
+        let query = event.query.toLowerCase();
+        this.filteredUsers = [];
+        for (let i = 0; i < this.users.length; i++) {
+            let user = this.users[i];
+            if (user.email.toLowerCase().indexOf(query) == 0) {
+                this.filteredUsers.push(user);
+            }
+        }
+    }
+
+    handleUserDropdownClick() {
+        this.filteredUsers = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredUsers = this.users;
+        }, 100)
+    }
+
+    onUserSelect(user: any) {
+        this.loadUserMenus();
+        this.status = this.user.status;
+        this.team = this.user.team;
+        console.log(event)
+    }
+    /*================== End Of User Filter ===================*/
+
+
+    /*================== Status Filter ===================*/
+    filteredStatusList: any[];
+    status: any;
+
+    filterStatus(event) {
+        let query = event.query.toLowerCase();
+        this.filteredStatusList = [];
+        for (let i = 0; i < this.statusList.length; i++) {
+            let status = this.statusList[i];
+            if (status.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredStatusList.push(status);
+            }
+        }
+    }
+
+    handleStatusDropdownClick() {
+        this.filteredStatusList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredStatusList = this.statusList;
+        }, 100)
+    }
+
+    onStatusSelect(status: any) {
+        if (this.user != null && this.user != undefined) {
+            this.user.status = this.status;
+            this.userService.save(this.user).then(
+                data => {
+                    this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Status Changed to ' + this.status.name });
+                    this.user = null;
+                    this.status = null;
+                }
+            );
+        }
+        console.log(event)
+    }
+    /*================== End Of Status Filter ===================*/
+    
+    /*================== Team Filter ===================*/
+    filteredTeamList: any[];
+    team: any;
+
+    filterTeam(event) {
+        let query = event.query.toLowerCase();
+        this.filteredTeamList = [];
+        for (let i = 0; i < this.teamList.length; i++) {
+            let team = this.teamList[i];
+            if (team.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredTeamList.push(team);
+            }
+        }
+    }
+
+    handleTeamDropdownClick() {
+        this.filteredTeamList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredTeamList = this.teamList;
+        }, 100)
+    }
+
+    onTeamSelect(team: any) {
+        if (this.user != null && this.user != undefined) {
+            this.user.team = this.team;
+            this.userService.save(this.user).then(
+                data => {
+                    this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Team Changed to ' + this.team.name });
+                    this.user = null;
+                    this.team = null;
+                }
+            );
+        }
+        console.log(event)
+    }
+    /*================== End Of Team Filter ===================*/
 }
