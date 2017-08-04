@@ -1,65 +1,67 @@
 <p-panel header="Control Point Form">
-
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="code">Code</label>
-            <input type="text" class="form-control" formControlName="code">
+         <div class=" col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="text" pInputText formControlName="code">
+              </div>
+              </div>
+               <div class=" col-md-12 col-sm-12 col-xs-12">
+                <div class="ui-inputgroup">
+               <label for="name">Name</label><br/>
+              <input type="text" pInputText formControlName="name">
+            </div>
           </div>
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="name">
-          </div>
-
-          <div class="col-md-4 hidden-sm-down">
-
-          </div>
-          <div class="col-md-6 col-sm-12 col-xs-12">
-            <label for="controlPointType">Type</label>
-            <br/>
-            <p-autoComplete formControlName="controlPointType" field="name" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleControlPointTypeDropdownClick($event)"
-              (onSelect)="onControlPointTypeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
-            <!-- <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
-					        <option *ngFor="let controlPointType of controlPointTypes" [ngValue]="controlPointType">{{controlPointType.code}}</option>
-				        </select> -->
+           <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="controlPointType">Type</label><br/>
+              <p-autoComplete formControlName="controlPointType" field="name" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointTypeDropdownClick($event)"
+                (onSelect)="onControlPointTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              &nbsp; <label>{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
+            </div>
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.controlPointType != null">
-            <p class="hidden-sm-down">&nbsp;</p>
-            <label>{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
+         <p class="hidden-sm-down">&nbsp;</p>
           </div>
-
-          <div class="col-md-6 col-sm-12 col-xs-12">
-            <label for="workCenter">Work Center</label>
-            <br/>
-            <p-autoComplete formControlName="workCenter" field="name" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
-              [size]="30" [minLength]="1" placeholder=" Search"(onDropdownClick)="handleWorkCenterDropdownClick($event)"
-              (onSelect)="onWorkCenterSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
-            <!-- <select id="workCenterSelector" class="form-control" formControlName="workCenter">
-					        <option *ngFor="let workCenter of workCenters" [ngValue]="workCenter">{{workCenter.code}}</option>
-				        </select> -->
+            <!-- <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
+					  <option *ngFor="let controlPointType of controlPointTypes" [ngValue]="controlPointType">{{controlPointType.code}}</option>
+				   </select> -->
+         <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="workCenter">Section</label><br/>
+              <p-autoComplete formControlName="workCenter" field="name" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleWorkCenterDropdownClick($event)"
+                (onSelect)="onWorkCenterSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              &nbsp; <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
+            </div>
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.workCenter != null">
             <p class="hidden-sm-down">&nbsp;</p>
-            <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
           </div>
-
+            <!-- <select id="workCenterSelector" class="form-control" formControlName="workCenter">
+					  <option *ngFor="let workCenter of workCenters" [ngValue]="workCenter">{{workCenter.code}}</option>
+				    </select> -->
+          <!-- </div> -->
+          <!-- <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.workCenter != null"> -->
+            <!-- <p class="hidden-sm-down">&nbsp;</p> -->
+            <!-- <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label> -->
+          <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>

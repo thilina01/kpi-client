@@ -5,20 +5,22 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="code">Code</label>
-            <input type="text" class="form-control" formControlName="code">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="text" pInputText formControlName="code">
+            </div>
           </div>
         </div>
         <br/>
-
         <div class="row">
           <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="name">Description</label>
-            <input type="text" class="form-control" formControlName="description">
+            <div class="ui-inputgroup">
+              <label for="description">Description</label><br/>
+              <input type="text" pInputText formControlName="description">
+            </div>
           </div>
         </div>
         <br/>
-
         <div class="row">
           <div class="col-md-6 col-sm-10 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>

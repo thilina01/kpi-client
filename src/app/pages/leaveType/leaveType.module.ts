@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule,PanelModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { LeaveType } from './leaveType.component';
 import { LeaveTypeService } from '../../services/leaveType.service';
@@ -22,6 +22,7 @@ import { routing } from './leaveType.routing';
     DataTableModule,
     SharedModule,
     PanelModule,
+    InputTextModule,
     routing
   ],
   declarations: [
