@@ -16,8 +16,6 @@ import { ItemService } from '../../../../services/item.service';
     templateUrl: './jobForm.html',
 })
 export class JobForm {
-    jobtypes: any[];
-    types: any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -101,17 +99,17 @@ export class JobForm {
     public resetForm() {
         this.formGroup.reset();
     }
-     /*================== JobTypeFilter ===================*/
+     /*================== Job Type Filter ===================*/
     filteredJobTypes: any[];
-    type: any;
+    //jobType: any;
 
     filterJobTypes(event) {
         let query = event.query.toLowerCase();
         this.filteredJobTypes = [];
         for (let i = 0; i < this.jobTypes.length; i++) {
-            let jobtype = this.jobtypes[i];
-            if (jobtype.code.toLowerCase().indexOf(query) == 0 || jobtype.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredJobTypes.push(jobtype);
+            let jobType = this.jobTypes[i];
+            if (jobType.code.toLowerCase().indexOf(query) == 0 || jobType.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredJobTypes.push(jobType);
             }
         }
     }
@@ -120,14 +118,14 @@ export class JobForm {
         this.filteredJobTypes = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredJobTypes = this.jobtypes;
+            this.filteredJobTypes = this.jobTypes;
         }, 100)
     }
 
-    onSelect(jobtype:any) {
+    onSelect(jobType:any) {
         console.log(event)
     }
-    /*================== End Of Type Filter ===================*/
+    /*================== End Of Job Type Filter ===================*/
   /*================== Item Filter ===================*/
     filteredItems: any[];
     //item: any;

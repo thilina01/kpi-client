@@ -84,7 +84,8 @@ export class ToolBreakdownForm {
     public resetForm() {
         this.formGroup.reset();
     }
-     /*================== Tool Filter ===================*/
+     
+ /*================== Tool Filter ===================*/
     filteredTools: any[];
     //tool: any;
 
@@ -112,6 +113,4 @@ export class ToolBreakdownForm {
     }
     /*================== End Of Tool Filter ===================*/
 }
-
-
 
