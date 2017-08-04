@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule,PanelModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { JobType } from './jobType.component';
 import { JobTypeService } from '../../services/jobType.service';
@@ -22,6 +22,7 @@ import { routing } from './jobType.routing';
     DataTableModule,
     SharedModule,
     PanelModule,
+    InputTextModule,
     routing
   ],
   declarations: [

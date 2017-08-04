@@ -3,14 +3,12 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="effectiveMonth">Effective Month</label><br/>
               <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
-
           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="labourSource">Labour Source</label><br/>
@@ -26,18 +24,15 @@
               &nbsp; <label>{{formGroup.value.labourSource.code}} | {{formGroup.value.labourSource.name}}</label>
             </div>
           </div>
-
           <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.labourSource != null">
             <p class="hidden-xs-down">&nbsp;</p>
           </div>
-
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="absenteeism">Absenteeism</label><br/>
               <input type="number" pInputText formControlName="absenteeism">
             </div>
           </div>
-
           <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="target">Target</label><br/>
@@ -45,7 +40,6 @@
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
@@ -55,7 +49,6 @@
             </div>
           </div>
         </div>
-
       </form>
     </div>
   </div>

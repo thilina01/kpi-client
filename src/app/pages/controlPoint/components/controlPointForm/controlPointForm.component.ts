@@ -21,8 +21,8 @@ export class ControlPointForm {
     public formGroup: FormGroup;
     controlPoint: any = {};
     subscription: Subscription;
-
-    controlPointTypes: any;
+ paymentTermList = [];
+    controlPointType: any;
     workCenters: any;
 
     controlPointDate: Date;
@@ -138,7 +138,6 @@ export class ControlPointForm {
             }
         }
     }
-
     handleWorkCenterDropdownClick() {
         this.filteredWorkCenters = [];
         //mimic remote call

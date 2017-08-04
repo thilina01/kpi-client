@@ -1,25 +1,28 @@
 <p-panel header="Work Center Form">
 
-          <div class="row">
-          <div class="col-sm-12">
-         <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
-          <div class="row">
-
+         <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="code">Code</label>
-            <input type="text" class="form-control" formControlName="code">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="text" pInputText formControlName="code">
+            </div>
           </div>
-           <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
-          </div>
-         
+        </div>
+        <br/>
+        <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" formControlName="name">
+            <div class="ui-inputgroup">
+              <label for="name">Name</label><br/>
+              <input type="text" pInputText formControlName="name">
+            </div>
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
-          </div>
-             
-          <div class="col-md-4 col-sm-6 col-xs-12">
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <label for=" costCenter"> Cost Center</label>
              <p-autoComplete formControlName="costCenter" field="name" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
               [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCostCenterDropdownClick($event)"
@@ -34,14 +37,16 @@
 					        <option *ngFor="let  costCenter of  costCenters" [ngValue]=" costCenter">{{ costCenter.code}}</option>
 				        </select>  -->
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value. costCenter != null">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value. costCenter != null">
           <p class="hidden-xs-down">&nbsp;</p>
           <label>{{formGroup.value. costCenter.code}} | {{formGroup.value. costCenter.name}}</label>
           </div>
-        
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              &nbsp;<br/>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
           </div>
         </div>
       </form>

@@ -143,7 +143,7 @@ export class CustomerForm {
     
   
      /*================== CurrencyFilter ===================*/
-    filteredCurrencys: any[];
+    filteredCurrencies: any[];
     //currency: any;
 
     filterCurrencies(event) {
@@ -152,7 +152,7 @@ export class CustomerForm {
         for (let i = 0; i < this. currencyList.length; i++) {
             let currency = this. currencyList[i];
             if (currency.code.toLowerCase().indexOf(query) == 0 || currency.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredCurrencys.push(currency);
+                this.filteredCurrencies.push(currency);
             }
         }
     }
@@ -169,7 +169,8 @@ export class CustomerForm {
         console.log(event)
     }
 
-     /*================== Customer TypeFilter ===================*/
+    
+     /*================== Customer Type Filter ===================*/
     filteredCustomerTypes: any[];
     //customerType: any;
 
@@ -195,7 +196,7 @@ export class CustomerForm {
     onCustomerTypeSelect(customerType: any) {
         console.log(event)
     }
-    /*================== End Of Customer TypeFilter ===================*/
+    /*================== End Of Customer Type Filter ===================*/
    /*================== Notify PartyFilter ===================*/
     filteredNotifyPartys: any[];
     //notifyParty: any;

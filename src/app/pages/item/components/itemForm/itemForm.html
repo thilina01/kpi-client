@@ -5,32 +5,44 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="code">Code</label>
-            <input type="text" class="form-control" formControlName="code">
-            </div>       
-           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" formControlName="description">
-           </div>
-           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="size">Size</label>
-            <input type="text" class="form-control" formControlName="size">
-           </div>
-           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="weight">Weight</label>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['weight'].valid && formGroup.controls['weight'].touched), 'has-success': (formGroup.controls['weight'].valid && formGroup.controls['weight'].touched)}">
-            <input type="number" class="form-control" formControlName="weight">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="number" pInputText formControlName="code">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="description">Description</label><br/>
+              <input type="text" pInputText formControlName="description">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="size">Size</label><br/>
+              <input type="number" pInputText formControlName="size">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="weight">Weight</label><br/>
+              <input type="number" pInputText formControlName="weight">
+              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['weight'].valid && formGroup.controls['weight'].touched), 'has-success': (formGroup.controls['weight'].valid && formGroup.controls['weight'].touched)}">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="weight">Volume (m<sup>3</sup>)</label><br/>
+              <input type="number" pInputText formControlName="volume">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['volume'].valid && formGroup.controls['volume'].touched), 'has-success': (formGroup.controls['volume'].valid && formGroup.controls['volume'].touched)}">
+            </div>
           </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="weight">Volume (m<sup>3</sup>)</label>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['volume'].valid && formGroup.controls['volume'].touched), 'has-success': (formGroup.controls['volume'].valid && formGroup.controls['volume'].touched)}">                                                                                                                   
-            <input type="number" class="form-control" formControlName="volume">
+             <div class="ui-inputgroup">
+              <label for="weight">Drawing Version</label><br/>
+              <input type="text" pInputText formControlName="weight">
           </div>
-        </div>      
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="weight">Drawing Version</label>
-            <input type="text" class="form-control" formControlName="drawingVersion">
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Drawing Approval</label>
@@ -38,63 +50,59 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="weight">Tool Availability</label>
-            <p-checkbox binary="true" formControlName="productionToolAvailability" label="{{formGroup.value.productionToolAvailability?'Yes':'No'}}"> </p-checkbox>
+            <p-checkbox binary="true" formControlName="productionToolAvailability" label="{{formGroup.value.productionToolAvailability?'Yes':'No'}}">
+            </p-checkbox>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <label for="itemType">Type</label>
-            <br/>
-            <p-autoComplete formControlName="itemType" field="name" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handleItemTypeDropdownClick($event)"
-              (onSelect)="onItemTypeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
-             <!--<select id="itemTypeSelector" class="form-control" formControlName="itemType">
+           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="itemType">Type</label><br/>
+              <p-autoComplete formControlName="itemType" field="name" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemTypeDropdownClick($event)"
+                (onSelect)="onItemTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              &nbsp; <label>{{formGroup.value.itemType.code}} | {{formGroup.value.itemType.name}}</label>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.itemType != null">
+            <p class="hidden-xs-down">&nbsp;</p>
+          </div>
+            <!--<select id="itemTypeSelector" class="form-control" formControlName="itemType">
 					        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code+' | '+itemType.name}}</option>
 				        </select> -->
+         <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="paint">Paint</label><br/>
+              <p-autoComplete formControlName="paint" field="name" [suggestions]="filteredPaints" (completeMethod)="filterPaints($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handlePaintDropdownClick($event)"
+                (onSelect)="onPaintSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              &nbsp; <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.name}}</label>
+            </div>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.itemType != null">
+          <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.paint != null">
             <p class="hidden-xs-down">&nbsp;</p>
-            <label>{{formGroup.value.itemType.code}} | {{formGroup.value.itemType.name}}</label>
-          </div>        
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <label for="paint">Paint</label>
-             <br/>
-            <p-autoComplete formControlName="paint" field="name" [suggestions]="filteredPaints" (completeMethod)="filterPaints($event)"
-              [size]="30" [minLength]="1" placeholder="Search"(onDropdownClick)="handlePaintDropdownClick($event)"
-              (onSelect)="onPaintSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
-             <!--<select id="paintSelector" class="form-control" formControlName="paint">
-					        <option *ngFor="let paint of paints" [ngValue]="paint">{{paint.code}}</option>
-				        </select> -->
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12" *ngIf="formGroup.value.paint != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-            <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.name}}</label>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              &nbsp;<br/>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
           </div>
         </div>
       </form>
     </div>
   </div>
 </p-panel>
-<!--
-<div class="widgets">
-  <div class="row">
-    <div class="col-sm-12">
+            
 
-    </div>
-  </div>
-</div>
--->
