@@ -41,7 +41,7 @@ export class ToolBreakdownForm {
     }
 
     getTools(): void {
-        this.toolService.getAll().then(tools => this.tools = tools);
+        this.toolService.getCombo().then(tools => this.tools = tools);
     }
 
     ngOnInit(): void {

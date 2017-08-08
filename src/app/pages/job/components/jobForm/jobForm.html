@@ -25,7 +25,7 @@
             <label for="jobType">Type</label>
              <br/>
             <p-autoComplete formControlName="jobType" field="name" [suggestions]="filteredJobTypes" (completeMethod)="filterJobTypes($event)"
-              [size]="20" [minLength]="1" placeholder="Search"(onDropdownClick)="handleJobTypeDropdownClick($event)"
+              [size]="20" [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleJobTypeDropdownClick($event)"
               (onSelect)="onJobTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

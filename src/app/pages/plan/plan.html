@@ -2,13 +2,20 @@
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<p-panel header="Planning">
 			<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form-horizontal">
-				<plan-form-top [formGroup]='formGroup'></plan-form-top>
-				<plan-form-job [formGroup]='formGroup'></plan-form-job>
-				<plan-form-hr [formGroup]='formGroup'></plan-form-hr>
+
+				<plan-form-top [(formGroup)]='formGroup'></plan-form-top>
+				<p-tabView>
+					<p-tabPanel header="Job">
+						<plan-form-job [(formGroup)]='formGroup'></plan-form-job>
+					</p-tabPanel>
+					<p-tabPanel header="HR">
+						<plan-form-hr [(formGroup)]='formGroup'></plan-form-hr>
+					</p-tabPanel>
+				</p-tabView>
 				<div class="row">
 					<div class="col-sm-3">
 						<button pButton [disabled]="!formGroup.valid" type="submit" label="Save"></button>
-						<button type="button" pButton class="ui-button-secondary"  (click)="resetForm()" label="Reset"></button>
+						<button type="button" pButton class="ui-button-secondary" (click)="resetForm()" label="Reset"></button>
 					</div>
 				</div>
 			</form>

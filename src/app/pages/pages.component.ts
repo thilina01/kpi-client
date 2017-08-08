@@ -90,7 +90,7 @@ export class Pages {
     { routerLink: "/pages/labourSource/table", name: "Labour Source", menuType: this.menuType },
     { routerLink: "/pages/leaveType/table", name: "Leave Type", menuType: this.menuType },
     { routerLink: "/pages/lossReason/table", name: "Loss Reason", menuType: this.menuType },
-    { routerLink: "/pages/lossType/table", name: "Loss Type ", menuType: this.menuType },
+    { routerLink: "/pages/lossType/table", name: "Loss Type", menuType: this.menuType },
     { routerLink: "/pages/location/table", name: "Location", menuType: this.menuType },
     { routerLink: "/pages/machine/table", name: "Machine", menuType: this.menuType },
     { routerLink: "/pages/materialCostPerKg/table", name: "Material Cost Per Kg", menuType: this.menuType },
