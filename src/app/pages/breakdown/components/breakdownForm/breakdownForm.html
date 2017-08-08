@@ -23,8 +23,10 @@
                     <div>{{option.code}} : {{option.name}}</div>
                   </div>
                 </ng-template>
-              </p-autoComplete>
-              &nbsp; <label>{{formGroup.value.machine.code}} | {{formGroup.value.machine.name}}</label>
+              </p-autoComplete>   
+              <label *ngIf="formGroup.value.machine != null && formGroup.value.machine.code != null">
+                &nbsp; {{formGroup.value.machine.code}} {{formGroup.value.machine.name != null ?" | "+ formGroup.value.machine.name:""}}
+              </label>
             </div>
           </div>
           <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.machine != null">
