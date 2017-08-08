@@ -1,62 +1,92 @@
-<div class="row" [formGroup]="formGroup">
-	<div class="col-sm-3">
-		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}">
+<div [formGroup]="formGroup">
+	<div class="row">
+		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+			<div class="ui-inputgroup">
+              <label for="productionDate">Date</label><br/>
+				<p-calendar id="productionDatePicker" formControlName="productionDate" showIcon="true" dateFormat="yy-mm-dd" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}"></p-calendar>
+			</div>
+		</div>
+		<div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
+			<div class="ui-inputgroup">
+              <label for="controlPoint">Control point</label><br/>
+				<p-autoComplete formControlName="controlPoint" field="name" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointDropdownClick($event)" (onSelect)="onControlPointSelect($event)">
+					<ng-template let-option pTemplate="option">
+						<div class="ui-helper-clearfix">
+							<div>{{option.code}} : {{option.name}}</div>
+						</div>
+					</ng-template>
+				</p-autoComplete>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+			<div class="ui-inputgroup">
+              <label for="shift">Shift</label><br/>
+				<p-autoComplete formControlName="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
+					<ng-template let-option pTemplate="option">
+						<div class="ui-helper-clearfix">
+							<div>{{option.code}} : {{option.name}}</div>
+						</div>
+					</ng-template>
+				</p-autoComplete>
+			</div>
+		</div>
+		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+			<div class="ui-inputgroup">
+              <label for="shiftType">Shift Type</label><br/>
+				<p-autoComplete formControlName="shiftType" field="name" [suggestions]="filteredShiftTypes" (completeMethod)="filterShiftTypes($event)"
+				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftTypeDropdownClick($event)" (onSelect)="onShiftTypeSelect($event)">
+					<ng-template let-option pTemplate="option">
+						<div class="ui-helper-clearfix">
+							<div>{{option.code}} : {{option.name}}</div>
+						</div>
+					</ng-template>
+				</p-autoComplete>
+			</div>
+		</div>
+		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+			<div class="ui-inputgroup">
+              <label for="plannedDuration">Duration</label><br/>
+				<input type="number" pInputText placeholder="Duration" formControlName="plannedDuration" [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}">
 			<label for="productionDate">Date</label>
 			<p-calendar id="productionDatePicker" class="form-control" formControlName="productionDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
-		</div>
-	</div>
+		</div> -->
+<!-- <div class="form-group col-sm-12" [ngClass]="{'has-error': (!formGroup.controls['controlPoint'].valid && formGroup.controls['controlPoint'].touched), 'has-success': (formGroup.controls['controlPoint'].valid && formGroup.controls['controlPoint'].touched)}">
+			
+		</div> -->
 
-	<div class="col-sm-2">
-		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shift'].valid && formGroup.controls['shift'].touched), 'has-success': (formGroup.controls['shift'].valid && formGroup.controls['shift'].touched)}">
-			<label for="shift">Shift</label>
-			<!-- 
+<!-- <p class="col-xl-5 col-lg-3 col-md-1 hidden-sm-down">&nbsp;</p> -->
+
+<!-- <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shift'].valid && formGroup.controls['shift'].touched), 'has-success': (formGroup.controls['shift'].valid && formGroup.controls['shift'].touched)}"> -->
+
+<!-- 
 			<br/>
 			<p-autoComplete inputStyleClass="form-control col-sm-12" styleClass="col-sm-12" formControlName="shift" [suggestions]="shifts" (completeMethod)="search($event)" field="name"></p-autoComplete>
-				-->
+				
 			<select formControlName="shift" class="form-control">				
 				<option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
-			</select>
+			</select>	-->
 
-		</div>
-	</div>
-
-	<div class="col-sm-2">
-		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shiftType'].valid && formGroup.controls['shiftType'].touched), 'has-success': (formGroup.controls['shiftType'].valid && formGroup.controls['shiftType'].touched)}">
-			<label for="shift">Shift type</label>
-			<!-- 
+<!-- <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['shiftType'].valid && formGroup.controls['shiftType'].touched), 'has-success': (formGroup.controls['shiftType'].valid && formGroup.controls['shiftType'].touched)}"> -->
+<!-- 
 			<br/>
 			<p-autoComplete inputStyleClass="form-control col-sm-12" styleClass="col-sm-12" formControlName="shift" [suggestions]="shifts" (completeMethod)="search($event)" field="name"></p-autoComplete>
-				-->
+			
 			<select formControlName="shiftType" class="form-control">				
 				<option *ngFor="let c of shiftTypes" [ngValue]="c">{{c.name}}</option>
-			</select>
+			</select>	-->
 
-		</div>
-	</div>
-
-	<div class="col-sm-2">
-		<div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched), 'has-success': (formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched)}">
-			<label for="plannedDuration">Duration</label> <input type="number" class="form-control " placeholder="Duration" formControlName="plannedDuration"
-			 [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
-		</div>
-	</div>
-
-	<div class="col-sm-3">
-		<div class="form-group col-sm-12" [ngClass]="{'has-error': (!formGroup.controls['controlPoint'].valid && formGroup.controls['controlPoint'].touched), 'has-success': (formGroup.controls['controlPoint'].valid && formGroup.controls['controlPoint'].touched)}">
-			<label for="controlPoint">Control point</label>
-			<!--  			
-			<br/>
-			<p-autoComplete inputStyleClass="form-control col-sm-12" styleClass="col-sm-12" formControlName="controlPoint" [suggestions]="controlPoints" (completeMethod)="searchControlPoint($event)" (onSelect)="a()" field="name">
-						
-			 <ng-template let-controlPoint pTemplate="controlPoint">		       
-		            {{controlPoint.code}} {{controlPoint.name}}		      
-		    </ng-template>
-			</p-autoComplete>
-			 -->
-			<select formControlName="controlPoint" class="form-control">
-				<option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}} {{c.name}}</option>
-			</select>
-		</div>
-	</div>
-
-</div>
+<!-- <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched), 'has-success': (formGroup.controls['plannedDuration'].valid && formGroup.controls['plannedDuration'].touched)}">
+			<label for="plannedDuration">Duration</label>
+			<input type="number" class="form-control " placeholder="Duration" formControlName="plannedDuration" [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
+		</div> -->

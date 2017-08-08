@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
 import { JobService } from '../../../../services/job.service';
 import { ProductTypeService } from '../../../../services/productType.service';
 import { OperationTypeService } from '../../../../services/operationType.service';
+import { DataTable } from "primeng/primeng";
 
 @Component({
   selector: 'plan-form-job',
@@ -16,13 +17,15 @@ import { OperationTypeService } from '../../../../services/operationType.service
   ]
 })
 export class PlanFormJob {
-
   @Input('formGroup')
   public formGroup: FormGroup;
+  @ViewChild(DataTable) dataTable: DataTable;
   public jobFormGroup: FormGroup;
+  // operations = new Array;
   jobs: Array<any>;
   productTypes: Array<any>;
   operationTypes: Array<any>;
+  totalRecords = 0;
 
   constructor(
     fb: FormBuilder,
@@ -39,10 +42,30 @@ export class PlanFormJob {
     });
   }
 
-  refresh(): void {    
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.refresh();
+    }, 500);
+  }
+
+  // ngDoCheck(): void {
+  //   this.refresh();
+  // }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   for (let propName in changes) {
+  //     let chng = changes[propName];
+  //     console.log(chng);
+  //     alert(chng + "")
+  //     // let cur  = JSON.stringify(chng.currentValue);
+  //     // let prev = JSON.stringify(chng.previousValue);
+  //     // this.changeLog.push(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+  //   }
+  // }
+  refresh(): void {
     this.getJobs();
     this.getProductTypes();
     this.getOperationTypes();
+    this.fillOperations();
   }
 
   getJobs(): void {
@@ -57,17 +80,21 @@ export class PlanFormJob {
     this.operationTypeService.getAll().then(operationTypes => this.operationTypes = operationTypes);
   }
 
-  ngOnInit(): void {
-    this.refresh();
+  fillOperations(): void {
+    // this.operations = this.formGroup.value.operationList.slice();
+    //this.totalRecords = this.operations.length;
+    this.dataTable.reset();
   }
+
 
   public removeOperation(id: number) {
     if (this.formGroup.value.operationList != null) {
       this.formGroup.value.operationList.splice(id, 1);
     }
+    this.fillOperations();
   }
 
-  public onEnter(plannedQuantity: string) {
+  public onEnter(plannedQuantity: string, dt: DataTable) {
     if (this.jobFormGroup.valid) {
       let values = this.jobFormGroup.value;
       if (this.formGroup.value.operationList == null) {
@@ -77,9 +104,13 @@ export class PlanFormJob {
       this.formGroup.value.operationList.push(values);
       this.jobFormGroup.reset();
       document.getElementById('jobSelector').focus();
-
+      console.log(this.formGroup.value.operationList);
+      this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
+      //this.dataTable.reset();
     } else {
       console.log(this.jobFormGroup.errors);
     }
+    //this.fillOperations();
+    //dt.reset();
   }
 }
