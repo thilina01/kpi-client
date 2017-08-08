@@ -70,7 +70,7 @@
 					<br/>
 					<div class='row' *ngIf="production.operationList != undefined">						
 						<p-panel header="Operations">
-							<p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
+							<p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true"
 							 expandableRows="true" (onEditComplete)="onEditComplete($event)">
 
 								<p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
@@ -153,7 +153,7 @@
 					<br/>
 					<div class='row' *ngIf="production.manpowerList != undefined">					
 						<p-panel header="Manpower">
-							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true">
+							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" resizableColumns="true" [editable]="true">
 								<p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
 								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
 								<p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>

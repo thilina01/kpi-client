@@ -50,7 +50,7 @@
 
           <div class='row' *ngIf="production.operationList != undefined">
             <ba-card title="Operations">
-              <p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
+              <p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true"
                 expandableRows="true">
 
                 <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
@@ -124,7 +124,7 @@
               <!--
               <div class="row">
                 <div class="col-sm-12">
-                  <p-dataTable #dt [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true"
+                  <p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true"
                     expandableRows="true">
                     <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
                     <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
@@ -136,7 +136,7 @@
                     <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
 
                     <ng-template let-car pTemplate="rowexpansion">
-                    <p-dataTable #dt1 [value]="production.operationList" [responsive]="true" [stacked]="stacked" resizableColumns="true">
+                    <p-dataTable #dt1 [value]="production.operationList" [responsive]="true" resizableColumns="true">
                         <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
                         <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
                         <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
@@ -153,7 +153,7 @@
 
           <div class='row' *ngIf="production.manpowerList != undefined">
             <ba-card title="Manpower">
-              <p-dataTable #dt [value]="production.manpowerList" [responsive]="true" [stacked]="stacked" resizableColumns="true" [editable]="true">
+              <p-dataTable #dt [value]="production.manpowerList" [responsive]="true" resizableColumns="true" [editable]="true">
                 <p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
                 <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
                 <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>

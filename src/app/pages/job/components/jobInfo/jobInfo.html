@@ -23,7 +23,7 @@
   <div class="row">
     <p-tabView>
       <p-tabPanel header="Summary">
-        <p-dataTable #dt1 [value]="operationSummaryList" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalOperationSummaryRecords"
+        <p-dataTable #dt1 [value]="operationSummaryList" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalOperationSummaryRecords"
           [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true"
           exportFilename="operationSummary">
           <p-column field="productType.description" header="Product Type"></p-column>
@@ -32,7 +32,7 @@
         </p-dataTable>
       </p-tabPanel>
       <p-tabPanel header="Operations">
-        <p-dataTable #dt2 [value]="rows" [rows]="20" [responsive]="true" [stacked]="stacked" [paginator]="true" [totalRecords]="totalRecords"
+        <p-dataTable #dt2 [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
           [pageLinks]="5" [lazy]="true" (onLazyLoad)="lazyOperations($event,dt2)" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single"
           sortMode="multiple" resizableColumns="true" exportFilename="operations">
           <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
