@@ -15,8 +15,7 @@
             <div class="ui-inputgroup">
               <label for="tool">Tool</label><br/>
               <p-autoComplete formControlName="tool" field="name" [suggestions]="filteredTools" (completeMethod)="filterTools($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleToolDropdownClick($event)"
-                (onSelect)="onToolSelect($event)">
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleToolDropdownClick($event)" (onSelect)="onToolSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>
@@ -24,35 +23,35 @@
                 </ng-template>
               </p-autoComplete>
               <label *ngIf="formGroup.value.tool != null && formGroup.value.tool.code != null">
-                  &nbsp; {{formGroup.value.tool.code}}{{formGroup.value.tool.name != null ?" | "+ formGroup.value.tool.name:""}}
+              &nbsp; {{formGroup.value.tool.code}}{{formGroup.value.tool.name != null ?" | "+ formGroup.value.tool.name:""}}
               </label>
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.tool != null">
-            <p class="hidden-xs-down">&nbsp;</p>
+          <p class="hidden-xs-down">&nbsp;</p>
           </div>
-           <!-- <select id="toolSelector" class="form-control" formControlName="tool">
-					        <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.code}}</option>
-				        </select> -->
+          <!-- <select id="toolSelector" class="form-control" formControlName="tool">
+					<option *ngFor="let tool of tools" [ngValue]="tool">{{tool.code}}</option>
+				  </select> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-            <label for="toolBreakdownTime">ToolBreakdown Time</label>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched), 'has-success': (formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched)}">
-              <p-calendar id="toolBreakdownTimePicker" formControlName="toolBreakdownTime" showIcon="true" dateFormat="yy-mm-dd"
-                showTime="showTime" hourFormat="24"></p-calendar>
+              <label for="toolBreakdownTime">ToolBreakdown Time</label>
+              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched), 'has-success': (formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched)}">
+                <p-calendar id="toolBreakdownTimePicker" formControlName="toolBreakdownTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                  hourFormat="24"></p-calendar>
+              </div>
             </div>
-          </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-            <label for="recoveryTime">Recovery Time</label>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
-              <p-calendar id="recoveryTimePicker"formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd"
-                showTime="showTime" hourFormat="24"></p-calendar>
+              <label for="recoveryTime">Recovery Time</label>
+              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
+                <p-calendar id="recoveryTimePicker" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                  hourFormat="24"></p-calendar>
+              </div>
             </div>
-          </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
           </div>
@@ -60,14 +59,23 @@
             <div class="ui-inputgroup">
               <label for="description">Description</label><br/>
               <input type="text" pInputText formControlName="description">
+<<<<<<< HEAD
           </div>
            <div class="col-md-12 col-sm-12 col-xs-12">
              <br/>
           </div>
+=======
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+            </div>
+>>>>>>> 886130c5a2286e9eeec57c6aa114b4a35d5791f3
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            <div class="ui-inputgroup">
+              &nbsp;<br/>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
           </div>
         </div>
       </form>

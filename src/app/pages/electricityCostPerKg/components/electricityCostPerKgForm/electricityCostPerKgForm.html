@@ -1,5 +1,5 @@
 <p-panel header="Electricity Cost Per Kg Form">
-   <div class="row">
+  <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
@@ -9,7 +9,7 @@
               <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
-         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="budget">Budget</label><br/>
               <input type="text" pInputText formControlName="budget">
@@ -20,14 +20,14 @@
               <label for="actual">Actual</label><br/>
               <input type="text" pInputText formControlName="actual">
             </div>
-           </div>   
+          </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>
-            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
           </div>
-        </div>
         </div>
       </form>
     </div>
