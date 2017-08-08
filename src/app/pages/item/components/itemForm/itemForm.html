@@ -1,5 +1,4 @@
 <p-panel header="Item Form">
-
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
@@ -74,8 +73,8 @@
             <p class="hidden-xs-down">&nbsp;</p>
           </div>
             <!--<select id="itemTypeSelector" class="form-control" formControlName="itemType">
-					        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code+' | '+itemType.name}}</option>
-				        </select> -->
+					  <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code+' | '+itemType.name}}</option>
+				    </select> -->
          <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="paint">Paint</label><br/>

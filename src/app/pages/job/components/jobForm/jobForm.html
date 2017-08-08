@@ -1,5 +1,4 @@
 <p-panel header="Job Form">
-
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
@@ -56,7 +55,7 @@
                 </div>
               </ng-template>
             </p-autoComplete>
-             <!--<select id="itemSelector" class="form-control" formControlName="item">
+            <!--<select id="itemSelector" class="form-control" formControlName="item">
 					  <option *ngFor="let item of items" [ngValue]="item">{{item.code}}</option>
 				    </select>-->
           </div>
@@ -64,7 +63,7 @@
              <p class="hidden-xs-down">&nbsp;</p>
             <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null">
             &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
-              </label>
+            </label>
           </div>   
           <div class="col-md-12 col-sm-12 col-xs-12">
              <div class="ui-inputgroup">
