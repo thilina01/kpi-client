@@ -22,27 +22,27 @@
         </div>
         <br/>
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       <div class="col-md-4 col-sm-6 col-xs-12">
             <label for=" costCenter"> Cost Center</label>
-             <p-autoComplete formControlName="costCenter" field="name" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
-              [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCostCenterDropdownClick($event)"
-              (onSelect)="onCostCenterSelect($event)">
+            <br/>
+            <p-autoComplete formControlName="costCenter" field="name" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenter($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCostCenterDropdownClick($event)" (onSelect)="onCostCenterSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
                 </div>
               </ng-template>
             </p-autoComplete>
+          </div>
+          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.costCenter != null">
+            <p class="hidden-xs-down">&nbsp;</p>
+            <label *ngIf="formGroup.value.costCenter != null && formGroup.value.costCenter.code != null">
+              &nbsp; {{formGroup.value.costCenter.code}}{{formGroup.value.costCenter.name != null ?" | "+ formGroup.value.costCenter.name:""}}
+            </label>
+          </div>
            <!--  <select id=" costCenterSelector" class="form-control" formControlName=" costCenter">
 					        <option *ngFor="let  costCenter of  costCenters" [ngValue]=" costCenter">{{ costCenter.code}}</option>
 				        </select>  -->
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value. costCenter != null">
-          <p class="hidden-xs-down">&nbsp;</p>
-          <label *ngIf="formGroup.value.costCenter != null && formGroup.value.costCenter.code != null">
-          &nbsp; {{formGroup.value.costCenter.code}}{{formGroup.value.costCenter.name != null ?" | "+ formGroup.value.costCenter.name:""}}
-          </label>
-          </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>

@@ -53,7 +53,7 @@
             <p-checkbox binary="true" formControlName="productionToolAvailability" label="{{formGroup.value.productionToolAvailability?'Yes':'No'}}">
             </p-checkbox>
           </div>
-           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+           <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="itemType">Type</label><br/>
               <p-autoComplete formControlName="itemType" field="name" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
@@ -70,13 +70,13 @@
               </label>
             </div>
           </div>
-          <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.itemType != null">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.itemType != null">
             <p class="hidden-xs-down">&nbsp;</p>
           </div>
             <!--<select id="itemTypeSelector" class="form-control" formControlName="itemType">
 					        <option *ngFor="let itemType of itemTypes" [ngValue]="itemType">{{itemType.code+' | '+itemType.name}}</option>
 				        </select> -->
-         <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+         <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="paint">Paint</label><br/>
               <p-autoComplete formControlName="paint" field="name" [suggestions]="filteredPaints" (completeMethod)="filterPaints($event)"
@@ -93,7 +93,7 @@
               </label>
             </div>
           </div>
-          <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.paint != null">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.paint != null">
             <p class="hidden-xs-down">&nbsp;</p>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

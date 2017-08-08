@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">  
-           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+           <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="location">Location</label><br/>
               <p-autoComplete formControlName="location" field="name" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
@@ -20,19 +20,19 @@
               </label>
             </div>
           </div>
-          <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.location != null">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.location != null">
             <p class="hidden-xs-down">&nbsp;</p>
           </div>
             <!--<select id="locationSelector" class="form-control" formControlName="location">
 					<option *ngFor="let location of locations" [ngValue]="location">{{location.code}}</option>
 				   </select>-->
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="effectiveMonth">Effective Month</label><br/>
               <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="kwh">KWH</label><br/>
               <input type="number" pInputText formControlName="kwh">
@@ -40,7 +40,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="kva">KWH</label><br/>
               <input type="number" pInputText formControlName="kva">
@@ -48,7 +48,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="cost">Cost</label><br/>
               <input type="number" pInputText formControlName="cost">
@@ -56,14 +56,14 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="reference">Reference</label><br/>
               <input type="text" pInputText formControlName="reference">
             </div>
           </div>
         </div>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
