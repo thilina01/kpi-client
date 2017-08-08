@@ -38,7 +38,9 @@
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.jobType != null">
              <p class="hidden-xs-down">&nbsp;</p>
-            <label>{{formGroup.value.jobType.code}} | {{formGroup.value.jobType.name}}</label>
+             <label *ngIf="formGroup.value.jobType != null && formGroup.value.jobType.code != null">
+              &nbsp; {{formGroup.value.jobType.code}}{{formGroup.value.jobType.name != null ?" | "+ formGroup.value.jobType.name:""}}
+              </label>
           </div>
         
           <div class="col-md-4 col-sm-6 col-xs-12">
@@ -59,7 +61,9 @@
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.item != null">
              <p class="hidden-xs-down">&nbsp;</p>
-            <label>{{formGroup.value.item.code}} | {{formGroup.value.item.name}}</label>
+            <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null">
+            &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
+              </label>
           </div>   
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="quantity">quantity</label>

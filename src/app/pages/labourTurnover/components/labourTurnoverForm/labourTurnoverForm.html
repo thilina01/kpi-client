@@ -23,7 +23,9 @@
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.labourSource != null">
             <p class="hidden-xs-down">&nbsp;</p>
-            <label>{{formGroup.value.labourSource.code}} | {{formGroup.value.labourSource.name}}</label>
+             <label *ngIf="formGroup.value.labourSource != null && formGroup.value.labourSource.code != null">
+                  &nbsp; {{formGroup.value.labourSource.code}}{{formGroup.value.labourSource.name != null ?" | "+ formGroup.value.labourSource.name:""}}
+              </label>
           </div>
         
           <div class="col-md-4 col-sm-6 col-xs-12">
@@ -36,18 +38,21 @@
           </div>
         
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="turnover">Turnover</label>
+            <div class="ui-inputgroup">
+              <label for="turnover">Turnover</label><br/>
+              <input type="number" pInputText formControlName="turnover"> 
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched), 'has-success': (formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched)}">
-            <input type="number" class="form-control" formControlName="turnover">
           </div>
         </div>
-       
+          </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="target">Target</label>
+            <div class="ui-inputgroup">
+              <label for="target">Target</label><br/>
+              <input type="number" pInputText formControlName="target">
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['target'].valid && formGroup.controls['target'].touched), 'has-success': (formGroup.controls['target'].valid && formGroup.controls['target'].touched)}">
-            <input type="number" class="form-control" formControlName="target">
           </div>
         </div>
+          </div>
          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
         

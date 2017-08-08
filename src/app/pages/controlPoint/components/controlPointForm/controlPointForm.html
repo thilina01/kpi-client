@@ -3,19 +3,19 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-         <div class=" col-md-12 col-sm-12 col-xs-12">
+          <div class=" col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="code">Code</label><br/>
               <input type="text" pInputText formControlName="code">
-              </div>
-              </div>
-               <div class=" col-md-12 col-sm-12 col-xs-12">
-                <div class="ui-inputgroup">
-               <label for="name">Name</label><br/>
+            </div>
+          </div>
+          <div class=" col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="name">Name</label><br/>
               <input type="text" pInputText formControlName="name">
             </div>
           </div>
-           <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="controlPointType">Type</label><br/>
               <p-autoComplete formControlName="controlPointType" field="name" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
@@ -27,16 +27,18 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              &nbsp; <label>{{formGroup.value.controlPointType.code}} | {{formGroup.value.controlPointType.name}}</label>
+              <label *ngIf="formGroup.value.controlPointType != null && formGroup.value.controlPointType.code != null">
+                  &nbsp; {{formGroup.value.controlPointType.code}}{{formGroup.value.controlPointType.name != null ?" | "+ formGroup.value.controlPointType.name:""}}
+              </label>
             </div>
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.controlPointType != null">
-         <p class="hidden-sm-down">&nbsp;</p>
+            <p class="hidden-sm-down">&nbsp;</p>
           </div>
-            <!-- <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
+          <!-- <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
 					  <option *ngFor="let controlPointType of controlPointTypes" [ngValue]="controlPointType">{{controlPointType.code}}</option>
 				   </select> -->
-         <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="workCenter">Section</label><br/>
               <p-autoComplete formControlName="workCenter" field="name" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
@@ -48,19 +50,21 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              &nbsp; <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label>
+              <label *ngIf="formGroup.value.workCenter != null && formGroup.value.workCenter.code != null">
+                  &nbsp; {{formGroup.value.workCenter.code}}{{formGroup.value.workCenter.name != null ?" | "+ formGroup.value.workCenter.name:""}}
+              </label>
             </div>
           </div>
           <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.workCenter != null">
             <p class="hidden-sm-down">&nbsp;</p>
           </div>
-            <!-- <select id="workCenterSelector" class="form-control" formControlName="workCenter">
+          <!-- <select id="workCenterSelector" class="form-control" formControlName="workCenter">
 					  <option *ngFor="let workCenter of workCenters" [ngValue]="workCenter">{{workCenter.code}}</option>
 				    </select> -->
           <!-- </div> -->
           <!-- <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.workCenter != null"> -->
-            <!-- <p class="hidden-sm-down">&nbsp;</p> -->
-            <!-- <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label> -->
+          <!-- <p class="hidden-sm-down">&nbsp;</p> -->
+          <!-- <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label> -->
           <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>

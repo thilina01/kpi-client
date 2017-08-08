@@ -15,7 +15,9 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              &nbsp; <label>{{formGroup.value.location.code}} | {{formGroup.value.location.name}}</label>
+              <label *ngIf="formGroup.value.location != null && formGroup.value.location.code != null">
+              &nbsp; {{formGroup.value.location.code}}{{formGroup.value.location.name != null ?" | "+ formGroup.value.location.name:""}}
+              </label>
             </div>
           </div>
           <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.location != null">

@@ -39,7 +39,9 @@
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value. costCenter != null">
           <p class="hidden-xs-down">&nbsp;</p>
-          <label>{{formGroup.value. costCenter.code}} | {{formGroup.value. costCenter.name}}</label>
+          <label *ngIf="formGroup.value.costCenter != null && formGroup.value.costCenter.code != null">
+          &nbsp; {{formGroup.value.costCenter.code}}{{formGroup.value.costCenter.name != null ?" | "+ formGroup.value.costCenter.name:""}}
+          </label>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">

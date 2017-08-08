@@ -65,7 +65,9 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              &nbsp; <label>{{formGroup.value.itemType.code}} | {{formGroup.value.itemType.name}}</label>
+               <label *ngIf="formGroup.value.itemType != null && formGroup.value.itemType.code != null">
+               &nbsp; {{formGroup.value.itemType.code}}{{formGroup.value.itemType.name != null ?" | "+ formGroup.value.itemType.name:""}}
+              </label>
             </div>
           </div>
           <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.itemType != null">
@@ -86,7 +88,9 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              &nbsp; <label>{{formGroup.value.paint.code}} | {{formGroup.value.paint.name}}</label>
+              <label *ngIf="formGroup.value.paint != null && formGroup.value.paint.code != null">
+                &nbsp; {{formGroup.value.paint.code}}{{formGroup.value.paint.name != null ?" | "+ formGroup.value.paint.name:""}}
+              </label>
             </div>
           </div>
           <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.paint != null">

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule,AutoCompleteModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 import { MaterialModule } from '@angular/material';
 
 import { LabourTurnover } from './labourTurnover.component';
@@ -29,6 +29,7 @@ import { routing } from './labourTurnover.routing';
     SharedModule,
     PanelModule,
     AutoCompleteModule,
+    InputTextModule,
     routing
   ],
   declarations: [
