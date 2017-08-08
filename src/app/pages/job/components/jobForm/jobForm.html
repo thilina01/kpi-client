@@ -18,7 +18,7 @@
             <div class="ui-inputgroup">
             <label for="jobDate">Job Date</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['jobDate'].valid && formGroup.controls['jobDate'].touched), 'has-success': (formGroup.controls['jobDate'].valid && formGroup.controls['jobDate'].touched)}">
-              <p-calendar id="jobDatePicker"  formControlName="jobDate" showIcon="true" dateFormat="yy-mm"></p-calendar>
+              <p-calendar id="jobDatePicker"  formControlName="jobDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
           </div>
@@ -66,7 +66,7 @@
           <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.item != null">
              <p class="hidden-xs-down">&nbsp;</p>
             <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null">
-            &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
+            &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
               </label>
           </div>   
           <div class="col-md-4 col-sm-6 col-xs-12">

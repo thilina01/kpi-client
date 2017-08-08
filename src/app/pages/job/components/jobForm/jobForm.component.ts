@@ -43,7 +43,7 @@ export class JobForm {
         this.formGroup = fb.group({
             id: '',
             jobNo: ['', Validators.required],
-            jobDate: ['', Validators.required],
+            jobDate: [this.jobDate, Validators.required],
             quantity: ['', Validators.required],
             jobType: [this.jobType, Validators.required],
             item: [this.item, Validators.required]
@@ -79,6 +79,7 @@ export class JobForm {
     loadForm(data: any) {
         if (data != null) {
             this.job = data;
+            this.job.item.name = this.job.item.description;
         }
         this.formGroup.patchValue(this.job, { onlySelf: true });
         this.jobType = this.job.jobType;
@@ -122,7 +123,7 @@ export class JobForm {
         }, 100)
     }
 
-    onSelect(jobType:any) {
+    onJobTypeSelect(jobType:any) {
         console.log(event)
     }
     /*================== End Of Job Type Filter ===================*/
