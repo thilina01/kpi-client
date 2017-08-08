@@ -4,17 +4,15 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="jobNo">Job Number</label><br/>
               <input type="text" pInputText formControlName="jobNo"> 
           </div>
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
+          <div class="col-md-12 col-sm-12 col-xs-12 hidden-xs-down">
           </div>
-        
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
             <label for="jobDate">Job Date</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['jobDate'].valid && formGroup.controls['jobDate'].touched), 'has-success': (formGroup.controls['jobDate'].valid && formGroup.controls['jobDate'].touched)}">
@@ -22,9 +20,9 @@
             </div>
           </div>
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
+          <div class="col-md-12 col-sm-12 col-xs-12 hidden-xs-down">
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="jobType">Type</label>
              <br/>
             <p-autoComplete formControlName="jobType" field="name" [suggestions]="filteredJobTypes" (completeMethod)="filterJobTypes($event)"
@@ -40,14 +38,13 @@
 					  <option *ngFor="let jobType of jobTypes" [ngValue]="jobType">{{jobType.code}}</option>
 				    </select> -->
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.jobType != null">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.jobType != null">
              <p class="hidden-xs-down">&nbsp;</p>
              <label *ngIf="formGroup.value.jobType != null && formGroup.value.jobType.code != null">
               &nbsp; {{formGroup.value.jobType.code}}{{formGroup.value.jobType.name != null ?" | "+ formGroup.value.jobType.name:""}}
               </label>
           </div>
-        
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="item">Item</label>
             <br/>
             <p-autoComplete formControlName="item" field="name" [suggestions]="filteredItems" (completeMethod)="filterItems($event)"
@@ -63,21 +60,20 @@
 					  <option *ngFor="let item of items" [ngValue]="item">{{item.code}}</option>
 				    </select>-->
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.item != null">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.item != null">
              <p class="hidden-xs-down">&nbsp;</p>
             <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null">
             &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
               </label>
           </div>   
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
              <div class="ui-inputgroup">
               <label for="quantity">quantity</label><br/>
               <input type="number" pInputText formControlName="quantity"> 
           </div>
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
+          <div class="col-md-12 col-sm-12 col-xs-12 hidden-xs-down">
           </div>
-      
            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>
