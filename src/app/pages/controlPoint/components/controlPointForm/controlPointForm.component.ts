@@ -21,8 +21,8 @@ export class ControlPointForm {
     public formGroup: FormGroup;
     controlPoint: any = {};
     subscription: Subscription;
- paymentTermList = [];
-    controlPointType: any;
+    paymentTermList = [];
+    controlPointTypeList: Array<any>;
     workCenters: any;
 
     controlPointDate: Date;
@@ -48,8 +48,8 @@ export class ControlPointForm {
         });
     }
 
-    getControlPointTypes(): void {
-        this.controlPointTypeService.getAll().then(controlPointTypes => this.controlPointTypes = controlPointTypes);
+    getControlPointTypeList(): void {
+        this.controlPointTypeService.getAll().then(controlPointTypeList => this.controlPointTypeList = controlPointTypeList);
     }
 
     getWorkCenters(): void {
@@ -57,7 +57,7 @@ export class ControlPointForm {
     }
 
     ngOnInit(): void {
-        this.getControlPointTypes();
+        this.getControlPointTypeList();
         this.getWorkCenters();
         this.route.params.subscribe(
             (params: Params) => {
@@ -104,8 +104,8 @@ export class ControlPointForm {
     filterControlPointTypes(event) {
         let query = event.query.toLowerCase();
         this.filteredControlPointTypes = [];
-        for (let i = 0; i < this.controlPointTypes.length; i++) {
-            let controlPointType = this.controlPointTypes[i];
+        for (let i = 0; i < this.controlPointTypeList.length; i++) {
+            let controlPointType = this.controlPointTypeList[i];
             if (controlPointType.code.toLowerCase().indexOf(query) == 0 || controlPointType.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredControlPointTypes.push(controlPointType);
             }
@@ -116,7 +116,7 @@ export class ControlPointForm {
         this.filteredControlPointTypes = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredControlPointTypes = this.controlPointTypes;
+            this.filteredControlPointTypes = this.controlPointTypeList;
         }, 100)
     }
 
