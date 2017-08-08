@@ -3,17 +3,15 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="toolBreakdownNumber">ToolBreakdown Number</label><br/>
               <input type="text" pInputText formControlName="toolBreakdownNumber">
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class=" col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="tool">Tool</label><br/>
               <p-autoComplete formControlName="tool" field="name" [suggestions]="filteredTools" (completeMethod)="filterTools($event)"
@@ -30,41 +28,40 @@
               </label>
             </div>
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.tool != null">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.tool != null">
             <p class="hidden-xs-down">&nbsp;</p>
           </div>
            <!-- <select id="toolSelector" class="form-control" formControlName="tool">
 					        <option *ngFor="let tool of tools" [ngValue]="tool">{{tool.code}}</option>
 				        </select> -->
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
             <label for="toolBreakdownTime">ToolBreakdown Time</label>
-          
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched), 'has-success': (formGroup.controls['toolBreakdownTime'].valid && formGroup.controls['toolBreakdownTime'].touched)}">
-              <p-calendar id="toolBreakdownTimePicker" class="form-control" formControlName="toolBreakdownTime" showIcon="true" dateFormat="yy-mm-dd"
+              <p-calendar id="toolBreakdownTimePicker" formControlName="toolBreakdownTime" showIcon="true" dateFormat="yy-mm-dd"
                 showTime="showTime" hourFormat="24"></p-calendar>
             </div>
           </div>
-           
-          <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-      
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
             <label for="recoveryTime">Recovery Time</label>
-      
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
-              <p-calendar id="recoveryTimePicker" class="form-control" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd"
+              <p-calendar id="recoveryTimePicker"formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd"
                 showTime="showTime" hourFormat="24"></p-calendar>
             </div>
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
           </div>
-
-          <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="description">Description</label><br/>
               <input type="text" pInputText formControlName="description">
           </div>
-           <div class="col-md-4 col-sm-4 col-xs-12">
+           <div class="col-md-12 col-sm-12 col-xs-12">
           </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">

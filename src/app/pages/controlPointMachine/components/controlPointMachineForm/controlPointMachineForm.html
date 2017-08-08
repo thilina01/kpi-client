@@ -5,7 +5,7 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
 
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="controlPoint">Control Point</label>
             <br/>
             <p-autoComplete formControlName="controlPoint" field="name" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
@@ -21,13 +21,13 @@
 					        <option *ngFor="let controlPoint of controlPoints" [ngValue]="controlPoint">{{controlPoint.code}}</option>
 				        </select>-->
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.controlPoint != null">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.controlPoint != null">
             <p class="hidden-xs-down">&nbsp;</p>
             <label *ngIf="formGroup.value.controlPoint != null && formGroup.value.controlPoint.code != null">
                   &nbsp; {{formGroup.value.controlPoint.code}}{{formGroup.value.controlPoint.name != null ?" | "+ formGroup.value.controlPoint.name:""}}
               </label>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="machine">Machine</label>
             <br/>
             <p-autoComplete formControlName="machine" field="name" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
@@ -42,7 +42,7 @@
 					        <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
                 </select>-->
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.machine != null">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.machine != null">
             <p class="hidden-xs-down">&nbsp;</p>            
               <label *ngIf="formGroup.value.machine != null && formGroup.value.machine.code != null">
                   &nbsp; {{formGroup.value.machine.code}}{{formGroup.value.machine.name != null ?" | "+ formGroup.value.machine.name:""}}

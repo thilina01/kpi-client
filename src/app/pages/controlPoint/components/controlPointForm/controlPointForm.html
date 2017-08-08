@@ -38,7 +38,7 @@
           <!-- <select id="controlPointTypeSelector" class="form-control" formControlName="controlPointType">
 					  <option *ngFor="let controlPointType of controlPointTypes" [ngValue]="controlPointType">{{controlPointType.code}}</option>
 				   </select> -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="workCenter">Section</label><br/>
               <p-autoComplete formControlName="workCenter" field="name" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
@@ -55,7 +55,7 @@
               </label>
             </div>
           </div>
-          <div class="col-md-6 col-sm-12 col-xs-12" *ngIf="formGroup.value.workCenter != null">
+          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.workCenter != null">
             <p class="hidden-sm-down">&nbsp;</p>
           </div>
           <!-- <select id="workCenterSelector" class="form-control" formControlName="workCenter">
