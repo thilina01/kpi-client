@@ -106,7 +106,7 @@ export class AbsenteeismForm {
     }
 
     onLabourSourceSelect(labourSource: any) {
-        console.log(event)
+        //console.log(event)
     }
     /*================== End Of Labour Source Filter ===================*/
 }
