@@ -99,7 +99,7 @@
           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="currency">Currency</label><br/>
-              <p-autoComplete formControlName="currency" field="name" [suggestions]="filteredCurrencys" (completeMethod)="filterCurrencys($event)"
+              <p-autoComplete formControlName="currency" field="name" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCurrencyDropdownClick($event)" (onSelect)="onCurrencySelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">

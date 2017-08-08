@@ -85,11 +85,11 @@ export class CustomerForm {
     getNotifyPartyList(): void {
         this.notifyPartyService.getCombo().then(notifyPartyList => this.notifyPartyList = notifyPartyList);
     }
-    
+
     getPaymentTermList(): void {
         this.paymentTermService.getCombo().then(paymentTermList => this.paymentTermList = paymentTermList);
     }
-    
+
 
     ngOnInit(): void {
         this.getCustomerTypeList();
@@ -121,7 +121,7 @@ export class CustomerForm {
         this.customerType = this.customer.customerType;
         this.currency = this.customer.currency;
         this.incoterm = this.customer.incoterm;
-        this.notifyparty= this.customer.notifyparty;
+        this.notifyparty = this.customer.notifyparty;
         this.paymentTerm = this.customer.paymentTerm;
     }
 
@@ -140,28 +140,28 @@ export class CustomerForm {
     public resetForm() {
         this.formGroup.reset();
     }
-    
-  
-     /*================== CurrencyFilter ===================*/
-    filteredCurrencies: any[];
+
+
+    /*================== CurrencyFilter ===================*/
+    filteredCurrencyList: any[];
     //currency: any;
 
-    filterCurrencies(event) {
+    filterCurrencyList(event) {
         let query = event.query.toLowerCase();
-        this.filteredCurrencies = [];
-        for (let i = 0; i < this. currencyList.length; i++) {
-            let currency = this. currencyList[i];
+        this.filteredCurrencyList = [];
+        for (let i = 0; i < this.currencyList.length; i++) {
+            let currency = this.currencyList[i];
             if (currency.code.toLowerCase().indexOf(query) == 0 || currency.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredCurrencies.push(currency);
+                this.filteredCurrencyList.push(currency);
             }
         }
     }
 
     handleCurrencyDropdownClick() {
-        this.filteredCurrencies = [];
+        this.filteredCurrencyList = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredCurrencies = this. currencyList;
+            this.filteredCurrencyList = this.currencyList;
         }, 100)
     }
 
@@ -169,8 +169,8 @@ export class CustomerForm {
         console.log(event)
     }
 
-    
-     /*================== Customer Type Filter ===================*/
+
+    /*================== Customer Type Filter ===================*/
     filteredCustomerTypes: any[];
     //customerType: any;
 
@@ -197,7 +197,7 @@ export class CustomerForm {
         console.log(event)
     }
     /*================== End Of Customer Type Filter ===================*/
-   /*================== Notify PartyFilter ===================*/
+    /*================== Notify PartyFilter ===================*/
     filteredNotifyPartys: any[];
     //notifyParty: any;
 
@@ -231,8 +231,8 @@ export class CustomerForm {
     filterPaymentTerms(event) {
         let query = event.query.toLowerCase();
         this.filteredPaymentTerms = [];
-        for (let i = 0; i < this. paymentTermList.length; i++) {
-            let paymentTerm = this. paymentTermList[i];
+        for (let i = 0; i < this.paymentTermList.length; i++) {
+            let paymentTerm = this.paymentTermList[i];
             if (paymentTerm.code.toLowerCase().indexOf(query) == 0 || paymentTerm.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredPaymentTerms.push(paymentTerm);
             }
@@ -243,7 +243,7 @@ export class CustomerForm {
         this.filteredPaymentTerms = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredPaymentTerms = this. paymentTermList;
+            this.filteredPaymentTerms = this.paymentTermList;
         }, 100)
     }
 
@@ -251,15 +251,15 @@ export class CustomerForm {
         console.log(event)
     }
     /*================== End Of Payment TermFilter ===================*/
-  /*================== Incoterm Filter ===================*/
+    /*================== Incoterm Filter ===================*/
     filteredIncoterms: any[];
     //incoterm: any;
 
     filterIncoterms(event) {
         let query = event.query.toLowerCase();
         this.filteredIncoterms = [];
-        for (let i = 0; i < this. incotermList.length; i++) {
-            let incoterm = this. incotermList[i];
+        for (let i = 0; i < this.incotermList.length; i++) {
+            let incoterm = this.incotermList[i];
             if (incoterm.code.toLowerCase().indexOf(query) == 0 || incoterm.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredIncoterms.push(incoterm);
             }
@@ -270,7 +270,7 @@ export class CustomerForm {
         this.filteredIncoterms = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredIncoterms = this. incotermList;
+            this.filteredIncoterms = this.incotermList;
         }, 100)
     }
 
