@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 import { EnergyCostMainChartService } from './energyCostMainChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./energyCostMainChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'energy-cost-main-chart',

@@ -7,13 +7,14 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { EnergyConsumption } from './energyConsumption.component';
-import { EnergyConsumptionService } from '../../services/energyConsumption.service';
-import { LocationService } from '../../services/location.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { EnergyConsumptionTable } from './components/energyConsumptionTable/energyConsumptionTable.component';
 import { EnergyConsumptionForm } from './components/energyConsumptionForm/energyConsumptionForm.component';
 
 import { routing } from './energyConsumption.routing';
+import { EnergyConsumptionService } from "./energyConsumption.service";
+import { LocationService } from "../location/location.service";
+
 
 
 @NgModule({
@@ -37,6 +38,9 @@ import { routing } from './energyConsumption.routing';
     EnergyConsumptionTable,
     EnergyConsumptionForm
   ],
-  providers: [EnergyConsumptionService, LocationService]
+  providers: [
+    EnergyConsumptionService,
+     LocationService
+    ]
 })
 export class EnergyConsumptionModule { }

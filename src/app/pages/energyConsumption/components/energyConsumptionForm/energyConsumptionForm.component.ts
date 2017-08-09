@@ -2,11 +2,9 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-
-
-import { EnergyConsumptionService } from '../../../../services/energyConsumption.service';
 import { SharedService } from '../../../../services/shared.service';
-import { LocationService } from '../../../../services/location.service';
+import { EnergyConsumptionService } from "../../energyConsumption.service";
+import { LocationService } from "../../../location/location.service";
 
 @Component({
     selector: 'energy-consumption-form',

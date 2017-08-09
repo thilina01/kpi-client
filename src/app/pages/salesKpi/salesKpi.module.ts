@@ -10,10 +10,11 @@ import { routing } from './salesKpi.routing';
 
 import { SalesWeightChart } from './salesWeightChart';
 import { SalesWeightChartService } from './salesWeightChart/salesWeightChart.service';
-import { ChartService } from '../../services/chart.service'
+
 import { SalesValueChart } from './salesValueChart';
 import { SalesValueChartService } from './salesValueChart/salesValueChart.service';
 import { PanelModule } from "primeng/primeng";
+import { ChartService } from "../chart/chart.service";
 
 @NgModule({
   imports: [

@@ -10,12 +10,13 @@ import { PermissionTable } from './components/permissionTable/permissionTable.co
 import { PermissionForm } from './components/permissionForm/permissionForm.component';
 
 import { MenuService } from '../../services/menu.service';
-import { UserService } from '../../services/user.service';
 import { UserMenuService } from '../../services/userMenu.service';
 
 import { routing } from './permission.routing';
 import { StatusService } from "../../services/status.service";
-import { TeamService } from "../../services/team.service";
+import { TeamService } from "../team/team.service";
+import { UserService } from "../user/user.service";
+
 
 @NgModule({
   imports: [

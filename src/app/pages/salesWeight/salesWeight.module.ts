@@ -7,13 +7,13 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { SalesWeight } from './salesWeight.component';
-import { SalesWeightService } from '../../services/salesWeight.service';
-import { LabourSourceService } from '../../services/labourSource.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { SalesWeightTable } from './components/salesWeightTable/salesWeightTable.component';
 import { SalesWeightForm } from './components/salesWeightForm/salesWeightForm.component';
 
 import { routing } from './salesWeight.routing';
+import { LabourSourceService } from "../labourSource/labourSource.service";
+import { SalesWeightService } from "./salesWeight.service";
 
 
 @NgModule({

@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Paint } from './paint.component';
-import { PaintService } from '../../services/paint.service';
 import { PaintTable } from './components/paintTable/paintTable.component';
 import { PaintForm } from './components/paintForm/paintForm.component';
 
 import { routing } from './paint.routing';
+import { PaintService } from "./paint.service";
 
 
 @NgModule({

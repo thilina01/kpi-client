@@ -4,10 +4,13 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { ControlPointMachineService } from '../../../../services/controlPointMachine.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { MachineService } from "../../../machine/machine.service";
 import { ControlPointService } from "../../../controlPoint/controlPoint.service";
+import { ControlPointMachineService } from "../../controlPointMachine.service";
+
+
 
 @Component({
     selector: 'control-point-machine-form',

@@ -7,12 +7,12 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { ProductionOverheadCostPerKg } from './productionOverheadCostPerKg.component';
-import { ProductionOverheadCostPerKgService } from '../../services/productionOverheadCostPerKg.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { ProductionOverheadCostPerKgTable } from './components/productionOverheadCostPerKgTable/productionOverheadCostPerKgTable.component';
 import { ProductionOverheadCostPerKgForm } from './components/productionOverheadCostPerKgForm/productionOverheadCostPerKgForm.component';
 
 import { routing } from './productionOverheadCostPerKg.routing';
+import { ProductionOverheadCostPerKgService } from "./productionOverheadCostPerKg.service";
 
 
 @NgModule({

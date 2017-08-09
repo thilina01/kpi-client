@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 
 import { ConsumableCostPerKgChartService } from './consumableCostPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./consumableCostPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
+
+
+
+
 
 @Component({
   selector: 'consumable-cost-per-kg-chart',

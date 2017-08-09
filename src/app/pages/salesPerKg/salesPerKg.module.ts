@@ -7,12 +7,12 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { SalesPerKg } from './salesPerKg.component';
-import { SalesPerKgService } from '../../services/salesPerKg.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { SalesPerKgTable } from './components/salesPerKgTable/salesPerKgTable.component';
 import { SalesPerKgForm } from './components/salesPerKgForm/salesPerKgForm.component';
 
 import { routing } from './salesPerKg.routing';
+import { SalesPerKgService } from "./salesPerKg.service";
 
 
 @NgModule({

@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { ConsumableCostPerKgService } from '../../../../services/consumableCostPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { ConsumableCostPerKgService } from "../../consumableCostPerKg.service";
 
 @Component({
     selector: 'consumable-cost-per-kg-form',

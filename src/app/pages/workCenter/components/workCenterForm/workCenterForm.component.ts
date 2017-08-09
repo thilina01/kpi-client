@@ -3,10 +3,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-import { WorkCenterService } from '../../../../services/workCenter.service';
 import { SharedService } from '../../../../services/shared.service';
-import { CostCenterService } from '../../../../services/costCenter.service';
+import { CostCenterService } from "../../../costCenter/costCenter.service";
+import { WorkCenterService } from "../../workCenter.service";
+
 
 @Component({
     selector: 'work-center-form',

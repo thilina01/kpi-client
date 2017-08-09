@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { SalesPerKgChartService } from './salesPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./salesPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'sales-per-kg-chart',

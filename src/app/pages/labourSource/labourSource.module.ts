@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { LabourSource } from './labourSource.component';
-import { LabourSourceService } from '../../services/labourSource.service';
 import { LabourSourceTable } from './components/labourSourceTable/labourSourceTable.component';
 import { LabourSourceForm } from './components/labourSourceForm/labourSourceForm.component';
 
 import { routing } from './labourSource.routing';
+import { LabourSourceService } from "./labourSource.service";
 
 
 @NgModule({

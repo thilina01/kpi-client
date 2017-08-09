@@ -4,9 +4,9 @@ import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators'
 
 import 'style-loader!./register.scss';
 import { AuthService } from "../../services/auth.service";
-import { UserService } from "../../services/user.service";
 import { SharedService } from "../../services/shared.service";
 import { Router } from "@angular/router";
+import { UserService } from "../user/user.service";
 //import { Router } from "@angular/router/router";
 
 @Component({

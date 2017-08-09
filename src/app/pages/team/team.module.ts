@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Team } from './team.component';
-import { TeamService } from '../../services/team.service';
 import { TeamTable } from './components/teamTable/teamTable.component';
 import { TeamForm } from './components/teamForm/teamForm.component';
 
 import { routing } from './team.routing';
+import { TeamService } from "./team.service";
 
 
 @NgModule({

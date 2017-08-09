@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { OperationType } from './operationType.component';
-import { OperationTypeService } from '../../services/operationType.service';
 import { OperationTypeTable } from './components/operationTypeTable/operationTypeTable.component';
 import { OperationTypeForm } from './components/operationTypeForm/operationTypeForm.component';
 
 import { routing } from './operationType.routing';
+import { OperationTypeService } from "./operationType.service";
 
 
 @NgModule({

@@ -1,8 +1,9 @@
-import { MaterialCostPerKgService } from '../../../../services/materialCostPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
+import { MaterialCostPerKgService } from "../../materialCostPerKg.service";
 
 @Component({
     selector: 'material-cost-per-kg-table',

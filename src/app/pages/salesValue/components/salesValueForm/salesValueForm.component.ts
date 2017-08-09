@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { SalesValueService } from '../../../../services/salesValue.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { SalesValueService } from "../../salesValue.service";
 
 @Component({
     selector: 'sales-value-form',

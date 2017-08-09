@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { LabourTurnoverChartService } from './labourTurnoverChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./labourTurnoverChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'labour-turnover-chart',

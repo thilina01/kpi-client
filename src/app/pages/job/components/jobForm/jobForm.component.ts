@@ -3,11 +3,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-import { JobService } from '../../../../services/job.service';
 import { SharedService } from '../../../../services/shared.service';
-import { JobTypeService } from '../../../../services/jobType.service';
-import { ItemService } from '../../../../services/item.service';
+import { ItemService } from "../../../item/item.service";
+import { JobService } from "../../job.service";
+import { JobTypeService } from "../../../jobType/jobType.service";
 
 @Component({
     selector: 'job-form',

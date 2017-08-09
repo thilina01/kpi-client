@@ -7,12 +7,12 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { ScrapCostPerKg } from './scrapCostPerKg.component';
-import { ScrapCostPerKgService } from '../../services/scrapCostPerKg.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { ScrapCostPerKgTable } from './components/scrapCostPerKgTable/scrapCostPerKgTable.component';
 import { ScrapCostPerKgForm } from './components/scrapCostPerKgForm/scrapCostPerKgForm.component';
 
 import { routing } from './scrapCostPerKg.routing';
+import { ScrapCostPerKgService } from "./scrapCostPerKg.service";
 
 
 @NgModule({

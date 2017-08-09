@@ -1,8 +1,9 @@
-import { OperationTypeService } from '../../../../services/operationType.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
+import { OperationTypeService } from "../../operationType.service";
 
 @Component({
   selector: 'operation-type-table',

@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
-import { ProductionService } from '../../services/production.service';
+
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { SharedService } from "../../services/shared.service";
+import { ProductionService } from "../production/production.service";
 
 @Component({
   selector: 'plan',

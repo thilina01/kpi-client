@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 import { KwhKvaMainChartService } from './kwhKvaMainChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./kwhKvaMainChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'kwh-kva-main-chart',

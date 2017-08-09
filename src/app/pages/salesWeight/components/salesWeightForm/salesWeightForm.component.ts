@@ -4,9 +4,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { SalesWeightService } from '../../../../services/salesWeight.service';
+
 import { SharedService } from '../../../../services/shared.service';
-import { LabourSourceService } from '../../../../services/labourSource.service';
+import { LabourSourceService } from "../../../labourSource/labourSource.service";
+import { SalesWeightService } from "../../salesWeight.service";
+
 
 @Component({
     selector: 'sales-weight-form',

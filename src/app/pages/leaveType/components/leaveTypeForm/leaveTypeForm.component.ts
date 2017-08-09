@@ -4,8 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { LeaveTypeService } from '../../../../services/leaveType.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { LeaveTypeService } from "../../leaveType.service";
 
 @Component({
     selector: 'leave-type-form',

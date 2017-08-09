@@ -7,12 +7,12 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { LabourCostPerKg } from './labourCostPerKg.component';
-import { LabourCostPerKgService } from '../../services/labourCostPerKg.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { LabourCostPerKgTable } from './components/labourCostPerKgTable/labourCostPerKgTable.component';
 import { LabourCostPerKgForm } from './components/labourCostPerKgForm/labourCostPerKgForm.component';
 
 import { routing } from './labourCostPerKg.routing';
+import { LabourCostPerKgService } from "./labourCostPerKg.service";
 
 
 @NgModule({
@@ -35,6 +35,8 @@ import { routing } from './labourCostPerKg.routing';
     LabourCostPerKgTable,
     LabourCostPerKgForm
   ],
-  providers: [LabourCostPerKgService]
+  providers: [
+    LabourCostPerKgService
+  ]
 })
 export class LabourCostPerKgModule { }

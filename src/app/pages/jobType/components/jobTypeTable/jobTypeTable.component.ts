@@ -1,8 +1,9 @@
-import { JobTypeService } from '../../../../services/jobType.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
+import { JobTypeService } from "../../jobType.service";
 
 @Component({
   selector: 'job-type-table',

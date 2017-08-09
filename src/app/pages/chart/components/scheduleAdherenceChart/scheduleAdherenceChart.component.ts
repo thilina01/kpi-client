@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router'
 import { BaThemeConfigProvider } from '../../../../theme';
 
-import { ChartService } from '../../../../services/chart.service';
-import { LossTypeService } from '../../../../services/lossType.service';
+import { LossTypeService } from "../../../lossType/lossType.service";
+import { ChartService } from "../../chart.service";
 @Component({
   selector: 'schedule-adherence-chart',
   encapsulation: ViewEncapsulation.None,

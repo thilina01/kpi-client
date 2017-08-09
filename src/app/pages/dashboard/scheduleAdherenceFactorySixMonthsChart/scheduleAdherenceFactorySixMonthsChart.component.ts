@@ -2,9 +2,14 @@ import { Component } from '@angular/core';
 
 import { ScheduleAdherenceFactorySixMonthsChartService } from './scheduleAdherenceFactorySixMonthsChart.service';
 import { BaThemeConfigProvider } from '../../../theme';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./scheduleAdherenceFactorySixMonthsChart.scss';
+import { ChartService } from "../../chart/chart.service";
+
+
+
+
 
 @Component({
   selector: 'schedule-adherence-factory-six-months-chart',

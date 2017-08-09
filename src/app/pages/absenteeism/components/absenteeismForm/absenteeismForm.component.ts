@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { LabourSourceService } from '../../../../services/labourSource.service';
 import { AbsenteeismService } from "../../absenteeism.service";
+import { LabourSourceService } from "../../../labourSource/labourSource.service";
 
 @Component({
     selector: 'absenteeism-form',

@@ -4,9 +4,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ControlPointTypeService } from '../../../../services/controlPointType.service';
-import { WorkCenterService } from '../../../../services/workCenter.service';
+
+
 import { ControlPointService } from "../../controlPoint.service";
+import { ControlPointTypeService } from "../../../controlPointType/controlPointType.service";
+import { WorkCenterService } from "../../../workCenter/workCenter.service";
+
 
 @Component({
     selector: 'control-point-form',

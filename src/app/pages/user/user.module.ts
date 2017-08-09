@@ -6,11 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule,PanelModule } from 'primeng/primeng';
 
 import { User } from './user.component';
-import { UserService } from '../../services/user.service';
+
 import { UserTable } from './components/userTable/userTable.component';
 import { UserForm } from './components/userForm/userForm.component';
 
 import { routing } from './user.routing';
+import { UserService } from "./user.service";
+
 
 
 @NgModule({

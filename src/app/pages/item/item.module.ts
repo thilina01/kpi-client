@@ -6,13 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, CheckboxModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 
 import { Item } from './item.component';
-import { ItemService } from '../../services/item.service';
-import { ItemTypeService } from '../../services/itemType.service';
-import { PaintService } from '../../services/paint.service';
 import { ItemTable } from './components/itemTable/itemTable.component';
 import { ItemForm } from './components/itemForm/itemForm.component';
 
 import { routing } from './item.routing';
+import { ItemService } from "./item.service";
+import { ItemTypeService } from "../itemType/itemType.service";
+import { PaintService } from "../paint/paint.service";
 
 
 @NgModule({

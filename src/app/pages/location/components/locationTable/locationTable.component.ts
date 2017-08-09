@@ -1,8 +1,9 @@
-import { LocationService } from '../../../../services/location.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
+import { LocationService } from "../../location.service";
 
 @Component({
   selector: 'location-table',

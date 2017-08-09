@@ -7,7 +7,6 @@ import { MaterialModule } from '@angular/material';
 import { FinanceKpi } from './financeKpi.component';
 import { routing } from './financeKpi.routing';
 
-import { ChartService } from '../../services/chart.service'
 import { PanelModule } from "primeng/primeng";
 import { SalesPerKgChart } from "./salesPerKgChart/salesPerKgChart.component";
 import { MaterialCostPerKgChart } from "./materialCostPerKgChart/materialCostPerKgChart.component";
@@ -23,6 +22,7 @@ import { ConsumableCostPerKgChartService } from "./consumableCostPerKgChart/cons
 import { ElectricityCostPerKgChartService } from "./electricityCostPerKgChart/electricityCostPerKgChart.service";
 import { ScrapCostPerKgChartService } from "./scrapCostPerKgChart/scrapCostPerKgChart.service";
 import { LabourCostPerKgChartService } from "./labourCostPerKgChart/labourCostPerKgChart.service";
+import { ChartService } from "../chart/chart.service";
 
 @NgModule({
   imports: [

@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { NotifyParty } from './notifyParty.component';
-import { NotifyPartyService } from '../../services/notifyParty.service';
 import { NotifyPartyTable } from './components/notifyPartyTable/notifyPartyTable.component';
 import { NotifyPartyForm } from './components/notifyPartyForm/notifyPartyForm.component';
 
 import { routing } from './notifyParty.routing';
+import { NotifyPartyService } from "./notifyParty.service";
 
 
 @NgModule({

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { CumulativeSalesPerKgChartService } from './cumulativeSalesPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./cumulativeSalesPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'cumulative-sales-per-kg-chart',

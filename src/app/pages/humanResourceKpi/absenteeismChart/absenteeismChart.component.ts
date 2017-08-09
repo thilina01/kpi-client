@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { AbsenteeismChartService } from './absenteeismChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./absenteeismChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'absenteeism-chart',

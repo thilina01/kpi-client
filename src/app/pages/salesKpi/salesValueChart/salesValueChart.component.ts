@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { SalesValueChartService } from './salesValueChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./salesValueChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'sales-value-chart',

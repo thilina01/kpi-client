@@ -2,10 +2,8 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-
-
-import { CurrencyService } from '../../../../services/currency.service';
 import { SharedService } from '../../../../services/shared.service';
+import { CurrencyService } from "../../currency.service";
 
 @Component({
     selector: 'currency-form',

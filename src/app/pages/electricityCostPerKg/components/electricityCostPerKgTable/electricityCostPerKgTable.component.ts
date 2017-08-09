@@ -1,8 +1,9 @@
-import { ElectricityCostPerKgService } from '../../../../services/electricityCostPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
+import { ElectricityCostPerKgService } from "../../electricityCostPerKg.service";
 
 @Component({
     selector: 'electricity-cost-per-kg------table',

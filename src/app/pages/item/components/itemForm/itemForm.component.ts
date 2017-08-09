@@ -4,10 +4,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { ItemService } from '../../../../services/item.service';
 import { SharedService } from '../../../../services/shared.service';
-import { ItemTypeService } from '../../../../services/itemType.service';
-import { PaintService } from '../../../../services/paint.service';
+import { ItemService } from "../../item.service";
+import { ItemTypeService } from "../../../itemType/itemType.service";
+import { PaintService } from "../../../paint/paint.service";
 
 @Component({
     selector: 'item-form',

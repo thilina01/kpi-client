@@ -7,12 +7,13 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { ElectricityCostPerKg } from './electricityCostPerKg.component';
-import { ElectricityCostPerKgService } from '../../services/electricityCostPerKg.service';
+
 import { LossTypeService } from '../../services/lossType.service';
 import { ElectricityCostPerKgTable } from './components/electricityCostPerKgTable/electricityCostPerKgTable.component';
 import { ElectricityCostPerKgForm } from './components/electricityCostPerKgForm/electricityCostPerKgForm.component';
 
 import { routing } from './electricityCostPerKg.routing';
+import { ElectricityCostPerKgService } from "./electricityCostPerKg.service";
 
 
 @NgModule({

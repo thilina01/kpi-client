@@ -4,8 +4,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { ManpowerTypeService } from '../../../../services/manpowerType.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { ManpowerTypeService } from "../../manpowerType.service";
+
 
 @Component({
     selector: 'manpower-type-form',

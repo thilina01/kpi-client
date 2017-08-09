@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 
 import { MaterialCostPerKgChartService } from './materialCostPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./materialCostPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
+
+
 
 @Component({
   selector: 'material-cost-per-kg-chart',

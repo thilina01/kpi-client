@@ -1,8 +1,9 @@
-import { CumulativeSalesPerKgService } from '../../../../services/cumulativeSalesPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
+import { CumulativeSalesPerKgService } from "../../cumulativeSalesPerKg.service";
 
 @Component({
     selector: 'cumulative-sales-per-kg-table',

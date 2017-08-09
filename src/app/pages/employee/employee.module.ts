@@ -6,11 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Employee } from './employee.component';
-import { EmployeeService } from '../../services/employee.service';
+
 import { EmployeeTable } from './components/employeeTable/employeeTable.component';
 import { EmployeeForm } from './components/employeeForm/employeeForm.component';
 
 import { routing } from './employee.routing';
+import { EmployeeService } from "./employee.service";
 
 
 @NgModule({

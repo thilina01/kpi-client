@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { ElectricityCostPerKgService } from '../../../../services/electricityCostPerKg.service';
 import { SharedService } from '../../../../services/shared.service';
+import { ElectricityCostPerKgService } from "../../electricityCostPerKg.service";
 
 @Component({
     selector: 'electricity-cost-per-kg------form',

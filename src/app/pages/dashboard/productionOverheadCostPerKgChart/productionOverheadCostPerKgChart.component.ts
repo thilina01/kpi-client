@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 
 import { ProductionOverheadCostPerKgChartService } from './productionOverheadCostPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./productionOverheadCostPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
+
+
 
 @Component({
   selector: 'production-overhead-cost-per-kg-chart',

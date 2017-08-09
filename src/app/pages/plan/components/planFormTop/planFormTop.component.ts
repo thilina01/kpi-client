@@ -1,9 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
-import { ShiftService } from '../../../../services/shift.service';
-import { ShiftTypeService } from '../../../../services/shiftType.service';
 import { ControlPointService } from "../../../controlPoint/controlPoint.service";
+import { ShiftService } from "../../../shift/shift.service";
+import { ShiftTypeService } from "../../../shiftType/shiftType.service";
 
 
 @Component({

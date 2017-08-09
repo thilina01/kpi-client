@@ -2,10 +2,11 @@ import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 
 
-import { JobService } from '../../../../services/job.service';
+
 import { SharedService } from '../../../../services/shared.service';
-import { OperationService } from '../../../../services/operation.service';
 import { DataTable } from "primeng/primeng";
+import { JobService } from "../../job.service";
+import { OperationService } from "../../../operation/operation.service";
 @Component({
     selector: 'job-info',
     encapsulation: ViewEncapsulation.None,

@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { SalesPerKgService } from '../../../../services/salesPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { SalesPerKgService } from "../../salesPerKg.service";
 
 @Component({
     selector: 'sales-per-kg-form',

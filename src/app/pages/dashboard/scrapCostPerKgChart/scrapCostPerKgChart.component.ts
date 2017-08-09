@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { ScrapCostPerKgChartService } from './scrapCostPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./scrapCostPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'scrap-cost-per-kg-chart',

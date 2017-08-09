@@ -4,8 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { EmployeeService } from '../../../../services/employee.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { EmployeeService } from "../../employee.service";
 
 @Component({
     selector: 'employee-form',

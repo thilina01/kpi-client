@@ -7,14 +7,15 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule,PanelModule
 import { MaterialModule } from '@angular/material';
 
 import { Production } from './production.component';
-import { ProductionService } from '../../services/production.service';
-import { ShiftService } from '../../services/shift.service';
-import { LossTypeService } from '../../services/lossType.service';
+
 import { ProductionTable } from './components/productionTable/productionTable.component';
 import { ProductionForm } from './components/productionForm/productionForm.component';
 
 import { routing } from './production.routing';
 import { ControlPointService } from "../controlPoint/controlPoint.service";
+import { LossTypeService } from "../lossType/lossType.service";
+import { ProductionService } from "./production.service";
+import { ShiftService } from "../shift/shift.service";
 
 
 @NgModule({

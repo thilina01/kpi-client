@@ -10,12 +10,15 @@ import { Customer } from './customer.component';
 import { routing } from './customer.routing';
 import { CustomerTable } from "./component/customerTable/customerTable.component";
 import { CustomerForm } from "./component/customerForm/customerForm.component";
-import { CustomerService } from "../../services/customer.service";
-import { CurrencyService } from "../../services/currency.service";
-import { CustomerTypeService } from "../../services/customerType.service";
-import { PaymentTermService } from "../../services/paymentTerm.service";
-import { IncotermService } from "../../services/incoterm.service";
-import { NotifyPartyService } from "../../services/notifyParty.service";
+
+
+
+import { CustomerService } from "./customer.service";
+import { CustomerTypeService } from "../customerType/customerType.service";
+import { IncotermService } from "../incoterm/incoterm.service";
+import { CurrencyService } from "../currency/currency.service";
+import { NotifyPartyService } from "../notifyParty/notifyParty.service";
+import { PaymentTermService } from "../paymentTerm/paymentTerm.service";
 
 @NgModule({
   imports: [

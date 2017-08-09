@@ -6,14 +6,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule } from 'primeng/primeng';
 
 import { Operation } from './operation.component';
-import { OperationService } from '../../services/operation.service';
-import { OperationTypeService } from '../../services/operationType.service';
-import { ItemService } from '../../services/item.service';
 import { OperationTable } from './components/operationTable/operationTable.component';
 
-import { SectionService } from '../../services/section.service';
-import { ShiftService } from '../../services/shift.service';
+
+
 import { routing } from './operation.routing';
+import { ItemService } from "../item/item.service";
+import { SectionService } from "../section/section.service";
+import { OperationService } from "./operation.service";
+import { ShiftService } from "../shift/shift.service";
+import { OperationTypeService } from "../operationType/operationType.service";
 
 
 @NgModule({

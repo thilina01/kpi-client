@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { LabourCostPerKgService } from '../../../../services/labourCostPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { LabourCostPerKgService } from "../../labourCostPerKg.service";
 
 @Component({
     selector: 'labour-cost-per-kg-form',

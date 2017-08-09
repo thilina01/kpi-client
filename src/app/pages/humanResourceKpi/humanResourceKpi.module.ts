@@ -7,12 +7,13 @@ import { MaterialModule } from '@angular/material';
 import { HumanResourceKpi } from './humanResourceKpi.component';
 import { routing } from './humanResourceKpi.routing';
 
-import { ChartService } from '../../services/chart.service'
+
 import { PanelModule } from "primeng/primeng";
 import { AbsenteeismChart } from "./absenteeismChart/absenteeismChart.component";
 import { LabourTurnoverChart } from "./labourTurnoverChart/labourTurnoverChart.component";
 import { AbsenteeismChartService } from "./absenteeismChart/absenteeismChart.service";
 import { LabourTurnoverChartService } from "./labourTurnoverChart/labourTurnoverChart.service";
+import { ChartService } from "../chart/chart.service";
 
 @NgModule({
   imports: [

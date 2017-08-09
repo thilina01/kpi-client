@@ -6,12 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 
 import { CostCenter } from './costCenter.component';
-import { CostCenterService } from '../../services/costCenter.service';
+
 import { CostCenterTable } from './components/costCenterTable/costCenterTable.component';
 import { CostCenterForm } from './components/costCenterForm/costCenterForm.component';
 
 import { routing } from './costCenter.routing';
-import { SectionService } from "../../services/section.service";
+import { CostCenterService } from "./costCenter.service";
+import { SectionService } from "../section/section.service";
 
 
 @NgModule({

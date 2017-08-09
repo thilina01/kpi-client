@@ -2,7 +2,8 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { CustomerService } from "../../../../services/customer.service";
+import { CustomerService } from "../../customer.service";
+
 
 @Component({
   selector: 'customer-table',

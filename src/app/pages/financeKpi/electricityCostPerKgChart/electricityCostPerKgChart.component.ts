@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { ElectricityCostPerKgChartService } from './electricityCostPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./electricityCostPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'electricity-cost-per-kg-chart',

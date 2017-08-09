@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { LossType } from './lossType.component';
-import { LossTypeService } from '../../services/lossType.service';
 import { LossTypeTable } from './components/lossTypeTable/lossTypeTable.component';
 import { LossTypeForm } from './components/lossTypeForm/lossTypeForm.component';
 
 import { routing } from './lossType.routing';
+import { LossTypeService } from "./lossType.service";
 
 
 @NgModule({

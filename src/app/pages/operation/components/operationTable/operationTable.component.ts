@@ -1,12 +1,13 @@
-import { OperationService } from '../../../../services/operation.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { SectionService } from '../../../../services/section.service';
-import { ShiftService } from '../../../../services/shift.service';
 import { DataTable } from "primeng/components/datatable/datatable";
 import { Observable } from "rxjs/Rx";
+import { SectionService } from "../../../section/section.service";
+import { OperationService } from "../../operation.service";
+import { ShiftService } from "../../../shift/shift.service";
 
 @Component({
   selector: 'operation-table',

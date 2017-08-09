@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { ScrapCostPerKgService } from '../../../../services/scrapCostPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { ScrapCostPerKgService } from "../../scrapCostPerKg.service";
 
 @Component({
     selector: 'scrap-cost-per-kg-form',

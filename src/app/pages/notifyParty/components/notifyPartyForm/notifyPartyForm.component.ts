@@ -4,8 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { NotifyPartyService } from '../../../../services/notifyParty.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { NotifyPartyService } from "../../notifyParty.service";
 
 @Component({
     selector: 'notify-party-form',

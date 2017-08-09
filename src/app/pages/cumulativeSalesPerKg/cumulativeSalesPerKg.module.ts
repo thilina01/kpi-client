@@ -7,12 +7,13 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { CumulativeSalesPerKg } from './cumulativeSalesPerKg.component';
-import { CumulativeSalesPerKgService } from '../../services/cumulativeSalesPerKg.service';
+
 import { LossTypeService } from '../../services/lossType.service';
 import { CumulativeSalesPerKgTable } from './components/cumulativeSalesPerKgTable/cumulativeSalesPerKgTable.component';
 import { CumulativeSalesPerKgForm } from './components/cumulativeSalesPerKgForm/cumulativeSalesPerKgForm.component';
 
 import { routing } from './cumulativeSalesPerKg.routing';
+import { CumulativeSalesPerKgService } from "./cumulativeSalesPerKg.service";
 
 
 @NgModule({

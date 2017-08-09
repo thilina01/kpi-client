@@ -5,14 +5,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 
-import { ControlPointTypeService } from '../../services/controlPointType.service';
-import { WorkCenterService } from '../../services/workCenter.service';
+
+
 import { ControlPointTable } from './components/controlPointTable/controlPointTable.component';
 import { ControlPointForm } from './components/controlPointForm/controlPointForm.component';
 
 import { routing } from './controlPoint.routing';
 import { ControlPoint } from "./controlPoint.component";
 import { ControlPointService } from "./controlPoint.service";
+import { ControlPointTypeService } from "../controlPointType/controlPointType.service";
+import { WorkCenterService } from "../workCenter/workCenter.service";
+
 
 
 @NgModule({

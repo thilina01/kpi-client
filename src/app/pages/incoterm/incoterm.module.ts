@@ -6,11 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Incoterm } from './incoterm.component';
-import { IncotermService } from '../../services/incoterm.service';
+
 import { IncotermTable } from './components/incotermTable/incotermTable.component';
 import { IncotermForm } from './components/incotermForm/incotermForm.component';
 
 import { routing } from './incoterm.routing';
+import { IncotermService } from "./incoterm.service";
 
 
 @NgModule({

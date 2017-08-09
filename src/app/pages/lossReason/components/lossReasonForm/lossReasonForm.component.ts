@@ -4,8 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { LossReasonService } from '../../../../services/lossReason.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { LossReasonService } from "../../lossReason.service";
 
 @Component({
     selector: 'loss-reason-form',

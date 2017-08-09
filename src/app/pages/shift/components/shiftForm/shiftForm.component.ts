@@ -4,8 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { ShiftService } from '../../../../services/shift.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { ShiftService } from "../../shift.service";
 
 @Component({
     selector: 'shift-form',

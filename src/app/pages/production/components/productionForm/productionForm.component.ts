@@ -3,11 +3,14 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { ProductionService } from '../../../../services/production.service';
+
 import { SharedService } from '../../../../services/shared.service';
-import { ShiftService } from '../../../../services/shift.service';
-import { LossTypeService } from '../../../../services/lossType.service';
 import { ControlPointService } from "../../../controlPoint/controlPoint.service";
+import { LossTypeService } from "../../../lossType/lossType.service";
+import { ProductionService } from "../../production.service";
+import { ShiftService } from "../../../shift/shift.service";
+
+
 
 @Component({
     selector: 'production-form',

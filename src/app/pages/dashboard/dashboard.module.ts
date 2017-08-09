@@ -65,7 +65,6 @@ import { PieChartService } from './pieChart/pieChart.service';
 import { TodoService } from './todo/todo.service';
 import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
-import { ChartService } from '../../services/chart.service'
 import { SalesValueChart } from './salesValueChart';
 import { SalesValueChartService } from './salesValueChart/salesValueChart.service';
 import { ConsumableCostPerKgChart } from './consumableCostPerKgChart';
@@ -85,6 +84,7 @@ import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.servic
 import { ScrapCostPerKgChartService } from "./scrapCostPerKgChart/scrapCostPerKgChart.service";
 import { ScrapCostPerKgChart } from "./scrapCostPerKgChart";
 import { PanelModule } from "primeng/primeng";
+import { ChartService } from "../chart/chart.service";
 
 @NgModule({
   imports: [

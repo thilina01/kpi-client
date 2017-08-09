@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Shift } from './shift.component';
-import { ShiftService } from '../../services/shift.service';
 import { ShiftTable } from './components/shiftTable/shiftTable.component';
 import { ShiftForm } from './components/shiftForm/shiftForm.component';
 
 import { routing } from './shift.routing';
+import { ShiftService } from "./shift.service";
 
 
 @NgModule({

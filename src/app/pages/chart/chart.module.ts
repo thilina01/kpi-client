@@ -7,14 +7,17 @@ import { MaterialModule } from '@angular/material';
 import { CalendarModule, DropdownModule, DataTableModule, SharedModule, AutoCompleteModule, PanelModule } from 'primeng/primeng';
 
 import { Chart } from './chart.component';
-import { ItemService } from '../../services/item.service';
-import { ChartService } from '../../services/chart.service';
-import { LossTypeService } from '../../services/lossType.service';
-import { SectionService } from '../../services/section.service';
+
+
 import { ScheduleAdherenceChart } from './components/scheduleAdherenceChart/scheduleAdherenceChart.component';
 import { BreakdownChart } from './components/breakdownChart/breakdownChart.component';
 
 import { routing } from './chart.routing';
+import { ItemService } from "../item/item.service";
+import { LossTypeService } from "../lossType/lossType.service";
+import { SectionService } from "../section/section.service";
+import { ChartService } from "./chart.service";
+
 
 
 @NgModule({

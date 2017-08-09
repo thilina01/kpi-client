@@ -6,11 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Country } from './country.component';
-import { CountryService } from '../../services/country.service';
+
 import { CountryTable } from './components/countryTable/countryTable.component';
 import { CountryForm } from './components/countryForm/countryForm.component';
 
 import { routing } from './country.routing';
+import { CountryService } from "./country.service";
 
 
 @NgModule({

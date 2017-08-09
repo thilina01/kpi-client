@@ -4,9 +4,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { ToolBreakdownService } from '../../../../services/toolBreakdown.service';
 import { SharedService } from '../../../../services/shared.service';
-import { ToolService } from '../../../../services/tool.service';
+import { ToolBreakdownService } from "../../toolBreakdown.service";
+import { ToolService } from "../../../tool/tool.service";
+
 
 @Component({
     selector: 'tool-breakdown-form',

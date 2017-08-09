@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { PaymentTerm } from './paymentTerm.component';
-import { PaymentTermService } from '../../services/paymentTerm.service';
 import { PaymentTermTable } from './components/paymentTermTable/paymentTermTable.component';
 import { PaymentTermForm } from './components/paymentTermForm/paymentTermForm.component';
 
 import { routing } from './paymentTerm.routing';
+import { PaymentTermService } from "./paymentTerm.service";
 
 
 @NgModule({

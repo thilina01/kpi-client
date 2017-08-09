@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Currency } from './currency.component';
-import { CurrencyService } from '../../services/currency.service';
 import { CurrencyTable } from './components/currencyTable/currencyTable.component';
 import { CurrencyForm } from './components/currencyForm/currencyForm.component';
 
 import { routing } from './currency.routing';
+import { CurrencyService } from "./currency.service";
 
 
 @NgModule({

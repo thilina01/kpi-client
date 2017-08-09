@@ -4,8 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { ToolService } from '../../../../services/tool.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { ToolService } from "../../tool.service";
 
 @Component({
     selector: 'tool-form',

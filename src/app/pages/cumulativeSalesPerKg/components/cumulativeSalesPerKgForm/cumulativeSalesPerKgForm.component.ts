@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { CumulativeSalesPerKgService } from '../../../../services/cumulativeSalesPerKg.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { CumulativeSalesPerKgService } from "../../cumulativeSalesPerKg.service";
 
 @Component({
     selector: 'cumulative-sales-per-kg-form',

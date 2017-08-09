@@ -7,12 +7,12 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { ConsumableCostPerKg } from './consumableCostPerKg.component';
-import { ConsumableCostPerKgService } from '../../services/consumableCostPerKg.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { ConsumableCostPerKgTable } from './components/consumableCostPerKgTable/consumableCostPerKgTable.component';
 import { ConsumableCostPerKgForm } from './components/consumableCostPerKgForm/consumableCostPerKgForm.component';
 
 import { routing } from './consumableCostPerKg.routing';
+import { ConsumableCostPerKgService } from "./consumableCostPerKg.service";
 
 
 @NgModule({

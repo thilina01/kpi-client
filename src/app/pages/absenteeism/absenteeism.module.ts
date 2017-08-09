@@ -7,13 +7,13 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { Absenteeism } from './absenteeism.component';
-import { LabourSourceService } from '../../services/labourSource.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { AbsenteeismTable } from './components/absenteeismTable/absenteeismTable.component';
 import { AbsenteeismForm } from './components/absenteeismForm/absenteeismForm.component';
 
 import { routing } from './absenteeism.routing';
 import { AbsenteeismService } from "./absenteeism.service";
+import { LabourSourceService } from "../labourSource/labourSource.service";
 
 
 @NgModule({

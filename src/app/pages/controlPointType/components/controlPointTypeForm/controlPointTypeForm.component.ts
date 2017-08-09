@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import { ControlPointTypeService } from '../../../../services/controlPointType.service';
+
 import { SharedService } from '../../../../services/shared.service';
+import { ControlPointTypeService } from "../../controlPointType.service";
 
 @Component({
     selector: 'control-point-type-form',

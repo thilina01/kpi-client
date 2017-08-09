@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { LabourCostPerKgChartService } from './labourCostPerKgChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./labourCostPerKgChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'labour-cost-per-kg-chart',

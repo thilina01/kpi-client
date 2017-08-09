@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { LeaveType } from './leaveType.component';
-import { LeaveTypeService } from '../../services/leaveType.service';
 import { LeaveTypeTable } from './components/leaveTypeTable/leaveTypeTable.component';
 import { LeaveTypeForm } from './components/leaveTypeForm/leaveTypeForm.component';
 
 import { routing } from './leaveType.routing';
+import { LeaveTypeService } from "./leaveType.service";
 
 
 @NgModule({

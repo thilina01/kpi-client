@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 
-import { IncotermService } from '../../../../services/incoterm.service';
 import { SharedService } from '../../../../services/shared.service';
+import { IncotermService } from "../../incoterm.service";
 
 @Component({
     selector: 'incoterm-form',

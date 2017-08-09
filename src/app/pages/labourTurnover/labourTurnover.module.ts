@@ -7,13 +7,13 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { LabourTurnover } from './labourTurnover.component';
-import { LabourTurnoverService } from '../../services/labourTurnover.service';
-import { LabourSourceService } from '../../services/labourSource.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { LabourTurnoverTable } from './components/labourTurnoverTable/labourTurnoverTable.component';
 import { LabourTurnoverForm } from './components/labourTurnoverForm/labourTurnoverForm.component';
 
 import { routing } from './labourTurnover.routing';
+import { LabourSourceService } from "../labourSource/labourSource.service";
+import { LabourTurnoverService } from "./labourTurnover.service";
 
 
 @NgModule({

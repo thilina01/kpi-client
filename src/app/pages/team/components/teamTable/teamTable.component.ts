@@ -1,8 +1,9 @@
-import { TeamService } from '../../../../services/team.service';
+
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
+import { TeamService } from "../../team.service";
 
 @Component({
   selector: 'team-table',

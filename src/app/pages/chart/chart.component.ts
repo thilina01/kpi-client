@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaThemeConfigProvider } from '../../theme';
 import 'style-loader!./chartistJs.scss';
-import { SectionService } from "../../services/section.service";
 import { SharedService } from "../../services/shared.service";
+import { SectionService } from "../section/section.service";
 @Component({
   selector: 'chart',
   templateUrl: './chart.html',

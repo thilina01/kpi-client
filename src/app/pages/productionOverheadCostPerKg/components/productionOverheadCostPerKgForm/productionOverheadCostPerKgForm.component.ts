@@ -2,9 +2,8 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-
-import { ProductionOverheadCostPerKgService } from '../../../../services/productionOverheadCostPerKg.service';
 import { SharedService } from '../../../../services/shared.service';
+import { ProductionOverheadCostPerKgService } from "../../productionOverheadCostPerKg.service";
 
 @Component({
     selector: 'production-overhead-cost-per-kg-form',

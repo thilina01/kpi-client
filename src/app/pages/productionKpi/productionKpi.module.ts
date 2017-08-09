@@ -8,10 +8,11 @@ import { ProductionKpi } from './productionKpi.component';
 import { routing } from './productionKpi.routing';
 
 
-import { ChartService } from '../../services/chart.service'
+
 import { PanelModule } from "primeng/primeng";
 import { ScheduleAdherenceFactorySixMonthsChart } from "./scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.component";
 import { ScheduleAdherenceFactorySixMonthsChartService } from "./scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.service";
+import { ChartService } from "../chart/chart.service";
 
 @NgModule({
   imports: [

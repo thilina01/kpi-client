@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 import { SalesWeightChartService } from './salesWeightChart.service';
-import { ChartService } from '../../../services/chart.service';
+
 
 import 'style-loader!./salesWeightChart.scss';
+import { ChartService } from "../../chart/chart.service";
 
 @Component({
   selector: 'sales-weight-chart',

@@ -5,15 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, DialogModule, PanelModule, TabViewModule, CalendarModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 import { Job } from './job.component';
-import { JobService } from '../../services/job.service';
-import { JobTypeService } from '../../services/jobType.service';
-import { ItemService } from '../../services/item.service';
-import { OperationService } from '../../services/operation.service';
 import { JobTable } from './components/jobTable/jobTable.component';
 import { JobForm } from './components/jobForm/jobForm.component';
 import { JobInfo } from './components/jobInfo/jobInfo.component';
 
 import { routing } from './job.routing';
+import { ItemService } from "../item/item.service";
+import { JobService } from "./job.service";
+import { JobTypeService } from "../jobType/jobType.service";
+import { OperationService } from "../operation/operation.service";
 
 
 @NgModule({

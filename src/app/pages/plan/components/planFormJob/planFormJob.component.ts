@@ -2,10 +2,10 @@ import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
-import { JobService } from '../../../../services/job.service';
 import { ProductTypeService } from '../../../../services/productType.service';
-import { OperationTypeService } from '../../../../services/operationType.service';
 import { DataTable } from "primeng/primeng";
+import { JobService } from "../../../job/job.service";
+import { OperationTypeService } from "../../../operationType/operationType.service";
 
 @Component({
   selector: 'plan-form-job',

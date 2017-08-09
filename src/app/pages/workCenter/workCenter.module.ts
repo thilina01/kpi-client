@@ -6,12 +6,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 
 import { WorkCenter } from './workCenter.component';
-import { WorkCenterService } from '../../services/workCenter.service';
 import { WorkCenterTable } from './components/workCenterTable/workCenterTable.component';
 import { WorkCenterForm } from './components/workCenterForm/workCenterForm.component';
 
 import { routing } from './workCenter.routing';
-import { CostCenterService } from "../../services/costCenter.service";
+import { CostCenterService } from "../costCenter/costCenter.service";
+import { WorkCenterService } from "./workCenter.service";
+
+
 
 
 @NgModule({
