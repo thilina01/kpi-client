@@ -7,7 +7,7 @@ import { ProductionService } from '../../../../services/production.service';
 import { SharedService } from '../../../../services/shared.service';
 import { ShiftService } from '../../../../services/shift.service';
 import { LossTypeService } from '../../../../services/lossType.service';
-import { ControlPointService } from '../../../../services/controlPoint.service';
+import { ControlPointService } from "../../../controlPoint/controlPoint.service";
 
 @Component({
     selector: 'production-form',

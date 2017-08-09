@@ -3,10 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-import { AbsenteeismService } from '../../../../services/absenteeism.service';
 import { SharedService } from '../../../../services/shared.service';
 import { LabourSourceService } from '../../../../services/labourSource.service';
+import { AbsenteeismService } from "../../absenteeism.service";
 
 @Component({
     selector: 'absenteeism-form',

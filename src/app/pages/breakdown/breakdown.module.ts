@@ -7,13 +7,13 @@ import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModul
 import { MaterialModule } from '@angular/material';
 
 import { Breakdown } from './breakdown.component';
-import { BreakdownService } from '../../services/breakdown.service';
-import { MachineService } from '../../services/machine.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { BreakdownTable } from './components/breakdownTable/breakdownTable.component';
 import { BreakdownForm } from './components/breakdownForm/breakdownForm.component';
 
 import { routing } from './breakdown.routing';
+import { BreakdownService } from "./breakdown.service";
+import { MachineService } from "../machine/machine.service";
 
 
 @NgModule({

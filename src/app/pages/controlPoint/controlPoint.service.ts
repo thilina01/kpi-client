@@ -2,9 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { APP_CONFIG, IAppConfig } from '../app.config';
-import { AuthService } from "./auth.service";
-
+import { APP_CONFIG, IAppConfig } from '../../app.config';
+import { AuthService } from "../../services/auth.service";
 @Injectable()
 export class ControlPointService {
 

@@ -6,8 +6,8 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { ControlPointMachineService } from '../../../../services/controlPointMachine.service';
 import { SharedService } from '../../../../services/shared.service';
-import { ControlPointService } from '../../../../services/controlPoint.service';
-import { MachineService } from '../../../../services/machine.service';
+import { MachineService } from "../../../machine/machine.service";
+import { ControlPointService } from "../../../controlPoint/controlPoint.service";
 
 @Component({
     selector: 'control-point-machine-form',

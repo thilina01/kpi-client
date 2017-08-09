@@ -3,10 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-import { BreakdownService } from '../../../../services/breakdown.service';
 import { SharedService } from '../../../../services/shared.service';
-import { MachineService } from '../../../../services/machine.service';
+import { BreakdownService } from "../../breakdown.service";
+import { MachineService } from "../../../machine/machine.service";
 
 @Component({
     selector: 'breakdown-form',

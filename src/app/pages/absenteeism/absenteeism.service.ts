@@ -2,23 +2,23 @@ import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { APP_CONFIG, IAppConfig } from '../app.config';
-import { AuthService } from "./auth.service";
+import { APP_CONFIG, IAppConfig } from '../../app.config';
+import { AuthService } from "../../services/auth.service";
 
 @Injectable()
-export class BreakdownService {
-
+export class AbsenteeismService {
   private getJsonHeaders(): Headers{
     return new Headers({
       'Content-Type': 'application/json',
       'email': this.authService.email
     });
   }; 
-  // = new Headers({ 'Content-Type': 'application/json' });
+  private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
-    this.apiUrl = config.apiEndpoint + 'breakdowns/';
+    this.apiUrl = config.apiEndpoint + 'absenteeisms/';
+    //this.headers = new Headers(config.jsonHeaders);
   }
 
   getAll(): Promise<Array<Object>> {
@@ -60,7 +60,7 @@ export class BreakdownService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error); // for demo purposes only    
     alert(JSON.parse(error._body).message);
     return Promise.reject(error.message || error);
   }

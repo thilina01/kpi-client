@@ -7,12 +7,12 @@ import { DataTableModule, SharedModule, PanelModule,AutoCompleteModule } from 'p
 
 import { ControlPointMachine } from './controlPointMachine.component';
 import { ControlPointMachineService } from '../../services/controlPointMachine.service';
-import { ControlPointService } from '../../services/controlPoint.service';
-import { MachineService } from '../../services/machine.service';
 import { ControlPointMachineTable } from './components/controlPointMachineTable/controlPointMachineTable.component';
 import { ControlPointMachineForm } from './components/controlPointMachineForm/controlPointMachineForm.component';
 
 import { routing } from './controlPointMachine.routing';
+import { MachineService } from "../machine/machine.service";
+import { ControlPointService } from "../controlPoint/controlPoint.service";
 
 
 @NgModule({

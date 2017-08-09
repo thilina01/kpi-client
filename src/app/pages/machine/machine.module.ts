@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Machine } from './machine.component';
-import { MachineService } from '../../services/machine.service';
 import { MachineTable } from './components/machineTable/machineTable.component';
 import { MachineForm } from './components/machineForm/machineForm.component';
 
 import { routing } from './machine.routing';
+import { MachineService } from "./machine.service";
 
 
 @NgModule({

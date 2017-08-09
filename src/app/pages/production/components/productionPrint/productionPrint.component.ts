@@ -7,7 +7,7 @@ import { ProductionService } from '../../../../services/production.service';
 import { SharedService } from '../../../../services/shared.service';
 import { ShiftService } from '../../../../services/shift.service';
 import { LossTypeService } from '../../../../services/lossType.service';
-import { ControlPointService } from '../../../../services/controlPoint.service';
+import { ControlPointService } from "../../../controlPoint/controlPoint.service";
 
 @Component({
     selector: 'production-print',
@@ -35,10 +35,13 @@ export class ProductionPrint {
     lossType: any = {}
 
 
-    constructor(protected service: ProductionService, private route: ActivatedRoute, private sharedService: SharedService, private controlPointService: ControlPointService, private shiftService: ShiftService, private lossTypeService: LossTypeService) {
-       
-
-
+    constructor(
+        protected service: ProductionService, 
+        private route: ActivatedRoute, 
+        private sharedService: SharedService, 
+        private controlPointService: ControlPointService, 
+        private shiftService: ShiftService, 
+        private lossTypeService: LossTypeService) {
     }
 
     loadForm(data: any) {
