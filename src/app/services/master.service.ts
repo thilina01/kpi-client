@@ -45,22 +45,22 @@ export class MasterService {
     }
 
     save(object: Object): Observable<any> {
-
         return this.http
             .post(this.apiUrl, JSON.stringify(object), { headers: this.getJsonHeaders() })
             .catch(err => this.handleError(err));
     }
 
     delete(id: number): Observable<any> {
-
         return this.http
             .delete(this.apiUrl + id, { headers: this.getJsonHeaders() })
             .catch(err => this.handleError(err));
     }
 
-    public handleError(error: any): Observable<any> {
-        console.error('An error occurred', error); // for demo purposes only    
-        alert(JSON.parse(error._body).message);
+    public handleError(httpErrorResponse: any): Observable<any> {
+        console.error('An error occurred'); // for demo purposes only    
+        console.log(httpErrorResponse)
+        // // alert(JSON.parse(error._body).message);
+        alert(httpErrorResponse.error.message);
         return Observable.empty<Response>();
     }
 }
