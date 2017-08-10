@@ -210,7 +210,7 @@ mdtChartData: Object = {
 
       this.categoryTitle = "Section";
 
-      this.chartService.getBreakdown(this.startDate, this.endDate).then((data) => {
+      this.chartService.getBreakdown(this.startDate, this.endDate).subscribe((data) => {
         this.setData(data)
       });
 

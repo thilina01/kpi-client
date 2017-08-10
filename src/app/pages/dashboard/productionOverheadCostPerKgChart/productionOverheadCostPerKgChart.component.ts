@@ -27,7 +27,7 @@ export class ProductionOverheadCostPerKgChart {
     var endDate = new Date();
     var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
-    this.chartService.getMonthlyProductionOverheadCostPerKg(startDateText, endDateText).then((data) => {
+    this.chartService.getMonthlyProductionOverheadCostPerKg(startDateText, endDateText).subscribe((data) => {
       var chartData = this._productionOverheadCostPerKgChartService.getChartData(data);
       this.amChart = AmCharts.makeChart("productionOverheadCostPerKgchartdiv",chartData);
     });

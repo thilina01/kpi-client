@@ -35,7 +35,7 @@ export class EnergyCostMainChart {
     //endDate.setMonth(endDate.getMonth() - 6);
     var endDateText = endDate.getFullYear() + "-" + (endDate.getMonth() < 10 ? "0" + endDate.getMonth() : endDate.getMonth()) + "-" + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
-    this.chartService.getMonthlyEnergyConsumptionByLocation(startDateText, endDateText, this.location).then((data) => {
+    this.chartService.getMonthlyEnergyConsumptionByLocation(startDateText, endDateText, this.location).subscribe((data) => {
       this.amChart.dataProvider = data;
       this.amChart.validateData();
     });

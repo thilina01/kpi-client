@@ -25,7 +25,7 @@ export class CumulativeSalesPerKgChart {
     var endDate = new Date();
     var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
-    this.chartService.getMonthlyCumulativeSalesPerKg(startDateText, endDateText).then((data) => {
+    this.chartService.getMonthlyCumulativeSalesPerKg(startDateText, endDateText).subscribe((data) => {
       var chartData = this._cumulativeSalesPerKgChartService.getChartData(data);
       this.amChart = AmCharts.makeChart("cumulativeSalesPerKgchartdiv",chartData);
     });
