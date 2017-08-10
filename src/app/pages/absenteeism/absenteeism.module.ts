@@ -7,7 +7,6 @@ import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModul
 import { MaterialModule } from '@angular/material';
 
 import { Absenteeism } from './absenteeism.component';
-import { LossTypeService } from '../../services/lossType.service';
 import { AbsenteeismTable } from './components/absenteeismTable/absenteeismTable.component';
 import { AbsenteeismForm } from './components/absenteeismForm/absenteeismForm.component';
 

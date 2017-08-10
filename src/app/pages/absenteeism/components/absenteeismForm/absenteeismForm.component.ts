@@ -26,7 +26,12 @@ export class AbsenteeismForm {
     labourSource: any = { id: '', code: '' }
 
 
-    constructor(protected service: AbsenteeismService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService, private labourSourceService: LabourSourceService) {
+    constructor(
+        protected service: AbsenteeismService, 
+        private route: ActivatedRoute, 
+        private router: Router, fb: FormBuilder, 
+        private sharedService: SharedService, 
+        private labourSourceService: LabourSourceService) {
         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],
@@ -37,7 +42,7 @@ export class AbsenteeismForm {
     }
 
     getLabourSources(): void {
-        this.labourSourceService.getAll().then(labourSources => this.labourSources = labourSources);
+        this.labourSourceService.getCombo().subscribe(labourSources => this.labourSources = labourSources);
     }
 
     ngOnInit(): void {
@@ -47,7 +52,7 @@ export class AbsenteeismForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).then(
+                    this.service.getOne(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -69,7 +74,7 @@ export class AbsenteeismForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
-        this.service.save(values).then(
+        this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();
@@ -80,8 +85,8 @@ export class AbsenteeismForm {
 
     public resetForm() {
         this.formGroup.reset();
-    }    
-             /*================== Labour Source Filter ===================*/
+    }
+    /*================== Labour Source Filter ===================*/
     filteredLabourSources: any[];
     //labourSource: any;
 
