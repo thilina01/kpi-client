@@ -110,8 +110,8 @@ export class ItemForm {
     public resetForm() {
         this.formGroup.reset();
     }
-    
- /*================== Item Type Filter ===================*/
+
+    /*================== Item Type Filter ===================*/
     filteredItemTypes: any[];
     // itemType: any;
 
@@ -120,7 +120,7 @@ export class ItemForm {
         this.filteredItemTypes = [];
         for (let i = 0; i < this.itemTypeList.length; i++) {
             let itemType = this.itemTypeList[i];
-            if (itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name.toLowerCase().indexOf(query) == 0) {
+            if (itemType.code != null && itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name != null && itemType.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredItemTypes.push(itemType);
             }
         }
@@ -147,7 +147,7 @@ export class ItemForm {
         this.filteredPaints = [];
         for (let i = 0; i < this.paints.length; i++) {
             let paint = this.paints[i];
-            if (paint.code.toLowerCase().indexOf(query) == 0 || paint.name.toLowerCase().indexOf(query) == 0) {
+            if (paint.code != null && paint.code.toLowerCase().indexOf(query) == 0 || paint.name != null && paint.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredPaints.push(paint);
             }
         }
