@@ -36,7 +36,7 @@ export class ScrapCostPerKgForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).then(
+                    this.service.getOne(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -57,7 +57,7 @@ export class ScrapCostPerKgForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
-        this.service.save(values).then(
+        this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();

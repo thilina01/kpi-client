@@ -65,7 +65,7 @@ export class PermissionForm {
     }
 
     loadUsers() {
-        this.userService.getAll().then((data: any) => {
+        this.userService.getAll().subscribe((data: any) => {
             this.users = data;
         });
     }
@@ -77,7 +77,7 @@ export class PermissionForm {
     }
 
     loadTeamList() {
-        this.teamService.getAll().then((data: any) => {
+        this.teamService.getAll().subscribe((data: any) => {
             this.teamList = data;
         });
     }
@@ -148,7 +148,7 @@ export class PermissionForm {
     onStatusSelect(status: any) {
         if (this.user != null && this.user != undefined) {
             this.user.status = this.status;
-            this.userService.save(this.user).then(
+            this.userService.save(this.user).subscribe(
                 data => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Status Changed to ' + this.status.name });
                     this.user = null;
@@ -186,7 +186,7 @@ export class PermissionForm {
     onTeamSelect(team: any) {
         if (this.user != null && this.user != undefined) {
             this.user.team = this.team;
-            this.userService.save(this.user).then(
+            this.userService.save(this.user).subscribe(
                 data => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Team Changed to ' + this.team.name });
                     this.user = null;

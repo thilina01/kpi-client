@@ -71,23 +71,23 @@ export class CustomerForm {
     }
 
     getCustomerTypeList(): void {
-        this.customerTypeService.getCombo().then(customerTypeList => this.customerTypeList = customerTypeList);
+        this.customerTypeService.getCombo().subscribe(customerTypeList => this.customerTypeList = customerTypeList);
     }
 
     getCurrencyList(): void {
-        this.currencyService.getCombo().then(currencyList => this.currencyList = currencyList);
+        this.currencyService.getCombo().subscribe(currencyList => this.currencyList = currencyList);
     }
 
     getIncotermList(): void {
-        this.incotermService.getCombo().then(incotermList => this.incotermList = incotermList);
+        this.incotermService.getCombo().subscribe(incotermList => this.incotermList = incotermList);
     }
 
     getNotifyPartyList(): void {
-        this.notifyPartyService.getCombo().then(notifyPartyList => this.notifyPartyList = notifyPartyList);
+        this.notifyPartyService.getCombo().subscribe(notifyPartyList => this.notifyPartyList = notifyPartyList);
     }
 
     getPaymentTermList(): void {
-        this.paymentTermService.getCombo().then(paymentTermList => this.paymentTermList = paymentTermList);
+        this.paymentTermService.getCombo().subscribe(paymentTermList => this.paymentTermList = paymentTermList);
     }
 
 
@@ -102,7 +102,7 @@ export class CustomerForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).then(
+                    this.service.getOne(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -128,7 +128,7 @@ export class CustomerForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
-        this.service.save(values).then(
+        this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();

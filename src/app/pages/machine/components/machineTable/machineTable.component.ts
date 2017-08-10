@@ -21,7 +21,7 @@ export class MachineTable {
   }
 
   loadData() {
-    this.service.getPage(0, 20).then((data: any) => {
+    this.service.getPage(0, 20).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
     });
@@ -29,7 +29,7 @@ export class MachineTable {
   
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
-    this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
+    this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
     });
@@ -54,7 +54,7 @@ export class MachineTable {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',
       accept: () => {
-        this.service.delete(id).then(response => {
+        this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
           //this.msgs.push();
           this.loadData()

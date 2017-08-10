@@ -56,7 +56,7 @@ export class Register {
       values.password = values.passwords.password;
       this.authService.addUser(values).then((res: any) => {
         if (res.success) {
-          this.userService.save(values).then(
+          this.userService.save(values).subscribe(
             data => {
               this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Wait for the actication confirmation mail.' });
               this.form.reset();

@@ -41,7 +41,7 @@ export class Plan {
         console.log(params);
         id = id == undefined ? '0' : id;
         if (id != '0') {
-          this.productionService.getOne(+id).then(
+          this.productionService.getOne(+id).subscribe(
             (data) => {
               this.loadForm(data);
               console.log(data);
@@ -83,7 +83,7 @@ export class Plan {
         return;
       }
       console.log(values);
-      this.productionService.save(values).then(
+      this.productionService.save(values).subscribe(
         (data) => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Plan Added' });
           this.resetForm();

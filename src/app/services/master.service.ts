@@ -8,16 +8,16 @@ import { AuthService } from "./auth.service";
 
 //@Injectable()
 export class MasterService {
-    private getJsonHeaders(): HttpHeaders {
+    public getJsonHeaders(): HttpHeaders {
         return new HttpHeaders({
             'Content-Type': 'application/json',
             'email': this.authService.email
         });
     };
     private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
-    private apiUrl: string;  // URL to web api
+    public apiUrl: string;  // URL to web api
 
-    constructor(private http: HttpClient, private config: IAppConfig, private authService: AuthService) {
+    constructor(public http: HttpClient, private config: IAppConfig, private authService: AuthService) {
     }
 
     setApiUrl(path: string) {
@@ -58,7 +58,7 @@ export class MasterService {
             .catch(err => this.handleError(err));
     }
 
-    private handleError(error: any): Observable<any> {
+    public handleError(error: any): Observable<any> {
         console.error('An error occurred', error); // for demo purposes only    
         alert(JSON.parse(error._body).message);
         return Observable.empty<Response>();

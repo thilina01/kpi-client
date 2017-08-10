@@ -50,11 +50,11 @@ export class JobForm {
     }
 
     getJobTypes(): void {
-        this.jobTypeService.getCombo().then(jobTypes => this.jobTypes = jobTypes);
+        this.jobTypeService.getCombo().subscribe(jobTypes => this.jobTypes = jobTypes);
     }
     
     getItems(): void {
-        this.itemService.getCombo().then(items => this.items = items);
+        this.itemService.getCombo().subscribe(items => this.items = items);
     }
 
     ngOnInit(): void {
@@ -65,7 +65,7 @@ export class JobForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).then(
+                    this.service.getOne(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -87,7 +87,7 @@ export class JobForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
-        this.service.save(values).then(
+        this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();

@@ -65,7 +65,7 @@ export class ProductionForm {
             shift: this.shift,
             controlPoint: this.controlPoint
         }
-        this.service.findByProductionDateAndShiftAndControlPoint(production).then(
+        this.service.findByProductionDateAndShiftAndControlPoint(production).subscribe(
             (data) => {
                 this.loadForm(data);
                 if (data != null) {
@@ -76,15 +76,15 @@ export class ProductionForm {
     }
 
     getControlPoints(): void {
-        this.controlPointService.getAll().then(controlPoints => this.controlPoints = controlPoints);
+        this.controlPointService.getAll().subscribe(controlPoints => this.controlPoints = controlPoints);
     }
 
     getShifts(): void {
-        this.shiftService.getAll().then(shifts => this.shifts = shifts);
+        this.shiftService.getAll().subscribe(shifts => this.shifts = shifts);
     }
 
     getLossTypes(): void {
-        this.lossTypeService.getAll().then(lossTypes => this.lossTypes = lossTypes);
+        this.lossTypeService.getAll().subscribe(lossTypes => this.lossTypes = lossTypes);
     }
 
     ngOnInit(): void {
@@ -97,7 +97,7 @@ export class ProductionForm {
             (params: Params) => {
                 let id = params['id'];
                 id = id == undefined ? 1 : id;
-                this.service.getOne(+id).then(
+                this.service.getOne(+id).subscribe(
                     (data) => {
                         this.loadForm(data);
                     }
@@ -188,7 +188,7 @@ export class ProductionForm {
         this.production.actualDuration = values.actualDuration
         this.production.plannedDuration = values.plannedDuration
         console.log(this.production);
-        this.service.save(this.production).then(
+        this.service.save(this.production).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
             }

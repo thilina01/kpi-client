@@ -30,7 +30,7 @@ export class PlanFormHr {
   }
 
   getManpowerTypes(): void {
-    this.manpowerTypeService.getAll().then(manpowerTypes => this.manpowerTypes = manpowerTypes);
+    this.manpowerTypeService.getAll().subscribe(manpowerTypes => this.manpowerTypes = manpowerTypes);
   }
 
   ngOnInit(): void {

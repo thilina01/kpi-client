@@ -21,7 +21,7 @@ export class ManpowerTable {
 
 
   loadData() {
-    this.service.getPage(0, 20).then((data: any) => {
+    this.service.getPage(0, 20).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
     });
@@ -29,7 +29,7 @@ export class ManpowerTable {
 
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
-    this.service.getPage((event.first / event.rows), event.rows).then((data: any) => {
+    this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
     });

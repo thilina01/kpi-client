@@ -39,21 +39,21 @@ export class OperationTable {
   }
   
   getSections(): void {
-    this.sectionService.getCombo().then(sections => {
+    this.sectionService.getCombo().subscribe(sections => {
       this.sections = sections;
       this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections" });
     });
   }
 
   getShifts(): void {
-    this.shiftService.getCombo().then(shifts => {
+    this.shiftService.getCombo().subscribe(shifts => {
       this.shifts = shifts;
       this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts" });
     });
   }
 
   loadData() {
-    this.service.getPage(0, 20).then((data: any) => {
+    this.service.getPage(0, 20).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
     });
@@ -79,25 +79,25 @@ export class OperationTable {
       this.shift != undefined &&
       this.shift.id != undefined) {
       if (this.section.id == 0 && this.shift.id == 0) {
-        this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).then((data: any) => {
+        this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
       } else if (this.section.id == 0 && this.shift.id > 0) {
-        this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).then((data: any) => {
+        this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
 
       } else if (this.section.id > 0 && this.shift.id == 0) {
-        this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).then((data: any) => {
+        this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
       } else {
-        this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).then((data: any) => {
+        this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
       }
     } else {
-      this.service.getPage(first, pageSize).then((data: any) => {
+      this.service.getPage(first, pageSize).subscribe((data: any) => {
         this.fillTable(data);
       });
     }

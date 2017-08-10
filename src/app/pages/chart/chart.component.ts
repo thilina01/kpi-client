@@ -35,7 +35,7 @@ export class Chart {
   }
 
   loadData() {
-    this.sectionService.getAll().then((data) => {
+    this.sectionService.getAll().subscribe((data) => {
       this.sections = data;
       this.sections.unshift({ "id": 0, "code": "ALL", "name": "All Sections" });
     });

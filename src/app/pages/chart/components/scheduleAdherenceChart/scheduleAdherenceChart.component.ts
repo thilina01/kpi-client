@@ -120,7 +120,7 @@ export class ScheduleAdherenceChart {
   }
 
   fillLossTypes() {
-    this.lossTypeService.getAll().then((data) => {
+    this.lossTypeService.getAll().subscribe((data) => {
       this.lossTypes = data;
       this.lossTypes.unshift({ "id": 0, "code": "ALL", "type": "All" });
     });

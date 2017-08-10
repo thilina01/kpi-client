@@ -69,7 +69,7 @@ export class PlanFormJob {
   }
 
   getJobs(): void {
-    this.jobService.getAll().then(jobs => this.jobs = jobs);
+    this.jobService.getAll().subscribe(jobs => this.jobs = jobs);
   }
 
   getProductTypes(): void {
@@ -77,7 +77,7 @@ export class PlanFormJob {
   }
 
   getOperationTypes(): void {
-    this.operationTypeService.getAll().then(operationTypes => this.operationTypes = operationTypes);
+    this.operationTypeService.getAll().subscribe(operationTypes => this.operationTypes = operationTypes);
   }
 
   fillOperations(): void {

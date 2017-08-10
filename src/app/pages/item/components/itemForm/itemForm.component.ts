@@ -56,11 +56,11 @@ export class ItemForm {
     }
 
     getItemTypes(): void {
-        this.itemTypeService.getCombo().then(itemTypeList => this.itemTypeList = itemTypeList);
+        this.itemTypeService.getCombo().subscribe(itemTypeList => this.itemTypeList = itemTypeList);
     }
 
     getPaints(): void {
-        this.paintService.getCombo().then(paints => this.paints = paints);
+        this.paintService.getCombo().subscribe(paints => this.paints = paints);
     }
 
     ngOnInit(): void {
@@ -71,7 +71,7 @@ export class ItemForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).then(
+                    this.service.getOne(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -98,7 +98,7 @@ export class ItemForm {
 
         values.drawingApproval = values.drawingApproval ? "yes" : "no";
         values.productionToolAvailability = values.productionToolAvailability ? "yes" : "no";
-        this.service.save(values).then(
+        this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();

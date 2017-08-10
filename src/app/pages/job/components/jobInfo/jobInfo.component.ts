@@ -62,7 +62,7 @@ export class JobInfo {
     fill(id: any): void {
         this.clear();
         if (id == undefined) {
-            this.service.getOneByJobNo(this.jobNo).then(
+            this.service.getOneByJobNo(this.jobNo).subscribe(
                 (data) => {
                     if (data != null) {
                         this.job = data;
@@ -73,7 +73,7 @@ export class JobInfo {
                 }
             )
         } else if (id != '0') {
-            this.service.getOne(+id).then(
+            this.service.getOne(+id).subscribe(
                 (data) => {
                     if (data != null) {
                         this.job = data;
@@ -86,13 +86,13 @@ export class JobInfo {
         }
     }
     fillOperations(): void {
-        this.operationService.getByJobPage(this.job.id, 0, 20).then((data: any) => {
+        this.operationService.getByJobPage(this.job.id, 0, 20).subscribe((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;
         });
     }
     fillOperationSummaries(): void {
-        this.operationService.getSummaryByJob(this.job.id, 0, 20).then((data: any) => {
+        this.operationService.getSummaryByJob(this.job.id, 0, 20).subscribe((data: any) => {
             this.operationSummaryList = data;
             this.totalOperationSummaryRecords = data.length;
         });
@@ -100,7 +100,7 @@ export class JobInfo {
     /**/
     lazyOperations(event: any, table: any) {
         if (this.job.id != undefined) {
-            this.operationService.getByJobPage(this.job.id, (event.first / event.rows), event.rows).then((data: any) => {
+            this.operationService.getByJobPage(this.job.id, (event.first / event.rows), event.rows).subscribe((data: any) => {
                 //this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
                 this.rows = data.content;
                 this.totalRecords = data.totalElements;
