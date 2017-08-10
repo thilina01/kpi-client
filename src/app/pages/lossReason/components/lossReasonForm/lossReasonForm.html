@@ -3,6 +3,27 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="lossType">Loss Type</label><br/>
+              <p-autoComplete formControlName="lossType" field="name" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossTypeDropdownClick($event)" (onSelect)="onLossTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <label *ngIf="formGroup.value.lossType != null && formGroup.value.lossType.code != null">
+              &nbsp; {{formGroup.value.lossType.code}}{{formGroup.value.lossType.name != null ?" | "+ formGroup.value.lossType.name:""}}
+            </label>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.lossType != null">
+            <p class="hidden-xs-down">&nbsp;</p>
+          </div>
+
+
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="code">Code</label><br/>

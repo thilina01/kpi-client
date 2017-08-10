@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
 
 import { LossReason } from './lossReason.component';
 
@@ -12,6 +12,8 @@ import { LossReasonForm } from './components/lossReasonForm/lossReasonForm.compo
 
 import { routing } from './lossReason.routing';
 import { LossReasonService } from "./lossReason.service";
+import { LossType } from "../lossType/lossType.component";
+import { LossTypeService } from "../lossType/lossType.service";
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { LossReasonService } from "./lossReason.service";
     DataTableModule,
     SharedModule,
     PanelModule,
+    AutoCompleteModule,
     InputTextModule,
     routing
   ],
@@ -32,7 +35,8 @@ import { LossReasonService } from "./lossReason.service";
     LossReasonForm
   ],
   providers: [
-    LossReasonService
+    LossReasonService,
+     LossTypeService
   ]
 })
 export class LossReasonModule { }

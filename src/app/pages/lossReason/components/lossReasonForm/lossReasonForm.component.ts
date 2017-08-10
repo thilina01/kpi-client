@@ -7,6 +7,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { SharedService } from '../../../../services/shared.service';
 import { LossReasonService } from "../../lossReason.service";
+import { LossTypeService } from "../../../lossType/lossType.service";
 
 @Component({
     selector: 'loss-reason-form',
@@ -15,36 +16,48 @@ import { LossReasonService } from "../../lossReason.service";
     templateUrl: './lossReasonForm.html',
 })
 export class LossReasonForm {
+    LossTypeList(): any {
+        throw new Error("Method not implemented.");
+    }
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     lossReason: any = {};
     subscription: Subscription;
 
+    lossTypeList = [];
+
     lossReasonTypes: any;
     paints: any;
-
+ 
     lossReasonDate: Date;
     lossReasonTime: Date = new Date();
     recoveryTime: Date = new Date();
     lossReasonType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
-
+    lossType: any = { id: '', code: '', name: '' }
 
     constructor(protected service: LossReasonService,
         private route: ActivatedRoute,
         private router: Router,
+        private lossTypeService: LossTypeService,
         fb: FormBuilder,
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            name: ['', Validators.required]
+            name: ['', Validators.required],
+            lossType: [this.lossType, Validators.required]
+            
         });
     }
-
+  
+      getLossTypeList(): void {
+        this.lossTypeService.getCombo().subscribe(lossTypeList => this.lossTypeList = lossTypeList);
+    }
 
     ngOnInit(): void {
+        this.getLossTypeList();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -66,6 +79,7 @@ export class LossReasonForm {
         }
         this.formGroup.patchValue(this.lossReason, { onlySelf: true });
         this.lossReasonType = this.lossReason.lossReasonType;
+        this.lossType = this.lossReason.lossType;
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -83,5 +97,33 @@ export class LossReasonForm {
     public resetForm() {
         this.formGroup.reset();
     }
+   /*================== Loss TypeFilter ===================*/
+    filteredLossTypes: any[];
+    //lossType: any;
 
+    filterLossTypes(event) {
+        let query = event.query.toLowerCase();
+        this.filteredLossTypes = [];
+        for (let i = 0; i < this.lossTypeList.length; i++) {
+            let lossType = this.lossTypeList[i];
+            if (lossType.code.toLowerCase().indexOf(query) == 0 || lossType.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredLossTypes.push(lossType);
+            }
+        }
+    }
+
+    handleLossTypeDropdownClick() {
+        this.filteredLossTypes = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredLossTypes = this.lossTypeList;
+        }, 100)
+    }
+
+    onLossTypeSelect(lossType: any) {
+        console.log(event)
+    }
+    /*================== End Of Loss TypeFilter ===================*/
+   
+    
 }

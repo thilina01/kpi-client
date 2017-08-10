@@ -11,6 +11,7 @@ import { IncotermService } from "../../../incoterm/incoterm.service";
 import { CurrencyService } from "../../../currency/currency.service";
 import { NotifyPartyService } from "../../../notifyParty/notifyParty.service";
 import { PaymentTermService } from "../../../paymentTerm/paymentTerm.service";
+import { CountryService } from "../../../country/country.service";
 
 @Component({
     selector: 'customer-form',
@@ -30,13 +31,14 @@ export class CustomerForm {
     incotermList = [];
     currencyList = [];
     customerTypeList = [];
+    countryList =[];
 
     paymentTerm: any = { id: '', code: '', name: '' }
     notifyParty: any = { id: '', code: '', name: '' }
     incoterm: any = { id: '', code: '', name: '' }
     currency: any = { id: '', code: '', name: '' }
     customerType: any = { id: '', code: '', name: '' }
-
+    country: any = { id: '', code: '', name: '' }
     customer: any = { id: '', code: '', name: '' }
 
     constructor(protected service: CustomerService,
@@ -48,6 +50,7 @@ export class CustomerForm {
         private currencyService: CurrencyService,
         private incotermService: IncotermService,
         private paymentTermService: PaymentTermService,
+        private countryService: CountryService,
         private notifyPartyService: NotifyPartyService) {
         this.formGroup = fb.group({
             id: '',
@@ -66,7 +69,8 @@ export class CustomerForm {
             notifyParty: [this.notifyParty, Validators.required],
             incoterm: [this.incoterm, Validators.required],
             currency: [this.currency, Validators.required],
-            customerType: [this.customerType, Validators.required]
+            customerType: [this.customerType, Validators.required],
+            country: [this.country, Validators.required]
         });
     }
 
@@ -89,7 +93,9 @@ export class CustomerForm {
     getPaymentTermList(): void {
         this.paymentTermService.getCombo().subscribe(paymentTermList => this.paymentTermList = paymentTermList);
     }
-
+     getCountryList(): void {
+        this.countryService.getCombo().subscribe(countryList => this.countryList = countryList);
+    }
 
     ngOnInit(): void {
         this.getCustomerTypeList();
@@ -97,6 +103,7 @@ export class CustomerForm {
         this.getIncotermList();
         this.getNotifyPartyList();
         this.getPaymentTermList();
+        this.getCountryList();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -123,6 +130,7 @@ export class CustomerForm {
         this.incoterm = this.customer.incoterm;
         this.notifyparty = this.customer.notifyparty;
         this.paymentTerm = this.customer.paymentTerm;
+        this.country = this.customer.country;
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -278,5 +286,30 @@ export class CustomerForm {
         console.log(event)
     }
     /*================== End Of Incoterm Filter ===================*/
-}
+   /*================== CountryFilter ===================*/
+    filteredCountryList: any[];
+    //country: any;
 
+    filterCountryList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredCountryList = [];
+        for (let i = 0; i < this.countryList.length; i++) {
+            let country = this.countryList[i];
+            if (country.code.toLowerCase().indexOf(query) == 0 || country.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCountryList.push(country);
+            }
+        }
+    }
+
+    handleCountryDropdownClick() {
+        this.filteredCountryList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredCountryList = this.countryList;
+        }, 100)
+    }
+
+    onCountrySelect(country: any) {
+        console.log(event)
+    }
+}

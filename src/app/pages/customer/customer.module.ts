@@ -19,6 +19,7 @@ import { IncotermService } from "../incoterm/incoterm.service";
 import { CurrencyService } from "../currency/currency.service";
 import { NotifyPartyService } from "../notifyParty/notifyParty.service";
 import { PaymentTermService } from "../paymentTerm/paymentTerm.service";
+import { CountryService } from "../country/country.service";
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { PaymentTermService } from "../paymentTerm/paymentTerm.service";
     CurrencyService,
     NotifyPartyService,
     PaymentTermService,
+    CountryService,
     IncotermService
   ]
 })
