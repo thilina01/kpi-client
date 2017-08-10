@@ -28,6 +28,7 @@ import { SharedService } from './services/shared.service';
 import { UserService } from "./user.service";
 import { environment } from "../environments/environment";
 
+import {HttpClientModule} from '@angular/common/http';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -50,6 +51,7 @@ export type StoreType = {
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
+    HttpClientModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
