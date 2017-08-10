@@ -39,7 +39,7 @@ export class Login {
                         if (response) {
                             this.router.navigate([this.authService.redirectUrl]);
                         } else {
-                            alert("Login Failed (API)")
+                            alert("Login Failed (Internal)")
                         }
                     });
                 } else {
