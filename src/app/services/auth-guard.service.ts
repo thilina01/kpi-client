@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
                 let result = (response.status.name) === "active";
                 return result;
             })
-        }        
+        }
     }
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -30,11 +30,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     }
 
     checkLogin(url: string): boolean {
+        // Store the attempted URL for redirecting
+        this.authService.redirectUrl = url;
         if (this.authService.isLoggedIn) {
             return true;
         } else {
-            // Store the attempted URL for redirecting
-            this.authService.redirectUrl = url;
             // Navigate to the login page with extras
             this.router.navigate(['/login']);
         }

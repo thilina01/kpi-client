@@ -13,6 +13,7 @@ import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from '@angular/router';
+import { AuthService } from "./services/auth.service";
 
 /*
  * App Component
@@ -34,6 +35,7 @@ export class App {
     private themeConfig: BaThemeConfig,
     private sharedService: SharedService,
     public afAuth: AngularFireAuth,
+    public authService: AuthService,
     public router: Router) {
     themeConfig.config();
 
@@ -48,7 +50,7 @@ export class App {
     this.afAuth.authState.subscribe(auth => {
       if (auth) {
         //this.rootPage = 'TabsPage';
-        this.router.navigate(["/pages/home"]);
+        this.router.navigate([authService.redirectUrl]);//["/pages/home"]);
       } else {
         //this.rootPage = 'LoginPage';
         this.router.navigate(["/login"]);

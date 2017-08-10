@@ -1,7 +1,7 @@
 import { OpaqueToken } from '@angular/core';
-import { Cookie } from 'ng2-cookies/ng2-cookies';
-import { Headers } from '@angular/http';
-import { AuthService } from "./services/auth.service";
+//import { Cookie } from 'ng2-cookies/ng2-cookies';
+//import { Headers } from '@angular/http';
+//import { AuthService } from "./services/auth.service";
 
 export let APP_CONFIG = new OpaqueToken('app.config');
 

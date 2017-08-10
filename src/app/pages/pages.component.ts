@@ -8,7 +8,7 @@ import { SharedService } from '../services/shared.service';
 import { MenuService } from '../services/menu.service';
 import { UserMenuService } from "../services/userMenu.service";
 import { Cookie } from "ng2-cookies/ng2-cookies";
-import { AuthService } from "../services/auth.service";
+//import { AuthService } from "../services/auth.service";
 
 @Component({
   selector: 'pages',
@@ -23,7 +23,7 @@ export class Pages {
     private sharedService: SharedService,
     private menuService: MenuService,
     private userMenuService: UserMenuService,
-    private authService: AuthService,
+    //private authService: AuthService,
     private router: Router) {
     sharedService.messageSubject.subscribe(
       message => {

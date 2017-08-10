@@ -29,6 +29,7 @@ import { UserService } from "./user.service";
 import { environment } from "../environments/environment";
 
 import {HttpClientModule} from '@angular/common/http';
+import { AuthService } from "./services/auth.service";
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -68,6 +69,7 @@ export type StoreType = {
     APP_PROVIDERS,
     ConfirmationService,
     SharedService,
+    AuthService,
     AngularFireAuth,
     { provide: APP_CONFIG, useValue: AppConfig }
   ]
