@@ -35,10 +35,9 @@ export class Login {
         if (this.form.valid) {
             this.authService.afLogin(values).then((res: any) => {
                 if (!res.code) {
-                    this.authService.login(values).then((result: any) => {
-                        if (result.status) {
-                            let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/home';
-                            this.router.navigate([redirect]);
+                    this.authService.login(values).subscribe(response => {
+                        if (response) {
+                            this.router.navigate([this.authService.redirectUrl]);
                         } else {
                             alert("Login Failed (API)")
                         }

@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 // import { Cookie } from 'ng2-cookies/ng2-cookies';
 // import 'rxjs/add/operator/toPromise';
 
@@ -10,14 +10,15 @@ import { APP_CONFIG, IAppConfig } from '../app.config';
 // import 'rxjs/add/operator/delay';
 
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class AuthService {
 
   isLoggedIn: boolean = false;
   email: string = "";
-  private getJsonHeaders(): Headers {
-    return new Headers({
+  private getJsonHeaders(): HttpHeaders {
+    return new HttpHeaders({
       'Content-Type': 'application/json',
       'email': this.email
     });
@@ -28,12 +29,12 @@ export class AuthService {
       //return Cookie.get("email") != undefined;
     }*/
   // store the URL so we can redirect after logging in
-  redirectUrl: string;
+  redirectUrl: string = "/pages/home";
   //private headers: Headers;
   private apiUrl: string;  // URL to web api
 
   constructor(
-    private http: Http,
+    private http: HttpClient,
     @Inject(APP_CONFIG) private config: IAppConfig,
     public afireauth: AngularFireAuth) {
     ////this.headers = new Headers(config.jsonHeaders);
@@ -62,23 +63,24 @@ export class AuthService {
         .catch(this.handleError);
     }
   */
-  login(values: any): Promise<any> {
+  login(values: any): Observable<any> {
     //let result: boolean = false;
     values.passwordAgain = values.password;
-    return this.http
-      .post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.getJsonHeaders() })
-      .toPromise()
-      .then(response => {
-        let text = response.text();
-        if (text === 'true') {
-          return { status: true };
-        }
-        return { status: false };
-      })
-      .catch((error) => {
-        this.handleError(error);
-        return { status: false };
-      });
+    return this.http.post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.getJsonHeaders() });
+      //.toPromise();
+      // .subscribe(
+      // response => {
+      //   //let text = response;
+      //   alert(response);
+      //   if (response === 'true') {
+      //     return { status: true };
+      //   }
+      //   return { status: false };
+      // }
+      // , err => {
+      //   this.handleError(err);
+      //   return { status: false };
+      // });
   }
 
   logout() {

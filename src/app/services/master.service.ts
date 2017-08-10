@@ -17,7 +17,10 @@ export class MasterService {
     private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
     public apiUrl: string;  // URL to web api
 
-    constructor(public http: HttpClient, private config: IAppConfig, private authService: AuthService) {
+    constructor(
+        public http: HttpClient, 
+        private config: IAppConfig, 
+        private authService: AuthService) {
     }
 
     setApiUrl(path: string) {

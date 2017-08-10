@@ -50,6 +50,7 @@ export class App {
     this.afAuth.authState.subscribe(auth => {
       if (auth) {
         //this.rootPage = 'TabsPage';
+        //authService.redirectUrl = authService.redirectUrl!=undefined?authService.redirectUrl:"/pages/home";
         this.router.navigate([authService.redirectUrl]);//["/pages/home"]);
       } else {
         //this.rootPage = 'LoginPage';
