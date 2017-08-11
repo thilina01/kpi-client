@@ -26,7 +26,7 @@ export class SalesPerKgChart {
     var endDate = new Date();
     var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
-    this.chartService.getMonthlySalesPerKg(startDateText, endDateText).then((data) => {
+    this.chartService.getMonthlySalesPerKg(startDateText, endDateText).subscribe((data) => {
       this.amChart.dataProvider = data;
       this.amChart.validateData();
     });

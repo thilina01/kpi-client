@@ -27,7 +27,7 @@ export class MaterialCostPerKgChart {
     var endDate = new Date();
     var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
-    this.chartService.getMonthlyMaterialCostPerKg(startDateText, endDateText).then((data) => {
+    this.chartService.getMonthlyMaterialCostPerKg(startDateText, endDateText).subscribe((data) => {
       this.amChart.dataProvider = data;
       this.amChart.validateData();
     });

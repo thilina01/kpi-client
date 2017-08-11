@@ -14,7 +14,7 @@ export class ScheduleAdherenceFactorySixMonthsChartService {
 
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.productionKpiScheduleAdherenceChart;    
-    this.chartService.getMonthlyScheduleAdherence('2017-01-01','2017-05-31').then((data) => {
+    this.chartService.getMonthlyScheduleAdherence('2017-01-01','2017-05-31').subscribe((data) => {
         this.dataProvider=data;
       });
     return {

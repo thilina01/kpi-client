@@ -5,6 +5,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { APP_CONFIG, IAppConfig } from '../../app.config';
 import { AuthService } from "../../services/auth.service";
+import { Observable } from "rxjs/Observable";
 
 
 @Injectable()
@@ -20,202 +21,146 @@ export class ChartService {
         //this.headers = new Headers(config.jsonHeaders);
     }
     
-    getBreakdown(startDate: string, endDate: string): Promise<Array<Object>> {
+    getBreakdown(startDate: string, endDate: string):Observable<any>  {
 
         return this.http.get(this.apiUrl + 'breakdown?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
     //chart/scheduleAdherence?startDate=217-01-01&endDate=2017-03-31
-    getScheduleAdherence(startDate: string, endDate: string): Promise<Array<Object>> {
+    getScheduleAdherence(startDate: string, endDate: string):Observable<any>  {
         return this.http.get(this.apiUrl + 'scheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlySalesWeight(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlySalesWeight(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlySalesWeight?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+           .catch(err => this.handleError(err));
     }  
         
-    getMonthlySalesValue(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlySalesValue(startDate: string, endDate: string): Observable<any> {
         return this.http.get(this.apiUrl + 'monthlySalesValue?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));;
     }  
 
-    getMonthlyConsumableCostPerKgChart(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyConsumableCostPerKgChart(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyConsumableCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyCumulativeSalesPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyCumulativeSalesPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyCumulativeSalesPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyElectricityCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyElectricityCostPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyElectricityCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyScrapCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyScrapCostPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyScrapCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+           .catch(err => this.handleError(err));
     }  
 
-    getMonthlyLabourCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyLabourCostPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyLabourCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyMaterialCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyMaterialCostPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyMaterialCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyProductionOverheadCostPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyProductionOverheadCostPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyProductionOverheadCostPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlySalesPerKg(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlySalesPerKg(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlySalesPerKg?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyScheduleAdherence(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyScheduleAdherence(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyScheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+           .catch(err => this.handleError(err));
     }  
 
-    getMonthlyLabourTurnover(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyLabourTurnover(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyLabourTurnover?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
 
-    getMonthlyAbsenteeism(startDate: string, endDate: string): Promise<Array<Object>> {
+    getMonthlyAbsenteeism(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyAbsenteeism?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
     
-    getMonthlyEnergyConsumptionByLocation(startDate: string, endDate: string, location: string): Promise<Array<Object>> {
+    getMonthlyEnergyConsumptionByLocation(startDate: string, endDate: string, location: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'monthlyEnergyConsumptionByLocation?startDate=' + startDate + '&endDate=' + endDate+ '&location=' + location)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }  
     
-    getScheduleAdherenceBySection(startDate: string, endDate: string, section: string): Promise<Array<Object>> {
+    getScheduleAdherenceBySection(startDate: string, endDate: string, section: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'scheduleAdherenceBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getScheduleAdherenceBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
+    getScheduleAdherenceBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Observable<any>  {
         return this.http.get(this.apiUrl + 'scheduleAdherenceBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonSummaryBySection(startDate: string, endDate: string, section: string): Promise<Array<Object>> {
+    getLossReasonSummaryBySection(startDate: string, endDate: string, section: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonSummaryBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonSummaryBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
+    getLossReasonSummaryBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Observable<any> {
         return this.http.get(this.apiUrl + 'lossReasonSummaryBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonSummary(startDate: string, endDate: string): Promise<Array<Object>> {
+    getLossReasonSummary(startDate: string, endDate: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonSummary?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonSummaryByLossType(startDate: string, endDate: string, lossTypeId: string): Promise<Array<Object>> {
+    getLossReasonSummaryByLossType(startDate: string, endDate: string, lossTypeId: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonSummaryByLossType?startDate=' + startDate + '&endDate=' + endDate + '&lossType=' + lossTypeId)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonDailyCountBySection(startDate: string, endDate: string, section: string): Promise<Array<Object>> {
+    getLossReasonDailyCountBySection(startDate: string, endDate: string, section: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonDailyCountBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonDailyCountBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Promise<Array<Object>> {
+    getLossReasonDailyCountBySectionAndLossType(startDate: string, endDate: string, section: string, lossTypeId: string): Observable<any> {
         return this.http.get(this.apiUrl + 'lossReasonDailyCountBySectionAndLossType?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossType=' + lossTypeId)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+           .catch(err => this.handleError(err));
     }
 
-    getLossReasonDailyCount(startDate: string, endDate: string): Promise<Array<Object>> {
+    getLossReasonDailyCount(startDate: string, endDate: string):  Observable<any> {
         return this.http.get(this.apiUrl + 'lossReasonDailyCount?startDate=' + startDate + '&endDate=' + endDate)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonDailyCountByLossType(startDate: string, endDate: string, lossTypeId: string): Promise<Array<Object>> {
+    getLossReasonDailyCountByLossType(startDate: string, endDate: string, lossTypeId: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonDailyCountByLossType?startDate=' + startDate + '&endDate=' + endDate + '&lossType=' + lossTypeId)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonDailyCountBySectionAndLossReason(startDate: string, endDate: string, section: string, lossReason: string): Promise<Array<Object>> {
+    getLossReasonDailyCountBySectionAndLossReason(startDate: string, endDate: string, section: string, lossReason: string): Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonDailyCountBySectionAndLossReason?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossReason=' + lossReason)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+            .catch(err => this.handleError(err));
     }
 
-    getLossReasonDailyCountByLossReason(startDate: string, endDate: string, lossReason: string): Promise<Array<Object>> {
+    getLossReasonDailyCountByLossReason(startDate: string, endDate: string, lossReason: string):  Observable<any>  {
         return this.http.get(this.apiUrl + 'lossReasonDailyCountByLossReason?startDate=' + startDate + '&endDate=' + endDate + '&lossReason=' + lossReason)
-            .toPromise()
-            .then(response => response.json() as Array<Object>)
-            .catch(this.handleError);
+           .catch(err => this.handleError(err));
     }
 
     /*
