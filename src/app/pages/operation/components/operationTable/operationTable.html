@@ -11,7 +11,7 @@
 	</p-header>
 
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
-	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple"
+	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="operations">
 		<p-header>
 			<div class="row">

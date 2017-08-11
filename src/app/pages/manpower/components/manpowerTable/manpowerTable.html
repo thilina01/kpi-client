@@ -10,7 +10,7 @@
 		</div>
     </p-header>
     <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
-	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
     <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
     <p-column field="production.controlPoint.code" header="Control Point" [sortable]="true" ></p-column>
     <p-column field="production.productionDate" header="Production Date" [sortable]="true" ></p-column>

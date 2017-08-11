@@ -31,7 +31,7 @@
 	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
 		<p-panel header="Loss By Day">
 			<p-dataTable #dt [value]="lossReasonDailyCountData" [rows]="20" [responsive]="true" [paginator]="true"
-			 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" [(selection)]="selectedDay" (onRowSelect)="onRowSelect($event)"
+			 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" [(selection)]="selectedDay" (onRowSelect)="onRowSelect($event)"
 			 sortMode="multiple" resizableColumns="true">
 				<p-column field="day" header="Day" [sortable]="true"></p-column>
 				<p-column field="count" header="Total" [sortable]="true"></p-column>
@@ -41,7 +41,7 @@
 	<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
 		<p-panel header="Day Loss By Reason">
 			<p-dataTable #dt [value]="dateLossReasonSummaryData" [rows]="20" [responsive]="true" [paginator]="true"
-			 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" sortMode="multiple" resizableColumns="true">
+			 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple" resizableColumns="true">
 				<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'80px'}"></p-column>
 				<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 				<p-column field="total" header="Total" [sortable]="true" [style]="{'width':'80px'}"></p-column>
@@ -55,7 +55,7 @@
 	<div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12">
 		<p-panel header="Loss By Reason">
 			<p-dataTable #dt [value]="lossReasonSummaryData" [rows]="20" [responsive]="true" [paginator]="true" [pageLinks]="5"
-			 [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" (onRowSelect)="onLossByReasonRowSelect($event)" sortMode="multiple"
+			 [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="onLossByReasonRowSelect($event)" sortMode="multiple"
 			 resizableColumns="true">
 				<p-column field="code" header="Code" [sortable]="true" [style]="{'width':'70px'}"></p-column>
 				<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
@@ -66,7 +66,7 @@
 	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
 		<p-panel header="Loss By Day">
 			<p-dataTable #dt [value]="dateLossReasonSummaryByLossReasonData" [rows]="20" [responsive]="true" [paginator]="true"
-			 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100]" selectionMode="single" [(selection)]="selectedDay" (onRowSelect)="onRowSelect($event)"
+			 [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" [(selection)]="selectedDay" (onRowSelect)="onRowSelect($event)"
 			 sortMode="multiple" resizableColumns="true">
 				<p-column field="day" header="Day" [sortable]="true"></p-column>
 				<p-column field="count" header="Total" [sortable]="true"></p-column>
