@@ -72,7 +72,7 @@ export class ScheduleAdherenceFactorySixMonthsChart {
     var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyScheduleAdherence(startDateText, endDateText).subscribe((data) => {
-      this.amChart.dataProvider = data;
+      this.amChart.dataProvider = data.json();
       this.amChart.validateData();
     });
   }

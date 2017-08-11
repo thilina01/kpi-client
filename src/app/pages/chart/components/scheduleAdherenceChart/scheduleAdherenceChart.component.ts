@@ -141,25 +141,25 @@ export class ScheduleAdherenceChart {
       this.categoryTitle = "Section";
 
       this.chartService.getScheduleAdherence(this.startDate, this.endDate).subscribe((data) => {
-        this.setData(data)
+        this.setData(data.json())
       });
 
       if (this.lossType && this.lossType.id != 0) {
         this.chartService.getLossReasonSummaryByLossType(this.startDate, this.endDate, this.lossType.id).subscribe((data) => {
-          this.setLossReasonSummaryData(data)
+          this.setLossReasonSummaryData(data.json())
         });
 
         this.chartService.getLossReasonDailyCountByLossType(this.startDate, this.endDate, this.lossType.id).subscribe((data) => {
-          this.setLossReasonDailyCountData(data)
+          this.setLossReasonDailyCountData(data.json())
         });
 
       } else {
         this.chartService.getLossReasonSummary(this.startDate, this.endDate).subscribe((data) => {
-          this.setLossReasonSummaryData(data)
+          this.setLossReasonSummaryData(data.json())
         });
 
         this.chartService.getLossReasonDailyCount(this.startDate, this.endDate).subscribe((data) => {
-          this.setLossReasonDailyCountData(data)
+          this.setLossReasonDailyCountData(data.json())
         });
 
       }
@@ -169,26 +169,26 @@ export class ScheduleAdherenceChart {
       this.categoryTitle = "Date";
 
       this.chartService.getScheduleAdherenceBySection(this.startDate, this.endDate, this.section).subscribe((data) => {
-        this.setData(data)
+        this.setData(data.json())
       });
 
       if (this.lossType && this.lossType.id != 0) {
 
         this.chartService.getLossReasonSummaryBySectionAndLossType(this.startDate, this.endDate, this.section, this.lossType.id).subscribe((data) => {
-          this.setLossReasonSummaryData(data)
+          this.setLossReasonSummaryData(data.json())
         });
 
         this.chartService.getLossReasonDailyCountBySectionAndLossType(this.startDate, this.endDate, this.section, this.lossType.id).subscribe((data) => {
-          this.setLossReasonDailyCountData(data)
+          this.setLossReasonDailyCountData(data.json())
         });
 
       } else {
         this.chartService.getLossReasonSummaryBySection(this.startDate, this.endDate, this.section).subscribe((data) => {
-          this.setLossReasonSummaryData(data)
+          this.setLossReasonSummaryData(data.json())
         });
 
         this.chartService.getLossReasonDailyCountBySection(this.startDate, this.endDate, this.section).subscribe((data) => {
-          this.setLossReasonDailyCountData(data)
+          this.setLossReasonDailyCountData(data.json())
         });
       }
     }
@@ -234,22 +234,22 @@ export class ScheduleAdherenceChart {
 
       if (this.lossType && this.lossType.id != 0) {
         this.chartService.getLossReasonSummaryByLossType(event.data.date, event.data.date, this.lossType.id).subscribe((data) => {
-          this.dateLossReasonSummaryData = data;
+          this.dateLossReasonSummaryData = data.json();
         });
       } else {
         this.chartService.getLossReasonSummary(event.data.date, event.data.date).subscribe((data) => {
-          this.dateLossReasonSummaryData = data;
+          this.dateLossReasonSummaryData = data.json();
         });
       }
     } else {
 
       if (this.lossType && this.lossType.id != 0) {
         this.chartService.getLossReasonSummaryBySectionAndLossType(event.data.date, event.data.date, this.section, this.lossType.id).subscribe((data) => {
-          this.dateLossReasonSummaryData = data;
+          this.dateLossReasonSummaryData = data.json();
         });
       } else {
         this.chartService.getLossReasonSummaryBySection(event.data.date, event.data.date, this.section).subscribe((data) => {
-          this.dateLossReasonSummaryData = data;
+          this.dateLossReasonSummaryData = data.json();
         });
       }
     }
@@ -258,11 +258,11 @@ export class ScheduleAdherenceChart {
   onLossByReasonRowSelect(event) {
     if (this.section == '0') {
       this.chartService.getLossReasonDailyCountByLossReason(this.startDate, this.endDate, event.data.id).subscribe((data) => {
-        this.dateLossReasonSummaryByLossReasonData = data;
+        this.dateLossReasonSummaryByLossReasonData = data.json();
       });
     } else {
       this.chartService.getLossReasonDailyCountBySectionAndLossReason(this.startDate, this.endDate, this.section, event.data.id).subscribe((data) => {
-        this.dateLossReasonSummaryByLossReasonData = data;
+        this.dateLossReasonSummaryByLossReasonData = data.json();
       });
     }
   }

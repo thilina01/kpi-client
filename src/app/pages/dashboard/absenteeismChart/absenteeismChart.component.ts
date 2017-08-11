@@ -26,7 +26,7 @@ export class AbsenteeismChart {
     var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyAbsenteeism(startDateText, endDateText).subscribe((data) => {
-      var chartData = this._absenteeismChartService.getChartData(data);
+      var chartData = this._absenteeismChartService.getChartData(data.json());
       this.amChart = AmCharts.makeChart("absenteeismchartdiv",chartData);
     });
   }
