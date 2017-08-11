@@ -2,13 +2,9 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
-
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { LabourSourceService } from "../../../labourSource/labourSource.service";
 import { LabourTurnoverService } from "../../labourTurnover.service";
-
 
 @Component({
     selector: 'labourTurnover-form',
@@ -28,9 +24,13 @@ export class LabourTurnoverForm {
     effectiveMonth: Date;
     labourSource: any = { id: '', code: '' }
 
-
-    constructor(protected service: LabourTurnoverService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService, private labourSourceService: LabourSourceService) {
-        this.formGroup = fb.group({
+    constructor(protected service: LabourTurnoverService,
+         private route: ActivatedRoute,
+         private router: Router, 
+         fb: FormBuilder,
+         private sharedService: SharedService,
+         private labourSourceService: LabourSourceService) {
+         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],
             turnover: ['', Validators.required],

@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { CostCenterService } from "../../costCenter.service";
 import { SectionService } from "../../../section/section.service";
@@ -17,7 +15,7 @@ import { SectionService } from "../../../section/section.service";
 })
 export class CostCenterForm {
     sections: any;
-    section:any;
+    section: any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -32,15 +30,13 @@ export class CostCenterForm {
     recoveryTime: Date = new Date();
     costCenterType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
-     
-
 
     constructor(protected service: CostCenterService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
         private sharedService: SharedService,
-        private  sectionService: SectionService) {
+        private sectionService: SectionService) {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
@@ -54,7 +50,7 @@ export class CostCenterForm {
     }
 
     ngOnInit(): void {
-        this. getSections();
+        this.getSections();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -93,9 +89,7 @@ export class CostCenterForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
-
-  /*================== Section Filter ===================*/
+    /*================== Section Filter ===================*/
     filteredSections: any[];
     //section: any;
 

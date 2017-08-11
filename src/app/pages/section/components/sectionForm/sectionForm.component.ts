@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { SectionTypeService } from '../../../../services/sectionType.service';
 import { SectionService } from "../../section.service";
@@ -31,7 +29,6 @@ export class SectionForm {
     recoveryTime: Date = new Date();
     sectionType: any = { id: '', code: '', name: '' }
     workCenter: any = { id: '', code: '', name: '' }
-
 
     constructor(protected service: SectionService,
         private route: ActivatedRoute,

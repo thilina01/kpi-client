@@ -17,7 +17,10 @@ export class DepartmentTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: DepartmentService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: DepartmentService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

@@ -4,7 +4,6 @@ import { ControlPointService } from "../../../controlPoint/controlPoint.service"
 import { ShiftService } from "../../../shift/shift.service";
 import { ShiftTypeService } from "../../../shiftType/shiftType.service";
 
-
 @Component({
     selector: 'plan-form-top',
     templateUrl: './planFormTop.html',
@@ -23,7 +22,9 @@ export class PlanFormTop {
     shifts: any[];
     shiftTypes: any[];
 
-    constructor(private controlPointService: ControlPointService, private shiftService: ShiftService, private shiftTypeService: ShiftTypeService) { }
+    constructor(private controlPointService: ControlPointService, 
+        private shiftService: ShiftService, 
+        private shiftTypeService: ShiftTypeService) { }
 
     getControlPoints(): void {
         this.controlPointService.getCombo().subscribe(controlPoints => {
@@ -86,7 +87,6 @@ export class PlanFormTop {
         console.log(event)
     }
     /*================== End Of Control Point Filter ===================*/
-    
     /*================== Shift Filter ===================*/
     filteredShifts: any[];
     Shift: any;
@@ -114,8 +114,6 @@ export class PlanFormTop {
         console.log(event)
     }
     /*================== End Of Shift Filter ===================*/
-
-    
     /*================== Shift Type Filter ===================*/
     filteredShiftTypes: any[];
     shiftType: any;

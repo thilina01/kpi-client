@@ -17,7 +17,10 @@ export class CountryTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: CountryService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: CountryService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

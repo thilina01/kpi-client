@@ -17,7 +17,10 @@ export class ToolTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: ToolService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: ToolService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

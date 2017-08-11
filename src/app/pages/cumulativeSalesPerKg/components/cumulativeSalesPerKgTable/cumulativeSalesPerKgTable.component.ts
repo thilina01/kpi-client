@@ -18,7 +18,10 @@ export class CumulativeSalesPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: CumulativeSalesPerKgService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: CumulativeSalesPerKgService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

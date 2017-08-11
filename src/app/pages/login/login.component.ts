@@ -17,7 +17,9 @@ export class Login {
     public password: AbstractControl;
     public submitted: boolean = false;
 
-    constructor(fb: FormBuilder, public authService: AuthService, public router: Router) {
+    constructor(fb: FormBuilder, 
+        public authService: AuthService, 
+        public router: Router) {
         this.form = fb.group({
             'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
             'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])]

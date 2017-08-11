@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { CustomerService } from "../../customer.service";
 import { CustomerTypeService } from "../../../customerType/customerType.service";
@@ -148,8 +147,6 @@ export class CustomerForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
-
     /*================== CurrencyFilter ===================*/
     filteredCurrencyList: any[];
     //currency: any;
@@ -176,8 +173,6 @@ export class CustomerForm {
     onCurrencySelect(currency: any) {
         console.log(event)
     }
-
-
     /*================== Customer Type Filter ===================*/
     filteredCustomerTypes: any[];
     //customerType: any;

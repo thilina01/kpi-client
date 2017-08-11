@@ -4,12 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-
-
 import { ControlPointService } from "../../controlPoint.service";
 import { ControlPointTypeService } from "../../../controlPointType/controlPointType.service";
 import { WorkCenterService } from "../../../workCenter/workCenter.service";
-
 
 @Component({
     selector: 'control-point-form',
@@ -32,7 +29,6 @@ export class ControlPointForm {
     recoveryTime: Date = new Date();
     controlPointType: any = { id: '', code: '', name: '' }
     workCenter: any = { id: '', code: '', name: '' }
-
 
     constructor(protected service: ControlPointService,
         private route: ActivatedRoute,

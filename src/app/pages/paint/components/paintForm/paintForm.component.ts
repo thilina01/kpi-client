@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { PaintService } from "../../paint.service";
 
@@ -30,7 +28,6 @@ export class PaintForm {
     paintType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: PaintService,
         private route: ActivatedRoute,
         private router: Router,
@@ -42,7 +39,6 @@ export class PaintForm {
             name: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

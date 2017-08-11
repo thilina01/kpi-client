@@ -17,7 +17,10 @@ export class CostCenterTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: CostCenterService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: CostCenterService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

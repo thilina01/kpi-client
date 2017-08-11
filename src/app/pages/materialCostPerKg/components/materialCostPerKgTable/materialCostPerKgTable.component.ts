@@ -18,7 +18,10 @@ export class MaterialCostPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: MaterialCostPerKgService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: MaterialCostPerKgService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

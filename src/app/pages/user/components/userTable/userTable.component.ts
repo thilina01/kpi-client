@@ -17,7 +17,10 @@ export class UserTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: UserService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: UserService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

@@ -25,7 +25,6 @@ export class AbsenteeismForm {
     effectiveMonth: Date;
     labourSource: any = { id: '', code: '' }
 
-
     constructor(
         protected service: AbsenteeismService, 
         private route: ActivatedRoute, 

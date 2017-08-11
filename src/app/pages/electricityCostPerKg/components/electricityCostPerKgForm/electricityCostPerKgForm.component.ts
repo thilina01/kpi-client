@@ -20,7 +20,12 @@ export class ElectricityCostPerKgForm {
     subscription: Subscription;
     effectiveMonth: Date;
 
-    constructor(protected service: ElectricityCostPerKgService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService) {
+    constructor(protected service: ElectricityCostPerKgService,
+         private route: ActivatedRoute, 
+         private router: Router,
+         fb: FormBuilder,
+         private sharedService: SharedService
+              ) {
         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],        

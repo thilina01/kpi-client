@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { ItemService } from "../../item.service";
 import { ItemTypeService } from "../../../itemType/itemType.service";
@@ -31,7 +30,6 @@ export class ItemForm {
     recoveryTime: Date = new Date();
     itemType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
-
 
     constructor(protected service: ItemService,
         private route: ActivatedRoute,

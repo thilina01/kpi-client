@@ -18,7 +18,10 @@ export class ProductionOverheadCostPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: ProductionOverheadCostPerKgService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: ProductionOverheadCostPerKgService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

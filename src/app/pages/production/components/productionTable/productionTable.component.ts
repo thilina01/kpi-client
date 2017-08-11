@@ -25,7 +25,10 @@ export class ProductionTable {
         { prop: 'productionType.name', name: 'Type' }
     ];
 
-    constructor(protected service: ProductionService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: ProductionService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
         //sharedService.msgs$.subscribe(msgs=>this.msgs = msgs);
     }

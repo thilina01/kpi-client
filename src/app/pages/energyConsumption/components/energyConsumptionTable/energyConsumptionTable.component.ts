@@ -19,7 +19,10 @@ export class EnergyConsumptionTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: EnergyConsumptionService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: EnergyConsumptionService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

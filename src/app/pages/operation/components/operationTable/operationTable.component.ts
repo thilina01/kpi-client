@@ -31,8 +31,12 @@ export class OperationTable {
   startDate: Date;
   endDate: Date;
 
-  constructor(protected service: OperationService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService,
-    private sectionService: SectionService, private shiftService: ShiftService) {
+  constructor(protected service: OperationService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService,
+    private sectionService: SectionService, 
+    private shiftService: ShiftService) {
     this.loadData()
     this.getSections();
     this.getShifts();

@@ -17,7 +17,10 @@ export class NotifyPartyTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: NotifyPartyService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: NotifyPartyService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

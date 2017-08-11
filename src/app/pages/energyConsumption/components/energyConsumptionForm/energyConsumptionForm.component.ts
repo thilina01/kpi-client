@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+
 import { SharedService } from '../../../../services/shared.service';
 import { EnergyConsumptionService } from "../../energyConsumption.service";
 import { LocationService } from "../../../location/location.service";
@@ -24,8 +25,12 @@ export class EnergyConsumptionForm {
     effectiveMonth: Date;
     location: any = { id: '', code: '' }
 
-
-    constructor(protected service: EnergyConsumptionService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService, private locationService: LocationService) {
+    constructor(protected service: EnergyConsumptionService, 
+        private route: ActivatedRoute, 
+        private router: Router, 
+        fb: FormBuilder, 
+        private sharedService: SharedService, 
+        private locationService: LocationService) {
         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],
@@ -82,7 +87,6 @@ export class EnergyConsumptionForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
 
     /*================== Location Filter ===================*/
     filteredLocations: any[];

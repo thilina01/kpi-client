@@ -3,11 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { ToolBreakdownService } from "../../toolBreakdown.service";
 import { ToolService } from "../../../tool/tool.service";
-
 
 @Component({
     selector: 'tool-breakdown-form',
@@ -28,8 +26,11 @@ export class ToolBreakdownForm {
     recoveryTime: Date = new Date();
     tool: any = { id: '', code: '' }
 
-
-    constructor(protected service: ToolBreakdownService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService, private toolService: ToolService) {
+    constructor(protected service: ToolBreakdownService, 
+        private route: ActivatedRoute, 
+        private router: Router, fb: FormBuilder, 
+        private sharedService: SharedService, 
+        private toolService: ToolService) {
         this.formGroup = fb.group({
             id: '',
             toolBreakdownTime: [this.toolBreakdownTime, Validators.required],

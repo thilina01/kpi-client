@@ -27,8 +27,12 @@ export class BreakdownForm {
     recoveryTime: Date = new Date();
     machine: any = { id: '', code: '' }
 
-
-    constructor(protected service: BreakdownService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService, private machineService: MachineService) {
+    constructor(protected service: BreakdownService, 
+        private route: ActivatedRoute, 
+        private router: Router, 
+        fb: FormBuilder, 
+        private sharedService: SharedService, 
+        private machineService: MachineService) {
         this.formGroup = fb.group({
             id: '',
             breakdownTime: [this.breakdownTime, Validators.required],
