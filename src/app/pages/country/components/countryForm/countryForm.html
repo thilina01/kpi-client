@@ -1,4 +1,19 @@
-<p-panel header="Country Form">
+
+    <p-panel>
+        <p-header>
+          <div class="row">
+            <div class="col">
+              <h4>Country Form</h4>
+            </div>
+            <div class="col">
+              <a routerLink="/pages/country/table"> 
+                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+                </button>
+              </a>
+            </div>
+          </div>
+        </p-header>
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">

@@ -1,7 +1,21 @@
 <div class="widgets">
 	<div class="row">
 		<div class="col-sm-12">
-			<p-panel header="Production Information">
+			<p-panel>
+				<p-header>
+					<div class="row">
+						<div class="col">
+						<h4>Production Information</h4>
+						</div>
+						<div class="col">
+						<a routerLink="/pages/production/table"> 
+						<button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+						<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+						</button>
+						</a>
+						</div>
+					</div>
+				</p-header>
 				<div class="row">
 					<div class="col-sm-2">
 						<a [routerLink]="'/pages/production/form/'+(production.id-1)">
@@ -68,10 +82,10 @@
 						</div>
 					</div>
 					<br/>
-					<div class='row' *ngIf="production.operationList != undefined">						
+					<div class='row' *ngIf="production.operationList != undefined">
 						<p-panel header="Operations">
-							<p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true"
-							 expandableRows="true" (onEditComplete)="onEditComplete($event)">
+							<p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true" expandableRows="true"
+							 (onEditComplete)="onEditComplete($event)">
 
 								<p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
 								<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
@@ -95,7 +109,7 @@
 										<p-column field="quantity" [style]="{'width':'100px'}"></p-column>
 										<p-column [style]="{'width':'30px'}">
 											<ng-template let-data="rowData" pTemplate="body">
-												<i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)"ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+												<i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
 											</ng-template>
 										</p-column>
 									</p-dataTable>
@@ -104,7 +118,7 @@
 						</p-panel>
 					</div>
 					<br/>
-					<div class='row' *ngIf="production.operationList != undefined">						
+					<div class='row' *ngIf="production.operationList != undefined">
 						<p-panel header="Quality" class="col-sm-12">
 							<form [formGroup]="qualityFormGroup" (ngSubmit)="onQualityFormSubmit(qualityFormGroup.value)" novalidate>
 
@@ -149,9 +163,9 @@
 								</div>
 							</form>
 						</p-panel>
-					</div>					
+					</div>
 					<br/>
-					<div class='row' *ngIf="production.manpowerList != undefined">					
+					<div class='row' *ngIf="production.manpowerList != undefined">
 						<p-panel header="Manpower">
 							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" resizableColumns="true" [editable]="true">
 								<p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
