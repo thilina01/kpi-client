@@ -25,8 +25,8 @@ const ngcWebpack = require('ngc-webpack');
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-  title: 'ng2-admin - Angular 2 Admin Template',
-  description: 'Free Angular 2 and Bootstrap 4 Admin Template',
+  title: 'OTR-KPI',
+  description: 'Internal operations and performance management system',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
