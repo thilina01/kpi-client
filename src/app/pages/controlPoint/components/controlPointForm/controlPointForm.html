@@ -1,4 +1,18 @@
-<p-panel header="Control Point Form">
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Control Point Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/controlPoint/table"> 
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
@@ -67,12 +81,12 @@
           <!-- <label>{{formGroup.value.workCenter.code}} | {{formGroup.value.workCenter.name}}</label> -->
           <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
-             <div class="ui-inputgroup">
+            <div class="ui-inputgroup">
               &nbsp;<br/>
-            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
           </div>
-        </div>
         </div>
       </form>
     </div>
