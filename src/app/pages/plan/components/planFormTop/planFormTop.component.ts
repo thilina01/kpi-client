@@ -84,6 +84,7 @@ export class PlanFormTop {
     }
 
     onControlPointSelect(controlPoint: any) {
+        this.formGroup.value.controlPoint.display = this.formGroup.value.controlPoint.code +" : "+ this.formGroup.value.controlPoint.name;
         console.log(event)
     }
     /*================== End Of Control Point Filter ===================*/

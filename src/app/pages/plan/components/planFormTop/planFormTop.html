@@ -9,7 +9,7 @@
 		<div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
 			<div class="ui-inputgroup">
               <label for="controlPoint">Control point</label><br/>
-				<p-autoComplete formControlName="controlPoint" field="name" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+				<p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
 				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointDropdownClick($event)" (onSelect)="onControlPointSelect($event)">
 					<ng-template let-option pTemplate="option">
 						<div class="ui-helper-clearfix">
