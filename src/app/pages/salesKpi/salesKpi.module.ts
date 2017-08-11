@@ -13,7 +13,7 @@ import { SalesWeightChartService } from './salesWeightChart/salesWeightChart.ser
 
 import { SalesValueChart } from './salesValueChart';
 import { SalesValueChartService } from './salesValueChart/salesValueChart.service';
-import { PanelModule } from "primeng/primeng";
+import { PanelModule, TabViewModule } from "primeng/primeng";
 import { ChartService } from "../chart/chart.service";
 
 @NgModule({
@@ -23,6 +23,7 @@ import { ChartService } from "../chart/chart.service";
     NgaModule,
     MaterialModule,
     PanelModule,
+    TabViewModule,
     routing
   ],
   declarations: [

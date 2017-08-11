@@ -7,7 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { FinanceKpi } from './financeKpi.component';
 import { routing } from './financeKpi.routing';
 
-import { PanelModule } from "primeng/primeng";
+import { PanelModule, TabViewModule } from "primeng/primeng";
 import { SalesPerKgChart } from "./salesPerKgChart/salesPerKgChart.component";
 import { MaterialCostPerKgChart } from "./materialCostPerKgChart/materialCostPerKgChart.component";
 import { ProductionOverheadCostPerKgChart } from "./productionOverheadCostPerKgChart/productionOverheadCostPerKgChart.component";
@@ -31,6 +31,7 @@ import { ChartService } from "../chart/chart.service";
     NgaModule,
     MaterialModule,
     PanelModule,
+    TabViewModule,
     routing
   ],
   declarations: [
