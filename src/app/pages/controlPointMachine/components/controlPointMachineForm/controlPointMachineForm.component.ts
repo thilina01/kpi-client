@@ -3,14 +3,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { MachineService } from "../../../machine/machine.service";
 import { ControlPointService } from "../../../controlPoint/controlPoint.service";
 import { ControlPointMachineService } from "../../controlPointMachine.service";
-
-
 
 @Component({
     selector: 'control-point-machine-form',
@@ -29,7 +25,6 @@ export class ControlPointMachineForm {
     controlPoint: any = { id: '', code: '', name: '' }
     machines: any;
     machine: any = { id: '', code: '', name: '' }
-
 
     constructor(protected service: ControlPointMachineService,
         private route: ActivatedRoute,

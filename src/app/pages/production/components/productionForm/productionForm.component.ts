@@ -3,14 +3,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { ControlPointService } from "../../../controlPoint/controlPoint.service";
 import { LossTypeService } from "../../../lossType/lossType.service";
 import { ProductionService } from "../../production.service";
 import { ShiftService } from "../../../shift/shift.service";
-
-
 
 @Component({
     selector: 'production-form',
@@ -39,8 +36,13 @@ export class ProductionForm {
     controlPoint: any = {}
     lossType: any = {}
 
-
-    constructor(protected service: ProductionService, private route: ActivatedRoute, fb: FormBuilder, private sharedService: SharedService, private controlPointService: ControlPointService, private shiftService: ShiftService, private lossTypeService: LossTypeService) {
+    constructor(protected service: ProductionService, 
+        private route: ActivatedRoute, 
+        fb: FormBuilder,
+        private sharedService: SharedService, 
+        private controlPointService: ControlPointService,
+        private shiftService: ShiftService, 
+        private lossTypeService: LossTypeService) {
         this.formGroup = fb.group({
             plannedDuration: 0,
             actualDuration: 0,

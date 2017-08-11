@@ -5,7 +5,6 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { LossReasonService } from "../../lossReason.service";
 
-
 @Component({
   selector: 'loss-reason-table',
   encapsulation: ViewEncapsulation.None,
@@ -18,7 +17,10 @@ export class LossReasonTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: LossReasonService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: LossReasonService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

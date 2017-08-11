@@ -7,7 +7,6 @@ import { SharedService } from '../../../../services/shared.service';
 import { CostCenterService } from "../../../costCenter/costCenter.service";
 import { WorkCenterService } from "../../workCenter.service";
 
-
 @Component({
     selector: 'work-center-form',
     encapsulation: ViewEncapsulation.None,
@@ -16,7 +15,6 @@ import { WorkCenterService } from "../../workCenter.service";
 })
 export class WorkCenterForm {
     
-
     costCenters: any;
     
     costCenter: any;
@@ -29,16 +27,12 @@ export class WorkCenterForm {
     workCenterTypes: any;
     paints: any;
     
-
     workCenterDate: Date;
     workCenterTime: Date = new Date();
     recoveryTime: Date = new Date();
     workCenterType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
      
-    
-
-
     constructor(protected service: WorkCenterService,
         private route: ActivatedRoute,
         private router: Router,
@@ -51,7 +45,6 @@ export class WorkCenterForm {
             name: ['', Validators.required],
             costCenter: [this. costCenter, Validators.required]
             
-            
         });
     }
 
@@ -59,7 +52,6 @@ export class WorkCenterForm {
         this.costCenterService.getCombo().subscribe(costCenters => this.costCenters = costCenters);
     }
 
-    
     ngOnInit(): void {
         this. getCostCenters();
         this.route.params.subscribe(
@@ -100,7 +92,6 @@ export class WorkCenterForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
 
     /*================== Cost Center Filter ===================*/
     filteredCostCenters: any[];

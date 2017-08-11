@@ -4,7 +4,6 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { CustomerService } from "../../customer.service";
 
-
 @Component({
   selector: 'customer-table',
   encapsulation: ViewEncapsulation.None,
@@ -17,7 +16,10 @@ export class CustomerTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: CustomerService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: CustomerService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

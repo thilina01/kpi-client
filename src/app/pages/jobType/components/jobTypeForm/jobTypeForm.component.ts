@@ -3,8 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { JobTypeService } from "../../jobType.service";
 
@@ -23,7 +21,6 @@ export class JobTypeForm {
     jobTypeList: any;
     jobType: any = { id: '', code: '', name: '' };
 
-
     constructor(protected service: JobTypeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -35,7 +32,6 @@ export class JobTypeForm {
             name: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

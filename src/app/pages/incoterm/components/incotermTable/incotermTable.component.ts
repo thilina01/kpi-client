@@ -17,7 +17,10 @@ export class IncotermTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: IncotermService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: IncotermService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

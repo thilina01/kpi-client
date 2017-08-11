@@ -28,7 +28,6 @@ export class CustomerTypeForm {
     customerTypeType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: CustomerTypeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -40,8 +39,7 @@ export class CustomerTypeForm {
             name: ['', Validators.required]
         });
     }
-
-
+    
     ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {

@@ -17,7 +17,10 @@ export class CustomerTypeTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: CustomerTypeService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: CustomerTypeService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

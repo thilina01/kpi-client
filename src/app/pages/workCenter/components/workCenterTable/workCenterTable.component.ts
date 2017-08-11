@@ -17,7 +17,10 @@ export class WorkCenterTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: WorkCenterService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: WorkCenterService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

@@ -30,7 +30,6 @@ export class JobForm {
     jobType: any = { id: '', code: '', type: '' }
     item: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: JobService,
         private route: ActivatedRoute,
         private router: Router,

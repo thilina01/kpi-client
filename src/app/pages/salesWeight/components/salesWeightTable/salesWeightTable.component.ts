@@ -18,7 +18,10 @@ export class SalesWeightTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: SalesWeightService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: SalesWeightService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

@@ -2,6 +2,7 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+
 import { SharedService } from '../../../../services/shared.service';
 import { LossTypeService } from "../../lossType.service";
 
@@ -27,7 +28,6 @@ export class LossTypeForm {
     lossTypeType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: LossTypeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -39,7 +39,6 @@ export class LossTypeForm {
             name: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

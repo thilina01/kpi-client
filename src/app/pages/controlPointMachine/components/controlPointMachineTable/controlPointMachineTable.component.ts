@@ -5,7 +5,6 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { ControlPointMachineService } from "../../controlPointMachine.service";
 
-
 @Component({
   selector: 'control-point-machine-table',
   encapsulation: ViewEncapsulation.None,
@@ -18,7 +17,10 @@ export class ControlPointMachineTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: ControlPointMachineService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: ControlPointMachineService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

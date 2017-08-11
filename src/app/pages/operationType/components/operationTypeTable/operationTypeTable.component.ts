@@ -17,7 +17,10 @@ export class OperationTypeTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: OperationTypeService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: OperationTypeService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

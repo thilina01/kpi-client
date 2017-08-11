@@ -18,7 +18,10 @@ export class SalesValueTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: SalesValueService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: SalesValueService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

@@ -17,7 +17,10 @@ export class JobTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: JobService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: JobService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

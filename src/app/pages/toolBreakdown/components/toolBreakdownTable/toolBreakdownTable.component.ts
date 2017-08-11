@@ -18,7 +18,10 @@ export class ToolBreakdownTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: ToolBreakdownService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: ToolBreakdownService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
     loadData() {

@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { SalesValueService } from "../../salesValue.service";
 
@@ -21,7 +20,11 @@ export class SalesValueForm {
     subscription: Subscription;
     effectiveMonth: Date;
 
-    constructor(protected service: SalesValueService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService) {
+    constructor(protected service: SalesValueService, 
+        private route: ActivatedRoute,
+        private router: Router, 
+        fb: FormBuilder, 
+        private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],        

@@ -17,7 +17,10 @@ export class LeaveTypeTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: LeaveTypeService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+  constructor(protected service: LeaveTypeService, 
+    private router: Router, 
+    private confirmationService: ConfirmationService, 
+    private sharedService: SharedService) {
     this.loadData()
   }
 

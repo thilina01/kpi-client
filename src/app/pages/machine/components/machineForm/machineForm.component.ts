@@ -28,7 +28,6 @@ export class MachineForm {
     machineType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: MachineService,
         private route: ActivatedRoute,
         private router: Router,
@@ -40,7 +39,6 @@ export class MachineForm {
             name: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

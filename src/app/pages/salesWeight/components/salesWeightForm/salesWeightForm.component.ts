@@ -3,12 +3,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { LabourSourceService } from "../../../labourSource/labourSource.service";
 import { SalesWeightService } from "../../salesWeight.service";
-
 
 @Component({
     selector: 'sales-weight-form',
@@ -23,12 +20,15 @@ export class SalesWeightForm {
     salesWeight: any = {};
     subscription: Subscription;
 
-
     effectiveMonth: Date;
     labourSource: any = { id: '', code: '' }
 
-
-    constructor(protected service: SalesWeightService, private route: ActivatedRoute, private router: Router, fb: FormBuilder, private sharedService: SharedService, private labourSourceService: LabourSourceService) {
+    constructor(protected service: SalesWeightService, 
+        private route: ActivatedRoute, 
+        private router: Router, 
+        fb: FormBuilder, 
+        private sharedService: SharedService, 
+        private labourSourceService: LabourSourceService) {
         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],
@@ -36,7 +36,6 @@ export class SalesWeightForm {
             actual: ['', Validators.required],
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { ShiftTypeService } from "../../shiftType.service";
 
@@ -29,7 +28,6 @@ export class ShiftTypeForm {
     shiftTypeType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: ShiftTypeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -41,7 +39,6 @@ export class ShiftTypeForm {
             name: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

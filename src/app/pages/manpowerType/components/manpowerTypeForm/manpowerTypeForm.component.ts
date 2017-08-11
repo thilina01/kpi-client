@@ -3,11 +3,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
-
 import { SharedService } from '../../../../services/shared.service';
 import { ManpowerTypeService } from "../../manpowerType.service";
-
 
 @Component({
     selector: 'manpower-type-form',
@@ -31,7 +28,6 @@ export class ManpowerTypeForm {
     manpowerTypeType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: ManpowerTypeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -43,7 +39,6 @@ export class ManpowerTypeForm {
             name: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

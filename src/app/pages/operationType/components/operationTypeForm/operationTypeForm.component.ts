@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { SharedService } from '../../../../services/shared.service';
 import { OperationTypeService } from "../../operationType.service";
 
@@ -29,7 +28,6 @@ export class OperationTypeForm {
     operationTypeType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 
-
     constructor(protected service: OperationTypeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -41,7 +39,6 @@ export class OperationTypeForm {
             description: ['', Validators.required]
         });
     }
-
 
     ngOnInit(): void {
         this.route.params.subscribe(

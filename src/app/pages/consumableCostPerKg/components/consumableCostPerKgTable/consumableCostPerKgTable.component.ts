@@ -18,7 +18,10 @@ export class ConsumableCostPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: ConsumableCostPerKgService, private router: Router, private confirmationService: ConfirmationService, private sharedService: SharedService) {
+    constructor(protected service: ConsumableCostPerKgService, 
+        private router: Router, 
+        private confirmationService: ConfirmationService, 
+        private sharedService: SharedService) {
         this.loadData();
     }
 

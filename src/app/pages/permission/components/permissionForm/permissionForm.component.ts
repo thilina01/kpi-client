@@ -3,14 +3,12 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-
 import { MenuService } from '../../../../services/menu.service';
 import { UserMenuService } from '../../../../services/userMenu.service';
 import { SharedService } from '../../../../services/shared.service';
 import { StatusService } from "../../../../services/status.service";
 import { TeamService } from "../../../team/team.service";
 import { UserService } from "../../../user/user.service";
-
 
 @Component({
     selector: 'permission-form',
