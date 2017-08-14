@@ -45,7 +45,7 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="weight">Volume (m<sup>3</sup>)</label><br/>
+              <label for="volume">Volume (m<sup>3</sup>)</label><br/>
               <input type="number" pInputText formControlName="volume">
               <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['volume'].valid && formGroup.controls['volume'].touched), 'has-success': (formGroup.controls['volume'].valid && formGroup.controls['volume'].touched)}">
               </div>
@@ -53,16 +53,16 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="weight">Drawing Version</label><br/>
-              <input type="text" pInputText formControlName="weight">
+              <label for="drawingVersion">Drawing Version</label><br/>
+              <input type="text" pInputText formControlName="drawingVersion">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="weight">Drawing Approval</label>
+            <label for="drawingApproval">Drawing Approval</label>
             <p-checkbox binary="true" formControlName="drawingApproval" label="{{formGroup.value.drawingApproval?'Yes':'No'}}"> </p-checkbox>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="weight">Tool Availability</label>
+            <label for="productionToolAvailability">Tool Availability</label>
             <p-checkbox binary="true" formControlName="productionToolAvailability" label="{{formGroup.value.productionToolAvailability?'Yes':'No'}}">
             </p-checkbox>
           </div>

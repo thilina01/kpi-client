@@ -66,8 +66,9 @@ export class AbsenteeismForm {
             data.effectiveMonth = new Date(data.effectiveMonth);
             this.absenteeism = data;
         }
-        this.formGroup.patchValue(this.absenteeism, { onlySelf: true });
-        this.labourSource = this.absenteeism.labourSource;
+        this.formGroup.patchValue(this.absenteeism, { onlySelf: true });  
+        this.labourSource = this.absenteeism.labourSource;      
+        this.setDisplayOfLabourSource();   
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -109,6 +110,10 @@ export class AbsenteeismForm {
     }
 
     onLabourSourceSelect(event: any) {
+        this.setDisplayOfLabourSource();        
+    }
+
+    setDisplayOfLabourSource(){
         let labourSource = this.formGroup.value.labourSource;
         if (labourSource != null && labourSource != undefined) {
             let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + " : " : "";
