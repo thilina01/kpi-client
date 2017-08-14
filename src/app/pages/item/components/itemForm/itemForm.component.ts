@@ -132,9 +132,15 @@ export class ItemForm {
         }, 100)
     }
 
-    onItemTypeSelect(type: any) {
-        console.log(event)
-    }
+    onItemTypeSelect
+    (event: any) {
+           let itemType = this.formGroup.value.itemType;
+           if (itemType != null && itemType != undefined) {
+               let display = itemType.code != null && itemType.code != undefined ? itemType.code + " : " : "";
+               display += itemType.name != null && itemType.name != undefined ? itemType.name : "";
+               this.formGroup.value.itemType.display = display;
+           }
+       }
     /*================== End Of Item Type Filter ===================*/
     /*================== Paint Filter ===================*/
     filteredPaints: any[];
@@ -159,8 +165,13 @@ export class ItemForm {
         }, 100)
     }
 
-    onPaintSelect(paint: any) {
-        console.log(event)
+    onPaintSelect (event: any) {
+        let paint = this.formGroup.value.paint;
+        if (paint != null && paint != undefined) {
+            let display = paint.code != null && paint.code != undefined ? paint.code + " : " : "";
+            display += paint.name != null && paint.name != undefined ? paint.name : "";
+            this.formGroup.value.paint.display = display;
+        }
     }
     /*================== End Of Paint Filter ===================*/
 }

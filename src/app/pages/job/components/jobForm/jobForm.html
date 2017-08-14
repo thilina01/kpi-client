@@ -39,7 +39,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="jobType">Type</label>
             <br/>
-            <p-autoComplete formControlName="jobType" field="name" [suggestions]="filteredJobTypes" (completeMethod)="filterJobTypes($event)"
+            <p-autoComplete formControlName="jobType" field="display" [suggestions]="filteredJobTypes" (completeMethod)="filterJobTypes($event)"
               [size]="20" [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleJobTypeDropdownClick($event)"
               (onSelect)="onJobTypeSelect($event)">
               <ng-template let-option pTemplate="option">
@@ -52,16 +52,16 @@
 					  <option *ngFor="let jobType of jobTypes" [ngValue]="jobType">{{jobType.code}}</option>
 				    </select> -->
           </div>
-          <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.jobType != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-            <label *ngIf="formGroup.value.jobType != null && formGroup.value.jobType.code != null">
-              &nbsp; {{formGroup.value.jobType.code}}{{formGroup.value.jobType.name != null ?" | "+ formGroup.value.jobType.name:""}}
-              </label>
-          </div>
+          <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.jobType != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+            <!-- <label *ngIf="formGroup.value.jobType != null && formGroup.value.jobType.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.jobType.code}}{{formGroup.value.jobType.name != null ?" | "+ formGroup.value.jobType.name:""}} -->
+              <!-- </label> -->
+          <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="item">Item</label>
             <br/>
-            <p-autoComplete formControlName="item" field="name" [suggestions]="filteredItems" (completeMethod)="filterItems($event)"
+            <p-autoComplete formControlName="item" field="disply" [suggestions]="filteredItems" (completeMethod)="filterItems($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemDropdownClick($event)" (onSelect)="onItemSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -74,10 +74,10 @@
 				    </select>-->
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.item != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-            <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null">
-            &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
-            </label>
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+            <!-- <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null"> -->
+            <!-- &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}} -->
+            <!-- </label> -->
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">

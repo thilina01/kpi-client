@@ -118,8 +118,13 @@ export class LossReasonForm {
         }, 100)
     }
 
-    onLossTypeSelect(lossType: any) {
-        console.log(event)
+    onLossTypeSelect(event: any) {
+        let lossType = this.formGroup.value.lossType;
+        if (lossType != null && lossType != undefined) {
+            let display = lossType.code != null && lossType.code != undefined ? lossType.code + " : " : "";
+            display += lossType.name != null && lossType.name != undefined ? lossType.name : "";
+            this.formGroup.value.lossType.display = display;
+        }
     }
     /*================== End Of Loss TypeFilter ===================*/
    

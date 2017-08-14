@@ -111,8 +111,14 @@ export class ControlPointMachineForm {
         }, 100)
     }
 
-    onControlPointSelect(controlPoint: any) {
-        console.log(event)
+    onControlPointSelect
+    (event: any) {
+           let controlPoint= this.formGroup.value.controlPoint;
+           if (controlPoint!= null && controlPoint!= undefined) {
+               let display =controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + " : " : "";
+               display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : "";
+               this.formGroup.value.controlPoint.display = display;
+           }
     }
     /*================== End Of Control Point Filter ===================*/
     /*================== Machine Filter ===================*/
@@ -138,8 +144,14 @@ export class ControlPointMachineForm {
         }, 100)
     }
 
-    onMachineSelect(machine: any) {
-        console.log(event)
-    }
+    onMachineSelect
+    (event: any) {
+            let machine = this.formGroup.value.machine;
+            if (machine != null && machine != undefined) {
+                let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
+                display += machine.name != null && machine.name != undefined ? machine.name : "";
+                this.formGroup.value.machine.display = display;
+            }
+        }
     /*================== End Of Machine Filter ===================*/
 }

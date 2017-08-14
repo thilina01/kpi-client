@@ -111,8 +111,13 @@ export class ToolBreakdownForm {
         }, 100)
     }
 
-    onToolSelect(tool: any) {
-        console.log(event)
+    onToolSelec (event: any) {
+        let tool = this.formGroup.value.tool;
+        if (tool != null && tool != undefined) {
+            let display = tool.code != null && tool.code != undefined ? tool.code + " : " : "";
+            display += tool.name != null && tool.name != undefined ? tool.name : "";
+            this.formGroup.value.tool.display = display;
+        }
     }
     /*================== End Of Tool Filter ===================*/
 }

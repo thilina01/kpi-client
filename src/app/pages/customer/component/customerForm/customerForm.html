@@ -84,12 +84,10 @@
               <input type="text" pInputText formControlName="sVatNo">
             </div>
           </div>
-          <div class="col-md-4 hidden-sm-down">
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="customerType">Customer Type</label><br/>
-              <p-autoComplete formControlName="customerType" field="name" [suggestions]="filteredCustomerTypes" (completeMethod)="filterCustomerTypes($event)"
+              <p-autoComplete formControlName="customerType" field="display" [suggestions]="filteredCustomerTypes" (completeMethod)="filterCustomerTypes($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerTypeDropdownClick($event)"
                 (onSelect)="onCustomerTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -98,21 +96,21 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.customerType != null && formGroup.value.customerType.code != null">
-              &nbsp; {{formGroup.value.customerType.code}}{{formGroup.value.customerType.name != null ?" | "+ formGroup.value.customerType.name:""}}
-            </label>
+              <!-- <label *ngIf="formGroup.value.customerType != null && formGroup.value.customerType.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.customerType.code}}{{formGroup.value.customerType.name != null ?" | "+ formGroup.value.customerType.name:""}} -->
+            <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.customerType != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.customerType != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
           <!-- <select id="customerTypeSelector" class="form-control" formControlName="customerType">
            <option *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.code}}</option>
             </select>-->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="currency">Currency</label><br/>
-              <p-autoComplete formControlName="currency" field="name" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
+              <p-autoComplete formControlName="currency" field="display" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCurrencyDropdownClick($event)" (onSelect)="onCurrencySelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -120,21 +118,21 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.currency != null && formGroup.value.currency.code != null">
-              &nbsp; {{formGroup.value.currency.code}}{{formGroup.value.currency.name != null ?" | "+ formGroup.value.currency.name:""}}
-            </label>
+              <!-- <label *ngIf="formGroup.value.currency != null && formGroup.value.currency.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.currency.code}}{{formGroup.value.currency.name != null ?" | "+ formGroup.value.currency.name:""}} -->
+            <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.currency != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.currency != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
           <!--  <select id="currencySelector" class="form-control" formControlName="currency">
             <option *ngFor="let currency of currencyList" [ngValue]="currency">{{currency.code}}</option>
             </select>-->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="incoterm">Incoterm</label><br/>
-              <p-autoComplete formControlName="incoterm" field="name" [suggestions]="filteredIncoterms" (completeMethod)="filterIncoterms($event)"
+              <p-autoComplete formControlName="incoterm" field="display" [suggestions]="filteredIncoterms" (completeMethod)="filterIncoterms($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleIncotermDropdownClick($event)" (onSelect)="onIncotermSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -142,21 +140,21 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.incoterm != null && formGroup.value.incoterm.code != null">
-              &nbsp; {{formGroup.value.incoterm.code}}{{formGroup.value.incoterm.name != null ?" | "+ formGroup.value.incoterm.name:""}}
-            </label>
+              <!-- <label *ngIf="formGroup.value.incoterm != null && formGroup.value.incoterm.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.incoterm.code}}{{formGroup.value.incoterm.name != null ?" | "+ formGroup.value.incoterm.name:""}} -->
+            <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.incoterm != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.incoterm != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
           <!--<select id="incotermSelector" class="form-control" formControlName="incoterm">
             <option *ngFor="let incoterm of incotermList" [ngValue]="incoterm">{{incoterm.code}}</option>
             </select>-->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="notifyParty">Notify Party</label><br/>
-              <p-autoComplete formControlName="notifyParty" field="name" [suggestions]="filteredNotifyPartys" (completeMethod)="filterNotifyPartys($event)"
+              <p-autoComplete formControlName="notifyParty" field="display" [suggestions]="filteredNotifyPartys" (completeMethod)="filterNotifyPartys($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleNotifyPartyDropdownClick($event)"
                 (onSelect)="onNotifyPartySelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -165,21 +163,21 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.notifyParty != null && formGroup.value.notifyParty.code != null">
-                &nbsp; {{formGroup.value.notifyParty.code}}{{formGroup.value.notifyParty.name != null ?" | "+ formGroup.value.notifyParty.name:""}}
-              </label>
+              <!-- <label *ngIf="formGroup.value.notifyParty != null && formGroup.value.notifyParty.code != null"> -->
+                <!-- &nbsp; {{formGroup.value.notifyParty.code}}{{formGroup.value.notifyParty.name != null ?" | "+ formGroup.value.notifyParty.name:""}} -->
+              <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.notifyParty != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.notifyParty != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
           <!--<select id="notifyPartySelector" class="form-control" formControlName="notifyParty">
               <option *ngFor="let notifyParty of notifyPartyList" [ngValue]="notifyParty">{{notifyParty.code}}</option>
             </select>-->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="paymentTerm">Payment Term</label><br/>
-              <p-autoComplete formControlName="paymentTerm" field="name" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
+              <p-autoComplete formControlName="paymentTerm" field="display" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handlePaymentTermDropdownClick($event)"
                 (onSelect)="onPaymentTermSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -188,18 +186,18 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.paymentTerm != null && formGroup.value.paymentTerm.code != null">
-               &nbsp; {{formGroup.value.paymentTerm.code}}{{formGroup.value.paymentTerm.name != null ?" | "+ formGroup.value.paymentTerm.name:""}}
-              </label>
+              <!-- <label *ngIf="formGroup.value.paymentTerm != null && formGroup.value.paymentTerm.code != null"> -->
+               <!-- &nbsp; {{formGroup.value.paymentTerm.code}}{{formGroup.value.paymentTerm.name != null ?" | "+ formGroup.value.paymentTerm.name:""}} -->
+              <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.paymentTerm != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.paymentTerm != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="country">Country</label><br/>
-              <p-autoComplete formControlName="country" field="name" [suggestions]="filteredCountryList" (completeMethod)="filterCountryList($event)"
+              <p-autoComplete formControlName="country" field="display" [suggestions]="filteredCountryList" (completeMethod)="filterCountryList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCountryDropdownClick($event)" (onSelect)="onCountrySelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -207,14 +205,14 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.country != null && formGroup.value.country.code != null">
-              &nbsp; {{formGroup.value.country.code}}{{formGroup.value.country.name != null ?" | "+ formGroup.value.country.name:""}}
-            </label>
+              <!-- <label *ngIf="formGroup.value.country != null && formGroup.value.country.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.country.code}}{{formGroup.value.country.name != null ?" | "+ formGroup.value.country.name:""}} -->
+            <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.country != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.country != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>

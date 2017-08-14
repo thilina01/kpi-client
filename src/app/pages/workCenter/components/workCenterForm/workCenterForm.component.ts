@@ -116,8 +116,13 @@ export class WorkCenterForm {
         }, 100)
     }
 
-    onCostCenterSelect(costCenter: any) {
-        console.log(event)
+    onCostCenterSelect(event: any) {
+        let costCenter = this.formGroup.value.costCenter;
+        if (costCenter != null && costCenter != undefined) {
+            let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + " : " : "";
+            display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : "";
+            this.formGroup.value.costCenter.display = display;
+        }
     }
     /*================== End Of Cost Center Filter ===================*/
 }

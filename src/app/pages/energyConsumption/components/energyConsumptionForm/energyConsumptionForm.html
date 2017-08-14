@@ -21,7 +21,7 @@
           <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="location">Location</label><br/>
-              <p-autoComplete formControlName="location" field="name" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+              <p-autoComplete formControlName="location" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLocationDropdownClick($event)" (onSelect)="onLocationSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -29,14 +29,14 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <label *ngIf="formGroup.value.location != null && formGroup.value.location.code != null">
-              &nbsp; {{formGroup.value.location.code}}{{formGroup.value.location.name != null ?" | "+ formGroup.value.location.name:""}}
-              </label>
+              <!-- <label *ngIf="formGroup.value.location != null && formGroup.value.location.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.location.code}}{{formGroup.value.location.name != null ?" | "+ formGroup.value.location.name:""}} -->
+              <!-- </label> -->
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.location != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-          </div>
+          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.location != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+          <!-- </div> -->
           <!--<select id="locationSelector" class="form-control" formControlName="location">
 					<option *ngFor="let location of locations" [ngValue]="location">{{location.code}}</option>
 				   </select>-->

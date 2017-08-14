@@ -37,7 +37,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for=" section"> Section</label>
             <br/>
-            <p-autoComplete formControlName="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
+            <p-autoComplete formControlName="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -49,12 +49,12 @@
 				  <option *ngFor="let section of sections" [ngValue]="section">{{section.code}}</option>
 				  </select> -->
           </div>
-          <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.section != null">
-            <p class="hidden-xs-down">&nbsp;</p>
-            <label *ngIf="formGroup.value.section != null && formGroup.value.section.code != null">
-              &nbsp; {{formGroup.value.section.code}}{{formGroup.value.section.name != null ?" | "+ formGroup.value.section.name:""}}
-            </label>
-          </div>
+          <!-- <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.section != null"> -->
+            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+            <!-- <label *ngIf="formGroup.value.section != null && formGroup.value.section.code != null"> -->
+              <!-- &nbsp; {{formGroup.value.section.code}}{{formGroup.value.section.name != null ?" | "+ formGroup.value.section.name:""}} -->
+            <!-- </label> -->
+          <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>

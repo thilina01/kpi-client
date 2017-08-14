@@ -112,8 +112,13 @@ export class CostCenterForm {
         }, 100)
     }
 
-    onSectionSelect(section: any) {
-        console.log(event)
+    onSectionSelect(event: any) {
+        let section = this.formGroup.value.section;
+        if (section != null && section != undefined) {
+            let display = section.code != null && section.code != undefined ? section.code + " : " : "";
+            display += section.name != null && section.name != undefined ? section.name : "";
+            this.formGroup.value.section.display = display;
+        }
     }
     /*================== End Of Section Filter ===================*/
 }

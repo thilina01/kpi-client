@@ -111,8 +111,13 @@ export class EnergyConsumptionForm {
         }, 100)
     }
 
-    onLocationSelect(location: any) {
-        console.log(event)
+    onLocationSelect(event: any) {
+        let location= this.formGroup.value.location;
+        if (location!= null && location!= undefined) {
+            let display = location.code != null && location.code != undefined ? location.code + " : " : "";
+            display += location.name != null && location.name != undefined ? location.name : "";
+            this.formGroup.value.location.display = display;
+        }
     }
     /*================== End Of Location Filter ===================*/
 }

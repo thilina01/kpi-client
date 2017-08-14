@@ -170,8 +170,13 @@ export class CustomerForm {
         }, 100)
     }
 
-    onCurrencySelect(currency: any) {
-        console.log(event)
+    onCurrencySelect(event: any) {
+        let currency = this.formGroup.value.currency;
+        if (currency != null && currency != undefined) {
+            let display = currency.code != null && currency.code != undefined ? currency.code + " : " : "";
+            display += currency.name != null && currency.name != undefined ? currency.name : "";
+            this.formGroup.value.currency.display = display;
+        }
     }
     /*================== Customer Type Filter ===================*/
     filteredCustomerTypes: any[];
@@ -196,8 +201,13 @@ export class CustomerForm {
         }, 100)
     }
 
-    onCustomerTypeSelect(customerType: any) {
-        console.log(event)
+    onCustomerTypeSelect(event: any) {
+        let customerType = this.formGroup.value.customerType;
+        if (customerType != null && customerType != undefined) {
+            let display = customerType.code != null && customerType.code != undefined ? customerType.code + " : " : "";
+            display += customerType.name != null && customerType.name != undefined ? customerType.name : "";
+            this.formGroup.value.customerType.display = display;
+        }
     }
     /*================== End Of Customer Type Filter ===================*/
     /*================== Notify PartyFilter ===================*/
@@ -223,8 +233,13 @@ export class CustomerForm {
         }, 100)
     }
 
-    onNotifyPartySelect(notifyParty: any) {
-        console.log(event)
+    onNotifyPartySelect(event: any) {
+        let notifyParty = this.formGroup.value.notifyParty;
+        if (notifyParty != null && notifyParty != undefined) {
+            let display = notifyParty.code != null && notifyParty.code != undefined ? notifyParty.code + " : " : "";
+            display += notifyParty.name != null && notifyParty.name != undefined ? notifyParty.name : "";
+            this.formGroup.value.notifyParty.display = display;
+        }
     }
     /*================== End Of Notify PartyFilter ===================*/
     /*================== Payment TermFilter ===================*/
@@ -250,8 +265,13 @@ export class CustomerForm {
         }, 100)
     }
 
-    onPaymentTermSelect(paymentTerm: any) {
-        console.log(event)
+    onPaymentTermSelect(event: any) {
+        let paymentTerm = this.formGroup.value.paymentTerm;
+        if (paymentTerm != null && paymentTerm != undefined) {
+            let display = paymentTerm.code != null && paymentTerm.code != undefined ? paymentTerm.code + " : " : "";
+            display += paymentTerm.name != null && paymentTerm.name != undefined ? paymentTerm.name : "";
+            this.formGroup.value.paymentTerm.display = display;
+        }
     }
     /*================== End Of Payment TermFilter ===================*/
     /*================== Incoterm Filter ===================*/
@@ -277,8 +297,13 @@ export class CustomerForm {
         }, 100)
     }
 
-    onIncotermSelect(incoterm: any) {
-        console.log(event)
+    onIncotermSelect (event: any) {
+        let incoterm = this.formGroup.value.incoterm;
+        if (incoterm != null && incoterm != undefined) {
+            let display = incoterm.code != null && incoterm.code != undefined ? incoterm.code + " : " : "";
+            display += incoterm.name != null && incoterm.name != undefined ? incoterm.name : "";
+            this.formGroup.value.incoterm.display = display;
+        }
     }
     /*================== End Of Incoterm Filter ===================*/
    /*================== CountryFilter ===================*/
@@ -304,7 +329,12 @@ export class CustomerForm {
         }, 100)
     }
 
-    onCountrySelect(country: any) {
-        console.log(event)
+    onCountrySelect(event: any) {
+        let country = this.formGroup.value.country ;
+        if (country!= null && country!= undefined) {
+            let display = country.code != null && country.code != undefined ? country.code + " : " : "";
+            display += country.name != null && country.name != undefined ? country.name : "";
+            this.formGroup.value.country.display = display;
+        }
     }
 }
