@@ -71,6 +71,7 @@ export class Pages {
     { routerLink: "/pages/country/table", name: "Country", menuType: this.menuType },
     { routerLink: "/pages/currency/table", name: "Currency", menuType: this.menuType },
     { routerLink: "/pages/customer/table", name: "Customer", menuType: this.menuType },
+    { routerLink: "/pages/customerItem/table", name: "Customer Item", menuType: this.menuType },         
     { routerLink: "/pages/customerType/table", name: "Customer Type", menuType: this.menuType },
     { routerLink: "/pages/cumulativeSalesPerKg/table", name: "Cumulative Sales Per Kg", menuType: this.menuType },
     { routerLink: "/pages/consumableCostPerKg/table", name: "Consumable Cost Per Kg", menuType: this.menuType },

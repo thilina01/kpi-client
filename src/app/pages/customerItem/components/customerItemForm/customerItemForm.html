@@ -1,0 +1,84 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Customer Item Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/customerItem/table"> 
+                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+                </button>
+              </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="ui-inputgroup">
+                  <label for="customer">Customer</label> &nbsp;<br/>
+                  <p-autoComplete formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+                    [size]="80" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerDropdownClick($event)" (onSelect)="onCustomerSelect($event)">
+                    <ng-template let-option pTemplate="option">
+                      <div class="ui-helper-clearfix">
+                        <div>{{option.code}} : {{option.name}}</div>
+                      </div>
+                    </ng-template>
+                  </p-autoComplete>
+                </div>
+            </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="code">Customer item Code</label> &nbsp;<br/>
+              <input type="text" pInputText formControlName="code">
+            </div>
+          </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="ui-inputgroup">
+                <label for="name">Name</label> &nbsp;<br/>
+                <input type="text" pInputText formControlName="name">
+              </div>
+            </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="ui-inputgroup">
+                <label for="item">Item</label> &nbsp;<br/>
+                <p-autoComplete formControlName="item" field="display" [suggestions]="filteredItemList" (completeMethod)="filterItemList($event)"
+                  [size]="80" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemDropdownClick($event)" (onSelect)="onItemSelect($event)">
+                  <ng-template let-option pTemplate="option">
+                    <div class="ui-helper-clearfix">
+                      <div>{{option.code}} : {{option.name}}</div>
+                    </div>
+                  </ng-template>
+                </p-autoComplete>
+              </div>
+          </div>
+            <!-- <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null">
+            &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}}
+          </label> -->
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.item != null">
+          <p class="hidden-xs-down">&nbsp;</p>
+        </div> -->
+        
+            <!-- <label *ngIf="formGroup.value.customer != null && formGroup.value.customer.code != null">
+            &nbsp; {{formGroup.value.customer.code}}{{formGroup.value.customer.name != null ?" | "+ formGroup.value.customer.name:""}}
+          </label> -->
+        
+      
+        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.customer != null">
+          <p class="hidden-xs-down">&nbsp;</p>
+        </div> -->
+        
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              &nbsp;<br/>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
