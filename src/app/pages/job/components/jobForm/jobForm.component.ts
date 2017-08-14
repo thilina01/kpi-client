@@ -81,6 +81,8 @@ export class JobForm {
         }
         this.formGroup.patchValue(this.job, { onlySelf: true });
         this.jobType = this.job.jobType;
+        this.setDisplayOfJobType(); 
+        this.setDisplayOfItem();  
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -120,9 +122,18 @@ export class JobForm {
             this.filteredJobTypes = this.jobTypes;
         }, 100)
     }
+    onJobTypeSelect(event: any) {
+        this.setDisplayOfJobType();        
+    }
 
-    onJobTypeSelect(jobType:any) {
-        console.log(event)
+
+    setDisplayOfJobType(){
+        let jobType = this.formGroup.value.jobType;
+        if (jobType != null && jobType != undefined) {
+            let display = jobType.code != null && jobType.code != undefined ? jobType.code + " : " : "";
+            display += jobType.name != null && jobType.name != undefined ? jobType.name : "";
+            this.formGroup.value.jobType.display = display;
+        }
     }
     /*================== End Of Job Type Filter ===================*/
   /*================== Item Filter ===================*/
@@ -148,8 +159,18 @@ export class JobForm {
         }, 100)
     }
 
-    onItemSelect(item: any) {
-        console.log(event)
+    onItemSelect(event: any) {
+        this.setDisplayOfItem();        
+    }
+
+    setDisplayOfItem(){
+        let item = this.formGroup.value.item;
+        if (item != null && item != undefined) {
+            let display = item.code != null && item.code != undefined ? item.code + " : " : "";
+            display += item.name != null && item.name != undefined ? item.name : "";
+            this.formGroup.value.item.display = display;
+        }
     }
     /*================== End Of Item Filter ===================*/
-}
+    }
+

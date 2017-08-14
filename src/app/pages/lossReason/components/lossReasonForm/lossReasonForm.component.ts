@@ -78,6 +78,7 @@ export class LossReasonForm {
         this.formGroup.patchValue(this.lossReason, { onlySelf: true });
         this.lossReasonType = this.lossReason.lossReasonType;
         this.lossType = this.lossReason.lossType;
+        this.setDisplayOfLossType(); 
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -119,12 +120,16 @@ export class LossReasonForm {
     }
 
     onLossTypeSelect(event: any) {
-        let lossType = this.formGroup.value.lossType;
-        if (lossType != null && lossType != undefined) {
-            let display = lossType.code != null && lossType.code != undefined ? lossType.code + " : " : "";
-            display += lossType.name != null && lossType.name != undefined ? lossType.name : "";
-            this.formGroup.value.lossType.display = display;
+        this.setDisplayOfLossType();  
         }
+        setDisplayOfLossType()
+        {
+            let lossType = this.formGroup.value.lossType;
+            if (lossType != null && lossType != undefined) {
+                let display = lossType.code != null && lossType.code != undefined ? lossType.code + " : " : "";
+                display += lossType.name != null && lossType.name != undefined ? lossType.name : "";
+                this.formGroup.value.lossType.display = display;
+            }
     }
     /*================== End Of Loss TypeFilter ===================*/
    

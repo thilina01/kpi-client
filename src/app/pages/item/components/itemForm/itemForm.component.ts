@@ -88,6 +88,9 @@ export class ItemForm {
         this.item.productionToolAvailability = this.item.productionToolAvailability === "yes" ? true : false;
         this.formGroup.patchValue(this.item, { onlySelf: true });
         this.itemType = this.item.itemType;
+        this.setDisplayOfItemType();
+        this.setDisplayOfPaint();
+
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -133,14 +136,20 @@ export class ItemForm {
     }
 
     onItemTypeSelect
-    (event: any) {
-           let itemType = this.formGroup.value.itemType;
-           if (itemType != null && itemType != undefined) {
-               let display = itemType.code != null && itemType.code != undefined ? itemType.code + " : " : "";
-               display += itemType.name != null && itemType.name != undefined ? itemType.name : "";
-               this.formGroup.value.itemType.display = display;
-           }
-       }
+        (event: any) {
+
+        this.setDisplayOfItemType();
+
+    }
+    setDisplayOfItemType() {
+        let itemType = this.formGroup.value.itemType;
+        if (itemType != null && itemType != undefined) {
+            let display = itemType.code != null && itemType.code != undefined ? itemType.code + " : " : "";
+            display += itemType.name != null && itemType.name != undefined ? itemType.name : "";
+            this.formGroup.value.itemType.display = display;
+        }
+    }
+
     /*================== End Of Item Type Filter ===================*/
     /*================== Paint Filter ===================*/
     filteredPaints: any[];
@@ -165,14 +174,21 @@ export class ItemForm {
         }, 100)
     }
 
-    onPaintSelect (event: any) {
+    onPaintSelect(event: any) {
+
+
+        this.setDisplayOfPaint();
+    }
+
+    setDisplayOfPaint() {
         let paint = this.formGroup.value.paint;
         if (paint != null && paint != undefined) {
             let display = paint.code != null && paint.code != undefined ? paint.code + " : " : "";
             display += paint.name != null && paint.name != undefined ? paint.name : "";
             this.formGroup.value.paint.display = display;
-        }
-    }
-    /*================== End Of Paint Filter ===================*/
-}
 
+        }
+        /*================== End Of Paint Filter ===================*/
+    }
+
+}

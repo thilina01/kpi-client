@@ -75,6 +75,7 @@ export class WorkCenterForm {
         }
         this.formGroup.patchValue(this.workCenter, { onlySelf: true });
         this.workCenterType = this.workCenter.workCenterType;
+        this.setDisplayOfCostCenter(); 
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -117,12 +118,15 @@ export class WorkCenterForm {
     }
 
     onCostCenterSelect(event: any) {
-        let costCenter = this.formGroup.value.costCenter;
-        if (costCenter != null && costCenter != undefined) {
-            let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + " : " : "";
-            display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : "";
-            this.formGroup.value.costCenter.display = display;
+        this.setDisplayOfCostCenter(); 
         }
+        setDisplayOfCostCenter(){
+            let costCenter = this.formGroup.value.costCenter;
+            if (costCenter != null && costCenter != undefined) {
+                let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + " : " : "";
+                display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : "";
+                this.formGroup.value.costCenter.display = display;
+            }
     }
     /*================== End Of Cost Center Filter ===================*/
 }

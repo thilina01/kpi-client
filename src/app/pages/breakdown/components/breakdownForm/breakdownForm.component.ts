@@ -72,6 +72,7 @@ export class BreakdownForm {
         }
         this.formGroup.patchValue(this.breakdown, { onlySelf: true });
         this.machine = this.breakdown.machine;
+        this.setDisplayOfMachine();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -113,15 +114,21 @@ export class BreakdownForm {
     }
 
     onMachineSelect(event: any) {
-        let machine = this.formGroup.value.machine;
-        if (machine != null && machine != undefined) {
-            let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
-            display += machine.name != null && machine.name != undefined ? machine.name : "";
-            this.formGroup.value.machine.display = display;
+        this.setDisplayOfMachine();
         }
+
+        setDisplayOfMachine(){
+            let machine = this.formGroup.value.machine;
+            if (machine != null && machine != undefined) {
+                let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
+                display += machine.name != null && machine.name != undefined ? machine.name : "";
+                this.formGroup.value.machine.display = display;
+            }
+        }
+
     }
     /*================== End Of MachineFilter ===================*/
-}
+
 
 
 
