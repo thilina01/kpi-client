@@ -25,7 +25,7 @@
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
 			<div class="ui-inputgroup">
               <label for="shift">Shift</label><br/>
-				<p-autoComplete formControlName="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+				<p-autoComplete formControlName="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
 				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
 					<ng-template let-option pTemplate="option">
 						<div class="ui-helper-clearfix">
@@ -38,7 +38,7 @@
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
 			<div class="ui-inputgroup">
               <label for="shiftType">Shift Type</label><br/>
-				<p-autoComplete formControlName="shiftType" field="name" [suggestions]="filteredShiftTypes" (completeMethod)="filterShiftTypes($event)"
+				<p-autoComplete formControlName="shiftType" field="display" [suggestions]="filteredShiftTypes" (completeMethod)="filterShiftTypes($event)"
 				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftTypeDropdownClick($event)" (onSelect)="onShiftTypeSelect($event)">
 					<ng-template let-option pTemplate="option">
 						<div class="ui-helper-clearfix">

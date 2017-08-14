@@ -22,8 +22,8 @@ export class PlanFormTop {
     shifts: any[];
     shiftTypes: any[];
 
-    constructor(private controlPointService: ControlPointService, 
-        private shiftService: ShiftService, 
+    constructor(private controlPointService: ControlPointService,
+        private shiftService: ShiftService,
         private shiftTypeService: ShiftTypeService) { }
 
     getControlPoints(): void {
@@ -69,7 +69,7 @@ export class PlanFormTop {
         this.filteredControlPoints = [];
         for (let i = 0; i < this.controlPoints.length; i++) {
             let controlPoint = this.controlPoints[i];
-            if (controlPoint.code.toLowerCase().indexOf(query) == 0 || controlPoint.name.toLowerCase().indexOf(query) == 0 ) {
+            if (controlPoint.code.toLowerCase().indexOf(query) == 0 || controlPoint.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredControlPoints.push(controlPoint);
             }
         }
@@ -83,9 +83,13 @@ export class PlanFormTop {
         }, 100)
     }
 
-    onControlPointSelect(controlPoint: any) {
-        this.formGroup.value.controlPoint.display = this.formGroup.value.controlPoint.code +" : "+ this.formGroup.value.controlPoint.name;
-        console.log(event)
+    onControlPointSelect(event: any) {
+        let controlPoint = this.formGroup.value.controlPoint;
+        if (controlPoint != null && controlPoint != undefined) {
+            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + " : " : "";
+            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : "";
+            this.formGroup.value.controlPoint.display = display;
+        }
     }
     /*================== End Of Control Point Filter ===================*/
     /*================== Shift Filter ===================*/
@@ -97,7 +101,7 @@ export class PlanFormTop {
         this.filteredShifts = [];
         for (let i = 0; i < this.shifts.length; i++) {
             let Shift = this.shifts[i];
-            if (Shift.code.toLowerCase().indexOf(query) == 0 || Shift.name.toLowerCase().indexOf(query) == 0 ) {
+            if (Shift.code.toLowerCase().indexOf(query) == 0 || Shift.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredShifts.push(Shift);
             }
         }
@@ -111,8 +115,13 @@ export class PlanFormTop {
         }, 100)
     }
 
-    onShiftSelect(Shift: any) {
-        console.log(event)
+    onShiftSelect(event: any) {
+        let shift = this.formGroup.value.shift;
+        if (shift != null && shift != undefined) {
+            let display = shift.code != null && shift.code != undefined ? shift.code + " : " : "";
+            display += shift.name != null && shift.name != undefined ? shift.name : "";
+            this.formGroup.value.shift.display = display;
+        }
     }
     /*================== End Of Shift Filter ===================*/
     /*================== Shift Type Filter ===================*/
@@ -124,7 +133,7 @@ export class PlanFormTop {
         this.filteredShiftTypes = [];
         for (let i = 0; i < this.shiftTypes.length; i++) {
             let shiftType = this.shiftTypes[i];
-            if (shiftType.code.toLowerCase().indexOf(query) == 0 || shiftType.name.toLowerCase().indexOf(query) == 0 ) {
+            if (shiftType.code.toLowerCase().indexOf(query) == 0 || shiftType.name.toLowerCase().indexOf(query) == 0) {
                 this.filteredShiftTypes.push(shiftType);
             }
         }
@@ -138,8 +147,13 @@ export class PlanFormTop {
         }, 100)
     }
 
-    onShiftTypeSelect(shiftType: any) {
-        console.log(event)
+    onShiftTypeSelect(event: any) {
+        let shiftType = this.formGroup.value.shiftType;
+        if (shiftType != null && shiftType != undefined) {
+            let display = shiftType.code != null && shiftType.code != undefined ? shiftType.code + " : " : "";
+            display += shiftType.name != null && shiftType.name != undefined ? shiftType.name : "";
+            this.formGroup.value.shiftType.display = display;
+        }
     }
     /*================== End Of Shift Type Filter ===================*/
 }

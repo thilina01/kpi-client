@@ -112,8 +112,13 @@ export class BreakdownForm {
         }, 100)
     }
 
-    onMachineSelect(machine: any) {
-        console.log(event)
+    onMachineSelect(event: any) {
+        let machine = this.formGroup.value.machine;
+        if (machine != null && machine != undefined) {
+            let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
+            display += machine.name != null && machine.name != undefined ? machine.name : "";
+            this.formGroup.value.machine.display = display;
+        }
     }
     /*================== End Of MachineFilter ===================*/
 }

@@ -108,8 +108,13 @@ export class AbsenteeismForm {
         }, 100)
     }
 
-    onLabourSourceSelect(labourSource: any) {
-        //console.log(event)
+    onLabourSourceSelect(event: any) {
+        let labourSource = this.formGroup.value.labourSource;
+        if (labourSource != null && labourSource != undefined) {
+            let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + " : " : "";
+            display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : "";
+            this.formGroup.value.labourSource.display = display;
+        }
     }
     /*================== End Of Labour Source Filter ===================*/
 }
