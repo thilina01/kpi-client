@@ -5,10 +5,10 @@
 				<p-header>
 					<div class="row">
 						<div class="col">
-						<h4>Production Information</h4>
+							<h4>Production Information</h4>
 						</div>
 						<div class="col">
-						<a routerLink="/pages/production/table"> 
+							<a routerLink="/pages/production/table"> 
 						<button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
 						<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
 						</button>
@@ -287,7 +287,7 @@
 					<tbody>
 						<tr *ngFor="let operation of production.operationList">
 							<td>{{operation.job.jobNo}}</td>
-							<td>{{operation.job.item.code}}</td>
+							<td>{{operation.job.item != undefined && operation.job.item.code != undefined ? operation.job.item.code:""}}</td>
 							<td>{{operation.productType.description}}</td>
 							<td>{{operation.operationType.description}}</td>
 							<td class="text-right">{{operation.plannedQuantity}}</td>
