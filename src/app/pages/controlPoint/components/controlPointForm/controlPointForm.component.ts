@@ -78,6 +78,8 @@ export class ControlPointForm {
         }
         this.formGroup.patchValue(this.controlPoint, { onlySelf: true });
         this.controlPointType = this.controlPoint.controlPointType;
+        this.setDisplayOfWorkCenter();
+        this.setDisplayOfControlPoint();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -119,12 +121,17 @@ export class ControlPointForm {
     }
 
     onControlPointTypeSelect(event: any) {
+
+        this.setDisplayOfControlPoint();
+    }
+    setDisplayOfControlPoint() {
         let controlPointType = this.formGroup.value.controlPointType;
         if (controlPointType != null && controlPointType != undefined) {
             let display = controlPointType.code != null && controlPointType.code != undefined ? controlPointType.code + " : " : "";
             display += controlPointType.name != null && controlPointType.name != undefined ? controlPointType.name : "";
             this.formGroup.value.controlPointType.display = display;
-            }}
+        }
+    }
     /*================== End Of Control Point Type Filter ===================*/
     /*================== Work Center Filter ===================*/
     filteredWorkCenters: any[];
@@ -149,12 +156,17 @@ export class ControlPointForm {
     }
 
     onWorkCenterSelect(event: any) {
+        this.setDisplayOfWorkCenter();
+    }
+
+    setDisplayOfWorkCenter() {
         let workCenter = this.formGroup.value.workCenter;
         if (workCenter != null && workCenter != undefined) {
             let display = workCenter.code != null && workCenter.code != undefined ? workCenter.code + " : " : "";
             display += workCenter.name != null && workCenter.name != undefined ? workCenter.name : "";
             this.formGroup.value.workCenter.display = display;
         }
- }
+
+    }
     /*================== End Of Work Center Filter ===================*/
 }

@@ -67,6 +67,7 @@ export class LabourTurnoverForm {
         }
         this.formGroup.patchValue(this.labourTurnover, { onlySelf: true });
         this.labourSource = this.labourTurnover.labourSource;
+        this.setDisplayOfLabourSource(); 
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -108,12 +109,15 @@ export class LabourTurnoverForm {
     }
 
     onLabourSourceSelect(event: any) {
-        let labourSource = this.formGroup.value.labourSource;
-        if (labourSource != null && labourSource != undefined) {
-            let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + " : " : "";
-            display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : "";
-            this.formGroup.value.labourSource.display = display;
+        this.setDisplayOfLabourSource();  
         }
+        setDisplayOfLabourSource(){
+            let labourSource = this.formGroup.value.labourSource;
+            if (labourSource != null && labourSource != undefined) {
+                let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + " : " : "";
+                display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : "";
+                this.formGroup.value.labourSource.display = display;
+            }
     }
     /*================== End Of Labour Source Filter ===================*/
 }

@@ -29,7 +29,7 @@
             <div class="ui-inputgroup">
               <label for="tool">Tool</label><br/>
               <p-autoComplete formControlName="tool" field="display" [suggestions]="filteredTools" (completeMethod)="filterTools($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleToolDropdownClick($event)" (onSelect)="onToolSelect($event)">
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleToolDropdownClick($event)" (onSelect)=" onToolSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>

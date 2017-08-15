@@ -30,7 +30,7 @@ export class CustomerForm {
     incotermList = [];
     currencyList = [];
     customerTypeList = [];
-    countryList =[];
+    countryList = [];
 
     paymentTerm: any = { id: '', code: '', name: '' }
     notifyParty: any = { id: '', code: '', name: '' }
@@ -92,7 +92,7 @@ export class CustomerForm {
     getPaymentTermList(): void {
         this.paymentTermService.getCombo().subscribe(paymentTermList => this.paymentTermList = paymentTermList);
     }
-     getCountryList(): void {
+    getCountryList(): void {
         this.countryService.getCombo().subscribe(countryList => this.countryList = countryList);
     }
 
@@ -130,6 +130,13 @@ export class CustomerForm {
         this.notifyparty = this.customer.notifyparty;
         this.paymentTerm = this.customer.paymentTerm;
         this.country = this.customer.country;
+        this.setDisplayOfCurrency();
+        this.setDisplayOfNotifyParty();
+        this.setDisplayOfPaymentTerm();
+        this.setDisplayOfIncoterm();
+        this.setDisplayOfCountry();
+        this.setDisplayOfCustomerType();
+        
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -171,6 +178,10 @@ export class CustomerForm {
     }
 
     onCurrencySelect(event: any) {
+        this.setDisplayOfCurrency();
+
+    }
+    setDisplayOfCurrency() {
         let currency = this.formGroup.value.currency;
         if (currency != null && currency != undefined) {
             let display = currency.code != null && currency.code != undefined ? currency.code + " : " : "";
@@ -178,6 +189,7 @@ export class CustomerForm {
             this.formGroup.value.currency.display = display;
         }
     }
+
     /*================== Customer Type Filter ===================*/
     filteredCustomerTypes: any[];
     //customerType: any;
@@ -202,6 +214,11 @@ export class CustomerForm {
     }
 
     onCustomerTypeSelect(event: any) {
+
+        this.setDisplayOfCustomerType();
+    }
+
+    setDisplayOfCustomerType() {
         let customerType = this.formGroup.value.customerType;
         if (customerType != null && customerType != undefined) {
             let display = customerType.code != null && customerType.code != undefined ? customerType.code + " : " : "";
@@ -234,6 +251,11 @@ export class CustomerForm {
     }
 
     onNotifyPartySelect(event: any) {
+
+        this.setDisplayOfNotifyParty();
+    }
+
+    setDisplayOfNotifyParty() {
         let notifyParty = this.formGroup.value.notifyParty;
         if (notifyParty != null && notifyParty != undefined) {
             let display = notifyParty.code != null && notifyParty.code != undefined ? notifyParty.code + " : " : "";
@@ -241,6 +263,7 @@ export class CustomerForm {
             this.formGroup.value.notifyParty.display = display;
         }
     }
+
     /*================== End Of Notify PartyFilter ===================*/
     /*================== Payment TermFilter ===================*/
     filteredPaymentTerms: any[];
@@ -266,75 +289,88 @@ export class CustomerForm {
     }
 
     onPaymentTermSelect(event: any) {
+        this.setDisplayOfPaymentTerm();
+    }
+    setDisplayOfPaymentTerm() {
         let paymentTerm = this.formGroup.value.paymentTerm;
         if (paymentTerm != null && paymentTerm != undefined) {
             let display = paymentTerm.code != null && paymentTerm.code != undefined ? paymentTerm.code + " : " : "";
             display += paymentTerm.name != null && paymentTerm.name != undefined ? paymentTerm.name : "";
             this.formGroup.value.paymentTerm.display = display;
-        }
-    }
-    /*================== End Of Payment TermFilter ===================*/
-    /*================== Incoterm Filter ===================*/
-    filteredIncoterms: any[];
-    //incoterm: any;
-
-    filterIncoterms(event) {
-        let query = event.query.toLowerCase();
-        this.filteredIncoterms = [];
-        for (let i = 0; i < this.incotermList.length; i++) {
-            let incoterm = this.incotermList[i];
-            if (incoterm.code.toLowerCase().indexOf(query) == 0 || incoterm.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredIncoterms.push(incoterm);
             }
         }
-    }
+        /*================== End Of Payment TermFilter ===================*/
+        /*================== Incoterm Filter ===================*/
+        filteredIncoterms: any[];
+        //incoterm: any;
 
-    handleIncotermDropdownClick() {
-        this.filteredIncoterms = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredIncoterms = this.incotermList;
-        }, 100)
-    }
-
-    onIncotermSelect (event: any) {
-        let incoterm = this.formGroup.value.incoterm;
-        if (incoterm != null && incoterm != undefined) {
-            let display = incoterm.code != null && incoterm.code != undefined ? incoterm.code + " : " : "";
-            display += incoterm.name != null && incoterm.name != undefined ? incoterm.name : "";
-            this.formGroup.value.incoterm.display = display;
-        }
-    }
-    /*================== End Of Incoterm Filter ===================*/
-   /*================== CountryFilter ===================*/
-    filteredCountryList: any[];
-    //country: any;
-
-    filterCountryList(event) {
-        let query = event.query.toLowerCase();
-        this.filteredCountryList = [];
-        for (let i = 0; i < this.countryList.length; i++) {
-            let country = this.countryList[i];
-            if (country.code.toLowerCase().indexOf(query) == 0 || country.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredCountryList.push(country);
+        filterIncoterms(event) {
+            let query = event.query.toLowerCase();
+            this.filteredIncoterms = [];
+            for (let i = 0; i < this.incotermList.length; i++) {
+                let incoterm = this.incotermList[i];
+                if (incoterm.code.toLowerCase().indexOf(query) == 0 || incoterm.name.toLowerCase().indexOf(query) == 0) {
+                    this.filteredIncoterms.push(incoterm);
+                }
             }
         }
-    }
 
-    handleCountryDropdownClick() {
-        this.filteredCountryList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCountryList = this.countryList;
-        }, 100)
-    }
+        handleIncotermDropdownClick() {
+            this.filteredIncoterms = [];
+            //mimic remote call
+            setTimeout(() => {
+                this.filteredIncoterms = this.incotermList;
+            }, 100)
+        }
 
-    onCountrySelect(event: any) {
-        let country = this.formGroup.value.country ;
-        if (country!= null && country!= undefined) {
-            let display = country.code != null && country.code != undefined ? country.code + " : " : "";
-            display += country.name != null && country.name != undefined ? country.name : "";
-            this.formGroup.value.country.display = display;
+        onIncotermSelect(event: any) {
+            this.setDisplayOfIncoterm(); 
+            }
+
+            setDisplayOfIncoterm()
+            {
+                let incoterm = this.formGroup.value.incoterm;
+                if (incoterm != null && incoterm != undefined) {
+                    let display = incoterm.code != null && incoterm.code != undefined ? incoterm.code + " : " : "";
+                    display += incoterm.name != null && incoterm.name != undefined ? incoterm.name : "";
+                    this.formGroup.value.incoterm.display = display;
+                }
+        }
+            
+        /*================== End Of Incoterm Filter ===================*/
+        /*================== CountryFilter ===================*/
+        filteredCountryList: any[];
+        //country: any;
+
+        filterCountryList(event) {
+            let query = event.query.toLowerCase();
+            this.filteredCountryList = [];
+            for (let i = 0; i < this.countryList.length; i++) {
+                let country = this.countryList[i];
+                if (country.code.toLowerCase().indexOf(query) == 0 || country.name.toLowerCase().indexOf(query) == 0) {
+                    this.filteredCountryList.push(country);
+                }
+            }
+        }
+
+        handleCountryDropdownClick() {
+            this.filteredCountryList = [];
+            //mimic remote call
+            setTimeout(() => {
+                this.filteredCountryList = this.countryList;
+            }, 100)
+        }
+
+        onCountrySelect(event: any) {
+            this.setDisplayOfCountry(); 
+            }
+
+            setDisplayOfCountry() {
+                let country = this.formGroup.value.country;
+                if (country != null && country != undefined) {
+                    let display = country.code != null && country.code != undefined ? country.code + " : " : "";
+                    display += country.name != null && country.name != undefined ? country.name : "";
+                    this.formGroup.value.country.display = display;
+                }
         }
     }
-}

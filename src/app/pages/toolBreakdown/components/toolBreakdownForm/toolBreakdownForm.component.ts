@@ -26,10 +26,10 @@ export class ToolBreakdownForm {
     recoveryTime: Date = new Date();
     tool: any = { id: '', code: '' }
 
-    constructor(protected service: ToolBreakdownService, 
-        private route: ActivatedRoute, 
-        private router: Router, fb: FormBuilder, 
-        private sharedService: SharedService, 
+    constructor(protected service: ToolBreakdownService,
+        private route: ActivatedRoute,
+        private router: Router, fb: FormBuilder,
+        private sharedService: SharedService,
         private toolService: ToolService) {
         this.formGroup = fb.group({
             id: '',
@@ -70,6 +70,7 @@ export class ToolBreakdownForm {
         }
         this.formGroup.patchValue(this.toolBreakdown, { onlySelf: true });
         this.tool = this.toolBreakdown.tool;
+        this.setDisplayOfTool();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -87,8 +88,8 @@ export class ToolBreakdownForm {
     public resetForm() {
         this.formGroup.reset();
     }
-     
- /*================== Tool Filter ===================*/
+
+    /*================== Tool Filter ===================*/
     filteredTools: any[];
     //tool: any;
 
@@ -111,7 +112,11 @@ export class ToolBreakdownForm {
         }, 100)
     }
 
-    onToolSelec (event: any) {
+    onToolSelect(event: any) {
+        this.setDisplayOfTool();
+    }
+
+    setDisplayOfTool() {
         let tool = this.formGroup.value.tool;
         if (tool != null && tool != undefined) {
             let display = tool.code != null && tool.code != undefined ? tool.code + " : " : "";
