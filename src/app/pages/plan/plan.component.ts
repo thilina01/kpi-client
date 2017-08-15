@@ -13,6 +13,11 @@ import { ProductionService } from "../production/production.service";
 })
 
 export class Plan {
+
+  shiftList = [];
+  shiftTypeList = [];
+  controlPointList=[];
+  
   public formGroup: FormGroup;
   public submitted: boolean = false;
   shift: any = { id: "", code: "", name: "" };
@@ -57,6 +62,9 @@ export class Plan {
       data.productionDate = new Date(data.productionDate);
     }
     this.formGroup.patchValue(data, { onlySelf: true });
+    this.setDisplayOfShiftType();
+    this.setDisplayOfShift(); 
+    this.setDisplayOfControlPoint(); 
   }
 
   public onSubmit(values: any): void {
@@ -95,5 +103,113 @@ export class Plan {
   public resetForm() {
     this.formGroup.reset();
   }
+  
 
+/*================== ShiftFilter ===================*/
+filteredShiftList: any[];
+//shift: any;
+
+filterShiftList(event) {
+    let query = event.query.toLowerCase();
+    this.filteredShiftList = [];
+    for (let i = 0; i < this.shiftList.length; i++) {
+        let shift = this.shiftList[i];
+        if (shift.code.toLowerCase().indexOf(query) == 0 || shift.name.toLowerCase().indexOf(query) == 0) {
+            this.filteredShiftList.push(shift);
+        }
+    }
+}
+
+handleShiftDropdownClick() {
+    this.filteredShiftList = [];
+    //mimic remote call
+    setTimeout(() => {
+        this.filteredShiftList = this.shiftList;
+    }, 100)
+}
+
+onShiftSelect(event: any) {
+    this.setDisplayOfShift(); 
+    }
+
+    setDisplayOfShift() {
+        let shift = this.formGroup.value.shift;
+        if (shift != null && shift != undefined) {
+            let display = shift.code != null && shift.code != undefined ? shift.code + " : " : "";
+            display += shift.name != null && shift.name != undefined ? shift.name : "";
+            this.formGroup.value.shift.display = display;
+        }
+}
+
+/*================== ShiftTypeFilter ===================*/
+filteredShiftTypeList: any[];
+//shiftType: any;
+
+filterShiftTypeList(event) {
+    let query = event.query.toLowerCase();
+    this.filteredShiftTypeList = [];
+    for (let i = 0; i < this.shiftTypeList.length; i++) {
+        let shiftType = this.shiftTypeList[i];
+        if (shiftType.code.toLowerCase().indexOf(query) == 0 || shiftType.name.toLowerCase().indexOf(query) == 0) {
+            this.filteredShiftTypeList.push(shiftType);
+        }
+    }
+}
+
+handleShiftTypeDropdownClick() {
+    this.filteredShiftTypeList = [];
+    //mimic remote call
+    setTimeout(() => {
+        this.filteredShiftTypeList = this.shiftTypeList;
+    }, 100)
+}
+
+onShiftTypeSelect(event: any) {
+    this.setDisplayOfShiftType(); 
+    }
+
+    setDisplayOfShiftType() {
+        let shiftType = this.formGroup.value.shiftType;
+        if (shiftType != null && shiftType != undefined) {
+            let display = shiftType.code != null && shiftType.code != undefined ? shiftType.code + " : " : "";
+            display += shiftType.name != null && shiftType.name != undefined ? shiftType.name : "";
+            this.formGroup.value.shiftType.display = display;
+        }
+}
+
+/*================== ControlPointFilter ===================*/
+filteredControlPointList: any[];
+//controlPoint: any;
+
+filterControlPointList(event) {
+    let query = event.query.toLowerCase();
+    this.filteredControlPointList = [];
+    for (let i = 0; i < this.controlPointList.length; i++) {
+        let controlPoint = this.controlPointList[i];
+        if (controlPoint.code.toLowerCase().indexOf(query) == 0 || controlPoint.name.toLowerCase().indexOf(query) == 0) {
+            this.filteredControlPointList.push(controlPoint);
+        }
+    }
+}
+
+handleControlPointDropdownClick() {
+    this.filteredControlPointList = [];
+    //mimic remote call
+    setTimeout(() => {
+        this.filteredControlPointList = this.controlPointList;
+    }, 100)
+}
+
+onControlPointSelect(event: any) {
+    this.setDisplayOfControlPoint(); 
+    }
+
+    setDisplayOfControlPoint() {
+        let controlPoint = this.formGroup.value.controlPoint;
+        if (controlPoint != null && controlPoint != undefined) {
+            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + " : " : "";
+            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : "";
+            this.formGroup.value.controlPoint.display = display;
+        }
+}
 }
