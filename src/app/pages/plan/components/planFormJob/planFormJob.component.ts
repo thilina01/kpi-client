@@ -86,7 +86,6 @@ export class PlanFormJob {
     this.dataTable.reset();
   }
 
-
   public removeOperation(id: number) {
     if (this.formGroup.value.operationList != null) {
       this.formGroup.value.operationList.splice(id, 1);

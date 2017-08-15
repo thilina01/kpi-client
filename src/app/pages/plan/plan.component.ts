@@ -23,6 +23,7 @@ export class Plan {
     private sharedService: SharedService,
     private route: ActivatedRoute) {
     this.formGroup = fb.group({
+      id: '',
       productionDate: ['', Validators.required],
       plannedDuration: ['', Validators.compose([Validators.required, CustomValidators.range([10, 1280])])],
       shift: [this.shift, Validators.required],
@@ -42,7 +43,7 @@ export class Plan {
         id = id == undefined ? '0' : id;
         if (id != '0') {
           this.productionService.getOne(+id).subscribe(
-            (data) => {
+            (data) => {              
               this.loadForm(data);
               console.log(data);
             }
@@ -55,6 +56,10 @@ export class Plan {
   loadForm(data: any) {
     if (data != null) {
       data.productionDate = new Date(data.productionDate);
+      data.operationList.forEach(element => {
+        
+      delete element.lossList;
+      });
     }
     this.formGroup.patchValue(data, { onlySelf: true });
   }
