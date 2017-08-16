@@ -52,19 +52,23 @@
           <!-- <p class="hidden-xs-down">&nbsp;</p> -->
           <!-- <label>{{formGroup.value.machine.code}} | {{formGroup.value.machine.name}}</label> -->
           <!-- </div> -->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="breakdownTime">Breakdown Time</label><br/>
+              <label for="breakdownTime">Breakdown Time</label>
               <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['breakdownTime'].valid && formGroup.controls['breakdownTime'].touched), 'has-success': (formGroup.controls['breakdownTime'].valid && formGroup.controls['breakdownTime'].touched)}">
-                <p-calendar id="breakdownTimePicker" formControlName="breakdownTime" showIcon="true" dateFormat="yy-mm"></p-calendar>
+                <p-calendar id="breakdownTimePicker" formControlName="breakdownTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                  hourFormat="24"></p-calendar>
               </div>
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="recoveryTime">Recovery Time</label><br/>
+              <label for="recoveryTime">Recovery Time</label>
               <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched), 'has-success': (formGroup.controls['recoveryTime'].valid && formGroup.controls['recoveryTime'].touched)}">
-                <p-calendar id="recoveryTimePicker" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm"></p-calendar>
+                <p-calendar id="recoveryTimePicker" formControlName="recoveryTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                  hourFormat="24"></p-calendar>
               </div>
             </div>
           </div>
