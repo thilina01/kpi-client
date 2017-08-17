@@ -10,7 +10,6 @@
 						</select>
 				</div>
 			</div>
-
 			<div class="col-sm-2">
 				<div class="form-group">
 					<label for="inputFirstName">Product Type</label> <select class="form-control" formControlName="productType">
@@ -19,7 +18,6 @@
 				</select>
 				</div>
 			</div>
-
 			<div class="col-sm-2">
 				<div class="form-group">
 					<label for="inputFirstName">Operation Type</label> <select class="form-control" formControlName="operationType">
@@ -28,7 +26,6 @@
 				</select>
 				</div>
 			</div>
-
 			<div class="col-sm-2">
 				<div class="form-group" [ngClass]="{'has-error': (!jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched), 'has-success': (jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched)}">
 					<label for="inputFirstName">Quantity</label> <input type="number" class="form-control " placeholder="quantity" #plannedQuantity
@@ -55,7 +52,7 @@
 		<p-column field="plannedQuantity" header="Quantity" [style]="{'width':'auto'}"></p-column>
 		<p-column field="job.quantity" header="Job Quantity" [style]="{'width':'auto'}"></p-column>
 		<p-column header="Action" [style]="{'width':'80px'}">
-			<ng-template let-data="rowData" let-rowIndex="rowIndex"  pTemplate="body" style="float:right">
+			<ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
 				<i (click)="removeOperation(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
 			</ng-template>
 		</p-column>

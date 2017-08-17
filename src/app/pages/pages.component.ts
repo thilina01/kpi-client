@@ -107,6 +107,8 @@ export class Pages {
     { routerLink: "/pages/production/table", name: "Production", menuType: this.menuType },
     { routerLink: "/pages/productionOverheadCostPerKg/table", name: "Production Overhead Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/salesPerKg/table", name: "Sales Per Kg", menuType: this.menuType },
+    { routerLink: "/pages/salesOrder/table", name: "Sales Order", menuType: this.menuType },
+    { routerLink: "/pages/salesOrderType/table", name: "Sales Order Type", menuType: this.menuType },
     { routerLink: "/pages/salesValue/table", name: "Sales Value", menuType: this.menuType },
     { routerLink: "/pages/salesWeight/table", name: "Sales Weight", menuType: this.menuType },
     { routerLink: "/pages/scrapCostPerKg/table", name: "Scrap Cost Per Kg", menuType: this.menuType },

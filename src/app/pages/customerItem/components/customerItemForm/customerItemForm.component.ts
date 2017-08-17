@@ -85,6 +85,8 @@ export class CustomerItemForm {
         this.customerItemType = this.customerItem.customerItemType;
         this.customer = this.customerItem.customer;
         this.item = this.customerItem.item;
+        this.setDisplayOfItem(); 
+        this.setDisplayOfCustomer(); 
         
     }
 
@@ -129,12 +131,17 @@ export class CustomerItemForm {
  }
 
  onCustomerSelect(event: any) {
-     let customer = this.formGroup.value.customer ;
-     if (customer!= null && customer!= undefined) {
-         let display = customer.code != null && customer.code != undefined ? customer.code + " : " : "";
-         display += customer.name != null && customer.name != undefined ? customer.name : "";
-         this.formGroup.value.customer.display = display;
+    this.setDisplayOfCustomer();  
      }
+     
+     setDisplayOfCustomer()  {
+        let customer = this.formGroup.value.customer ;
+        if (customer!= null && customer!= undefined) {
+            let display = customer.code != null && customer.code != undefined ? customer.code + " : " : "";
+            display += customer.name != null && customer.name != undefined ? customer.name : "";
+            this.formGroup.value.customer.display = display;
+        }
+          
  }
  /*================== ItemFilter ===================*/
  filteredItemList: any[];
@@ -160,11 +167,14 @@ export class CustomerItemForm {
  }
 
  onItemSelect(event: any) {
-     let item = this.formGroup.value.item ;
-     if (item!= null && item!= undefined) {
-         let display = item.code != null && item.code != undefined ? item.code + " : " : "";
-         display += item.name != null && item.name != undefined ? item.name : "";
-         this.formGroup.value.item.display = display;
+    this.setDisplayOfItem(); 
      }
+     setDisplayOfItem()  {
+        let item = this.formGroup.value.item ;
+        if (item!= null && item!= undefined) {
+            let display = item.code != null && item.code != undefined ? item.code + " : " : "";
+            display += item.name != null && item.name != undefined ? item.name : "";
+            this.formGroup.value.item.display = display;
+        }
  }
 }
