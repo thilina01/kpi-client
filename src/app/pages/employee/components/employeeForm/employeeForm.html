@@ -17,30 +17,59 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="code">Employee ID</label><br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
-        </div>
-        <br/>
-        <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="name">Name</label><br/>
-              <input type="text" pInputText formControlName="name">
+              <label for="firstName">First Name</label><br/>
+              <input type="text" pInputText formControlName="firstName">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="lastName">Last Name</label><br/>
+              <input type="text" pInputText formControlName="lastName">
+            </div>
+          </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="ui-inputgroup">
+            <label for="dateOfBirth">Date Of Birth</label><br/>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched), 'has-success': (formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched)}">
+              <p-calendar id="dateOfBirthPicker" formControlName="dateOfBirth" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
         </div>
-        <br/>
-        <div class="row">
-          <div class="col-md-6 col-sm-10 col-xs-12">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="nic">NIC</label><br/>
+              <input type="text" pInputText formControlName="nic">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="contactNumber">Contact Number</label><br/>
+              <input type="text" pInputText formControlName="contactNumber">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="address">Address</label><br/> 
+              <input type="text" pInputText formControlName="address">
+            </div>
+          </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="ui-inputgroup">
+            &nbsp;<br/>
             <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
             <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
+</div>
 </p-panel>

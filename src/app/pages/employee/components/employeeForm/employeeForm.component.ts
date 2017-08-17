@@ -18,16 +18,9 @@ export class EmployeeForm {
     public formGroup: FormGroup;
     employee: any = {};
     subscription: Subscription;
-
-    employeeTypes: any;
-    paints: any;
-
-    employeeDate: Date;
-    employeeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    employeeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
-
+    
+    dateOfBirth: Date;
+    
     constructor(protected service: EmployeeService,
         private route: ActivatedRoute,
         private router: Router,
@@ -35,8 +28,13 @@ export class EmployeeForm {
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
-            code: ['', Validators.required],
-            name: ['', Validators.required]
+            firstName:'',
+            lastName:'',
+            contactNumber:'',
+            address:'',
+            dateOfBirth:[this.dateOfBirth, Validators.required],
+            nic:['', Validators.required],
+            code:['', Validators.required]
         });
     }
 
@@ -61,7 +59,7 @@ export class EmployeeForm {
             this.employee = data;
         }
         this.formGroup.patchValue(this.employee, { onlySelf: true });
-        this.employeeType = this.employee.employeeType;
+       
     }
 
     public onSubmit(values: any, event: Event): void {

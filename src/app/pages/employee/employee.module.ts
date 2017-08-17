@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Employee } from './employee.component';
 
@@ -14,6 +14,7 @@ import { routing } from './employee.routing';
 import { EmployeeService } from "./employee.service";
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -21,6 +22,7 @@ import { EmployeeService } from "./employee.service";
     FormsModule,
     ReactiveFormsModule,
     DataTableModule,
+    CalendarModule,
     SharedModule,
     PanelModule,
     InputTextModule,
