@@ -82,7 +82,8 @@ export class PlanFormJob {
 
   fillOperations(): void {
     // this.operations = this.formGroup.value.operationList.slice();
-    //this.totalRecords = this.operations.length;
+    //this.totalRecords = this.operations.length;    
+    this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
     this.dataTable.reset();
   }
 
