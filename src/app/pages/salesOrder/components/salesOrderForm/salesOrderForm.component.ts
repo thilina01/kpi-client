@@ -8,14 +8,14 @@ import { SalesOrderService } from "../../salesOrder.service";
 import { CustomerItemService } from "../../../customerItem/customerItem.service";
 import { CustomerService } from "../../../customer/customer.service";
 import { SalesOrderTypeService } from "../../../salesOrderType/salesOrderType.service";
-import { DataTable } from "primeng/primeng";
+import { DataTable, ConfirmationService } from "primeng/primeng";
 
 @Component({
     selector: 'sales-order-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./salesOrderForm.scss'],
     templateUrl: './salesOrderForm.html',
-   
+
 })
 export class SalesOrderForm {
     fillSalesOrders(): any {
@@ -47,15 +47,18 @@ export class SalesOrderForm {
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
+        private confirmationService: ConfirmationService, 
         private customerItemService: CustomerItemService,
         private customerService: CustomerService,
         private salesOrderTypeService: SalesOrderTypeService,
         private sharedService: SharedService) {
-            
+
         this.formGroup = fb.group({
             id: '',
-            customerPONumber: '',
-            salesOrderNumber: '',
+            quantity: 0,
+            amount: 0,
+            customerPoNumber: ['', Validators.required],
+            salesOrderNumber: ['', Validators.required],
             orderDate: [this.orderDate, Validators.required],
             customer: [this.customer, Validators.required],
             salesOrderType: [this.salesOrderType, Validators.required],
@@ -65,27 +68,40 @@ export class SalesOrderForm {
         this.salesOrderItemFormGroup = fb.group({
             unitPrice: '',
             quantity: '',
-            customerItem:[{}, Validators.compose([Validators.required])],
+            amount: '',
+            customerItem: [{}, Validators.compose([Validators.required])],
         });
     }
+
     getCustomerList(): void {
         this.customerService.getCombo().subscribe(customerList => this.customerList = customerList);
     }
+
     getCustomerItemList(): void {
         this.customerItemService.getCombo().subscribe(customerItemList => this.customerItemList = customerItemList);
     }
+
     getSalesOrderTypeList(): void {
         this.salesOrderTypeService.getCombo().subscribe(salesOrderTypeList => this.salesOrderTypeList = salesOrderTypeList);
     }
+
     refresh(): void {
-        this.salesOrderItemFormGroup.reset(); 
+        this.getCustomerItemList();
+        this.getCustomerList();
+        this.getSalesOrderTypeList();
     }
+
     fillSalesOrderItems(): void {
         // this.operations = this.formGroup.value.operationList.slice();
         //this.totalRecords = this.operations.length;
         this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
         this.dataTable.reset();
     }
+
+    onEditComplete(){
+        this.calculateTotal();
+    }
+
     ngOnInit(): void {
         setTimeout(() => {
             this.refresh();
@@ -111,7 +127,7 @@ export class SalesOrderForm {
     loadForm(data: any) {
         if (data != null) {
             data.orderDate = new Date(data.orderDate);
-            this.salesOrder = data;
+            this.salesOrder = data;            
         }
         this.formGroup.patchValue(this.salesOrder, { onlySelf: true });
         this.customer = this.salesOrder.customer;
@@ -121,9 +137,14 @@ export class SalesOrderForm {
         this.setDisplayOfSalesOrderType();
         this.setDisplayOfCustomer();
     }
+
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
+        if (values.salesOrderItemList === null || values.salesOrderItemList.length === 0) {
+            alert('Items Required');
+            return;
+        }
         this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
@@ -132,34 +153,56 @@ export class SalesOrderForm {
             }
         );
     }
+
     public resetForm() {
         this.formGroup.reset();
         this.salesOrderItemFormGroup.reset();
     }
-    public removeSalesOrderItem(id: number) {
+
+    public removeSalesOrderItem(id: number) {        
         if (this.formGroup.value.salesOrderItemList != null) {
-            this.formGroup.value.salesOrderItemList.splice(id, 1);
+            this.confirmationService.confirm({
+                message: 'Are you sure that you want to Delete?',
+                accept: () => {
+                    this.formGroup.value.salesOrderItemList.splice(id, 1);
+                    this.fillSalesOrderItems();
+                    this.calculateTotal();
+                }
+            });
         }
-        this.fillSalesOrderItems();
     }
-    public onEnter(unitPrice: string,dt:DataTable) {
+
+    public onEnter(unitPrice: string, dt: DataTable) {
         if (this.salesOrderItemFormGroup.valid) {
             let values = this.salesOrderItemFormGroup.value;
             if (this.formGroup.value.salesOrderItemList == null) {
                 this.formGroup.value.salesOrderItemList = [];
             }
+            values.amount = values.unitPrice * values.quantity;
             this.formGroup.value.salesOrderItemList.push(values);
+            this.calculateTotal();
             this.salesOrderItemFormGroup.reset();
             document.getElementById('customerItemSelector').focus();
-            console.log("X" + this.formGroup.value.salesOrderItemList);
             this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
             //this.dataTable.reset();
-        } else {
-            console.log("Y" + this.salesOrderItemFormGroup.errors);
         }
         //this.fillSalesOrders();
         //dt.reset();
     }
+
+    calculateTotal() {       
+        let amount = 0;
+        let quantity = 0; 
+        for (let i = 0; i < this.formGroup.value.salesOrderItemList.length; i++) {
+            let salesOrderItem = this.formGroup.value.salesOrderItemList[i];
+            salesOrderItem.amount = salesOrderItem.quantity * salesOrderItem.unitPrice;
+            amount += parseInt(salesOrderItem.amount);
+            quantity += parseInt(salesOrderItem.quantity);
+        }
+        this.formGroup.value.amount=amount;
+        this.formGroup.value.quantity=quantity;
+    }
+
     /*================== Customer Item Filter ===================*/
     filteredCustomerItems: any[];
     //customerItem: any;
@@ -206,7 +249,7 @@ export class SalesOrderForm {
         this.filteredSalesOrderTypes = [];
         for (let i = 0; i < this.salesOrderTypeList.length; i++) {
             let salesOrderType = this.salesOrderTypeList[i];
-            if (salesOrderType.code.toLowerCase().indexOf(query) == 0 || salesOrderType.name.toLowerCase().indexOf(query) == 0) {
+            if ((salesOrderType.code != null && salesOrderType.code.toLowerCase().indexOf(query) == 0) || (salesOrderType.name != null && salesOrderType.name.toLowerCase().indexOf(query) == 0)) {
                 this.filteredSalesOrderTypes.push(salesOrderType);
             }
         }

@@ -15,19 +15,13 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="salesOrders"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'30px'}"></p-column>
-		<p-column field="name" header="Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="salesOrderNumber" header="Sales Order Number" [sortable]="true" [style]="{'width':'200'}"></p-column>
-		<p-column field="orderDate" header="Order Date">
-			<ng-template let-col let-rowData="rowData" pTemplate="body">
-				{{rowData.orderDate | date:'y-MM'}}
-			</ng-template>
-		</p-column>
-		<p-column field="salesOrderType" header=" Sales Order Type" [sortable]="true"[style]="{'width':'auto'}"></p-column>
-		<p-column field="customer" header="Customer" [sortable]="true"></p-column>
-		<p-column field="customerItem" header="Customer Item" [sortable]="true"[style]="{'width':'auto'}" ></p-column>
-		<p-column field="customerPONumber" header="Customer PO Number" [sortable]="true"[style]="{'width':'200'}" ></p-column>
-		<p-column field="unitPrice" header="Unit Price" [sortable]="true"></p-column>
-		<p-column field="amount" header="Amount" [sortable]="true"></p-column>
+		<p-column field="orderDate" header="Order Date" [sortable]="true"></p-column>
+		<p-column field="salesOrderType.code" header=" Sales Order Type" [sortable]="true"[style]="{'width':'auto'}"></p-column>
+		<p-column field="customer.name" header="Customer" [sortable]="true"></p-column>
+		<p-column field="customerPoNumber" header="Customer PO Number" [sortable]="true"[style]="{'width':'200'}" ></p-column>
+		<p-column field="quantity" header="Quantity" [sortable]="true" styleClass="text-right"></p-column>
+		<p-column field="amount" header="Amount" [sortable]="true" styleClass="text-right"></p-column>
 		<p-column header="Action" [style]="{'width':'80px'}">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/salesOrder/form/'+data.id">

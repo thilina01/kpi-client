@@ -13,9 +13,9 @@
       </div>
     </div>
   </p-header>
-  <div class="row">
-    <div class="col-sm-12">
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+    <div class="row">
+      <div class="col-sm-12">
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
@@ -26,7 +26,7 @@
           <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="orderDate">Order Date</label><br/>
-              <p-calendar id="orderDatePicker" formControlName="orderDate" showIcon="true"  dateFormat="yy-mm-dd"></p-calendar>
+              <p-calendar id="orderDatePicker" formControlName="orderDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
@@ -43,8 +43,8 @@
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="customerPONumber">Customer PO Number</label><br/>
-              <input type="text" pInputText formControlName="customerPONumber">
+              <label for="customerPoNumber">Customer PO Number</label><br/>
+              <input type="text" pInputText formControlName="customerPoNumber">
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
@@ -59,77 +59,86 @@
             </p-autoComplete>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-  &nbsp;<br/>
-  <p-panel>
-    <div class="row">
-      <div class=" col-sm-12">
-        <form [formGroup]="salesOrderItemFormGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
-          <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-              <div class="form-group">
-                <label for="customerItem">Customer Item</label><br/>
-                <p-autoComplete id="customerItemSelector" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems" (completeMethod)="filterCustomerItems($event)"
-                  [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerItemDropdownClick($event)"
-                  (onSelect)="onCustomerItemSelect($event)">
-                  <ng-template let-option pTemplate="option">
-                    <div class="ui-helper-clearfix">
-                      <div>{{option.code}} : {{option.name}}</div>
-                    </div>
-                  </ng-template>
-                </p-autoComplete>
-              </div>
-            </div>
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
-                <div class="ui-inputgroup">
-              <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['quantity'].valid &&  salesOrderItemFormGroup.controls['Quantity'].touched), 'has-success': ( salesOrderItemFormGroup.controls['quantity'].valid && salesOrderItemFormGroup.controls['quantity'].touched)}">
-                <label for="quantity"> Quantity</label><br/> 
-                <input type="number" pInputText formControlName="quantity">
-              </div>
-            </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-                <div class="ui-inputgroup">
-              <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['unitPrice'].valid &&  salesOrderItemFormGroup.controls['unitPrice'].touched), 'has-success': ( salesOrderItemFormGroup.controls['unitPrice'].valid && salesOrderItemFormGroup.controls['unitPrice'].touched)}">
-                <label for="unitPrice">Unit Price</label><br/> 
-                <input type="number" #unitPrice (keyup.enter)="onEnter(unitPrice.value,dt)"pInputText formControlName="unitPrice">
-              </div>
-            </div>
-            </div>
-            <div class="col">
-              <label for="inputFirstName">&nbsp;</label><br/>
-              <div class="form-group form-inline">                                                                               
-                <button (click)="onEnter(unitPrice.value,dt)" pButton type="button" label="+ Add"></button> &nbsp;&nbsp;
-                <button type="button" pButton (click)="refresh()" class="ui-button-secondary" label="Refresh"></button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <p-dataTable #dt [value]="formGroup.value.salesOrderItemList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
-                  <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-                  <p-column field="customerItem.code" header="Customer Item" [style]="{'width':'100px'}"></p-column>
-                  <p-column field="unitPrice" header="Unit Price " [style]="{'width':'100px'}"></p-column>
-                  <p-column field="quantity" header="Quantity" [style]="{'width':'100px'}"></p-column>
-                  <p-column header="Action" [style]="{'width':'80px'}">
-                    <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
-                      <i (click)="removeSalesOrderItem(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
-                    </ng-template>
-                  </p-column>
-                </p-dataTable>
-              </div>
-            </div>
-          </div>
-        </form>
       </div>
     </div>
-  </p-panel>
-  <div class="row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-      &nbsp;<br/>
-      <button pButton [disabled]="!formGroup.valid" type="submit" label="Save"></button>
-      <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" label="Reset"></button>
+    &nbsp;<br/>
+    <p-panel>
+      <div class="row">
+        <div class=" col-sm-12">
+          <form [formGroup]="salesOrderItemFormGroup" class="form-horizontal">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="customerItem">Customer Item</label><br/>
+                  <p-autoComplete id="customerItemSelector" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
+                    (completeMethod)="filterCustomerItems($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerItemDropdownClick($event)"
+                    (onSelect)="onCustomerItemSelect($event)">
+                    <ng-template let-option pTemplate="option">
+                      <div class="ui-helper-clearfix">
+                        <div>{{option.code}} : {{option.name}}</div>
+                      </div>
+                    </ng-template>
+                  </p-autoComplete>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
+                <div class="ui-inputgroup">
+                  <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['quantity'].valid &&  salesOrderItemFormGroup.controls['Quantity'].touched), 'has-success': ( salesOrderItemFormGroup.controls['quantity'].valid && salesOrderItemFormGroup.controls['quantity'].touched)}">
+                    <label for="quantity"> Quantity</label><br/>
+                    <input type="number" pInputText formControlName="quantity">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <div class="ui-inputgroup">
+                  <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['unitPrice'].valid &&  salesOrderItemFormGroup.controls['unitPrice'].touched), 'has-success': ( salesOrderItemFormGroup.controls['unitPrice'].valid && salesOrderItemFormGroup.controls['unitPrice'].touched)}">
+                    <label for="unitPrice">Unit Price</label><br/>
+                    <input type="number" #unitPrice (keyup.enter)="onEnter(unitPrice.value,dt)" pInputText formControlName="unitPrice">
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <label for="inputFirstName">&nbsp;</label><br/>
+                <div class="form-group form-inline">
+                  <button (click)="onEnter(unitPrice.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <p-dataTable #dt (onEditComplete)="onEditComplete()" [value]="formGroup.value.salesOrderItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+                <p-column field="customerItem.code" header="Customer Item" ></p-column>
+                <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true"></p-column>
+                <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
+                <p-column field="amount" header="Amount" styleClass="text-right"></p-column>
+                <p-column header="Action" [style]="{'width':'80px'}">
+                  <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                    <i (click)="removeSalesOrderItem(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                  </ng-template>
+                </p-column>
+                <p-footerColumnGroup>
+                  <p-row>
+                      <p-column footer="Totals:" colspan="3" styleClass="text-right"></p-column>
+                      <p-column footer="{{formGroup.value.quantity}}"styleClass="text-right" ></p-column>
+                      <p-column footer="{{formGroup.value.amount}}" styleClass="text-right"></p-column>
+                      <p-column footer=""></p-column>
+                  </p-row>
+              </p-footerColumnGroup>
+              </p-dataTable>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-panel>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        &nbsp;<br/>
+        <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+        <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+      </div>
     </div>
-  </div>
+  </form>
 </p-panel>
