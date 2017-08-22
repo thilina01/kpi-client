@@ -105,7 +105,7 @@
 									<p-dataTable #dt2 [value]="operation.lossList" selectionMode="single">
 										<p-column field="id" [style]="{'width':'50px'}"></p-column>
 										<p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
-										<p-column field="lossReason.reason"></p-column>
+										<p-column field="lossReason.name"></p-column>
 										<p-column field="quantity" [style]="{'width':'100px'}"></p-column>
 										<p-column [style]="{'width':'30px'}">
 											<ng-template let-data="rowData" pTemplate="body">
@@ -125,10 +125,12 @@
 								<div class="row">
 									<div class="col-sm-2">
 										<div class="form-group">
-											<label>Job</label> <select formControlName="operation" class="form-control">
-										<option *ngFor="let operation of production.operationList"
-											[ngValue]="operation">{{operation.job.jobNo}}</option>
-									</select>
+											<label>Job</label>
+											<select formControlName="operation" class="form-control">
+												<option *ngFor="let operation of production.operationList" [ngValue]="operation">
+													{{operation.job.jobNo}}
+												</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-sm-2">
