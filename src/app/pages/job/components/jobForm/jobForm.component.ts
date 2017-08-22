@@ -7,6 +7,9 @@ import { SharedService } from '../../../../services/shared.service';
 import { ItemService } from "../../../item/item.service";
 import { JobService } from "../../job.service";
 import { JobTypeService } from "../../../jobType/jobType.service";
+import { CustomerItemService } from "../../../customerItem/customerItem.service";
+import { CustomerPoNumberService } from "../../../customerPoNumber/customerPoNumber.service";
+import { SalesOrderService } from "../../../salesOrder/salesOrder.service";
 
 @Component({
     selector: 'job-form',
@@ -15,6 +18,16 @@ import { JobTypeService } from "../../../jobType/jobType.service";
     templateUrl: './jobForm.html',
 })
 export class JobForm {
+    salesOrder: any;
+    salesOrders: any;
+    customerPoNumber: any;
+    customerPoNumbers: any;
+    salesOrderTypes: any;
+    salesOrderType: any;
+    salesOrderItem: any;
+    customerItems: any;
+    customerItem: any;
+    poNumber: any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -25,6 +38,8 @@ export class JobForm {
     items: any;
 
     jobDate: Date;
+    confirmDate: Date;
+    requestDate: Date;
     jobTime: Date = new Date();
     recoveryTime: Date = new Date();
     jobType: any = { id: '', code: '', type: '' }
@@ -36,6 +51,9 @@ export class JobForm {
         fb: FormBuilder,
         private sharedService: SharedService,
         private jobTypeService: JobTypeService,
+        private customerItemService: CustomerItemService,
+        private salesOrderService: SalesOrderService,
+
         private itemService: ItemService) {
 
         this.formGroup = fb.group({
@@ -44,21 +62,30 @@ export class JobForm {
             jobDate: [this.jobDate, Validators.required],
             quantity: ['', Validators.required],
             jobType: [this.jobType, Validators.required],
-            item: [this.item, Validators.required]
+            customerPoNumber: [this.poNumber, Validators.required],
+            confirmDate: [this.confirmDate, Validators.required],
+            requestDate: [this.requestDate, Validators.required],
+            customerItem: [this.customerItem, Validators.required],
+            salesOrder: [this.salesOrder, Validators.required]
         });
     }
 
     getJobTypes(): void {
         this.jobTypeService.getCombo().subscribe(jobTypes => this.jobTypes = jobTypes);
     }
-    
-    getItems(): void {
-        this.itemService.getCombo().subscribe(items => this.items = items);
+
+    getCustomerItems(): void {
+        this.customerItemService.getCombo().subscribe(customerItems => this.customerItems = customerItems);
+    }
+
+    getSalesOrders(): void {
+        this.salesOrderService.getCombo().subscribe(salesOrders => this.salesOrders = salesOrders);
     }
 
     ngOnInit(): void {
         this.getJobTypes();
-        this.getItems();
+        this.getCustomerItems();
+        this.getSalesOrders();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -77,12 +104,15 @@ export class JobForm {
     loadForm(data: any) {
         if (data != null) {
             this.job = data;
-            this.job.item.name = this.job.item.description;
         }
         this.formGroup.patchValue(this.job, { onlySelf: true });
         this.jobType = this.job.jobType;
-        this.setDisplayOfJobType(); 
-        this.setDisplayOfItem();  
+        this.customerItem = this.job.customerItem;
+        this.salesOrder = this.job.salesOrder;
+        this.setDisplayOfJobType();
+        this.setDisplayOfCustomerItem();
+        this.setDisplayOfSalesOrder();
+
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -100,7 +130,7 @@ export class JobForm {
     public resetForm() {
         this.formGroup.reset();
     }
-     /*================== Job Type Filter ===================*/
+    /*================== Job Type Filter ===================*/
     filteredJobTypes: any[];
     //jobType: any;
 
@@ -123,11 +153,10 @@ export class JobForm {
         }, 100)
     }
     onJobTypeSelect(event: any) {
-        this.setDisplayOfJobType();        
+        this.setDisplayOfJobType();
     }
 
-
-    setDisplayOfJobType(){
+    setDisplayOfJobType() {
         let jobType = this.formGroup.value.jobType;
         if (jobType != null && jobType != undefined) {
             let display = jobType.code != null && jobType.code != undefined ? jobType.code + " : " : "";
@@ -136,41 +165,76 @@ export class JobForm {
         }
     }
     /*================== End Of Job Type Filter ===================*/
-  /*================== Item Filter ===================*/
-    filteredItems: any[];
-    //item: any;
 
-    filterItems(event) {
+    /*================== Customer Item Filter ===================*/
+    filteredCustomerItems: any[];
+    //customerItem: any;
+
+    filterCustomerItems(event) {
         let query = event.query.toLowerCase();
-        this.filteredItems = [];
-        for (let i = 0; i < this.items.length; i++) {
-            let item = this.items[i];
-            if (item.code.toLowerCase().indexOf(query) == 0 || item.name.toLowerCase().indexOf(query) == 0) {
-                this.filteredItems.push(item);
+        this.filteredCustomerItems = [];
+        for (let i = 0; i < this.customerItems.length; i++) {
+            let customerItem = this.customerItems[i];
+            if (customerItem.code.toLowerCase().indexOf(query) == 0 || customerItem.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCustomerItems.push(customerItem);
             }
         }
     }
 
-    handleItemDropdownClick() {
-        this.filteredItems = [];
+    handleCustomerItemDropdownClick() {
+        this.filteredCustomerItems = [];
         //mimic remote call
         setTimeout(() => {
-            this.filteredItems = this.items;
+            this.filteredCustomerItems = this.customerItems;
         }, 100)
     }
-
-    onItemSelect(event: any) {
-        this.setDisplayOfItem();        
+    onCustomerItemSelect(event: any) {
+        this.setDisplayOfCustomerItem();
     }
 
-    setDisplayOfItem(){
-        let item = this.formGroup.value.item;
-        if (item != null && item != undefined) {
-            let display = item.code != null && item.code != undefined ? item.code + " : " : "";
-            display += item.name != null && item.name != undefined ? item.name : "";
-            this.formGroup.value.item.display = display;
+    setDisplayOfCustomerItem() {
+        let customerItem = this.formGroup.value.customerItem;
+        if (customerItem != null && customerItem != undefined) {
+            let display = customerItem.code != null && customerItem.code != undefined ? customerItem.code + " : " : "";
+            display += customerItem.name != null && customerItem.name != undefined ? customerItem.name : "";
+            this.formGroup.value.customerItem.display = display;
         }
     }
-    /*================== End Of Item Filter ===================*/
+    /*================== End Of Customer Item Filter ===================*/
+
+    /*================== Sales Order Filter ===================*/
+    filteredSalesOrders: any[];
+    //salesOrder: any;
+
+    filterSalesOrders(event) {
+        let query = event.query.toLowerCase();
+        this.filteredSalesOrders = [];
+        for (let i = 0; i < this.salesOrders.length; i++) {
+            let salesOrder = this.salesOrders[i];
+            if (salesOrder.code.toLowerCase().indexOf(query) == 0 || salesOrder.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredSalesOrders.push(salesOrder);
+            }
+        }
     }
 
+    handleSalesOrderDropdownClick() {
+        this.filteredSalesOrders = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredSalesOrders = this.salesOrders;
+        }, 100)
+    }
+    onSalesOrderSelect(event: any) {
+        this.setDisplayOfSalesOrder();
+    }
+
+    setDisplayOfSalesOrder() {
+        let salesOrder = this.formGroup.value.salesOrder;
+        if (salesOrder != null && salesOrder != undefined) {
+            let display = salesOrder.code != null && salesOrder.code != undefined ? salesOrder.code + " : " : "";
+            display += salesOrder.name != null && salesOrder.name != undefined ? salesOrder.name : "";
+            this.formGroup.value.salesOrder.display = display;
+        }
+    }
+    /*================== End Of Sales Order Filter ===================*/
+}

@@ -14,6 +14,9 @@ import { ItemService } from "../item/item.service";
 import { JobService } from "./job.service";
 import { JobTypeService } from "../jobType/jobType.service";
 import { OperationService } from "../operation/operation.service";
+import { CustomerItemService } from "../customerItem/customerItem.service";
+import { CustomerPoNumberService } from "../customerPoNumber/customerPoNumber.service";
+import { SalesOrderService } from "../salesOrder/salesOrder.service";
 
 
 @NgModule({
@@ -41,6 +44,8 @@ import { OperationService } from "../operation/operation.service";
     JobService,
     JobTypeService,
     ItemService,
+    CustomerItemService,
+    SalesOrderService,
     OperationService
   ]
 })
