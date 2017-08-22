@@ -36,12 +36,12 @@ export class ProductionForm {
     controlPoint: any = {}
     lossType: any = {}
 
-    constructor(protected service: ProductionService, 
-        private route: ActivatedRoute, 
+    constructor(protected service: ProductionService,
+        private route: ActivatedRoute,
         fb: FormBuilder,
-        private sharedService: SharedService, 
+        private sharedService: SharedService,
         private controlPointService: ControlPointService,
-        private shiftService: ShiftService, 
+        private shiftService: ShiftService,
         private lossTypeService: LossTypeService) {
         this.formGroup = fb.group({
             plannedDuration: 0,
@@ -49,9 +49,9 @@ export class ProductionForm {
         });
         this.qualityFormGroup = fb.group({
             operation: [null, Validators.required],
-            lossType:  [null, Validators.required],
-            lossReason:  [null, Validators.required],
-            quantity:  [null, Validators.required]
+            lossType: [null, Validators.required],
+            lossReason: [null, Validators.required],
+            quantity: [null, Validators.required]
         });
     }
 
@@ -156,22 +156,22 @@ export class ProductionForm {
         }
     }
 
-    deleteLoss(data:any,dataTable:any){        
-        if (this.production.operationList&&data.timestamp) {
+    deleteLoss(data: any, dataTable: any) {
+        if (this.production.operationList && data.timestamp) {
             for (let operation of this.production.operationList) {
-                if (operation.id===data.operation.id && operation.lossList) {
-                    for (let loss of operation.lossList) {         
-                        if(loss.timestamp === data.timestamp){
+                if (operation.id === data.operation.id && operation.lossList) {
+                    for (let loss of operation.lossList) {
+                        if (loss.timestamp === data.timestamp) {
                             let index = operation.lossList.indexOf(loss);
                             operation.lossList.splice(index, 1);
                             this.calculateTotalLossQuantity();
                             this.sharedService.addMessage({ severity: 'warn', summary: 'Delete Success', detail: 'loss details deleted' });
                             return;
-                        }               
+                        }
                     }
                 }
             }
-        }        
+        }
     }
 
     calculateTotalPlannedManpowerQuantity() {
@@ -200,18 +200,19 @@ export class ProductionForm {
     public onEditComplete(event: Event): void {
         //alert(JSON.stringify(event));
     }
-    
+
     public onQualityFormSubmit(values: any): void {
         if (!this.qualityFormGroup.valid) {
             this.qualityFormGroup.reset();
             return;
         }
 
+        values.lossReason.lossType = { id: values.lossType.id, code: values.lossType.code, name: values.lossType.name };
         let loss = {
             operation: { id: values.operation.id },
             lossReason: values.lossReason,
             quantity: values.quantity,
-            timestamp:new Date().getTime()
+            timestamp: new Date().getTime()
         }
         values.operation.lossList.push(loss);
 
