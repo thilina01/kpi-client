@@ -32,6 +32,7 @@ import { SalesOrderService } from "../salesOrder/salesOrder.service";
     CalendarModule,
     AutoCompleteModule,
     InputTextModule,
+    DialogModule,
     routing
   ],
   declarations: [

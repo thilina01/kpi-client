@@ -32,6 +32,7 @@ export class JobForm {
 
     public formGroup: FormGroup;
     job: any = {};
+    jobList: Array<any> = [];
     subscription: Subscription;
 
     jobTypes: any;
@@ -62,11 +63,10 @@ export class JobForm {
             jobDate: [this.jobDate, Validators.required],
             quantity: ['', Validators.required],
             jobType: [this.jobType, Validators.required],
-            customerPoNumber: [this.poNumber, Validators.required],
-            confirmDate: [this.confirmDate, Validators.required],
+            confirmDate: '',
             requestDate: [this.requestDate, Validators.required],
-            customerItem: [this.customerItem, Validators.required],
-            salesOrder: [this.salesOrder, Validators.required]
+            item: [{}, Validators.required],
+            salesOrderItem: [{}, Validators.required]
         });
     }
 
@@ -118,18 +118,39 @@ export class JobForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
-        this.service.save(values).subscribe(
-            (data) => {
-                this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-                this.resetForm();
-                this.router.navigate(['/pages/job/form/']);
-            }
-        );
+        if ((values.salesOrderItem.allocated + values.quantity) <= values.salesOrderItem.quantity ) {
+            this.service.save(values).subscribe(
+                (data) => {
+                    this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
+                    this.resetForm();
+                    this.display = false;
+                    this.onSalesOrderSelect(this.salesOrder);
+                    //this.router.navigate(['/pages/job/form/']);
+                }
+            );
+        }else{
+            alert("invalid quantity");
+        }
     }
 
     public resetForm() {
         this.formGroup.reset();
     }
+
+    display: boolean = false;
+
+    showDialog(data: any) {
+        console.log(data);
+        this.job = {
+            item: data.customerItem.item,
+            quantity: (data.quantity-data.allocated),
+            salesOrderItem: data
+        };
+
+        this.formGroup.patchValue(this.job, { onlySelf: true });
+        this.display = true;
+    }
+
     /*================== Job Type Filter ===================*/
     filteredJobTypes: any[];
     //jobType: any;
@@ -224,16 +245,26 @@ export class JobForm {
             this.filteredSalesOrders = this.salesOrders;
         }, 100)
     }
+
     onSalesOrderSelect(event: any) {
-        this.setDisplayOfSalesOrder();
+        this.salesOrderService.getOne(this.salesOrder.id).subscribe(
+            (data) => {
+                this.salesOrder = data;
+                this.setDisplayOfSalesOrder();
+            }
+        )
+        this.service.getBySalesOrder(this.salesOrder.id).subscribe(
+            (data) => {
+                this.jobList = data;
+            }
+        )
     }
 
     setDisplayOfSalesOrder() {
-        let salesOrder = this.formGroup.value.salesOrder;
-        if (salesOrder != null && salesOrder != undefined) {
-            let display = salesOrder.code != null && salesOrder.code != undefined ? salesOrder.code + " : " : "";
-            display += salesOrder.name != null && salesOrder.name != undefined ? salesOrder.name : "";
-            this.formGroup.value.salesOrder.display = display;
+        if (this.salesOrder != null && this.salesOrder != undefined) {
+            let display = this.salesOrder.code != null && this.salesOrder.code != undefined ? this.salesOrder.code + " : " : "";
+            display += this.salesOrder.name != null && this.salesOrder.name != undefined ? this.salesOrder.name : "";
+            this.salesOrder.display = display;
         }
     }
     /*================== End Of Sales Order Filter ===================*/
