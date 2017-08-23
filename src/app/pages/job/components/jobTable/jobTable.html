@@ -48,10 +48,9 @@
 		<p-column field="jobNo" header="Job Number" [sortable]="true"></p-column>
 		<p-column field="jobDate" header="Date" [sortable]="true"></p-column>
 		<p-column field="jobType.name" header="Type" [sortable]="true"></p-column>
-		<p-column field="confirmDate" header="Confirm Date" [sortable]="true"></p-column>
 		<p-column field="requestDate" header="Request Date" [sortable]="true"></p-column>
-		<p-column field="customerPoNumber" header="PO Number" [sortable]="true"></p-column>
-		<p-column field="customerItem" header="Customer Item" [sortable]="true"></p-column>
+		<p-column field="confirmDate" header="Confirm Date" [sortable]="true"></p-column>
+		<p-column field="item.code" header="Item" [sortable]="true"></p-column>
 		<p-column header="Action" [style]="{'width':'80px'}">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/job/form/'+data.id">
