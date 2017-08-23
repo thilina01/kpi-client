@@ -31,7 +31,7 @@
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for=" salesOrderType"> Sales Order Type</label><br/>
-            <p-autoComplete formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes" (completeMethod)="filterSalesOrderTypes($event)"
+            <p-autoComplete [dropdown]="true" formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes" (completeMethod)="filterSalesOrderTypes($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSalesOrderTypeDropdownClick($event)"
               (onSelect)="onSalesOrderTypeSelect($event)">
               <ng-template let-option pTemplate="option">
