@@ -4,9 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { SectionTypeService } from '../../../../services/sectionType.service';
 import { SectionService } from "../../section.service";
 import { WorkCenterService } from "../../../workCenter/workCenter.service";
+import { SectionTypeService } from "../../../sectionType/sectionType.service";
 
 @Component({
     selector: 'section-form',
@@ -48,7 +48,7 @@ export class SectionForm {
     }
 
     getSectionTypes(): void {
-        this.sectionTypeService.getAll().then(sectionTypes => this.sectionTypes = sectionTypes);
+        this.sectionTypeService.getAll().subscribe(sectionTypes => this.sectionTypes = sectionTypes);
     }
     
     getWorkCenterss(): void {
