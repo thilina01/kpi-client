@@ -26,14 +26,12 @@ export class Mdt6MonthsChartService {
       },
 
       "dataProvider": [
-        { "month": " Nov(2016)  ", "mdt": 0.46, "target": 1.1 },
-        { "month": " Dec(2016)  ", "mdt": 0.21, "target": 1.1 },
-        { "month": " Jan(2017)  ", "mdt": 0.515, "target": 1.1 },
         { "month": " Feb(2017)  ", "mdt": 0.71, "target": 1.1 },
         { "month": " Mar(2017)  ", "mdt": 1.04, "target": 1.1 },
         { "month": " Apr(2017)  ", "mdt": 0.61, "target": 1.1 },
         { "month": " May(2017)  ", "mdt": 0.60, "target": 1.1 },
-        { "month": " June(2017)  ", "mdt": 1.74, "target": 1.1 }
+        { "month": " June(2017)  ", "mdt": 1.74, "target": 1.1 },
+        { "month": " July(2017)  ", "mdt": 0.7, "target": 1.1 }
 
       ],
       "valueAxes": [{
