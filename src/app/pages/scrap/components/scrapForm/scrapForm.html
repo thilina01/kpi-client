@@ -1,0 +1,116 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Scrap Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/scrap/table"> 
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            </button>
+            </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="date">Date</label><br/>
+              <p-calendar id="datePicker" formControlName="date" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="job">Job Number</label><br/>
+              <p-autoComplete formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} </div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="productType">Product Type</label><br/>
+              <p-autoComplete formControlName="productType" field="display" [suggestions]="filteredProductTypeList" (completeMethod)="filterProductTypeList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleProductTypeDropdownClick($event)" (onSelect)="onProductTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="operationType">Operation Type</label><br/>
+              <p-autoComplete formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList" (completeMethod)="filterOperationTypeList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleOperationTypeDropdownClick($event)"
+                (onSelect)="onOperationTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="lossReason">Scrap Reason</label><br/>
+              <p-autoComplete formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossReasonDropdownClick($event)"
+                (onSelect)="onLossReasonSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="section">Section</label><br/>
+              <p-autoComplete formControlName="section" field="display" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="quantity">Quantity</label><br/>
+              <input type="number" pInputText formControlName="quantity">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="rate">Rate</label><br/>
+              <input type="number" pInputText formControlName="rate">
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              &nbsp;<br/>
+              <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+              <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>

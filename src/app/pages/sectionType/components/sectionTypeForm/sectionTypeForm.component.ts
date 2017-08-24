@@ -4,60 +4,43 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { SectionService } from "../../section.service";
-import { WorkCenterService } from "../../../workCenter/workCenter.service";
-import { SectionTypeService } from "../../../sectionType/sectionType.service";
+import { SectionTypeService } from "../../sectionType.service";
 
 @Component({
-    selector: 'section-form',
+    selector: 'section-type-form',
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./sectionForm.scss'],
-    templateUrl: './sectionForm.html'
+    styleUrls: ['./sectionTypeForm.scss'],
+    templateUrl: './sectionTypeForm.html',
 })
-export class SectionForm {
+export class SectionTypeForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    section: any = {};
+    sectionType: any = {};
     subscription: Subscription;
 
-    sectionTypes: any;
-    workCenters: any;
+    sectionTypeTypes: any;
+    paints: any;
 
-    sectionDate: Date;
-    sectionTime: Date = new Date();
+    sectionTypeDate: Date;
+    sectionTypeTime: Date = new Date();
     recoveryTime: Date = new Date();
-    sectionType: any = { id: '', code: '', name: '' }
-    workCenter: any = { id: '', code: '', name: '' }
+    sectionTypeType: any = { id: '', code: '', type: '' }
+    paint: any = { id: '', code: '', description: '' }
 
-    constructor(protected service: SectionService,
+    constructor(protected service: SectionTypeService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
-        private sharedService: SharedService,
-        private sectionTypeService: SectionTypeService,
-        private workCenterService: WorkCenterService) {
+        private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            name: ['', Validators.required],
-            mtbfTarget: [''],
-            mttrTarget: [''],
-            mdtTarget: ['']
+            name: ['', Validators.required]
         });
     }
 
-    getSectionTypes(): void {
-        this.sectionTypeService.getAll().subscribe(sectionTypes => this.sectionTypes = sectionTypes);
-    }
-    
-    getWorkCenterss(): void {
-        this.workCenterService.getCombo().subscribe(workCenters => this.workCenters = workCenters);
-    }
-
     ngOnInit(): void {
-        this.getSectionTypes();
-        this.getWorkCenterss();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -75,10 +58,10 @@ export class SectionForm {
 
     loadForm(data: any) {
         if (data != null) {
-            this.section = data;
+            this.sectionType = data;
         }
-        this.formGroup.patchValue(this.section, { onlySelf: true });
-        this.sectionType = this.section.sectionType;
+        this.formGroup.patchValue(this.sectionType, { onlySelf: true });
+        this.sectionTypeType = this.sectionType.sectionTypeType;
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -88,7 +71,7 @@ export class SectionForm {
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();
-                this.router.navigate(['/pages/section/form/']);
+                this.router.navigate(['/pages/sectionType/form/']);
             }
         );
     }
