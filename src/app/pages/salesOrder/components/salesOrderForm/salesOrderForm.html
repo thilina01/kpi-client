@@ -31,8 +31,8 @@
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for=" salesOrderType"> Sales Order Type</label><br/>
-            <p-autoComplete [dropdown]="true" formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes" (completeMethod)="filterSalesOrderTypes($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSalesOrderTypeDropdownClick($event)"
+            <p-autoComplete [dropdown]="true" formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes"
+              (completeMethod)="filterSalesOrderTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSalesOrderTypeDropdownClick($event)"
               (onSelect)="onSalesOrderTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -100,32 +100,41 @@
               <div class="col">
                 <label for="inputFirstName">&nbsp;</label><br/>
                 <div class="form-group form-inline">
-                  <button (click)="onEnter(unitPrice.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                  <button (click)="onEnter(unitPrice.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>                  &nbsp;&nbsp;
                 </div>
               </div>
             </div>
           </form>
           <div class="row">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <p-dataTable #dt (onEditComplete)="onEditComplete()" [value]="formGroup.value.salesOrderItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+              <p-dataTable #dt (onEditComplete)="onEditComplete()" [value]="formGroup.value.salesOrderItemList" [editable]="true" [rows]="20"
+                [responsive]="true" resizableColumns="true">
                 <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
-                <p-column field="customerItem.code" header="Customer Item" ></p-column>
-                <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true"></p-column>
+                <p-column field="customerItem.code" header="Customer Item"></p-column>
+                <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true" >
+                  <ng-template let-col let-salesOrderItem="rowData" pTemplate="body">
+                    {{ salesOrderItem.unitPrice | number : '1.2-2' }}
+                  </ng-template>
+                </p-column>
                 <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
-                <p-column field="amount" header="Amount" styleClass="text-right"></p-column>
+                <p-column field="amount" header="Amount" styleClass="text-right" >
+                  <ng-template let-col let-salesOrderItem="rowData" pTemplate="body">
+                    {{ salesOrderItem.amount | number : '1.2-2' }}
+                  </ng-template>
+                </p-column>
                 <p-column header="Action" [style]="{'width':'80px'}">
-                  <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                  <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
                     <i (click)="removeSalesOrderItem(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
                   </ng-template>
                 </p-column>
                 <p-footerColumnGroup>
                   <p-row>
-                      <p-column footer="Totals:" colspan="3" styleClass="text-right"></p-column>
-                      <p-column footer="{{formGroup.value.quantity}}"styleClass="text-right" ></p-column>
-                      <p-column footer="{{formGroup.value.amount}}" styleClass="text-right"></p-column>
-                      <p-column footer=""></p-column>
+                    <p-column footer="Totals:" colspan="3" styleClass="text-right"></p-column>
+                    <p-column footer="{{formGroup.value.quantity}}" styleClass="text-right"></p-column>
+                    <p-column footer="{{formGroup.value.amount | number : '1.2-2' }}" styleClass="text-right"></p-column>
+                    <p-column footer=""></p-column>
                   </p-row>
-              </p-footerColumnGroup>
+                </p-footerColumnGroup>
               </p-dataTable>
             </div>
           </div>
