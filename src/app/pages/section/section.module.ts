@@ -6,13 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { Section } from './section.component';
-import { SectionTypeService } from '../../services/sectionType.service';
 import { SectionTable } from './components/sectionTable/sectionTable.component';
 import { SectionForm } from './components/sectionForm/sectionForm.component';
 
 import { routing } from './section.routing';
 import { SectionService } from "./section.service";
 import { WorkCenterService } from "../workCenter/workCenter.service";
+import { SectionTypeService } from "../sectionType/sectionType.service";
 
 
 @NgModule({
