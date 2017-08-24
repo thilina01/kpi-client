@@ -239,7 +239,7 @@ export class SalesOrderForm {
             this.salesOrderItemFormGroup.value.customerItem.display = display;
         }
     }
-    /*================== End Of Customer Item Filter ===================*
+    /*================== End Of Customer Item Filter ===================*/
     /*================== Sales Order Type Filter ===================*/
     filteredSalesOrderTypes: any[];
     //salesOrderType: any;

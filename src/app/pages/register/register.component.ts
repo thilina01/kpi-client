@@ -58,7 +58,7 @@ export class Register {
         if (res.success) {
           this.userService.save(values).subscribe(
             data => {
-              this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Wait for the actication confirmation mail.' });
+              this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Wait for the activation confirmation mail.' });
               this.form.reset();
               this.router.navigate(['/login']);
             }

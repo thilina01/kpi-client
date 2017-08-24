@@ -6,15 +6,15 @@ import { AuthService } from "../../services/auth.service";
 import { Observable } from "rxjs/Observable";
 
 @Injectable()
-export class JobService extends MasterService {
+export class DispatchScheduleService extends MasterService {
 
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp, aConfig, anAuthService);
-    this.setApiUrl('jobs/');
+    this.setApiUrl('dispatchSchedules/');
   }
 
-  getOneByJobNo(jobNo: any): Observable<any> {
-    return this.http.get(this.apiUrl + "jobNo/" + jobNo, { headers: this.getJsonHeaders() })
+  getOneByDispatchScheduleNo(dispatchScheduleNo: any): Observable<any> {
+    return this.http.get(this.apiUrl + "dispatchScheduleNo/" + dispatchScheduleNo, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
@@ -22,15 +22,7 @@ export class JobService extends MasterService {
     return this.http.get(this.apiUrl + "salesOrder/" + salesOrder, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
-
-  getComboByItem(itemId:Number): Observable<any> {
-    return this.http.get(this.apiUrl + "combo/item/"+itemId, { headers: this.getJsonHeaders() })
-      .catch(err => this.handleError(err));
-  }
-
 }
-
-
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
 // import 'rxjs/add/operator/toPromise';
@@ -40,7 +32,7 @@ export class JobService extends MasterService {
 
 
 // @Injectable()
-// export class JobService {
+// export class DispatchScheduleService {
 
 //   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
 //   private apiUrl: string;  // URL to web api
@@ -51,7 +43,7 @@ export class JobService extends MasterService {
 //     });
 //   }; 
 //   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
-//     this.apiUrl = config.apiEndpoint + 'jobs/';
+//     this.apiUrl = config.apiEndpoint + 'dispatchSchedules/';
 //     //this.headers = new Headers(config.jsonHeaders);
 //   }
 
@@ -75,8 +67,8 @@ export class JobService extends MasterService {
 //       .then(response => response.json() as Object)
 //       .catch(this.handleError);
 //   }
-//   getOneByJobNo(jobNo: any): Promise<Object> {
-//     return this.http.get(this.apiUrl + "jobNo/" + jobNo, { headers: this.getJsonHeaders() })
+//   getOneByDispatchScheduleNo(dispatchScheduleNo: any): Promise<Object> {
+//     return this.http.get(this.apiUrl + "dispatchScheduleNo/" + dispatchScheduleNo, { headers: this.getJsonHeaders() })
 //       .toPromise()
 //       .then(response => response.json() as Object)
 //       .catch(this.handleError);

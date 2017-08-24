@@ -77,6 +77,7 @@ export class Pages {
     { routerLink: "/pages/consumableCostPerKg/table", name: "Consumable Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/dashboard", name: "Dashboard", menuType: this.menuType },
     { routerLink: "/pages/department/table", name: "Department", menuType: this.menuType },
+    { routerLink: "/pages/dispatchSchedule/table", name: "Dispatch Schedule", menuType: this.menuType },
     { routerLink: "/pages/energyConsumption/table", name: "Energy Consumption", menuType: this.menuType },
     { routerLink: "/pages/electricityCostPerKg/table", name: "Electricity Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/employee/table", name: "Employee", menuType: this.menuType },

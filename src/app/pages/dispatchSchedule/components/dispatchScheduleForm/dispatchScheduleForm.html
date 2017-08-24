@@ -1,0 +1,185 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Dispatch Schedule Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/dispatchSchedule/table"> 
+                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+                </button>
+              </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <label>PO Number</label><br/>
+      <p-autoComplete [(ngModel)]="salesOrder" [dropdown]="true" field="display" [suggestions]="filteredSalesOrders" (completeMethod)="filterSalesOrders($event)"
+        [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSalesOrderDropdownClick($event)" (onSelect)="onSalesOrderSelect($event)">
+        <ng-template let-option pTemplate="option">
+          <div class="ui-helper-clearfix">
+            <div>{{option.code}} : {{option.name}}</div>
+          </div>
+        </ng-template>
+      </p-autoComplete>
+      <br/>
+      <br/>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="salesOrder!=undefined">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <label>Date : </label>
+      <label>{{salesOrder.orderDate}}</label>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <label>Type : </label>
+      <label *ngIf="salesOrder.salesOrderType!=undefined">{{salesOrder.salesOrderType.code}}</label>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <label>Customer : </label>
+      <label *ngIf="salesOrder.customer!=undefined">{{salesOrder.customer.code}}</label>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <label>Sales Order : </label>
+      <label>{{salesOrder.salesOrderNumber}}</label>
+    </div>
+  </div>
+  <br/>
+  <div class="row" *ngIf="salesOrder!=undefined">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <p-dataTable #dt [value]="salesOrder.salesOrderItemList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
+        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+        <p-column field="customerItem.code" header="Customer Item"></p-column>
+        <p-column field="customerItem.item.code" header="Item"></p-column>
+        <p-column field="customerItem.item.description" header="Description"></p-column>
+        <p-column field="customerItem.item.size" header="Size"></p-column>
+        <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
+        <p-column field="scheduled" header="Scheduled" styleClass="text-right" [editable]="true"></p-column>
+        <p-column header="Action">
+          <ng-template let-data="rowData" pTemplate="body">
+            <button pButton type="button" *ngIf="data.quantity != data.scheduled" (click)="showDialog(data)" icon="fa-plus" label="Schedule"
+              class="btn btn-primary btn-xs" style="float:right; margin-right:3px;"></button>
+          </ng-template>
+        </p-column>
+        <!-- <p-footerColumnGroup>
+            <p-row>
+                <p-column footer="Totals:" colspan="3" styleClass="text-right"></p-column>
+                <p-column footer="XXX"styleClass="text-right" ></p-column>
+                <p-column footer="XXX" styleClass="text-right"></p-column>
+            </p-row>
+        </p-footerColumnGroup> -->
+      </p-dataTable>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <div class="row" *ngIf="salesOrder!=undefined">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <p-dataTable #dt [value]="dispatchScheduleList" [rows]="20" [responsive]="true" resizableColumns="true">
+        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+        <p-column field="salesOrderItem.customerItem.code" header="Customer Item"></p-column>
+        <p-column field="job.item.code" header="Item"></p-column>
+        <p-column field="job.jobNo" header="Job"></p-column>
+        <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
+        <p-column field="requestDate" header="Request Date"></p-column>
+        <p-column field="confirmDate" header="Confirm Date"></p-column>
+        <p-column field="dispatchDate" header="Dispatch Date"></p-column>
+        <!-- <p-footerColumnGroup>
+            <p-row>
+                <p-column footer="Totals:" colspan="3" styleClass="text-right"></p-column>
+                <p-column footer="XXX"styleClass="text-right" ></p-column>
+                <p-column footer="XXX" styleClass="text-right"></p-column>
+            </p-row>
+        </p-footerColumnGroup> -->
+      </p-dataTable>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <p-dialog *ngIf="dispatchSchedule!=undefined" header="Add DispatchSchedule [ {{(dispatchSchedule.item!=undefined?dispatchSchedule.item.code:'') +' : '+(dispatchSchedule.item!=undefined?dispatchSchedule.item.description:'')}} ]"
+    [(visible)]="display" modal="true">
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="ui-inputgroup">
+            <label for="quantity">Quantity</label><br/>
+            <input type="number" pInputText formControlName="quantity">
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="ui-inputgroup">
+            <label for="requestDate">Request Date</label><br/>
+            <p-calendar id="requestDatePicker" formControlName="requestDate" showIcon="true" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="ui-inputgroup">
+            <label for="confirmDate">Confirm Date</label><br/>
+            <p-calendar id="confirmDatePicker" formControlName="confirmDate" showIcon="true" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <label for="job">Job</label><br/>
+          <p-autoComplete formControlName="job" field="display" [dropdown]="true" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+            [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)" appendTo="body">
+            <ng-template let-option pTemplate="option">
+              <div class="ui-helper-clearfix">
+                <div>{{option.code}} : {{option.name}}</div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+        </div>        
+        <div class="col-md-6 col-sm-6 col-xs-12" >
+          <div class="ui-inputgroup">
+            <label for="jobNumber">Job Number</label><br/>
+            <input type="text" pInputText [(ngModel)]="jobNumber" [ngModelOptions]="{standalone: true}" [disabled]="!(formGroup.value.job!=null && formGroup.value.job.id == 0)">
+          </div>
+        </div>
+        <!--  -->
+
+        <!--<select id="dispatchScheduleTypeSelector" class="form-control" formControlName="dispatchScheduleType">
+					  <option *ngFor="let dispatchScheduleType of dispatchScheduleTypes" [ngValue]="dispatchScheduleType">{{dispatchScheduleType.code}}</option>
+				    </select> -->
+
+        <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.dispatchScheduleType != null"> -->
+        <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+        <!-- <label *ngIf="formGroup.value.dispatchScheduleType != null && formGroup.value.dispatchScheduleType.code != null"> -->
+        <!-- &nbsp; {{formGroup.value.dispatchScheduleType.code}}{{formGroup.value.dispatchScheduleType.name != null ?" | "+ formGroup.value.dispatchScheduleType.name:""}} -->
+        <!-- </label> -->
+        <!-- </div> -->
+
+        <!--<select id="itemSelector" class="form-control" formControlName="item">
+					  <option *ngFor="let item of items" [ngValue]="item">{{item.code}}</option>
+				    </select>-->
+
+        <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.item != null"> -->
+        <!-- <p class="hidden-xs-down">&nbsp;</p> -->
+        <!-- <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null"> -->
+        <!-- &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}} -->
+        <!-- </label> -->
+        <!-- </div> -->
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="ui-inputgroup">
+            &nbsp;<br/>
+            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
+            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </p-dialog>
+</p-panel>
+<!--
+<div class="widgets">
+  <div class="row">
+    <div class="col-sm-12">
+
+    </div>
+  </div>
+</div>
+-->
