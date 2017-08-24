@@ -22,7 +22,15 @@ export class JobService extends MasterService {
     return this.http.get(this.apiUrl + "salesOrder/" + salesOrder, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getComboByItem(itemId:Number): Observable<any> {
+    return this.http.get(this.apiUrl + "combo/item/"+itemId, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
 }
+
+
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
 // import 'rxjs/add/operator/toPromise';
