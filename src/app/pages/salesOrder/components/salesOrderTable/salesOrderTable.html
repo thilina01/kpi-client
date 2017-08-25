@@ -22,7 +22,7 @@
 		<p-column field="customerPoNumber" header="Customer PO Number" [sortable]="true"[style]="{'width':'200'}" ></p-column>
 		<p-column field="quantity" header="Quantity" [sortable]="true" styleClass="text-right"></p-column>
 		<p-column field="amount" header="Amount" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column header="Action" [style]="{'width':'80px'}">
+		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/salesOrder/form/'+data.id">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>

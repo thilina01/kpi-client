@@ -15,7 +15,7 @@
 	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="productionOverheadCostPerKgs"
 	 [globalFilter]="gb">
-		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+		<p-column field="id" header="ID"></p-column>
 		<p-column field="effectiveMonth" header="Effective Month">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
 				{{rowData.effectiveMonth | date:'y-MM'}}
@@ -23,7 +23,7 @@
 		</p-column>
 		<p-column field="actual" header="Actual" [sortable]="true"></p-column>
 		<p-column field="budget" header="Budget" [sortable]="true"></p-column>
-		<p-column header="Action" [style]="{'width':'80px'}">
+		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/productionOverheadCostPerKg/form/'+data.id">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>

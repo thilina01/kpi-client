@@ -15,7 +15,7 @@
 	 (onRowSelect)="selected($event.data)" (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true"
 	 exportFilename="breakdowns" [globalFilter]="gb">
 		
-		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+		<p-column field="id" header="ID"></p-column>
 		<!-- <p-column field="breakdownTime" header="Breakdown Time" [sortable]="true"></p-column> -->
 		<p-column field="breakdownTime" header="Breakdown Time">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
@@ -36,7 +36,7 @@
 		<p-column field="machine.code" header="Machine" [sortable]="true"></p-column>
 		<p-column field="breakdownNumber" header="Breakdown Number" [sortable]="true"></p-column>
 		<p-column field="description" header="Descriptiom" [sortable]="true"></p-column>
-		<p-column header="Action" [style]="{'width':'80px'}">
+		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/breakdown/form/'+data.id">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>

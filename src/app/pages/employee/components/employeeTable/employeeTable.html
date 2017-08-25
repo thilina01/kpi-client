@@ -13,7 +13,7 @@
 		<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
 	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="employees" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
-		<p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>                             
+		<p-column field="id" header="ID"></p-column>                             
 		<p-column field="code" header="Employee ID" [sortable]="true" [style]="{'width':'200px'}"></p-column>         
 		<p-column field="firstName" header="First Name" [sortable]="true" [style]="{'width':'200px'}"></p-column>         
 		<p-column field="lastName" header="Last Name" [sortable]="true" [style]="{'width':'200px'}"></p-column>         
@@ -21,7 +21,7 @@
 		<p-column field="nic" header="NIC" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="contactNumber" header="Contact Number" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="address" header="Address" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-		<p-column header="Action" [style]="{'width':'80px'}">
+		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/employee/form/'+data.id">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>

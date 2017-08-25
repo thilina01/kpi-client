@@ -58,7 +58,7 @@
         <p-column field="customerItem.item.size" header="Size"></p-column>
         <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
         <p-column field="scheduled" header="Scheduled" styleClass="text-right" [editable]="true"></p-column>
-        <p-column header="Action">
+        <p-column header="Action" styleClass="text-right">
           <ng-template let-data="rowData" pTemplate="body">
             <button pButton type="button" *ngIf="data.quantity != data.scheduled" (click)="showDialog(data)" icon="fa-plus" label="Schedule"
               class="btn btn-primary btn-xs" style="float:right; margin-right:3px;"></button>

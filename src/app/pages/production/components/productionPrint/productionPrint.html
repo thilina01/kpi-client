@@ -54,7 +54,7 @@
                 expandableRows="true">
 
                 <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
-                <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+                <p-column field="id" header="ID"></p-column>
                 <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
                 <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
                 <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
@@ -126,7 +126,7 @@
                 <div class="col-sm-12">
                   <p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true"
                     expandableRows="true">
-                    <p-column field="id" header="ID" [sortable]="true" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="id" header="ID"></p-column>
                     <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
                     <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
                     <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>

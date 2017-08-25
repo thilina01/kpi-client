@@ -51,7 +51,7 @@
 		<p-column field="operationType.code" header="Operation Type" [style]="{'width':'auto'}"></p-column>
 		<p-column field="plannedQuantity" header="Quantity" [style]="{'width':'auto'}"></p-column>
 		<p-column field="job.quantity" header="Job Quantity" [style]="{'width':'auto'}"></p-column>
-		<p-column header="Action" [style]="{'width':'80px'}">
+		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
 				<i (click)="removeOperation(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
 			</ng-template>

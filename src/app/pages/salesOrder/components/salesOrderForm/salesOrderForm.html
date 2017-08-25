@@ -122,7 +122,7 @@
                     {{ salesOrderItem.amount | number : '1.2-2' }}
                   </ng-template>
                 </p-column>
-                <p-column header="Action" [style]="{'width':'80px'}">
+                <p-column header="Action" styleClass="text-right">
                   <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
                     <i (click)="removeSalesOrderItem(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
                   </ng-template>
