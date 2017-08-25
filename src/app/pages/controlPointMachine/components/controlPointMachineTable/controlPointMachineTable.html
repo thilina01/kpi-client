@@ -15,10 +15,10 @@
 	 resizableColumns="true" exportFilename="controlPointMachines" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
 		
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="controlPoint.code" header="Control Point Code" [sortable]="true" [style]="{'width':'200px'}"></p-column>
-		<p-column field="controlPoint.name" header="Control Point Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-		<p-column field="machine.code" header="Machine Code" [sortable]="true" [style]="{'width':'200px'}"></p-column>
-		<p-column field="machine.name" header="Machine Name" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+		<p-column field="controlPoint.code" header="Control Point Code" [sortable]="true"></p-column>
+		<p-column field="controlPoint.name" header="Control Point Name" [sortable]="true"></p-column>
+		<p-column field="machine.code" header="Machine Code" [sortable]="true"></p-column>
+		<p-column field="machine.name" header="Machine Name" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/controlPointMachine/form/'+data.id">

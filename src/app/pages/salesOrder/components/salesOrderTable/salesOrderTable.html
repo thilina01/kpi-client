@@ -15,11 +15,11 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="salesOrders"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="salesOrderNumber" header="Sales Order Number" [sortable]="true" [style]="{'width':'200'}"></p-column>
+		<p-column field="salesOrderNumber" header="Sales Order Number" [sortable]="true"></p-column>
 		<p-column field="orderDate" header="Order Date" [sortable]="true"></p-column>
-		<p-column field="salesOrderType.code" header=" Sales Order Type" [sortable]="true"[style]="{'width':'auto'}"></p-column>
+		<p-column field="salesOrderType.code" header=" Sales Order Type" [sortable]="true"></p-column>
 		<p-column field="customer.name" header="Customer" [sortable]="true"></p-column>
-		<p-column field="customerPoNumber" header="Customer PO Number" [sortable]="true"[style]="{'width':'200'}" ></p-column>
+		<p-column field="customerPoNumber" header="Customer PO Number" [sortable]="true"></p-column>
 		<p-column field="quantity" header="Quantity" [sortable]="true" styleClass="text-right"></p-column>
 		<p-column field="amount" header="Amount" [sortable]="true" styleClass="text-right"></p-column>
 		<p-column header="Action" styleClass="text-right">

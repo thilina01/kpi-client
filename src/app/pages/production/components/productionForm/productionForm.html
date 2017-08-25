@@ -106,7 +106,7 @@
 										<p-column field="id" [style]="{'width':'50px'}"></p-column>
 										<p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
 										<p-column field="lossReason.name"></p-column>
-										<p-column field="quantity" [style]="{'width':'100px'}"></p-column>
+										<p-column field="quantity" ></p-column>
 										<p-column [style]="{'width':'30px'}">
 											<ng-template let-data="rowData" pTemplate="body">
 												<i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

@@ -45,12 +45,12 @@
 <div class="row col-12">
 	<p-dataTable #dt [value]="formGroup.value.operationList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="job.item.code" header="Item" [style]="{'width':'200px'}"></p-column>
-		<p-column field="job.jobNo" header="Job" [style]="{'width':'auto'}"></p-column>
-		<p-column field="productType.code" header="Product Type" [style]="{'width':'auto'}"></p-column>
-		<p-column field="operationType.code" header="Operation Type" [style]="{'width':'auto'}"></p-column>
-		<p-column field="plannedQuantity" header="Quantity" [style]="{'width':'auto'}"></p-column>
-		<p-column field="job.quantity" header="Job Quantity" [style]="{'width':'auto'}"></p-column>
+		<p-column field="job.item.code" header="Item"></p-column>
+		<p-column field="job.jobNo" header="Job"></p-column>
+		<p-column field="productType.code" header="Product Type"></p-column>
+		<p-column field="operationType.code" header="Operation Type"></p-column>
+		<p-column field="plannedQuantity" header="Quantity"></p-column>
+		<p-column field="job.quantity" header="Job Quantity"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
 				<i (click)="removeOperation(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

@@ -15,7 +15,7 @@
 	 resizableColumns="true" exportFilename="items" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="code" header="Code" [sortable]="true"></p-column>
-		<p-column field="description" header="Description" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+		<p-column field="description" header="Description" [sortable]="true"></p-column>
 		<p-column field="itemType.name" header="Type" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">

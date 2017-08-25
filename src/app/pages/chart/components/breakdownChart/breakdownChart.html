@@ -28,16 +28,16 @@
 			<p-dataTable #dt [value]="dataProvider" [rows]="20" [responsive]="true" [paginator]="true" [pageLinks]="5"
 			 [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
 			 resizableColumns="true">
-				<p-column field="section" header="section" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="runDuration" header="Run Duration" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="breakdownDuration" header="Breakdown Duration" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="breakdownCount" header="Breakdown Count" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="mtbf" header="MTBF" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="mttr" header="MTTR" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="mdt" header="MDT" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="mtbfTarget" header="MTBF Target" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="mttrTarget" header="MTTR Target" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-				<p-column field="mdtTarget" header="MDT Target (%)" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+				<p-column field="section" header="section" [sortable]="true"></p-column>
+				<p-column field="runDuration" header="Run Duration" [sortable]="true"></p-column>
+				<p-column field="breakdownDuration" header="Breakdown Duration" [sortable]="true"></p-column>
+				<p-column field="breakdownCount" header="Breakdown Count" [sortable]="true"></p-column>
+				<p-column field="mtbf" header="MTBF" [sortable]="true"></p-column>
+				<p-column field="mttr" header="MTTR" [sortable]="true"></p-column>
+				<p-column field="mdt" header="MDT" [sortable]="true"></p-column>
+				<p-column field="mtbfTarget" header="MTBF Target" [sortable]="true"></p-column>
+				<p-column field="mttrTarget" header="MTTR Target" [sortable]="true"></p-column>
+				<p-column field="mdtTarget" header="MDT Target (%)" [sortable]="true"></p-column>
 			</p-dataTable>
 		</ba-card>
 	</div>
