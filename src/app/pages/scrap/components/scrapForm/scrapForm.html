@@ -19,8 +19,8 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="date">Date</label><br/>
-              <p-calendar id="datePicker" formControlName="date" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+              <label for="scrapDate">Scrap Date</label><br/>
+              <p-calendar id="datePicker" formControlName="scrapDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
@@ -78,17 +78,15 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="section">Section</label><br/>
-              <p-autoComplete formControlName="section" field="display" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="section">Section</label><br/>
+            <p-autoComplete formControlName="section" field="display" [dropdown]="true" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)" appendTo="body">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
@@ -98,8 +96,8 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="rate">Rate</label><br/>
-              <input type="number" pInputText formControlName="rate">
+              <label for="unitValue">Unit Value</label><br/>
+              <input type="number" pInputText formControlName="unitValue">
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">

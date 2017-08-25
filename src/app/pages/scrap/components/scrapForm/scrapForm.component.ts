@@ -18,27 +18,27 @@ import { ItemTypeService } from "../../../itemType/itemType.service";
     templateUrl: './scrapForm.html',
 })
 export class ScrapForm {
-   
+    scrapDate: any;
+
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     scrap: any = {};
     subscription: Subscription;
     date: Date;
-    itemType:any;
 
     sectionList = [];
     lossReasonList = [];
     operationTypeList = [];
     jobList = [];
-    itemTypeList= [];
-    
+    itemTypeList = [];
 
-    lossReason:any;
-    job: any;
-    section: any;
-    operationType: any;
-   
+
+    // lossReason: any;
+    // job: any;
+    // section: any;
+    // operationType: any;
+
     constructor(protected service: ScrapService,
         private route: ActivatedRoute,
         private router: Router,
@@ -46,22 +46,22 @@ export class ScrapForm {
         private jobService: JobService,
         private operationTypeService: OperationTypeService,
         private sectionService: SectionService,
-        private lossReasonService: LossReasonService, 
+        private lossReasonService: LossReasonService,
         private itemTypeService: ItemTypeService,
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
             quantity: ['', Validators.required],
-            rate: ['', Validators.required],
-            date: [this.date, Validators.required],
-            job: [this.job, Validators.required],
-            operationType : [this.operationType , Validators.required],
-            lossReason : [this.lossReason, Validators.required],
-            section: [this.section, Validators.required],
-            itemType: [this.itemType, Validators.required]
+            unitValue: ['', Validators.required],
+            scrapDate: [this.scrapDate, Validators.required],
+            job: ['', Validators.required],
+            operationType: ['', Validators.required],
+            lossReason: ['', Validators.required],
+            section: ['', Validators.required],
+            itemType: ['', Validators.required]
         });
     }
-  
+
     getJobList(): void {
         this.jobService.getCombo().subscribe(jobList => this.jobList = jobList);
     }
@@ -77,7 +77,7 @@ export class ScrapForm {
     getSectionList(): void {
         this.sectionService.getCombo().subscribe(sectionList => this.sectionList = sectionList);
     }
-    
+
     getItemTypeList(): void {
         this.itemTypeService.getCombo().subscribe(itemTypeList => this.itemTypeList = itemTypeList);
     }
@@ -106,21 +106,23 @@ export class ScrapForm {
     loadForm(data: any) {
         if (data != null) {
             this.scrap = data;
-            data.date = new Date(data.date);
+            data.scrapDate = new Date(data.scrapDate);
+            data.job.code = data.job.jobNo;
+            data.job.name = data.job.jobDate;            
         }
         this.scrap = data;
-        this.formGroup.patchValue(this.scrap, { onlySelf: true });
-        this.job = this.scrap.job;
-        this.operationType = this.scrap.operationType;
-        this.lossReason = this.scrap.lossReason;
-        this.section = this.scrap.section;
-        this.itemType = this.scrap.itemType;
+        this.formGroup.patchValue(data, { onlySelf: true });
+        // this.job = this.scrap.job;
+        // this.operationType = this.scrap.operationType;
+        // this.lossReason = this.scrap.lossReason;
+        // this.section = this.scrap.section;
+        // this.itemType = this.scrap.itemType;
         this.setDisplayOfLossReason();
         this.setDisplayOfSection();
         this.setDisplayOfOperationType();
-        this.setDisplayOfJob(); 
-        this.setDisplayOfItemType(); 
-       
+        this.setDisplayOfJob();
+        this.setDisplayOfItemType();
+
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -137,34 +139,34 @@ export class ScrapForm {
 
     public resetForm() {
         this.formGroup.reset();
-        
-    }
-    
- /*================== ItemTypeFilter ===================*/
-filteredItemTypeList: any[];
-//itemType: any;
 
-filterItemTypeList(event) {
-    let query = event.query.toLowerCase();
-    this.filteredItemTypeList = [];
-    for (let i = 0; i < this.itemTypeList.length; i++) {
-        let itemType = this.itemTypeList[i];
-        if (itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name.toLowerCase().indexOf(query) == 0) {
-            this.filteredItemTypeList.push(itemType);
+    }
+
+    /*================== ItemTypeFilter ===================*/
+    filteredItemTypeList: any[];
+    //itemType: any;
+
+    filterItemTypeList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredItemTypeList = [];
+        for (let i = 0; i < this.itemTypeList.length; i++) {
+            let itemType = this.itemTypeList[i];
+            if (itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredItemTypeList.push(itemType);
+            }
         }
     }
-}
 
-handleItemTypeDropdownClick() {
-    this.filteredItemTypeList = [];
-    //mimic remote call
-    setTimeout(() => {
-        this.filteredItemTypeList = this.itemTypeList;
-    }, 100)
-}
+    handleItemTypeDropdownClick() {
+        this.filteredItemTypeList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredItemTypeList = this.itemTypeList;
+        }, 100)
+    }
 
-onItemTypeSelect(event: any) {
-    this.setDisplayOfItemType(); 
+    onItemTypeSelect(event: any) {
+        this.setDisplayOfItemType();
     }
 
     setDisplayOfItemType() {
@@ -174,45 +176,45 @@ onItemTypeSelect(event: any) {
             display += itemType.name != null && itemType.name != undefined ? itemType.name : "";
             this.formGroup.value.itemType.display = display;
         }
-}
+    }
 
-/*================== Loss Reason Filter ===================*/
-   filteredLossReasons: any[];
-   //lossReason: any;
+    /*================== Loss Reason Filter ===================*/
+    filteredLossReasons: any[];
+    //lossReason: any;
 
-   filterLossReasons(event) {
-       let query = event.query.toLowerCase();
-       this.filteredLossReasons = [];
-       for (let i = 0; i < this.lossReasonList.length; i++) {
-           let lossReason = this.lossReasonList[i];
-           if (lossReason.code.toLowerCase().indexOf(query) == 0 || lossReason.name.toLowerCase().indexOf(query) == 0) {
-               this.filteredLossReasons.push(lossReason);
-           }
-       }
-   }
+    filterLossReasons(event) {
+        let query = event.query.toLowerCase();
+        this.filteredLossReasons = [];
+        for (let i = 0; i < this.lossReasonList.length; i++) {
+            let lossReason = this.lossReasonList[i];
+            if (lossReason.code.toLowerCase().indexOf(query) == 0 || lossReason.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredLossReasons.push(lossReason);
+            }
+        }
+    }
 
-   handleLossReasonDropdownClick() {
-       this.filteredLossReasons = [];
-       //mimic remote call
-       setTimeout(() => {
-           this.filteredLossReasons = this.lossReasonList;
-       }, 100)
-   }
+    handleLossReasonDropdownClick() {
+        this.filteredLossReasons = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredLossReasons = this.lossReasonList;
+        }, 100)
+    }
 
-   onLossReasonSelect(event: any) {
+    onLossReasonSelect(event: any) {
 
-       this.setDisplayOfLossReason();
-   }
+        this.setDisplayOfLossReason();
+    }
 
-   setDisplayOfLossReason() {
-       let lossReason = this.formGroup.value.lossReason;
-       if (lossReason != null && lossReason != undefined) {
-           let display = lossReason.code != null && lossReason.code != undefined ? lossReason.code + " : " : "";
-           display += lossReason.name != null && lossReason.name != undefined ? lossReason.name : "";
-           this.formGroup.value.lossReason.display = display;
-       }
-   }
-   /*================== End Of Loss Reason Filter ===================*/
+    setDisplayOfLossReason() {
+        let lossReason = this.formGroup.value.lossReason;
+        if (lossReason != null && lossReason != undefined) {
+            let display = lossReason.code != null && lossReason.code != undefined ? lossReason.code + " : " : "";
+            display += lossReason.name != null && lossReason.name != undefined ? lossReason.name : "";
+            this.formGroup.value.lossReason.display = display;
+        }
+    }
+    /*================== End Of Loss Reason Filter ===================*/
     /*================== SectionFilter ===================*/
     filteredSectionList: any[];
     //section: any;
@@ -237,85 +239,85 @@ onItemTypeSelect(event: any) {
     }
 
     onSectionSelect(event: any) {
-        this.setDisplayOfSection(); 
-        }
-
-        setDisplayOfSection() {
-            let section = this.formGroup.value.section;
-            if (section != null && section != undefined) {
-                let display = section.code != null && section.code != undefined ? section.code + " : " : "";
-                display += section.name != null && section.name != undefined ? section.name : "";
-                this.formGroup.value.section.display = display;
-            }
+        this.setDisplayOfSection();
     }
-   /*================== JobFilter ===================*/
-   filteredJobList: any[];
-   //job: any;
 
-   filterJobList(event) {
-       let query = event.query.toLowerCase();
-       this.filteredJobList = [];
-       for (let i = 0; i < this.jobList.length; i++) {
-           let job = this.jobList[i];
-           if (job.code.toLowerCase().indexOf(query) == 0 || job.name.toLowerCase().indexOf(query) == 0) {
-               this.filteredJobList.push(job);
-           }
-       }
-   }
+    setDisplayOfSection() {
+        let section = this.formGroup.value.section;
+        if (section != null && section != undefined) {
+            let display = section.code != null && section.code != undefined ? section.code + " : " : "";
+            display += section.name != null && section.name != undefined ? section.name : "";
+            this.formGroup.value.section.display = display;
+        }
+    }
+    /*================== JobFilter ===================*/
+    filteredJobList: any[];
+    //job: any;
 
-   handleJobDropdownClick() {
-       this.filteredJobList = [];
-       //mimic remote call
-       setTimeout(() => {
-           this.filteredJobList = this.jobList;
-       }, 100)
-   }
+    filterJobList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredJobList = [];
+        for (let i = 0; i < this.jobList.length; i++) {
+            let job = this.jobList[i];
+            if (job.code.toLowerCase().indexOf(query) == 0 || job.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredJobList.push(job);
+            }
+        }
+    }
 
-   onJobSelect(event: any) {
-       this.setDisplayOfJob(); 
-       }
+    handleJobDropdownClick() {
+        this.filteredJobList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredJobList = this.jobList;
+        }, 100)
+    }
 
-       setDisplayOfJob() {
-           let job = this.formGroup.value.job;
-           if (job != null && job != undefined) {
-               let display = job.code != null && job.code != undefined ? job.code + " : " : "";
-               display += job.name != null && job.name != undefined ? job.name : "";
-               this.formGroup.value.job.display = display;
-           }
-   }
-     /*================== OperationTypeFilter ===================*/
-   filteredOperationTypeList: any[];
-   //operationType: any;
+    onJobSelect(event: any) {
+        this.setDisplayOfJob();
+    }
 
-   filterOperationTypeList(event) {
-       let query = event.query.toLowerCase();
-       this.filteredOperationTypeList = [];
-       for (let i = 0; i < this.operationTypeList.length; i++) {
-           let operationType = this.operationTypeList[i];
-           if (operationType.code.toLowerCase().indexOf(query) == 0 || operationType.name.toLowerCase().indexOf(query) == 0) {
-               this.filteredOperationTypeList.push(operationType);
-           }
-       }
-   }
+    setDisplayOfJob() {
+        let job = this.formGroup.value.job;
+        if (job != null && job != undefined) {
+            let display = job.code != null && job.code != undefined ? job.code + " : " : "";
+            display += job.name != null && job.name != undefined ? job.name : "";
+            this.formGroup.value.job.display = display;
+        }
+    }
+    /*================== OperationTypeFilter ===================*/
+    filteredOperationTypeList: any[];
+    //operationType: any;
 
-   handleOperationTypeDropdownClick() {
-       this.filteredOperationTypeList = [];
-       //mimic remote call
-       setTimeout(() => {
-           this.filteredOperationTypeList = this.operationTypeList;
-       }, 100)
-   }
+    filterOperationTypeList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredOperationTypeList = [];
+        for (let i = 0; i < this.operationTypeList.length; i++) {
+            let operationType = this.operationTypeList[i];
+            if (operationType.code.toLowerCase().indexOf(query) == 0 || operationType.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredOperationTypeList.push(operationType);
+            }
+        }
+    }
 
-   onOperationTypeSelect(event: any) {
-       this.setDisplayOfOperationType(); 
-       }
+    handleOperationTypeDropdownClick() {
+        this.filteredOperationTypeList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredOperationTypeList = this.operationTypeList;
+        }, 100)
+    }
 
-       setDisplayOfOperationType() {
-           let operationType = this.formGroup.value.operationType;
-           if (operationType != null && operationType != undefined) {
-               let display = operationType.code != null && operationType.code != undefined ? operationType.code + " : " : "";
-               display += operationType.name != null && operationType.name != undefined ? operationType.name : "";
-               this.formGroup.value.operationType.display = display;
-           }
-   }
+    onOperationTypeSelect(event: any) {
+        this.setDisplayOfOperationType();
+    }
+
+    setDisplayOfOperationType() {
+        let operationType = this.formGroup.value.operationType;
+        if (operationType != null && operationType != undefined) {
+            let display = operationType.code != null && operationType.code != undefined ? operationType.code + " : " : "";
+            display += operationType.name != null && operationType.name != undefined ? operationType.name : "";
+            this.formGroup.value.operationType.display = display;
+        }
+    }
 }

@@ -14,26 +14,11 @@ import { LossTypeService } from "../../../lossType/lossType.service";
     templateUrl: './lossReasonForm.html',
 })
 export class LossReasonForm {
-    LossTypeList(): any {
-        throw new Error("Method not implemented.");
-    }
     JSON: any = JSON;
-
     public formGroup: FormGroup;
-    lossReason: any = {};
     subscription: Subscription;
 
     lossTypeList = [];
-
-    lossReasonTypes: any;
-    paints: any;
- 
-    lossReasonDate: Date;
-    lossReasonTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    lossReasonType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
-    lossType: any = { id: '', code: '', name: '' }
 
     constructor(protected service: LossReasonService,
         private route: ActivatedRoute,
@@ -45,12 +30,11 @@ export class LossReasonForm {
             id: '',
             code: ['', Validators.required],
             name: ['', Validators.required],
-            lossType: [this.lossType, Validators.required]
-            
+            lossType: ['', Validators.required]
         });
     }
-  
-      getLossTypeList(): void {
+
+    getLossTypeList(): void {
         this.lossTypeService.getCombo().subscribe(lossTypeList => this.lossTypeList = lossTypeList);
     }
 
@@ -73,12 +57,9 @@ export class LossReasonForm {
 
     loadForm(data: any) {
         if (data != null) {
-            this.lossReason = data;
+            this.formGroup.patchValue(data, { onlySelf: true });
+            this.setDisplayOfLossType();
         }
-        this.formGroup.patchValue(this.lossReason, { onlySelf: true });
-        this.lossReasonType = this.lossReason.lossReasonType;
-        this.lossType = this.lossReason.lossType;
-        this.setDisplayOfLossType(); 
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -96,9 +77,9 @@ export class LossReasonForm {
     public resetForm() {
         this.formGroup.reset();
     }
-   /*================== Loss TypeFilter ===================*/
+
+    /*================== Loss Type Filter ===================*/
     filteredLossTypes: any[];
-    //lossType: any;
 
     filterLossTypes(event) {
         let query = event.query.toLowerCase();
@@ -120,18 +101,16 @@ export class LossReasonForm {
     }
 
     onLossTypeSelect(event: any) {
-        this.setDisplayOfLossType();  
-        }
-        setDisplayOfLossType()
-        {
-            let lossType = this.formGroup.value.lossType;
-            if (lossType != null && lossType != undefined) {
-                let display = lossType.code != null && lossType.code != undefined ? lossType.code + " : " : "";
-                display += lossType.name != null && lossType.name != undefined ? lossType.name : "";
-                this.formGroup.value.lossType.display = display;
-            }
+        this.setDisplayOfLossType();
     }
-    /*================== End Of Loss TypeFilter ===================*/
-   
-    
+
+    setDisplayOfLossType() {
+        let lossType = this.formGroup.value.lossType;
+        if (lossType != null && lossType != undefined) {
+            let display = lossType.code != null && lossType.code != undefined ? lossType.code + " : " : "";
+            display += lossType.name != null && lossType.name != undefined ? lossType.name : "";
+            this.formGroup.value.lossType.display = display;
+        }
+    }
+    /*================== End Of Loss Type Filter ===================*/
 }
