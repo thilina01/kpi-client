@@ -1,17 +1,23 @@
 <p-panel>
-
   <p-header>
-
     <div class="row" style="margin-top:5px;margin-left:5px;">
-      <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12"> Job Number: </div>
       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-8">
-        <input type="text" class="form-control form-control-xs" placeholder="Job Number" [(ngModel)]="jobNo" (keydown)="keyDown($event)"
-        />
+        <div class="ui-inputgroup">
+          <label for="job">Job Number</label><br/>
+          <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+            [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
+            <ng-template let-option pTemplate="option">
+              <div class="ui-helper-clearfix">
+                <div>{{option.code}} </div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+        </div>
       </div>
       <div class="col-lg-2 col-md-4 col-sm-2 col-xs-4">
         <button type="button" class="btn btn-primary btn-xs" (click)="fill()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
       </div>
-      <div class="col-lg-6 hidden-col-md-down"></div>
+      <div class="col-lg-2 hidden-col-md-down"></div>
 
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate}}</div>
       <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Quantity: {{job==null || job.id == undefined?'':job.quantity}}</div>

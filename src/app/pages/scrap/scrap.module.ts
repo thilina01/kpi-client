@@ -17,7 +17,7 @@ import { LossReasonService } from "../lossReason/lossReason.service";
 import { CalendarModule } from "primeng/components/calendar/calendar";
 import { AutoCompleteModule } from "primeng/components/autocomplete/autocomplete";
 import { OperationTypeService } from "../operationType/operationType.service";
-import { ProductTypeService } from "../productType/productType.service";
+import { ItemTypeService } from "../itemType/itemType.service";
 
 
 
@@ -43,7 +43,7 @@ import { ProductTypeService } from "../productType/productType.service";
   providers: [
     ScrapService,
     JobService,
-    ProductTypeService,
+    ItemTypeService,
     OperationTypeService,
     SectionService,
     LossReasonService
