@@ -51,7 +51,7 @@
   <div class="row" *ngIf="salesOrder!=undefined">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <p-dataTable #dt [value]="salesOrder.salesOrderItemList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
-        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+       <p-column field="id" header="ID"></p-column>
         <p-column field="customerItem.code" header="Customer Item"></p-column>
         <p-column field="customerItem.item.code" header="Item"></p-column>
         <p-column field="customerItem.item.description" header="Description"></p-column>
@@ -79,7 +79,7 @@
   <div class="row" *ngIf="salesOrder!=undefined">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <p-dataTable #dt [value]="dispatchScheduleList" [rows]="20" [responsive]="true" resizableColumns="true">
-        <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+       <p-column field="id" header="ID"></p-column>
         <p-column field="salesOrderItem.customerItem.code" header="Customer Item"></p-column>
         <p-column field="job.item.code" header="Item"></p-column>
         <p-column field="job.jobNo" header="Job"></p-column>

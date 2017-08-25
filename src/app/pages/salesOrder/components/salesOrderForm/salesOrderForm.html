@@ -109,7 +109,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <p-dataTable #dt (onEditComplete)="onEditComplete()" [value]="formGroup.value.salesOrderItemList" [editable]="true" [rows]="20"
                 [responsive]="true" resizableColumns="true">
-                <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+               <p-column field="id" header="ID"></p-column>
                 <p-column field="customerItem.code" header="Customer Item"></p-column>
                 <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true" >
                   <ng-template let-col let-salesOrderItem="rowData" pTemplate="body">
