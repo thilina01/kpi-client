@@ -1,32 +1,29 @@
 <p-panel>
   <p-header>
-    <div class="row" style="margin-top:5px;margin-left:5px;">
-      <div class="col-lg-2 col-md-4 col-sm-6 col-xs-8">
-        <div class="ui-inputgroup">
-          <label for="job">Job Number</label><br/>
-          <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
-            [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
-            <ng-template let-option pTemplate="option">
-              <div class="ui-helper-clearfix">
-                <div>{{option.code}} </div>
-              </div>
-            </ng-template>
-          </p-autoComplete>
+    <div class="row" style="margin:5px;">
+      <div class="col-12 row">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-8">
+            <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+              [size]="20" [minLength]="1" placeholder="Search Job" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} </div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          <button type="button" class="btn btn-primary btn-xs" (click)="fill()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
         </div>
       </div>
-      <div class="col-lg-2 col-md-4 col-sm-2 col-xs-4">
-        <button type="button" class="btn btn-primary btn-xs" (click)="fill()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+      <div class="col-12 row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Job: {{job==null || job.id == undefined?'':job.jobNo}}</div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Quantity: {{job==null || job.id == undefined?'':job.quantity}}</div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" [hidden]="job==null || job.item == undefined">Item: {{job==null || job.id == undefined?'':job.item.code}} </div>
       </div>
-      <div class="col-lg-2 hidden-col-md-down"></div>
-
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate}}</div>
-      <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Quantity: {{job==null || job.id == undefined?'':job.quantity}}</div>
-      <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12" [hidden]="job==null || job.item == undefined">Item: {{job==null || job.id == undefined?'':job.item.code}} </div>
-      <div class="col-lg-2 hidden-col-md-down"></div>
     </div>
   </p-header>
 
-  <div class="row">
+  <div class="row" *ngIf="job.id != undefined">
     <p-tabView>
       <p-tabPanel header="Summary">
         <p-dataTable #dt1 [value]="operationSummaryList" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalOperationSummaryRecords"
@@ -38,11 +35,10 @@
         </p-dataTable>
       </p-tabPanel>
       <p-tabPanel header="Operations">
-        <p-dataTable #dt2 [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
-          [pageLinks]="5" [lazy]="true" (onLazyLoad)="lazyOperations($event,dt2)" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single"
+        <p-dataTable #dt2 [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [pageLinks]="5"
+          [lazy]="true" (onLazyLoad)="lazyOperations($event,dt2)" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single"
           sortMode="multiple" resizableColumns="true" exportFilename="operations">
-         <p-column field="id" header="ID"></p-column>
-          <!--  [sortable]="true" -->
+          <p-column field="id" header="ID"></p-column>
           <p-column field="production.controlPoint.code" header="Control Point"></p-column>
           <p-column field="production.productionDate" header="Production Date"></p-column>
           <p-column field="plannedQuantity" header="Planned Quantity" styleClass="text-right"></p-column>
