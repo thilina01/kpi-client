@@ -16,17 +16,8 @@ export class ItemTypeForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    itemType: any = {};
+    itemType: any;
     subscription: Subscription;
-
-    itemTypeTypes: any;
-    paints: any;
-
-    itemTypeDate: Date;
-    itemTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    itemTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
 
     constructor(protected service: ItemTypeService,
         private route: ActivatedRoute,
@@ -61,7 +52,7 @@ export class ItemTypeForm {
             this.itemType = data;
         }
         this.formGroup.patchValue(this.itemType, { onlySelf: true });
-        this.itemTypeType = this.itemType.itemTypeType;
+        this.itemType = this.itemType.itemType;
     }
 
     public onSubmit(values: any, event: Event): void {

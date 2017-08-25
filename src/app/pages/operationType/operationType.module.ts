@@ -11,6 +11,7 @@ import { OperationTypeForm } from './components/operationTypeForm/operationTypeF
 
 import { routing } from './operationType.routing';
 import { OperationTypeService } from "./operationType.service";
+import { CalendarModule } from "primeng/components/calendar/calendar";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { OperationTypeService } from "./operationType.service";
     SharedModule,
     PanelModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

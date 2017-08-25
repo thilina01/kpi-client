@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, AutoCompleteModule, CalendarModule } from 'primeng/primeng';
 
 import { LossReason } from './lossReason.component';
 
@@ -27,6 +27,7 @@ import { LossTypeService } from "../lossType/lossType.service";
     PanelModule,
     AutoCompleteModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, CheckboxModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, CheckboxModule, AutoCompleteModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Item } from './item.component';
 import { ItemTable } from './components/itemTable/itemTable.component';
@@ -27,6 +27,7 @@ import { PaintService } from "../paint/paint.service";
     CheckboxModule,
     AutoCompleteModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

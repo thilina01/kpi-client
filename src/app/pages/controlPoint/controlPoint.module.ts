@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
-
-
+import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { ControlPointTable } from './components/controlPointTable/controlPointTable.component';
 import { ControlPointForm } from './components/controlPointForm/controlPointForm.component';
@@ -28,7 +26,8 @@ import { WorkCenterService } from "../workCenter/workCenter.service";
     SharedModule,
     PanelModule,
     AutoCompleteModule,
-     InputTextModule,
+    InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

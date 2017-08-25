@@ -11,6 +11,7 @@ import { NotifyPartyForm } from './components/notifyPartyForm/notifyPartyForm.co
 
 import { routing } from './notifyParty.routing';
 import { NotifyPartyService } from "./notifyParty.service";
+import { CalendarModule } from "primeng/components/calendar/calendar";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NotifyPartyService } from "./notifyParty.service";
     SharedModule,
     PanelModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

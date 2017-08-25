@@ -18,7 +18,7 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="location">Location</label><br/>
               <p-autoComplete formControlName="location" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
@@ -40,13 +40,13 @@
           <!--<select id="locationSelector" class="form-control" formControlName="location">
 					<option *ngFor="let location of locations" [ngValue]="location">{{location.code}}</option>
 				   </select>-->
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="effectiveMonth">Effective Month</label><br/>
               <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="kwh">KWH</label><br/>
               <input type="number" pInputText formControlName="kwh">
@@ -54,15 +54,15 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="kva">KWH</label><br/>
+              <label for="kva">KVA</label><br/>
               <input type="number" pInputText formControlName="kva">
               <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kva'].valid && formGroup.controls['kva'].touched), 'has-success': (formGroup.controls['kva'].valid && formGroup.controls['kva'].touched)}">
               </div>
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="cost">Cost</label><br/>
               <input type="number" pInputText formControlName="cost">
@@ -70,18 +70,18 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="reference">Reference</label><br/>
               <input type="text" pInputText formControlName="reference">
             </div>
           </div>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
           <div class="ui-inputgroup">
             &nbsp;<br/>
-            <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary"><i class="icon-save"></i> Save</button>
-            <button type="button" class="btn btn-info" (click)="resetForm()">Reset</button>
+        <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

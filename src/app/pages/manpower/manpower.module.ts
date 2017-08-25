@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 
-import { DataTableModule, PanelModule, SharedModule } from 'primeng/primeng';
+import { DataTableModule, PanelModule, SharedModule, CalendarModule } from 'primeng/primeng';
 
 import { Manpower } from './manpower.component';
 import { ManpowerTable } from './components/manpowerTable/manpowerTable.component';
@@ -18,6 +18,7 @@ import { ManpowerService } from "./manpower.service";
     DataTableModule,
     SharedModule,
     PanelModule,
+    CalendarModule,
     routing
   ],
   declarations: [

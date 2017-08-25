@@ -16,17 +16,9 @@ export class SectionTypeForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    sectionType: any = {};
     subscription: Subscription;
-
-    sectionTypeTypes: any;
-    paints: any;
-
-    sectionTypeDate: Date;
-    sectionTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    sectionTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    
+    sectionType: any;
 
     constructor(protected service: SectionTypeService,
         private route: ActivatedRoute,
@@ -57,11 +49,12 @@ export class SectionTypeForm {
     }
 
     loadForm(data: any) {
-        if (data != null) {
+        if (data == null) {
             this.sectionType = data;
         }
+       
         this.formGroup.patchValue(this.sectionType, { onlySelf: true });
-        this.sectionTypeType = this.sectionType.sectionTypeType;
+        this.sectionType = this.sectionType.sectionType;
     }
 
     public onSubmit(values: any, event: Event): void {
