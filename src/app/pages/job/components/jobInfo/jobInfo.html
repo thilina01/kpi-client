@@ -35,7 +35,7 @@
         <p-dataTable #dt2 [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
           [pageLinks]="5" [lazy]="true" (onLazyLoad)="lazyOperations($event,dt2)" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single"
           sortMode="multiple" resizableColumns="true" exportFilename="operations">
-          <p-column field="id" header="ID" [style]="{'width':'50px'}"></p-column>
+         <p-column field="id" header="ID"></p-column>
           <!--  [sortable]="true" -->
           <p-column field="production.controlPoint.code" header="Control Point"></p-column>
           <p-column field="production.productionDate" header="Production Date"></p-column>
