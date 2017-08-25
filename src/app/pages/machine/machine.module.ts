@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Machine } from './machine.component';
 import { MachineTable } from './components/machineTable/machineTable.component';
@@ -23,6 +23,7 @@ import { MachineService } from "./machine.service";
     SharedModule,
     PanelModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

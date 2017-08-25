@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Tool } from './tool.component';
 import { ToolTable } from './components/toolTable/toolTable.component';
@@ -23,6 +23,7 @@ import { ToolService } from "./tool.service";
     SharedModule,
     PanelModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

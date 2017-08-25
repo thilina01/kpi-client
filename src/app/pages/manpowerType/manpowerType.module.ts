@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { ManpowerType } from './manpowerType.component';
 import { ManpowerTypeTable } from './components/manpowerTypeTable/manpowerTypeTable.component';
@@ -23,7 +23,8 @@ import { ManpowerTypeService } from "./manpowerType.service";
     DataTableModule,
     SharedModule,
     PanelModule,
-     InputTextModule,
+    InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [

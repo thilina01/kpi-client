@@ -16,17 +16,8 @@ export class ProductTypeForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    productType: any = {};
+    productType: any;
     subscription: Subscription;
-
-    productTypeTypes: any;
-    paints: any;
-
-    productTypeDate: Date;
-    productTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    productTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
 
     constructor(protected service: ProductTypeService,
         private route: ActivatedRoute,
@@ -36,7 +27,7 @@ export class ProductTypeForm {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            name: ['', Validators.required]
+            description: ['', Validators.required]
         });
     }
 
@@ -57,11 +48,11 @@ export class ProductTypeForm {
     }
 
     loadForm(data: any) {
-        if (data != null) {
+        if (data == null) {
             this.productType = data;
         }
         this.formGroup.patchValue(this.productType, { onlySelf: true });
-        this.productTypeType = this.productType.productTypeType;
+        this.productType = this.productType.productType;
     }
 
     public onSubmit(values: any, event: Event): void {

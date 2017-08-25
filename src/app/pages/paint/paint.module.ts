@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Paint } from './paint.component';
 import { PaintTable } from './components/paintTable/paintTable.component';
@@ -23,6 +23,7 @@ import { PaintService } from "./paint.service";
     SharedModule,
     PanelModule,
     InputTextModule,
+    CalendarModule,
     routing
   ],
   declarations: [
