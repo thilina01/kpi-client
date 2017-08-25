@@ -5,7 +5,7 @@ import { ScrapForm } from './components/scrapForm/scrapForm.component';
 import { ScrapTable } from './components/scrapTable/scrapTable.component';
 import { ModuleWithProviders } from '@angular/core';
 
-// noinspection TypeScriptValidateTypes
+// noinspection TypeScriptValiscrapDateTypes
 export const routes: Routes = [
   {
     path: '',

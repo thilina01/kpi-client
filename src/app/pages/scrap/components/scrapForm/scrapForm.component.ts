@@ -9,7 +9,7 @@ import { JobService } from "../../../job/job.service";
 import { SectionService } from "../../../section/section.service";
 import { LossReasonService } from "../../../lossReason/lossReason.service";
 import { OperationTypeService } from "../../../operationType/operationType.service";
-import { ProductTypeService } from "../../../productType/productType.service";
+import { ItemTypeService } from "../../../itemType/itemType.service";
 
 @Component({
     selector: 'scrap-form',
@@ -25,13 +25,13 @@ export class ScrapForm {
     scrap: any = {};
     subscription: Subscription;
     date: Date;
-    productType:any;
+    itemType:any;
 
     sectionList = [];
     lossReasonList = [];
     operationTypeList = [];
     jobList = [];
-    productTypeList= [];
+    itemTypeList= [];
     
 
     lossReason:any;
@@ -47,7 +47,7 @@ export class ScrapForm {
         private operationTypeService: OperationTypeService,
         private sectionService: SectionService,
         private lossReasonService: LossReasonService, 
-        private productTypeService: ProductTypeService,
+        private itemTypeService: ItemTypeService,
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
@@ -58,7 +58,7 @@ export class ScrapForm {
             operationType : [this.operationType , Validators.required],
             lossReason : [this.lossReason, Validators.required],
             section: [this.section, Validators.required],
-            productType: [this.productType, Validators.required]
+            itemType: [this.itemType, Validators.required]
         });
     }
   
@@ -78,8 +78,8 @@ export class ScrapForm {
         this.sectionService.getCombo().subscribe(sectionList => this.sectionList = sectionList);
     }
     
-    getProductTypeList(): void {
-        this.productTypeService.getCombo().subscribe(productTypeList => this.productTypeList = productTypeList);
+    getItemTypeList(): void {
+        this.itemTypeService.getCombo().subscribe(itemTypeList => this.itemTypeList = itemTypeList);
     }
 
     ngOnInit(): void {
@@ -87,7 +87,7 @@ export class ScrapForm {
         this.getOperationTypeList();
         this.getLossReasonList();
         this.getSectionList();
-        this.getProductTypeList();
+        this.getItemTypeList();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -114,12 +114,12 @@ export class ScrapForm {
         this.operationType = this.scrap.operationType;
         this.lossReason = this.scrap.lossReason;
         this.section = this.scrap.section;
-        this.productType = this.scrap.productType;
+        this.itemType = this.scrap.itemType;
         this.setDisplayOfLossReason();
         this.setDisplayOfSection();
         this.setDisplayOfOperationType();
         this.setDisplayOfJob(); 
-        this.setDisplayOfProductType(); 
+        this.setDisplayOfItemType(); 
        
     }
 
@@ -140,39 +140,39 @@ export class ScrapForm {
         
     }
     
- /*================== ProductTypeFilter ===================*/
-filteredProductTypeList: any[];
-//productType: any;
+ /*================== ItemTypeFilter ===================*/
+filteredItemTypeList: any[];
+//itemType: any;
 
-filterProductTypeList(event) {
+filterItemTypeList(event) {
     let query = event.query.toLowerCase();
-    this.filteredProductTypeList = [];
-    for (let i = 0; i < this.productTypeList.length; i++) {
-        let productType = this.productTypeList[i];
-        if (productType.code.toLowerCase().indexOf(query) == 0 || productType.name.toLowerCase().indexOf(query) == 0) {
-            this.filteredProductTypeList.push(productType);
+    this.filteredItemTypeList = [];
+    for (let i = 0; i < this.itemTypeList.length; i++) {
+        let itemType = this.itemTypeList[i];
+        if (itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name.toLowerCase().indexOf(query) == 0) {
+            this.filteredItemTypeList.push(itemType);
         }
     }
 }
 
-handleProductTypeDropdownClick() {
-    this.filteredProductTypeList = [];
+handleItemTypeDropdownClick() {
+    this.filteredItemTypeList = [];
     //mimic remote call
     setTimeout(() => {
-        this.filteredProductTypeList = this.productTypeList;
+        this.filteredItemTypeList = this.itemTypeList;
     }, 100)
 }
 
-onProductTypeSelect(event: any) {
-    this.setDisplayOfProductType(); 
+onItemTypeSelect(event: any) {
+    this.setDisplayOfItemType(); 
     }
 
-    setDisplayOfProductType() {
-        let productType = this.formGroup.value.productType;
-        if (productType != null && productType != undefined) {
-            let display = productType.code != null && productType.code != undefined ? productType.code + " : " : "";
-            display += productType.name != null && productType.name != undefined ? productType.name : "";
-            this.formGroup.value.productType.display = display;
+    setDisplayOfItemType() {
+        let itemType = this.formGroup.value.itemType;
+        if (itemType != null && itemType != undefined) {
+            let display = itemType.code != null && itemType.code != undefined ? itemType.code + " : " : "";
+            display += itemType.name != null && itemType.name != undefined ? itemType.name : "";
+            this.formGroup.value.itemType.display = display;
         }
 }
 

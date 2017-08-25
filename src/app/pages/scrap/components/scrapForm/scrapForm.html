@@ -38,12 +38,12 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="productType">Product Type</label><br/>
-              <p-autoComplete formControlName="productType" field="display" [suggestions]="filteredProductTypeList" (completeMethod)="filterProductTypeList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleProductTypeDropdownClick($event)" (onSelect)="onProductTypeSelect($event)">
+              <label for="itemType">Item Type</label><br/>
+              <p-autoComplete formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemTypeDropdownClick($event)" (onSelect)="onItemTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
+                    <div>{{option.code}}</div>
                   </div>
                 </ng-template>
               </p-autoComplete>

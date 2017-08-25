@@ -5,6 +5,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { DataTable } from "primeng/primeng";
 import { JobService } from "../../job.service";
 import { OperationService } from "../../../operation/operation.service";
+import { FormBuilder } from "@angular/forms/forms";
 @Component({
     selector: 'job-info',
     encapsulation: ViewEncapsulation.None,
@@ -12,11 +13,12 @@ import { OperationService } from "../../../operation/operation.service";
     templateUrl: './jobInfo.html',
 })
 export class JobInfo {
+    jobList = [];
 
     @ViewChild(DataTable) dataTableComponent: DataTable;
     JSON: any = JSON;
 
-    jobNo: '';
+    //jobNo: '';
 
     job: any = {};
     rows = [];
@@ -28,10 +30,14 @@ export class JobInfo {
         private route: ActivatedRoute,
         private router: Router,
         private sharedService: SharedService,
+        private jobService: JobService,
         private operationService: OperationService) {
     }
-
+    getJobList(): void {
+        this.jobService.getCombo().subscribe(jobList => this.jobList = jobList);
+    }
     ngOnInit(): void {
+        this.getJobList();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -60,11 +66,11 @@ export class JobInfo {
     fill(id: any): void {
         this.clear();
         if (id == undefined) {
-            this.service.getOneByJobNo(this.jobNo).subscribe(
+            this.service.getOneByJobNo(this.job.jobNo).subscribe(
                 (data) => {
                     if (data != null) {
                         this.job = data;
-                        this.jobNo = this.job.jobNo;
+                        //this.jobNo = this.job.jobNo;
                         this.fillOperations()
                         this.fillOperationSummaries()
                     }
@@ -75,7 +81,9 @@ export class JobInfo {
                 (data) => {
                     if (data != null) {
                         this.job = data;
-                        this.jobNo = this.job.jobNo;
+                        this.job = this.job.job;
+                       // this.jobNo = this.job.jobNo;
+                       this.setDisplayOfJob();
                         this.fillOperations()
                         this.fillOperationSummaries()
                     }
@@ -105,4 +113,42 @@ export class JobInfo {
             });
         }
     }
+
+
+   /*================== JobFilter ===================*/
+   filteredJobList: any[];
+   //job: any;
+
+   filterJobList(event) {
+       let query = event.query.toLowerCase();
+       this.filteredJobList = [];
+       for (let i = 0; i < this.jobList.length; i++) {
+           let job = this.jobList[i];
+           if (job.code.toLowerCase().indexOf(query) == 0 || job.name.toLowerCase().indexOf(query) == 0) {
+               this.filteredJobList.push(job);
+           }
+       }
+   }
+
+   handleJobDropdownClick() {
+       this.filteredJobList = [];
+       //mimic remote call
+       setTimeout(() => {
+           this.filteredJobList = this.jobList;
+       }, 100)
+   }
+
+   onJobSelect(event: any) {
+       this.setDisplayOfJob();        
+       this.fill(undefined);
+       }
+
+       setDisplayOfJob() {
+           let job = this.job;
+           if (job != null && job != undefined) {
+               let display = job.code != null && job.code != undefined ? job.code + " : " : "";
+               display += job.name != null && job.name != undefined ? job.name : "";
+               this.job.display = display;
+           }
+   }
 }

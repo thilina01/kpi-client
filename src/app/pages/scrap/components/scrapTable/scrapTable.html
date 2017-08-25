@@ -16,12 +16,12 @@
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="scrapDate" header="Date" [sortable]="true" [style]="{'width':'auto'}"> </p-column>
 		<p-column field="job.jobNo" header="Job Number" [sortable]="true" [style]="{'width':'auto'}"></p-column>
-		<p-column field="productType.name" header="Product Type" [sortable]="true" [style]="{'width':'auto'}"></p-column>
+		<p-column field="itemType.name" header="Item Type" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="operationType.name" header="Operation Type" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="lossReason.name" header="Scrap Reason" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="section.name" header="Section" [sortable]="true" [style]="{'width':'auto'}"></p-column>
 		<p-column field="quantity" header="Quantity" [sortable]="true" [style]="{'width':'auto'}" styleClass="text-right"></p-column>
-		<p-column field="rate" header="Rate" [sortable]="true" [style]="{'width':'auto'}" styleClass="text-right"></p-column>
+		<p-column field="unitValue" header="Unit Value" [sortable]="true" [style]="{'width':'auto'}" styleClass="text-right"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/scrap/form/'+data.id">
