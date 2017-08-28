@@ -17,7 +17,14 @@ export class LossReasonService extends MasterService {
       .post(this.apiUrl + "comboByLossType", JSON.stringify(lossType), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getPageByLossType(lossType: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + "pageByLossType?page=" + page + "&size=" + size, JSON.stringify(lossType), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
 }
+
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
 // import 'rxjs/add/operator/toPromise';
