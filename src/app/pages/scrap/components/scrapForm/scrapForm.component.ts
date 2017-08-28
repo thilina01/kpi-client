@@ -70,8 +70,8 @@ export class ScrapForm {
         this.operationTypeService.getCombo().subscribe(operationTypeList => this.operationTypeList = operationTypeList);
     }
 
-    getLossReasonList(): void {
-        this.lossReasonService.getCombo().subscribe(lossReasonList => this.lossReasonList = lossReasonList);
+    getScrapReasonList(): void {
+        this.lossReasonService.getComboByLossType({code:'ST'}).subscribe(lossReasonList => this.lossReasonList = lossReasonList);
     }
 
     getSectionList(): void {
@@ -85,7 +85,7 @@ export class ScrapForm {
     ngOnInit(): void {
         this.getJobList();
         this.getOperationTypeList();
-        this.getLossReasonList();
+        this.getScrapReasonList();
         this.getSectionList();
         this.getItemTypeList();
         this.route.params.subscribe(
