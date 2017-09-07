@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule, CalendarModule, TabViewModule, DialogModule } from 'primeng/primeng';
 
 import { Customer } from './customer.component';
 
 import { routing } from './customer.routing';
 import { CustomerTable } from "./component/customerTable/customerTable.component";
 import { CustomerForm } from "./component/customerForm/customerForm.component";
-
-
 
 import { CustomerService } from "./customer.service";
 import { CustomerTypeService } from "../customerType/customerType.service";
@@ -20,6 +18,8 @@ import { CurrencyService } from "../currency/currency.service";
 import { NotifyPartyService } from "../notifyParty/notifyParty.service";
 import { PaymentTermService } from "../paymentTerm/paymentTerm.service";
 import { CountryService } from "../country/country.service";
+import { AddressTypeService } from "../addressType/addressType.service";
+import { ContactTypeService } from "../contactType/contactType.service";
 
 @NgModule({
   imports: [
@@ -33,6 +33,8 @@ import { CountryService } from "../country/country.service";
     AutoCompleteModule,
     InputTextModule,
     CalendarModule,
+    TabViewModule,
+    DialogModule,
     routing
   ],
   declarations: [
@@ -47,6 +49,8 @@ import { CountryService } from "../country/country.service";
     NotifyPartyService,
     PaymentTermService,
     CountryService,
+    AddressTypeService,
+    ContactTypeService,
     IncotermService
   ]
 })

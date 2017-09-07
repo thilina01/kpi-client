@@ -1,223 +1,323 @@
-
-    <p-panel>
-        <p-header>
-          <div class="row">
-            <div class="col">
-              <h4>Customer Form</h4>
-            </div>
-            <div class="col">
-              <a routerLink="/pages/customer/table"> 
-                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-                </button>
-              </a>
-            </div>
-          </div>
-        </p-header>
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Customer Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/customer/table"> 
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            </button>
+           </a>
+      </div>
+    </div>
+  </p-header>
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
             <div class="ui-inputgroup">
-              <label for="absenteeism">Code</label><br/>
+              <label for="code">Code</label><br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
             <div class="ui-inputgroup">
               <label for="name">Name</label><br/>
               <input type="text" pInputText formControlName="name">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
             <div class="ui-inputgroup">
               <label for="shortName">Short Name</label><br/>
               <input type="text" pInputText formControlName="shortName">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="consignee">Consignee</label><br/>
-              <input type="text" pInputText formControlName="consignee">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="continent">Continent</label><br/>
-              <input type="text" pInputText formControlName="continent">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="specialRequirements">Special Requirments</label><br/>
-              <input type="text" pInputText formControlName="specialRequirements">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="finalDestination">Final Destination</label><br/>
-              <input type="text" pInputText formControlName="finalDestination">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="fax">Fax</label><br/>
-              <input type="text" pInputText formControlName="fax">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="note">Note</label><br/>
-              <input type="text" pInputText formControlName="note">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="vatNo">VAT No</label><br/>
-              <input type="text" pInputText formControlName="vatNo">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="sVatNo">SVAT No</label><br/>
-              <input type="text" pInputText formControlName="sVatNo">
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="customerType">Customer Type</label><br/>
-              <p-autoComplete formControlName="customerType" field="display" [suggestions]="filteredCustomerTypes" (completeMethod)="filterCustomerTypes($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerTypeDropdownClick($event)"
-                (onSelect)="onCustomerTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-sm-12">
+            <p-tabView>
+              <p-tabPanel header="Contacts">
+                <form [formGroup]="contactFormGroup" class="form-horizontal">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="ui-inputgroup">
+                        <div class="form-group" [ngClass]="{'has-error': (! contactFormGroup.controls['contactNumber'].valid &&  contactFormGroup.controls['contactNumber'].touched), 'has-success': ( contactFormGroup.controls['contactNumber'].valid && contactFormGroup.controls['contactNumber'].touched)}">
+                          <label for="contactNumber">Contact Number</label><br/>
+                          <input type="text" id="contactNumber" #contactNumber (keyup.enter)="onEnterContact(contactNumber.value,dt)" pInputText formControlName="contactNumber">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <div class="ui-inputgroup">
+                        <label for="contactType">Contact Type</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="contactType" field="display" [suggestions]="filteredContactTypeList" (completeMethod)="filterContactTypeList($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleContactTypeDropdownClick($event)"
+                          (onSelect)="onContactTypeSelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div> {{option.name}}:{{option.code}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                      <label for="inputFirstName">&nbsp;</label><br/>
+                      <div class="form-group form-inline">
+                        <button (click)="onEnterContact(contactNumber.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle"
+                          label="Add"></button> &nbsp;&nbsp;
+                      </div>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div class="row col-12">
+                      <p-dataTable #dt [value]="formGroup.value.contactList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
+                        <p-column field="id" header="ID"></p-column>
+                        <p-column field="contactType.name" header="Contact Type"></p-column>
+                        <p-column field="contactNumber" header="Contact Number"></p-column>
+                        <p-column header="Action" styleClass="text-right">
+                          <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                            <i (click)="removeContact(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                          </ng-template>
+                        </p-column>
+                      </p-dataTable>
+                    </div>
                   </div>
-                </ng-template>
-              </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.customerType != null && formGroup.value.customerType.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.customerType.code}}{{formGroup.value.customerType.name != null ?" | "+ formGroup.value.customerType.name:""}} -->
-            <!-- </label> -->
-            </div>
-          </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.customerType != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <!-- <select id="customerTypeSelector" class="form-control" formControlName="customerType">
-           <option *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.code}}</option>
-            </select>-->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="currency">Currency</label><br/>
-              <p-autoComplete formControlName="currency" field="display" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCurrencyDropdownClick($event)" (onSelect)="onCurrencySelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
+                </form>
+              </p-tabPanel>
+              <p-tabPanel header="Addresses ">
+                <form [formGroup]="addressFormGroup" class="form-horizontal">
+                  <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="addressType">Address Type</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="addressType" field="display" [suggestions]="filteredAddressTypes" (completeMethod)="filterAddressTypes($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleAddressTypeDropdownClick($event)"
+                          (onSelect)="onAddressTypeSelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    &nbsp;
+                      <div class="col-lg-12 col-md 12 col-sm-12 col-xs-12">
+                        <div class="ui-inputgroup">
+                            <label>Address</label><br/>
+                          <div class="form-group" [ngClass]="{'has-error': (! addressFormGroup.controls['line1'].valid &&  addressFormGroup.controls['line1'].touched), 'has-success': ( addressFormGroup.controls['line1'].valid && addressFormGroup.controls['line1'].touched)}">
+                            <input type="text" pInputText formControlName="line1">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-12 col-md 12 col-sm-12 col-xs-12">
+                        <div class="ui-inputgroup">
+                          <div class="form-group" [ngClass]="{'has-error': (! addressFormGroup.controls['line2'].valid &&  addressFormGroup.controls['line2'].touched), 'has-success': ( addressFormGroup.controls['line2'].valid && addressFormGroup.controls['line2'].touched)}">
+                            <input type="text" pInputText formControlName="line2">
+                          </div>
+                        </div>
+                      </div>
+                      <br/>
+                      <br/>
+                      <div class="col-lg-12 col-md 12 col-sm-12 col-xs-12">
+                        <div class="ui-inputgroup">
+                          <div class="form-group" [ngClass]="{'has-error': (! addressFormGroup.controls['line3'].valid &&  addressFormGroup.controls['line3'].touched), 'has-success': ( addressFormGroup.controls['line3'].valid && addressFormGroup.controls['line3'].touched)}">
+                            <input type="text" pInputText formControlName="line3">
+                          </div>
+                        </div>
+                      </div>
+                      <br/>
+                      <br/>
+                      <div class="col-lg-12 col-md 12 col-sm-12 col-xs-12">
+                        <div class="ui-inputgroup">
+                          <div class="form-group" [ngClass]="{'has-error': (! addressFormGroup.controls['line4'].valid &&  addressFormGroup.controls['line4'].touched), 'has-success': ( addressFormGroup.controls['line4'].valid && addressFormGroup.controls['line4'].touched)}">
+                            <input type="text" pInputText formControlName="line4">
+                          </div>
+                        </div>
+                      </div>
+                      <br/>
+                      <br/>
+                      <div class="col-lg-12 col-md 12 col-sm-12 col-xs-12">
+                        <div class="ui-inputgroup">
+                          <div class="form-group" [ngClass]="{'has-error': (! addressFormGroup.controls['line5'].valid &&  addressFormGroup.controls['line5'].touched), 'has-success': ( addressFormGroup.controls['line5'].valid && addressFormGroup.controls['line5'].touched)}">
+                            <input type="text" id="line5" #line5 (keyup.enter)="onEnterAddress(line5.value,dt)" pInputText formControlName="line5">
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="country">Country</label><br/>
+                        <p-autoComplete formControlName="country" field="display" [dropdown]="true" [suggestions]="filteredCountryList" (completeMethod)="filterCountryList($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCountryDropdownClick($event)"
+                          (onSelect)="onCountrySelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                      <label for="inputFirstName">&nbsp;</label><br/>
+                      <div class="form-group form-inline">
+                        <button (click)="onEnterAddress(line5.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle"
+                          label="Add"></button> &nbsp;&nbsp;
+                      </div>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div class="row col-12">
+                      <p-dataTable #dt [value]="formGroup.value.addressList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
+                        <p-column field="id" header="ID"></p-column>
+                        <p-column field="line1" header="Line1"></p-column>
+                        <p-column field="line2" header="Line2"></p-column>
+                        <p-column field="line3" header="Line3"></p-column>
+                        <p-column field="line4" header="Line4"></p-column>
+                        <p-column field="line5" header="Line5"></p-column>
+                        <p-column field="addressType.name" header="Address Type"></p-column>
+                        <p-column field="country.name" header="Country"></p-column>
+                        <p-column header="Action" styleClass="text-right">
+                          <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                            <i (click)="removeAddress(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                          </ng-template>
+                        </p-column>
+                      </p-dataTable>
+                    </div>
                   </div>
-                </ng-template>
-              </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.currency != null && formGroup.value.currency.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.currency.code}}{{formGroup.value.currency.name != null ?" | "+ formGroup.value.currency.name:""}} -->
-            <!-- </label> -->
-            </div>
-          </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.currency != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <!--  <select id="currencySelector" class="form-control" formControlName="currency">
-            <option *ngFor="let currency of currencyList" [ngValue]="currency">{{currency.code}}</option>
-            </select>-->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="incoterm">Incoterm</label><br/>
-              <p-autoComplete formControlName="incoterm" field="display" [suggestions]="filteredIncoterms" (completeMethod)="filterIncoterms($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleIncotermDropdownClick($event)" (onSelect)="onIncotermSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
+                </form>
+              </p-tabPanel>
+              <p-tabPanel header="Other">
+                <form [formGroup]="formGroup" class="form-horizontal">
+                  <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="consignee">Consignee</label><br/>
+                        <input type="text" pInputText formControlName="consignee">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="continent">Continent</label><br/>
+                        <input type="text" pInputText formControlName="continent">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="specialRequirements">Special Requirments</label><br/>
+                        <input type="text" pInputText formControlName="specialRequirements">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="finalDestination">Final Destination</label><br/>
+                        <input type="text" pInputText formControlName="finalDestination">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="note">Note</label><br/>
+                        <input type="text" pInputText formControlName="note">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="vatNo">VAT No</label><br/>
+                        <input type="text" pInputText formControlName="vatNo">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="sVatNo">SVAT No</label><br/>
+                        <input type="text" pInputText formControlName="sVatNo">
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="customerType">Customer Type</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="customerType" field="display" [suggestions]="filteredCustomerTypes" (completeMethod)="filterCustomerTypes($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerTypeDropdownClick($event)"
+                          (onSelect)="onCustomerTypeSelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="currency">Currency</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="currency" field="display" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCurrencyDropdownClick($event)"
+                          (onSelect)="onCurrencySelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="incoterm">Incoterm</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="incoterm" field="display" [suggestions]="filteredIncoterms" (completeMethod)="filterIncoterms($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleIncotermDropdownClick($event)"
+                          (onSelect)="onIncotermSelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="notifyParty">Notify Party</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="notifyParty" field="display" [suggestions]="filteredNotifyPartys" (completeMethod)="filterNotifyPartys($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleNotifyPartyDropdownClick($event)"
+                          (onSelect)="onNotifyPartySelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <div class="ui-inputgroup">
+                        <label for="paymentTerm">Payment Term</label><br/>
+                        <p-autoComplete [dropdown]="true" formControlName="paymentTerm" field="display" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handlePaymentTermDropdownClick($event)"
+                          (onSelect)="onPaymentTermSelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.code}} : {{option.name}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                      </div>
+                    </div>
                   </div>
-                </ng-template>
-              </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.incoterm != null && formGroup.value.incoterm.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.incoterm.code}}{{formGroup.value.incoterm.name != null ?" | "+ formGroup.value.incoterm.name:""}} -->
-            <!-- </label> -->
-            </div>
+                </form>
+              </p-tabPanel>
+            </p-tabView>
           </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.incoterm != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <!--<select id="incotermSelector" class="form-control" formControlName="incoterm">
-            <option *ngFor="let incoterm of incotermList" [ngValue]="incoterm">{{incoterm.code}}</option>
-            </select>-->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="notifyParty">Notify Party</label><br/>
-              <p-autoComplete formControlName="notifyParty" field="display" [suggestions]="filteredNotifyPartys" (completeMethod)="filterNotifyPartys($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleNotifyPartyDropdownClick($event)"
-                (onSelect)="onNotifyPartySelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.notifyParty != null && formGroup.value.notifyParty.code != null"> -->
-                <!-- &nbsp; {{formGroup.value.notifyParty.code}}{{formGroup.value.notifyParty.name != null ?" | "+ formGroup.value.notifyParty.name:""}} -->
-              <!-- </label> -->
-            </div>
-          </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.notifyParty != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <!--<select id="notifyPartySelector" class="form-control" formControlName="notifyParty">
-              <option *ngFor="let notifyParty of notifyPartyList" [ngValue]="notifyParty">{{notifyParty.code}}</option>
-            </select>-->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="paymentTerm">Payment Term</label><br/>
-              <p-autoComplete formControlName="paymentTerm" field="display" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handlePaymentTermDropdownClick($event)"
-                (onSelect)="onPaymentTermSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.paymentTerm != null && formGroup.value.paymentTerm.code != null"> -->
-               <!-- &nbsp; {{formGroup.value.paymentTerm.code}}{{formGroup.value.paymentTerm.name != null ?" | "+ formGroup.value.paymentTerm.name:""}} -->
-              <!-- </label> -->
-            </div>
-          </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.paymentTerm != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="country">Country</label><br/>
-              <p-autoComplete formControlName="country" field="display" [suggestions]="filteredCountryList" (completeMethod)="filterCountryList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCountryDropdownClick($event)" (onSelect)="onCountrySelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.country != null && formGroup.value.country.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.country.code}}{{formGroup.value.country.name != null ?" | "+ formGroup.value.country.name:""}} -->
-            <!-- </label> -->
-            </div>
-          </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.country != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
+        </div>
+        <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               &nbsp;<br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+              <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
             </div>
           </div>
         </div>
