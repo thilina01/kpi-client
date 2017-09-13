@@ -23,6 +23,14 @@ import { ElectricityCostPerKgChartService } from "./electricityCostPerKgChart/el
 import { ScrapCostPerKgChartService } from "./scrapCostPerKgChart/scrapCostPerKgChart.service";
 import { LabourCostPerKgChartService } from "./labourCostPerKgChart/labourCostPerKgChart.service";
 import { ChartService } from "../chart/chart.service";
+import { RevenueChart } from './revenueChart/revenueChart.component';
+import { RevenueChartService } from './revenueChart/revenueChart.service';
+import { EbitdaChartService } from './ebitdaChart/ebitdaChart.service';
+import { EbitdaChart } from './ebitdaChart/ebitdaChart.component';
+import { GrossProfitChart } from './grossProfitChart/grossProfitChart.component';
+import { GrossProfitChartService } from './grossProfitChart/grossProfitChart.service';
+import { NetProfitChart } from './netProfitChart/netProfitChart.component';
+import { NetProfitChartService } from './netProfitChart/netProfitChart.service';
 
 @NgModule({
   imports: [
@@ -42,6 +50,10 @@ import { ChartService } from "../chart/chart.service";
     ElectricityCostPerKgChart,
     ScrapCostPerKgChart,
     LabourCostPerKgChart,
+    RevenueChart,
+    EbitdaChart,
+    GrossProfitChart,
+    NetProfitChart,
     FinanceKpi
   ],
   providers: [
@@ -52,6 +64,10 @@ import { ChartService } from "../chart/chart.service";
     ElectricityCostPerKgChartService,
     ScrapCostPerKgChartService,
     LabourCostPerKgChartService,
+    RevenueChartService,
+    EbitdaChartService,
+    GrossProfitChartService,
+    NetProfitChartService,
     ChartService
   ]
 })
