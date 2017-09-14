@@ -1,0 +1,178 @@
+<div id="print" hidden *ngIf="dispatchNote!=undefined">
+  <div class="container-fluid" style="padding: 15px;">
+
+    <!-- Page Header  -->
+    <div class='row'>
+      <div class="col-xs-6">
+        <img src="http://kpi.trwlanka.com/assets/img/logo.png" /> <br/> <br/>
+        <b>OTR WHEEL ENGINEERING LANKA (PVT) LIMITED </b> <br/> No: 218, Minuwangoda Road, <br/> Ekala, Ja-Ela<br/> Sri Lanka.<br/><br/>
+      </div>
+      <div class="col-xs-6">
+
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h2 class="panel-title"><b>DISPATCH NOTE</b></h2>
+          </div>
+          <table class="table table-bordered table-sm">
+            <!-- table-bordered table-condensed -->
+            <tr>
+              <td><b>ID</b></td>
+              <td>{{dispatchNote.id}}</td>
+            </tr>
+            <tr>
+              <td><b>Date</b></td>
+              <td>{{dispatchNote.dispatchDate}}</td>
+            </tr>
+            <tr>
+              <td><b>Sales Person</b></td>
+              <td>{{dispatchNote.employee.firstName}} {{dispatchNote.employee.lastName}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><b>Customer</b></h3>
+          </div>
+          <div class="panel-body">
+            {{dispatchNote.customer.code}}
+            <br/> {{dispatchNote.customer.name}}
+            <br/><br/><br/>
+          </div>
+        </div>
+        <!-- <b>Customer:</b><br/> {{dispatchNote.customer.code}}
+        <br/> {{dispatchNote.customer.name}} -->
+      </div>
+      <div class="col-xs-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><b>Destination</b></h3>
+          </div>
+          <div class="panel-body">
+            {{dispatchNote.address.line1}}
+            <br/> {{dispatchNote.address.line2}}
+            <br/> {{dispatchNote.address.line3}}
+            <br/> {{dispatchNote.address.line4}}
+            <br/> {{dispatchNote.address.line5}}
+          </div>
+        </div>
+        <!-- <b>Destination:</b><br/> {{dispatchNote.address.line1}}
+        <br/> {{dispatchNote.address.line2}}
+        <br/> {{dispatchNote.address.line3}}
+        <br/> {{dispatchNote.address.line4}}
+        <br/> {{dispatchNote.address.line5}}
+        <br/> -->
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-xs-12">
+        <table class="table table-bordered">
+          <tr>
+            <th>#</th>
+            <th>Job</th>
+            <th>PO</th>
+            <th>Customer Item</th>
+            <th>OTR Code</th>
+            <th>Description</th>
+            <th>Quantity</th>
+          </tr>
+          <tr *ngFor="let dispatch of dispatchNote.dispatchList; let i = index">
+            <td> {{ i+1 }} </td>
+            <td> {{ dispatch.dispatchSchedule.job.jobNo }} </td>
+            <td> {{ dispatch.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </td>
+            <td> {{ dispatch.dispatchSchedule.salesOrderItem.customerItem.code }} </td>
+            <td> {{ dispatch.dispatchSchedule.job.item.code }} </td>
+            <td> {{ dispatch.dispatchSchedule.job.item.description }} </td>
+            <td class="text-right"> {{ dispatch.quantity}} </td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-right"><b>Total</b></td>
+            <td class="text-right"><b>{{ dispatchNote.quantity}}</b></td>
+          </tr>
+        </table>
+
+        <!-- <p-dataTable #dt [value]="dispatchNote.dispatchList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+              <p-column field="id" header="ID"></p-column>
+              <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+              <p-column field="dispatchSchedule.confirmDate" header="Confirm Date"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+              <p-column field="dispatchSchedule.job.item.code" header="OTR Code"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Description"></p-column>
+              <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
+              <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
+              <p-footerColumnGroup>
+                <p-row>
+                  <p-column footer="Totals:" colspan="8" styleClass="text-right"></p-column>
+                  <p-column footer="{{dispatchNote.quantity}}" styleClass="text-right"></p-column>
+                </p-row>
+              </p-footerColumnGroup>
+            </p-dataTable> -->
+      </div>
+    </div>
+
+    <div class='divFooter'>
+      <div class='row'>
+        <div class="col-xs-12">
+
+          <table class="table table-bordered text-center">
+            <tr>
+              <td colspan="2"><b>Production</b></td>
+              <td colspan="2"><b>Quality Assurance</b></td>
+              <td colspan="2"><b>Received By</b></td>
+            </tr>
+            <tr>
+              <td colspan="2"><br/><br/><br/></td>
+              <td colspan="2"><br/><br/><br/></td>
+              <td colspan="2"><br/><br/><br/></td>
+            </tr>
+
+            <tr>
+              <td colspan="3"><b>Inventory</b></td>
+              <td colspan="3"><b>OTR Security</b></td>
+            </tr>
+            <tr>
+              <td colspan="3"><br/><br/><br/><br/><br/><br/></td>
+              <td colspan="3"><br/><br/><br/><br/><br/><br/></td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <!-- <div class='row text-center' style="border: 1px solid;">
+      <div class="col-xs-4">
+        Inventory
+      </div>
+      <div class="col-xs-4">
+        Quality Assurance
+      </div>
+      <div class="col-xs-4">
+        Production
+      </div>
+    </div>
+
+    <div class='row' style="border: 1px solid;">
+      <div class="col-xs-4">
+        <br/>
+        <br/>
+        <br/>
+      </div>
+      <div class="col-xs-4">
+        <br/>
+        <br/>
+        <br/>
+      </div>
+      <div class="col-xs-4">
+        <br/>
+        <br/>
+        <br/>
+      </div>
+    </div> -->
+
+  </div>
+</div>

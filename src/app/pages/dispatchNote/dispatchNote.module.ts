@@ -20,6 +20,8 @@ import { EmployeeService } from "../employee/employee.service";
 import { CustomerService } from "../customer/customer.service";
 import { AddressService } from "../../services/address.service";
 import { CustomerItemService } from "../customerItem/customerItem.service";
+import { PrintService } from '../../services/print.service';
+import { Print } from './components/dispatchNotePrint/print.component';
 
 
 
@@ -42,14 +44,16 @@ import { CustomerItemService } from "../customerItem/customerItem.service";
   declarations: [
     DispatchNote,
     DispatchNoteTable,
-    DispatchNoteForm
+    DispatchNoteForm,
+    Print
   ],
   providers: [
-    CustomerService, 
-    DispatchNoteService, 
+    CustomerService,
+    DispatchNoteService,
     AddressService,
     EmployeeService,
-    DispatchScheduleService 
+    PrintService,
+    DispatchScheduleService
   ]
 })
 export class DispatchNoteModule { }

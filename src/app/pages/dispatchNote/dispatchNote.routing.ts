@@ -1,8 +1,9 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DispatchNote } from './dispatchNote.component';
 import { DispatchNoteForm } from './components/dispatchNoteForm/dispatchNoteForm.component';
 import { DispatchNoteTable } from './components/dispatchNoteTable/dispatchNoteTable.component';
+import { DispatchNotePrint } from './components/dispatchNotePrint/dispatchNotePrint.component';
 
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
