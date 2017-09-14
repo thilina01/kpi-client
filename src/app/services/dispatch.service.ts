@@ -1,23 +1,16 @@
 import { Injectable, Inject } from '@angular/core';
- import { MasterService } from "../../services/master.service";
  import { HttpClient } from "@angular/common/http";
- import { APP_CONFIG, IAppConfig } from "../../app.config";
- import { AuthService } from "../../services/auth.service";
- import { Observable } from 'rxjs/Observable';
+ import { IAppConfig, APP_CONFIG } from "../app.config";
+ import { AuthService } from "./auth.service";
+ import { MasterService } from "./master.service";
 
 @Injectable()
-export class DispatchNoteService extends MasterService{
+export class DispatchService extends MasterService{
   
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp,aConfig,anAuthService);
-    this.setApiUrl('dispatchNotes/');
+    this.setApiUrl('dispatches/');
   }
-  
-  saveRelease(object: Object): Observable<any> {
-    return this.http
-        .post(this.apiUrl+"release", JSON.stringify(object), { headers: this.getJsonHeaders() })
-        .catch(err => this.handleError(err));
-}
 }
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
@@ -28,23 +21,30 @@ export class DispatchNoteService extends MasterService{
 
 
 // @Injectable()
-// export class DispatchNoteService {
+// export class AddressService {
+
+//   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
+//   private apiUrl: string;  // URL to web api
 //   private getJsonHeaders(): Headers{
 //     return new Headers({
 //       'Content-Type': 'application/json',
 //       'email': this.authService.email
 //     });
 //   }; 
-//   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
-//   private apiUrl: string;  // URL to web api
-
 //   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
-//     this.apiUrl = config.apiEndpoint + 'dispatchNotes/';
+//     this.apiUrl = config.apiEndpoint + 'addresses/';
 //     //this.headers = new Headers(config.jsonHeaders);
 //   }
 
 //   getAll(): Promise<Array<Object>> {
 //     return this.http.get(this.apiUrl, { headers: this.getJsonHeaders() })
+//       .toPromise()
+//       .then(response => response.json() as Array<Object>)
+//       .catch(this.handleError);
+//   }
+
+//   getCombo(): Promise<Array<Object>> {
+//     return this.http.get(this.apiUrl + "combo", { headers: this.getJsonHeaders() })
 //       .toPromise()
 //       .then(response => response.json() as Array<Object>)
 //       .catch(this.handleError);
@@ -65,7 +65,6 @@ export class DispatchNoteService extends MasterService{
 //   }
 
 //   save(object: Object): Promise<Object> {
-
 //     return this.http
 //       .post(this.apiUrl, JSON.stringify(object), { headers: this.getJsonHeaders() })
 //       .toPromise()
@@ -74,7 +73,6 @@ export class DispatchNoteService extends MasterService{
 //   }
 
 //   delete(id: number): Promise<Object> {
-
 //     return this.http
 //       .delete(this.apiUrl + id, { headers: this.getJsonHeaders() })
 //       .toPromise()
@@ -82,7 +80,7 @@ export class DispatchNoteService extends MasterService{
 //   }
 
 //   private handleError(error: any): Promise<any> {
-//     console.error('An error occurred', error); // for demo purposes only    
+//     console.error('An error occurred', error); // for demo purposes only
 //     alert(JSON.parse(error._body).message);
 //     return Promise.reject(error.message || error);
 //   }

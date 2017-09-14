@@ -6,18 +6,13 @@ import { Injectable, Inject } from '@angular/core';
  import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class DispatchNoteService extends MasterService{
+export class DispatchReleaseService extends MasterService{
   
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp,aConfig,anAuthService);
-    this.setApiUrl('dispatchNotes/');
+    this.setApiUrl('dispatchReleases/');
   }
-  
-  saveRelease(object: Object): Observable<any> {
-    return this.http
-        .post(this.apiUrl+"release", JSON.stringify(object), { headers: this.getJsonHeaders() })
-        .catch(err => this.handleError(err));
-}
+
 }
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
@@ -28,7 +23,7 @@ export class DispatchNoteService extends MasterService{
 
 
 // @Injectable()
-// export class DispatchNoteService {
+// export class DispatchReleaseService {
 //   private getJsonHeaders(): Headers{
 //     return new Headers({
 //       'Content-Type': 'application/json',
@@ -39,7 +34,7 @@ export class DispatchNoteService extends MasterService{
 //   private apiUrl: string;  // URL to web api
 
 //   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
-//     this.apiUrl = config.apiEndpoint + 'dispatchNotes/';
+//     this.apiUrl = config.apiEndpoint + 'dispatchReleases/';
 //     //this.headers = new Headers(config.jsonHeaders);
 //   }
 

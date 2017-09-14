@@ -74,8 +74,8 @@ export class JobInfo {
                         this.job = data;
                         // this.jobNo = this.job.jobNo;
                         this.setDisplayOfJob();
-                        this.fillOperations()
-                        this.fillOperationSummaries()
+                        this.fillOperations();
+                        this.fillOperationSummaries();
                     }
                 }
             )
