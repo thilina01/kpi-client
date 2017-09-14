@@ -1,16 +1,23 @@
 import { Injectable, Inject } from '@angular/core';
- import { HttpClient } from "@angular/common/http";
- import { IAppConfig, APP_CONFIG } from "../app.config";
- import { AuthService } from "./auth.service";
- import { MasterService } from "./master.service";
+import { HttpClient } from "@angular/common/http";
+import { IAppConfig, APP_CONFIG } from "../app.config";
+import { AuthService } from "./auth.service";
+import { MasterService } from "./master.service";
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class AddressService extends MasterService{
-  
+export class AddressService extends MasterService {
+
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
-    super(anHttp,aConfig,anAuthService);
+    super(anHttp, aConfig, anAuthService);
     this.setApiUrl('addresses/');
   }
+
+  getComboByCustomer(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + "comboByCustomer/" + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
 }
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
@@ -30,7 +37,7 @@ export class AddressService extends MasterService{
 //       'Content-Type': 'application/json',
 //       'email': this.authService.email
 //     });
-//   }; 
+//   };
 //   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
 //     this.apiUrl = config.apiEndpoint + 'addresses/';
 //     //this.headers = new Headers(config.jsonHeaders);

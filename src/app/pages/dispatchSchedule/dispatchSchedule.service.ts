@@ -22,6 +22,11 @@ export class DispatchScheduleService extends MasterService {
     return this.http.get(this.apiUrl + "salesOrder/" + salesOrder, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getComboByCustomer(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + "comboByCustomer/" + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
@@ -41,7 +46,7 @@ export class DispatchScheduleService extends MasterService {
 //       'Content-Type': 'application/json',
 //       'email': this.authService.email
 //     });
-//   }; 
+//   };
 //   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
 //     this.apiUrl = config.apiEndpoint + 'dispatchSchedules/';
 //     //this.headers = new Headers(config.jsonHeaders);
