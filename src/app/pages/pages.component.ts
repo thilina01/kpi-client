@@ -68,6 +68,7 @@ export class Pages {
     { routerLink: "/pages/controlPoint/table", name: "Control Point", menuType: this.menuType },
     { routerLink: "/pages/controlPointMachine/table", name: "Control Point Machine", menuType: this.menuType },
     { routerLink: "/pages/controlPointType/table", name: "Control Point Type", menuType: this.menuType },
+    { routerLink: "/pages/containerSize/table", name: "Container Size ", menuType: this.menuType },
     { routerLink: "/pages/contactType/table", name: "Contact Type ", menuType: this.menuType },
     { routerLink: "/pages/costCenter/table", name: "Cost Center", menuType: this.menuType },
     { routerLink: "/pages/country/table", name: "Country", menuType: this.menuType },

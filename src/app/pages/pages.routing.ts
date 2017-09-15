@@ -30,6 +30,7 @@ export const routes: Routes = [
       { path: 'controlPointType', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointType/controlPointType.module#ControlPointTypeModule' },
       { path: 'controlPointMachine', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointMachine/controlPointMachine.module#ControlPointMachineModule' },
       { path: 'controlPoint', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPoint/controlPoint.module#ControlPointModule' },
+      { path: 'containerSize', canActivate: [AuthGuard], loadChildren: 'app/pages/containerSize/containerSize.module#ContainerSizeModule' },
       { path: 'contactType', canActivate: [AuthGuard], loadChildren: 'app/pages/contactType/contactType.module#ContactTypeModule' },
       { path: 'costCenter', canActivate: [AuthGuard], loadChildren: 'app/pages/costCenter/costCenter.module#CostCenterModule' },
       { path: 'country', canActivate: [AuthGuard], loadChildren: 'app/pages/country/country.module#CountryModule' },
