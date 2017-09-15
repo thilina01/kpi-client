@@ -25,12 +25,10 @@
     </div>
     <br/>
     <div class="row">
-      <div class="col-sm-12">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.customer == undefined || dispatchNote.customer.name == undefined">Customer : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.customer.name}}</div>
-        <br/>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.address == undefined || dispatchNote.address.line1 == undefined">Ship To : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.address.line1}}</div>
-        <br/>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.employee == undefined ||  dispatchNote.employee.firstName == undefined">Sales Person : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.employee.firstName}}</div>
+      <div class="col-12 row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.customer == undefined || dispatchNote.customer.name == undefined">Customer : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.customer.name}}</div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.address == undefined || dispatchNote.address.line1 == undefined">Ship To : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.address.line1}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.employee == undefined ||  dispatchNote.employee.firstName == undefined">Sales Person : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.employee.firstName}}</div>
       </div>
     </div>
     <br/>
@@ -46,12 +44,6 @@
           <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Description"></p-column>
           <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
           <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
-          <p-footerColumnGroup>
-            <p-row>
-              <p-column footer="Totals:" colspan="8" styleClass="text-right"></p-column>
-              <p-column footer="{{dispatchNote.quantity}}" styleClass="text-right"></p-column>
-            </p-row>
-          </p-footerColumnGroup>
         </p-dataTable>
       </div>
     </div>
