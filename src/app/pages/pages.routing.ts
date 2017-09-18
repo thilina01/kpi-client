@@ -25,6 +25,7 @@ export const routes: Routes = [
       { path: '', canActivate: [AuthGuard], redirectTo: 'dashboard', pathMatch: 'full' },                           
       { path: 'absenteeism', canActivate: [AuthGuard], loadChildren: 'app/pages/absenteeism/absenteeism.module#AbsenteeismModule' },
       { path: 'addressType', canActivate: [AuthGuard], loadChildren: 'app/pages/addressType/addressType.module#AddressTypeModule' },
+      { path: 'application', canActivate: [AuthGuard], loadChildren: 'app/pages/application/application.module#ApplicationModule' },
       { path: 'breakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/breakdown/breakdown.module#BreakdownModule' },
       { path: 'chart', canActivate: [AuthGuard], loadChildren: 'app/pages/chart/chart.module#ChartModule' },
       { path: 'controlPointType', canActivate: [AuthGuard], loadChildren: 'app/pages/controlPointType/controlPointType.module#ControlPointTypeModule' },
