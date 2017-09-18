@@ -66,6 +66,7 @@ export class Pages {
     { routerLink: "/pages/application/table", name: "Application", menuType: this.menuType },
     { routerLink: "/pages/breakdown/table", name: "Breakdown", menuType: this.menuType },
     { routerLink: "/pages/chart", name: "Charts", menuType: this.menuType },
+    { routerLink: "/pages/computer/table", name: "Computer", menuType: this.menuType },
     { routerLink: "/pages/computerType/table", name: "Computer Type", menuType: this.menuType },
     { routerLink: "/pages/controlPoint/table", name: "Control Point", menuType: this.menuType },
     { routerLink: "/pages/controlPointMachine/table", name: "Control Point Machine", menuType: this.menuType },

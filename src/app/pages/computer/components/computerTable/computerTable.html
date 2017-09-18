@@ -1,0 +1,43 @@
+<p-panel>
+	<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>Computer List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+			</div>
+		</div>
+		</p-header>
+		<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+	 resizableColumns="true" exportFilename="computers" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
+		<p-column field="id" header="ID"></p-column>                             
+		<p-column field="code" header="code" [sortable]="true"></p-column>         
+		<p-column field="brand" header="Brand" [sortable]="true"></p-column>         
+		<p-column field="model" header="Model" [sortable]="true"></p-column>         
+		<p-column field="ram" header="Ram" [sortable]="true"></p-column>
+		<p-column field="processor" header="Processor" [sortable]="true"></p-column>
+		<p-column field="hdd1" header="Hdd1" [sortable]="true"></p-column>
+		<p-column field="hdd2" header="hdd2" [sortable]="true"></p-column>
+		<p-column field="lanMac" header="Lan Mac" [sortable]="true"></p-column>
+		<p-column field="wlanMac" header="Wlan Mac" [sortable]="true"></p-column>
+		<p-column field="lanIp" header="Lan Ip" [sortable]="true"></p-column>
+		<p-column field="wlanIp" header="Wlan Ip" [sortable]="true"></p-column>
+		<p-column field="value" header="Value" [sortable]="true"></p-column>
+		<p-column field="purchaseDate" header="Purchase Date" [sortable]="true"></p-column>
+		<p-column field="transferDate" header="Transfer Date" [sortable]="true"></p-column>
+		<p-column field="employee.firstName" header="Employee" [sortable]="true"></p-column>
+		<p-column field="computerType.name" header="Computer Type" [sortable]="true"></p-column>
+		<p-column header="Action" styleClass="text-right">
+			<ng-template let-data="rowData" pTemplate="body">
+				<a [routerLink]="'/pages/computer/form/'+data.id">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
+				</a>
+				&nbsp; &nbsp;
+				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+			</ng-template>
+		</p-column>
+	</p-dataTable>
+</p-panel>
