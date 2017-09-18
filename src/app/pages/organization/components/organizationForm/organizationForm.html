@@ -1,0 +1,67 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Organization Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/organization/table"> 
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            </button>
+            </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="text" pInputText formControlName="code">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="name">Name</label><br/>
+              <input type="text" pInputText formControlName="name">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="slogan1">slogan1</label><br/>
+              <input type="text" pInputText formControlName="slogan1">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="slogan2">slogan2</label><br/>
+              <input type="text" pInputText formControlName="slogan2">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="vat">vat</label><br/>
+              <input type="text" pInputText formControlName="vat">
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="svat">svat</label><br/>
+              <input type="svat" pInputText formControlName="svat">
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
