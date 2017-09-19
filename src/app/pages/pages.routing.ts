@@ -70,7 +70,7 @@ export const routes: Routes = [
       { path: 'lossType', canActivate: [AuthGuard], loadChildren: 'app/pages/lossType/lossType.module#LossTypeModule' },                                                                                  
       { path: 'materialCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/materialCostPerKg/materialCostPerKg.module#MaterialCostPerKgModule' }, 
       { path: 'machine', canActivate: [AuthGuard], loadChildren: 'app/pages/machine/machine.module#MachineModule' },  
-      //{ path: 'mailConfiguration ', canActivate: [AuthGuard], loadChildren: 'app/pages/mailConfiguration/mailConfiguration.module#MailConfigurationModule' },  
+      { path: 'mailConfiguration', canActivate: [AuthGuard], loadChildren: 'app/pages/mailConfiguration/mailConfiguration.module#MailConfigurationModule' },  
       { path: 'manpower', canActivate: [AuthGuard], loadChildren: 'app/pages/manpower/manpower.module#ManpowerModule' },
       { path: 'manpowerType', canActivate: [AuthGuard], loadChildren: 'app/pages/manpowerType/manpowerType.module#ManpowerTypeModule' },
       { path: 'notifyParty', canActivate: [AuthGuard], loadChildren: 'app/pages/notifyParty/notifyParty.module#NotifyPartyModule' },
