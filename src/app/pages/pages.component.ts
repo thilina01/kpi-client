@@ -83,6 +83,7 @@ export class Pages {
     { routerLink: "/pages/consumableCostPerKg/table", name: "Consumable Cost Per Kg", menuType: this.menuType },
     { routerLink: "/pages/dashboard", name: "Dashboard", menuType: this.menuType },
     { routerLink: "/pages/department/table", name: "Department", menuType: this.menuType },             
+    { routerLink: "/pages/deliveryTerm/table", name: "Delivery Term ", menuType: this.menuType },
     { routerLink: "/pages/dispatchNote/table", name: "Dispatch Note", menuType: this.menuType },
     { routerLink: "/pages/dispatchRelease/table", name: "Dispatch Release", menuType: this.menuType },
     { routerLink: "/pages/dispatchSchedule/table", name: "Dispatch Schedule", menuType: this.menuType },

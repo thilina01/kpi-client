@@ -45,6 +45,7 @@ export const routes: Routes = [
       { path: 'consumableCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/consumableCostPerKg/consumableCostPerKg.module#ConsumableCostPerKgModule' },                               
       { path: 'dashboard', canActivate: [AuthGuard], loadChildren: 'app/pages/dashboard/dashboard.module#DashboardModule' },
       { path: 'department', canActivate: [AuthGuard], loadChildren: 'app/pages/department/department.module#DepartmentModule' },                       
+      { path: 'deliveryTerm', canActivate: [AuthGuard], loadChildren: 'app/pages/deliveryTerm/deliveryTerm.module#DeliveryTermModule' },
       { path: 'dispatchNote', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchNote/dispatchNote.module#DispatchNoteModule' },
       { path: 'dispatchRelease', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchRelease/dispatchRelease.module#DispatchReleaseModule' },
       { path: 'dispatchSchedule', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchSchedule/dispatchSchedule.module#DispatchScheduleModule' },

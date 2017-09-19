@@ -1,0 +1,46 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Delivery Term Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/deliveryTerm/table"> 
+      <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+      <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+      </button>
+      </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="text" pInputText formControlName="code">
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="name">Name</label><br/>
+              <input type="text" pInputText formControlName="name">
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
