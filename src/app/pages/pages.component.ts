@@ -131,6 +131,7 @@ export class Pages {
     { routerLink: "/pages/sectionType/table", name: "Section Type", menuType: this.menuType },
     { routerLink: "/pages/shift/table", name: "Shift", menuType: this.menuType },
     { routerLink: "/pages/shiftType/table", name: "Shift Type", menuType: this.menuType },
+    { routerLink: "/pages/supplier/table", name: "Supplier", menuType: this.menuType },
     { routerLink: "/pages/supplierType/table", name: "Supplier Type", menuType: this.menuType },
     { routerLink: "/pages/team/table", name: "Team", menuType: this.menuType },
     { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },

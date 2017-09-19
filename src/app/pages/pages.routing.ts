@@ -97,6 +97,7 @@ export const routes: Routes = [
       { path: 'sectionType', canActivate: [AuthGuard], loadChildren: 'app/pages/sectionType/sectionType.module#SectionTypeModule' },
       { path: 'shift', canActivate: [AuthGuard], loadChildren: 'app/pages/shift/shift.module#ShiftModule' },
       { path: 'shiftType', canActivate: [AuthGuard], loadChildren: 'app/pages/shiftType/shiftType.module#ShiftTypeModule' },
+      { path: 'supplier', canActivate: [AuthGuard], loadChildren: 'app/pages/supplier/supplier.module#SupplierModule' },
       { path: 'supplierType', canActivate: [AuthGuard], loadChildren: 'app/pages/supplierType/supplierType.module#SupplierTypeModule' },
       { path: 'team', canActivate: [AuthGuard], loadChildren: 'app/pages/team/team.module#TeamModule' },
       { path: 'test', canActivate: [AuthGuard], loadChildren: 'app/pages/test/test.module#TestModule' },

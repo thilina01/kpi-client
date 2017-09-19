@@ -1,0 +1,39 @@
+<p-panel>
+	<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>Supplier List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+			</div>
+		</div>
+		</p-header>
+		<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
+	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+	 resizableColumns="true" exportFilename="suppliers" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
+		<p-column field="id" header="ID"></p-column>                             
+		<p-column field="code" header="code" [sortable]="true"></p-column>         
+		<p-column field="name" header="Name" [sortable]="true"></p-column>         
+		<p-column field="shortName" header="Short Name" [sortable]="true"></p-column> 
+		<p-column field="supplierType.name" header="Supplier Type" [sortable]="true"></p-column>		
+		<p-column field="currency.name" header="Currency" [sortable]="true"></p-column>        
+		<p-column field="contactPerson" header="Contact Person" [sortable]="true"></p-column>
+		<p-column field="contact" header="Contact" [sortable]="true"></p-column>
+		<p-column field="address" header="Address" [sortable]="true"></p-column>
+		<p-column field="fax" header="Fax" [sortable]="true"></p-column>
+		<p-column field="email" header="Email" [sortable]="true"></p-column>
+		<p-column field="paymentTerm.name" header="PaymentTerm" [sortable]="true"></p-column>
+		<p-column field="deliveryTerm.name" header="Delivery Term" [sortable]="true"></p-column>
+		<p-column header="Action" styleClass="text-right">
+			<ng-template let-data="rowData" pTemplate="body">
+				<a [routerLink]="'/pages/supplier/form/'+data.id">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
+				</a>
+				&nbsp; &nbsp;
+				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+			</ng-template>
+		</p-column>
+	</p-dataTable>
+</p-panel>

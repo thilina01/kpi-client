@@ -1,0 +1,134 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Supplier Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/supplier/table"> 
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="code">Code</label><br/>
+              <input type="text" pInputText formControlName="code">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="name">Name</label><br/>
+              <input type="text" pInputText formControlName="name">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="shortName">Short Name</label><br/>
+              <input type="text" pInputText formControlName="shortName">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="supplierType">Supplier Type</label><br/>
+              <p-autoComplete [dropdown]="true" formControlName="supplierType" field="display" [suggestions]="filteredSupplierTypeList"
+                (completeMethod)="filterSupplierTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSupplierTypeDropdownClick($event)"
+                (onSelect)="onSupplierTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="currency">Currency</label><br/>
+              <p-autoComplete [dropdown]="true" formControlName="currency" field="display" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCurrencyDropdownClick($event)" (onSelect)="onCurrencySelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="contactPerson">Contact Person</label><br/>
+              <input type="text" pInputText formControlName="contactPerson">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="contact">Contact</label><br/>
+              <input type="text" pInputText formControlName="contact">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="address">Address</label><br/>
+              <input type="text" pInputText formControlName="address">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="fax">Fax</label><br/>
+              <input type="text" pInputText formControlName="fax">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="email">Email</label><br/>
+              <input type="text" pInputText formControlName="email">
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="paymentTerm">Payment Term</label><br/>
+              <p-autoComplete [dropdown]="true" formControlName="paymentTerm" field="display" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handlePaymentTermDropdownClick($event)"
+                (onSelect)="onPaymentTermSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="deliveryTerm">Delivery Term</label><br/>
+              <p-autoComplete [dropdown]="true" formControlName="deliveryTerm" field="display" [suggestions]="filteredDeliveryTermList"
+                (completeMethod)="filterDeliveryTermList($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleDeliveryTermDropdownClick($event)"
+                (onSelect)="onDeliveryTermSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              &nbsp;<br/>
+              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
