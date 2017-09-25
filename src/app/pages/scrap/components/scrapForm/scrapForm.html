@@ -39,7 +39,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="itemType">Item Type</label><br/>
-              <p-autoComplete formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
+              <p-autoComplete [dropdown]="true" formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemTypeDropdownClick($event)" (onSelect)="onItemTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -52,7 +52,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="operationType">Operation Type</label><br/>
-              <p-autoComplete formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList" (completeMethod)="filterOperationTypeList($event)"
+              <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList" (completeMethod)="filterOperationTypeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleOperationTypeDropdownClick($event)"
                 (onSelect)="onOperationTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -66,7 +66,7 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
               <label for="lossReason">Scrap Reason</label><br/>
-              <p-autoComplete formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
+              <p-autoComplete [dropdown]="true" formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossReasonDropdownClick($event)"
                 (onSelect)="onLossReasonSelect($event)">
                 <ng-template let-option pTemplate="option">
