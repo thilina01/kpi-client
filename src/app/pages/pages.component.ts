@@ -62,6 +62,8 @@ export class Pages {
   menuList = [
     { routerLink: "/login", name: "Logout", menuType: this.menuType },
     { routerLink: "/pages/absenteeism/table", name: "Absenteeism", menuType: this.menuType },
+    { routerLink: "/pages/accident/table", name: "Accident ", menuType: this.menuType },
+    { routerLink: "/pages/accidentType/table", name: "Accident Type ", menuType: this.menuType },
     { routerLink: "/pages/addressType/table", name: "Address Type", menuType: this.menuType },
     { routerLink: "/pages/application/table", name: "Application", menuType: this.menuType },
     { routerLink: "/pages/breakdown/table", name: "Breakdown", menuType: this.menuType },
@@ -136,6 +138,7 @@ export class Pages {
     { routerLink: "/pages/team/table", name: "Team", menuType: this.menuType },
     { routerLink: "/pages/tool/table", name: "Tool", menuType: this.menuType },
     { routerLink: "/pages/toolBreakdown/table", name: "Tool Breakdown", menuType: this.menuType },
+    { routerLink: "/pages/treatmentType/table", name: "Treatment Type", menuType: this.menuType },
     { routerLink: "/pages/workCenter/table", name: "Work Center", menuType: this.menuType }
   ];
   main;
