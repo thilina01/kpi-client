@@ -1,0 +1,39 @@
+<p-panel>
+	<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>Accident List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+			</div>
+		</div>
+	</p-header>
+	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
+	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="accidents" [globalFilter]="gb">
+		<p-column field="id" header="ID"></p-column>
+		<p-column field="referenceNo" header="Reference No" [sortable]="true"></p-column>
+		<p-column field="accidentDate" header="Accident Date">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.accidentDate|date:'y-MM-dd HH:mm'}}
+			  </ng-template>
+			</p-column>
+		<p-column field="employee.firstName" header="Employee" [sortable]="true"></p-column>
+		<p-column field="shift.name" header="Shift" [sortable]="true" styleClass="text-right"></p-column>
+		<p-column field="machine.name" header="Machine" [sortable]="true" styleClass="text-right"></p-column>
+		<p-column field="accidentType.name" header="Accident Type" [sortable]="true" styleClass="text-right"></p-column>
+		<p-column field="rootCause" header="Root Cause" [sortable]="true" styleClass="text-right"></p-column>
+		 <!--<p-column field="correctiveAction" header="Corrective Action" [sortable]="true" styleClass="text-right"></p-column>-->
+		<!--<p-column field="responsiblePerson" header="Responsible Person" [sortable]="true" styleClass="text-right"></p-column>-->
+		<p-column header="Action" styleClass="text-right">
+			<ng-template let-data="rowData" pTemplate="body">
+				<a [routerLink]="'/pages/accident/form/'+data.id">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
+				</a> &nbsp; &nbsp;
+				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+			</ng-template>
+		</p-column>
+	</p-dataTable>
+</p-panel>
