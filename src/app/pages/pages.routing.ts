@@ -25,6 +25,8 @@ export const routes: Routes = [
       { path: '', canActivate: [AuthGuard], redirectTo: 'dashboard', pathMatch: 'full' },                           
       { path: 'absenteeism', canActivate: [AuthGuard], loadChildren: 'app/pages/absenteeism/absenteeism.module#AbsenteeismModule' },
       { path: 'addressType', canActivate: [AuthGuard], loadChildren: 'app/pages/addressType/addressType.module#AddressTypeModule' },
+      { path: 'accident', canActivate: [AuthGuard], loadChildren: 'app/pages/accident/accident.module#AccidentModule' },
+      { path: 'accidentType', canActivate: [AuthGuard], loadChildren: 'app/pages/accidentType/accidentType.module#AccidentTypeModule' },
       { path: 'application', canActivate: [AuthGuard], loadChildren: 'app/pages/application/application.module#ApplicationModule' },
       { path: 'breakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/breakdown/breakdown.module#BreakdownModule' },
       { path: 'chart', canActivate: [AuthGuard], loadChildren: 'app/pages/chart/chart.module#ChartModule' },
@@ -103,6 +105,7 @@ export const routes: Routes = [
       { path: 'test', canActivate: [AuthGuard], loadChildren: 'app/pages/test/test.module#TestModule' },
       { path: 'tool', canActivate: [AuthGuard], loadChildren: 'app/pages/tool/tool.module#ToolModule' },
       { path: 'toolBreakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/toolBreakdown/toolBreakdown.module#ToolBreakdownModule' }, 
+      { path: 'treatmentType', canActivate: [AuthGuard], loadChildren: 'app/pages/treatmentType/treatmentType.module#TreatmentTypeModule' }, 
       { path: 'user', canActivate: [AuthGuard], loadChildren: 'app/pages/user/user.module#UserModule' },
       { path: 'workCenter', canActivate: [AuthGuard], loadChildren: 'app/pages/workCenter/workCenter.module#WorkCenterModule' }
     ]
