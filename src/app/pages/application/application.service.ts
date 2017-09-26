@@ -9,7 +9,7 @@ export class ApplicationService extends MasterService{
   
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp,aConfig,anAuthService);
-    this.setApiUrl('Applications/');
+    this.setApiUrl('applications/');
   }
 }
 // import { Injectable, Inject } from '@angular/core';

@@ -143,6 +143,8 @@ export class DispatchNoteForm {
     this.setDisplayOfEmployee();
     this.setDisplayOfAddress();
     this.setDisplayOfDispatchSchedule();
+    this.calculateTotal();
+    
   }
 
   public onSubmit(values: any, event: Event): void {

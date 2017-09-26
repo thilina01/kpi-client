@@ -9,7 +9,7 @@ export class OrganizationService extends MasterService{
   
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp,aConfig,anAuthService);
-    this.setApiUrl('Organizations/');
+    this.setApiUrl('organizations/');
   }
 }
 // import { Injectable, Inject } from '@angular/core';
