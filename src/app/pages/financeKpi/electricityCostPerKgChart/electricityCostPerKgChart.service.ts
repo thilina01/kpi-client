@@ -7,7 +7,7 @@ export class ElectricityCostPerKgChartService {
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
- getChartData(data) {
+  getChartData(data) {
 
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.financeKpiElectricityCostPerKgChart;
@@ -15,16 +15,7 @@ export class ElectricityCostPerKgChartService {
     return {
       'type': 'serial',
       'theme': 'blur',
-      'depth3D': 20,
-      'angle': 30,
-      'dataProvider': data/*[
-        { 'month': 'Nov-16', 'value': 90 },
-        { 'month': 'Dec-16', 'value': 95 },
-        { 'month': 'Jan-17', 'value': 94 },
-        { 'month': 'Feb-17', 'value': 88 },
-        { 'month': 'Mar-17', 'value': 93 },
-        { 'month': 'Apr-17', 'value': 88 }
-      ]*/,
+      'dataProvider': data,
       creditsPosition: 'top-right',
       'valueAxes': [{
         minVerticalGap: 50,
@@ -67,9 +58,14 @@ export class ElectricityCostPerKgChartService {
       },
       'legend': {
         'position': 'top',
-        'valueWidth':100,
-        'valueAlign':'left'
-      }
+        'valueWidth': 100,
+        'valueAlign': 'left'
+      },
+      'dataTableId':'electricityCostPerKgchartdata',
+      'autoMargins': false,
+      'marginLeft': 100,
+      'marginRight': 0,
+      'marginBottom': 25
     };
   };
 }
