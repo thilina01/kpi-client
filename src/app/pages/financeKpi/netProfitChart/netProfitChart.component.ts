@@ -29,7 +29,7 @@ export class NetProfitChart {
     this.chartService.getMonthlyNetProfit(startDateText, endDateText).subscribe((data) => {
       this.amChart.dataProvider = data.json();
       this.amChart.validateData();
-      this.fillTable(this.amChart);
+      this.chartService.fillTable(this.amChart);
     });
   }
 
@@ -37,38 +37,4 @@ export class NetProfitChart {
     this.amChart = chart;
   }
 
-  fillTable(chart: any) {
-
-    // check if export to table is enabled
-    if (chart.dataTableId === undefined)
-      return;
-
-    // get chart data
-    let data = chart.dataProvider;
-
-    // create a table
-    let holder = document.getElementById(chart.dataTableId);
-    let table = document.createElement('table');
-    holder.appendChild(table);
-    let tr, td;
-
-    // construct table
-    for (let i = 0; i < chart.graphs.length; i++) {
-
-      // add rows
-      tr = document.createElement('tr');
-      tr.setAttribute('data-valuefield', chart.graphs[i].valueField);
-      table.appendChild(tr);
-      td = document.createElement('td');
-      td.className = 'row-title';
-      td.innerHTML = chart.graphs[i].title;
-      tr.appendChild(td);
-
-      for (let x = 0; x < chart.dataProvider.length; x++) {
-        td = document.createElement('td');
-        td.innerHTML = chart.dataProvider[x][chart.graphs[i].valueField];
-        tr.appendChild(td);
-      }
-    }
-  };
 }
