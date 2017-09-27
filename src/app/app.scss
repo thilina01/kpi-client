@@ -22,10 +22,43 @@ select option {
     display:inline-block;
     margin-top:2px;
     padding:5px;
-    //background:black; 
+    //background:black;
     color:aliceblue
 }
 
 .ui-datatable table {
     table-layout: auto
 }
+
+// Styles for Chart Data Table
+
+.chartdata {
+  max-width: 100%;
+  border-top: none;
+}
+
+.chartdata table {
+  width: 100%;
+}
+
+.chartdata table th,
+.chartdata table td {
+  text-align: center;
+  padding: 5px 7px;
+}
+
+.chartdata table td {
+  border: 1px solid #666666;
+}
+
+.chartdata table td.row-title {
+  font-weight: bold;
+  width: 100px;
+}
+
+.chartdata tr:hover td {
+  background: #666666;
+  cursor: pointer;
+}
+
+// end of Styles for Chart Data Table
