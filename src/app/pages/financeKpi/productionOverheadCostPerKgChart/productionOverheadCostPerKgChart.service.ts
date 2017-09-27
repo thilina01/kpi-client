@@ -15,8 +15,6 @@ export class ProductionOverheadCostPerKgChartService {
     return {
       'type': 'serial',
       'theme': 'blur',
-      'depth3D': 20,
-      'angle': 30,
       'dataProvider': data,
       creditsPosition: 'top-right',
       'valueAxes': [{
