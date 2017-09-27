@@ -33,7 +33,7 @@ export class BaSidebar {
   @HostListener('window:resize')
   public onWindowResize():void {
 
-    var isMenuShouldCollapsed = this._shouldMenuCollapse();
+    let isMenuShouldCollapsed = this._shouldMenuCollapse();
 
     if (this.isMenuShouldCollapsed !== isMenuShouldCollapsed) {
       this.menuCollapseStateChange(isMenuShouldCollapsed);

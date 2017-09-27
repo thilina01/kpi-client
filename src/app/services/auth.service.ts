@@ -109,7 +109,7 @@ export class AuthService {
   /*********************************/
 
   afLogin(credentials: any) {
-    var promise = new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       this.afireauth.auth.signInWithEmailAndPassword(credentials.email, credentials.password).then(() => {
         // this.login(credentials).then(() => {
         //   resolve(true);
@@ -123,7 +123,7 @@ export class AuthService {
     return promise;
   }
   addUser(newuser) {
-    var promise = new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       this.afireauth.auth.createUserWithEmailAndPassword(newuser.email, newuser.password).then(() => {
         this.afireauth.auth.currentUser.updateProfile({
           displayName: newuser.displayName,

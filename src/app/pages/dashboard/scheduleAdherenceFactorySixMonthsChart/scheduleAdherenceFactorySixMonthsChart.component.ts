@@ -61,15 +61,15 @@ export class ScheduleAdherenceFactorySixMonthsChart {
 
   amChart: any;
   constructor(private baConfig: BaThemeConfigProvider, private chartService: ChartService) {
-    var startDate = new Date();
+    let startDate = new Date();
     startDate.setMonth(startDate.getMonth() - 6);
-    var monthText :string; 
+    let monthText :string; 
     monthText = ((startDate.getMonth() + 1) < 10 ? "0" + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + "";
-    var startDateText = startDate.getFullYear()+"-"+monthText.slice(-2)+"-01";
+    let startDateText = startDate.getFullYear()+"-"+monthText.slice(-2)+"-01";
     
-    var endDate = new Date();
+    let endDate = new Date();
     //endDate.setMonth(endDate.getMonth() - 6);
-    var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
+    let endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyScheduleAdherence(startDateText, endDateText).subscribe((data) => {
       this.amChart.dataProvider = data.json();

@@ -8,7 +8,7 @@ export class UsersMapService {
   }
 
   getData() {
-    var layoutColors = this._baConfig.get().colors;
+    let layoutColors = this._baConfig.get().colors;
 
     return {
       type: 'map',

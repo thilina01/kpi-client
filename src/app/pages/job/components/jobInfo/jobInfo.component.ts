@@ -60,7 +60,7 @@ export class JobInfo {
     keyDown(event) {
         if (event.keyCode == 13) {
             this.clear();
-            var undefined;
+            let undefined;
             this.fill(undefined);
         }
     }

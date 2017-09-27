@@ -16,17 +16,17 @@ export class CumulativeSalesPerKgChart {
 
   constructor(private _cumulativeSalesPerKgChartService: CumulativeSalesPerKgChartService, private chartService: ChartService) {
     
-    var startDate = new Date();
+    let startDate = new Date();
     startDate.setMonth(startDate.getMonth() - 6);
-    var monthText :string; 
+    let monthText :string; 
     monthText = ((startDate.getMonth() + 1) < 10 ? "0" + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + "";
-    var startDateText = startDate.getFullYear()+"-"+monthText.slice(-2)+"-01";
+    let startDateText = startDate.getFullYear()+"-"+monthText.slice(-2)+"-01";
     
-    var endDate = new Date();
-    var endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
+    let endDate = new Date();
+    let endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyCumulativeSalesPerKg(startDateText, endDateText).subscribe((data) => {
-      var chartData = this._cumulativeSalesPerKgChartService.getChartData(data);
+      let chartData = this._cumulativeSalesPerKgChartService.getChartData(data);
       this.amChart = AmCharts.makeChart("cumulativeSalesPerKgchartdiv",chartData);
     });
   }

@@ -20,9 +20,9 @@
  *
  * If you're prototying and you will fix the types later you can also declare it as type any
  *
- declare var assert: any;
- declare var _: any;
- declare var $: any;
+ declare let assert: any;
+ declare let _: any;
+ declare let $: any;
  *
  * If you're importing a module that uses Node.js modules which are CommonJS you need to import as
  * in the files such as main.browser.ts or any file within app/
@@ -36,19 +36,19 @@ interface JQuery {
     easyPieChart;
 }
 
-declare var GoogleMapsLoader:any;
-declare var L:any;
-declare var AmCharts:any;
-declare var Chart:any;
-declare var Chartist:any;
+declare let GoogleMapsLoader:any;
+declare let L:any;
+declare let AmCharts:any;
+declare let Chart:any;
+declare let Chartist:any;
 
 // support NodeJS modules without type definitions
 declare module '*';
 
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
-declare var ENV: string;
-declare var HMR: boolean;
-declare var System: SystemJS;
+declare let ENV: string;
+declare let HMR: boolean;
+declare let System: SystemJS;
 
 interface SystemJS {
   import: (path?: string) => Promise<any>;

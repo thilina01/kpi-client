@@ -12,10 +12,10 @@ export class AbsenteeismChartService {
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardAbsenteeismChart;
 
-  var graphMap = {};
-  var graphs = [];
-  var dataMap = {};
-  var dataProvider = [];
+  let graphMap = {};
+  let graphs = [];
+  let dataMap = {};
+  let dataProvider = [];
   data.forEach(function(dataItem) {
     //create a new graph if we did not already create one
     if (graphMap[dataItem.source] === undefined) {
