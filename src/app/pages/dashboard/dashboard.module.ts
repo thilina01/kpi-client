@@ -7,18 +7,6 @@ import { MaterialModule } from '@angular/material';
 import { Dashboard } from './dashboard.component';
 import { routing } from './dashboard.routing';
 
-import { PopularApp } from './popularApp';
-import { PieChart } from './pieChart';
-import { TrafficChart } from './trafficChart';
-import { UsersMap } from './usersMap';
-import { LineChart } from './lineChart';
-import { Feed } from './feed';
-import { Todo } from './todo';
-import { Calendar } from './calendar';
-import { CalendarService } from './calendar/calendar.service';
-import { FeedService } from './feed/feed.service';
-import { LineChartService } from './lineChart/lineChart.service';
-
 import { AbsenteeismChart } from './absenteeismChart';
 import { AbsenteeismChartService } from './absenteeismChart/absenteeismChart.service';
 import { SalesWeightChart } from './salesWeightChart';
@@ -61,30 +49,26 @@ import { ScheduleAdherenceThreeMonthsChart } from './scheduleAdherenceThreeMonth
 import { ScheduleAdherenceThreeMonthsChartService } from './scheduleAdherenceThreeMonthsChart/scheduleAdherenceThreeMonthsChart.service';
 import { ScheduleAdherenceFactorySixMonthsChart } from './scheduleAdherenceFactorySixMonthsChart';
 import { ScheduleAdherenceFactorySixMonthsChartService } from './scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.service';
-import { PieChartService } from './pieChart/pieChart.service';
-import { TodoService } from './todo/todo.service';
-import { TrafficChartService } from './trafficChart/trafficChart.service';
-import { UsersMapService } from './usersMap/usersMap.service';
 import { SalesValueChart } from './salesValueChart';
 import { SalesValueChartService } from './salesValueChart/salesValueChart.service';
 import { ConsumableCostPerKgChart } from './consumableCostPerKgChart';
 import { ConsumableCostPerKgChartService } from './consumableCostPerKgChart/consumableCostPerKgChart.service';
 import { CumulativeSalesPerKgChart } from './cumulativeSalesPerKgChart';
 import { CumulativeSalesPerKgChartService } from './cumulativeSalesPerKgChart/cumulativeSalesPerKgChart.service';
-import { ElectricityCostPerKgChart } from "./electricityCostPerKgChart";
-import { LabourCostPerKgChart } from "./labourCostPerKgChart";
-import { MaterialCostPerKgChart } from "./materialCostPerKgChart";
-import { ProductionOverheadCostPerKgChart } from "./productionOverheadCostPerKgChart";
-import { SalesPerKgChart } from "./salesPerKgChart";
-import { ElectricityCostPerKgChartService } from "./electricityCostPerKgChart/electricityCostPerKgChart.service";
-import { LabourCostPerKgChartService } from "./labourCostPerKgChart/labourCostPerKgChart.service";
-import { MaterialCostPerKgChartService } from "./materialCostPerKgChart/materialCostPerKgChart.service";
-import { ProductionOverheadCostPerKgChartService } from "./productionOverheadCostPerKgChart/productionOverheadCostPerKgChart.service";
-import { SalesPerKgChartService } from "./salesPerKgChart/salesPerKgChart.service";
-import { ScrapCostPerKgChartService } from "./scrapCostPerKgChart/scrapCostPerKgChart.service";
-import { ScrapCostPerKgChart } from "./scrapCostPerKgChart";
-import { PanelModule } from "primeng/primeng";
-import { ChartService } from "../chart/chart.service";
+import { ElectricityCostPerKgChart } from './electricityCostPerKgChart';
+import { LabourCostPerKgChart } from './labourCostPerKgChart';
+import { MaterialCostPerKgChart } from './materialCostPerKgChart';
+import { ProductionOverheadCostPerKgChart } from './productionOverheadCostPerKgChart';
+import { SalesPerKgChart } from './salesPerKgChart';
+import { ElectricityCostPerKgChartService } from './electricityCostPerKgChart/electricityCostPerKgChart.service';
+import { LabourCostPerKgChartService } from './labourCostPerKgChart/labourCostPerKgChart.service';
+import { MaterialCostPerKgChartService } from './materialCostPerKgChart/materialCostPerKgChart.service';
+import { ProductionOverheadCostPerKgChartService } from './productionOverheadCostPerKgChart/productionOverheadCostPerKgChart.service';
+import { SalesPerKgChartService } from './salesPerKgChart/salesPerKgChart.service';
+import { ScrapCostPerKgChartService } from './scrapCostPerKgChart/scrapCostPerKgChart.service';
+import { ScrapCostPerKgChart } from './scrapCostPerKgChart';
+import { PanelModule } from 'primeng/primeng';
+import { ChartService } from '../chart/chart.service';
 
 @NgModule({
   imports: [
@@ -96,11 +80,6 @@ import { ChartService } from "../chart/chart.service";
     routing
   ],
   declarations: [
-    PopularApp,
-    PieChart,
-    TrafficChart,
-    UsersMap,
-    LineChart,
     AbsenteeismChart,
     ScrapChart,
     MtbfChart,
@@ -131,15 +110,9 @@ import { ChartService } from "../chart/chart.service";
     ReworkScrapProductionChart,
     ScheduleAdherenceThreeMonthsChart,
     ScheduleAdherenceFactorySixMonthsChart,
-    Feed,
-    Todo,
-    Calendar,
     Dashboard
   ],
   providers: [
-    CalendarService,
-    FeedService,
-    LineChartService,
     AbsenteeismChartService,
     ScrapChartService,
     MtbfChartService,
@@ -170,10 +143,6 @@ import { ChartService } from "../chart/chart.service";
     ReworkScrapProductionChartService,
     ScheduleAdherenceThreeMonthsChartService,
     ScheduleAdherenceFactorySixMonthsChartService,
-    PieChartService,
-    TodoService,
-    TrafficChartService,
-    UsersMapService,
     ChartService
   ]
 })
