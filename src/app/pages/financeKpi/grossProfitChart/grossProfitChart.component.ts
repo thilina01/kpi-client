@@ -29,6 +29,7 @@ export class GrossProfitChart {
     this.chartService.getMonthlyGrossProfit(startDateText, endDateText).subscribe((data) => {
       this.amChart.dataProvider = data.json();
       this.amChart.validateData();
+      this.chartService.fillTable(this.amChart);
     });
   }
 
