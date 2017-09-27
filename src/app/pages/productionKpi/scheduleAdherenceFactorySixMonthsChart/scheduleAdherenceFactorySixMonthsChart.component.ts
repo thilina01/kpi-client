@@ -19,8 +19,6 @@ export class ScheduleAdherenceFactorySixMonthsChart {
   chartData = {
     "type": "serial",
     "theme": "blur",
-    "depth3D": 20,
-    "angle": 30,
     "dataProvider": [],
     creditsPosition: 'top-right',
     "valueAxes": [{
@@ -38,7 +36,7 @@ export class ScheduleAdherenceFactorySixMonthsChart {
       "type": "column",
       "valueField": "adherence",
       "labelText": "[[adherence]]%",
-        "title": "Adherence"
+      "title": "Adherence"
     }],
     "chartCursor": {
       "categoryBalloonEnabled": false,
@@ -54,28 +52,34 @@ export class ScheduleAdherenceFactorySixMonthsChart {
       color: this.layoutColors.defaultText,
       axisColor: this.layoutColors.defaultText
     },
-      "legend": {
-        "position": "top",
-        "valueWidth": 100,
-        "valueAlign": "left"
-      }
+    "legend": {
+      "position": "top",
+      "valueWidth": 100,
+      "valueAlign": "left"
+    },
+    'dataTableId':'scheduleAdherencechartdata',
+    'autoMargins': false,
+    'marginLeft': 100,
+    'marginRight': 0,
+    'marginBottom': 25
   };
 
   amChart: any;
   constructor(private baConfig: BaThemeConfigProvider, private chartService: ChartService) {
     let startDate = new Date();
     startDate.setMonth(startDate.getMonth() - 6);
-    let monthText :string; 
+    let monthText: string;
     monthText = ((startDate.getMonth() + 1) < 10 ? "0" + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + "";
-    let startDateText = startDate.getFullYear()+"-"+monthText.slice(-2)+"-01";
-    
+    let startDateText = startDate.getFullYear() + "-" + monthText.slice(-2) + "-01";
+
     let endDate = new Date();
     //endDate.setMonth(endDate.getMonth() - 6);
-    let endDateText = endDate.getFullYear()+"-"+(endDate.getMonth()<10?"0"+endDate.getMonth():endDate.getMonth())+"-"+(new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
+    let endDateText = endDate.getFullYear() + "-" + (endDate.getMonth() < 10 ? "0" + endDate.getMonth() : endDate.getMonth()) + "-" + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyScheduleAdherence(startDateText, endDateText).subscribe((data) => {
       this.amChart.dataProvider = data.json();
       this.amChart.validateData();
+      this.chartService.fillTable(this.amChart);
     });
   }
 
