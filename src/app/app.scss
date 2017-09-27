@@ -39,6 +39,7 @@ select option {
 
 .chartdata table {
   width: 100%;
+  table-layout: fixed;
 }
 
 .chartdata table th,
