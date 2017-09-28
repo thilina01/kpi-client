@@ -17,9 +17,9 @@ export class DispatchScheduleTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: DispatchScheduleService, 
-    private router: Router, 
-    private confirmationService: ConfirmationService, 
+  constructor(protected service: DispatchScheduleService,
+    private router: Router,
+    private confirmationService: ConfirmationService,
     private sharedService: SharedService) {
     this.loadData()
   }
@@ -30,7 +30,7 @@ export class DispatchScheduleTable {
       this.totalRecords = data.totalElements;
     });
   }
-  
+
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
     this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
@@ -47,7 +47,7 @@ export class DispatchScheduleTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/dispatchSchedule/form/' + data.id]);
+    //this.router.navigate(['/pages/dispatchSchedule/form/' + data.id]);
   }
 
   navigateToForm(id: any): void {
