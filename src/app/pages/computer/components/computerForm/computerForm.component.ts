@@ -36,8 +36,8 @@ export class ComputerForm {
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
-            brand: '',
-            model: '',
+            brand: ['', Validators.required],
+            model: ['', Validators.required],
             ram: '',
             processor: '',            
             hdd1: '',
@@ -49,8 +49,8 @@ export class ComputerForm {
             value: '',
             code: ['', Validators.required],
             purchaseDate: [this.purchaseDate, Validators.required],
-            transferDate: [this.transferDate, Validators.required],
-            employee: [this.employee, Validators.required],
+            transferDate: '',
+            employee: [this.employee, ''],
             computerType: [this.computerType, Validators.required]
         });
     }
