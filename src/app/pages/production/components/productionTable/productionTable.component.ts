@@ -1,9 +1,13 @@
 
 import { SharedService } from '../../../../services/shared.service';
-import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { ProductionService } from "../../production.service";
+import { DataTable } from "primeng/components/datatable/datatable";
+import { Observable } from "rxjs/Rx";
+import { SectionService } from '../../../section/section.service';
+import { ShiftService } from '../../../shift/shift.service';
 
 @Component({
     selector: 'production-table',
@@ -12,12 +16,18 @@ import { ProductionService } from "../../production.service";
     templateUrl: './productionTable.html',
 })
 export class ProductionTable {
-
-    //msgs: Message[];
+    @ViewChild(DataTable) dataTable: DataTable;
     totalRecords: number;
     production = {};
     rows = [];
     timeout: any;
+    sections: any;
+    section: any = { id: 0, "code": "ALL", "name": "All Sections" }
+    shifts: any;
+    shift: any = { id: 0, "code": "ALL", "name": "All Shifts" }
+    startDate: Date;
+    endDate: Date;
+    //msgs: Message[];
     columns = [
         { prop: 'id', name: 'ID' },
         { prop: 'code', name: 'Code' },
@@ -25,12 +35,29 @@ export class ProductionTable {
         { prop: 'productionType.name', name: 'Type' }
     ];
 
-    constructor(protected service: ProductionService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: ProductionService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
+        private sectionService: SectionService,
+        private shiftService: ShiftService,
         private sharedService: SharedService) {
         this.loadData();
+        this.getSections();
+        this.getShifts();
         //sharedService.msgs$.subscribe(msgs=>this.msgs = msgs);
+    }
+
+    getSections(): void {
+        this.sectionService.getCombo().subscribe(sections => {
+            this.sections = sections;
+            this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections" });
+        });
+    }
+    getShifts(): void {
+        this.shiftService.getCombo().subscribe(shifts => {
+            this.shifts = shifts;
+            this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts" });
+        });
     }
 
     loadData() {
@@ -40,12 +67,49 @@ export class ProductionTable {
         });
     }
 
-    selected(data: any) {
+    search(first: number, pageSize: number): void {
+        if (this.startDate != undefined &&
+            this.endDate != undefined &&
+            this.section != undefined &&
+            this.section.id != undefined &&
+            this.shift != undefined &&
+            this.shift.id != undefined) {
+            if (this.section.id == 0 && this.shift.id == 0) {
+                this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+            } else if (this.section.id == 0 && this.shift.id > 0) {
+                this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+
+            } else if (this.section.id > 0 && this.shift.id == 0) {
+                this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+            } else {
+                this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+            }
+        } else {
+            this.service.getPage(first, pageSize).subscribe((data: any) => {
+                this.fillTable(data);
+            });
+        }
+    }
+
+    fillTable(data: any) {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
+    }
+
+    //selected(data: any) {
         //this.service.setSelected(data.id);
         //        this.service.getSelected().then((data) => {
         //            this.production = data;
         //        });
-    }
+    //}
     onRowDblclick(data: any): void {
         this.router.navigate(['/pages/production/form/' + data.id]);
     }
@@ -70,17 +134,14 @@ export class ProductionTable {
     }
 
     lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
-        this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-            this.rows = data.content;
-            this.totalRecords = data.totalElements;
-        });
+        console.log(event);
+        this.search((event.first / event.rows), event.rows);
+      }
         /*
         this.service.getAll().then((data) => {
           this.rows = data;
         });*/
-    }
-
+    
     onPage(event) {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
@@ -88,6 +149,60 @@ export class ProductionTable {
         }, 100);
     }
     navigateToForm(id: any): void {
-    this.router.navigate(['/pages/plan']);
-  }
+        this.router.navigate(['/pages/plan']);
+    }
+    /*================== Shift Filter ===================*/
+    filteredShifts: any; 
+
+    filterShifts(event) {
+        let query = event.query.toLowerCase();
+        this.filteredShifts = [];
+        for (let i = 0; i < this.shifts.length; i++) {
+            let shift = this.shifts[i];
+            if (shift.code.toLowerCase().indexOf(query) == 0) {
+                this.filteredShifts.push(shift);
+            }
+        }
+    }
+
+    handleShiftDropdownClick() {
+        this.filteredShifts = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredShifts = this.shifts;
+        }, 100)
+    }
+
+    onShiftSelect(shift: any) {
+        console.log(event)
+    }
+    /*================== End Of Shift Filter ===================*/
+    /*================== Section Filter ===================*/
+
+    filteredSections: any[];
+
+    filterSections(event) {
+        let query = event.query.toLowerCase();
+        this.filteredSections = [];
+        for (let i = 0; i < this.sections.length; i++) {
+            let section = this.sections[i];
+            if (section.code.toLowerCase().indexOf(query) == 0) {
+                this.filteredSections.push(section);
+            }
+        }
+    }
+
+    handleSectionDropdownClick() {
+        this.filteredSections = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredSections = this.sections;
+        }, 100)
+    }
+
+    onSectionSelect(section: any) {
+        console.log(event)
+    }
+    /*================== End Of Section Filter ===================*/
 }
+

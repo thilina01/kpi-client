@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule,PanelModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule } from 'primeng/primeng';
 import { MaterialModule } from '@angular/material';
 
 import { Production } from './production.component';
@@ -16,6 +16,7 @@ import { ControlPointService } from "../controlPoint/controlPoint.service";
 import { LossTypeService } from "../lossType/lossType.service";
 import { ProductionService } from "./production.service";
 import { ShiftService } from "../shift/shift.service";
+import { SectionService } from '../section/section.service';
 
 
 @NgModule({
@@ -30,6 +31,8 @@ import { ShiftService } from "../shift/shift.service";
     PanelModule,
     MaterialModule,
     SharedModule,
+    AutoCompleteModule,
+    
     routing
   ],
   declarations: [
@@ -37,6 +40,12 @@ import { ShiftService } from "../shift/shift.service";
     ProductionTable,
     ProductionForm
   ],
-  providers: [ProductionService, ShiftService, ControlPointService, LossTypeService]
+  providers: [
+    ProductionService,
+    ShiftService,
+    ControlPointService,
+    SectionService,
+    LossTypeService
+  ]
 })
 export class ProductionModule { }

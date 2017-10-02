@@ -17,6 +17,23 @@ export class ProductionService extends MasterService {
       .post(this.apiUrl + "ByProductionDateAndShiftAndControlPoint", JSON.stringify(object), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+  getByProductionDurationPage(startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + "productionDurationPage?startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
+      .catch(err => this.handleError(err));
+  }
+
+  getByProductionDurationAndShiftPage(startDate, endDate, shift, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + "productionDurationAndShiftPage?startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .catch(err => this.handleError(err));
+  }
+  getBySectionAndProductionDurationPage(section, startDate, endDate, page, size):  Observable<any> {
+    return this.http.get(this.apiUrl + "sectionAndProductionDurationPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
+      .catch(err => this.handleError(err));
+  }
+      getBySectionAndProductionDurationAndShiftPage(section, startDate, endDate, shift, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + "sectionAndProductionDurationAndShiftPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .catch(err => this.handleError(err));
+  }
 }
 // import { Injectable, Inject } from '@angular/core';
 // import { Headers, Http } from '@angular/http';
