@@ -5,16 +5,16 @@
         <h4>Dispatch Schedule Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/dispatchSchedule/table"> 
+        <a routerLink="/pages/dispatchSchedule/table">
                 <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
                 </button>
               </a>
       </div>
     </div>
   </p-header>
   <div class="row">
-    <div class="col-md-4 col-sm-6 col-xs-12">
+    <div class="col">
       <label>PO Number</label><br/>
       <p-autoComplete [(ngModel)]="salesOrder" [dropdown]="true" field="display" [suggestions]="filteredSalesOrders" (completeMethod)="filterSalesOrders($event)"
         [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSalesOrderDropdownClick($event)" (onSelect)="onSalesOrderSelect($event)">
@@ -24,6 +24,14 @@
           </div>
         </ng-template>
       </p-autoComplete>
+      <a *ngIf="salesOrder!=undefined" (click)="print()" href="javascript:void(0)" title="Print production confirmation ">
+          &nbsp;
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-print" class="fa fa-print"></i>
+          </button>
+
+          &nbsp;
+        </a>
       <br/>
       <br/>
     </div>
@@ -51,7 +59,7 @@
   <div class="row" *ngIf="salesOrder!=undefined">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <p-dataTable #dt [value]="salesOrder.salesOrderItemList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
-       <p-column field="id" header="ID"></p-column>
+        <p-column field="id" header="ID"></p-column>
         <p-column field="customerItem.code" header="Customer Item"></p-column>
         <p-column field="customerItem.item.code" header="Item"></p-column>
         <p-column field="customerItem.item.description" header="Description"></p-column>
@@ -79,7 +87,7 @@
   <div class="row" *ngIf="salesOrder!=undefined">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
       <p-dataTable #dt [value]="dispatchScheduleList" [rows]="20" [responsive]="true" resizableColumns="true">
-       <p-column field="id" header="ID"></p-column>
+        <p-column field="id" header="ID"></p-column>
         <p-column field="salesOrderItem.customerItem.code" header="Customer Item"></p-column>
         <p-column field="job.item.code" header="Item"></p-column>
         <p-column field="job.jobNo" header="Job"></p-column>
@@ -125,15 +133,16 @@
         <div class="col-md-6 col-sm-6 col-xs-12">
           <label for="job">Job</label><br/>
           <p-autoComplete formControlName="job" field="display" [dropdown]="true" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
-            [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)" appendTo="body">
+            [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)"
+            appendTo="body">
             <ng-template let-option pTemplate="option">
               <div class="ui-helper-clearfix">
                 <div>{{option.code}} : {{option.name}}</div>
               </div>
             </ng-template>
           </p-autoComplete>
-        </div>        
-        <div class="col-md-6 col-sm-6 col-xs-12" >
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
           <div class="ui-inputgroup">
             <label for="jobNumber">Job Number</label><br/>
             <input type="text" pInputText [(ngModel)]="jobNumber" [ngModelOptions]="{standalone: true}" [disabled]="!(formGroup.value.job!=null && formGroup.value.job.id == 0)">
@@ -183,3 +192,5 @@
   </div>
 </div>
 -->
+
+<print [(id)]='salesOrderId'></print>

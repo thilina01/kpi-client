@@ -100,6 +100,11 @@ export class DispatchScheduleForm {
     );
   }
 
+  salesOrderId: number = 0;
+  print() {this.salesOrderId = 0;
+    this.salesOrderId = this.salesOrder.id;
+  }
+
   // loadForm(data: any) {
   //   if (data != null) {
   //     this.dispatchSchedule = data;

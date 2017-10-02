@@ -16,6 +16,9 @@ import { CustomerItemService } from "../customerItem/customerItem.service";
 import { CustomerPoNumberService } from "../customerPoNumber/customerPoNumber.service";
 import { SalesOrderService } from "../salesOrder/salesOrder.service";
 import { JobService } from "../job/job.service";
+import { Print } from './components/dispatchSchedulePrint/print.component';
+import { PrintService } from '../../services/print.service';
+import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 
 
 @NgModule({
@@ -37,15 +40,18 @@ import { JobService } from "../job/job.service";
   declarations: [
     DispatchSchedule,
     DispatchScheduleTable,
-    DispatchScheduleForm
+    DispatchScheduleForm,
+    Print
   ],
   providers: [
-    DispatchScheduleService,    
+    DispatchScheduleService,
     ItemService,
     CustomerItemService,
     SalesOrderService,
     JobService,
-    OperationService
+    PrintService,
+    OperationService,
+    DispatchNoteService
   ]
 })
 export class DispatchScheduleModule { }
