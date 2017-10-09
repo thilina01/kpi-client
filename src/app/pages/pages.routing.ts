@@ -78,6 +78,7 @@ export const routes: Routes = [
       { path: 'notifyParty', canActivate: [AuthGuard], loadChildren: 'app/pages/notifyParty/notifyParty.module#NotifyPartyModule' },
       { path: 'operation', canActivate: [AuthGuard], loadChildren: 'app/pages/operation/operation.module#OperationModule' },
       { path: 'organization', canActivate: [AuthGuard], loadChildren: 'app/pages/organization/organization.module#OrganizationModule' },
+      { path: 'onTimeDelivery', canActivate: [AuthGuard], loadChildren: 'app/pages/onTimeDelivery/onTimeDelivery.module#OnTimeDeliveryModule' },
       { path: 'operationType', canActivate: [AuthGuard], loadChildren: 'app/pages/operationType/operationType.module#OperationTypeModule' },
       { path: 'paint', canActivate: [AuthGuard], loadChildren: 'app/pages/paint/paint.module#PaintModule' },
       { path: 'paymentTerm', canActivate: [AuthGuard], loadChildren: 'app/pages/paymentTerm/paymentTerm.module#PaymentTermModule' },
