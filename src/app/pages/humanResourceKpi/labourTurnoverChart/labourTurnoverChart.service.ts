@@ -10,7 +10,7 @@ export class LabourTurnoverChartService {
   getChartData(data) {
 
     let layoutColors = this._baConfig.get().colors;
-    let graphColor = this._baConfig.get().colors.custom.humanResourceKpiLabourTurnoverChart;
+    let graphColor = this._baConfig.get().colors.custom.dashboardLabourTurnoverChart;
 
   let graphMap = {};
   let graphs = [];
@@ -30,7 +30,7 @@ export class LabourTurnoverChartService {
         balloonText: '<b>' + dataItem.source + '</b>: [[value]]%'
       });
     }
-    //create a new object for the month if not already created    
+    //create a new object for the month if not already created
     if (dataMap[dataItem.month] === undefined) {
       dataMap[dataItem.month] = {month: dataItem.month};
     }
@@ -47,14 +47,14 @@ export class LabourTurnoverChartService {
     bullet: 'round',
     balloonText: '<b>Target</b>: [[value]]'
   });
-  
+
   //convert dataMap to an array sorted by date
   Object.keys(dataMap).sort(function(lhs, rhs) {
     return new Date(lhs).getDate() - new Date(rhs).getDate();
   }).forEach(function(month) {
     dataProvider.push(dataMap[month]);
   });
-    
+
 
     return {
       "type": "serial",
@@ -75,7 +75,7 @@ export class LabourTurnoverChartService {
         "position": "right",
         "useGraphSettings": true,
         "markerSize": 10
-      },      
+      },
       "dataProvider":dataProvider ,
       "valueAxes": [{
         "id": "v1",

@@ -10,7 +10,7 @@ export class AbsenteeismChartService {
  getChartData(data) {
 
     let layoutColors = this._baConfig.get().colors;
-    let graphColor = this._baConfig.get().colors.custom.humanResourceKpiAbsenteeismChart;
+    let graphColor = this._baConfig.get().colors.custom.dashboardLineChart;
 
   let graphMap = {};
   let graphs = [];
@@ -30,7 +30,7 @@ export class AbsenteeismChartService {
         balloonText: '<b>' + dataItem.source + '</b>: [[value]]%'
       });
     }
-    //create a new object for the month if not already created    
+    //create a new object for the month if not already created
     if (dataMap[dataItem.month] === undefined) {
       dataMap[dataItem.month] = {month: dataItem.month};
     }
@@ -47,14 +47,14 @@ export class AbsenteeismChartService {
     bullet: 'round',
     balloonText: '<b>Target</b>: [[value]]'
   });
-  
+
   //convert dataMap to an array sorted by date
   Object.keys(dataMap).sort(function(lhs, rhs) {
     return new Date(lhs).getDate() - new Date(rhs).getDate();
   }).forEach(function(month) {
     dataProvider.push(dataMap[month]);
   });
-    
+
     return {
       "type": "serial",
       "addClassNames": true,
@@ -74,7 +74,7 @@ export class AbsenteeismChartService {
         "position": "right",
         "useGraphSettings": true,
         "markerSize": 10
-      },      
+      },
       "dataProvider":dataProvider ,
       "valueAxes": [{
         "id": "v1",

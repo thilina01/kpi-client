@@ -1,18 +1,6 @@
-<div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-		<p-panel>
-			<p-header>
-				<div class="ui-helper-clearfix center">
-					<span class="ui-panel-title">Labour Turnover</span>
-				</div>
-			</p-header>
-			<labour-turnover-chart></labour-turnover-chart>
-		</p-panel>
-	</div>
-</div>
-<br/>
-<div class="row">
-	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+<ba-am-chart [hidden]="true" ></ba-am-chart>
+<p-tabView>
+	<p-tabPanel header="Absenteeism" leftIcon="fa-line-chart ">
 		<p-panel>
 			<p-header>
 				<div class="ui-helper-clearfix center">
@@ -21,5 +9,17 @@
 			</p-header>
 			<absenteeism-chart></absenteeism-chart>
 		</p-panel>
-	</div>
-</div>
+	</p-tabPanel>
+	<p-tabPanel header="Labour Turnovert" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">Labour Turnover</span>
+				</div>
+			</p-header>
+			<labour-turnover-chart></labour-turnover-chart>
+		</p-panel>
+	</p-tabPanel>
+</p-tabView>
+
+

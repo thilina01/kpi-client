@@ -37,8 +37,10 @@ export class BaAmChart {
   }
 
   ngAfterViewInit() {
-    let chart = AmCharts.makeChart(this._selector.nativeElement, this.baAmChartConfiguration);
-    this.onChartReady.emit(chart);
+    if (this.baAmChartConfiguration != undefined) {
+      let chart = AmCharts.makeChart(this._selector.nativeElement, this.baAmChartConfiguration);
+      this.onChartReady.emit(chart);
+    }
   }
 
   private _loadChartsLib(): void {
