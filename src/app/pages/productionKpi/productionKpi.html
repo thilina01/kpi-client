@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
 	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 		<p-panel>
 			<p-header>
@@ -10,4 +10,39 @@
 		</p-panel>
 	</div>
 </div>
-<br/>
+<br/><div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">On Time Delivery</span>
+				</div>
+			</p-header>
+			<on-time-delivery-chart></on-time-delivery-chart>
+		</p-panel>
+	</div>
+</div>
+<br/> -->
+
+<p-tabView>
+	<p-tabPanel header="Schedule Adherence" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">Schedule Adherence</span>
+				</div>
+			</p-header>
+			<schedule-adherence-factory-six-months-chart></schedule-adherence-factory-six-months-chart>
+		</p-panel>
+	</p-tabPanel>
+	<p-tabPanel header="On Time Delivery" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">On Time Delivery</span>
+				</div>
+			</p-header>
+			<on-time-delivery-chart></on-time-delivery-chart>
+		</p-panel>
+	</p-tabPanel>
+</p-tabView>

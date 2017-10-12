@@ -31,6 +31,7 @@ export class ChartService {
 
     // create a table
     let holder = document.getElementById(chart.dataTableId);
+    holder.innerHTML = '';
     let table = document.createElement('table');
     holder.appendChild(table);
     let tr, td;
@@ -119,6 +120,16 @@ export class ChartService {
 
   getMonthlyScheduleAdherence(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'monthlyScheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
+      .catch(err => this.handleError(err));
+  }
+
+  getMonthlyOnTimeDelivery(startDate: string, endDate: string): Observable<any> {
+    return this.http.get(this.apiUrl + 'monthlyOnTimeDelivery?startDate=' + startDate + '&endDate=' + endDate)
+      .catch(err => this.handleError(err));
+  }
+
+  getMonthlyOnTimeDeliveryByCustomer(startDate: string, endDate: string, customer: string): Observable<any> {
+    return this.http.get(this.apiUrl + 'monthlyOnTimeDeliveryByCustomer?startDate=' + startDate + '&endDate=' + endDate + '&customer=' + customer)
       .catch(err => this.handleError(err));
   }
 

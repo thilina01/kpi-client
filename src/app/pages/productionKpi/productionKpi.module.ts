@@ -7,12 +7,13 @@ import { MaterialModule } from '@angular/material';
 import { ProductionKpi } from './productionKpi.component';
 import { routing } from './productionKpi.routing';
 
-
-
-import { PanelModule } from "primeng/primeng";
-import { ScheduleAdherenceFactorySixMonthsChart } from "./scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.component";
-import { ScheduleAdherenceFactorySixMonthsChartService } from "./scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.service";
-import { ChartService } from "../chart/chart.service";
+import { PanelModule, AutoCompleteModule, TabViewModule } from 'primeng/primeng';
+import { ScheduleAdherenceFactorySixMonthsChart } from './scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.component';
+import { ScheduleAdherenceFactorySixMonthsChartService } from './scheduleAdherenceFactorySixMonthsChart/scheduleAdherenceFactorySixMonthsChart.service';
+import { ChartService } from '../chart/chart.service';
+import { OnTimeDeliveryChart } from './onTimeDeliveryChart/onTimeDeliveryChart.component';
+import { OnTimeDeliveryChartService } from './onTimeDeliveryChart/onTimeDeliveryChart.service';
+import { CustomerService } from '../customer/customer.service';
 
 @NgModule({
   imports: [
@@ -21,15 +22,20 @@ import { ChartService } from "../chart/chart.service";
     NgaModule,
     MaterialModule,
     PanelModule,
+    TabViewModule,
+    AutoCompleteModule,
     routing
   ],
   declarations: [
     ScheduleAdherenceFactorySixMonthsChart,
+    OnTimeDeliveryChart,
     ProductionKpi
   ],
   providers: [
     ScheduleAdherenceFactorySixMonthsChartService,
-    ChartService
+    OnTimeDeliveryChartService,
+    ChartService,
+    CustomerService
   ]
 })
 export class ProductionKpiModule { }
