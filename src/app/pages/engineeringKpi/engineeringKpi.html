@@ -1,0 +1,66 @@
+<ba-am-chart [hidden]="true" ></ba-am-chart>
+<p-tabView>
+	<p-tabPanel header="MTBF/MTTR 6 Months" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">MTBF/MTTR 6 Months</span>
+				</div>
+			</p-header>
+			<mtbf-mttr-6months-chart></mtbf-mttr-6months-chart>
+		</p-panel>
+	</p-tabPanel>
+	<p-tabPanel header="MDT 6 Months" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">MDT 6 Months</span>
+				</div>
+			</p-header>
+			<mdt-6Months-chart></mdt-6Months-chart>
+		</p-panel>
+	</p-tabPanel>
+	<p-tabPanel header="KWH / KVA Main" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">KWH / KVA Main</span>
+				</div>
+			</p-header>
+			<kwh-kva-main-chart [dataSource]="'main'" [location]="'1'"></kwh-kva-main-chart>
+		</p-panel>
+	</p-tabPanel>
+	<p-tabPanel header="Energy Cost Main" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">Energy Cost Main</span>
+				</div>
+			</p-header>
+			<energy-cost-main-chart [dataSource]="'main'" [location]="'1'"></energy-cost-main-chart>
+		</p-panel>
+	</p-tabPanel>
+	<p-tabPanel header="KWH / KVA Paint" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">KWH / KVA Paint</span>
+				</div>
+			</p-header>
+			<kwh-kva-main-chart [dataSource]="'paint'" [location]="'1'"></kwh-kva-main-chart>
+		</p-panel>
+	</p-tabPanel>
+	<p-tabPanel header="Energy Cost Paint" leftIcon="fa-line-chart ">
+		<p-panel>
+			<p-header>
+				<div class="ui-helper-clearfix center">
+					<span class="ui-panel-title">Energy Cost Paint</span>
+				</div>
+			</p-header>
+			<energy-cost-main-chart [dataSource]="'paint'" [location]="'1'"></energy-cost-main-chart>
+		</p-panel>
+	</p-tabPanel>
+
+</p-tabView>
+
+
