@@ -26,13 +26,12 @@ export class MtbfMttr6MonthsChartService {
       },
 
       "dataProvider": [
-        { "month": " Feb(2017)  ", "mtbf": 199.18, "mttr": 1.40 },
-        { "month": " Mar(2017)  ", "mtbf": 181.50, "mttr": 1.89 },
         { "month": " Apr(2017)  ", "mtbf": 253.02, "mttr": 1.54 },
         { "month": " May(2017)  ", "mtbf": 369.64, "mttr": 2.06 },
         { "month": " June(2017)  ", "mtbf": 79.27, "mttr": 1.38 },
         { "month": " July(2017)  ", "mtbf": 163.56, "mttr": 1.15 },
-        { "month": " Aug(2017)  ", "mtbf": 124.62, "mttr": 0.91 }
+        { "month": " Aug(2017)  ", "mtbf": 124.62, "mttr": 0.91 },
+        { "month": " Sep(2017)  ", "mtbf": 121.65, "mttr": 12.97 }
       ],
       "valueAxes": [{
         "id":"v1",
