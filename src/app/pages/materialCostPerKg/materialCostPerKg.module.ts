@@ -12,7 +12,7 @@ import { MaterialCostPerKgTable } from './components/materialCostPerKgTable/mate
 import { MaterialCostPerKgForm } from './components/materialCostPerKgForm/materialCostPerKgForm.component';
 
 import { routing } from './materialCostPerKg.routing';
-import { MaterialCostPerKgService } from "./materialCostPerKg.service";
+import { MaterialCostPerKgService } from './materialCostPerKg.service';
 
 
 @NgModule({

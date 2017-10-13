@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { MaterialCostPerKgService } from "../../materialCostPerKg.service";
+import { MaterialCostPerKgService } from '../../materialCostPerKg.service';
 
 @Component({
     selector: 'material-cost-per-kg-form',
