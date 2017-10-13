@@ -13,68 +13,68 @@ export class Mdt6MonthsChartService {
     let graphColor = this._baConfig.get().colors.custom.dashboardMdt6MonthsChart;
 
     return {
-      "type": "serial",
-      "addClassNames": true,
-      "theme": "blur",
-      "depth3D": 20,
-      "angle": 30,
-      "balloon": {
-        "adjustBorderColor": false,
-        "horizontalPadding": 10,
-        "verticalPadding": 8,
-        "color": "#ffffff"
+      'type': 'serial',
+      'addClassNames': true,
+      'theme': 'blur',
+      'depth3D': 20,
+      'angle': 30,
+      'balloon': {
+        'adjustBorderColor': false,
+        'horizontalPadding': 10,
+        'verticalPadding': 8,
+        'color': '#ffffff'
       },
 
-      "dataProvider": [
-        { "month": " Apr(2017)  ", "mdt": 0.61, "target": 1.1 },
-        { "month": " May(2017)  ", "mdt": 0.60, "target": 1.1 },
-        { "month": " June(2017)  ", "mdt": 1.74, "target": 1.1 },
-        { "month": " July(2017)  ", "mdt": 0.7, "target": 1.1 },
-        { "month": " Aug(2017)  ", "mdt": 0.7, "target": 1.1 },
-        { "month": " Sep(2017)  ", "mdt": 10.7, "target": 1.1 }
+      'dataProvider': [
+        { 'month': ' Apr(2017)  ', 'mdt': 0.61, 'target': 1.1 },
+        { 'month': ' May(2017)  ', 'mdt': 0.60, 'target': 1.1 },
+        { 'month': ' June(2017)  ', 'mdt': 1.74, 'target': 1.1 },
+        { 'month': ' July(2017)  ', 'mdt': 0.7, 'target': 1.1 },
+        { 'month': ' Aug(2017)  ', 'mdt': 0.7, 'target': 1.1 },
+        { 'month': ' Sep(2017)  ', 'mdt': 1.0, 'target': 1.1 }
 
       ],
-      "valueAxes": [{
-        "id":"v1",
-        "axisAlpha": 0,
-        "position": "left"
+      'valueAxes': [{
+        'id':'v1',
+        'axisAlpha': 0,
+        'position': 'left'
       }],
-      "startDuration": 1,
-      "graphs": [{
-        "alphaField": "alpha",
-        "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
-        "fillAlphas": 1,
-        "title": "MDT",
-        "type": "column",
-        "valueField": "mdt",
-        "labelText": "[[mdt]]%"
+      'startDuration': 1,
+      'graphs': [{
+        'alphaField': 'alpha',
+        'balloonText': '<span style="font-size:12px;">[[title]] in [[category]]:<br><span style="font-size:20px;">[[value]]</span> [[additional]]</span>',
+        'fillAlphas': 1,
+        'title': 'MDT',
+        'type': 'column',
+        'valueField': 'mdt',
+        'labelText': '[[mdt]]%'
       }, {
-        "id": "graph2",
-        "balloonText": "<span style='font-size:12px;'>[[title]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
-        "bullet": "round",
-        "lineThickness": 3,
-        "bulletSize": 7,
-        "bulletBorderAlpha": 1,
-        "bulletColor": "#FFFFFF",
-        "useLineColorForBulletBorder": true,
-        "bulletBorderThickness": 3,
-        "fillAlphas": 0,
-        "lineAlpha": 1,
-        "title": "Target",
-        "valueField": "target",
-        "dashLengthField": "dashLengthLine",
-        "labelText": "[[target]]%",
-        //"labelRotation": -30,
-        "labelPosition": "top"
+        'id': 'graph2',
+        'balloonText': '<span style="font-size:12px;">[[title]] in [[category]]:<br><span style="font-size:20px;">[[value]]</span> [[additional]]</span>',
+        'bullet': 'round',
+        'lineThickness': 3,
+        'bulletSize': 7,
+        'bulletBorderAlpha': 1,
+        'bulletColor': '#FFFFFF',
+        'useLineColorForBulletBorder': true,
+        'bulletBorderThickness': 3,
+        'fillAlphas': 0,
+        'lineAlpha': 1,
+        'title': 'Target',
+        'valueField': 'target',
+        'dashLengthField': 'dashLengthLine',
+        'labelText': '[[target]]%',
+        //'labelRotation': -30,
+        'labelPosition': 'top'
       }],
-      "categoryField": "month",
-      "categoryAxis": {
-        "gridPosition": "start",
-        "axisAlpha": 0,
-        "tickLength": 0
+      'categoryField': 'month',
+      'categoryAxis': {
+        'gridPosition': 'start',
+        'axisAlpha': 0,
+        'tickLength': 0
       },
-      "export": {
-        "enabled": true
+      'export': {
+        'enabled': true
       }
     };
   };
