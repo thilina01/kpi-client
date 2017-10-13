@@ -10,7 +10,7 @@ import { OrganizationTable } from './components/organizationTable/organizationTa
 import { OrganizationForm } from './components/organizationForm/organizationForm.component';
 
 import { routing } from './organization.routing';
-import { OrganizationService } from "./organization.service";
+import { OrganizationService } from './organization.service';
 
 
 @NgModule({
