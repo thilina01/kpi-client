@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { DataTable, ConfirmationService } from "primeng/primeng";
+import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service';
 import { DispatchService } from '../../../../services/dispatch.service';
 
