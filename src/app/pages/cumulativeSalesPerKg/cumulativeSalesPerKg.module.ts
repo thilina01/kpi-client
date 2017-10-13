@@ -13,7 +13,7 @@ import { CumulativeSalesPerKgTable } from './components/cumulativeSalesPerKgTabl
 import { CumulativeSalesPerKgForm } from './components/cumulativeSalesPerKgForm/cumulativeSalesPerKgForm.component';
 
 import { routing } from './cumulativeSalesPerKg.routing';
-import { CumulativeSalesPerKgService } from "./cumulativeSalesPerKg.service";
+import { CumulativeSalesPerKgService } from './cumulativeSalesPerKg.service';
 
 
 @NgModule({
