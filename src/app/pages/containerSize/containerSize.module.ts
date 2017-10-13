@@ -10,7 +10,7 @@ import { ContainerSizeTable } from './components/containerSizeTable/containerSiz
 import { ContainerSizeForm } from './components/containerSizeForm/containerSizeForm.component';
 
 import { routing } from './containerSize.routing';
-import { ContainerSizeService } from "./containerSize.service";
+import { ContainerSizeService } from './containerSize.service';
 
 
 @NgModule({
