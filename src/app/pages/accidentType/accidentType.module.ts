@@ -10,8 +10,8 @@ import { AccidentTypeTable } from './components/accidentTypeTable/accidentTypeTa
 import { AccidentTypeForm } from './components/accidentTypeForm/accidentTypeForm.component';
 
 import { routing } from './accidentType.routing';
-import { AccidentTypeService } from "./accidentType.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
+import { AccidentTypeService } from './accidentType.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 
 @NgModule({
