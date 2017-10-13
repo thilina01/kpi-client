@@ -12,7 +12,7 @@ import { FinanceSummaryTable } from './components/financeSummaryTable/financeSum
 import { FinanceSummaryForm } from './components/financeSummaryForm/financeSummaryForm.component';
 
 import { routing } from './financeSummary.routing';
-import { FinanceSummaryService } from "./financeSummary.service";
+import { FinanceSummaryService } from './financeSummary.service';
 
 
 @NgModule({
