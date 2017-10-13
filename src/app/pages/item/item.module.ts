@@ -10,9 +10,9 @@ import { ItemTable } from './components/itemTable/itemTable.component';
 import { ItemForm } from './components/itemForm/itemForm.component';
 
 import { routing } from './item.routing';
-import { ItemService } from "./item.service";
-import { ItemTypeService } from "../itemType/itemType.service";
-import { PaintService } from "../paint/paint.service";
+import { ItemService } from './item.service';
+import { ItemTypeService } from '../itemType/itemType.service';
+import { PaintService } from '../paint/paint.service';
 
 
 @NgModule({
