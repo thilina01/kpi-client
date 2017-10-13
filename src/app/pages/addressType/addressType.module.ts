@@ -10,8 +10,8 @@ import { AddressTypeTable } from './components/addressTypeTable/addressTypeTable
 import { AddressTypeForm } from './components/addressTypeForm/addressTypeForm.component';
 
 import { routing } from './addressType.routing';
-import { AddressTypeService } from "./addressType.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
+import { AddressTypeService } from './addressType.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 
 @NgModule({
