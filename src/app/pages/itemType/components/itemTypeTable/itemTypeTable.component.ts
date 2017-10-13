@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { ItemTypeService } from "../../itemType.service";
+import { ItemTypeService } from '../../itemType.service';
 
 @Component({
   selector: 'item-type-table',
