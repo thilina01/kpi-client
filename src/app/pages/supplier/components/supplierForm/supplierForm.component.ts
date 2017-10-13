@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { SupplierService } from "../../supplier.service";
+import { SupplierService } from '../../supplier.service';
 import { SupplierTypeService } from '../../../supplierType/supplierType.service';
 import { PaymentTermService } from '../../../paymentTerm/paymentTerm.service';
 import { CurrencyService } from '../../../currency/currency.service';
@@ -156,8 +156,8 @@ export class SupplierForm {
     setDisplayOfSupplierType() {
         let supplierType = this.formGroup.value.supplierType;
         if (supplierType != null && supplierType != undefined) {
-            let display = supplierType.code != null && supplierType.code != undefined ? supplierType.code + " : " : "";
-            display += supplierType.name != null && supplierType.name != undefined ? supplierType.name : "";
+            let display = supplierType.code != null && supplierType.code != undefined ? supplierType.code + ' : ' : '';
+            display += supplierType.name != null && supplierType.name != undefined ? supplierType.name : '';
             this.formGroup.value.supplierType.display = display;
         }
     }
@@ -190,8 +190,8 @@ export class SupplierForm {
     setDisplayOfPaymentTerm() {
         let paymentTerm = this.formGroup.value.paymentTerm;
         if (paymentTerm != null && paymentTerm != undefined) {
-            let display = paymentTerm.code != null && paymentTerm.code != undefined ? paymentTerm.code + " : " : "";
-            display += paymentTerm.name != null && paymentTerm.name != undefined ? paymentTerm.name : "";
+            let display = paymentTerm.code != null && paymentTerm.code != undefined ? paymentTerm.code + ' : ' : '';
+            display += paymentTerm.name != null && paymentTerm.name != undefined ? paymentTerm.name : '';
             this.formGroup.value.paymentTerm.display = display;
         }
     }
@@ -225,8 +225,8 @@ export class SupplierForm {
     setDisplayOfCurrency() {
         let currency = this.formGroup.value.currency;
         if (currency != null && currency != undefined) {
-            let display = currency.code != null && currency.code != undefined ? currency.code + " : " : "";
-            display += currency.name != null && currency.name != undefined ? currency.name : "";
+            let display = currency.code != null && currency.code != undefined ? currency.code + ' : ' : '';
+            display += currency.name != null && currency.name != undefined ? currency.name : '';
             this.formGroup.value.currency.display = display;
         }
     }
@@ -260,8 +260,8 @@ export class SupplierForm {
     setDisplayOfDeliveryTerm() {
         let deliveryTerm = this.formGroup.value.deliveryTerm;
         if (deliveryTerm != null && deliveryTerm != undefined) {
-            let display = deliveryTerm.code != null && deliveryTerm.code != undefined ? deliveryTerm.code + " : " : "";
-            display += deliveryTerm.name != null && deliveryTerm.name != undefined ? deliveryTerm.name : "";
+            let display = deliveryTerm.code != null && deliveryTerm.code != undefined ? deliveryTerm.code + ' : ' : '';
+            display += deliveryTerm.name != null && deliveryTerm.name != undefined ? deliveryTerm.name : '';
             this.formGroup.value.deliveryTerm.display = display;
         }
     }

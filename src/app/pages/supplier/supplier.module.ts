@@ -11,7 +11,7 @@ import { SupplierTable } from './components/supplierTable/supplierTable.componen
 import { SupplierForm } from './components/supplierForm/supplierForm.component';
 
 import { routing } from './supplier.routing';
-import { SupplierService } from "./supplier.service";
+import { SupplierService } from './supplier.service';
 import { SupplierTypeService } from '../supplierType/supplierType.service';
 import { PaymentTermService } from '../paymentTerm/paymentTerm.service';
 import { CurrencyService } from '../currency/currency.service';
