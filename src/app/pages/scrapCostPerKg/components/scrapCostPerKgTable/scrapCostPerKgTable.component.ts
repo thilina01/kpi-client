@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
-import { ScrapCostPerKgService } from "../../scrapCostPerKg.service";
+import { ScrapCostPerKgService } from '../../scrapCostPerKg.service';
 
 @Component({
     selector: 'scrap-cost-per-kg-table',

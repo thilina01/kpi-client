@@ -12,7 +12,7 @@ import { ScrapCostPerKgTable } from './components/scrapCostPerKgTable/scrapCostP
 import { ScrapCostPerKgForm } from './components/scrapCostPerKgForm/scrapCostPerKgForm.component';
 
 import { routing } from './scrapCostPerKg.routing';
-import { ScrapCostPerKgService } from "./scrapCostPerKg.service";
+import { ScrapCostPerKgService } from './scrapCostPerKg.service';
 
 
 @NgModule({
