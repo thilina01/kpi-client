@@ -10,7 +10,7 @@ import { LeaveTypeTable } from './components/leaveTypeTable/leaveTypeTable.compo
 import { LeaveTypeForm } from './components/leaveTypeForm/leaveTypeForm.component';
 
 import { routing } from './leaveType.routing';
-import { LeaveTypeService } from "./leaveType.service";
+import { LeaveTypeService } from './leaveType.service';
 
 
 @NgModule({
