@@ -13,7 +13,7 @@ import { ElectricityCostPerKgTable } from './components/electricityCostPerKgTabl
 import { ElectricityCostPerKgForm } from './components/electricityCostPerKgForm/electricityCostPerKgForm.component';
 
 import { routing } from './electricityCostPerKg.routing';
-import { ElectricityCostPerKgService } from "./electricityCostPerKg.service";
+import { ElectricityCostPerKgService } from './electricityCostPerKg.service';
 
 
 @NgModule({
