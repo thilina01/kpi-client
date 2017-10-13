@@ -2,8 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router'
 import { BaThemeConfigProvider } from '../../../../theme';
 
-import { LossTypeService } from "../../../lossType/lossType.service";
-import { ChartService } from "../../chart.service";
+import { LossTypeService } from '../../../lossType/lossType.service';
+import { ChartService } from '../../chart.service';
 @Component({
   selector: 'schedule-adherence-chart',
   encapsulation: ViewEncapsulation.None,
@@ -22,7 +22,7 @@ export class ScheduleAdherenceChart {
   dateLossReasonSummaryData = [];
   dateLossReasonSummaryByLossReasonData = [];
   lossReasonDailyCountData = [];
-  categoryTitle = "Category";
+  categoryTitle = 'Category';
   selectedDay: any;
 
 
@@ -30,83 +30,83 @@ export class ScheduleAdherenceChart {
   lossByReasonChart: any;
   dataProvider = [];
   chartData: Object = {
-    "id": 1,
-    "type": "serial",
-    "theme": "blur",
-    "depth3D": 20,
-    "angle": 30,
-    "dataProvider": this.dataProvider,
+    'id': 1,
+    'type': 'serial',
+    'theme': 'blur',
+    'depth3D': 20,
+    'angle': 30,
+    'dataProvider': this.dataProvider,
     creditsPosition: 'top-right',
-    "valueAxes": [{
+    'valueAxes': [{
       minVerticalGap: 50,
       gridAlpha: 0,
       color: this.layoutColors.defaultText,
       axisColor: this.layoutColors.defaultText
     }],
-    "gridAboveGraphs": true,
-    "startDuration": 1,
-    "graphs": [{
-      "balloonText": "[[category]]: <b>[[value]]%</b> <br/> [[actualTotal]] / [[plannedTotal]]",
-      "fillAlphas": 0.8,
-      "lineAlpha": 0.2,
-      "type": "column",
-      "valueField": "value",
-      //"fixedColumnWidth": 80,
-      "labelText": "[[value]]%"
+    'gridAboveGraphs': true,
+    'startDuration': 1,
+    'graphs': [{
+      'balloonText': '[[category]]: <b>[[value]]%</b> <br/> [[actualTotal]] / [[plannedTotal]]',
+      'fillAlphas': 0.8,
+      'lineAlpha': 0.2,
+      'type': 'column',
+      'valueField': 'value',
+      //'fixedColumnWidth': 80,
+      'labelText': '[[value]]%'
     }],
-    "chartCursor": {
-      "categoryBalloonEnabled": false,
-      "cursorAlpha": 0,
-      "zoomable": false
+    'chartCursor': {
+      'categoryBalloonEnabled': false,
+      'cursorAlpha': 0,
+      'zoomable': false
     },
-    "categoryField": "category",
-    "categoryAxis": {
-      "gridPosition": "start",
-      "gridAlpha": 0,
-      "tickPosition": "start",
-      "tickLength": 20,
+    'categoryField': 'category',
+    'categoryAxis': {
+      'gridPosition': 'start',
+      'gridAlpha': 0,
+      'tickPosition': 'start',
+      'tickLength': 20,
       color: this.layoutColors.defaultText,
       axisColor: this.layoutColors.defaultText
     }
   };
 
   lossByReasonChartData: Object = {
-    "id": 1,
-    "type": "serial",
-    "theme": "blur",
-    "depth3D": 20,
-    "angle": 30,
-    "dataProvider": this.lossReasonSummaryData,
+    'id': 1,
+    'type': 'serial',
+    'theme': 'blur',
+    'depth3D': 20,
+    'angle': 30,
+    'dataProvider': this.lossReasonSummaryData,
     creditsPosition: 'top-right',
-    "valueAxes": [{
+    'valueAxes': [{
       minVerticalGap: 50,
       gridAlpha: 0,
       color: this.layoutColors.defaultText,
       axisColor: this.layoutColors.defaultText
     }],
-    "gridAboveGraphs": true,
-    "startDuration": 1,
-    "graphs": [{
-      "balloonText": "[[code]]: <b>[[total]]</b> ",
-      "fillAlphas": 0.8,
-      "lineAlpha": 0.2,
-      "type": "column",
-      "valueField": "total",
-      //"fixedColumnWidth": 80,
-      "labelText": "[[total]]",
-      "labelPosition": "top"
+    'gridAboveGraphs': true,
+    'startDuration': 1,
+    'graphs': [{
+      'balloonText': '[[code]]: <b>[[total]]</b> ',
+      'fillAlphas': 0.8,
+      'lineAlpha': 0.2,
+      'type': 'column',
+      'valueField': 'total',
+      //'fixedColumnWidth': 80,
+      'labelText': '[[total]]',
+      'labelPosition': 'top'
     }],
-    "chartCursor": {
-      "categoryBalloonEnabled": false,
-      "cursorAlpha": 0,
-      "zoomable": false
+    'chartCursor': {
+      'categoryBalloonEnabled': false,
+      'cursorAlpha': 0,
+      'zoomable': false
     },
-    "categoryField": "code",
-    "categoryAxis": {
-      "gridPosition": "start",
-      "gridAlpha": 0,
-      "tickPosition": "start",
-      "tickLength": 20,
+    'categoryField': 'code',
+    'categoryAxis': {
+      'gridPosition': 'start',
+      'gridAlpha': 0,
+      'tickPosition': 'start',
+      'tickLength': 20,
       color: this.layoutColors.defaultText,
       axisColor: this.layoutColors.defaultText
     }
@@ -122,7 +122,7 @@ export class ScheduleAdherenceChart {
   fillLossTypes() {
     this.lossTypeService.getAll().subscribe((data) => {
       this.lossTypes = data;
-      this.lossTypes.unshift({ "id": 0, "code": "ALL", "type": "All" });
+      this.lossTypes.unshift({ 'id': 0, 'code': 'ALL', 'type': 'All' });
     });
   }
 
@@ -138,7 +138,7 @@ export class ScheduleAdherenceChart {
 
     if (this.section == '0') {
 
-      this.categoryTitle = "Section";
+      this.categoryTitle = 'Section';
 
       this.chartService.getScheduleAdherence(this.startDate, this.endDate).subscribe((data) => {
         this.setData(data.json())
@@ -166,7 +166,7 @@ export class ScheduleAdherenceChart {
 
 
     } else {
-      this.categoryTitle = "Date";
+      this.categoryTitle = 'Date';
 
       this.chartService.getScheduleAdherenceBySection(this.startDate, this.endDate, this.section).subscribe((data) => {
         this.setData(data.json())

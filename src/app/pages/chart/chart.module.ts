@@ -13,10 +13,10 @@ import { ScheduleAdherenceChart } from './components/scheduleAdherenceChart/sche
 import { BreakdownChart } from './components/breakdownChart/breakdownChart.component';
 
 import { routing } from './chart.routing';
-import { ItemService } from "../item/item.service";
-import { LossTypeService } from "../lossType/lossType.service";
-import { SectionService } from "../section/section.service";
-import { ChartService } from "./chart.service";
+import { ItemService } from '../item/item.service';
+import { LossTypeService } from '../lossType/lossType.service';
+import { SectionService } from '../section/section.service';
+import { ChartService } from './chart.service';
 
 
 

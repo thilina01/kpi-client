@@ -4,8 +4,8 @@ import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
 
 import { APP_CONFIG, IAppConfig } from '../../app.config';
-import { AuthService } from "../../services/auth.service";
-import { Observable } from "rxjs/Observable";
+import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()

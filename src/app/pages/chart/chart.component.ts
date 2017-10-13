@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaThemeConfigProvider } from '../../theme';
 import 'style-loader!./chartistJs.scss';
-import { SharedService } from "../../services/shared.service";
-import { SectionService } from "../section/section.service";
+import { SharedService } from '../../services/shared.service';
+import { SectionService } from '../section/section.service';
 @Component({
   selector: 'chart',
   templateUrl: './chart.html',
@@ -37,7 +37,7 @@ export class Chart {
   loadData() {
     this.sectionService.getAll().subscribe((data) => {
       this.sections = data;
-      this.sections.unshift({ "id": 0, "code": "ALL", "name": "All Sections" });
+      this.sections.unshift({ 'id': 0, 'code': 'ALL', 'name': 'All Sections' });
     });
   }
 
@@ -46,7 +46,7 @@ export class Chart {
     if (this.startDate && this.endDate && this.section) {
       this.router.navigate(['/pages/chart/' + this.chart.path, { startDate: this.sharedService.YYYYMMDD(this.startDate), endDate: this.sharedService.YYYYMMDD(this.endDate), section: this.section.id }]);
     } else {
-      alert("Request not complete");
+      alert('Request not complete');
     }
   }
  /*================== SectionFilter ===================*/
