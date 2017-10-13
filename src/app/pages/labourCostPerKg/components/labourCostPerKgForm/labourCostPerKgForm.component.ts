@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { LabourCostPerKgService } from "../../labourCostPerKg.service";
+import { LabourCostPerKgService } from '../../labourCostPerKg.service';
 
 @Component({
     selector: 'labour-cost-per-kg-form',

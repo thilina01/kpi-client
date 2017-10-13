@@ -12,7 +12,7 @@ import { LabourCostPerKgTable } from './components/labourCostPerKgTable/labourCo
 import { LabourCostPerKgForm } from './components/labourCostPerKgForm/labourCostPerKgForm.component';
 
 import { routing } from './labourCostPerKg.routing';
-import { LabourCostPerKgService } from "./labourCostPerKg.service";
+import { LabourCostPerKgService } from './labourCostPerKg.service';
 
 
 @NgModule({

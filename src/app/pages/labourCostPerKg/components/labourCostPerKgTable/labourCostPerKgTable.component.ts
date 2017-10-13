@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
-import { LabourCostPerKgService } from "../../labourCostPerKg.service";
+import { LabourCostPerKgService } from '../../labourCostPerKg.service';
 
 @Component({
     selector: 'labour-cost-per-kg-table',
