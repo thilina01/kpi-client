@@ -10,7 +10,7 @@ import { TreatmentTypeTable } from './components/treatmentTypeTable/treatmentTyp
 import { TreatmentTypeForm } from './components/treatmentTypeForm/treatmentTypeForm.component';
 
 import { routing } from './treatmentType.routing';
-import { TreatmentTypeService } from "./treatmentType.service";
+import { TreatmentTypeService } from './treatmentType.service';
 
 
 @NgModule({
