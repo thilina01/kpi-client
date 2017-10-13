@@ -9,10 +9,10 @@ import { ControlPointTable } from './components/controlPointTable/controlPointTa
 import { ControlPointForm } from './components/controlPointForm/controlPointForm.component';
 
 import { routing } from './controlPoint.routing';
-import { ControlPoint } from "./controlPoint.component";
-import { ControlPointService } from "./controlPoint.service";
-import { ControlPointTypeService } from "../controlPointType/controlPointType.service";
-import { WorkCenterService } from "../workCenter/workCenter.service";
+import { ControlPoint } from './controlPoint.component';
+import { ControlPointService } from './controlPoint.service';
+import { ControlPointTypeService } from '../controlPointType/controlPointType.service';
+import { WorkCenterService } from '../workCenter/workCenter.service';
 
 
 

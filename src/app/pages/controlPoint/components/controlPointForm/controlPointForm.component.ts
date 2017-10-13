@@ -4,9 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ControlPointService } from "../../controlPoint.service";
-import { ControlPointTypeService } from "../../../controlPointType/controlPointType.service";
-import { WorkCenterService } from "../../../workCenter/workCenter.service";
+import { ControlPointService } from '../../controlPoint.service';
+import { ControlPointTypeService } from '../../../controlPointType/controlPointType.service';
+import { WorkCenterService } from '../../../workCenter/workCenter.service';
 
 @Component({
     selector: 'control-point-form',
@@ -127,8 +127,8 @@ export class ControlPointForm {
     setDisplayOfControlPoint() {
         let controlPointType = this.formGroup.value.controlPointType;
         if (controlPointType != null && controlPointType != undefined) {
-            let display = controlPointType.code != null && controlPointType.code != undefined ? controlPointType.code + " : " : "";
-            display += controlPointType.name != null && controlPointType.name != undefined ? controlPointType.name : "";
+            let display = controlPointType.code != null && controlPointType.code != undefined ? controlPointType.code + ' : ' : '';
+            display += controlPointType.name != null && controlPointType.name != undefined ? controlPointType.name : '';
             this.formGroup.value.controlPointType.display = display;
         }
     }
@@ -162,8 +162,8 @@ export class ControlPointForm {
     setDisplayOfWorkCenter() {
         let workCenter = this.formGroup.value.workCenter;
         if (workCenter != null && workCenter != undefined) {
-            let display = workCenter.code != null && workCenter.code != undefined ? workCenter.code + " : " : "";
-            display += workCenter.name != null && workCenter.name != undefined ? workCenter.name : "";
+            let display = workCenter.code != null && workCenter.code != undefined ? workCenter.code + ' : ' : '';
+            display += workCenter.name != null && workCenter.name != undefined ? workCenter.name : '';
             this.formGroup.value.workCenter.display = display;
         }
 
