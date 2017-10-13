@@ -12,11 +12,11 @@ import { SalesOrderTable } from './components/salesOrderTable/salesOrderTable.co
 import { SalesOrderForm } from './components/salesOrderForm/salesOrderForm.component';
 
 import { routing } from './salesOrder.routing';
-import { LabourSourceService } from "../labourSource/labourSource.service";
-import { SalesOrderService } from "./salesOrder.service";
-import { CustomerItemService } from "../customerItem/customerItem.service";
-import { CustomerService } from "../customer/customer.service";
-import { SalesOrderTypeService } from "../salesOrderType/salesOrderType.service";
+import { LabourSourceService } from '../labourSource/labourSource.service';
+import { SalesOrderService } from './salesOrder.service';
+import { CustomerItemService } from '../customerItem/customerItem.service';
+import { CustomerService } from '../customer/customer.service';
+import { SalesOrderTypeService } from '../salesOrderType/salesOrderType.service';
 
 
 @NgModule({

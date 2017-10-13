@@ -4,11 +4,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { SalesOrderService } from "../../salesOrder.service";
-import { CustomerItemService } from "../../../customerItem/customerItem.service";
-import { CustomerService } from "../../../customer/customer.service";
-import { SalesOrderTypeService } from "../../../salesOrderType/salesOrderType.service";
-import { DataTable, ConfirmationService } from "primeng/primeng";
+import { SalesOrderService } from '../../salesOrder.service';
+import { CustomerItemService } from '../../../customerItem/customerItem.service';
+import { CustomerService } from '../../../customer/customer.service';
+import { SalesOrderTypeService } from '../../../salesOrderType/salesOrderType.service';
+import { DataTable, ConfirmationService } from 'primeng/primeng';
 
 @Component({
     selector: 'sales-order-form',
@@ -19,7 +19,7 @@ import { DataTable, ConfirmationService } from "primeng/primeng";
 })
 export class SalesOrderForm {
     fillSalesOrders(): any {
-        throw new Error("Method not implemented.");
+        throw new Error('Method not implemented.');
     }
     @Input('formGroup')
     public formGroup: FormGroup;
@@ -234,8 +234,8 @@ export class SalesOrderForm {
     setDisplayOfCustomerItem() {
         let customerItem = this.salesOrderItemFormGroup.value.customerItem;
         if (customerItem != null && customerItem != undefined) {
-            let display = customerItem.code != null && customerItem.code != undefined ? customerItem.code + " : " : "";
-            display += customerItem.name != null && customerItem.name != undefined ? customerItem.name : "";
+            let display = customerItem.code != null && customerItem.code != undefined ? customerItem.code + ' : ' : '';
+            display += customerItem.name != null && customerItem.name != undefined ? customerItem.name : '';
             this.salesOrderItemFormGroup.value.customerItem.display = display;
         }
     }
@@ -271,8 +271,8 @@ export class SalesOrderForm {
     setDisplayOfSalesOrderType() {
         let salesOrderType = this.formGroup.value.salesOrderType;
         if (salesOrderType != null && salesOrderType != undefined) {
-            let display = salesOrderType.code != null && salesOrderType.code != undefined ? salesOrderType.code + " : " : "";
-            display += salesOrderType.name != null && salesOrderType.name != undefined ? salesOrderType.name : "";
+            let display = salesOrderType.code != null && salesOrderType.code != undefined ? salesOrderType.code + ' : ' : '';
+            display += salesOrderType.name != null && salesOrderType.name != undefined ? salesOrderType.name : '';
             this.formGroup.value.salesOrderType.display = display;
         }
     }
@@ -307,8 +307,8 @@ export class SalesOrderForm {
     setDisplayOfCustomer() {
         let customer = this.formGroup.value.customer;
         if (customer != null && customer != undefined) {
-            let display = customer.code != null && customer.code != undefined ? customer.code + " : " : "";
-            display += customer.name != null && customer.name != undefined ? customer.name : "";
+            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
+            display += customer.name != null && customer.name != undefined ? customer.name : '';
             this.formGroup.value.customer.display = display;
         }
     }
