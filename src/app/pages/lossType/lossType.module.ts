@@ -10,7 +10,7 @@ import { LossTypeTable } from './components/lossTypeTable/lossTypeTable.componen
 import { LossTypeForm } from './components/lossTypeForm/lossTypeForm.component';
 
 import { routing } from './lossType.routing';
-import { LossTypeService } from "./lossType.service";
+import { LossTypeService } from './lossType.service';
 
 
 @NgModule({
