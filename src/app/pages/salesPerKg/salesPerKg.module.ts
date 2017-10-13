@@ -12,7 +12,7 @@ import { SalesPerKgTable } from './components/salesPerKgTable/salesPerKgTable.co
 import { SalesPerKgForm } from './components/salesPerKgForm/salesPerKgForm.component';
 
 import { routing } from './salesPerKg.routing';
-import { SalesPerKgService } from "./salesPerKg.service";
+import { SalesPerKgService } from './salesPerKg.service';
 
 
 @NgModule({

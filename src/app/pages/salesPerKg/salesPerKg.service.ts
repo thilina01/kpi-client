@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
- import { MasterService } from "../../services/master.service";
- import { HttpClient } from "@angular/common/http";
- import { APP_CONFIG, IAppConfig } from "../../app.config";
- import { AuthService } from "../../services/auth.service";
+ import { MasterService } from '../../services/master.service';
+ import { HttpClient } from '@angular/common/http';
+ import { APP_CONFIG, IAppConfig } from '../../app.config';
+ import { AuthService } from '../../services/auth.service';
 
 @Injectable()
 export class SalesPerKgService extends MasterService{
@@ -17,7 +17,7 @@ export class SalesPerKgService extends MasterService{
 // import 'rxjs/add/operator/toPromise';
 
 // import { APP_CONFIG, IAppConfig } from '../../app.config';
-// import { AuthService } from "../../services/auth.service";
+// import { AuthService } from '../../services/auth.service';
 
 // @Injectable()
 // export class SalesPerKgService {
@@ -43,7 +43,7 @@ export class SalesPerKgService extends MasterService{
 //   }
 
 //   getPage(page, size): Promise<Array<Object>> {
-//     return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
+//     return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
 //       .toPromise()
 //       .then(response => response.json() as Array<Object>)
 //       .catch(this.handleError);

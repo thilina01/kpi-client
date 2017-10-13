@@ -5,7 +5,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 
 import { SharedService } from '../../../../services/shared.service';
-import { SalesPerKgService } from "../../salesPerKg.service";
+import { SalesPerKgService } from '../../salesPerKg.service';
 
 @Component({
     selector: 'sales-per-kg-form',
