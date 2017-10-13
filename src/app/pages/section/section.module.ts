@@ -10,9 +10,9 @@ import { SectionTable } from './components/sectionTable/sectionTable.component';
 import { SectionForm } from './components/sectionForm/sectionForm.component';
 
 import { routing } from './section.routing';
-import { SectionService } from "./section.service";
-import { WorkCenterService } from "../workCenter/workCenter.service";
-import { SectionTypeService } from "../sectionType/sectionType.service";
+import { SectionService } from './section.service';
+import { WorkCenterService } from '../workCenter/workCenter.service';
+import { SectionTypeService } from '../sectionType/sectionType.service';
 
 
 @NgModule({

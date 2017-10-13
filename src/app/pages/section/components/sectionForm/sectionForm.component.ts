@@ -4,9 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { SectionService } from "../../section.service";
-import { WorkCenterService } from "../../../workCenter/workCenter.service";
-import { SectionTypeService } from "../../../sectionType/sectionType.service";
+import { SectionService } from '../../section.service';
+import { WorkCenterService } from '../../../workCenter/workCenter.service';
+import { SectionTypeService } from '../../../sectionType/sectionType.service';
 
 @Component({
     selector: 'section-form',
