@@ -10,8 +10,8 @@ import { DeliveryTermTable } from './components/deliveryTermTable/deliveryTermTa
 import { DeliveryTermForm } from './components/deliveryTermForm/deliveryTermForm.component';
 
 import { routing } from './deliveryTerm.routing';
-import { DeliveryTermService } from "./deliveryTerm.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
+import { DeliveryTermService } from './deliveryTerm.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 
 @NgModule({
