@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
-import { DispatchNoteService } from "../../dispatchNote.service";
+import { DispatchNoteService } from '../../dispatchNote.service';
 import { PrintService } from '../../../../services/print.service';
 
 @Component({

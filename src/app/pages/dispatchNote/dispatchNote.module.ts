@@ -12,14 +12,14 @@ import { DispatchNoteTable } from './components/dispatchNoteTable/dispatchNoteTa
 import { DispatchNoteForm } from './components/dispatchNoteForm/dispatchNoteForm.component';
 
 import { routing } from './dispatchNote.routing';
-import { LabourSourceService } from "../labourSource/labourSource.service";
-import { DispatchNoteService } from "./dispatchNote.service";
+import { LabourSourceService } from '../labourSource/labourSource.service';
+import { DispatchNoteService } from './dispatchNote.service';
 
-import { DispatchScheduleService } from "../dispatchSchedule/dispatchSchedule.service";
-import { EmployeeService } from "../employee/employee.service";
-import { CustomerService } from "../customer/customer.service";
-import { AddressService } from "../../services/address.service";
-import { CustomerItemService } from "../customerItem/customerItem.service";
+import { DispatchScheduleService } from '../dispatchSchedule/dispatchSchedule.service';
+import { EmployeeService } from '../employee/employee.service';
+import { CustomerService } from '../customer/customer.service';
+import { AddressService } from '../../services/address.service';
+import { CustomerItemService } from '../customerItem/customerItem.service';
 import { PrintService } from '../../services/print.service';
 import { Print } from './components/dispatchNotePrint/print.component';
 

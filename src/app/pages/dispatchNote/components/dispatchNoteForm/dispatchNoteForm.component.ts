@@ -4,12 +4,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { DispatchNoteService } from "../../dispatchNote.service";
-import { DataTable, ConfirmationService } from "primeng/primeng";
-import { DispatchScheduleService } from "../../../dispatchSchedule/dispatchSchedule.service";
-import { EmployeeService } from "../../../employee/employee.service";
-import { CustomerService } from "../../../customer/customer.service";
-import { AddressService } from "../../../../services/address.service";
+import { DispatchNoteService } from '../../dispatchNote.service';
+import { DataTable, ConfirmationService } from 'primeng/primeng';
+import { DispatchScheduleService } from '../../../dispatchSchedule/dispatchSchedule.service';
+import { EmployeeService } from '../../../employee/employee.service';
+import { CustomerService } from '../../../customer/customer.service';
+import { AddressService } from '../../../../services/address.service';
 
 @Component({
   selector: 'dispatch-note-form',
@@ -21,7 +21,7 @@ import { AddressService } from "../../../../services/address.service";
 export class DispatchNoteForm {
 
   fillDispatchNotes(): any {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
   @Input('formGroup')
   public formGroup: FormGroup;
@@ -243,8 +243,8 @@ export class DispatchNoteForm {
 
   setDisplayOfCustomer(customer: any) {
     if (customer != null && customer != undefined) {
-      let display = customer.code != null && customer.code != undefined ? customer.code + " : " : "";
-      display += customer.name != null && customer.name != undefined ? customer.name : "";
+      let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
+      display += customer.name != null && customer.name != undefined ? customer.name : '';
       this.formGroup.value.customer.display = display;
     }
   }
@@ -279,8 +279,8 @@ export class DispatchNoteForm {
   setDisplayOfAddress() {
     let address = this.formGroup.value.address;
     if (address != null && address != undefined) {
-      let display = address.code != null && address.code != undefined ? address.code + " : " : "";
-      display += address.name != null && address.name != undefined ? address.name : "";
+      let display = address.code != null && address.code != undefined ? address.code + ' : ' : '';
+      display += address.name != null && address.name != undefined ? address.name : '';
       this.formGroup.value.address.display = display;
     }
   }
@@ -315,8 +315,8 @@ export class DispatchNoteForm {
   setDisplayOfEmployee() {
     let employee = this.formGroup.value.employee;
     if (employee != null && employee != undefined) {
-      let display = employee.code != null && employee.code != undefined ? employee.code + " : " : "";
-      display += employee.firstName != null && employee.firstName != undefined ? employee.firstName : "";
+      let display = employee.code != null && employee.code != undefined ? employee.code + ' : ' : '';
+      display += employee.firstName != null && employee.firstName != undefined ? employee.firstName : '';
       this.formGroup.value.employee.display = display;
     }
   }
@@ -351,8 +351,8 @@ export class DispatchNoteForm {
   setDisplayOfDispatchSchedule() {
     let dispatchSchedule = this.dispatchFormGroup.value.dispatchSchedule;
     if (dispatchSchedule != null && dispatchSchedule != undefined) {
-      let display = dispatchSchedule.code != null && dispatchSchedule.code != undefined ? dispatchSchedule.code + " : " : "";
-      display += dispatchSchedule.name != null && dispatchSchedule.name != undefined ? dispatchSchedule.name : "";
+      let display = dispatchSchedule.code != null && dispatchSchedule.code != undefined ? dispatchSchedule.code + ' : ' : '';
+      display += dispatchSchedule.name != null && dispatchSchedule.name != undefined ? dispatchSchedule.name : '';
       this.dispatchFormGroup.value.dispatchSchedule.display = display;
     }
   }
