@@ -10,7 +10,7 @@ import { ToolTable } from './components/toolTable/toolTable.component';
 import { ToolForm } from './components/toolForm/toolForm.component';
 
 import { routing } from './tool.routing';
-import { ToolService } from "./tool.service";
+import { ToolService } from './tool.service';
 
 
 @NgModule({
