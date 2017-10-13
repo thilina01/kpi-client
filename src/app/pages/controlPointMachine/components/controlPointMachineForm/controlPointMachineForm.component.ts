@@ -4,9 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { MachineService } from "../../../machine/machine.service";
-import { ControlPointService } from "../../../controlPoint/controlPoint.service";
-import { ControlPointMachineService } from "../../controlPointMachine.service";
+import { MachineService } from '../../../machine/machine.service';
+import { ControlPointService } from '../../../controlPoint/controlPoint.service';
+import { ControlPointMachineService } from '../../controlPointMachine.service';
 
 @Component({
     selector: 'control-point-machine-form',
@@ -123,8 +123,8 @@ export class ControlPointMachineForm {
 
         let controlPoint= this.formGroup.value.controlPoint;
         if (controlPoint!= null && controlPoint!= undefined) {
-            let display =controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + " : " : "";
-            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : "";
+            let display =controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + ' : ' : '';
+            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : '';
             this.formGroup.value.controlPoint.display = display;
         }
     }
@@ -159,8 +159,8 @@ export class ControlPointMachineForm {
 
             let machine = this.formGroup.value.machine;
             if (machine != null && machine != undefined) {
-                let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
-                display += machine.name != null && machine.name != undefined ? machine.name : "";
+                let display = machine.code != null && machine.code != undefined ? machine.code + ' : ' : '';
+                display += machine.name != null && machine.name != undefined ? machine.name : '';
                 this.formGroup.value.machine.display = display;
             }
         }

@@ -11,10 +11,10 @@ import { ControlPointMachineTable } from './components/controlPointMachineTable/
 import { ControlPointMachineForm } from './components/controlPointMachineForm/controlPointMachineForm.component';
 
 import { routing } from './controlPointMachine.routing';
-import { MachineService } from "../machine/machine.service";
+import { MachineService } from '../machine/machine.service';
 
-import { ControlPointMachineService } from "./controlPointMachine.service";
-import { ControlPointService } from "../controlPoint/controlPoint.service";
+import { ControlPointMachineService } from './controlPointMachine.service';
+import { ControlPointService } from '../controlPoint/controlPoint.service';
 
 
 
