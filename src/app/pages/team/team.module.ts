@@ -10,7 +10,7 @@ import { TeamTable } from './components/teamTable/teamTable.component';
 import { TeamForm } from './components/teamForm/teamForm.component';
 
 import { routing } from './team.routing';
-import { TeamService } from "./team.service";
+import { TeamService } from './team.service';
 
 
 @NgModule({
