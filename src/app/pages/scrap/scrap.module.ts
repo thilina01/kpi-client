@@ -10,14 +10,14 @@ import { ScrapTable } from './components/scrapTable/scrapTable.component';
 import { ScrapForm } from './components/scrapForm/scrapForm.component';
 
 import { routing } from './scrap.routing';
-import { ScrapService } from "./scrap.service";
-import { JobService } from "../job/job.service";
-import { SectionService } from "../section/section.service";
-import { LossReasonService } from "../lossReason/lossReason.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
-import { AutoCompleteModule } from "primeng/components/autocomplete/autocomplete";
-import { OperationTypeService } from "../operationType/operationType.service";
-import { ItemTypeService } from "../itemType/itemType.service";
+import { ScrapService } from './scrap.service';
+import { JobService } from '../job/job.service';
+import { SectionService } from '../section/section.service';
+import { LossReasonService } from '../lossReason/lossReason.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { AutoCompleteModule } from 'primeng/components/autocomplete/autocomplete';
+import { OperationTypeService } from '../operationType/operationType.service';
+import { ItemTypeService } from '../itemType/itemType.service';
 
 
 

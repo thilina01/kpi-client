@@ -4,12 +4,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ScrapService } from "../../scrap.service";
-import { JobService } from "../../../job/job.service";
-import { SectionService } from "../../../section/section.service";
-import { LossReasonService } from "../../../lossReason/lossReason.service";
-import { OperationTypeService } from "../../../operationType/operationType.service";
-import { ItemTypeService } from "../../../itemType/itemType.service";
+import { ScrapService } from '../../scrap.service';
+import { JobService } from '../../../job/job.service';
+import { SectionService } from '../../../section/section.service';
+import { LossReasonService } from '../../../lossReason/lossReason.service';
+import { OperationTypeService } from '../../../operationType/operationType.service';
+import { ItemTypeService } from '../../../itemType/itemType.service';
 
 @Component({
     selector: 'scrap-form',
@@ -172,8 +172,8 @@ export class ScrapForm {
     setDisplayOfItemType() {
         let itemType = this.formGroup.value.itemType;
         if (itemType != null && itemType != undefined) {
-            let display = itemType.code != null && itemType.code != undefined ? itemType.code + " : " : "";
-            display += itemType.name != null && itemType.name != undefined ? itemType.name : "";
+            let display = itemType.code != null && itemType.code != undefined ? itemType.code + ' : ' : '';
+            display += itemType.name != null && itemType.name != undefined ? itemType.name : '';
             this.formGroup.value.itemType.display = display;
         }
     }
@@ -209,8 +209,8 @@ export class ScrapForm {
     setDisplayOfLossReason() {
         let lossReason = this.formGroup.value.lossReason;
         if (lossReason != null && lossReason != undefined) {
-            let display = lossReason.code != null && lossReason.code != undefined ? lossReason.code + " : " : "";
-            display += lossReason.name != null && lossReason.name != undefined ? lossReason.name : "";
+            let display = lossReason.code != null && lossReason.code != undefined ? lossReason.code + ' : ' : '';
+            display += lossReason.name != null && lossReason.name != undefined ? lossReason.name : '';
             this.formGroup.value.lossReason.display = display;
         }
     }
@@ -245,8 +245,8 @@ export class ScrapForm {
     setDisplayOfSection() {
         let section = this.formGroup.value.section;
         if (section != null && section != undefined) {
-            let display = section.code != null && section.code != undefined ? section.code + " : " : "";
-            display += section.name != null && section.name != undefined ? section.name : "";
+            let display = section.code != null && section.code != undefined ? section.code + ' : ' : '';
+            display += section.name != null && section.name != undefined ? section.name : '';
             this.formGroup.value.section.display = display;
         }
     }
@@ -280,8 +280,8 @@ export class ScrapForm {
     setDisplayOfJob() {
         let job = this.formGroup.value.job;
         if (job != null && job != undefined) {
-            let display = job.code != null && job.code != undefined ? job.code + " : " : "";
-            display += job.name != null && job.name != undefined ? job.name : "";
+            let display = job.code != null && job.code != undefined ? job.code + ' : ' : '';
+            display += job.name != null && job.name != undefined ? job.name : '';
             this.formGroup.value.job.display = display;
         }
     }
@@ -315,8 +315,8 @@ export class ScrapForm {
     setDisplayOfOperationType() {
         let operationType = this.formGroup.value.operationType;
         if (operationType != null && operationType != undefined) {
-            let display = operationType.code != null && operationType.code != undefined ? operationType.code + " : " : "";
-            display += operationType.name != null && operationType.name != undefined ? operationType.name : "";
+            let display = operationType.code != null && operationType.code != undefined ? operationType.code + ' : ' : '';
+            display += operationType.name != null && operationType.name != undefined ? operationType.name : '';
             this.formGroup.value.operationType.display = display;
         }
     }
