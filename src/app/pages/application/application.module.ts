@@ -10,7 +10,7 @@ import { ApplicationTable } from './components/applicationTable/applicationTable
 import { ApplicationForm } from './components/applicationForm/applicationForm.component';
 
 import { routing } from './application.routing';
-import { ApplicationService } from "./application.service";
+import { ApplicationService } from './application.service';
 
 
 @NgModule({
