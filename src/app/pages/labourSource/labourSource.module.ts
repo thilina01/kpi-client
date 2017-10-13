@@ -10,7 +10,7 @@ import { LabourSourceTable } from './components/labourSourceTable/labourSourceTa
 import { LabourSourceForm } from './components/labourSourceForm/labourSourceForm.component';
 
 import { routing } from './labourSource.routing';
-import { LabourSourceService } from "./labourSource.service";
+import { LabourSourceService } from './labourSource.service';
 
 
 @NgModule({
