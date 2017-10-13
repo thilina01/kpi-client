@@ -11,9 +11,9 @@ import { LossReasonTable } from './components/lossReasonTable/lossReasonTable.co
 import { LossReasonForm } from './components/lossReasonForm/lossReasonForm.component';
 
 import { routing } from './lossReason.routing';
-import { LossReasonService } from "./lossReason.service";
-import { LossType } from "../lossType/lossType.component";
-import { LossTypeService } from "../lossType/lossType.service";
+import { LossReasonService } from './lossReason.service';
+import { LossType } from '../lossType/lossType.component';
+import { LossTypeService } from '../lossType/lossType.service';
 
 
 @NgModule({

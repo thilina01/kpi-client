@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { LossReasonService } from "../../lossReason.service";
-import { LossTypeService } from "../../../lossType/lossType.service";
+import { LossReasonService } from '../../lossReason.service';
+import { LossTypeService } from '../../../lossType/lossType.service';
 
 @Component({
     selector: 'loss-reason-form',
@@ -107,8 +107,8 @@ export class LossReasonForm {
     setDisplayOfLossType() {
         let lossType = this.formGroup.value.lossType;
         if (lossType != null && lossType != undefined) {
-            let display = lossType.code != null && lossType.code != undefined ? lossType.code + " : " : "";
-            display += lossType.name != null && lossType.name != undefined ? lossType.name : "";
+            let display = lossType.code != null && lossType.code != undefined ? lossType.code + ' : ' : '';
+            display += lossType.name != null && lossType.name != undefined ? lossType.name : '';
             this.formGroup.value.lossType.display = display;
         }
     }

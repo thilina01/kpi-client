@@ -3,8 +3,8 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message, DataTable } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { LossReasonService } from "../../lossReason.service";
-import { LossTypeService } from "../../../lossType/lossType.service";
+import { LossReasonService } from '../../lossReason.service';
+import { LossTypeService } from '../../../lossType/lossType.service';
 
 @Component({
   selector: 'loss-reason-table',
@@ -21,7 +21,7 @@ export class LossReasonTable {
   rows = [];
   timeout: any;
   totalRecords: number;
-  lossType: any = { id: 0, "code": "ALL", "name": "" }
+  lossType: any = { id: 0, 'code': 'ALL', 'name': '' }
   @ViewChild(DataTable) dataTable: DataTable;
 
   constructor(protected service: LossReasonService,
@@ -36,7 +36,7 @@ export class LossReasonTable {
   getLossTypes(): void {
     this.lossTypeService.getCombo().subscribe(lossTypes => {
       this.lossTypes = lossTypes;
-      this.lossTypes.unshift({ id: 0, "code": "ALL", "name": "" });
+      this.lossTypes.unshift({ id: 0, 'code': 'ALL', 'name': '' });
     });
   }
 
@@ -127,8 +127,8 @@ export class LossReasonTable {
 
   setDisplayOfLossType() {
     if (this.lossType != null && this.lossType != undefined) {
-      let display = this.lossType.code != null && this.lossType.code != undefined ? this.lossType.code + " : " : "";
-      display += this.lossType.name != null && this.lossType.name != undefined ? this.lossType.name : "";
+      let display = this.lossType.code != null && this.lossType.code != undefined ? this.lossType.code + ' : ' : '';
+      display += this.lossType.name != null && this.lossType.name != undefined ? this.lossType.name : '';
       this.lossType.display = display;
     }
   }
