@@ -10,7 +10,7 @@ import { ManpowerTypeTable } from './components/manpowerTypeTable/manpowerTypeTa
 import { ManpowerTypeForm } from './components/manpowerTypeForm/manpowerTypeForm.component';
 
 import { routing } from './manpowerType.routing';
-import { ManpowerTypeService } from "./manpowerType.service";
+import { ManpowerTypeService } from './manpowerType.service';
 
 
 

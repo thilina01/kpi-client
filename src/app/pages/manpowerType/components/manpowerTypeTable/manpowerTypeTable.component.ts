@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { ManpowerTypeService } from "../../manpowerType.service";
+import { ManpowerTypeService } from '../../manpowerType.service';
 
 @Component({
   selector: 'manpower-type-table',
