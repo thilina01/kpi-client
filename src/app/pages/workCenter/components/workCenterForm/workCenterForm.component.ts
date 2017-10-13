@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { CostCenterService } from "../../../costCenter/costCenter.service";
-import { WorkCenterService } from "../../workCenter.service";
+import { CostCenterService } from '../../../costCenter/costCenter.service';
+import { WorkCenterService } from '../../workCenter.service';
 
 @Component({
     selector: 'work-center-form',
@@ -123,8 +123,8 @@ export class WorkCenterForm {
         setDisplayOfCostCenter(){
             let costCenter = this.formGroup.value.costCenter;
             if (costCenter != null && costCenter != undefined) {
-                let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + " : " : "";
-                display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : "";
+                let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + ' : ' : '';
+                display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : '';
                 this.formGroup.value.costCenter.display = display;
             }
     }

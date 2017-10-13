@@ -10,8 +10,8 @@ import { WorkCenterTable } from './components/workCenterTable/workCenterTable.co
 import { WorkCenterForm } from './components/workCenterForm/workCenterForm.component';
 
 import { routing } from './workCenter.routing';
-import { CostCenterService } from "../costCenter/costCenter.service";
-import { WorkCenterService } from "./workCenter.service";
+import { CostCenterService } from '../costCenter/costCenter.service';
+import { WorkCenterService } from './workCenter.service';
 
 
 
