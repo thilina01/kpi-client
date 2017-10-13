@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { DepartmentService } from "../../department.service";
+import { DepartmentService } from '../../department.service';
 
 @Component({
     selector: 'department-form',

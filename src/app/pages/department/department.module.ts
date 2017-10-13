@@ -10,7 +10,7 @@ import { DepartmentTable } from './components/departmentTable/departmentTable.co
 import { DepartmentForm } from './components/departmentForm/departmentForm.component';
 
 import { routing } from './department.routing';
-import { DepartmentService } from "./department.service";
+import { DepartmentService } from './department.service';
 
 
 @NgModule({
