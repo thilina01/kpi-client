@@ -10,7 +10,7 @@ import { LocationTable } from './components/locationTable/locationTable.componen
 import { LocationForm } from './components/locationForm/locationForm.component';
 
 import { routing } from './location.routing';
-import { LocationService } from "./location.service";
+import { LocationService } from './location.service';
 
 
 @NgModule({

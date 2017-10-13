@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { LocationService } from "../../location.service";
+import { LocationService } from '../../location.service';
 
 @Component({
     selector: 'location-form',
