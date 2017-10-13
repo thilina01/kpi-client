@@ -11,7 +11,7 @@ import { ContactTypeTable } from './components/contactTypeTable/contactTypeTable
 import { ContactTypeForm } from './components/contactTypeForm/contactTypeForm.component';
 
 import { routing } from './contactType.routing';
-import { ContactTypeService } from "./contactType.service";
+import { ContactTypeService } from './contactType.service';
 
 
 @NgModule({

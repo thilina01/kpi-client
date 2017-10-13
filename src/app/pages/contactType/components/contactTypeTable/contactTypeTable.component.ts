@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { ContactTypeService } from "../../contactType.service";
+import { ContactTypeService } from '../../contactType.service';
 
 @Component({
   selector: 'contact-type-table',
