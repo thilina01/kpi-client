@@ -9,13 +9,13 @@ import { DispatchScheduleTable } from './components/dispatchScheduleTable/dispat
 import { DispatchScheduleForm } from './components/dispatchScheduleForm/dispatchScheduleForm.component';
 
 import { routing } from './dispatchSchedule.routing';
-import { ItemService } from "../item/item.service";
-import { DispatchScheduleService } from "./dispatchSchedule.service";
-import { OperationService } from "../operation/operation.service";
-import { CustomerItemService } from "../customerItem/customerItem.service";
-import { CustomerPoNumberService } from "../customerPoNumber/customerPoNumber.service";
-import { SalesOrderService } from "../salesOrder/salesOrder.service";
-import { JobService } from "../job/job.service";
+import { ItemService } from '../item/item.service';
+import { DispatchScheduleService } from './dispatchSchedule.service';
+import { OperationService } from '../operation/operation.service';
+import { CustomerItemService } from '../customerItem/customerItem.service';
+import { CustomerPoNumberService } from '../customerPoNumber/customerPoNumber.service';
+import { SalesOrderService } from '../salesOrder/salesOrder.service';
+import { JobService } from '../job/job.service';
 import { Print } from './components/dispatchSchedulePrint/print.component';
 import { PrintService } from '../../services/print.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
