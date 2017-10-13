@@ -10,7 +10,7 @@ import { PaintTable } from './components/paintTable/paintTable.component';
 import { PaintForm } from './components/paintForm/paintForm.component';
 
 import { routing } from './paint.routing';
-import { PaintService } from "./paint.service";
+import { PaintService } from './paint.service';
 
 
 @NgModule({
