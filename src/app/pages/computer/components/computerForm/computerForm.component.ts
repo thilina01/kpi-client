@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ComputerService } from "../../computer.service";
+import { ComputerService } from '../../computer.service';
 import { EmployeeService } from '../../../employee/employee.service';
 import { ComputerTypeService } from '../../../computerType/computerType.service';
 
@@ -141,8 +141,8 @@ export class ComputerForm {
     setDisplayOfEmployee() {
         let employee = this.formGroup.value.employee;
         if (employee != null && employee != undefined) {
-            let display = employee.code != null && employee.code != undefined ? employee.code + " : " : "";
-            display += employee.firstName != null && employee.firstName != undefined ? employee.firstName : "";
+            let display = employee.code != null && employee.code != undefined ? employee.code + ' : ' : '';
+            display += employee.firstName != null && employee.firstName != undefined ? employee.firstName : '';
             this.formGroup.value.employee.display = display;
         }
     }
@@ -176,8 +176,8 @@ export class ComputerForm {
     setDisplayOfComputerType() {
         let computerType = this.formGroup.value.computerType;
         if (computerType != null && computerType != undefined) {
-            let display = computerType.code != null && computerType.code != undefined ? computerType.code + " : " : "";
-            display += computerType.name != null && computerType.name != undefined ? computerType.name : "";
+            let display = computerType.code != null && computerType.code != undefined ? computerType.code + ' : ' : '';
+            display += computerType.name != null && computerType.name != undefined ? computerType.name : '';
             this.formGroup.value.computerType.display = display;
         }
     }

@@ -11,7 +11,7 @@ import { ComputerTable } from './components/computerTable/computerTable.componen
 import { ComputerForm } from './components/computerForm/computerForm.component';
 
 import { routing } from './computer.routing';
-import { ComputerService } from "./computer.service";
+import { ComputerService } from './computer.service';
 import { EmployeeService } from '../employee/employee.service';
 import { ComputerTypeService } from '../computerType/computerType.service';
 
