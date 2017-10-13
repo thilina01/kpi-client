@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { OnTimeDeliveryService } from "../../onTimeDelivery.service";
+import { OnTimeDeliveryService } from '../../onTimeDelivery.service';
 import { CustomerService } from '../../../customer/customer.service';
 
 @Component({
@@ -115,8 +115,8 @@ export class OnTimeDeliveryForm {
     setDisplayOfCustomer() {
         let customer = this.formGroup.value.customer;
         if (customer != null && customer != undefined) {
-            let display = customer.code != null && customer.code != undefined ? customer.code + " : " : "";
-            display += customer.name != null && customer.name != undefined ? customer.name : "";
+            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
+            display += customer.name != null && customer.name != undefined ? customer.name : '';
             this.formGroup.value.customer.display = display;
         }
 

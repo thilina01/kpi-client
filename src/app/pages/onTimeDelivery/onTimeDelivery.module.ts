@@ -12,7 +12,7 @@ import { OnTimeDeliveryTable } from './components/onTimeDeliveryTable/onTimeDeli
 import { OnTimeDeliveryForm } from './components/onTimeDeliveryForm/onTimeDeliveryForm.component';
 
 import { routing } from './onTimeDelivery.routing';
-import { OnTimeDeliveryService } from "./onTimeDelivery.service";
+import { OnTimeDeliveryService } from './onTimeDelivery.service';
 import { CustomerService } from '../customer/customer.service';
 
 
