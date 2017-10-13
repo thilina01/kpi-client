@@ -12,8 +12,8 @@ import { SalesWeightTable } from './components/salesWeightTable/salesWeightTable
 import { SalesWeightForm } from './components/salesWeightForm/salesWeightForm.component';
 
 import { routing } from './salesWeight.routing';
-import { LabourSourceService } from "../labourSource/labourSource.service";
-import { SalesWeightService } from "./salesWeight.service";
+import { LabourSourceService } from '../labourSource/labourSource.service';
+import { SalesWeightService } from './salesWeight.service';
 
 
 @NgModule({
