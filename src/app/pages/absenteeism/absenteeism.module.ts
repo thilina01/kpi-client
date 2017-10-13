@@ -11,8 +11,8 @@ import { AbsenteeismTable } from './components/absenteeismTable/absenteeismTable
 import { AbsenteeismForm } from './components/absenteeismForm/absenteeismForm.component';
 
 import { routing } from './absenteeism.routing';
-import { AbsenteeismService } from "./absenteeism.service";
-import { LabourSourceService } from "../labourSource/labourSource.service";
+import { AbsenteeismService } from './absenteeism.service';
+import { LabourSourceService } from '../labourSource/labourSource.service';
 
 
 @NgModule({

@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
- import { MasterService } from "../../services/master.service";
- import { HttpClient } from "@angular/common/http";
- import { APP_CONFIG, IAppConfig } from "../../app.config";
- import { AuthService } from "../../services/auth.service";
+ import { MasterService } from '../../services/master.service';
+ import { HttpClient } from '@angular/common/http';
+ import { APP_CONFIG, IAppConfig } from '../../app.config';
+ import { AuthService } from '../../services/auth.service';
 
 @Injectable()
 export class AbsenteeismService extends MasterService{
@@ -14,9 +14,9 @@ export class AbsenteeismService extends MasterService{
 }
 
 // import { APP_CONFIG, IAppConfig } from '../../app.config';
-// import { AuthService } from "../../services/auth.service";
-// import { HttpClient, HttpHeaders } from "@angular/common/http";
-// import { Observable } from "rxjs/Observable";
+// import { AuthService } from '../../services/auth.service';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Observable } from 'rxjs/Observable';
 // import 'rxjs/add/operator/catch';
 
 // @Injectable()
@@ -45,12 +45,12 @@ export class AbsenteeismService extends MasterService{
   // }
 
   // getPage(page, size): Observable<any> {
-  //   return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
+  //   return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
   //     .catch(err =>this.handleError(err));
   // }
 
   // getCombo(): Observable<any>  {
-  //   return this.http.get(this.apiUrl + "combo", { headers: this.getJsonHeaders() })
+  //   return this.http.get(this.apiUrl + 'combo', { headers: this.getJsonHeaders() })
   //     .catch(err => this.handleError(err));
   // }
 
