@@ -11,11 +11,11 @@ import { OperationTable } from './components/operationTable/operationTable.compo
 
 
 import { routing } from './operation.routing';
-import { ItemService } from "../item/item.service";
-import { SectionService } from "../section/section.service";
-import { OperationService } from "./operation.service";
-import { ShiftService } from "../shift/shift.service";
-import { OperationTypeService } from "../operationType/operationType.service";
+import { ItemService } from '../item/item.service';
+import { SectionService } from '../section/section.service';
+import { OperationService } from './operation.service';
+import { ShiftService } from '../shift/shift.service';
+import { OperationTypeService } from '../operationType/operationType.service';
 
 
 @NgModule({

@@ -3,11 +3,11 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { DataTable } from "primeng/components/datatable/datatable";
-import { Observable } from "rxjs/Rx";
-import { SectionService } from "../../../section/section.service";
-import { OperationService } from "../../operation.service";
-import { ShiftService } from "../../../shift/shift.service";
+import { DataTable } from 'primeng/components/datatable/datatable';
+import { Observable } from 'rxjs/Rx';
+import { SectionService } from '../../../section/section.service';
+import { OperationService } from '../../operation.service';
+import { ShiftService } from '../../../shift/shift.service';
 
 @Component({
   selector: 'operation-table',
@@ -24,9 +24,9 @@ export class OperationTable {
   @ViewChild(DataTable) dataTable: DataTable;
 
   sections: any;
-  section: any = { id: 0, "code": "ALL", "name": "All Sections" }
+  section: any = { id: 0, 'code': 'ALL', 'name': 'All Sections' }
   shifts: any;
-  shift: any = { id: 0, "code": "ALL", "name": "All Shifts" }
+  shift: any = { id: 0, 'code': 'ALL', 'name': 'All Shifts' }
 
   startDate: Date;
   endDate: Date;
@@ -45,14 +45,14 @@ export class OperationTable {
   getSections(): void {
     this.sectionService.getCombo().subscribe(sections => {
       this.sections = sections;
-      this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections" });
+      this.sections.unshift({ id: 0, 'code': 'ALL', 'name': 'All Sections' });
     });
   }
 
   getShifts(): void {
     this.shiftService.getCombo().subscribe(shifts => {
       this.shifts = shifts;
-      this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts" });
+      this.shifts.unshift({ id: 0, 'code': 'ALL', 'name': 'All Shifts' });
     });
   }
 
