@@ -12,8 +12,8 @@ import { ControlPointTypeTable } from './components/controlPointTypeTable/contro
 import { ControlPointTypeForm } from './components/controlPointTypeForm/controlPointTypeForm.component';
 
 import { routing } from './controlPointType.routing';
-import { ControlPointTypeService } from "./controlPointType.service";
-import { WorkCenterService } from "../workCenter/workCenter.service";
+import { ControlPointTypeService } from './controlPointType.service';
+import { WorkCenterService } from '../workCenter/workCenter.service';
 
 
 

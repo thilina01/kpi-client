@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ControlPointTypeService } from "../../controlPointType.service";
+import { ControlPointTypeService } from '../../controlPointType.service';
 
 @Component({
     selector: 'control-point-type-form',

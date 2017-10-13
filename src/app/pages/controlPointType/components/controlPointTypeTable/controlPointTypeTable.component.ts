@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { ControlPointTypeService } from "../../controlPointType.service";
+import { ControlPointTypeService } from '../../controlPointType.service';
 
 @Component({
   selector: 'control-point-type-table',
