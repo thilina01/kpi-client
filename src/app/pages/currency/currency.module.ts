@@ -10,7 +10,7 @@ import { CurrencyTable } from './components/currencyTable/currencyTable.componen
 import { CurrencyForm } from './components/currencyForm/currencyForm.component';
 
 import { routing } from './currency.routing';
-import { CurrencyService } from "./currency.service";
+import { CurrencyService } from './currency.service';
 
 
 @NgModule({
