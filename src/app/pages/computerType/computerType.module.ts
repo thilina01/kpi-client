@@ -10,7 +10,7 @@ import { ComputerTypeTable } from './components/computerTypeTable/computerTypeTa
 import { ComputerTypeForm } from './components/computerTypeForm/computerTypeForm.component';
 
 import { routing } from './computerType.routing';
-import { ComputerTypeService } from "./computerType.service";
+import { ComputerTypeService } from './computerType.service';
 
 
 @NgModule({
