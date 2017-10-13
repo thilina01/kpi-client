@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { MailConfigurationService } from "../../mailConfiguration.service";
+import { MailConfigurationService } from '../../mailConfiguration.service';
 
 @Component({
     selector: 'mail-configuration-form',

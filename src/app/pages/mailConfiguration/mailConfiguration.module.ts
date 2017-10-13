@@ -10,8 +10,8 @@ import { MailConfigurationTable } from './components/mailConfigurationTable/mail
 import { MailConfigurationForm } from './components/mailConfigurationForm/mailConfigurationForm.component';
 
 import { routing } from './mailConfiguration.routing';
-import { MailConfigurationService } from "./mailConfiguration.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
+import { MailConfigurationService } from './mailConfiguration.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 
 @NgModule({
