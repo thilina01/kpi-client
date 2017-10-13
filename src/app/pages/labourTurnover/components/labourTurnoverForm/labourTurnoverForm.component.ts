@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../../../services/shared.service';
-import { LabourSourceService } from "../../../labourSource/labourSource.service";
-import { LabourTurnoverService } from "../../labourTurnover.service";
+import { LabourSourceService } from '../../../labourSource/labourSource.service';
+import { LabourTurnoverService } from '../../labourTurnover.service';
 
 @Component({
     selector: 'labourTurnover-form',
@@ -114,8 +114,8 @@ export class LabourTurnoverForm {
         setDisplayOfLabourSource(){
             let labourSource = this.formGroup.value.labourSource;
             if (labourSource != null && labourSource != undefined) {
-                let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + " : " : "";
-                display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : "";
+                let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + ' : ' : '';
+                display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : '';
                 this.formGroup.value.labourSource.display = display;
             }
     }

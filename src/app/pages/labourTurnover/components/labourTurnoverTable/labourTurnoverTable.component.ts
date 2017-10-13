@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
-import { LabourTurnoverService } from "../../labourTurnover.service";
+import { LabourTurnoverService } from '../../labourTurnover.service';
 
 @Component({
     selector: 'labourTurnover-table',

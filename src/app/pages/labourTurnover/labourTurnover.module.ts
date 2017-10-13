@@ -12,8 +12,8 @@ import { LabourTurnoverTable } from './components/labourTurnoverTable/labourTurn
 import { LabourTurnoverForm } from './components/labourTurnoverForm/labourTurnoverForm.component';
 
 import { routing } from './labourTurnover.routing';
-import { LabourSourceService } from "../labourSource/labourSource.service";
-import { LabourTurnoverService } from "./labourTurnover.service";
+import { LabourSourceService } from '../labourSource/labourSource.service';
+import { LabourTurnoverService } from './labourTurnover.service';
 
 
 @NgModule({
