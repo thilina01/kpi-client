@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { SalesOrderTypeService } from "../../salesOrderType.service";
+import { SalesOrderTypeService } from '../../salesOrderType.service';
 
 @Component({
   selector: 'sales-order-type-table',

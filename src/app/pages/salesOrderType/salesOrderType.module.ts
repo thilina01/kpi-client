@@ -12,8 +12,8 @@ import { SalesOrderTypeTable } from './components/salesOrderTypeTable/salesOrder
 import { SalesOrderTypeForm } from './components/salesOrderTypeForm/salesOrderTypeForm.component';
 
 import { routing } from './salesOrderType.routing';
-import { SalesOrderTypeService } from "./salesOrderType.service";
-import { WorkCenterService } from "../workCenter/workCenter.service";
+import { SalesOrderTypeService } from './salesOrderType.service';
+import { WorkCenterService } from '../workCenter/workCenter.service';
 
 
 
