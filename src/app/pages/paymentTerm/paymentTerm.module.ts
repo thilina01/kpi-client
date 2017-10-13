@@ -10,7 +10,7 @@ import { PaymentTermTable } from './components/paymentTermTable/paymentTermTable
 import { PaymentTermForm } from './components/paymentTermForm/paymentTermForm.component';
 
 import { routing } from './paymentTerm.routing';
-import { PaymentTermService } from "./paymentTerm.service";
+import { PaymentTermService } from './paymentTerm.service';
 
 
 @NgModule({
