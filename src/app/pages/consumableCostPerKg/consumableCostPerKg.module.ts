@@ -12,7 +12,7 @@ import { ConsumableCostPerKgTable } from './components/consumableCostPerKgTable/
 import { ConsumableCostPerKgForm } from './components/consumableCostPerKgForm/consumableCostPerKgForm.component';
 
 import { routing } from './consumableCostPerKg.routing';
-import { ConsumableCostPerKgService } from "./consumableCostPerKg.service";
+import { ConsumableCostPerKgService } from './consumableCostPerKg.service';
 
 
 @NgModule({
