@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { CostCenterService } from "../../costCenter.service";
-import { SectionService } from "../../../section/section.service";
+import { CostCenterService } from '../../costCenter.service';
+import { SectionService } from '../../../section/section.service';
 
 @Component({
     selector: 'cost-center-form',
@@ -121,8 +121,8 @@ export class CostCenterForm {
 
             let section = this.formGroup.value.section;
             if (section != null && section != undefined) {
-                let display = section.code != null && section.code != undefined ? section.code + " : " : "";
-                display += section.name != null && section.name != undefined ? section.name : "";
+                let display = section.code != null && section.code != undefined ? section.code + ' : ' : '';
+                display += section.name != null && section.name != undefined ? section.name : '';
                 this.formGroup.value.section.display = display;
             }
     

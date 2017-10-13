@@ -11,8 +11,8 @@ import { CostCenterTable } from './components/costCenterTable/costCenterTable.co
 import { CostCenterForm } from './components/costCenterForm/costCenterForm.component';
 
 import { routing } from './costCenter.routing';
-import { CostCenterService } from "./costCenter.service";
-import { SectionService } from "../section/section.service";
+import { CostCenterService } from './costCenter.service';
+import { SectionService } from '../section/section.service';
 
 
 @NgModule({
