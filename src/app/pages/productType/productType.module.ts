@@ -10,7 +10,7 @@ import { ProductTypeTable } from './components/productTypeTable/productTypeTable
 import { ProductTypeForm } from './components/productTypeForm/productTypeForm.component';
 
 import { routing } from './productType.routing';
-import { ProductTypeService } from "./productType.service";
+import { ProductTypeService } from './productType.service';
 
 
 @NgModule({
