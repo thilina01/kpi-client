@@ -10,13 +10,13 @@ import { JobForm } from './components/jobForm/jobForm.component';
 import { JobInfo } from './components/jobInfo/jobInfo.component';
 
 import { routing } from './job.routing';
-import { ItemService } from "../item/item.service";
-import { JobService } from "./job.service";
-import { JobTypeService } from "../jobType/jobType.service";
-import { OperationService } from "../operation/operation.service";
-import { CustomerItemService } from "../customerItem/customerItem.service";
-import { CustomerPoNumberService } from "../customerPoNumber/customerPoNumber.service";
-import { SalesOrderService } from "../salesOrder/salesOrder.service";
+import { ItemService } from '../item/item.service';
+import { JobService } from './job.service';
+import { JobTypeService } from '../jobType/jobType.service';
+import { OperationService } from '../operation/operation.service';
+import { CustomerItemService } from '../customerItem/customerItem.service';
+import { CustomerPoNumberService } from '../customerPoNumber/customerPoNumber.service';
+import { SalesOrderService } from '../salesOrder/salesOrder.service';
 
 
 @NgModule({

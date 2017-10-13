@@ -4,12 +4,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ItemService } from "../../../item/item.service";
-import { JobService } from "../../job.service";
-import { JobTypeService } from "../../../jobType/jobType.service";
-import { CustomerItemService } from "../../../customerItem/customerItem.service";
-import { CustomerPoNumberService } from "../../../customerPoNumber/customerPoNumber.service";
-import { SalesOrderService } from "../../../salesOrder/salesOrder.service";
+import { ItemService } from '../../../item/item.service';
+import { JobService } from '../../job.service';
+import { JobTypeService } from '../../../jobType/jobType.service';
+import { CustomerItemService } from '../../../customerItem/customerItem.service';
+import { CustomerPoNumberService } from '../../../customerPoNumber/customerPoNumber.service';
+import { SalesOrderService } from '../../../salesOrder/salesOrder.service';
 
 @Component({
     selector: 'job-form',
@@ -114,8 +114,8 @@ export class JobForm {
     setDisplayOfItem() {
         let item = this.formGroup.value.item;
         if (item != null && item != undefined) {
-            let display = item.code != null && item.code != undefined ? item.code + " : " : "";
-            display += item.name != null && item.name != undefined ? item.name : "";
+            let display = item.code != null && item.code != undefined ? item.code + ' : ' : '';
+            display += item.name != null && item.name != undefined ? item.name : '';
             this.formGroup.value.item.display = display;
         }
     }

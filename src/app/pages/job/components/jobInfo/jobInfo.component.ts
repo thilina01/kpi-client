@@ -2,9 +2,9 @@ import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 
 import { SharedService } from '../../../../services/shared.service';
-import { DataTable } from "primeng/primeng";
-import { JobService } from "../../job.service";
-import { OperationService } from "../../../operation/operation.service";
+import { DataTable } from 'primeng/primeng';
+import { JobService } from '../../job.service';
+import { OperationService } from '../../../operation/operation.service';
 @Component({
     selector: 'job-info',
     encapsulation: ViewEncapsulation.None,
@@ -136,8 +136,8 @@ export class JobInfo {
 
     setDisplayOfJob() {
         if (this.job != null && this.job != undefined) {
-            let display = this.job.code != null && this.job.code != undefined ? this.job.code + " : " : "";
-            display += this.job.name != null && this.job.name != undefined ? this.job.name : "";
+            let display = this.job.code != null && this.job.code != undefined ? this.job.code + ' : ' : '';
+            display += this.job.name != null && this.job.name != undefined ? this.job.name : '';
             this.job.display = display;
         }
     }
