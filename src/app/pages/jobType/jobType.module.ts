@@ -10,7 +10,7 @@ import { JobTypeTable } from './components/jobTypeTable/jobTypeTable.component';
 import { JobTypeForm } from './components/jobTypeForm/jobTypeForm.component';
 
 import { routing } from './jobType.routing';
-import { JobTypeService } from "./jobType.service";
+import { JobTypeService } from './jobType.service';
 
 
 @NgModule({

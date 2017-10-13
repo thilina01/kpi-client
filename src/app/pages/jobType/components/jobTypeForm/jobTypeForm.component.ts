@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { JobTypeService } from "../../jobType.service";
+import { JobTypeService } from '../../jobType.service';
 
 @Component({
     selector: 'job-type-form',
