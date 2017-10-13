@@ -10,7 +10,7 @@ import { ShiftTypeTable } from './components/shiftTypeTable/shiftTypeTable.compo
 import { ShiftTypeForm } from './components/shiftTypeForm/shiftTypeForm.component';
 
 import { routing } from './shiftType.routing';
-import { ShiftTypeService } from "./shiftType.service";
+import { ShiftTypeService } from './shiftType.service';
 
 
 @NgModule({
