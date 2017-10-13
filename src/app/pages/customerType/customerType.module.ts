@@ -11,7 +11,7 @@ import { CustomerTypeTable } from './components/customerTypeTable/customerTypeTa
 import { CustomerTypeForm } from './components/customerTypeForm/customerTypeForm.component';
 
 import { routing } from './customerType.routing';
-import { CustomerTypeService } from "./customerType.service";
+import { CustomerTypeService } from './customerType.service';
 
 
 @NgModule({
