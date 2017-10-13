@@ -2,7 +2,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { LocalDataSource } from 'ng2-smart-table';
-import { ManpowerService } from "../../manpower.service";
+import { ManpowerService } from '../../manpower.service';
 
 @Component({
   selector: 'manpower-table',

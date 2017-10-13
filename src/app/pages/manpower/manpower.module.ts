@@ -8,7 +8,7 @@ import { Manpower } from './manpower.component';
 import { ManpowerTable } from './components/manpowerTable/manpowerTable.component';
 
 import { routing } from './manpower.routing';
-import { ManpowerService } from "./manpower.service";
+import { ManpowerService } from './manpower.service';
 
 
 @NgModule({
