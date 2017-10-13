@@ -12,8 +12,8 @@ import { SalesValueTable } from './components/salesValueTable/salesValueTable.co
 import { SalesValueForm } from './components/salesValueForm/salesValueForm.component';
 
 import { routing } from './salesValue.routing';
-import { LabourSourceService } from "../labourSource/labourSource.service";
-import { SalesValueService } from "./salesValue.service";
+import { LabourSourceService } from '../labourSource/labourSource.service';
+import { SalesValueService } from './salesValue.service';
 
 
 @NgModule({
