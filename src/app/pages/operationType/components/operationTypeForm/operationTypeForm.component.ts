@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { OperationTypeService } from "../../operationType.service";
+import { OperationTypeService } from '../../operationType.service';
 
 @Component({
     selector: 'operation-type-form',

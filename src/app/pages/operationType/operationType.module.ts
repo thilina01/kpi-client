@@ -10,8 +10,8 @@ import { OperationTypeTable } from './components/operationTypeTable/operationTyp
 import { OperationTypeForm } from './components/operationTypeForm/operationTypeForm.component';
 
 import { routing } from './operationType.routing';
-import { OperationTypeService } from "./operationType.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
+import { OperationTypeService } from './operationType.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 
 @NgModule({
