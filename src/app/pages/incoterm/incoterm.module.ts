@@ -11,7 +11,7 @@ import { IncotermTable } from './components/incotermTable/incotermTable.componen
 import { IncotermForm } from './components/incotermForm/incotermForm.component';
 
 import { routing } from './incoterm.routing';
-import { IncotermService } from "./incoterm.service";
+import { IncotermService } from './incoterm.service';
 
 
 @NgModule({
