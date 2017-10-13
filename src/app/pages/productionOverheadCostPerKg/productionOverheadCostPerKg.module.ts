@@ -12,7 +12,7 @@ import { ProductionOverheadCostPerKgTable } from './components/productionOverhea
 import { ProductionOverheadCostPerKgForm } from './components/productionOverheadCostPerKgForm/productionOverheadCostPerKgForm.component';
 
 import { routing } from './productionOverheadCostPerKg.routing';
-import { ProductionOverheadCostPerKgService } from "./productionOverheadCostPerKg.service";
+import { ProductionOverheadCostPerKgService } from './productionOverheadCostPerKg.service';
 
 
 @NgModule({
