@@ -11,7 +11,7 @@ import { EmployeeTable } from './components/employeeTable/employeeTable.componen
 import { EmployeeForm } from './components/employeeForm/employeeForm.component';
 
 import { routing } from './employee.routing';
-import { EmployeeService } from "./employee.service";
+import { EmployeeService } from './employee.service';
 
 
 
