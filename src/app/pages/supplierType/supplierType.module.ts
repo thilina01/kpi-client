@@ -10,7 +10,7 @@ import { SupplierTypeTable } from './components/supplierTypeTable/supplierTypeTa
 import { SupplierTypeForm } from './components/supplierTypeForm/supplierTypeForm.component';
 
 import { routing } from './supplierType.routing';
-import { SupplierTypeService } from "./supplierType.service";
+import { SupplierTypeService } from './supplierType.service';
 
 
 @NgModule({

@@ -4,7 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { SupplierTypeService } from "../../supplierType.service";
+import { SupplierTypeService } from '../../supplierType.service';
 
 @Component({
     selector: 'supplier-type-form',
