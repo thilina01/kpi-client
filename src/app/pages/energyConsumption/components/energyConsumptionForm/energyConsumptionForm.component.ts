@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { EnergyConsumptionService } from "../../energyConsumption.service";
-import { LocationService } from "../../../location/location.service";
+import { EnergyConsumptionService } from '../../energyConsumption.service';
+import { LocationService } from '../../../location/location.service';
 
 @Component({
     selector: 'energy-consumption-form',
@@ -119,8 +119,8 @@ export class EnergyConsumptionForm {
         setDisplayOfLocation(){
             let location= this.formGroup.value.location;
             if (location!= null && location!= undefined) {
-                let display = location.code != null && location.code != undefined ? location.code + " : " : "";
-                display += location.name != null && location.name != undefined ? location.name : "";
+                let display = location.code != null && location.code != undefined ? location.code + ' : ' : '';
+                display += location.name != null && location.name != undefined ? location.name : '';
                 this.formGroup.value.location.display = display;
             }
     }

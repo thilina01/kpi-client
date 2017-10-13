@@ -12,8 +12,8 @@ import { EnergyConsumptionTable } from './components/energyConsumptionTable/ener
 import { EnergyConsumptionForm } from './components/energyConsumptionForm/energyConsumptionForm.component';
 
 import { routing } from './energyConsumption.routing';
-import { EnergyConsumptionService } from "./energyConsumption.service";
-import { LocationService } from "../location/location.service";
+import { EnergyConsumptionService } from './energyConsumption.service';
+import { LocationService } from '../location/location.service';
 
 
 
