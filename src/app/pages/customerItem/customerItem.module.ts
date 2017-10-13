@@ -11,9 +11,9 @@ import { CustomerItemTable } from './components/customerItemTable/customerItemTa
 import { CustomerItemForm } from './components/customerItemForm/customerItemForm.component';
 
 import { routing } from './customerItem.routing';
-import { CustomerItemService } from "./customerItem.service";
-import { ItemService } from "../item/item.service";
-import { CustomerService } from "../customer/customer.service";
+import { CustomerItemService } from './customerItem.service';
+import { ItemService } from '../item/item.service';
+import { CustomerService } from '../customer/customer.service';
 
 
 @NgModule({

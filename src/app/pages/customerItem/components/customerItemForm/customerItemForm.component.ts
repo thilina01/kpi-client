@@ -4,9 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { CustomerItemService } from "../../customerItem.service";
-import { CustomerService } from "../../../customer/customer.service";
-import { ItemService } from "../../../item/item.service";
+import { CustomerItemService } from '../../customerItem.service';
+import { CustomerService } from '../../../customer/customer.service';
+import { ItemService } from '../../../item/item.service';
 
 @Component({
     selector: 'customer-item-form',
@@ -137,8 +137,8 @@ export class CustomerItemForm {
      setDisplayOfCustomer()  {
         let customer = this.formGroup.value.customer ;
         if (customer!= null && customer!= undefined) {
-            let display = customer.code != null && customer.code != undefined ? customer.code + " : " : "";
-            display += customer.name != null && customer.name != undefined ? customer.name : "";
+            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
+            display += customer.name != null && customer.name != undefined ? customer.name : '';
             this.formGroup.value.customer.display = display;
         }
           
@@ -172,8 +172,8 @@ export class CustomerItemForm {
      setDisplayOfItem()  {
         let item = this.formGroup.value.item ;
         if (item!= null && item!= undefined) {
-            let display = item.code != null && item.code != undefined ? item.code + " : " : "";
-            display += item.name != null && item.name != undefined ? item.name : "";
+            let display = item.code != null && item.code != undefined ? item.code + ' : ' : '';
+            display += item.name != null && item.name != undefined ? item.name : '';
             this.formGroup.value.item.display = display;
         }
  }

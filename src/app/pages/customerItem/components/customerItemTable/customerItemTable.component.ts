@@ -3,7 +3,7 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { CustomerItemService } from "../../customerItem.service";
+import { CustomerItemService } from '../../customerItem.service';
 
 @Component({
   selector: 'customer-item-table',
