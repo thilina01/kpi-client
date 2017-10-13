@@ -10,7 +10,7 @@ import { SectionTypeTable } from './components/sectionTypeTable/sectionTypeTable
 import { SectionTypeForm } from './components/sectionTypeForm/sectionTypeForm.component';
 
 import { routing } from './sectionType.routing';
-import { SectionTypeService } from "./sectionType.service";
+import { SectionTypeService } from './sectionType.service';
 
 
 @NgModule({
