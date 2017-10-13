@@ -10,8 +10,8 @@ import { NotifyPartyTable } from './components/notifyPartyTable/notifyPartyTable
 import { NotifyPartyForm } from './components/notifyPartyForm/notifyPartyForm.component';
 
 import { routing } from './notifyParty.routing';
-import { NotifyPartyService } from "./notifyParty.service";
-import { CalendarModule } from "primeng/components/calendar/calendar";
+import { NotifyPartyService } from './notifyParty.service';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 
 @NgModule({
