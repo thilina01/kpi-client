@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { BreakdownService } from "../../breakdown.service";
-import { MachineService } from "../../../machine/machine.service";
+import { BreakdownService } from '../../breakdown.service';
+import { MachineService } from '../../../machine/machine.service';
 
 @Component({
     selector: 'breakdown-form',
@@ -120,8 +120,8 @@ export class BreakdownForm {
         setDisplayOfMachine(){
             let machine = this.formGroup.value.machine;
             if (machine != null && machine != undefined) {
-                let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
-                display += machine.name != null && machine.name != undefined ? machine.name : "";
+                let display = machine.code != null && machine.code != undefined ? machine.code + ' : ' : '';
+                display += machine.name != null && machine.name != undefined ? machine.name : '';
                 this.formGroup.value.machine.display = display;
             }
         }

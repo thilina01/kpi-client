@@ -12,8 +12,8 @@ import { BreakdownTable } from './components/breakdownTable/breakdownTable.compo
 import { BreakdownForm } from './components/breakdownForm/breakdownForm.component';
 
 import { routing } from './breakdown.routing';
-import { BreakdownService } from "./breakdown.service";
-import { MachineService } from "../machine/machine.service";
+import { BreakdownService } from './breakdown.service';
+import { MachineService } from '../machine/machine.service';
 
 
 @NgModule({
