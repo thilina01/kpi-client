@@ -27,8 +27,8 @@ export class TreatmentTypeForm {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
-            name:['', Validators.required],
-            
+            name: ['', Validators.required],
+
         });
     }
 

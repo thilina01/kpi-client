@@ -1,16 +1,15 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { Team } from './team.component';
 import { TeamForm } from './components/teamForm/teamForm.component';
 import { TeamTable } from './components/teamTable/teamTable.component';
 import { ModuleWithProviders } from '@angular/core';
 
-// noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
     component: Team,
-     children: [
+    children: [
       { path: 'form', component: TeamForm },
       { path: 'form/:id', component: TeamForm },
       { path: 'table', component: TeamTable }

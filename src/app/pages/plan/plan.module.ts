@@ -13,8 +13,6 @@ import { PlanFormJob } from './components/planFormJob/planFormJob.component';
 import { PlanFormHr } from './components/planFormHr/planFormHr.component';
 import { ProductionService } from '../production/production.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

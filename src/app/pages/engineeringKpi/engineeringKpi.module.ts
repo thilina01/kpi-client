@@ -7,7 +7,6 @@ import { MaterialModule } from '@angular/material';
 import { EngineeringKpi } from './engineeringKpi.component';
 import { routing } from './engineeringKpi.routing';
 
-
 import { PanelModule, TabViewModule } from 'primeng/primeng';
 import { ChartService } from '../chart/chart.service';
 import { EnergyCostMainChartService } from './energyCostMainChart/energyCostMainChart.service';

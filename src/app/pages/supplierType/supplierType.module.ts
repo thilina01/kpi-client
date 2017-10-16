@@ -12,7 +12,6 @@ import { SupplierTypeForm } from './components/supplierTypeForm/supplierTypeForm
 import { routing } from './supplierType.routing';
 import { SupplierTypeService } from './supplierType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

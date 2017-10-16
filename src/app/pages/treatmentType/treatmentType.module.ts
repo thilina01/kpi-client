@@ -12,7 +12,6 @@ import { TreatmentTypeForm } from './components/treatmentTypeForm/treatmentTypeF
 import { routing } from './treatmentType.routing';
 import { TreatmentTypeService } from './treatmentType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

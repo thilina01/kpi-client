@@ -18,9 +18,9 @@ export class OnTimeDeliveryTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: OnTimeDeliveryService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: OnTimeDeliveryService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -57,7 +57,6 @@ export class OnTimeDeliveryTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );

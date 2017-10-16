@@ -18,7 +18,6 @@ export class MttrChart {
 
   initChart(chart: any) {
     let zoomChart = () => {
-      //chart.zoomToDates(new Date(2013, 3), new Date(2014, 0));
     };
 
     chart.addListener('rendered', zoomChart);

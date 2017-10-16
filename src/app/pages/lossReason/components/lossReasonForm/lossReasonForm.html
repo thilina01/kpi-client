@@ -1,26 +1,26 @@
-
-    <p-panel>
-        <p-header>
-          <div class="row">
-            <div class="col">
-              <h4>Loss Reason Form</h4>
-            </div>
-            <div class="col">
-              <a routerLink="/pages/lossReason/table"> 
-                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-                </button>
-              </a>
-            </div>
-          </div>
-        </p-header>
-   <div class="row">
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Loss Reason Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/lossReason/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="lossType">Loss Type</label><br/>
+              <label for="lossType">Loss Type</label>
+              <br/>
               <p-autoComplete formControlName="lossType" field="display" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossTypeDropdownClick($event)" (onSelect)="onLossTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -29,17 +29,12 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.lossType != null && formGroup.value.lossType.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.lossType.code}}{{formGroup.value.lossType.name != null ?" | "+ formGroup.value.lossType.name:""}} -->
-            <!-- </label> -->
             </div>
           </div>
-          <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.lossType != null"> -->
-          <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="code">Code</label><br/>
+              <label for="code">Code</label>
+              <br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
@@ -48,7 +43,8 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="name">Name</label><br/>
+              <label for="name">Name</label>
+              <br/>
               <input type="text" pInputText formControlName="name">
             </div>
           </div>
@@ -57,7 +53,8 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

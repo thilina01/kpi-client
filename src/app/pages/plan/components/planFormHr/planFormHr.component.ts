@@ -3,7 +3,6 @@ import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from
 import { CustomValidators } from 'ng2-validation';
 import { ManpowerTypeService } from '../../../manpowerType/manpowerType.service';
 
-
 @Component({
   selector: 'plan-form-hr',
   templateUrl: './planFormHr.html',
@@ -24,7 +23,7 @@ export class PlanFormHr {
   ) {
     this.hrFormGroup = fb.group({
       manpowerType: [{}, Validators.compose([Validators.required])],
-      plannedQuantity: ['', Validators.compose([Validators.required,CustomValidators.range([1, 20])]
+      plannedQuantity: ['', Validators.compose([Validators.required, CustomValidators.range([1, 20])]
       )]
     });
   }

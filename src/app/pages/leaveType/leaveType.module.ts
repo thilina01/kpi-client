@@ -12,7 +12,6 @@ import { LeaveTypeForm } from './components/leaveTypeForm/leaveTypeForm.componen
 import { routing } from './leaveType.routing';
 import { LeaveTypeService } from './leaveType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

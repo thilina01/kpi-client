@@ -25,11 +25,11 @@ export class EnergyConsumptionForm {
     effectiveMonth: Date;
     location: any = { id: '', code: '' }
 
-    constructor(protected service: EnergyConsumptionService, 
-        private route: ActivatedRoute, 
-        private router: Router, 
-        fb: FormBuilder, 
-        private sharedService: SharedService, 
+    constructor(protected service: EnergyConsumptionService,
+        private route: ActivatedRoute,
+        private router: Router,
+        fb: FormBuilder,
+        private sharedService: SharedService,
         private locationService: LocationService) {
         this.formGroup = fb.group({
             id: '',
@@ -70,7 +70,7 @@ export class EnergyConsumptionForm {
         }
         this.formGroup.patchValue(this.energyConsumption, { onlySelf: true });
         this.location = this.energyConsumption.location;
-        this.setDisplayOfLocation();  
+        this.setDisplayOfLocation();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -91,7 +91,6 @@ export class EnergyConsumptionForm {
 
     /*================== Location Filter ===================*/
     filteredLocations: any[];
-    //location: any;
 
     filterLocations(event) {
         let query = event.query.toLowerCase();
@@ -113,16 +112,16 @@ export class EnergyConsumptionForm {
     }
 
     onLocationSelect(event: any) {
-       
-        this.setDisplayOfLocation();  
+
+        this.setDisplayOfLocation();
+    }
+    setDisplayOfLocation() {
+        let location = this.formGroup.value.location;
+        if (location != null && location != undefined) {
+            let display = location.code != null && location.code != undefined ? location.code + ' : ' : '';
+            display += location.name != null && location.name != undefined ? location.name : '';
+            this.formGroup.value.location.display = display;
         }
-        setDisplayOfLocation(){
-            let location= this.formGroup.value.location;
-            if (location!= null && location!= undefined) {
-                let display = location.code != null && location.code != undefined ? location.code + ' : ' : '';
-                display += location.name != null && location.name != undefined ? location.name : '';
-                this.formGroup.value.location.display = display;
-            }
     }
     /*================== End Of Location Filter ===================*/
 }

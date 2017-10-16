@@ -23,11 +23,11 @@ export class SalesWeightForm {
     effectiveMonth: Date;
     labourSource: any = { id: '', code: '' }
 
-    constructor(protected service: SalesWeightService, 
-        private route: ActivatedRoute, 
-        private router: Router, 
-        fb: FormBuilder, 
-        private sharedService: SharedService, 
+    constructor(protected service: SalesWeightService,
+        private route: ActivatedRoute,
+        private router: Router,
+        fb: FormBuilder,
+        private sharedService: SharedService,
         private labourSourceService: LabourSourceService) {
         this.formGroup = fb.group({
             id: '',

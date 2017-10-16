@@ -15,7 +15,6 @@ import { LossReasonService } from './lossReason.service';
 import { LossType } from '../lossType/lossType.component';
 import { LossTypeService } from '../lossType/lossType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +36,7 @@ import { LossTypeService } from '../lossType/lossType.service';
   ],
   providers: [
     LossReasonService,
-     LossTypeService
+    LossTypeService
   ]
 })
 export class LossReasonModule { }

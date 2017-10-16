@@ -3,16 +3,17 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="manpowerType">Manpower Type</label> <select id="manpowerTypeSelector" class="form-control" formControlName="manpowerType">
-					<option *ngFor="let manpowerType of manpowerTypes" [ngValue]="manpowerType">{{manpowerType.name}}</option>
-				</select>
+					<label for="manpowerType">Manpower Type</label>
+					<select id="manpowerTypeSelector" class="form-control" formControlName="manpowerType">
+						<option *ngFor="let manpowerType of manpowerTypes" [ngValue]="manpowerType">{{manpowerType.name}}</option>
+					</select>
 				</div>
 			</div>
-
 			<div class="col-sm-6">
 				<div class="form-group" [ngClass]="{'has-error': (!hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched), 'has-success': (hrFormGroup.controls['plannedQuantity'].valid && hrFormGroup.controls['plannedQuantity'].touched)}">
-					<label for="inputFirstName">Quantity</label> <input type="number" class="form-control " placeholder="quantity" #plannedQuantity
-					 (keyup.enter)="onEnter(plannedQuantity.value)" formControlName="plannedQuantity">
+					<label for="inputFirstName">Quantity</label>
+					<input type="number" class="form-control " placeholder="quantity" #plannedQuantity (keyup.enter)="onEnter(plannedQuantity.value)"
+					 formControlName="plannedQuantity">
 				</div>
 			</div>
 		</div>
@@ -31,9 +32,11 @@
 				<td>{{i+1}}</td>
 				<td>{{manpower.manpowerType.name}}</td>
 				<td>{{manpower.plannedQuantity}}</td>
-				<td><button type="button" class="btn btn-danger btn-sm" (click)="removeManpower(i)">
+				<td>
+					<button type="button" class="btn btn-danger btn-sm" (click)="removeManpower(i)">
 						<i class="fa fa-times" ng-reflect-class-name="fa fa-times"></i>
-					</button></td>
+					</button>
+				</td>
 			</tr>
 		</table>
 	</div>

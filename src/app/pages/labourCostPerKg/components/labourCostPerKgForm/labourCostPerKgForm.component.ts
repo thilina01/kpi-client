@@ -20,21 +20,21 @@ export class LabourCostPerKgForm {
     subscription: Subscription;
     effectiveMonth: Date;
 
-    constructor(protected service: LabourCostPerKgService, 
-        private route: ActivatedRoute, 
-        private router: Router, 
-        fb: FormBuilder, 
+    constructor(protected service: LabourCostPerKgService,
+        private route: ActivatedRoute,
+        private router: Router,
+        fb: FormBuilder,
         private sharedService: SharedService
     ) {
         this.formGroup = fb.group({
             id: '',
-            effectiveMonth: [this.effectiveMonth, Validators.required],        
-            actual: ['', Validators.required],        
+            effectiveMonth: [this.effectiveMonth, Validators.required],
+            actual: ['', Validators.required],
             budget: ['', Validators.required]
         });
     }
 
-    ngOnInit(): void {        
+    ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];

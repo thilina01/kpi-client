@@ -2,11 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { Subject } from 'rxjs/Subject';
-    
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
-
-//import { Message } from 'primeng/primeng';
 
 @Injectable()
 export class SharedService {
@@ -19,7 +16,6 @@ export class SharedService {
   }
 
   ngOnInit(): void {
-    //this.addMessage({ cc: 'fgbsdhgrhrdhdry' });
   }
 
   YYYYMMDD(date: Date): string {
@@ -33,7 +29,6 @@ export class SharedService {
 
     return [year, month, day].join('-');
   }
-
 
   millisToDuration(millis: number) {
     let days = Math.floor(millis / 86400000);

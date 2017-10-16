@@ -5,9 +5,9 @@
         <h4>Employee Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/employee/table"> 
+        <a routerLink="/pages/employee/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-          <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
         </a>
       </div>
@@ -19,57 +19,65 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="code">Employee ID</label><br/>
+              <label for="code">Employee ID</label>
+              <br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="firstName">First Name</label><br/>
+              <label for="firstName">First Name</label>
+              <br/>
               <input type="text" pInputText formControlName="firstName">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="lastName">Last Name</label><br/>
+              <label for="lastName">Last Name</label>
+              <br/>
               <input type="text" pInputText formControlName="lastName">
             </div>
           </div>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-          <div class="ui-inputgroup">
-            <label for="dateOfBirth">Date Of Birth</label><br/>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched), 'has-success': (formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched)}">
-              <p-calendar id="dateOfBirthPicker" formControlName="dateOfBirth" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
-            </div>
-          </div>
-        </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="nic">NIC</label><br/>
+              <label for="dateOfBirth">Date Of Birth</label>
+              <br/>
+              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched), 'has-success': (formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched)}">
+                <p-calendar id="dateOfBirthPicker" formControlName="dateOfBirth" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="ui-inputgroup">
+              <label for="nic">NIC</label>
+              <br/>
               <input type="text" pInputText formControlName="nic">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="contactNumber">Contact Number</label><br/>
+              <label for="contactNumber">Contact Number</label>
+              <br/>
               <input type="text" pInputText formControlName="contactNumber">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="address">Address</label><br/> 
+              <label for="address">Address</label>
+              <br/>
               <input type="text" pInputText formControlName="address">
             </div>
           </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="ui-inputgroup">
-            &nbsp;<br/>
-            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ui-inputgroup">
+              &nbsp;
+              <br/>
+              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 </p-panel>

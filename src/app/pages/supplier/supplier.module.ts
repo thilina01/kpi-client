@@ -17,8 +17,6 @@ import { PaymentTermService } from '../paymentTerm/paymentTerm.service';
 import { CurrencyService } from '../currency/currency.service';
 import { DeliveryTermService } from '../deliveryTerm/deliveryTerm.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +28,7 @@ import { DeliveryTermService } from '../deliveryTerm/deliveryTerm.service';
     SharedModule,
     PanelModule,
     InputTextModule,
-    AutoCompleteModule,    
+    AutoCompleteModule,
     routing
   ],
   declarations: [

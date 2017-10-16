@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'salesOrderType',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class SalesOrderType {

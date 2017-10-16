@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'job',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class Job {

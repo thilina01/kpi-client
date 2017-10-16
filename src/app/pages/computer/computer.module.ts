@@ -28,7 +28,7 @@ import { ComputerTypeService } from '../computerType/computerType.service';
     SharedModule,
     PanelModule,
     InputTextModule,
-    AutoCompleteModule,    
+    AutoCompleteModule,
     routing
   ],
   declarations: [

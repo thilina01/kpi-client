@@ -64,7 +64,6 @@ export class DispatchNoteTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          //this.msgs.push();
           this.loadData()
         }
         );

@@ -99,7 +99,6 @@ export class ControlPointForm {
     }
     /*================== Control Point Type Filter ===================*/
     filteredControlPointTypes: any[];
-    //controlPointType: any;
 
     filterControlPointTypes(event) {
         let query = event.query.toLowerCase();
@@ -135,7 +134,6 @@ export class ControlPointForm {
     /*================== End Of Control Point Type Filter ===================*/
     /*================== Work Center Filter ===================*/
     filteredWorkCenters: any[];
-    //workCenter: any;
 
     filterWorkCenters(event) {
         let query = event.query.toLowerCase();

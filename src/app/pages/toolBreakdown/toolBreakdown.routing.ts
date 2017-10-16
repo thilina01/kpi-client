@@ -1,10 +1,9 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { ToolBreakdown } from './toolBreakdown.component';
 import { ToolBreakdownForm } from './components/toolBreakdownForm/toolBreakdownForm.component';
 import { ToolBreakdownTable } from './components/toolBreakdownTable/toolBreakdownTable.component';
 
-// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',

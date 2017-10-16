@@ -76,7 +76,6 @@ export class JobForm {
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();
-                //this.router.navigate(['/pages/job/form/']);
             }
         );
     }

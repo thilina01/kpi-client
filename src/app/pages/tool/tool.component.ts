@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'tool',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class Tool {

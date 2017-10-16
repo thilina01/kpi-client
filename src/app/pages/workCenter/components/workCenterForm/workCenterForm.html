@@ -5,11 +5,11 @@
         <h4>Work Center Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/workCenter/table"> 
-        <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-         <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+        <a routerLink="/pages/workCenter/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
-          </a>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,7 +19,8 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="code">Code</label><br/>
+              <label for="code">Code</label>
+              <br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
@@ -28,7 +29,8 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="name">Name</label><br/>
+              <label for="name">Name</label>
+              <br/>
               <input type="text" pInputText formControlName="name">
             </div>
           </div>
@@ -47,18 +49,10 @@
               </ng-template>
             </p-autoComplete>
           </div>
-          <!-- <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.costCenter != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-            <!-- <label *ngIf="formGroup.value.costCenter != null && formGroup.value.costCenter.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.costCenter.code}}{{formGroup.value.costCenter.name != null ?" | "+ formGroup.value.costCenter.name:""}} -->
-            <!-- </label> -->
-          <!-- </div> -->
-          <!--  <select id=" costCenterSelector" class="form-control" formControlName=" costCenter">
-					<option *ngFor="let  costCenter of  costCenters" [ngValue]=" costCenter">{{ costCenter.code}}</option>
-				  </select>  -->
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

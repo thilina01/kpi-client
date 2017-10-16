@@ -15,7 +15,6 @@ import { routing } from './breakdown.routing';
 import { BreakdownService } from './breakdown.service';
 import { MachineService } from '../machine/machine.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

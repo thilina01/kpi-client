@@ -144,7 +144,7 @@ export class DispatchNoteForm {
     this.setDisplayOfAddress();
     this.setDisplayOfDispatchSchedule();
     this.calculateTotal();
-    
+
   }
 
   public onSubmit(values: any, event: Event): void {
@@ -213,7 +213,6 @@ export class DispatchNoteForm {
   }
   /*================== CustomerFilter ===================*/
   filteredCustomerList: any[];
-  //customer: any;
 
   filterCustomerList(event) {
     let query = event.query.toLowerCase();
@@ -251,7 +250,6 @@ export class DispatchNoteForm {
 
   /*================== AddressFilter ===================*/
   filteredAddressList: any[];
-  //address: any;
 
   filterAddressList(event) {
     let query = event.query.toLowerCase();
@@ -287,7 +285,6 @@ export class DispatchNoteForm {
 
   /*================== EmployeeFilter ===================*/
   filteredEmployeeList: any[];
-  //employee: any;
 
   filterEmployeeList(event) {
     let query = event.query.toLowerCase();
@@ -323,7 +320,6 @@ export class DispatchNoteForm {
 
   /*================== DispatchScheduleFilter ===================*/
   filteredDispatchScheduleList: any[];
-  //dispatchSchedule: any;
 
   filterDispatchScheduleList(event) {
     let query = event.query.toLowerCase();

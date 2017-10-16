@@ -17,9 +17,9 @@ export class BreakdownTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: BreakdownService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: BreakdownService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }

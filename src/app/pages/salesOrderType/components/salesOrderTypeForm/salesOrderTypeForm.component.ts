@@ -31,7 +31,7 @@ export class SalesOrderTypeForm {
             name: ['', Validators.required]
         });
     }
-    
+
     ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {

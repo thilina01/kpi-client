@@ -91,7 +91,6 @@ export class ToolBreakdownForm {
 
     /*================== Tool Filter ===================*/
     filteredTools: any[];
-    //tool: any;
 
     filterTools(event) {
         let query = event.query.toLowerCase();

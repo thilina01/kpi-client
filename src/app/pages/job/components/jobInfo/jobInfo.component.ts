@@ -72,7 +72,6 @@ export class JobInfo {
                 (data) => {
                     if (data != null) {
                         this.job = data;
-                        // this.jobNo = this.job.jobNo;
                         this.setDisplayOfJob();
                         this.fillOperations();
                         this.fillOperationSummaries();
@@ -99,7 +98,6 @@ export class JobInfo {
     lazyOperations(event: any, table: any) {
         if (this.job.id != undefined) {
             this.operationService.getByJobPage(this.job.id, (event.first / event.rows), event.rows).subscribe((data: any) => {
-                //this.service.getBySectionAndProductionDateAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.productionDate), this.shift.id, (event.first / event.rows), event.rows).then((data: any) => {
                 this.rows = data.content;
                 this.totalRecords = data.totalElements;
             });
@@ -108,7 +106,6 @@ export class JobInfo {
 
     /*================== JobFilter ===================*/
     filteredJobList: any[];
-    //job: any;
 
     filterJobList(event) {
         let query = event.query.toLowerCase();

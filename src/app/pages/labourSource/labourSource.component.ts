@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'labourSource',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class LabourSource {

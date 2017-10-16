@@ -34,11 +34,11 @@ export class MtbfMttr6MonthsChartService {
         { 'month': ' Sep(2017)  ', 'mtbf': 121.65, 'mttr': 1.17 }
       ],
       'valueAxes': [{
-        'id':'v1',
+        'id': 'v1',
         'axisAlpha': 0,
         'position': 'left'
-      },{
-        'id':'v2',
+      }, {
+        'id': 'v2',
         'axisAlpha': 0,
         'position': 'right'
       }],
@@ -70,7 +70,6 @@ export class MtbfMttr6MonthsChartService {
         'valueField': 'mttr',
         'dashLengthField': 'dashLengthLine',
         'labelText': '[[mttr]]',
-        //'labelRotation': -30,
         'labelPosition': 'right'
       }],
       'categoryField': 'month',

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { GrossProfitChartService } from './grossProfitChart.service';
 
-
 import 'style-loader!./grossProfitChart.scss';
 import { ChartService } from '../../chart/chart.service';
 

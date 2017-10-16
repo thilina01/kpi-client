@@ -1,14 +1,17 @@
 <p-panel>
 	<div class="row">
 		<div class="ui-inputgroup col">
-			<label>Duration</label><br/>
+			<label>Duration</label>
+			<br/>
 			<p-calendar id="startDatePicker" [(ngModel)]="startDate" showIcon="true" dateFormat="yy-mm-dd" [style]="{'padding-right': '30px'}"></p-calendar>
 			<p-calendar id="endDatePicker" [(ngModel)]="endDate" showIcon="true" dateFormat="yy-mm-dd" [style]="{'padding-right': '30px'}"></p-calendar>
 		</div>
 		<div class="ui-inputgroup col">
-			<label for="section">Section</label><br/>
+			<label for="section">Section</label>
+			<br/>
 			<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-			 [size]="30" [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+			 [size]="30" [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleSectionDropdownClick($event)"
+			 (onSelect)="onSectionSelect($event)">
 				<ng-template let-option pTemplate="option">
 					<div class="ui-helper-clearfix">
 						<div>{{option.code}}</div>
@@ -16,11 +19,9 @@
 				</ng-template>
 			</p-autoComplete>
 		</div>
-		<!--<select [(ngModel)]="section" class="form-control-sm">				
-						<option *ngFor="let section of sections" [ngValue]="section" >{{section.code}} | {{section.name}}</option>
-					</select>-->
 		<div class="ui-inputgroup col">
-			<label for="chart">Chart</label><br/>
+			<label for="chart">Chart</label>
+			<br/>
 			<p-autoComplete [(ngModel)]="chart" field="name" [suggestions]="filteredCharts" (completeMethod)="filterCharts($event)" [size]="30"
 			 [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleChartDropdownClick($event)" (onSelect)="onChartSelect($event)">
 				<ng-template let-option pTemplate="option">
@@ -32,9 +33,6 @@
 		</div>
 		<div class="ui-inputgroup col">
 			<br/>
-			<!--<select [(ngModel)]="chart" class="form-control-sm">				
-						<option *ngFor="let chart of charts" [ngValue]="chart" >{{chart.name}}</option>
-					</select>-->
 			<button type="button" class="btn btn-info" (click)="loadChart()">Load</button>
 		</div>
 	</div>

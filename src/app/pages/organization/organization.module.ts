@@ -12,7 +12,6 @@ import { OrganizationForm } from './components/organizationForm/organizationForm
 import { routing } from './organization.routing';
 import { OrganizationService } from './organization.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

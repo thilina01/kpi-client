@@ -18,9 +18,9 @@ export class CumulativeSalesPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: CumulativeSalesPerKgService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: CumulativeSalesPerKgService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -57,7 +57,6 @@ export class CumulativeSalesPerKgTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );

@@ -5,11 +5,11 @@
         <h4>Scrap Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/scrap/table"> 
+        <a routerLink="/pages/scrap/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-            </button>
-            </a>
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,13 +19,15 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="scrapDate">Scrap Date</label><br/>
+              <label for="scrapDate">Scrap Date</label>
+              <br/>
               <p-calendar id="datePicker" formControlName="scrapDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="job">Job Number</label><br/>
+              <label for="job">Job Number</label>
+              <br/>
               <p-autoComplete formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -38,7 +40,8 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="itemType">Item Type</label><br/>
+              <label for="itemType">Item Type</label>
+              <br/>
               <p-autoComplete [dropdown]="true" formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemTypeDropdownClick($event)" (onSelect)="onItemTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -51,9 +54,10 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="operationType">Operation Type</label><br/>
-              <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList" (completeMethod)="filterOperationTypeList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleOperationTypeDropdownClick($event)"
+              <label for="operationType">Operation Type</label>
+              <br/>
+              <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList"
+                (completeMethod)="filterOperationTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleOperationTypeDropdownClick($event)"
                 (onSelect)="onOperationTypeSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -65,7 +69,8 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="lossReason">Scrap Reason</label><br/>
+              <label for="lossReason">Scrap Reason</label>
+              <br/>
               <p-autoComplete [dropdown]="true" formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossReasonDropdownClick($event)"
                 (onSelect)="onLossReasonSelect($event)">
@@ -78,9 +83,11 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="section">Section</label><br/>
+            <label for="section">Section</label>
+            <br/>
             <p-autoComplete formControlName="section" field="display" [dropdown]="true" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)" appendTo="body">
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)"
+              appendTo="body">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -90,19 +97,22 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="quantity">Quantity</label><br/>
+              <label for="quantity">Quantity</label>
+              <br/>
               <input type="number" pInputText formControlName="quantity">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="unitValue">Unit Value</label><br/>
+              <label for="unitValue">Unit Value</label>
+              <br/>
               <input type="number" pInputText formControlName="unitValue">
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

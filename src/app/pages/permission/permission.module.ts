@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule,PanelModule,CheckboxModule,AutoCompleteModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, CheckboxModule, AutoCompleteModule } from 'primeng/primeng';
 
 import { Permission } from './permission.component';
 import { PermissionTable } from './components/permissionTable/permissionTable.component';
@@ -16,7 +16,6 @@ import { routing } from './permission.routing';
 import { StatusService } from '../../services/status.service';
 import { TeamService } from '../team/team.service';
 import { UserService } from '../user/user.service';
-
 
 @NgModule({
   imports: [

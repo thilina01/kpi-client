@@ -5,8 +5,10 @@
 				<h4>Dispatch Release List</h4>
 			</div>
 			<div class="col">
-				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;">
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
 			</div>
 		</div>
 	</p-header>
@@ -15,9 +17,9 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="dispatchReleases"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="dispatchReleaseTime" header="Dispatch Release Time" [sortable]="true"></p-column>		
+		<p-column field="dispatchReleaseTime" header="Dispatch Release Time" [sortable]="true"></p-column>
 		<p-column field="vehicleNumber" header="Vehicle Number" [sortable]="true"></p-column>
-		<p-column field="recipient" header="Recipient" [sortable]="true"></p-column>		
+		<p-column field="recipient" header="Recipient" [sortable]="true"></p-column>
 		<p-column field="containerNumber" header="Container Number" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">

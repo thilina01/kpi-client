@@ -68,7 +68,7 @@ export class OnTimeDeliveryForm {
         this.customer = this.onTimeDelivery.customer;
         this.setDisplayOfCustomer();
     }
-    
+
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
@@ -87,7 +87,6 @@ export class OnTimeDeliveryForm {
 
     /*================== CustomerFilter ===================*/
     filteredCustomerList: any[];
-    //customer: any;
 
     filterCustomerList(event) {
         let query = event.query.toLowerCase();

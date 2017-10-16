@@ -16,7 +16,7 @@ export class PaintForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    
+
     subscription: Subscription;
 
     paintTypes: any;

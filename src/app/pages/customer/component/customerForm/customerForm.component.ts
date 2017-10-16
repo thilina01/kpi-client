@@ -217,28 +217,28 @@ export class CustomerForm {
         this.submitted = true;
         if (this.formGroup.valid) {
 
-        if (values.contactList === null || values.contactList.length === 0) {
-            alert('contact Required');
-            return;
-        }
-
-        if (values.addressList === null || values.addressList.length === 0) {
-            alert('address Required');
-            return;
-        }
-
-        event.preventDefault();
-        console.log(values);
-
-        this.service.save(values).subscribe(
-            (data) => {
-                this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-                this.resetForm();
-                this.router.navigate(['/pages/customer/form/']);
+            if (values.contactList === null || values.contactList.length === 0) {
+                alert('contact Required');
+                return;
             }
-        );
+
+            if (values.addressList === null || values.addressList.length === 0) {
+                alert('address Required');
+                return;
+            }
+
+            event.preventDefault();
+            console.log(values);
+
+            this.service.save(values).subscribe(
+                (data) => {
+                    this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
+                    this.resetForm();
+                    this.router.navigate(['/pages/customer/form/']);
+                }
+            );
+        }
     }
-}
 
     public resetForm() {
         this.formGroup.reset();
@@ -306,7 +306,6 @@ export class CustomerForm {
     }
     /*================== CurrencyFilter ===================*/
     filteredCurrencyList: any[];
-    //currency: any;
 
     filterCurrencyList(event) {
         let query = event.query.toLowerCase();
@@ -342,7 +341,6 @@ export class CustomerForm {
 
     /*================== Customer Type Filter ===================*/
     filteredCustomerTypes: any[];
-    //customerType: any;
 
     filterCustomerTypes(event) {
         let query = event.query.toLowerCase();
@@ -379,7 +377,6 @@ export class CustomerForm {
     /*================== End Of Customer Type Filter ===================*/
     /*================== Notify PartyFilter ===================*/
     filteredNotifyPartys: any[];
-    //notifyParty: any;
 
     filterNotifyPartys(event) {
         let query = event.query.toLowerCase();
@@ -417,7 +414,6 @@ export class CustomerForm {
     /*================== End Of Notify PartyFilter ===================*/
     /*================== Payment TermFilter ===================*/
     filteredPaymentTerms: any[];
-    //paymentTerm: any;
 
     filterPaymentTerms(event) {
         let query = event.query.toLowerCase();
@@ -452,7 +448,6 @@ export class CustomerForm {
     /*================== End Of Payment TermFilter ===================*/
     /*================== Incoterm Filter ===================*/
     filteredIncoterms: any[];
-    //incoterm: any;
 
     filterIncoterms(event) {
         let query = event.query.toLowerCase();
@@ -490,7 +485,6 @@ export class CustomerForm {
 
     /*================== Address Type Filter ===================*/
     filteredAddressTypes: any[];
-    //addressType: any;
 
     filterAddressTypes(event) {
         let query = event.query.toLowerCase();
@@ -527,7 +521,6 @@ export class CustomerForm {
     /*================== End Of Address Type Filter ===================*/
     /*================== ContactTypeFilter ===================*/
     filteredContactTypeList: any[];
-    //contactType: any;
 
     filterContactTypeList(event) {
         let query = event.query.toLowerCase();
@@ -563,7 +556,6 @@ export class CustomerForm {
 
     /*================== CountryFilter ===================*/
     filteredCountryList: any[];
-    //country: any;
 
     filterCountryList(event) {
         let query = event.query.toLowerCase();

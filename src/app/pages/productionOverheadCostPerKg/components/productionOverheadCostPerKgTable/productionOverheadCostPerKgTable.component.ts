@@ -18,9 +18,9 @@ export class ProductionOverheadCostPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: ProductionOverheadCostPerKgService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: ProductionOverheadCostPerKgService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -39,7 +39,6 @@ export class ProductionOverheadCostPerKgTable {
             this.totalRecords = data.totalElements;
         });
     }
-
     selected(data: any) {
     }
 
@@ -57,7 +56,6 @@ export class ProductionOverheadCostPerKgTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );

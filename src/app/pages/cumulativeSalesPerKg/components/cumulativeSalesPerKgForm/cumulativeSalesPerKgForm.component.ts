@@ -20,20 +20,20 @@ export class CumulativeSalesPerKgForm {
     subscription: Subscription;
     effectiveMonth: Date;
 
-    constructor(protected service: CumulativeSalesPerKgService, 
+    constructor(protected service: CumulativeSalesPerKgService,
         private route: ActivatedRoute,
         private router: Router, fb: FormBuilder,
         private sharedService: SharedService
-        ) {
+    ) {
         this.formGroup = fb.group({
             id: '',
-            effectiveMonth: [this.effectiveMonth, Validators.required],        
-            actual: ['', Validators.required],        
+            effectiveMonth: [this.effectiveMonth, Validators.required],
+            actual: ['', Validators.required],
             budget: ['', Validators.required]
         });
     }
 
-    ngOnInit(): void {        
+    ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];

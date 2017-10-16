@@ -65,7 +65,6 @@ export class MdtChartService {
         "valueField": "target",
         "dashLengthField": "dashLengthLine",
         "labelText": "[[target]]%",
-        //"labelRotation": -30,
         "labelPosition": "top"
       }],
       "categoryField": "section",

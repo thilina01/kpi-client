@@ -12,7 +12,6 @@ import { JobTypeForm } from './components/jobTypeForm/jobTypeForm.component';
 import { routing } from './jobType.routing';
 import { JobTypeService } from './jobType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

@@ -5,9 +5,9 @@
         <h4>Breakdown Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/breakdown/table"> 
+        <a routerLink="/pages/breakdown/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
         </a>
       </div>
@@ -19,7 +19,8 @@
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="breakdownNumber">Breakdown Number</label><br/>
+              <label for="breakdownNumber">Breakdown Number</label>
+              <br/>
               <input type="text" pInputText formControlName="breakdownNumber">
             </div>
           </div>
@@ -27,7 +28,8 @@
           </div>
           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="machine">Machine</label><br/>
+              <label for="machine">Machine</label>
+              <br/>
               <p-autoComplete formControlName="machine" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleMachineDropdownClick($event)" (onSelect)="onMachineSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -36,22 +38,8 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.machine != null && formGroup.value.machine.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.machine.code}} {{formGroup.value.machine.name != null ?" | "+ formGroup.value.machine.name:""}} -->
-              <!-- </label> -->
             </div>
           </div>
-          <!-- <div class="col-lg-3 col-md-2 hidden-sm-down" *ngIf="formGroup.value.machine != null"> -->
-          <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <!-- <select id="machineSelector" class="form-control" formControlName="machine">
-					  <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
-				    </select>-->
-          <!-- </div> -->
-          <!-- <div class="col-md-8 col-sm-6 col-xs-12" *ngIf="formGroup.value.machine != null"> -->
-          <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- <label>{{formGroup.value.machine.code}} | {{formGroup.value.machine.name}}</label> -->
-          <!-- </div> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="breakdownTime">Breakdown Time</label>
@@ -74,13 +62,15 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="description">Description</label><br/>
+              <label for="description">Description</label>
+              <br/>
               <input type="text" pInputText formControlName="description">
             </div>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

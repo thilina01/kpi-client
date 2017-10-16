@@ -3,15 +3,16 @@
     <div class="row" style="margin:5px;">
       <div class="col-12 row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-8">
-            <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
-              [size]="20" [minLength]="1" placeholder="Search Job" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} </div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
-          <button type="button" class="btn btn-primary btn-xs" (click)="fill()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+          <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+            [size]="20" [minLength]="1" placeholder="Search Job" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
+            <ng-template let-option pTemplate="option">
+              <div class="ui-helper-clearfix">
+                <div>{{option.code}} </div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+          <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
         </div>
       </div>
       <div class="col-12 row">
@@ -22,7 +23,6 @@
       </div>
     </div>
   </p-header>
-
   <div class="row" *ngIf="job.id != undefined">
     <p-tabView>
       <p-tabPanel header="Summary">

@@ -20,8 +20,8 @@ export class DispatchReleaseTable {
     totalRecords: number;
 
     constructor(protected service: DispatchNoteService,
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -58,7 +58,6 @@ export class DispatchReleaseTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );

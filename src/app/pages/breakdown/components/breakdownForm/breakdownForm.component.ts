@@ -27,11 +27,11 @@ export class BreakdownForm {
     recoveryTime: Date = new Date();
     machine: any = { id: '', code: '' }
 
-    constructor(protected service: BreakdownService, 
-        private route: ActivatedRoute, 
-        private router: Router, 
-        fb: FormBuilder, 
-        private sharedService: SharedService, 
+    constructor(protected service: BreakdownService,
+        private route: ActivatedRoute,
+        private router: Router,
+        fb: FormBuilder,
+        private sharedService: SharedService,
         private machineService: MachineService) {
         this.formGroup = fb.group({
             id: '',
@@ -89,10 +89,9 @@ export class BreakdownForm {
 
     public resetForm() {
         this.formGroup.reset();
-    }    
+    }
     /*================== MachineFilter ===================*/
     filteredMachines: any[];
-    //machine: any;
 
     filterMachines(event) {
         let query = event.query.toLowerCase();
@@ -115,18 +114,18 @@ export class BreakdownForm {
 
     onMachineSelect(event: any) {
         this.setDisplayOfMachine();
-        }
-
-        setDisplayOfMachine(){
-            let machine = this.formGroup.value.machine;
-            if (machine != null && machine != undefined) {
-                let display = machine.code != null && machine.code != undefined ? machine.code + ' : ' : '';
-                display += machine.name != null && machine.name != undefined ? machine.name : '';
-                this.formGroup.value.machine.display = display;
-            }
-        }
-
     }
+
+    setDisplayOfMachine() {
+        let machine = this.formGroup.value.machine;
+        if (machine != null && machine != undefined) {
+            let display = machine.code != null && machine.code != undefined ? machine.code + ' : ' : '';
+            display += machine.name != null && machine.name != undefined ? machine.name : '';
+            this.formGroup.value.machine.display = display;
+        }
+    }
+
+}
     /*================== End Of MachineFilter ===================*/
 
 

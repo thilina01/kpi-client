@@ -1,26 +1,26 @@
-
-    <p-panel>
-        <p-header>
-          <div class="row">
-            <div class="col">
-              <h4>Control Point Machine Form</h4>
-            </div>
-            <div class="col">
-              <a routerLink="/pages/controlPointMachine/table"> 
-                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-                </button>
-              </a>
-            </div>
-          </div>
-        </p-header>
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Control Point Machine Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/controlPointMachine/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
   <div class="row">
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="controlPoint">ControlPoint</label><br/>
+              <label for="controlPoint">ControlPoint</label>
+              <br/>
               <p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointDropdownClick($event)"
                 (onSelect)="onControlPointSelect($event)">
@@ -30,47 +30,30 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.controlPoint != null && formGroup.value.controlPoint.code != null"> -->
-                  <!-- &nbsp; {{formGroup.value.controlPoint.code}}{{formGroup.value.controlPoint.name != null ?" | "+ formGroup.value.controlPoint.name:""}} -->
-              <!-- </label> -->
             </div>
           </div>
-          <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.controlPoint != null"> -->
-            <!-- <p class="hidden-sm-down">&nbsp;</p> -->
-          <!-- </div> -->
-            <!--  <select id="controlPointSelector" class="form-control" formControlName="controlPoint">
-					        <option *ngFor="let controlPoint of controlPoints" [ngValue]="controlPoint">{{controlPoint.code}}</option>
-				        </select>-->
-           <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="machine">Machine</label><br/>
+              <label for="machine">Machine</label>
+              <br/>
               <p-autoComplete formControlName="machine" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleMachineDropdownClick($event)"
-                (onSelect)="onMachineSelect($event)">
+                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleMachineDropdownClick($event)" (onSelect)="onMachineSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.machine != null && formGroup.value.machine.code != null"> -->
-                  <!-- &nbsp; {{formGroup.value.machine.code}}{{formGroup.value.machine.name != null ?" | "+ formGroup.value.machine.name:""}} -->
-              <!-- </label> -->
             </div>
           </div>
-          <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.machine != null"> -->
-            <!-- <p class="hidden-sm-down">&nbsp;</p> -->
-          <!-- </div> -->
-            <!--  <select id="machineSelector" class="form-control" formControlName="machine">
-					        <option *ngFor="let machine of machines" [ngValue]="machine">{{machine.code}}</option>
-                </select>-->
           <div class="col-md-12 col-sm-12 col-xs-12">
-             <div class="ui-inputgroup">
-              &nbsp;<br/>
+            <div class="ui-inputgroup">
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            </div>
           </div>
-        </div>
         </div>
       </form>
     </div>

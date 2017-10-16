@@ -5,11 +5,11 @@
         <h4>Sales Order Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/salesOrder/table"> 
+        <a routerLink="/pages/salesOrder/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-           <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-            </button>
-            </a>
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,18 +19,21 @@
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="salesOrderNumber">Sales Order Number</label><br/>
+              <label for="salesOrderNumber">Sales Order Number</label>
+              <br/>
               <input type="text" pInputText formControlName="salesOrderNumber">
             </div>
           </div>
           <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="orderDate">Order Date</label><br/>
+              <label for="orderDate">Order Date</label>
+              <br/>
               <p-calendar id="orderDatePicker" formControlName="orderDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <label for=" salesOrderType"> Sales Order Type</label><br/>
+            <label for=" salesOrderType"> Sales Order Type</label>
+            <br/>
             <p-autoComplete [dropdown]="true" formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes"
               (completeMethod)="filterSalesOrderTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSalesOrderTypeDropdownClick($event)"
               (onSelect)="onSalesOrderTypeSelect($event)">
@@ -43,12 +46,14 @@
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="customerPoNumber">Customer PO Number</label><br/>
+              <label for="customerPoNumber">Customer PO Number</label>
+              <br/>
               <input type="text" pInputText formControlName="customerPoNumber">
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <label for=" customer"> Customer</label><br/>
+            <label for=" customer"> Customer</label>
+            <br/>
             <p-autoComplete formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerDropdownClick($event)" (onSelect)="onCustomerSelect($event)">
               <ng-template let-option pTemplate="option">
@@ -61,7 +66,8 @@
         </div>
       </div>
     </div>
-    &nbsp;<br/>
+    &nbsp;
+    <br/>
     <p-panel>
       <div class="row">
         <div class=" col-sm-12">
@@ -69,7 +75,8 @@
             <div class="row">
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
                 <div class="form-group">
-                  <label for="customerItem">Customer Item</label><br/>
+                  <label for="customerItem">Customer Item</label>
+                  <br/>
                   <p-autoComplete id="customerItemSelector" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
                     (completeMethod)="filterCustomerItems($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerItemDropdownClick($event)"
                     (onSelect)="onCustomerItemSelect($event)">
@@ -84,7 +91,8 @@
               <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
                 <div class="ui-inputgroup">
                   <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['quantity'].valid &&  salesOrderItemFormGroup.controls['Quantity'].touched), 'has-success': ( salesOrderItemFormGroup.controls['quantity'].valid && salesOrderItemFormGroup.controls['quantity'].touched)}">
-                    <label for="quantity"> Quantity</label><br/>
+                    <label for="quantity"> Quantity</label>
+                    <br/>
                     <input type="number" pInputText formControlName="quantity">
                   </div>
                 </div>
@@ -92,15 +100,17 @@
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
                 <div class="ui-inputgroup">
                   <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['unitPrice'].valid &&  salesOrderItemFormGroup.controls['unitPrice'].touched), 'has-success': ( salesOrderItemFormGroup.controls['unitPrice'].valid && salesOrderItemFormGroup.controls['unitPrice'].touched)}">
-                    <label for="unitPrice">Unit Price</label><br/>
+                    <label for="unitPrice">Unit Price</label>
+                    <br/>
                     <input type="number" #unitPrice (keyup.enter)="onEnter(unitPrice.value,dt)" pInputText formControlName="unitPrice">
                   </div>
                 </div>
               </div>
               <div class="col">
-                <label for="inputFirstName">&nbsp;</label><br/>
+                <label for="inputFirstName">&nbsp;</label>
+                <br/>
                 <div class="form-group form-inline">
-                  <button (click)="onEnter(unitPrice.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>                  &nbsp;&nbsp;
+                  <button (click)="onEnter(unitPrice.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
                 </div>
               </div>
             </div>
@@ -109,15 +119,15 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <p-dataTable #dt (onEditComplete)="onEditComplete()" [value]="formGroup.value.salesOrderItemList" [editable]="true" [rows]="20"
                 [responsive]="true" resizableColumns="true">
-               <p-column field="id" header="ID"></p-column>
+                <p-column field="id" header="ID"></p-column>
                 <p-column field="customerItem.code" header="Customer Item"></p-column>
-                <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true" >
+                <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true">
                   <ng-template let-col let-salesOrderItem="rowData" pTemplate="body">
                     {{ salesOrderItem.unitPrice | number : '1.2-2' }}
                   </ng-template>
                 </p-column>
                 <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
-                <p-column field="amount" header="Amount" styleClass="text-right" >
+                <p-column field="amount" header="Amount" styleClass="text-right">
                   <ng-template let-col let-salesOrderItem="rowData" pTemplate="body">
                     {{ salesOrderItem.amount | number : '1.2-2' }}
                   </ng-template>
@@ -143,10 +153,11 @@
     </p-panel>
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-        &nbsp;<br/>                                                                                                               
+        &nbsp;
+        <br/>
         <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
         <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-        <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>   
+        <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
       </div>
     </div>
   </form>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { LabourTurnoverChartService } from './labourTurnoverChart.service';
 
-
 import 'style-loader!./labourTurnoverChart.scss';
 import { ChartService } from '../../chart/chart.service';
 
@@ -35,7 +34,6 @@ export class LabourTurnoverChart {
   initChart(chart: any) {
     this.amChart = chart;
     let zoomChart = () => {
-      //chart.zoomToDates(new Date(2013, 3), new Date(2014, 0));
     };
 
     chart.addListener('rendered', zoomChart);

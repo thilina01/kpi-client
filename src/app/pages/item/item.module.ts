@@ -14,7 +14,6 @@ import { ItemService } from './item.service';
 import { ItemTypeService } from '../itemType/itemType.service';
 import { PaintService } from '../paint/paint.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

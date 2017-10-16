@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'lossReason',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class LossReason {

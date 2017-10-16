@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { SalesValueChartService } from './salesValueChart.service';
 
-
 import 'style-loader!./salesValueChart.scss';
 import { ChartService } from '../../chart/chart.service';
 
@@ -22,7 +21,6 @@ export class SalesValueChart {
     startDate.setMonth(startDate.getMonth() - 6);
     let monthText: string;
     monthText = ((startDate.getMonth() + 1) < 10 ? '0' + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + '';
-    //alert(monthText+' ~ '+ monthText.slice(-2))
     let startDateText = startDate.getFullYear() + '-' + monthText.slice(-2) + '-01';
 
     let endDate = new Date();

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { OnTimeDeliveryChartService } from './onTimeDeliveryChart.service';
 
-
 import 'style-loader!./onTimeDeliveryChart.scss';
 import { ChartService } from '../../chart/chart.service';
 import { CustomerService } from '../../customer/customer.service';
@@ -29,7 +28,6 @@ export class OnTimeDeliveryChart {
     this.startDate.setMonth(this.startDate.getMonth() - 6);
     let monthText: string;
     monthText = ((this.startDate.getMonth() + 1) < 10 ? '0' + (this.startDate.getMonth() + 1) : (this.startDate.getMonth() + 1)) + '';
-    //alert(monthText+' ~ '+ monthText.slice(-2))
     this.startDateText = this.startDate.getFullYear() + '-' + monthText.slice(-2) + '-01';
 
     this.endDateText = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() < 10 ? '0' + this.endDate.getMonth() : this.endDate.getMonth()) + '-' + (new Date(this.endDate.getFullYear(), this.endDate.getMonth(), 0).getDate());

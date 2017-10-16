@@ -12,7 +12,6 @@ import { SectionTypeForm } from './components/sectionTypeForm/sectionTypeForm.co
 import { routing } from './sectionType.routing';
 import { SectionTypeService } from './sectionType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

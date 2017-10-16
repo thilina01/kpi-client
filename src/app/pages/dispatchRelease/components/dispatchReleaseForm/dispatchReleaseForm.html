@@ -5,11 +5,11 @@
         <h4>Dispatch Release Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/dispatchRelease/table"> 
+        <a routerLink="/pages/dispatchRelease/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-           <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-            </button>
-          </a>
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,7 +19,8 @@
         <div class="ui-inputgroup">
           <label for="id">Dispatch Note ID</label>
           <input type="text" pInputText formControlName="id">
-          <button type="button" class="btn btn-primary btn-xs" (click)="fill()"><i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+          <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
         </div>
       </div>
     </div>
@@ -53,13 +54,15 @@
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="vehicleNumber">Vehicle Number</label><br/>
+              <label for="vehicleNumber">Vehicle Number</label>
+              <br/>
               <input type="text" pInputText formControlName="vehicleNumber">
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="recipient">Recipient</label><br/>
+              <label for="recipient">Recipient</label>
+              <br/>
               <input type="text" pInputText formControlName="recipient">
             </div>
           </div>
@@ -74,17 +77,20 @@
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="containerNumber">Container Number</label><br/>
+              <label for="containerNumber">Container Number</label>
+              <br/>
               <input type="text" pInputText formControlName="containerNumber">
             </div>
           </div>
         </div>
       </div>
     </div>
-    &nbsp;<br/>
+    &nbsp;
+    <br/>
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-        &nbsp;<br/>
+        &nbsp;
+        <br/>
         <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
         <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
       </div>

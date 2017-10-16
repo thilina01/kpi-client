@@ -29,7 +29,7 @@ import { CustomerService } from '../customer/customer.service';
     SharedModule,
     PanelModule,
     InputTextModule,
-    AutoCompleteModule,    
+    AutoCompleteModule,
     routing
   ],
   declarations: [

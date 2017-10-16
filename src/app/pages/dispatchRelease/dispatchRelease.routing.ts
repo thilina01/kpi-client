@@ -1,10 +1,9 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DispatchRelease } from './dispatchRelease.component';
 import { DispatchReleaseForm } from './components/dispatchReleaseForm/dispatchReleaseForm.component';
 import { DispatchReleaseTable } from './components/dispatchReleaseTable/dispatchReleaseTable.component';
 
-// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',

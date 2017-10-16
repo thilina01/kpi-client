@@ -12,7 +12,6 @@ import { LocationForm } from './components/locationForm/locationForm.component';
 import { routing } from './location.routing';
 import { LocationService } from './location.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

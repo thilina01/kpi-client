@@ -5,7 +5,6 @@ import { DispatchNoteForm } from './components/dispatchNoteForm/dispatchNoteForm
 import { DispatchNoteTable } from './components/dispatchNoteTable/dispatchNoteTable.component';
 import { DispatchNotePrint } from './components/dispatchNotePrint/dispatchNotePrint.component';
 
-// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',

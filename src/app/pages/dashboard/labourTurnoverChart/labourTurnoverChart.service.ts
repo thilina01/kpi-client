@@ -55,7 +55,6 @@ export class LabourTurnoverChartService {
     dataProvider.push(dataMap[month]);
   });
     
-
     return {
       "type": "serial",
       "addClassNames": true,

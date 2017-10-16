@@ -20,7 +20,6 @@ import { Print } from './components/dispatchSchedulePrint/print.component';
 import { PrintService } from '../../services/print.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

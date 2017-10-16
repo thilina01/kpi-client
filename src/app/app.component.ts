@@ -44,26 +44,17 @@ export class App {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
-    //this.msgs.push({);
     sharedService.messageSubject.subscribe(message => { this.msgs.push(message); });
 
     this.afAuth.authState.subscribe(auth => {
       if (auth) {
-        //this.rootPage = 'TabsPage';
-        //authService.redirectUrl = authService.redirectUrl!=undefined?authService.redirectUrl:'/pages/home';
-        this.router.navigate([authService.redirectUrl]);//['/pages/home']);
+        this.router.navigate([authService.redirectUrl]);
       } else {
-        //this.rootPage = 'LoginPage';
         this.router.navigate(['/login']);
       }
     });
   }
-  /*
-  ngOnDestroy() {
-    // prevent memory leak when component destroyed
-    this.subscription.unsubscribe();
-  }
-*/
+
   public ngAfterViewInit(): void {
     // hide spinner once all loaders are completed
     BaThemePreloader.load().then((values) => {

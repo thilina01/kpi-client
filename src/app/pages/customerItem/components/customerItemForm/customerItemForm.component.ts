@@ -35,7 +35,7 @@ export class CustomerItemForm {
     customerItemTime: Date = new Date();
     recoveryTime: Date = new Date();
     customerItemType: any = { id: '', code: '', type: '' }
-   
+
     constructor(protected service: CustomerItemService,
         private route: ActivatedRoute,
         private router: Router,
@@ -47,18 +47,18 @@ export class CustomerItemForm {
             id: '',
             name: '',
             code: '',
-            customer: [this.customer,Validators.required],
-            item: [this.item,Validators.required],
+            customer: [this.customer, Validators.required],
+            item: [this.item, Validators.required],
         });
     }
-    
+
     getCustomerList(): void {
         this.customerService.getCombo().subscribe(customerList => this.customerList = customerList);
     }
     getItemList(): void {
         this.itemService.getCombo().subscribe(itemList => this.itemList = itemList);
     }
-    
+
     ngOnInit(): void {
         this.getCustomerList();
         this.getItemList();
@@ -85,9 +85,9 @@ export class CustomerItemForm {
         this.customerItemType = this.customerItem.customerItemType;
         this.customer = this.customerItem.customer;
         this.item = this.customerItem.item;
-        this.setDisplayOfItem(); 
-        this.setDisplayOfCustomer(); 
-        
+        this.setDisplayOfItem();
+        this.setDisplayOfCustomer();
+
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -107,74 +107,72 @@ export class CustomerItemForm {
     }
 
 
- /*================== CustomerFilter ===================*/
- filteredCustomerList: any[];
- //customer: any;
+    /*================== CustomerFilter ===================*/
+    filteredCustomerList: any[];
 
- filterCustomerList(event) {
-     let query = event.query.toLowerCase();
-     this.filteredCustomerList = [];
-     for (let i = 0; i < this.customerList.length; i++) {
-         let customer = this.customerList[i];
-         if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
-             this.filteredCustomerList.push(customer);
-         }
-     }
- }
+    filterCustomerList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredCustomerList = [];
+        for (let i = 0; i < this.customerList.length; i++) {
+            let customer = this.customerList[i];
+            if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCustomerList.push(customer);
+            }
+        }
+    }
 
- handleCustomerDropdownClick() {
-     this.filteredCustomerList = [];
-     //mimic remote call
-     setTimeout(() => {
-         this.filteredCustomerList = this.customerList;
-     }, 100)
- }
+    handleCustomerDropdownClick() {
+        this.filteredCustomerList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredCustomerList = this.customerList;
+        }, 100)
+    }
 
- onCustomerSelect(event: any) {
-    this.setDisplayOfCustomer();  
-     }
-     
-     setDisplayOfCustomer()  {
-        let customer = this.formGroup.value.customer ;
-        if (customer!= null && customer!= undefined) {
+    onCustomerSelect(event: any) {
+        this.setDisplayOfCustomer();
+    }
+
+    setDisplayOfCustomer() {
+        let customer = this.formGroup.value.customer;
+        if (customer != null && customer != undefined) {
             let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
             display += customer.name != null && customer.name != undefined ? customer.name : '';
             this.formGroup.value.customer.display = display;
         }
-          
- }
- /*================== ItemFilter ===================*/
- filteredItemList: any[];
- //item: any;
 
- filterItemList(event) {
-     let query = event.query.toLowerCase();
-     this.filteredItemList = [];
-     for (let i = 0; i < this.itemList.length; i++) {
-         let item = this.itemList[i];
-         if (item.code.toLowerCase().indexOf(query) == 0 || item.name.toLowerCase().indexOf(query) == 0) {
-             this.filteredItemList.push(item);
-         }
-     }
- }
+    }
+    /*================== ItemFilter ===================*/
+    filteredItemList: any[];
 
- handleItemDropdownClick() {
-     this.filteredItemList = [];
-     //mimic remote call
-     setTimeout(() => {
-         this.filteredItemList = this.itemList;
-     }, 100)
- }
+    filterItemList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredItemList = [];
+        for (let i = 0; i < this.itemList.length; i++) {
+            let item = this.itemList[i];
+            if (item.code.toLowerCase().indexOf(query) == 0 || item.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredItemList.push(item);
+            }
+        }
+    }
 
- onItemSelect(event: any) {
-    this.setDisplayOfItem(); 
-     }
-     setDisplayOfItem()  {
-        let item = this.formGroup.value.item ;
-        if (item!= null && item!= undefined) {
+    handleItemDropdownClick() {
+        this.filteredItemList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredItemList = this.itemList;
+        }, 100)
+    }
+
+    onItemSelect(event: any) {
+        this.setDisplayOfItem();
+    }
+    setDisplayOfItem() {
+        let item = this.formGroup.value.item;
+        if (item != null && item != undefined) {
             let display = item.code != null && item.code != undefined ? item.code + ' : ' : '';
             display += item.name != null && item.name != undefined ? item.name : '';
             this.formGroup.value.item.display = display;
         }
- }
+    }
 }

@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule,PanelModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule } from 'primeng/primeng';
 
 import { Test } from './test.component';
 
 import { routing } from './test.routing';
-
 
 @NgModule({
   imports: [
@@ -24,6 +23,6 @@ import { routing } from './test.routing';
   declarations: [
     Test
   ],
-  providers: [  ]
+  providers: []
 })
 export class TestModule { }

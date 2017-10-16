@@ -33,12 +33,6 @@ export class ScrapForm {
     jobList = [];
     itemTypeList = [];
 
-
-    // lossReason: any;
-    // job: any;
-    // section: any;
-    // operationType: any;
-
     constructor(protected service: ScrapService,
         private route: ActivatedRoute,
         private router: Router,
@@ -71,7 +65,7 @@ export class ScrapForm {
     }
 
     getScrapReasonList(): void {
-        this.lossReasonService.getComboByLossType({code:'ST'}).subscribe(lossReasonList => this.lossReasonList = lossReasonList);
+        this.lossReasonService.getComboByLossType({ code: 'ST' }).subscribe(lossReasonList => this.lossReasonList = lossReasonList);
     }
 
     getSectionList(): void {
@@ -108,15 +102,10 @@ export class ScrapForm {
             this.scrap = data;
             data.scrapDate = new Date(data.scrapDate);
             data.job.code = data.job.jobNo;
-            data.job.name = data.job.jobDate;            
+            data.job.name = data.job.jobDate;
         }
         this.scrap = data;
         this.formGroup.patchValue(data, { onlySelf: true });
-        // this.job = this.scrap.job;
-        // this.operationType = this.scrap.operationType;
-        // this.lossReason = this.scrap.lossReason;
-        // this.section = this.scrap.section;
-        // this.itemType = this.scrap.itemType;
         this.setDisplayOfLossReason();
         this.setDisplayOfSection();
         this.setDisplayOfOperationType();
@@ -144,7 +133,6 @@ export class ScrapForm {
 
     /*================== ItemTypeFilter ===================*/
     filteredItemTypeList: any[];
-    //itemType: any;
 
     filterItemTypeList(event) {
         let query = event.query.toLowerCase();
@@ -180,7 +168,6 @@ export class ScrapForm {
 
     /*================== Loss Reason Filter ===================*/
     filteredLossReasons: any[];
-    //lossReason: any;
 
     filterLossReasons(event) {
         let query = event.query.toLowerCase();
@@ -217,7 +204,6 @@ export class ScrapForm {
     /*================== End Of Loss Reason Filter ===================*/
     /*================== SectionFilter ===================*/
     filteredSectionList: any[];
-    //section: any;
 
     filterSectionList(event) {
         let query = event.query.toLowerCase();
@@ -252,7 +238,6 @@ export class ScrapForm {
     }
     /*================== JobFilter ===================*/
     filteredJobList: any[];
-    //job: any;
 
     filterJobList(event) {
         let query = event.query.toLowerCase();
@@ -287,7 +272,6 @@ export class ScrapForm {
     }
     /*================== OperationTypeFilter ===================*/
     filteredOperationTypeList: any[];
-    //operationType: any;
 
     filterOperationTypeList(event) {
         let query = event.query.toLowerCase();

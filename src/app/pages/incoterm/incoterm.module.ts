@@ -13,7 +13,6 @@ import { IncotermForm } from './components/incotermForm/incotermForm.component';
 import { routing } from './incoterm.routing';
 import { IncotermService } from './incoterm.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

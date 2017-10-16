@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { NetProfitChartService } from './netProfitChart.service';
 
-
 import 'style-loader!./netProfitChart.scss';
 import { ChartService } from '../../chart/chart.service';
 

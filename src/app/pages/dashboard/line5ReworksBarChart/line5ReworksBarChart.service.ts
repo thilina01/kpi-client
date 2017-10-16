@@ -59,7 +59,6 @@ export class Line5ReworksBarChartService {
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
-
   getData(dataSource: string, chartType: string) {
     let dataProvider = [];
     if (dataSource === 'awlReworks') {
@@ -135,7 +134,6 @@ export class Line5ReworksBarChartService {
       },
       "dataProvider": dataProvider,
       "valueField": "value",
-      //"titleField": "type",dataProvider
       "balloonText": "<span style='font-size:12px;'>[[type]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
       "depth3D": 5,
       "angle": 5,

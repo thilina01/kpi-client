@@ -5,11 +5,11 @@
         <h4>Finance Summary Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/financeSummary/table"> 
-         <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-          <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+        <a routerLink="/pages/financeSummary/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
-          </a>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,61 +19,71 @@
         <div class="row">
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="ui-inputgroup">
-              <label for="effectiveMonth">Effective Month</label><br/>
+              <label for="effectiveMonth">Effective Month</label>
+              <br/>
               <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="actualRevenue">Actual Revenue</label><br/>
+              <label for="actualRevenue">Actual Revenue</label>
+              <br/>
               <input type="text" pInputText formControlName="actualRevenue">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="budgetRevenue">Budget Revenue</label><br/>
+              <label for="budgetRevenue">Budget Revenue</label>
+              <br/>
               <input type="text" pInputText formControlName="budgetRevenue">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="actualGrossProfit">Actual Gross Profit</label><br/>
+              <label for="actualGrossProfit">Actual Gross Profit</label>
+              <br/>
               <input type="text" pInputText formControlName="actualGrossProfit">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="budgetGrossProfit">Budget Gross Profit</label><br/>
+              <label for="budgetGrossProfit">Budget Gross Profit</label>
+              <br/>
               <input type="text" pInputText formControlName="budgetGrossProfit">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="actualNetProfit">Actual Net Profit</label><br/>
+              <label for="actualNetProfit">Actual Net Profit</label>
+              <br/>
               <input type="text" pInputText formControlName="actualNetProfit">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="budgetNetProfit">Budget Net Profit</label><br/>
+              <label for="budgetNetProfit">Budget Net Profit</label>
+              <br/>
               <input type="text" pInputText formControlName="budgetNetProfit">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="actualEbitda">Actual EBITDA</label><br/>
+              <label for="actualEbitda">Actual EBITDA</label>
+              <br/>
               <input type="text" pInputText formControlName="actualEbitda">
             </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="budgetEbitda">Budget EBITDA</label><br/>
+              <label for="budgetEbitda">Budget EBITDA</label>
+              <br/>
               <input type="text" pInputText formControlName="budgetEbitda">
             </div>
           </div>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

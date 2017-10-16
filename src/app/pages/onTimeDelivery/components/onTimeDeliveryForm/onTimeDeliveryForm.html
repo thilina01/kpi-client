@@ -29,8 +29,7 @@
               <label for="customer">Customer</label> &nbsp;
               <br/>
               <p-autoComplete formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-                [minLength]="1" [size]="75" placeholder="Search" (onDropdownClick)="handleCustomerDropdownClick($event)"
-                (onSelect)="onCustomerSelect($event)">
+                [minLength]="1" [size]="75" placeholder="Search" (onDropdownClick)="handleCustomerDropdownClick($event)" (onSelect)="onCustomerSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>

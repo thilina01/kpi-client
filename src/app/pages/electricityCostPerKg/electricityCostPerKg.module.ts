@@ -15,7 +15,6 @@ import { ElectricityCostPerKgForm } from './components/electricityCostPerKgForm/
 import { routing } from './electricityCostPerKg.routing';
 import { ElectricityCostPerKgService } from './electricityCostPerKg.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

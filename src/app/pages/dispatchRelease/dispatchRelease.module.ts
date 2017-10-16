@@ -24,8 +24,6 @@ import { DispatchService } from '../../services/dispatch.service';
 import { CustomerTypeService } from '../customerType/customerType.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -48,14 +46,14 @@ import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
     DispatchReleaseForm
   ],
   providers: [
-    CustomerService, 
-    DispatchReleaseService, 
+    CustomerService,
+    DispatchReleaseService,
     AddressService,
     EmployeeService,
     DispatchScheduleService,
-    CustomerTypeService, 
+    CustomerTypeService,
     DispatchNoteService,
-    DispatchService 
+    DispatchService
   ]
 })
 export class DispatchReleaseModule { }

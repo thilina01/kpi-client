@@ -42,13 +42,13 @@ import { TreatmentTypeService } from '../treatmentType/treatmentType.service';
     AccidentForm
   ],
   providers: [
-     AccidentService, 
-     AccidentTypeService,
-     EmployeeService,
-     SectionService,
-     ShiftService,
-     MachineService,
-     TreatmentTypeService
-    ]
+    AccidentService,
+    AccidentTypeService,
+    EmployeeService,
+    SectionService,
+    ShiftService,
+    MachineService,
+    TreatmentTypeService
+  ]
 })
 export class AccidentModule { }

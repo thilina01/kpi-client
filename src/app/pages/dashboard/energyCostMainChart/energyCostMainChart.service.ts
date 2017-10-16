@@ -3,42 +3,14 @@ import { BaThemeConfigProvider, colorHelper, layoutPaths } from '../../../theme'
 
 @Injectable()
 export class EnergyCostMainChartService {
-  /*
-  mainEnergyCostData = [
-    { "month": " Aug-16", "cost": 1601725.47 },
-    { "month": " Sep-16", "cost": 1710207 },
-    { "month": " Oct-16", "cost": 1157336.7 },
-    { "month": " Nov-16", "cost": 1157383.33 },
-    { "month": " Dec-16", "cost": 1163750.58 },
-    { "month": " Jan-17", "cost": 851838.42 },
-    { "month": " Feb-17", "cost": 1371072.24 },
-    { "month": " Mar-17", "cost": 1343210.07 }
-  ];
-  paintEnergyCostData = [
-    { "month": " Jul-16", "cost": 476373.1 },
-    { "month": " Aug-16", "cost": 470726 },
-    { "month": " Sep-16", "cost": 353112 },
-    { "month": " Oct-16", "cost": 355097.75 },
-    { "month": " Nov-16", "cost": 399425.8 },
-    { "month": " Dec-16", "cost": 355091.75 },
-    { "month": " Jan-17", "cost": 274256.45},
-    { "month": " Feb-17", "cost": 468636.20 },
-    { "month": " Mar-17", "cost": 469097.15 }
-  ];*/
+
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
-  getData(/*dataSource: string*/) {
+  getData() {
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardEnergyCostMainChart;
-/*
-    let dataProvider = [];
-    if (dataSource === 'main') {
-      dataProvider = this.mainEnergyCostData;
-    } else if (dataSource === 'paint') {
-      dataProvider = this.paintEnergyCostData;
-    }
-*/
+
     return {
       "type": "serial",
       "addClassNames": true,
@@ -53,7 +25,7 @@ export class EnergyCostMainChartService {
       },
       "numberFormatter": { precision: -1, decimalSeparator: '.', thousandsSeparator: ',' },
 
-      "dataProvider": [],//dataProvider,
+      "dataProvider": [],
       "valueAxes": [{
         "id": "v2",
         "axisAlpha": 0,
@@ -79,7 +51,6 @@ export class EnergyCostMainChartService {
         "valueField": "cost",
         "dashLengthField": "dashLengthLine",
         "labelText": "[[cost]]",
-        //"labelRotation": -30,
         "labelPosition": "bottom"
       }],
       "categoryField": "month",

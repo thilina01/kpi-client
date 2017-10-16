@@ -14,7 +14,6 @@ import { ProductionOverheadCostPerKgForm } from './components/productionOverhead
 import { routing } from './productionOverheadCostPerKg.routing';
 import { ProductionOverheadCostPerKgService } from './productionOverheadCostPerKg.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

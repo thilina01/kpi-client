@@ -17,7 +17,7 @@ export class SectionTypeForm {
 
     public formGroup: FormGroup;
     subscription: Subscription;
-    
+
     sectionType: any;
 
     constructor(protected service: SectionTypeService,
@@ -52,7 +52,7 @@ export class SectionTypeForm {
         if (data == null) {
             this.sectionType = data;
         }
-       
+
         this.formGroup.patchValue(this.sectionType, { onlySelf: true });
         this.sectionType = this.sectionType.sectionType;
     }

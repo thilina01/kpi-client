@@ -90,7 +90,6 @@ export class LossReasonTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          //this.msgs.push();
           this.loadData()
         }
         );
@@ -99,7 +98,6 @@ export class LossReasonTable {
   }
 
   /*================== LossType Filter ===================*/
-  //lossType: any;
   filterLossTypes(event) {
     let query = event.query.toLowerCase();
     this.filteredLossTypes = [];

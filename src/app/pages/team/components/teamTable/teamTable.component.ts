@@ -17,9 +17,9 @@ export class TeamTable {
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: TeamService, 
-    private router: Router, 
-    private confirmationService: ConfirmationService, 
+  constructor(protected service: TeamService,
+    private router: Router,
+    private confirmationService: ConfirmationService,
     private sharedService: SharedService) {
     this.loadData()
   }
@@ -30,7 +30,7 @@ export class TeamTable {
       this.totalRecords = data.totalElements;
     });
   }
-  
+
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
     this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
@@ -60,7 +60,6 @@ export class TeamTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          //this.msgs.push();
           this.loadData()
         }
         );

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { ConsumableCostPerKgChartService } from './consumableCostPerKgChart.service';
 
-
 import 'style-loader!./consumableCostPerKgChart.scss';
 import { ChartService } from '../../chart/chart.service';
 

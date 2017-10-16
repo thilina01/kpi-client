@@ -12,7 +12,6 @@ import { PaymentTermForm } from './components/paymentTermForm/paymentTermForm.co
 import { routing } from './paymentTerm.routing';
 import { PaymentTermService } from './paymentTerm.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

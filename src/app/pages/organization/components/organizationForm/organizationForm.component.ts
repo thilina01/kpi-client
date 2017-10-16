@@ -31,11 +31,11 @@ export class OrganizationForm {
             id: '',
             code: ['', Validators.required],
             name: ['', Validators.required],
-            slogan1:'',
-            slogan2:'',
-            vat:'',
+            slogan1: '',
+            slogan2: '',
+            vat: '',
             svat: '',
-            
+
         });
     }
 

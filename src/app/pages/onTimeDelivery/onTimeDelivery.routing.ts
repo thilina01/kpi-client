@@ -1,10 +1,9 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { OnTimeDelivery } from './onTimeDelivery.component';
 import { OnTimeDeliveryForm } from './components/onTimeDeliveryForm/onTimeDeliveryForm.component';
 import { OnTimeDeliveryTable } from './components/onTimeDeliveryTable/onTimeDeliveryTable.component';
 
-// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',

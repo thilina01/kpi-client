@@ -1,16 +1,15 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { Tool } from './tool.component';
 import { ToolForm } from './components/toolForm/toolForm.component';
 import { ToolTable } from './components/toolTable/toolTable.component';
 import { ModuleWithProviders } from '@angular/core';
 
-// noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
     component: Tool,
-     children: [
+    children: [
       { path: 'form', component: ToolForm },
       { path: 'form/:id', component: ToolForm },
       { path: 'table', component: ToolTable }

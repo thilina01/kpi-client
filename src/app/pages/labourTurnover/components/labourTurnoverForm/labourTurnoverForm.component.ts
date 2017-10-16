@@ -87,7 +87,6 @@ export class LabourTurnoverForm {
     }
   /*================== Labour Source Filter ===================*/
     filteredLabourSources: any[];
-    //labourSource: any;
 
     filterLabourSources(event) {
         let query = event.query.toLowerCase();

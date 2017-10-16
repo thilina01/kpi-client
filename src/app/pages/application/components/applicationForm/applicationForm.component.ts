@@ -31,8 +31,8 @@ export class ApplicationForm {
             id: '',
             code: ['', Validators.required],
             name: ['', Validators.required],
-            shortName: '', 
-            
+            shortName: '',
+
         });
     }
 

@@ -5,11 +5,11 @@
         <h4>Dispatch Note Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/dispatchNote/table"> 
+        <a routerLink="/pages/dispatchNote/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-           <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-            </button>
-          </a>
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
       </div>
     </div>
   </p-header>
@@ -18,7 +18,8 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <label for=" customer"> Customer</label><br/>
+            <label for=" customer"> Customer</label>
+            <br/>
             <p-autoComplete [dropdown]="true" formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
               [size]="50" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerDropdownClick($event)" (onSelect)="onCustomerSelect($event)">
               <ng-template let-option pTemplate="option">
@@ -28,14 +29,9 @@
               </ng-template>
             </p-autoComplete>
           </div>
-          <!-- <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="dispatchDate">Dispatch Date</label><br/>
-              <p-calendar id="dispatchDatePicker" formControlName="dispatchDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
-            </div>
-          </div> -->
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <label for="employee">Sales Person</label><br/>
+            <label for="employee">Sales Person</label>
+            <br/>
             <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeDropdownClick($event)" (onSelect)="onEmployeeSelect($event)">
               <ng-template let-option pTemplate="option">
@@ -46,7 +42,8 @@
             </p-autoComplete>
           </div>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <label for="address">Ship To</label><br/>
+            <label for="address">Ship To</label>
+            <br/>
             <p-autoComplete [dropdown]="true" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
               [size]="76" [minLength]="1" placeholder="Search" (onDropdownClick)="handleAddressDropdownClick($event)" (onSelect)="onAddressSelect($event)">
               <ng-template let-option pTemplate="option">
@@ -59,7 +56,8 @@
         </div>
       </div>
     </div>
-    &nbsp;<br/>
+    &nbsp;
+    <br/>
     <p-panel>
       <div class="row">
         <div class=" col-sm-12">
@@ -67,7 +65,8 @@
             <div class="row">
               <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="form-group">
-                  <label for="dispatchSchedule">Dispatch Schedule</label><br/>
+                  <label for="dispatchSchedule">Dispatch Schedule</label>
+                  <br/>
                   <p-autoComplete [dropdown]="true" id="dispatchScheduleSelector" formControlName="dispatchSchedule" field="display" [suggestions]="filteredDispatchScheduleList"
                     (completeMethod)="filterDispatchScheduleList($event)" [size]="50" [minLength]="1" placeholder="Search"
                     (onDropdownClick)="handleDispatchScheduleDropdownClick($event)" (onSelect)="onDispatchScheduleSelect($event)">
@@ -82,15 +81,17 @@
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                 <div class="ui-inputgroup">
                   <div class="form-group" [ngClass]="{'has-error': (! dispatchFormGroup.controls['quantity'].valid &&  dispatchFormGroup.controls['Quantity'].touched), 'has-success': ( dispatchFormGroup.controls['quantity'].valid && dispatchFormGroup.controls['quantity'].touched)}">
-                    <label for="quantity"> Quantity</label><br/>
+                    <label for="quantity"> Quantity</label>
+                    <br/>
                     <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
                   </div>
                 </div>
               </div>
               <div class="col">
-                <label for="inputFirstName">&nbsp;</label><br/>
+                <label for="inputFirstName">&nbsp;</label>
+                <br/>
                 <div class="form-group form-inline">
-                  <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>                  &nbsp;&nbsp;
+                  <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
                 </div>
               </div>
             </div>
@@ -127,7 +128,8 @@
     </p-panel>
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-        &nbsp;<br/>
+        &nbsp;
+        <br/>
         <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
         <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
         <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>

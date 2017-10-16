@@ -39,7 +39,7 @@ export class ComputerForm {
             brand: ['', Validators.required],
             model: ['', Validators.required],
             ram: '',
-            processor: '',            
+            processor: '',
             hdd1: '',
             hdd2: '',
             lanMac: '',
@@ -113,7 +113,6 @@ export class ComputerForm {
 
     /*================== Employee Filter ===================*/
     filteredEmployeeList: any[];
-    //employee: any;
 
     filterEmployeeList(event) {
         let query = event.query.toLowerCase();
@@ -148,7 +147,6 @@ export class ComputerForm {
     }
     /*================== ComputerTypeFilter ===================*/
     filteredComputerTypeList: any[];
-    //computerType: any;
 
     filterComputerTypeList(event) {
         let query = event.query.toLowerCase();

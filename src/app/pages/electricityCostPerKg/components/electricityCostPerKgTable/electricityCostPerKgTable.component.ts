@@ -18,9 +18,9 @@ export class ElectricityCostPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: ElectricityCostPerKgService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: ElectricityCostPerKgService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -57,7 +57,6 @@ export class ElectricityCostPerKgTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );

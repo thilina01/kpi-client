@@ -17,7 +17,6 @@ import { OperationService } from './operation.service';
 import { ShiftService } from '../shift/shift.service';
 import { OperationTypeService } from '../operationType/operationType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

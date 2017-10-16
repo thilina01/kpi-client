@@ -18,14 +18,10 @@ import { DataTable, ConfirmationService } from 'primeng/primeng';
 
 })
 export class SalesOrderForm {
-    fillSalesOrders(): any {
-        throw new Error('Method not implemented.');
-    }
     @Input('formGroup')
     public formGroup: FormGroup;
     @ViewChild(DataTable) dataTable: DataTable;
     public salesOrderItemFormGroup: FormGroup;
-    // operations = new Array;
     customerItem: Array<any>;
     totalRecords = 0;
 
@@ -92,8 +88,6 @@ export class SalesOrderForm {
     }
 
     fillSalesOrderItems(): void {
-        // this.operations = this.formGroup.value.operationList.slice();
-        //this.totalRecords = this.operations.length;
         this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
         this.dataTable.reset();
     }
@@ -184,10 +178,8 @@ export class SalesOrderForm {
             this.salesOrderItemFormGroup.reset();
             document.getElementById('customerItemSelector').focus();
             this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
-            //this.dataTable.reset();
         }
-        //this.fillSalesOrders();
-        //dt.reset();
+        
     }
 
     calculateTotal() {       
@@ -205,7 +197,6 @@ export class SalesOrderForm {
 
     /*================== Customer Item Filter ===================*/
     filteredCustomerItems: any[];
-    //customerItem: any;
 
     filterCustomerItems(event) {
         let query = event.query.toLowerCase();
@@ -242,7 +233,6 @@ export class SalesOrderForm {
     /*================== End Of Customer Item Filter ===================*/
     /*================== Sales Order Type Filter ===================*/
     filteredSalesOrderTypes: any[];
-    //salesOrderType: any;
 
     filterSalesOrderTypes(event) {
         let query = event.query.toLowerCase();
@@ -279,7 +269,6 @@ export class SalesOrderForm {
     /*================== End Of Sales Order Type Filter ===================*/
     /*================== CustomerFilter ===================*/
     filteredCustomerList: any[];
-    //customer: any;
 
     filterCustomerList(event) {
         let query = event.query.toLowerCase();

@@ -47,7 +47,6 @@ export class DispatchScheduleTable {
   }
 
   onRowDblclick(data: any): void {
-    //this.router.navigate(['/pages/dispatchSchedule/form/' + data.id]);
   }
 
   navigateToForm(id: any): void {
@@ -60,7 +59,6 @@ export class DispatchScheduleTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          //this.msgs.push();
           this.loadData()
         }
         );

@@ -10,15 +10,14 @@ export class StatusService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   private apiUrl: string;  // URL to web api
-  private getJsonHeaders(): Headers{
+  private getJsonHeaders(): Headers {
     return new Headers({
       'Content-Type': 'application/json',
       'email': this.authService.email
     });
-  }; 
+  };
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
     this.apiUrl = config.apiEndpoint + 'statuses/';
-    //this.headers = new Headers(config.jsonHeaders);
   }
 
   getAll(): Promise<Array<Object>> {

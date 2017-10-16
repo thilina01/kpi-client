@@ -7,7 +7,7 @@ export class RevenueChartService {
   constructor(private _baConfig: BaThemeConfigProvider) {
   }
 
- getChartData(data) {
+  getChartData(data) {
 
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.financeKpiRevenueChart;
@@ -58,8 +58,8 @@ export class RevenueChartService {
       },
       'legend': {
         'position': 'top',
-        'valueWidth':100,
-        'valueAlign':'left'
+        'valueWidth': 100,
+        'valueAlign': 'left'
       },
       'dataTableId': 'revenuechartdata',
       'autoMargins': false,

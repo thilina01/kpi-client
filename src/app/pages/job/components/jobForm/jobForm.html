@@ -5,11 +5,11 @@
         <h4>Job Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/job/table"> 
-                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-                  <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-                </button>
-              </a>
+        <a routerLink="/pages/job/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
       </div>
     </div>
   </p-header>
@@ -17,78 +17,39 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="ui-inputgroup">
-          <label for="jobNo">Job Number</label><br/>
+          <label for="jobNo">Job Number</label>
+          <br/>
           <input type="text" pInputText formControlName="jobNo">
         </div>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <label for="item">Item</label><br/>
+        <label for="item">Item</label>
+        <br/>
         <p-autoComplete formControlName="item" field="display" [dropdown]="true" [suggestions]="filteredItemList" (completeMethod)="filterItemList($event)"
-          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemDropdownClick($event)" (onSelect)="onItemSelect($event)" appendTo="body">
+          [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemDropdownClick($event)" (onSelect)="onItemSelect($event)"
+          appendTo="body">
           <ng-template let-option pTemplate="option">
             <div class="ui-helper-clearfix">
               <div>{{option.code}} : {{option.name}}</div>
             </div>
           </ng-template>
         </p-autoComplete>
-      </div>   
+      </div>
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="ui-inputgroup">
-          <label for="quantity">Quantity</label><br/>
+          <label for="quantity">Quantity</label>
+          <br/>
           <input type="number" pInputText formControlName="quantity">
         </div>
       </div>
-      <!-- <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="customerItem">Customer Item</label><br/>
-            <p-autoComplete formControlName="customerItem" field="disply" [suggestions]="filteredCustomerItems" (completeMethod)="filterCustomerItems($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerItemDropdownClick($event)"
-              (onSelect)="onCustomerItemSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
-          </div> -->
-
-
-      <!--<select id="jobTypeSelector" class="form-control" formControlName="jobType">
-					  <option *ngFor="let jobType of jobTypes" [ngValue]="jobType">{{jobType.code}}</option>
-				    </select> -->
-
-      <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.jobType != null"> -->
-      <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-      <!-- <label *ngIf="formGroup.value.jobType != null && formGroup.value.jobType.code != null"> -->
-      <!-- &nbsp; {{formGroup.value.jobType.code}}{{formGroup.value.jobType.name != null ?" | "+ formGroup.value.jobType.name:""}} -->
-      <!-- </label> -->
-      <!-- </div> -->
-
-      <!--<select id="itemSelector" class="form-control" formControlName="item">
-					  <option *ngFor="let item of items" [ngValue]="item">{{item.code}}</option>
-				    </select>-->
-
-      <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.item != null"> -->
-      <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-      <!-- <label *ngIf="formGroup.value.item != null && formGroup.value.item.code != null"> -->
-      <!-- &nbsp; {{formGroup.value.item.code}}{{formGroup.value.item.description != null ?" | "+ formGroup.value.item.description:""}}{{formGroup.value.item.name != null ?" | "+ formGroup.value.item.name:""}} -->
-      <!-- </label> -->
-      <!-- </div> -->
-
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="ui-inputgroup">
-          &nbsp;<br/> <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+          &nbsp;
+          <br/>
+          <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
           <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
         </div>
       </div>
     </div>
   </form>
 </p-panel>
-<!--
-<div class="widgets">
-  <div class="row">
-    <div class="col-sm-12">
-
-    </div>
-  </div>
-</div>
--->

@@ -17,7 +17,6 @@ export class ChartService {
 
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
     this.apiUrl = config.apiEndpoint + 'chart/';
-    //this.headers = new Headers(config.jsonHeaders);
   }
 
   fillTable(chart: any) {
@@ -62,7 +61,6 @@ export class ChartService {
       .catch(err => this.handleError(err));
   }
 
-  //chart/scheduleAdherence?startDate=217-01-01&endDate=2017-03-31
   getScheduleAdherence(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'scheduleAdherence?startDate=' + startDate + '&endDate=' + endDate)
       .catch(err => this.handleError(err));
@@ -227,19 +225,7 @@ export class ChartService {
     return this.http.get(this.apiUrl + 'monthlyNetProfit?startDate=' + startDate + '&endDate=' + endDate)
       .catch(err => this.handleError(err));
   }
-  /*
-      private YYYYMMDD(date: Date): string {
-          let d = new Date(date),
-              month = '' + (d.getMonth() + 1),
-              day = '' + d.getDate(),
-              year = d.getFullYear();
 
-          if (month.length < 2) month = '0' + month;
-          if (day.length < 2) day = '0' + day;
-
-          return [year, month, day].join('-');
-      }
-  */
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     alert(JSON.parse(error._body).message);

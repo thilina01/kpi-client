@@ -15,8 +15,6 @@ import { routing } from './energyConsumption.routing';
 import { EnergyConsumptionService } from './energyConsumption.service';
 import { LocationService } from '../location/location.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -40,7 +38,7 @@ import { LocationService } from '../location/location.service';
   ],
   providers: [
     EnergyConsumptionService,
-     LocationService
-    ]
+    LocationService
+  ]
 })
 export class EnergyConsumptionModule { }

@@ -18,9 +18,9 @@ export class FinanceSummaryTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: FinanceSummaryService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: FinanceSummaryService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -57,7 +57,6 @@ export class FinanceSummaryTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );

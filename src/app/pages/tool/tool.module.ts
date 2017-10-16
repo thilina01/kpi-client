@@ -12,7 +12,6 @@ import { ToolForm } from './components/toolForm/toolForm.component';
 import { routing } from './tool.routing';
 import { ToolService } from './tool.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

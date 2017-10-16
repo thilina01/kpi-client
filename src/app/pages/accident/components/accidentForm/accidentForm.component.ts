@@ -234,7 +234,6 @@ export class AccidentForm {
 
     /*================== Accident Type Filter ===================*/
     filteredAccidentTypes: any[];
-    //accidentType: any;
 
     filterAccidentTypes(event) {
         let query = event.query.toLowerCase();
@@ -271,7 +270,6 @@ export class AccidentForm {
     /*================== End Of Accident Type Filter ===================*/
     /*================== Treatment Type Filter ===================*/
     filteredTreatmentTypes: any[];
-    //treatmentType: any;
 
     filterTreatmentTypes(event) {
         let query = event.query.toLowerCase();
@@ -308,7 +306,6 @@ export class AccidentForm {
     /*================== End Of Treatment Type Filter ===================*/
     /*================== EmployeeFilter ===================*/
     filteredEmployeeList: any[];
-    //employee: any;
 
     filterEmployeeList(event) {
         let query = event.query.toLowerCase();
@@ -344,7 +341,6 @@ export class AccidentForm {
     /*================== End Of Employee Filter ===================*/
     /*================== Shift Filter ===================*/
     filteredShiftList: any[];
-    //shift: any;
 
     filterShiftList(event) {
         let query = event.query.toLowerCase();
@@ -416,7 +412,6 @@ export class AccidentForm {
     /*================== End Of Machine Filter ===================*/
     /*================== Section Filter ===================*/
     filteredSectionList: any[];
-    //section: any;
 
     filterSectionList(event) {
         let query = event.query.toLowerCase();

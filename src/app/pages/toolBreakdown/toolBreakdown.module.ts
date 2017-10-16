@@ -15,8 +15,6 @@ import { routing } from './toolBreakdown.routing';
 import { ToolBreakdownService } from './toolBreakdown.service';
 import { ToolService } from '../tool/tool.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

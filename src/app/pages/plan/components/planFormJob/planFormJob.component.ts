@@ -2,7 +2,6 @@ import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
-
 import { DataTable } from 'primeng/primeng';
 import { JobService } from '../../../job/job.service';
 import { OperationTypeService } from '../../../operationType/operationType.service';
@@ -22,7 +21,6 @@ export class PlanFormJob {
   public formGroup: FormGroup;
   @ViewChild(DataTable) dataTable: DataTable;
   public jobFormGroup: FormGroup;
-  // operations = new Array;
   jobs: Array<any>;
   productTypes: Array<any>;
   operationTypes: Array<any>;
@@ -49,19 +47,6 @@ export class PlanFormJob {
     }, 500);
   }
 
-  // ngDoCheck(): void {
-  //   this.refresh();
-  // }
-  // ngOnChanges(changes: SimpleChanges) {
-  //   for (let propName in changes) {
-  //     let chng = changes[propName];
-  //     console.log(chng);
-  //     alert(chng + '')
-  //     // let cur  = JSON.stringify(chng.currentValue);
-  //     // let prev = JSON.stringify(chng.previousValue);
-  //     // this.changeLog.push(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
-  //   }
-  // }
   refresh(): void {
     this.getJobs();
     this.getProductTypes();
@@ -82,8 +67,7 @@ export class PlanFormJob {
   }
 
   fillOperations(): void {
-    // this.operations = this.formGroup.value.operationList.slice();
-    //this.totalRecords = this.operations.length;    
+
     this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
     this.dataTable.reset();
   }
@@ -107,11 +91,9 @@ export class PlanFormJob {
       document.getElementById('jobSelector').focus();
       console.log(this.formGroup.value.operationList);
       this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
-      //this.dataTable.reset();
     } else {
       console.log(this.jobFormGroup.errors);
     }
-    //this.fillOperations();
-    //dt.reset();
+
   }
 }

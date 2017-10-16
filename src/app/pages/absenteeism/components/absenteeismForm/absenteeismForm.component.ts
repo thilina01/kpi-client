@@ -26,10 +26,10 @@ export class AbsenteeismForm {
     labourSource: any = { id: '', code: '' }
 
     constructor(
-        protected service: AbsenteeismService, 
-        private route: ActivatedRoute, 
-        private router: Router, fb: FormBuilder, 
-        private sharedService: SharedService, 
+        protected service: AbsenteeismService,
+        private route: ActivatedRoute,
+        private router: Router, fb: FormBuilder,
+        private sharedService: SharedService,
         private labourSourceService: LabourSourceService) {
         this.formGroup = fb.group({
             id: '',
@@ -66,9 +66,9 @@ export class AbsenteeismForm {
             data.effectiveMonth = new Date(data.effectiveMonth);
             this.absenteeism = data;
         }
-        this.formGroup.patchValue(this.absenteeism, { onlySelf: true });  
-        this.labourSource = this.absenteeism.labourSource;      
-        this.setDisplayOfLabourSource();   
+        this.formGroup.patchValue(this.absenteeism, { onlySelf: true });
+        this.labourSource = this.absenteeism.labourSource;
+        this.setDisplayOfLabourSource();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -88,7 +88,6 @@ export class AbsenteeismForm {
     }
     /*================== Labour Source Filter ===================*/
     filteredLabourSources: any[];
-    //labourSource: any;
 
     filterLabourSources(event) {
         let query = event.query.toLowerCase();
@@ -110,10 +109,10 @@ export class AbsenteeismForm {
     }
 
     onLabourSourceSelect(event: any) {
-        this.setDisplayOfLabourSource();        
+        this.setDisplayOfLabourSource();
     }
 
-    setDisplayOfLabourSource(){
+    setDisplayOfLabourSource() {
         let labourSource = this.formGroup.value.labourSource;
         if (labourSource != null && labourSource != undefined) {
             let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + ' : ' : '';

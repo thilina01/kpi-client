@@ -12,7 +12,6 @@ import { ShiftTypeForm } from './components/shiftTypeForm/shiftTypeForm.componen
 import { routing } from './shiftType.routing';
 import { ShiftTypeService } from './shiftType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

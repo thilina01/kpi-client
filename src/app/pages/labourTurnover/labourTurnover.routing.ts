@@ -1,10 +1,9 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { LabourTurnover } from './labourTurnover.component';
 import { LabourTurnoverForm } from './components/labourTurnoverForm/labourTurnoverForm.component';
 import { LabourTurnoverTable } from './components/labourTurnoverTable/labourTurnoverTable.component';
 
-// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',

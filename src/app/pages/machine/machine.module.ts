@@ -12,7 +12,6 @@ import { MachineForm } from './components/machineForm/machineForm.component';
 import { routing } from './machine.routing';
 import { MachineService } from './machine.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

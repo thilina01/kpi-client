@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { ScheduleAdherenceFactorySixMonthsChartService } from './scheduleAdherenceFactorySixMonthsChart.service';
 import { BaThemeConfigProvider } from '../../../theme';
 
-
 import 'style-loader!./scheduleAdherenceFactorySixMonthsChart.scss';
 import { ChartService } from "../../chart/chart.service";
 
@@ -73,7 +72,6 @@ export class ScheduleAdherenceFactorySixMonthsChart {
     let startDateText = startDate.getFullYear() + "-" + monthText.slice(-2) + "-01";
 
     let endDate = new Date();
-    //endDate.setMonth(endDate.getMonth() - 6);
     let endDateText = endDate.getFullYear() + "-" + (endDate.getMonth() < 10 ? "0" + endDate.getMonth() : endDate.getMonth()) + "-" + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyScheduleAdherence(startDateText, endDateText).subscribe((data) => {
@@ -87,7 +85,6 @@ export class ScheduleAdherenceFactorySixMonthsChart {
 
     this.amChart = chart;
     let zoomChart = () => {
-      //chart.zoomToDates(new Date(2013, 3), new Date(2014, 0));
     };
 
     chart.addListener('rendered', zoomChart);

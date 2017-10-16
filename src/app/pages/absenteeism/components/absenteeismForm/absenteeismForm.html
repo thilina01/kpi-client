@@ -5,9 +5,9 @@
         <h4>Absenteeism Form</h4>
       </div>
       <div class='col'>
-        <a routerLink='/pages/absenteeism/table'> 
+        <a routerLink='/pages/absenteeism/table'>
           <button type='button' class='btn btn-primary btn-xs' style='float:right; margin-right:6px;'>
-            <i ng-reflect-class-name='fa fa-file-text-o' class='ui-button-icon-left ui-clickable fa fa-fw fa-close'></i> 
+            <i ng-reflect-class-name='fa fa-file-text-o' class='ui-button-icon-left ui-clickable fa fa-fw fa-close'></i>
           </button>
         </a>
       </div>
@@ -19,13 +19,15 @@
         <div class='row'>
           <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
             <div class='ui-inputgroup'>
-              <label for='effectiveMonth'>Effective Month</label><br/>
+              <label for='effectiveMonth'>Effective Month</label>
+              <br/>
               <p-calendar id='effectiveMonthPicker' formControlName='effectiveMonth' showIcon='true' dateFormat='yy-mm'></p-calendar>
             </div>
           </div>
           <div class=' col-lg-6 col-md-6 col-sm-6 col-xs-12'>
             <div class='ui-inputgroup'>
-              <label for='labourSource'>Labour Source</label><br/>
+              <label for='labourSource'>Labour Source</label>
+              <br/>
               <p-autoComplete formControlName='labourSource' field='display' [suggestions]='filteredLabourSources' (completeMethod)='filterLabourSources($event)'
                 [size]='20' [minLength]='1' placeholder='Search' (onDropdownClick)='handleLabourSourceDropdownClick($event)'
                 (onSelect)='onLabourSourceSelect($event)'>
@@ -35,25 +37,21 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <!-- <label *ngIf='formGroup.value.labourSource != null && formGroup.value.labourSource.code != null'> -->
-              <!-- &nbsp; {{formGroup.value.labourSource.code}}{{formGroup.value.labourSource.name != null ?' | '+ formGroup.value.labourSource.name:''}} -->
-              <!-- </label> -->
             </div>
           </div>
-          <!-- <div class='col-lg-3 col-md-2 hidden-sm-down' *ngIf='formGroup.value.labourSource != null'> -->
-          <!-- <p class='hidden-xs-down'>&nbsp;</p> -->
         </div>
-        <!-- </div> -->
         <div class='row'>
           <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
             <div class='ui-inputgroup'>
-              <label for='absenteeism'>Absenteeism</label><br/>
+              <label for='absenteeism'>Absenteeism</label>
+              <br/>
               <input type='number' pInputText formControlName='absenteeism'>
             </div>
           </div>
           <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
             <div class='ui-inputgroup'>
-              <label for='target'>Target</label><br/>
+              <label for='target'>Target</label>
+              <br/>
               <input type='number' pInputText formControlName='target'>
             </div>
           </div>
@@ -61,7 +59,8 @@
         <div class='row'>
           <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
             <div class='ui-inputgroup'>
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]='!formGroup.valid' type='submit' icon='fa-floppy-o' label='Save'></button>
               <button type='button' pButton class='ui-button-secondary' (click)='resetForm()' icon='fa-times' label='Reset'></button>
             </div>

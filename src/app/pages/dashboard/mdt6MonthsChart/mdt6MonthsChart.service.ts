@@ -35,7 +35,7 @@ export class Mdt6MonthsChartService {
 
       ],
       "valueAxes": [{
-        "id":"v1",
+        "id": "v1",
         "axisAlpha": 0,
         "position": "left"
       }],
@@ -64,7 +64,6 @@ export class Mdt6MonthsChartService {
         "valueField": "target",
         "dashLengthField": "dashLengthLine",
         "labelText": "[[target]]%",
-        //"labelRotation": -30,
         "labelPosition": "top"
       }],
       "categoryField": "month",

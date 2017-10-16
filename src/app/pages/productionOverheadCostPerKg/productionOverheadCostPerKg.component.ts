@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import { Router,Routes } from '@angular/router';
+import { Component } from '@angular/core';
+import { Router, Routes } from '@angular/router';
 
 import { BaMenuService } from '../../theme';
 import { MENU } from '../../app.menu';
@@ -16,7 +16,6 @@ export class ProductionOverheadCostPerKg {
     }
     ngOnInit() {
         this._menuService.updateMenuByRoutes(<Routes>MENU);
-        //this.router.navigate(['/pages/productionOverheadCostPerKg/table']);
     }
 
 }

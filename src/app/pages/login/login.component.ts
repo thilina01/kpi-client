@@ -17,8 +17,8 @@ export class Login {
     public password: AbstractControl;
     public submitted: boolean = false;
 
-    constructor(fb: FormBuilder, 
-        public authService: AuthService, 
+    constructor(fb: FormBuilder,
+        public authService: AuthService,
         public router: Router) {
         this.form = fb.group({
             'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
@@ -48,15 +48,6 @@ export class Login {
                     alert('Login Failed (External)');
                 }
             })
-
-            /*
-                        this.authService.login(values).then(() => {
-                            if (this.authService.isLoggedIn) {
-                                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/pages/plan';
-                                this.router.navigate([redirect]);
-                                //window.location.href = '/#' + redirect;
-                            }
-                        });*/
         }
     }
 }

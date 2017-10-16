@@ -27,7 +27,7 @@ export class LabourSourceTable {
       this.totalRecords = data.totalElements;
     });
   }
-  
+
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
     this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
@@ -57,7 +57,6 @@ export class LabourSourceTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          //this.msgs.push();
           this.loadData()
         }
         );

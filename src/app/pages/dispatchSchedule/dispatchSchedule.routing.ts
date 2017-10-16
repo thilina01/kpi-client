@@ -1,16 +1,15 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { DispatchSchedule } from './dispatchSchedule.component';
 import { DispatchScheduleForm } from './components/dispatchScheduleForm/dispatchScheduleForm.component';
 import { DispatchScheduleTable } from './components/dispatchScheduleTable/dispatchScheduleTable.component';
 import { ModuleWithProviders } from '@angular/core';
 
-// noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
     component: DispatchSchedule,
-     children: [
+    children: [
       { path: 'form', component: DispatchScheduleForm },
       { path: 'form/:id', component: DispatchScheduleForm },
       { path: 'table', component: DispatchScheduleTable }

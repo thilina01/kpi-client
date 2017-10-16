@@ -19,7 +19,6 @@ export class ManpowerTable {
     this.loadData();
   }
 
-
   loadData() {
     this.service.getPage(0, 20).subscribe((data: any) => {
       this.rows = data.content;

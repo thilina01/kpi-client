@@ -14,7 +14,6 @@ import { SalesPerKgForm } from './components/salesPerKgForm/salesPerKgForm.compo
 import { routing } from './salesPerKg.routing';
 import { SalesPerKgService } from './salesPerKg.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

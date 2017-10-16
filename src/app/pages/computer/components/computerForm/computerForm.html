@@ -5,9 +5,9 @@
         <h4>Computer Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/computer/table"> 
+        <a routerLink="/pages/computer/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-          <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
         </a>
       </div>
@@ -19,79 +19,92 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="code">Code</label><br/>
+              <label for="code">Code</label>
+              <br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="brand">Brand</label><br/>
+              <label for="brand">Brand</label>
+              <br/>
               <input type="text" pInputText formControlName="brand">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="model">Model</label><br/>
+              <label for="model">Model</label>
+              <br/>
               <input type="text" pInputText formControlName="model">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="ram">Ram</label><br/>
+              <label for="ram">Ram</label>
+              <br/>
               <input type="text" pInputText formControlName="ram">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="processor">Processor</label><br/>
+              <label for="processor">Processor</label>
+              <br/>
               <input type="text" pInputText formControlName="processor">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="hdd1">Hdd1</label><br/>
+              <label for="hdd1">Hdd1</label>
+              <br/>
               <input type="text" pInputText formControlName="hdd1">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="hdd2">Hdd2</label><br/>
+              <label for="hdd2">Hdd2</label>
+              <br/>
               <input type="text" pInputText formControlName="hdd2">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="lanMac">Lan Mac</label><br/>
+              <label for="lanMac">Lan Mac</label>
+              <br/>
               <input type="text" pInputText formControlName="lanMac">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="wlanMac">Wlan Mac</label><br/>
+              <label for="wlanMac">Wlan Mac</label>
+              <br/>
               <input type="text" pInputText formControlName="wlanMac">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="lanIp">Lan Ip</label><br/>
+              <label for="lanIp">Lan Ip</label>
+              <br/>
               <input type="text" pInputText formControlName="lanIp">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="wlanIp">Wlan Ip</label><br/>
+              <label for="wlanIp">Wlan Ip</label>
+              <br/>
               <input type="text" pInputText formControlName="wlanIp">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="value">Value</label><br/>
+              <label for="value">Value</label>
+              <br/>
               <input type="text" pInputText formControlName="value">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="purchaseDate">Purchase Date</label><br/>
+              <label for="purchaseDate">Purchase Date</label>
+              <br/>
               <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['purchaseDate'].valid && formGroup.controls['purchaseDate'].touched), 'has-success': (formGroup.controls['purchaseDate'].valid && formGroup.controls['purchaseDate'].touched)}">
                 <p-calendar id="purchaseDatePicker" formControlName="purchaseDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
               </div>
@@ -99,14 +112,16 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="transferDate">Transfer Date</label><br/>
+              <label for="transferDate">Transfer Date</label>
+              <br/>
               <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['transferDate'].valid && formGroup.controls['transferDate'].touched), 'has-success': (formGroup.controls['transferDate'].valid && formGroup.controls['transferDate'].touched)}">
                 <p-calendar id="transferDatePicker" formControlName="transferDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
               </div>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="employee">Employee</label><br/>
+            <label for="employee">Employee</label>
+            <br/>
             <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeDropdownClick($event)" (onSelect)="onEmployeeSelect($event)">
               <ng-template let-option pTemplate="option">
@@ -118,7 +133,8 @@
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="computerType">Computer Type</label><br/>
+              <label for="computerType">Computer Type</label>
+              <br/>
               <p-autoComplete [dropdown]="true" formControlName="computerType" field="display" [suggestions]="filteredComputerTypeList"
                 (completeMethod)="filterComputerTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleComputerTypeDropdownClick($event)"
                 (onSelect)="onComputerTypeSelect($event)">
@@ -132,7 +148,8 @@
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

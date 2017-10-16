@@ -12,7 +12,6 @@ import { TeamForm } from './components/teamForm/teamForm.component';
 import { routing } from './team.routing';
 import { TeamService } from './team.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

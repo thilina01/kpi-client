@@ -12,7 +12,6 @@ import { ProductTypeForm } from './components/productTypeForm/productTypeForm.co
 import { routing } from './productType.routing';
 import { ProductTypeService } from './productType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

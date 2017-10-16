@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { ScrapCostPerKgChartService } from './scrapCostPerKgChart.service';
 
-
 import 'style-loader!./scrapCostPerKgChart.scss';
 import { ChartService } from '../../chart/chart.service';
 
@@ -14,7 +13,6 @@ export class ScrapCostPerKgChart {
 
   amChart: any;
   chartData: any;
-
 
   constructor(private _scrapCostPerKgChartService: ScrapCostPerKgChartService, private chartService: ChartService) {
 

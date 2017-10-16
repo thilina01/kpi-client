@@ -31,17 +31,17 @@ export class OperationTable {
   startDate: Date;
   endDate: Date;
 
-  constructor(protected service: OperationService, 
-    private router: Router, 
-    private confirmationService: ConfirmationService, 
+  constructor(protected service: OperationService,
+    private router: Router,
+    private confirmationService: ConfirmationService,
     private sharedService: SharedService,
-    private sectionService: SectionService, 
+    private sectionService: SectionService,
     private shiftService: ShiftService) {
     this.loadData()
     this.getSections();
     this.getShifts();
   }
-  
+
   getSections(): void {
     this.sectionService.getCombo().subscribe(sections => {
       this.sections = sections;
@@ -112,55 +112,53 @@ export class OperationTable {
     this.totalRecords = data.totalElements;
   }
 
-   /*================== Shift Filter ===================*/
-    //shift: any;
-    filterShifts(event) {
-        let query = event.query.toLowerCase();
-        this.filteredShifts = [];
-        for (let i = 0; i < this.shifts.length; i++) {
-            let shift = this.shifts[i];
-            if (shift.code.toLowerCase().indexOf(query) == 0 ) {
-                this.filteredShifts.push(shift);
-            }
-        }
+  /*================== Shift Filter ===================*/
+  filterShifts(event) {
+    let query = event.query.toLowerCase();
+    this.filteredShifts = [];
+    for (let i = 0; i < this.shifts.length; i++) {
+      let shift = this.shifts[i];
+      if (shift.code.toLowerCase().indexOf(query) == 0) {
+        this.filteredShifts.push(shift);
+      }
     }
+  }
 
-    handleShiftDropdownClick() {
-        this.filteredShifts = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredShifts = this.shifts;
-        }, 100)
-    }
+  handleShiftDropdownClick() {
+    this.filteredShifts = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredShifts = this.shifts;
+    }, 100)
+  }
 
-    onShiftSelect(shift: any) {
-        console.log(event)
+  onShiftSelect(shift: any) {
+    console.log(event)
+  }
+  /*================== End Of Shift Filter ===================*/
+  /*================== Section Filter ===================*/
+  filteredSections: any[];
+  filterSections(event) {
+    let query = event.query.toLowerCase();
+    this.filteredSections = [];
+    for (let i = 0; i < this.sections.length; i++) {
+      let section = this.sections[i];
+      if (section.code.toLowerCase().indexOf(query) == 0) {
+        this.filteredSections.push(section);
+      }
     }
-    /*================== End Of Shift Filter ===================*/
-    /*================== Section Filter ===================*/
-    filteredSections: any[];
-    //section: any;
-    filterSections(event) {
-        let query = event.query.toLowerCase();
-        this.filteredSections = [];
-        for (let i = 0; i < this.sections.length; i++) {
-            let section = this.sections[i];
-            if (section.code.toLowerCase().indexOf(query) == 0) {
-                this.filteredSections.push(section);
-            }
-        }
-    }
+  }
 
-    handleSectionDropdownClick() {
-        this.filteredSections = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSections = this.sections;
-        }, 100)
-    }
+  handleSectionDropdownClick() {
+    this.filteredSections = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredSections = this.sections;
+    }, 100)
+  }
 
-    onSectionSelect(section: any) {
-        console.log(event)
-    }
-    /*================== End Of Section Filter ===================*/
+  onSectionSelect(section: any) {
+    console.log(event)
+  }
+  /*================== End Of Section Filter ===================*/
 }

@@ -54,12 +54,8 @@ export class PermissionForm {
                     }
                 });
             });
-            //this.menus = data;
+
         });
-        //alert(this.user.id);
-        // this.menuService.getByUserId(this.user.id).then((data: any) => {
-        //     this.menus = data;
-        // });
     }
 
     loadUsers() {
@@ -84,13 +80,11 @@ export class PermissionForm {
     }
 
     onPermissionChanged(menuId: number) {
-        //alert(this.user.id + ' ddd ' + menuId);
         this.userMenuService.toggle(this.user.id, menuId);
     }
 
     /*================== User Filter ===================*/
     filteredUsers: any[];
-    //user: any;
 
     filterUsers(event) {
         let query = event.query.toLowerCase();
@@ -157,7 +151,7 @@ export class PermissionForm {
         console.log(event)
     }
     /*================== End Of Status Filter ===================*/
-    
+
     /*================== Team Filter ===================*/
     filteredTeamList: any[];
     team: any;

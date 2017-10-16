@@ -1,16 +1,18 @@
 <p-panel>
-<p-header>
-		<div class="row">
-			<div class="col">
-				<h4> Manpower List</h4>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-			</div>
-		</div>
-    </p-header>
-    <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
-	 [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowers"  [globalFilter]="gb">
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4> Manpower List</h4>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+      </div>
+    </div>
+  </p-header>
+  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+    (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+    resizableColumns="true" exportFilename="manpowers" [globalFilter]="gb">
     <p-column field="id" header="ID"></p-column>
     <p-column field="production.controlPoint.code" header="Control Point" [sortable]="true"></p-column>
     <p-column field="production.productionDate" header="Production Date" [sortable]="true"></p-column>
@@ -18,5 +20,5 @@
     <p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
     <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
     <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true"></p-column>
-</p-dataTable>
+  </p-dataTable>
 </p-panel>

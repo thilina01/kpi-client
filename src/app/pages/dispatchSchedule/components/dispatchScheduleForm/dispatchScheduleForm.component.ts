@@ -83,40 +83,22 @@ export class DispatchScheduleForm {
 
   ngOnInit(): void {
     this.getSalesOrders();
-    //this.getJobList();
     this.route.params.subscribe(
       (params: Params) => {
         let id = params['id'];
         id = id == undefined ? '0' : id;
         if (id != '0') {
           this.fill(id);
-          // this.service.getOne(+id).subscribe(
-          //   (data) => {
-          //     this.loadForm(data);
-          //   }
-          // )
         }
       }
     );
   }
 
   salesOrderId: number = 0;
-  print() {this.salesOrderId = 0;
+  print() {
+    this.salesOrderId = 0;
     this.salesOrderId = this.salesOrder.id;
   }
-
-  // loadForm(data: any) {
-  //   if (data != null) {
-  //     this.dispatchSchedule = data;
-  //   }
-  //   this.formGroup.patchValue(this.dispatchSchedule, { onlySelf: true });
-  //   this.dispatchScheduleType = this.dispatchSchedule.dispatchScheduleType;
-  //   this.customerItem = this.dispatchSchedule.customerItem;
-  //   this.salesOrder = this.dispatchSchedule.salesOrder;
-  //   this.setDisplayOfSalesOrder();
-
-  // }
-
   public onSubmit(values: any, event: Event): void {
     event.preventDefault();
     console.log(values);
@@ -131,7 +113,6 @@ export class DispatchScheduleForm {
           this.jobNumber = '';
           this.display = false;
           this.onSalesOrderSelect(this.salesOrder);
-          // this.router.navigate(['/pages/dispatchSchedule/form/']);
         }
       );
     } else {
@@ -143,7 +124,7 @@ export class DispatchScheduleForm {
     this.formGroup.reset();
   }
 
-   display: boolean = false;
+  display: boolean = false;
 
   showDialog(data: any) {
     console.log(data);
@@ -175,7 +156,6 @@ export class DispatchScheduleForm {
 
   /*================== Sales Order Filter ===================*/
   filteredSalesOrders: any[];
-  //salesOrder: any;
 
   filterSalesOrders(event) {
     let query = event.query.toLowerCase();

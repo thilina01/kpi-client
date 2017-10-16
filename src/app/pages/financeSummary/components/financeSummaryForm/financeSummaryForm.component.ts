@@ -30,7 +30,7 @@ export class FinanceSummaryForm {
             budgetGrossProfit: '',
             actualNetProfit: '',
             budgetNetProfit: '',
-            actualEbitda:  '',
+            actualEbitda: '',
             budgetEbitda: '',
         });
     }

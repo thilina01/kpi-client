@@ -50,7 +50,7 @@ export class SectionForm {
     getSectionTypes(): void {
         this.sectionTypeService.getAll().subscribe(sectionTypes => this.sectionTypes = sectionTypes);
     }
-    
+
     getWorkCenterss(): void {
         this.workCenterService.getCombo().subscribe(workCenters => this.workCenters = workCenters);
     }

@@ -1,16 +1,15 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { ContactType } from './contactType.component';
 import { ContactTypeForm } from './components/contactTypeForm/contactTypeForm.component';
 import { ContactTypeTable } from './components/contactTypeTable/contactTypeTable.component';
 import { ModuleWithProviders } from '@angular/core';
 
-// noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
     component: ContactType,
-     children: [
+    children: [
       { path: 'form', component: ContactTypeForm },
       { path: 'form/:id', component: ContactTypeForm },
       { path: 'table', component: ContactTypeTable }

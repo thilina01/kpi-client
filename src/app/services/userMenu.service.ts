@@ -19,7 +19,6 @@ export class UserMenuService {
   };
   constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
     this.apiUrl = config.apiEndpoint + 'userMenus/';
-    //this.headers = new Headers(config.jsonHeaders);
   }
 
   getAll(): Promise<Array<Object>> {
@@ -74,7 +73,6 @@ export class UserMenuService {
     return this.http
       .post(this.apiUrl + 'toggle/' + userId + '/' + menuId, { headers: this.getJsonHeaders() })
       .toPromise()
-      //.then(res => res.json().data)
       .catch(this.handleError);
   }
 

@@ -7,7 +7,6 @@ import { AuthService } from "../../services/auth.service";
 import { SharedService } from "../../services/shared.service";
 import { Router } from "@angular/router";
 import { UserService } from "../user/user.service";
-//import { Router } from "@angular/router/router";
 
 @Component({
   selector: 'register',
@@ -67,8 +66,6 @@ export class Register {
         else
           alert('Error' + res);
       })
-      // your code goes here
-      // console.log(values);
     }
   }
 }

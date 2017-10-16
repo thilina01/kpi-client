@@ -20,18 +20,18 @@ export class ProductionOverheadCostPerKgForm {
     effectiveMonth: Date;
 
     constructor(protected service: ProductionOverheadCostPerKgService,
-        private route: ActivatedRoute, 
-        private router: Router, fb: FormBuilder, 
+        private route: ActivatedRoute,
+        private router: Router, fb: FormBuilder,
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
-            effectiveMonth: [this.effectiveMonth, Validators.required],        
-            actual: ['', Validators.required],        
+            effectiveMonth: [this.effectiveMonth, Validators.required],
+            actual: ['', Validators.required],
             budget: ['', Validators.required]
         });
     }
 
-    ngOnInit(): void {        
+    ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];

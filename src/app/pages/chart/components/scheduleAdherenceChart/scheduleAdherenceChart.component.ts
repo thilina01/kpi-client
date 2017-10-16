@@ -51,7 +51,6 @@ export class ScheduleAdherenceChart {
       'lineAlpha': 0.2,
       'type': 'column',
       'valueField': 'value',
-      //'fixedColumnWidth': 80,
       'labelText': '[[value]]%'
     }],
     'chartCursor': {
@@ -92,7 +91,6 @@ export class ScheduleAdherenceChart {
       'lineAlpha': 0.2,
       'type': 'column',
       'valueField': 'total',
-      //'fixedColumnWidth': 80,
       'labelText': '[[total]]',
       'labelPosition': 'top'
     }],
@@ -128,7 +126,6 @@ export class ScheduleAdherenceChart {
 
   onLossTypeChange(event: Event): void {
     if (this.lossType) {
-      //alert(this.lossType.code);
       this.clearData();
       this.fillCharts();
     }

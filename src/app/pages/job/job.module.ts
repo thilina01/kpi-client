@@ -18,7 +18,6 @@ import { CustomerItemService } from '../customerItem/customerItem.service';
 import { CustomerPoNumberService } from '../customerPoNumber/customerPoNumber.service';
 import { SalesOrderService } from '../salesOrder/salesOrder.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

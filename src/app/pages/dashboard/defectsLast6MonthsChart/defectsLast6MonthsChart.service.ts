@@ -20,7 +20,6 @@ export class DefectsLast6MonthsChartService {
     let layoutColors = this._baConfig.get().colors;
     let graphColor = this._baConfig.get().colors.custom.dashboardDefectsLast6MonthsChart;
 
-
     return {
       "type": "serial",
       "addClassNames": true,

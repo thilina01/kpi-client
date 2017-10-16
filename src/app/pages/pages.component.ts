@@ -8,7 +8,6 @@ import { SharedService } from '../services/shared.service';
 import { MenuService } from '../services/menu.service';
 import { UserMenuService } from '../services/userMenu.service';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
-//import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'pages',
@@ -23,7 +22,6 @@ export class Pages {
     private sharedService: SharedService,
     private menuService: MenuService,
     private userMenuService: UserMenuService,
-    //private authService: AuthService,
     private router: Router) {
     sharedService.messageSubject.subscribe(
       message => {
@@ -35,28 +33,15 @@ export class Pages {
     this.main = document.getElementById('main');
     this.footer = document.getElementById('footer');
     this.mySidebar = document.getElementById('mySidebar');
-    //this.openNav = document.getElementById('openNav');
     this.menuService.saveMany(this.menuList);
     this.menuList = [];
-    //let email = Cookie.get('email') !== undefined ? Cookie.get('email') : '';
 
     this.userMenuService.getOwn().then((data: any) => {
       data.forEach(userMenu => {
         this.menuList.push(userMenu.menu)
       });
-      //this.menus = data;
     });
-
-    // this.menuService.getByType(this.menuType).then(
-    //   (data: any) => {
-    //     this.menuList = data;
-    //     this.w3_open();
-    //   })
-    //this.w3_open();
-    //this._menuService.updateMenuByRoutes(<Routes>MENU);
-    //this.msgs.push({ severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks' });
   }
-  /**************************** */
   menuType = { code: 'ng', name: 'Angular' };
 
   menuList = [
@@ -79,12 +64,12 @@ export class Pages {
     { routerLink: '/pages/country/table', name: 'Country', menuType: this.menuType },
     { routerLink: '/pages/currency/table', name: 'Currency', menuType: this.menuType },
     { routerLink: '/pages/customer/table', name: 'Customer', menuType: this.menuType },
-    { routerLink: '/pages/customerItem/table', name: 'Customer Item', menuType: this.menuType },         
+    { routerLink: '/pages/customerItem/table', name: 'Customer Item', menuType: this.menuType },
     { routerLink: '/pages/customerType/table', name: 'Customer Type', menuType: this.menuType },
     { routerLink: '/pages/cumulativeSalesPerKg/table', name: 'Cumulative Sales Per Kg', menuType: this.menuType },
     { routerLink: '/pages/consumableCostPerKg/table', name: 'Consumable Cost Per Kg', menuType: this.menuType },
     { routerLink: '/pages/dashboard', name: 'Dashboard', menuType: this.menuType },
-    { routerLink: '/pages/department/table', name: 'Department', menuType: this.menuType },             
+    { routerLink: '/pages/department/table', name: 'Department', menuType: this.menuType },
     { routerLink: '/pages/deliveryTerm/table', name: 'Delivery Term ', menuType: this.menuType },
     { routerLink: '/pages/dispatchNote/table', name: 'Dispatch Note', menuType: this.menuType },
     { routerLink: '/pages/dispatchRelease/table', name: 'Dispatch Release', menuType: this.menuType },
@@ -122,11 +107,11 @@ export class Pages {
     { routerLink: '/pages/plan', name: 'Plan', menuType: this.menuType },
     { routerLink: '/pages/production/table', name: 'Production', menuType: this.menuType },
     { routerLink: '/pages/productionOverheadCostPerKg/table', name: 'Production Overhead Cost Per Kg', menuType: this.menuType },
-    { routerLink: '/pages/productType/table', name: 'Product Type', menuType: this.menuType },    
+    { routerLink: '/pages/productType/table', name: 'Product Type', menuType: this.menuType },
     { routerLink: '/pages/salesPerKg/table', name: 'Sales Per Kg', menuType: this.menuType },
     { routerLink: '/pages/salesOrder/table', name: 'Sales Order', menuType: this.menuType },
     { routerLink: '/pages/salesOrderType/table', name: 'Sales Order Type', menuType: this.menuType },
-    { routerLink: '/pages/salesValue/table', name: 'Sales Value', menuType: this.menuType },   
+    { routerLink: '/pages/salesValue/table', name: 'Sales Value', menuType: this.menuType },
     { routerLink: '/pages/salesWeight/table', name: 'Sales Weight', menuType: this.menuType },
     { routerLink: '/pages/scrap/table', name: 'Scrap', menuType: this.menuType },
     { routerLink: '/pages/scrapCostPerKg/table', name: 'Scrap Cost Per Kg', menuType: this.menuType },
@@ -161,17 +146,12 @@ export class Pages {
     this.footer.style.marginLeft = '200px';
     this.mySidebar.style.width = '200px';
     this.mySidebar.style.display = 'block';
-    //this.openNav.style.display = 'none';
   }
   w3_close() {
     this.main.style.marginLeft = '0%';
     this.footer.style.marginLeft = '0%';
     this.mySidebar.style.display = 'none';
-    //this.openNav.style.display = 'inline-block';
   }
-
-
-  //brands: string[] = ['Audi','BMW','Fiat','Ford','Honda','Jaguar','Mercedes','Renault','Volvo','VW'];
 
   filteredMenus: any[];
 
@@ -196,7 +176,7 @@ export class Pages {
   menu: any;
   onSelect(menu: any) {
     this.router.navigate([menu.routerLink]);
-    console.log(event)    
-    this.menu={name:''}
+    console.log(event)
+    this.menu = { name: '' }
   }
 }

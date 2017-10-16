@@ -14,9 +14,9 @@ import { WorkCenterService } from '../../workCenter.service';
     templateUrl: './workCenterForm.html',
 })
 export class WorkCenterForm {
-    
+
     costCenters: any;
-    
+
     costCenter: any;
     JSON: any = JSON;
 
@@ -26,34 +26,34 @@ export class WorkCenterForm {
 
     workCenterTypes: any;
     paints: any;
-    
+
     workCenterDate: Date;
     workCenterTime: Date = new Date();
     recoveryTime: Date = new Date();
     workCenterType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
-     
+
     constructor(protected service: WorkCenterService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
         private sharedService: SharedService,
-        private costCenterService:CostCenterService) {
+        private costCenterService: CostCenterService) {
         this.formGroup = fb.group({
             id: '',
             code: ['', Validators.required],
             name: ['', Validators.required],
-            costCenter: [this. costCenter, Validators.required]
-            
+            costCenter: [this.costCenter, Validators.required]
+
         });
     }
 
- getCostCenters(): void {
+    getCostCenters(): void {
         this.costCenterService.getCombo().subscribe(costCenters => this.costCenters = costCenters);
     }
 
     ngOnInit(): void {
-        this. getCostCenters();
+        this.getCostCenters();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -75,7 +75,7 @@ export class WorkCenterForm {
         }
         this.formGroup.patchValue(this.workCenter, { onlySelf: true });
         this.workCenterType = this.workCenter.workCenterType;
-        this.setDisplayOfCostCenter(); 
+        this.setDisplayOfCostCenter();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -96,7 +96,6 @@ export class WorkCenterForm {
 
     /*================== Cost Center Filter ===================*/
     filteredCostCenters: any[];
-    //costCenter: any;
 
     filterCostCenters(event) {
         let query = event.query.toLowerCase();
@@ -118,15 +117,15 @@ export class WorkCenterForm {
     }
 
     onCostCenterSelect(event: any) {
-        this.setDisplayOfCostCenter(); 
+        this.setDisplayOfCostCenter();
+    }
+    setDisplayOfCostCenter() {
+        let costCenter = this.formGroup.value.costCenter;
+        if (costCenter != null && costCenter != undefined) {
+            let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + ' : ' : '';
+            display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : '';
+            this.formGroup.value.costCenter.display = display;
         }
-        setDisplayOfCostCenter(){
-            let costCenter = this.formGroup.value.costCenter;
-            if (costCenter != null && costCenter != undefined) {
-                let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + ' : ' : '';
-                display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : '';
-                this.formGroup.value.costCenter.display = display;
-            }
     }
     /*================== End Of Cost Center Filter ===================*/
 }

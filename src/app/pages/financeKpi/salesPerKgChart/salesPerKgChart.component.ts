@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { SalesPerKgChartService } from './salesPerKgChart.service';
 
-
 import 'style-loader!./salesPerKgChart.scss';
 import { ChartService } from '../../chart/chart.service';
 

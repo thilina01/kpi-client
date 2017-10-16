@@ -19,8 +19,6 @@ import { AutoCompleteModule } from 'primeng/components/autocomplete/autocomplete
 import { OperationTypeService } from '../operationType/operationType.service';
 import { ItemTypeService } from '../itemType/itemType.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

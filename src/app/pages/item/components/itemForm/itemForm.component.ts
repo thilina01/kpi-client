@@ -15,7 +15,6 @@ import { PaintService } from '../../../paint/paint.service';
     templateUrl: './itemForm.html',
 })
 export class ItemForm {
-    // itemTypes: any;
     JSON: any = JSON;
     checked: boolean = false;
     public formGroup: FormGroup;
@@ -90,9 +89,7 @@ export class ItemForm {
         this.itemType = this.item.itemType;
         this.setDisplayOfItemType();
         this.setDisplayOfPaint();
-
     }
-
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
@@ -114,7 +111,6 @@ export class ItemForm {
 
     /*================== Item Type Filter ===================*/
     filteredItemTypes: any[];
-    // itemType: any;
 
     filterItemTypes(event) {
         let query = event.query.toLowerCase();
@@ -153,7 +149,6 @@ export class ItemForm {
     /*================== End Of Item Type Filter ===================*/
     /*================== Paint Filter ===================*/
     filteredPaints: any[];
-    //paint: any;
 
     filterPaints(event) {
         let query = event.query.toLowerCase();

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'country',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class Country {

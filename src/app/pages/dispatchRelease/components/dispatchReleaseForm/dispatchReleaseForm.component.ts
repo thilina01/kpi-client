@@ -49,7 +49,7 @@ export class DispatchReleaseForm {
             dispatchReleaseTime: [this.dispatchReleaseTime, Validators.required],
             containerNumber: '',
             recipient: ''
-            
+
         });
     }
 
@@ -113,6 +113,6 @@ export class DispatchReleaseForm {
     public resetForm() {
         this.formGroup.reset();
         this.fill();
-    
+
     }
 }

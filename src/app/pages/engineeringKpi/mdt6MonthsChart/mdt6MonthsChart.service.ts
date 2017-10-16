@@ -64,7 +64,6 @@ export class Mdt6MonthsChartService {
         'valueField': 'target',
         'dashLengthField': 'dashLengthLine',
         'labelText': '[[target]]%',
-        //'labelRotation': -30,
         'labelPosition': 'top'
       }],
       'categoryField': 'month',

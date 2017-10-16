@@ -29,29 +29,17 @@ export class PlanFormTop {
     getControlPoints(): void {
         this.controlPointService.getCombo().subscribe(controlPoints => {
             this.controlPoints = controlPoints;
-            // this.controlPoint = this.controlPoints.find(controlPoint => controlPoint.id === this.formGroup.value.controlPoint.id)
-            // this.formGroup.value.controlPoint = this.controlPoint;
-            // console.log(this.formGroup.value);
-            // this.formGroup.patchValue(this.formGroup.value, { onlySelf: true });
         });
     }
 
     getShifts(): void {
         this.shiftService.getAll().subscribe(shifts => {
             this.shifts = shifts;
-            // const selectedShift = this.shifts.find(shift => shift.id === this.formGroup.value.shift.id)
-            // this.formGroup.value.shift = selectedShift;
-            // console.log(this.formGroup.value);
-            // this.formGroup.patchValue(this.formGroup.value, { onlySelf: true });
         });
     }
     getShiftTypes(): void {
         this.shiftTypeService.getAll().subscribe(shiftTypes => {
             this.shiftTypes = shiftTypes;
-            // const selectedShiftType = this.shiftTypes.find(shiftType => shiftType.id === this.formGroup.value.shiftType.id)
-            // this.formGroup.value.shiftType = selectedShiftType;
-            // console.log(this.formGroup.value);
-            // this.formGroup.patchValue(this.formGroup.value, { onlySelf: true });
         });
     }
     ngOnInit(): void {

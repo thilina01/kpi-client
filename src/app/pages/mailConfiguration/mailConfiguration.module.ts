@@ -13,7 +13,6 @@ import { routing } from './mailConfiguration.routing';
 import { MailConfigurationService } from './mailConfiguration.service';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 
-
 @NgModule({
   imports: [
     CommonModule,

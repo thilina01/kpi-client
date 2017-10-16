@@ -37,7 +37,7 @@ import { SectionService } from '../section/section.service';
   providers: [
     CostCenterService,
     SectionService
-    
+
   ]
 })
 export class CostCenterModule { }

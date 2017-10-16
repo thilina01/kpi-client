@@ -14,7 +14,6 @@ import { FinanceSummaryForm } from './components/financeSummaryForm/financeSumma
 import { routing } from './financeSummary.routing';
 import { FinanceSummaryService } from './financeSummary.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

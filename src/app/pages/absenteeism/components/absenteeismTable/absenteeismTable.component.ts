@@ -18,9 +18,9 @@ export class AbsenteeismTable {
     totalRecords: number;
 
     constructor(protected service: AbsenteeismService,
-         private router: Router, 
-         private confirmationService: ConfirmationService, 
-         private sharedService: SharedService) {
+        private router: Router,
+        private confirmationService: ConfirmationService,
+        private sharedService: SharedService) {
         this.loadData();
     }
 

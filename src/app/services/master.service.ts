@@ -6,7 +6,6 @@ import 'rxjs/add/operator/catch';
 import { IAppConfig, APP_CONFIG } from '../app.config';
 import { AuthService } from './auth.service';
 
-//@Injectable()
 export class MasterService {
     public getJsonHeaders(): HttpHeaders {
         return new HttpHeaders({
@@ -18,8 +17,8 @@ export class MasterService {
     public apiUrl: string;  // URL to web api
 
     constructor(
-        public http: HttpClient, 
-        private config: IAppConfig, 
+        public http: HttpClient,
+        private config: IAppConfig,
         private authService: AuthService) {
     }
 
@@ -62,7 +61,6 @@ export class MasterService {
     public handleError(httpErrorResponse: any): Observable<any> {
         console.error('An error occurred'); // for demo purposes only    
         console.log(httpErrorResponse)
-        // // alert(JSON.parse(error._body).message);
         alert(httpErrorResponse.error.message);
         return Observable.empty<Response>();
     }

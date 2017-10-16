@@ -4,10 +4,6 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { AuthGuard } from '../services/auth-guard.service';
 
-// noinspection TypeScriptValidateTypes
-
-// export function loadChildren(path) { return System.import(path); };
-
 export const routes: Routes = [
   {
     path: 'login',

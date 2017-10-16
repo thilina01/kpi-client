@@ -18,7 +18,7 @@ export class DeliveryTermForm {
     public formGroup: FormGroup;
     deliveryTerm: any;
     subscription: Subscription;
-    deliveryTermType: any ;
+    deliveryTermType: any;
 
     constructor(protected service: DeliveryTermService,
         private route: ActivatedRoute,

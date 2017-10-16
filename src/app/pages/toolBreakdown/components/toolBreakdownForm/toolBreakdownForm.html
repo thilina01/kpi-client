@@ -5,11 +5,11 @@
         <h4>Tool Breakdown Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/toolBreakdown/table"> 
+        <a routerLink="/pages/toolBreakdown/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-          <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
-          </a>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,7 +19,8 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="toolBreakdownNumber">ToolBreakdown Number</label><br/>
+              <label for="toolBreakdownNumber">ToolBreakdown Number</label>
+              <br/>
               <input type="text" pInputText formControlName="toolBreakdownNumber">
             </div>
           </div>
@@ -27,7 +28,8 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="tool">Tool</label><br/>
+              <label for="tool">Tool</label>
+              <br/>
               <p-autoComplete formControlName="tool" field="display" [suggestions]="filteredTools" (completeMethod)="filterTools($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleToolDropdownClick($event)" (onSelect)=" onToolSelect($event)">
                 <ng-template let-option pTemplate="option">
@@ -36,17 +38,8 @@
                   </div>
                 </ng-template>
               </p-autoComplete>
-              <!-- <label *ngIf="formGroup.value.tool != null && formGroup.value.tool.code != null"> -->
-              <!-- &nbsp; {{formGroup.value.tool.code}}{{formGroup.value.tool.name != null ?" | "+ formGroup.value.tool.name:""}} -->
-              <!-- </label> -->
             </div>
           </div>
-          <!-- <div class="col-md-12 col-sm-12 col-xs-12" *ngIf="formGroup.value.tool != null"> -->
-            <!-- <p class="hidden-xs-down">&nbsp;</p> -->
-          <!-- </div> -->
-          <!-- <select id="toolSelector" class="form-control" formControlName="tool">
-					<option *ngFor="let tool of tools" [ngValue]="tool">{{tool.code}}</option>
-				  </select> -->
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
               <label for="toolBreakdownTime">ToolBreakdown Time</label>
@@ -71,7 +64,8 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="description">Description</label><br/>
+              <label for="description">Description</label>
+              <br/>
               <input type="text" pInputText formControlName="description">
             </div>
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -80,7 +74,8 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

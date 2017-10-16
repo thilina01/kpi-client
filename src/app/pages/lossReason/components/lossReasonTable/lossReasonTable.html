@@ -5,7 +5,7 @@
 				<h4>Loss Reason List</h4>
 			</div>
 			<div class="col">
-				<p-autoComplete [(ngModel)]="lossType" field="name"  [dropdown]="true" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
+				<p-autoComplete [(ngModel)]="lossType" field="name" [dropdown]="true" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
 				 [size]="30" [minLength]="1" placeholder="Loss Type" (onDropdownClick)="handleLossTypeDropdownClick($event)" (onSelect)="onLossTypeSelect($event)">
 					<ng-template let-option pTemplate="option">
 						<div class="ui-helper-clearfix">
@@ -14,8 +14,10 @@
 					</ng-template>
 				</p-autoComplete>
 			</div>
-			<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-			<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;"><i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+			<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+				<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+			<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;">
+				<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
 		</div>
 	</p-header>
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"

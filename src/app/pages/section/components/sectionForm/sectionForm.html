@@ -5,11 +5,11 @@
         <h4>Section Form</h4>
       </div>
       <div class="col">
-        <a routerLink="/pages/section/table"> 
+        <a routerLink="/pages/section/table">
           <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
-            </button>
-          </a>
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
       </div>
     </div>
   </p-header>
@@ -19,37 +19,43 @@
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="code">Code</label><br/>
+              <label for="code">Code</label>
+              <br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="name">Name</label><br/>
+              <label for="name">Name</label>
+              <br/>
               <input type="text" pInputText formControlName="name">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="mtbfTarget">MTBF Target</label><br/>
+              <label for="mtbfTarget">MTBF Target</label>
+              <br/>
               <input type="text" pInputText formControlName="mtbfTarget">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="mttrTarget">MTTR Target</label><br/>
+              <label for="mttrTarget">MTTR Target</label>
+              <br/>
               <input type="text" pInputText formControlName="mttrTarget">
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="ui-inputgroup">
-              <label for="mdtTarget">MDT Target</label><br/>
+              <label for="mdtTarget">MDT Target</label>
+              <br/>
               <input type="text" pInputText formControlName="mdtTarget">
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="ui-inputgroup">
-              &nbsp;<br/>
+              &nbsp;
+              <br/>
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
               <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
             </div>

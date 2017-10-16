@@ -15,7 +15,6 @@ import { routing } from './salesValue.routing';
 import { LabourSourceService } from '../labourSource/labourSource.service';
 import { SalesValueService } from './salesValue.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

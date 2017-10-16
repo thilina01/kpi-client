@@ -18,7 +18,6 @@ import { CustomerItemService } from '../customerItem/customerItem.service';
 import { CustomerService } from '../customer/customer.service';
 import { SalesOrderTypeService } from '../salesOrderType/salesOrderType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -40,6 +39,6 @@ import { SalesOrderTypeService } from '../salesOrderType/salesOrderType.service'
     SalesOrderTable,
     SalesOrderForm
   ],
-  providers: [CustomerService, SalesOrderService, LabourSourceService,CustomerItemService,SalesOrderTypeService]
+  providers: [CustomerService, SalesOrderService, LabourSourceService, CustomerItemService, SalesOrderTypeService]
 })
 export class SalesOrderModule { }

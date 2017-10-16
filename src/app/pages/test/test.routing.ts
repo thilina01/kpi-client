@@ -1,16 +1,15 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { Test } from './test.component';
 import { TestForm } from './components/testForm/testForm.component';
 import { TestTable } from './components/testTable/testTable.component';
 import { ModuleWithProviders } from '@angular/core';
 
-// noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
     path: '',
     component: Test,
-     children: [
+    children: [
     ]
   }
 ];

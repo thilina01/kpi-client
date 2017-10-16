@@ -30,9 +30,8 @@ export class Line5ReworksPieChartService {
         { "type": "  Welding Crack  ", "value": 3 }
       ],
       "valueField": "value",
-      //"titleField": "type",
       "startDuration": 1,
-     "balloonText": "<span style='font-size:12px;'>[[type]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
+      "balloonText": "<span style='font-size:12px;'>[[type]] in [[category]]:<br><span style='font-size:20px;'>[[value]]</span> [[additional]]</span>",
       "depth3D": 5,
       "angle": 5,
       "export": {

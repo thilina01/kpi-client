@@ -1,10 +1,9 @@
-import { Routes, RouterModule }  from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { EnergyConsumption } from './energyConsumption.component';
 import { EnergyConsumptionForm } from './components/energyConsumptionForm/energyConsumptionForm.component';
 import { EnergyConsumptionTable } from './components/energyConsumptionTable/energyConsumptionTable.component';
 
-// noinspection TypeScriptValidateTypes
 const routes: Routes = [
   {
     path: '',

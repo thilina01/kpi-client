@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'department',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class Department {

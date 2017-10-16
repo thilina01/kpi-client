@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'currency',
-    template: ` 
+  template: ` 
     <router-outlet></router-outlet>`
 })
 export class Currency {
