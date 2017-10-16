@@ -13,8 +13,8 @@ import { SalesWeightChartService } from './salesWeightChart/salesWeightChart.ser
 
 import { SalesValueChart } from './salesValueChart';
 import { SalesValueChartService } from './salesValueChart/salesValueChart.service';
-import { PanelModule, TabViewModule } from "primeng/primeng";
-import { ChartService } from "../chart/chart.service";
+import { PanelModule, TabViewModule } from 'primeng/primeng';
+import { ChartService } from '../chart/chart.service';
 
 @NgModule({
   imports: [
