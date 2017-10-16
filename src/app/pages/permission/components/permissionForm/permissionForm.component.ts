@@ -6,9 +6,9 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { MenuService } from '../../../../services/menu.service';
 import { UserMenuService } from '../../../../services/userMenu.service';
 import { SharedService } from '../../../../services/shared.service';
-import { StatusService } from "../../../../services/status.service";
-import { TeamService } from "../../../team/team.service";
-import { UserService } from "../../../user/user.service";
+import { StatusService } from '../../../../services/status.service';
+import { TeamService } from '../../../team/team.service';
+import { UserService } from '../../../user/user.service';
 
 @Component({
     selector: 'permission-form',
@@ -38,7 +38,7 @@ export class PermissionForm {
     }
 
     loadMenus() {
-        this.menuService.getByType({ name: "Angular" }).then((data: any) => {
+        this.menuService.getByType({ name: 'Angular' }).then((data: any) => {
             this.menusTemp = data;
             this.menus = data;
         });
@@ -84,7 +84,7 @@ export class PermissionForm {
     }
 
     onPermissionChanged(menuId: number) {
-        //alert(this.user.id + " ddd " + menuId);
+        //alert(this.user.id + ' ddd ' + menuId);
         this.userMenuService.toggle(this.user.id, menuId);
     }
 
