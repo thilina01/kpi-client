@@ -12,8 +12,8 @@ import { ToolBreakdownTable } from './components/toolBreakdownTable/toolBreakdow
 import { ToolBreakdownForm } from './components/toolBreakdownForm/toolBreakdownForm.component';
 
 import { routing } from './toolBreakdown.routing';
-import { ToolBreakdownService } from "./toolBreakdown.service";
-import { ToolService } from "../tool/tool.service";
+import { ToolBreakdownService } from './toolBreakdown.service';
+import { ToolService } from '../tool/tool.service';
 
 
 

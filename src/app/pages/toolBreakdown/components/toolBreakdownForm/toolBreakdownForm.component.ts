@@ -4,8 +4,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { ToolBreakdownService } from "../../toolBreakdown.service";
-import { ToolService } from "../../../tool/tool.service";
+import { ToolBreakdownService } from '../../toolBreakdown.service';
+import { ToolService } from '../../../tool/tool.service';
 
 @Component({
     selector: 'tool-breakdown-form',
@@ -119,8 +119,8 @@ export class ToolBreakdownForm {
     setDisplayOfTool() {
         let tool = this.formGroup.value.tool;
         if (tool != null && tool != undefined) {
-            let display = tool.code != null && tool.code != undefined ? tool.code + " : " : "";
-            display += tool.name != null && tool.name != undefined ? tool.name : "";
+            let display = tool.code != null && tool.code != undefined ? tool.code + ' : ' : '';
+            display += tool.name != null && tool.name != undefined ? tool.name : '';
             this.formGroup.value.tool.display = display;
         }
     }
