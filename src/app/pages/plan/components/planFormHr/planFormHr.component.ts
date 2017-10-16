@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
-import { ManpowerTypeService } from "../../../manpowerType/manpowerType.service";
+import { ManpowerTypeService } from '../../../manpowerType/manpowerType.service';
 
 
 @Component({

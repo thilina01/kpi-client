@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ControlPointService } from "../../../controlPoint/controlPoint.service";
-import { ShiftService } from "../../../shift/shift.service";
-import { ShiftTypeService } from "../../../shiftType/shiftType.service";
+import { ControlPointService } from '../../../controlPoint/controlPoint.service';
+import { ShiftService } from '../../../shift/shift.service';
+import { ShiftTypeService } from '../../../shiftType/shiftType.service';
 
 @Component({
     selector: 'plan-form-top',
@@ -86,8 +86,8 @@ export class PlanFormTop {
     onControlPointSelect(event: any) {
         let controlPoint = this.formGroup.value.controlPoint;
         if (controlPoint != null && controlPoint != undefined) {
-            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + " : " : "";
-            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : "";
+            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + ' : ' : '';
+            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : '';
             this.formGroup.value.controlPoint.display = display;
         }
     }
@@ -118,8 +118,8 @@ export class PlanFormTop {
     onShiftSelect(event: any) {
         let shift = this.formGroup.value.shift;
         if (shift != null && shift != undefined) {
-            let display = shift.code != null && shift.code != undefined ? shift.code + " : " : "";
-            display += shift.name != null && shift.name != undefined ? shift.name : "";
+            let display = shift.code != null && shift.code != undefined ? shift.code + ' : ' : '';
+            display += shift.name != null && shift.name != undefined ? shift.name : '';
             this.formGroup.value.shift.display = display;
         }
     }
@@ -150,8 +150,8 @@ export class PlanFormTop {
     onShiftTypeSelect(event: any) {
         let shiftType = this.formGroup.value.shiftType;
         if (shiftType != null && shiftType != undefined) {
-            let display = shiftType.code != null && shiftType.code != undefined ? shiftType.code + " : " : "";
-            display += shiftType.name != null && shiftType.name != undefined ? shiftType.name : "";
+            let display = shiftType.code != null && shiftType.code != undefined ? shiftType.code + ' : ' : '';
+            display += shiftType.name != null && shiftType.name != undefined ? shiftType.name : '';
             this.formGroup.value.shiftType.display = display;
         }
     }

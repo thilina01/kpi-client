@@ -4,8 +4,8 @@ import { CustomValidators } from 'ng2-validation';
 
 
 import { ActivatedRoute, Params, Router } from '@angular/router'
-import { SharedService } from "../../services/shared.service";
-import { ProductionService } from "../production/production.service";
+import { SharedService } from '../../services/shared.service';
+import { ProductionService } from '../production/production.service';
 
 @Component({
   selector: 'plan',
@@ -20,8 +20,8 @@ export class Plan {
   
   public formGroup: FormGroup;
   public submitted: boolean = false;
-  shift: any = { id: "", code: "", name: "" };
-  controlPoint: any = { id: "", code: "", name: "" };
+  shift: any = { id: '', code: '', name: '' };
+  controlPoint: any = { id: '', code: '', name: '' };
 
   constructor(fb: FormBuilder,
     private productionService: ProductionService,
@@ -32,7 +32,7 @@ export class Plan {
       productionDate: ['', Validators.required],
       plannedDuration: ['', Validators.compose([Validators.required, CustomValidators.range([10, 1280])])],
       shift: [this.shift, Validators.required],
-      shiftType: [{ id: "", code: "", name: "" }, Validators.required],
+      shiftType: [{ id: '', code: '', name: '' }, Validators.required],
       controlPoint: [this.controlPoint, Validators.compose([Validators.required])],
       operationList: [[]],
       manpowerList: [[]]
@@ -140,8 +140,8 @@ onShiftSelect(event: any) {
     setDisplayOfShift() {
         let shift = this.formGroup.value.shift;
         if (shift != null && shift != undefined) {
-            let display = shift.code != null && shift.code != undefined ? shift.code + " : " : "";
-            display += shift.name != null && shift.name != undefined ? shift.name : "";
+            let display = shift.code != null && shift.code != undefined ? shift.code + ' : ' : '';
+            display += shift.name != null && shift.name != undefined ? shift.name : '';
             this.formGroup.value.shift.display = display;
         }
 }
@@ -176,8 +176,8 @@ onShiftTypeSelect(event: any) {
     setDisplayOfShiftType() {
         let shiftType = this.formGroup.value.shiftType;
         if (shiftType != null && shiftType != undefined) {
-            let display = shiftType.code != null && shiftType.code != undefined ? shiftType.code + " : " : "";
-            display += shiftType.name != null && shiftType.name != undefined ? shiftType.name : "";
+            let display = shiftType.code != null && shiftType.code != undefined ? shiftType.code + ' : ' : '';
+            display += shiftType.name != null && shiftType.name != undefined ? shiftType.name : '';
             this.formGroup.value.shiftType.display = display;
         }
 }
@@ -212,8 +212,8 @@ onControlPointSelect(event: any) {
     setDisplayOfControlPoint() {
         let controlPoint = this.formGroup.value.controlPoint;
         if (controlPoint != null && controlPoint != undefined) {
-            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + " : " : "";
-            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : "";
+            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + ' : ' : '';
+            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : '';
             this.formGroup.value.controlPoint.display = display;
         }
 }
