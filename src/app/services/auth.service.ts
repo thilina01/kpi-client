@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import { Cookie } from 'ng2-cookies/ng2-cookies';
 // import 'rxjs/add/operator/toPromise';
 
@@ -10,13 +10,13 @@ import { APP_CONFIG, IAppConfig } from '../app.config';
 // import 'rxjs/add/operator/delay';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
 
   isLoggedIn: boolean = false;
-  email: string = "";
+  email: string = '';
   private getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -26,10 +26,10 @@ export class AuthService {
   /*
     isLoggedIn(): boolean {
       return true;
-      //return Cookie.get("email") != undefined;
+      //return Cookie.get('email') != undefined;
     }*/
   // store the URL so we can redirect after logging in
-  redirectUrl: string = "/pages/home";
+  redirectUrl: string = '/pages/home';
   //private headers: Headers;
   private apiUrl: string;  // URL to web api
 
@@ -45,7 +45,7 @@ export class AuthService {
         this.email = auth.email;
       } else {
         this.isLoggedIn = false;
-        this.email = "";
+        this.email = '';
       }
     });
   }

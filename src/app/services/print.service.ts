@@ -28,9 +28,9 @@ export class PrintService {
   <html>
     <head>
       <title>Print tab</title>
-<link rel="stylesheet"  type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="print">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel='stylesheet'  type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' media='print'>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
       <style>
       .table-condensed{
@@ -79,7 +79,7 @@ margin: 0 auto;
 .pagebreak { page-break-before: always; } /* page-break-after works, as well */
       </style>
     </head>
-<body onload="window.print();window.close()">${printContents}</body>
+<body onload='window.print();window.close()'>${printContents}</body>
   </html>`
     );
     popupWin.document.close();

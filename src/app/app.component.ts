@@ -11,9 +11,9 @@ import { Subscription } from 'rxjs/Subscription';
 
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
-import { AngularFireAuth } from "angularfire2/auth";
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
-import { AuthService } from "./services/auth.service";
+import { AuthService } from './services/auth.service';
 
 /*
  * App Component
@@ -50,11 +50,11 @@ export class App {
     this.afAuth.authState.subscribe(auth => {
       if (auth) {
         //this.rootPage = 'TabsPage';
-        //authService.redirectUrl = authService.redirectUrl!=undefined?authService.redirectUrl:"/pages/home";
-        this.router.navigate([authService.redirectUrl]);//["/pages/home"]);
+        //authService.redirectUrl = authService.redirectUrl!=undefined?authService.redirectUrl:'/pages/home';
+        this.router.navigate([authService.redirectUrl]);//['/pages/home']);
       } else {
         //this.rootPage = 'LoginPage';
-        this.router.navigate(["/login"]);
+        this.router.navigate(['/login']);
       }
     });
   }

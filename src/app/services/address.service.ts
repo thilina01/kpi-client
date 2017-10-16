@@ -1,8 +1,8 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { IAppConfig, APP_CONFIG } from "../app.config";
-import { AuthService } from "./auth.service";
-import { MasterService } from "./master.service";
+import { HttpClient } from '@angular/common/http';
+import { IAppConfig, APP_CONFIG } from '../app.config';
+import { AuthService } from './auth.service';
+import { MasterService } from './master.service';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AddressService extends MasterService {
   }
 
   getComboByCustomer(id: number): Observable<any> {
-    return this.http.get(this.apiUrl + "comboByCustomer/" + id, { headers: this.getJsonHeaders() })
+    return this.http.get(this.apiUrl + 'comboByCustomer/' + id, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
@@ -24,7 +24,7 @@ export class AddressService extends MasterService {
 // import 'rxjs/add/operator/toPromise';
 
 // import { APP_CONFIG, IAppConfig } from '../../app.config';
-// import { AuthService } from "../../services/auth.service";
+// import { AuthService } from '../../services/auth.service';
 
 
 // @Injectable()
@@ -51,14 +51,14 @@ export class AddressService extends MasterService {
 //   }
 
 //   getCombo(): Promise<Array<Object>> {
-//     return this.http.get(this.apiUrl + "combo", { headers: this.getJsonHeaders() })
+//     return this.http.get(this.apiUrl + 'combo', { headers: this.getJsonHeaders() })
 //       .toPromise()
 //       .then(response => response.json() as Array<Object>)
 //       .catch(this.handleError);
 //   }
 
 //   getPage(page, size): Promise<Array<Object>> {
-//     return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
+//     return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
 //       .toPromise()
 //       .then(response => response.json() as Array<Object>)
 //       .catch(this.handleError);

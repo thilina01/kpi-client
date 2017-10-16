@@ -15,7 +15,7 @@ export class SharedService {
 
   addMessage(message: any) {
     this.messageSubject.next(message);
-    console.log("Message added: " + message)
+    console.log('Message added: ' + message)
   }
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class SharedService {
     millis = (millis - hours * 3600000);
     let minutes = Math.floor(millis / 60000);
     let seconds: number = parseInt(((millis % 60000) / 1000).toFixed(0));
-    return (days < 10 ? '0' : '') + days + " " + (hours < 10 ? '0' : '') + hours + ":" + (minutes < 10 ? '0' : '') + minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    return (days < 10 ? '0' : '') + days + ' ' + (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
   }
 
 

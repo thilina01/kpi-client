@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
-import { AuthService } from "./auth.service";
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class MenuService {
@@ -29,14 +29,14 @@ export class MenuService {
   }
 
   getPage(page, size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
+    return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
   }
 
   getCombo(): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "combo", { headers: this.getJsonHeaders() })
+    return this.http.get(this.apiUrl + 'combo', { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
@@ -49,7 +49,7 @@ export class MenuService {
       .catch(this.handleError);
   }
   getByType(menuType: any): Promise<Object> {
-    return this.http.get(this.apiUrl + "menuTypeName/" + menuType.name, { headers: this.getJsonHeaders() })
+    return this.http.get(this.apiUrl + 'menuTypeName/' + menuType.name, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
@@ -66,7 +66,7 @@ export class MenuService {
 
   saveMany(objects: Object[]): Promise<Object> {
     return this.http
-      .post(this.apiUrl + "many", JSON.stringify(objects), { headers: this.getJsonHeaders() })
+      .post(this.apiUrl + 'many', JSON.stringify(objects), { headers: this.getJsonHeaders() })
       .toPromise()
       //.then(res => res.json().data)
       .catch(this.handleError);

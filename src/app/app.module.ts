@@ -25,11 +25,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 
 import { SharedService } from './services/shared.service';
-import { UserService } from "./user.service";
-import { environment } from "../environments/environment";
+import { UserService } from './user.service';
+import { environment } from '../environments/environment';
 
 import {HttpClientModule} from '@angular/common/http';
-import { AuthService } from "./services/auth.service";
+import { AuthService } from './services/auth.service';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,

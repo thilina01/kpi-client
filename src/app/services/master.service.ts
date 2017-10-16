@@ -1,10 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
-import { IAppConfig, APP_CONFIG } from "../app.config";
-import { AuthService } from "./auth.service";
+import { IAppConfig, APP_CONFIG } from '../app.config';
+import { AuthService } from './auth.service';
 
 //@Injectable()
 export class MasterService {
@@ -33,12 +33,12 @@ export class MasterService {
     }
 
     getPage(page, size): Observable<any> {
-        return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
+        return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
             .catch(err => this.handleError(err));
     }
 
     getCombo(): Observable<any> {
-        return this.http.get(this.apiUrl + "combo", { headers: this.getJsonHeaders() })
+        return this.http.get(this.apiUrl + 'combo', { headers: this.getJsonHeaders() })
             .catch(err => this.handleError(err));
     }
 

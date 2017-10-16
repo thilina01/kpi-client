@@ -3,7 +3,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
-import { AuthService } from "./auth.service";
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class StatusService {
@@ -29,7 +29,7 @@ export class StatusService {
   }
 
   getPage(page, size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size)
+    return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size)
       .toPromise()
       .then(response => response.json() as Array<Object>)
       .catch(this.handleError);
@@ -42,7 +42,7 @@ export class StatusService {
       .catch(this.handleError);
   }
   getOneByJobNo(jobNo: any): Promise<Object> {
-    return this.http.get(this.apiUrl + "jobNo/" + jobNo, { headers: this.getJsonHeaders() })
+    return this.http.get(this.apiUrl + 'jobNo/' + jobNo, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response.json() as Object)
       .catch(this.handleError);
