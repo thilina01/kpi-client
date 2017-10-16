@@ -4,7 +4,7 @@ import { EnergyCostMainChartService } from './energyCostMainChart.service';
 
 
 import 'style-loader!./energyCostMainChart.scss';
-import { ChartService } from "../../chart/chart.service";
+import { ChartService } from '../../chart/chart.service';
 
 @Component({
   selector: 'energy-cost-main-chart',
@@ -29,11 +29,11 @@ export class EnergyCostMainChart {
     let startDate = new Date();
     startDate.setMonth(startDate.getMonth() - 6);
     let monthText :string; 
-    monthText = ((startDate.getMonth() + 1) < 10 ? "0" + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + "";
-    let startDateText = startDate.getFullYear()+"-"+monthText.slice(-2)+"-01";
+    monthText = ((startDate.getMonth() + 1) < 10 ? '0' + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + '';
+    let startDateText = startDate.getFullYear()+'-'+monthText.slice(-2)+'-01';
     let endDate = new Date();
     //endDate.setMonth(endDate.getMonth() - 6);
-    let endDateText = endDate.getFullYear() + "-" + (endDate.getMonth() < 10 ? "0" + endDate.getMonth() : endDate.getMonth()) + "-" + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
+    let endDateText = endDate.getFullYear() + '-' + (endDate.getMonth() < 10 ? '0' + endDate.getMonth() : endDate.getMonth()) + '-' + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyEnergyConsumptionByLocation(startDateText, endDateText, this.location).subscribe((data) => {
       this.amChart.dataProvider = data.json();
