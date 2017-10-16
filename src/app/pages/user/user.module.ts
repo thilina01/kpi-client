@@ -11,7 +11,7 @@ import { UserTable } from './components/userTable/userTable.component';
 import { UserForm } from './components/userForm/userForm.component';
 
 import { routing } from './user.routing';
-import { UserService } from "./user.service";
+import { UserService } from './user.service';
 
 
 
