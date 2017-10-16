@@ -8,12 +8,12 @@ import { HumanResourceKpi } from './humanResourceKpi.component';
 import { routing } from './humanResourceKpi.routing';
 
 
-import { PanelModule, TabViewModule } from "primeng/primeng";
-import { AbsenteeismChart } from "./absenteeismChart/absenteeismChart.component";
-import { LabourTurnoverChart } from "./labourTurnoverChart/labourTurnoverChart.component";
-import { AbsenteeismChartService } from "./absenteeismChart/absenteeismChart.service";
-import { LabourTurnoverChartService } from "./labourTurnoverChart/labourTurnoverChart.service";
-import { ChartService } from "../chart/chart.service";
+import { PanelModule, TabViewModule } from 'primeng/primeng';
+import { AbsenteeismChart } from './absenteeismChart/absenteeismChart.component';
+import { LabourTurnoverChart } from './labourTurnoverChart/labourTurnoverChart.component';
+import { AbsenteeismChartService } from './absenteeismChart/absenteeismChart.service';
+import { LabourTurnoverChartService } from './labourTurnoverChart/labourTurnoverChart.service';
+import { ChartService } from '../chart/chart.service';
 @NgModule({
   imports: [
     CommonModule,

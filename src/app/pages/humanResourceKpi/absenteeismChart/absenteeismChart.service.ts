@@ -56,42 +56,42 @@ export class AbsenteeismChartService {
   });
 
     return {
-      "type": "serial",
-      "addClassNames": true,
-      "theme": "blur",
-      "depth3D": 20,
-      "angle": 30,
-      "balloon": {
-        "adjustBorderColor": false,
-        "horizontalPadding": 10,
-        "verticalPadding": 8,
-        "color": "#ffffff"
+      'type': 'serial',
+      'addClassNames': true,
+      'theme': 'blur',
+      'depth3D': 20,
+      'angle': 30,
+      'balloon': {
+        'adjustBorderColor': false,
+        'horizontalPadding': 10,
+        'verticalPadding': 8,
+        'color': '#ffffff'
       },
 
-      "legend": {
-        "horizontalGap": 10,
-        "maxColumns": 1,
-        "position": "right",
-        "useGraphSettings": true,
-        "markerSize": 10
+      'legend': {
+        'horizontalGap': 10,
+        'maxColumns': 1,
+        'position': 'right',
+        'useGraphSettings': true,
+        'markerSize': 10
       },
-      "dataProvider":dataProvider ,
-      "valueAxes": [{
-        "id": "v1",
-        "axisAlpha": 0,
-        "position": "left"
+      'dataProvider':dataProvider ,
+      'valueAxes': [{
+        'id': 'v1',
+        'axisAlpha': 0,
+        'position': 'left'
       }],
-      "startDuration": 1,
-      "graphs": graphs,
-      "categoryField": "month",
-    "dataDateFormat": 'YYYY-MM',
-      "categoryAxis":{
+      'startDuration': 1,
+      'graphs': graphs,
+      'categoryField': 'month',
+    'dataDateFormat': 'YYYY-MM',
+      'categoryAxis':{
       parseDates: true,
       minPeriod: 'MM',
-      dateFormats: [{"period":"fff","format":"JJ:NN:SS"},{"period":"ss","format":"JJ:NN:SS"},{"period":"mm","format":"JJ:NN"},{"period":"hh","format":"JJ:NN"},{"period":"DD","format":"MMM DD"},{"period":"WW","format":"MMM DD"},{"period":"MM","format":"YYYY-MM"},{"period":"YYYY","format":"YYYY"}]
+      dateFormats: [{'period':'fff','format':'JJ:NN:SS'},{'period':'ss','format':'JJ:NN:SS'},{'period':'mm','format':'JJ:NN'},{'period':'hh','format':'JJ:NN'},{'period':'DD','format':'MMM DD'},{'period':'WW','format':'MMM DD'},{'period':'MM','format':'YYYY-MM'},{'period':'YYYY','format':'YYYY'}]
     },
-      "export": {
-        "enabled": true
+      'export': {
+        'enabled': true
       }
     };
   };
