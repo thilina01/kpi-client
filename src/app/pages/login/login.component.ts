@@ -41,11 +41,11 @@ export class Login {
                         if (response) {
                             this.router.navigate([this.authService.redirectUrl]);
                         } else {
-                            alert("Login Failed (Internal)")
+                            alert('Login Failed (Internal)')
                         }
                     });
                 } else {
-                    alert("Login Failed (External)");
+                    alert('Login Failed (External)');
                 }
             })
 
