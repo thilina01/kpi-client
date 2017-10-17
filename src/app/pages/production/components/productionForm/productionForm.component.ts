@@ -223,7 +223,6 @@ export class ProductionForm {
         values.operation.lossQuantity = lossQuantity;
         this.qualityFormGroup.reset();
         this.sharedService.addMessage({ severity: 'info', summary: 'Added', detail: 'Loss Detail Added' });
-        //alert(JSON.stringify(values.operation));
     }
 
     print(): void {

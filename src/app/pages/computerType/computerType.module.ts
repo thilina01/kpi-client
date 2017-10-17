@@ -12,7 +12,6 @@ import { ComputerTypeForm } from './components/computerTypeForm/computerTypeForm
 import { routing } from './computerType.routing';
 import { ComputerTypeService } from './computerType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

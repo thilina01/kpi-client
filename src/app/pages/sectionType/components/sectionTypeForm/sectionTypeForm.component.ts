@@ -17,7 +17,6 @@ export class SectionTypeForm {
 
     public formGroup: FormGroup;
     subscription: Subscription;
-
     sectionType: any;
 
     constructor(protected service: SectionTypeService,

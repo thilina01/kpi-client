@@ -7,7 +7,6 @@ import { MaterialModule } from '@angular/material';
 import { SalesKpi } from './salesKpi.component';
 import { routing } from './salesKpi.routing';
 
-
 import { SalesWeightChart } from './salesWeightChart';
 import { SalesWeightChartService } from './salesWeightChart/salesWeightChart.service';
 

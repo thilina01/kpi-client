@@ -18,15 +18,7 @@ export class NotifyPartyForm {
     public formGroup: FormGroup;
     notifyParty: any = {};
     subscription: Subscription;
-
-    notifyPartyTypes: any;
-    paints: any;
-
-    notifyPartyDate: Date;
-    notifyPartyTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    notifyPartyType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    notifyPartyType: any;
 
     constructor(protected service: NotifyPartyService,
         private route: ActivatedRoute,

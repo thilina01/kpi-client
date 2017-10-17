@@ -12,8 +12,6 @@ import { ManpowerTypeForm } from './components/manpowerTypeForm/manpowerTypeForm
 import { routing } from './manpowerType.routing';
 import { ManpowerTypeService } from './manpowerType.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

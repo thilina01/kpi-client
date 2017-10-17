@@ -21,7 +21,6 @@ export class EnergyConsumptionForm {
     subscription: Subscription;
 
     locations: any;
-
     effectiveMonth: Date;
     location: any = { id: '', code: '' }
 

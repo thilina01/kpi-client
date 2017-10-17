@@ -11,7 +11,6 @@ import { PermissionForm } from './components/permissionForm/permissionForm.compo
 
 import { MenuService } from '../../services/menu.service';
 import { UserMenuService } from '../../services/userMenu.service';
-
 import { routing } from './permission.routing';
 import { StatusService } from '../../services/status.service';
 import { TeamService } from '../team/team.service';

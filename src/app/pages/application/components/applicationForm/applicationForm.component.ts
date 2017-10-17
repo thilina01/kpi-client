@@ -18,9 +18,7 @@ export class ApplicationForm {
     public formGroup: FormGroup;
     application: any = {};
     subscription: Subscription;
-
-    applicationTypes: any;
-    applicationType: any = { id: '', code: '', type: '' }
+    applicationType: any;
 
     constructor(protected service: ApplicationService,
         private route: ActivatedRoute,

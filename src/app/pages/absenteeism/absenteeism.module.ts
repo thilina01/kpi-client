@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
-import { MaterialModule } from '@angular/material';
 
 import { Absenteeism } from './absenteeism.component';
 import { AbsenteeismTable } from './components/absenteeismTable/absenteeismTable.component';
@@ -13,7 +13,6 @@ import { AbsenteeismForm } from './components/absenteeismForm/absenteeismForm.co
 import { routing } from './absenteeism.routing';
 import { AbsenteeismService } from './absenteeism.service';
 import { LabourSourceService } from '../labourSource/labourSource.service';
-
 
 @NgModule({
   imports: [

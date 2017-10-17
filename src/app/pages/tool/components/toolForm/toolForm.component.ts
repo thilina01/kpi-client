@@ -13,20 +13,13 @@ import { ToolService } from '../../tool.service';
     templateUrl: './toolForm.html',
 })
 export class ToolForm {
+
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     tool: any = {};
     subscription: Subscription;
-
-    toolTypes: any;
-    paints: any;
-
-    toolDate: Date;
-    toolTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    toolType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    toolType: any;
 
     constructor(protected service: ToolService,
         private route: ActivatedRoute,

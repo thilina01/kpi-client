@@ -18,15 +18,7 @@ export class DepartmentForm {
     public formGroup: FormGroup;
     department: any = {};
     subscription: Subscription;
-
-    departmentTypes: any;
-    paints: any;
-
-    departmentDate: Date;
-    departmentTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    departmentType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    departmentType: any;
 
     constructor(protected service: DepartmentService,
         private route: ActivatedRoute,

@@ -4,6 +4,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { CalendarModule } from 'primeng/components/calendar/calendar';
 
 import { NotifyParty } from './notifyParty.component';
 import { NotifyPartyTable } from './components/notifyPartyTable/notifyPartyTable.component';
@@ -11,8 +12,6 @@ import { NotifyPartyForm } from './components/notifyPartyForm/notifyPartyForm.co
 
 import { routing } from './notifyParty.routing';
 import { NotifyPartyService } from './notifyParty.service';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-
 
 @NgModule({
   imports: [

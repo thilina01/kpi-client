@@ -10,7 +10,6 @@ import { ManpowerTable } from './components/manpowerTable/manpowerTable.componen
 import { routing } from './manpower.routing';
 import { ManpowerService } from './manpower.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

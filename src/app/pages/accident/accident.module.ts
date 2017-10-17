@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
-import { MaterialModule } from '@angular/material';
 
 import { Accident } from './accident.component';
 import { AccidentTable } from './components/accidentTable/accidentTable.component';
@@ -18,7 +18,6 @@ import { SectionService } from '../section/section.service';
 import { ShiftService } from '../shift/shift.service';
 import { MachineService } from '../machine/machine.service';
 import { TreatmentTypeService } from '../treatmentType/treatmentType.service';
-
 
 @NgModule({
   imports: [

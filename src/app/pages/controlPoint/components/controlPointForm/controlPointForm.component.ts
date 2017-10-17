@@ -20,13 +20,9 @@ export class ControlPointForm {
     public formGroup: FormGroup;
     controlPoint: any = {};
     subscription: Subscription;
-    paymentTermList = [];
     controlPointTypeList: Array<any>;
     workCenters: any;
 
-    controlPointDate: Date;
-    controlPointTime: Date = new Date();
-    recoveryTime: Date = new Date();
     controlPointType: any = { id: '', code: '', name: '' }
     workCenter: any = { id: '', code: '', name: '' }
 

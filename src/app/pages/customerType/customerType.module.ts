@@ -6,13 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { CustomerType } from './customerType.component';
-
 import { CustomerTypeTable } from './components/customerTypeTable/customerTypeTable.component';
 import { CustomerTypeForm } from './components/customerTypeForm/customerTypeForm.component';
 
 import { routing } from './customerType.routing';
 import { CustomerTypeService } from './customerType.service';
-
 
 @NgModule({
   imports: [

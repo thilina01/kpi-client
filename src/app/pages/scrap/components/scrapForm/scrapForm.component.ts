@@ -18,14 +18,13 @@ import { ItemTypeService } from '../../../itemType/itemType.service';
     templateUrl: './scrapForm.html',
 })
 export class ScrapForm {
-    scrapDate: any;
 
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     scrap: any = {};
     subscription: Subscription;
-    date: Date;
+    scrapDate: Date;
 
     sectionList = [];
     lossReasonList = [];

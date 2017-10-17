@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Incoterm } from './incoterm.component';
-
 import { IncotermTable } from './components/incotermTable/incotermTable.component';
 import { IncotermForm } from './components/incotermForm/incotermForm.component';
 

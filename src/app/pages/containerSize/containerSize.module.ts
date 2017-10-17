@@ -12,7 +12,6 @@ import { ContainerSizeForm } from './components/containerSizeForm/containerSizeF
 import { routing } from './containerSize.routing';
 import { ContainerSizeService } from './containerSize.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

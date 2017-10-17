@@ -16,17 +16,9 @@ export class PaintForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-
     subscription: Subscription;
-
-    paintTypes: any;
-    paints: any;
-
-    paintDate: Date;
-    paintTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    paintType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    paintType: any;
+    paint: any;
 
     constructor(protected service: PaintService,
         private route: ActivatedRoute,

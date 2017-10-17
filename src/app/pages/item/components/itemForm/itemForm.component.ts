@@ -23,10 +23,6 @@ export class ItemForm {
 
     itemTypeList: any;
     paints: any;
-
-    itemDate: Date;
-    itemTime: Date = new Date();
-    recoveryTime: Date = new Date();
     itemType: any = { id: '', code: '', type: '' }
     paint: any = { id: '', code: '', description: '' }
 

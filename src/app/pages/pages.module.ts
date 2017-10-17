@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { AutoCompleteModule } from 'primeng/primeng';
+import { GrowlModule } from 'primeng/primeng';
 
 import { routing } from './pages.routing';
 import { NgaModule } from '../theme/nga.module';
-import { AutoCompleteModule } from 'primeng/primeng';
-import { FormsModule } from '@angular/forms';
 import { Pages } from './pages.component';
 
 import { AuthGuard } from '../services/auth-guard.service';
 import { MenuService } from '../services/menu.service';
 import { UserMenuService } from '../services/userMenu.service';
-
-import { GrowlModule } from 'primeng/primeng';
 import { UserService } from './user/user.service';
 
 @NgModule({

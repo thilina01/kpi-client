@@ -8,8 +8,6 @@ import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModul
 import { Operation } from './operation.component';
 import { OperationTable } from './components/operationTable/operationTable.component';
 
-
-
 import { routing } from './operation.routing';
 import { ItemService } from '../item/item.service';
 import { SectionService } from '../section/section.service';

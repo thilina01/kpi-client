@@ -24,17 +24,9 @@ export class CustomerItemForm {
 
     customerList = [];
     itemList = [];
-
     customer: any = { id: '', code: '', name: '' }
     item: any = { id: '', code: '', name: '' }
-
-    customerItemTypes: any;
-    paints: any;
-
-    customerItemDate: Date;
-    customerItemTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    customerItemType: any = { id: '', code: '', type: '' }
+    customerItemType: any;
 
     constructor(protected service: CustomerItemService,
         private route: ActivatedRoute,

@@ -18,15 +18,7 @@ export class IncotermForm {
     public formGroup: FormGroup;
     incoterm: any = {};
     subscription: Subscription;
-
-    incotermTypes: any;
-    paints: any;
-
-    incotermDate: Date;
-    incotermTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    incotermType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    incotermType: any;
 
     constructor(protected service: IncotermService,
         private route: ActivatedRoute,

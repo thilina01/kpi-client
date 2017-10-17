@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, AutoCompleteModule } from 'primeng/primeng';
 
 import { Supplier } from './supplier.component';
-
 import { SupplierTable } from './components/supplierTable/supplierTable.component';
 import { SupplierForm } from './components/supplierForm/supplierForm.component';
 

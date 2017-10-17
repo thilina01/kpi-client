@@ -18,15 +18,7 @@ export class PaymentTermForm {
     public formGroup: FormGroup;
     paymentTerm: any = {};
     subscription: Subscription;
-
-    paymentTermTypes: any;
-    paints: any;
-
-    paymentTermDate: Date;
-    paymentTermTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    paymentTermType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    paymentTermType: any;
 
     constructor(protected service: PaymentTermService,
         private route: ActivatedRoute,

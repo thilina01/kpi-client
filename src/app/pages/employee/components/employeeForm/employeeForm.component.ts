@@ -16,9 +16,8 @@ export class EmployeeForm {
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    employee: any = {};
     subscription: Subscription;
-
+    employee: any = {};
     dateOfBirth: Date;
 
     constructor(protected service: EmployeeService,

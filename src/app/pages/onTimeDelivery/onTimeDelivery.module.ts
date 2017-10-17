@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
-import { MaterialModule } from '@angular/material';
 
 import { OnTimeDelivery } from './onTimeDelivery.component';
 import { LossTypeService } from '../../services/lossType.service';
@@ -14,7 +14,6 @@ import { OnTimeDeliveryForm } from './components/onTimeDeliveryForm/onTimeDelive
 import { routing } from './onTimeDelivery.routing';
 import { OnTimeDeliveryService } from './onTimeDelivery.service';
 import { CustomerService } from '../customer/customer.service';
-
 
 @NgModule({
   imports: [

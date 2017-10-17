@@ -42,7 +42,6 @@ export class DispatchNoteForm {
   subscription: Subscription;
 
   dispatchList = [];
-
   customerList = [];
   dispatchScheduleList = [];
   employeeList = [];

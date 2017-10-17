@@ -18,15 +18,7 @@ export class OperationTypeForm {
     public formGroup: FormGroup;
     operationType: any = {};
     subscription: Subscription;
-
-    operationTypeTypes: any;
-    paints: any;
-
-    operationTypeDate: Date;
-    operationTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    operationTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    operationTypeType: any;
 
     constructor(protected service: OperationTypeService,
         private route: ActivatedRoute,

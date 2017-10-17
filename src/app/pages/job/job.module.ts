@@ -4,6 +4,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, DialogModule, PanelModule, TabViewModule, CalendarModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
+
 import { Job } from './job.component';
 import { JobTable } from './components/jobTable/jobTable.component';
 import { JobForm } from './components/jobForm/jobForm.component';

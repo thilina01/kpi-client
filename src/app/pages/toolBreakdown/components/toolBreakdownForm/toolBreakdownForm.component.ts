@@ -14,6 +14,7 @@ import { ToolService } from '../../../tool/tool.service';
     templateUrl: './toolBreakdownForm.html',
 })
 export class ToolBreakdownForm {
+
     JSON: any = JSON;
 
     public formGroup: FormGroup;
@@ -21,7 +22,6 @@ export class ToolBreakdownForm {
     subscription: Subscription;
 
     tools: any;
-
     toolBreakdownTime: Date = new Date();
     recoveryTime: Date = new Date();
     tool: any = { id: '', code: '' }

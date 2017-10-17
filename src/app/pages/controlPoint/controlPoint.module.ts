@@ -14,8 +14,6 @@ import { ControlPointService } from './controlPoint.service';
 import { ControlPointTypeService } from '../controlPointType/controlPointType.service';
 import { WorkCenterService } from '../workCenter/workCenter.service';
 
-
-
 @NgModule({
   imports: [
     CommonModule,
