@@ -37,7 +37,6 @@ export class Pages {
   getOrganization() {
     this.organizationService.getAll().subscribe((data: any) => {
       this.organization = data[0];
-      alert(this.organization.name);
     });
   }
 
