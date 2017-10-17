@@ -8,6 +8,7 @@ import { SharedService } from '../services/shared.service';
 import { MenuService } from '../services/menu.service';
 import { UserMenuService } from '../services/userMenu.service';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { OrganizationService } from './organization/organization.service';
 
 @Component({
   selector: 'pages',
@@ -16,17 +17,28 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
   providers: [SharedService]
 })
 export class Pages {
+  organization: any;
   msgs: Message[] = [];
-  logoPath = '/assets/img/logo.png'
+  logoPath = '/assets/img/logo.png';
   constructor(private _menuService: BaMenuService,
     private sharedService: SharedService,
     private menuService: MenuService,
     private userMenuService: UserMenuService,
+    private organizationService: OrganizationService,
     private router: Router) {
+
     sharedService.messageSubject.subscribe(
       message => {
         this.msgs.push(message);
       });
+      this.getOrganization();
+  }
+
+  getOrganization() {
+    this.organizationService.getAll().subscribe((data: any) => {
+      this.organization = data[0];
+      alert(this.organization.name);
+    });
   }
 
   ngOnInit() {
@@ -133,6 +145,7 @@ export class Pages {
   openNav;
 
   ngAfterViewInit() {
+    console.log(this.sharedService);
   }
   w3_toggle() {
     if (document.getElementById('mySidebar').style.display != 'none') {

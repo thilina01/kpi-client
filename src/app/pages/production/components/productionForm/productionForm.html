@@ -8,9 +8,9 @@
 							<h4>Production Information</h4>
 						</div>
 						<div class="col">
-							<a routerLink="/pages/production/table"> 
+							<a routerLink="/pages/production/table">
 						<button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-						<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i> 
+						<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
 						</button>
 						</a>
 						</div>
@@ -176,7 +176,7 @@
 							</p-dataTable>
 						</p-panel>
 					</div>
-					&nbsp;<br/> 
+					&nbsp;<br/>
 					<div class="row">
 						<div class="col-sm-1">
 							<button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
@@ -212,7 +212,7 @@
 		<div>
 			<!-- Page Header -->
 			<div class='row'>
-				<h4 class="col-sm-12 text-center">OTR WHEEL ENGINEERING LANKA (PVT) LIMITED</h4>
+				<h4 class="col-sm-12 text-center">{{organization===undefined?'':organization.name}}</h4>
 			</div>
 			<!-- Sub Header -->
 			<div class='row'>
@@ -246,10 +246,10 @@
 							<td>
 
 								<div *ngIf="
-                                        production.controlPoint != undefined && 
-                                        production.controlPoint.workCenter != undefined && 
-                                        production.controlPoint.workCenter.costCenter != undefined && 
-                                        production.controlPoint.workCenter.costCenter.section != undefined && 
+                                        production.controlPoint != undefined &&
+                                        production.controlPoint.workCenter != undefined &&
+                                        production.controlPoint.workCenter.costCenter != undefined &&
+                                        production.controlPoint.workCenter.costCenter.section != undefined &&
                                         production.controlPoint.workCenter.costCenter.section.code != undefined">
 									{{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
 								</div>
@@ -330,7 +330,7 @@
 			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="pagebreak"> </div>
 			<!-- Page Header -->
 			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
-				<h4 class="col-sm-12 text-center">OTR WHEEL ENGINEERING LANKA (PVT) LIMITED</h4>
+				<h4 class="col-sm-12 text-center">{{organization===undefined?'':organization.name}}</h4>
 			</div>
 			<!-- Sub Header -->
 			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
@@ -363,10 +363,10 @@
 							<td>
 
 								<p *ngIf="
-                                        production.controlPoint != undefined && 
-                                        production.controlPoint.workCenter != undefined && 
-                                        production.controlPoint.workCenter.costCenter != undefined && 
-                                        production.controlPoint.workCenter.costCenter.section != undefined && 
+                                        production.controlPoint != undefined &&
+                                        production.controlPoint.workCenter != undefined &&
+                                        production.controlPoint.workCenter.costCenter != undefined &&
+                                        production.controlPoint.workCenter.costCenter.section != undefined &&
                                         production.controlPoint.workCenter.costCenter.section.code != undefined">
 									{{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
 								</p>

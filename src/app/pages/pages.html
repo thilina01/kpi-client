@@ -2,48 +2,56 @@
 </p-growl>
 <div class="al-main" id="main">
 
-    <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
+  <div class="ui-panel ui-widget ui-widget-content ui-corner-all">
 
-        <a routerLink="/pages/home"> 
-            <img [src]="logoPath" height="48px" style="padding: 2px;">
-        </a> &nbsp;&nbsp;&nbsp;
-        <p-autoComplete [(ngModel)]="menu" field="name" [suggestions]="filteredMenus" (completeMethod)="filterMenus($event)" [size]="30"
-            [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)" (onSelect)="onSelect($event)">
-            <ng-template let-menu pTemplate="menu">
-                <div class="ui-helper-clearfix">
-                    <div>{{menu.name}}</div>
-                </div>
-            </ng-template>
-        </p-autoComplete>
-        &nbsp;&nbsp;&nbsp;
-        <a routerLink="/pages/home">
-            <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only">
-                <span class="ui-button-icon-left ui-clickable fa fa-fw fa-home"></span>
-                <span class="ui-button-text ui-clickable">ui-btn</span>
-            </button>
-        </a> &nbsp;&nbsp;&nbsp;
-        <a routerLink="/login">
-            <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only">
-                <span class="ui-button-icon-left ui-clickable fa fa-fw fa-sign-out"></span>
-                <span class="ui-button-text ui-clickable">ui-btn</span>
-            </button>
-        </a> &nbsp;&nbsp;&nbsp;
-    </div>
-    <div class="al-content">
-        <!-- <ba-content-top></ba-content-top> -->
-        <router-outlet></router-outlet>
-    </div>
+    <a routerLink="/pages/home">
+      <img [src]="logoPath" height="48px" style="padding: 2px;">
+    </a> &nbsp;&nbsp;&nbsp;
+    <p-autoComplete [(ngModel)]="menu" field="name" [suggestions]="filteredMenus" (completeMethod)="filterMenus($event)" [size]="30"
+      [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)" (onSelect)="onSelect($event)">
+      <ng-template let-menu pTemplate="menu">
+        <div class="ui-helper-clearfix">
+          <div>{{menu.name}}</div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+    &nbsp;&nbsp;&nbsp;
+    <a routerLink="/pages/home">
+      <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only">
+        <span class="ui-button-icon-left ui-clickable fa fa-fw fa-home"></span>
+        <span class="ui-button-text ui-clickable">ui-btn</span>
+      </button>
+    </a> &nbsp;&nbsp;&nbsp;
+    <a routerLink="/login">
+      <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only">
+        <span class="ui-button-icon-left ui-clickable fa fa-fw fa-sign-out"></span>
+        <span class="ui-button-text ui-clickable">ui-btn</span>
+      </button>
+    </a> &nbsp;&nbsp;&nbsp;
+  </div>
+  <div class="al-content">
+    <!-- <ba-content-top></ba-content-top> -->
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <footer class="al-footer clearfix" id="footer">
-    <div class="al-footer-right">OTR Wheel Engineering</div>
-    <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; 2017 </div>
-        <ul class="al-share clearfix">
-            <li><i class="socicon socicon-facebook"></i></li>
-            <li><i class="socicon socicon-twitter"></i></li>
-            <li><i class="socicon socicon-google"></i></li>
-            <li><i class="socicon socicon-github"></i></li>
-        </ul>
-    </div>
+  <div class="al-footer-right">{{organization===undefined?'':organization.name}}</div>
+  <div class="al-footer-main clearfix">
+    <div class="al-copy">&copy; 2017 </div>
+    <ul class="al-share clearfix">
+      <li>
+        <i class="socicon socicon-facebook"></i>
+      </li>
+      <li>
+        <i class="socicon socicon-twitter"></i>
+      </li>
+      <li>
+        <i class="socicon socicon-google"></i>
+      </li>
+      <li>
+        <i class="socicon socicon-github"></i>
+      </li>
+    </ul>
+  </div>
 </footer>
 <ba-back-top position="200"></ba-back-top>

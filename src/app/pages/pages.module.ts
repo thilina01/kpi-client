@@ -13,6 +13,7 @@ import { UserMenuService } from '../services/userMenu.service';
 
 import { GrowlModule } from 'primeng/primeng';
 import { UserService } from './user/user.service';
+import { OrganizationService } from './organization/organization.service';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { UserService } from './user/user.service';
     AuthGuard,
     MenuService,
     UserService,
+    OrganizationService,
     UserMenuService
   ]
 })
