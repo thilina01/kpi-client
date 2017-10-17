@@ -18,15 +18,7 @@ export class CurrencyForm {
     public formGroup: FormGroup;
     currency: any = {};
     subscription: Subscription;
-
-    currencyTypes: any;
-    paints: any;
-
-    currencyDate: Date;
-    currencyTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    currencyType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    currencyType: any;
 
     constructor(protected service: CurrencyService,
         private route: ActivatedRoute,

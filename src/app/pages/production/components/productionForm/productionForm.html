@@ -9,20 +9,23 @@
 						</div>
 						<div class="col">
 							<a routerLink="/pages/production/table">
-						<button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-						<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
-						</button>
-						</a>
+								<button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+									<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+								</button>
+							</a>
 						</div>
 					</div>
 				</p-header>
 				<div class="row">
 					<div class="col-sm-2">
 						<a [routerLink]="'/pages/production/form/'+(production.id-1)">
-						<span class="fa fa-backward"></span>
-					</a> | <a [routerLink]="'/pages/production/form/'+(production.id+1)"><span
-						class="fa fa-forward"></span></a> | <span class="fa fa-search" (click)="displaySearch()"></span> | <span class="fa fa-print"
-						 (click)="print()"></span>
+							<span class="fa fa-backward"></span>
+						</a> |
+						<a [routerLink]="'/pages/production/form/'+(production.id+1)">
+							<span class="fa fa-forward"></span>
+						</a> |
+						<span class="fa fa-search" (click)="displaySearch()"></span> |
+						<span class="fa fa-print" (click)="print()"></span>
 					</div>
 					<div class="col-sm-1"></div>
 				</div>
@@ -45,8 +48,8 @@
 							<label *ngIf="production.shiftType != undefined">Shift Type</label>
 						</div>
 						<div class="col-sm-4 ">
-							<label *ngIf="production.controlPoint != undefined">Control
-							Point</label>
+							<label *ngIf="production.controlPoint != undefined">Control Point
+							</label>
 						</div>
 						<div class="col-sm-2 ">
 							<label>Planned Duration</label>
@@ -71,8 +74,8 @@
 							<label *ngIf="production.shiftType != undefined">{{production.shiftType.name}}</label>
 						</div>
 						<div class="col-sm-4 ">
-							<label *ngIf="production.controlPoint != undefined">{{production.controlPoint.code}}
-							{{production.controlPoint.name}}</label>
+							<label *ngIf="production.controlPoint != undefined">{{production.controlPoint.code}} {{production.controlPoint.name}}
+							</label>
 						</div>
 						<div class="col-sm-2 ">
 							<input type="text" class="form-control form-control-sm" placeholder="Planned Duration" formControlName="plannedDuration">
@@ -106,7 +109,7 @@
 										<p-column field="id" [style]="{'width':'50px'}"></p-column>
 										<p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
 										<p-column field="lossReason.name"></p-column>
-										<p-column field="quantity" ></p-column>
+										<p-column field="quantity"></p-column>
 										<p-column [style]="{'width':'30px'}">
 											<ng-template let-data="rowData" pTemplate="body">
 												<i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
@@ -135,32 +138,33 @@
 									</div>
 									<div class="col-sm-2">
 										<div class="form-group">
-											<label>Loss Type</label> <select formControlName="lossType" class="form-control">
-										<option *ngFor="let lossType of lossTypes" [ngValue]="lossType">{{lossType.name}}</option>
-									</select>
+											<label>Loss Type</label>
+											<select formControlName="lossType" class="form-control">
+												<option *ngFor="let lossType of lossTypes" [ngValue]="lossType">{{lossType.name}}</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="form-group">
-											<label>Reason</label> <select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
+											<label>Reason</label>
+											<select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
 											 formControlName="lossReason" class="form-control">
-										<option
-											*ngFor="let lossReason of qualityFormGroup.value.lossType.lossReasonList"
-											[ngValue]="lossReason">{{lossReason.code}} | {{lossReason.name}}</option>
-									</select>
+												<option *ngFor="let lossReason of qualityFormGroup.value.lossType.lossReasonList" [ngValue]="lossReason">{{lossReason.code}} | {{lossReason.name}}</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<div class="form-group">
-											<label>Quantity</label> <input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined"
-											 type="number" class="form-control" formControlName="quantity">
+											<label>Quantity</label>
+											<input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined" type="number"
+											 class="form-control" formControlName="quantity">
 										</div>
 									</div>
 									<div class="col-sm-2">
 										<br />
 										<button type="submit" class="btn btn-primary">
-									<i class="icon-save"></i>{{qualityFormGroup.valid?"Add":"Reset"}}
-								</button>
+											<i class="icon-save"></i>{{qualityFormGroup.valid?"Add":"Reset"}}
+										</button>
 									</div>
 								</div>
 							</form>
@@ -176,7 +180,8 @@
 							</p-dataTable>
 						</p-panel>
 					</div>
-					&nbsp;<br/>
+					&nbsp;
+					<br/>
 					<div class="row">
 						<div class="col-sm-1">
 							<button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
@@ -190,18 +195,21 @@
 
 <p-dialog header="Select" [(visible)]="display" modal="modal" responsive="true">
 	<p-calendar id="productionDatePicker" [(ngModel)]="productionDate" showIcon="true" dateFormat="yy-mm-dd" [inline]="true">
-	</p-calendar> <br />
+	</p-calendar>
+	<br />
 	<select class="form-control" [(ngModel)]="shift">
-	<option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
-</select> <br />
+		<option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
+	</select>
+	<br />
 	<select class="form-control" [(ngModel)]="controlPoint">
-	<option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}}
-		{{c.name}}</option>
-</select> <br />
+		<option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}} {{c.name}}
+		</option>
+	</select>
+	<br />
 	<div class="text-center">
 		<button class="btn btn-primary" (click)="searchProduction()">
-		<span class="fa fa-search"> Search</span>
-	</button>
+			<span class="fa fa-search"> Search</span>
+		</button>
 	</div>
 </p-dialog>
 

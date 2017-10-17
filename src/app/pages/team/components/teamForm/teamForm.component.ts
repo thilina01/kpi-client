@@ -13,20 +13,13 @@ import { TeamService } from '../../team.service';
     templateUrl: './teamForm.html',
 })
 export class TeamForm {
+
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     team: any = {};
     subscription: Subscription;
-
-    teamTypes: any;
-    paints: any;
-
-    teamDate: Date;
-    teamTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    teamType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    teamType: any;
 
     constructor(protected service: TeamService,
         private route: ActivatedRoute,

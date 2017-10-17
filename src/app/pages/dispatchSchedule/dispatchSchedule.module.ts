@@ -4,6 +4,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, DialogModule, PanelModule, TabViewModule, CalendarModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
+
 import { DispatchSchedule } from './dispatchSchedule.component';
 import { DispatchScheduleTable } from './components/dispatchScheduleTable/dispatchScheduleTable.component';
 import { DispatchScheduleForm } from './components/dispatchScheduleForm/dispatchScheduleForm.component';

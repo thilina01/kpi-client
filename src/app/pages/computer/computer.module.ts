@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, AutoCompleteModule } from 'primeng/primeng';
 
 import { Computer } from './computer.component';
-
 import { ComputerTable } from './components/computerTable/computerTable.component';
 import { ComputerForm } from './components/computerForm/computerForm.component';
 
@@ -14,8 +13,6 @@ import { routing } from './computer.routing';
 import { ComputerService } from './computer.service';
 import { EmployeeService } from '../employee/employee.service';
 import { ComputerTypeService } from '../computerType/computerType.service';
-
-
 
 @NgModule({
   imports: [

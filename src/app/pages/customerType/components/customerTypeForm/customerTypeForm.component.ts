@@ -18,15 +18,7 @@ export class CustomerTypeForm {
     public formGroup: FormGroup;
     customerType: any = {};
     subscription: Subscription;
-
-    customerTypeTypes: any;
-    paints: any;
-
-    customerTypeDate: Date;
-    customerTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    customerTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    customerTypeType: any;
 
     constructor(protected service: CustomerTypeService,
         private route: ActivatedRoute,
@@ -39,7 +31,7 @@ export class CustomerTypeForm {
             name: ['', Validators.required]
         });
     }
-    
+
     ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {

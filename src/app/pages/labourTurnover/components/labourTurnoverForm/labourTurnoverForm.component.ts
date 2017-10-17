@@ -20,17 +20,16 @@ export class LabourTurnoverForm {
     subscription: Subscription;
 
     labourSources: any;
-
     effectiveMonth: Date;
     labourSource: any = { id: '', code: '' }
 
     constructor(protected service: LabourTurnoverService,
-         private route: ActivatedRoute,
-         private router: Router, 
-         fb: FormBuilder,
-         private sharedService: SharedService,
-         private labourSourceService: LabourSourceService) {
-         this.formGroup = fb.group({
+        private route: ActivatedRoute,
+        private router: Router,
+        fb: FormBuilder,
+        private sharedService: SharedService,
+        private labourSourceService: LabourSourceService) {
+        this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],
             turnover: ['', Validators.required],
@@ -67,7 +66,7 @@ export class LabourTurnoverForm {
         }
         this.formGroup.patchValue(this.labourTurnover, { onlySelf: true });
         this.labourSource = this.labourTurnover.labourSource;
-        this.setDisplayOfLabourSource(); 
+        this.setDisplayOfLabourSource();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -85,7 +84,7 @@ export class LabourTurnoverForm {
     public resetForm() {
         this.formGroup.reset();
     }
-  /*================== Labour Source Filter ===================*/
+    /*================== Labour Source Filter ===================*/
     filteredLabourSources: any[];
 
     filterLabourSources(event) {
@@ -108,15 +107,15 @@ export class LabourTurnoverForm {
     }
 
     onLabourSourceSelect(event: any) {
-        this.setDisplayOfLabourSource();  
+        this.setDisplayOfLabourSource();
+    }
+    setDisplayOfLabourSource() {
+        let labourSource = this.formGroup.value.labourSource;
+        if (labourSource != null && labourSource != undefined) {
+            let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + ' : ' : '';
+            display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : '';
+            this.formGroup.value.labourSource.display = display;
         }
-        setDisplayOfLabourSource(){
-            let labourSource = this.formGroup.value.labourSource;
-            if (labourSource != null && labourSource != undefined) {
-                let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + ' : ' : '';
-                display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : '';
-                this.formGroup.value.labourSource.display = display;
-            }
     }
     /*================== End Of Labour Source Filter ===================*/
 }

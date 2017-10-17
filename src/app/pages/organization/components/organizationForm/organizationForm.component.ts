@@ -18,9 +18,7 @@ export class OrganizationForm {
     public formGroup: FormGroup;
     organization: any = {};
     subscription: Subscription;
-
-    organizationTypes: any;
-    organizationType: any = { id: '', code: '', type: '' }
+    organizationType: any;
 
     constructor(protected service: OrganizationService,
         private route: ActivatedRoute,

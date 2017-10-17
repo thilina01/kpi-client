@@ -21,7 +21,6 @@ export class AbsenteeismForm {
     subscription: Subscription;
 
     labourSources: any;
-
     effectiveMonth: Date;
     labourSource: any = { id: '', code: '' }
 

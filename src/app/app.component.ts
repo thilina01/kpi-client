@@ -1,14 +1,14 @@
 import { Component, ViewContainerRef } from '@angular/core';
 
+import { Message } from 'primeng/primeng';
+
 import { GlobalState } from './global.state';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { BaThemeConfig } from './theme/theme.config';
 import { layoutPaths } from './theme/theme.constants';
-import { Message } from 'primeng/primeng';
 
 import { SharedService } from './services/shared.service';
 import { Subscription } from 'rxjs/Subscription';
-
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
 import { AngularFireAuth } from 'angularfire2/auth';

@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule } from 'primeng/primeng';
 import { MaterialModule } from '@angular/material';
 
-import { Production } from './production.component';
+import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule } from 'primeng/primeng';
 
+import { Production } from './production.component';
 import { ProductionTable } from './components/productionTable/productionTable.component';
 import { ProductionForm } from './components/productionForm/productionForm.component';
 
@@ -17,7 +16,6 @@ import { LossTypeService } from "../lossType/lossType.service";
 import { ProductionService } from "./production.service";
 import { ShiftService } from "../shift/shift.service";
 import { SectionService } from '../section/section.service';
-
 
 @NgModule({
   imports: [
@@ -32,7 +30,7 @@ import { SectionService } from '../section/section.service';
     MaterialModule,
     SharedModule,
     AutoCompleteModule,
-    
+
     routing
   ],
   declarations: [

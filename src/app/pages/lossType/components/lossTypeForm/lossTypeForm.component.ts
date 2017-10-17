@@ -18,15 +18,7 @@ export class LossTypeForm {
     public formGroup: FormGroup;
     lossType: any = {};
     subscription: Subscription;
-
-    lossTypeTypes: any;
-    paints: any;
-
-    lossTypeDate: Date;
-    lossTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    lossTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    lossTypeType: any;
 
     constructor(protected service: LossTypeService,
         private route: ActivatedRoute,

@@ -19,7 +19,7 @@ export class JobTypeForm {
     subscription: Subscription;
 
     jobTypeList: any;
-    jobType: any = { id: '', code: '', name: '' };
+    jobType: any;
 
     constructor(protected service: JobTypeService,
         private route: ActivatedRoute,

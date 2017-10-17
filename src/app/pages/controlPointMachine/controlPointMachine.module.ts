@@ -6,18 +6,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, CalendarModule } from 'primeng/primeng';
 
 import { ControlPointMachine } from './controlPointMachine.component';
-
 import { ControlPointMachineTable } from './components/controlPointMachineTable/controlPointMachineTable.component';
 import { ControlPointMachineForm } from './components/controlPointMachineForm/controlPointMachineForm.component';
 
 import { routing } from './controlPointMachine.routing';
 import { MachineService } from '../machine/machine.service';
-
 import { ControlPointMachineService } from './controlPointMachine.service';
 import { ControlPointService } from '../controlPoint/controlPoint.service';
-
-
-
 
 @NgModule({
   imports: [

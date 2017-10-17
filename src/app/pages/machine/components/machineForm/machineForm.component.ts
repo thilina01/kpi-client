@@ -18,15 +18,7 @@ export class MachineForm {
     public formGroup: FormGroup;
     machine: any = {};
     subscription: Subscription;
-
-    machineTypes: any;
-    paints: any;
-
-    machineDate: Date;
-    machineTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    machineType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    machineType: any;
 
     constructor(protected service: MachineService,
         private route: ActivatedRoute,

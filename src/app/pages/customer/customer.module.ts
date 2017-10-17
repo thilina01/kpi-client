@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, AutoCompleteModule, InputTextModule, CalendarModule, TabViewModule, DialogModule } from 'primeng/primeng';
 
 import { Customer } from './customer.component';
-
 import { routing } from './customer.routing';
 import { CustomerTable } from "./component/customerTable/customerTable.component";
 import { CustomerForm } from "./component/customerForm/customerForm.component";

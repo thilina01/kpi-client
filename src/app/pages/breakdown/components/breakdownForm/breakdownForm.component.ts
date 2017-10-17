@@ -21,7 +21,6 @@ export class BreakdownForm {
     subscription: Subscription;
 
     machines: any;
-
     breakdownDate: Date;
     breakdownTime: Date = new Date();
     recoveryTime: Date = new Date();

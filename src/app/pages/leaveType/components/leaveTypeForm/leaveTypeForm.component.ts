@@ -18,15 +18,7 @@ export class LeaveTypeForm {
     public formGroup: FormGroup;
     leaveType: any = {};
     subscription: Subscription;
-
-    leaveTypeTypes: any;
-    paints: any;
-
-    leaveTypeDate: Date;
-    leaveTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    leaveTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    leaveTypeType: any;
 
     constructor(protected service: LeaveTypeService,
         private route: ActivatedRoute,

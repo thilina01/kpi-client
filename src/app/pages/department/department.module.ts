@@ -12,7 +12,6 @@ import { DepartmentForm } from './components/departmentForm/departmentForm.compo
 import { routing } from './department.routing';
 import { DepartmentService } from './department.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

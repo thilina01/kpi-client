@@ -7,8 +7,8 @@ import { MaterialModule } from '@angular/material';
 import { HumanResourceKpi } from './humanResourceKpi.component';
 import { routing } from './humanResourceKpi.routing';
 
-
 import { PanelModule, TabViewModule } from 'primeng/primeng';
+
 import { AbsenteeismChart } from './absenteeismChart/absenteeismChart.component';
 import { LabourTurnoverChart } from './labourTurnoverChart/labourTurnoverChart.component';
 import { AbsenteeismChartService } from './absenteeismChart/absenteeismChart.service';

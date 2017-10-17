@@ -12,7 +12,6 @@ import { LabourSourceForm } from './components/labourSourceForm/labourSourceForm
 import { routing } from './labourSource.routing';
 import { LabourSourceService } from './labourSource.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

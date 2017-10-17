@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule } from 'primeng/primeng';
-import { MaterialModule } from '@angular/material';
 
 import { ScrapCostPerKg } from './scrapCostPerKg.component';
 import { LossTypeService } from '../../services/lossType.service';
@@ -13,7 +13,6 @@ import { ScrapCostPerKgForm } from './components/scrapCostPerKgForm/scrapCostPer
 
 import { routing } from './scrapCostPerKg.routing';
 import { ScrapCostPerKgService } from './scrapCostPerKg.service';
-
 
 @NgModule({
   imports: [

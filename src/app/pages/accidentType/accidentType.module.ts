@@ -13,7 +13,6 @@ import { routing } from './accidentType.routing';
 import { AccidentTypeService } from './accidentType.service';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 
-
 @NgModule({
   imports: [
     CommonModule,

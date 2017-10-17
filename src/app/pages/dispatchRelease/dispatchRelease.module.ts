@@ -2,19 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
 import { MaterialModule } from '@angular/material';
 
+import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
+
 import { DispatchRelease } from './dispatchRelease.component';
-import { LossTypeService } from '../../services/lossType.service';
 import { DispatchReleaseTable } from './components/dispatchReleaseTable/dispatchReleaseTable.component';
 import { DispatchReleaseForm } from './components/dispatchReleaseForm/dispatchReleaseForm.component';
 
 import { routing } from './dispatchRelease.routing';
 import { LabourSourceService } from '../labourSource/labourSource.service';
 import { DispatchReleaseService } from './dispatchRelease.service';
-
 import { DispatchScheduleService } from '../dispatchSchedule/dispatchSchedule.service';
 import { EmployeeService } from '../employee/employee.service';
 import { CustomerService } from '../customer/customer.service';
@@ -23,6 +21,7 @@ import { CustomerItemService } from '../customerItem/customerItem.service';
 import { DispatchService } from '../../services/dispatch.service';
 import { CustomerTypeService } from '../customerType/customerType.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
+import { LossTypeService } from '../../services/lossType.service';
 
 @NgModule({
   imports: [

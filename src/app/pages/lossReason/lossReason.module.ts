@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, AutoCompleteModule, CalendarModule } from 'primeng/primeng';
 
 import { LossReason } from './lossReason.component';
-
 import { LossReasonTable } from './components/lossReasonTable/lossReasonTable.component';
 import { LossReasonForm } from './components/lossReasonForm/lossReasonForm.component';
 

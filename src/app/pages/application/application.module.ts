@@ -12,7 +12,6 @@ import { ApplicationForm } from './components/applicationForm/applicationForm.co
 import { routing } from './application.routing';
 import { ApplicationService } from './application.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

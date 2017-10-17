@@ -21,15 +21,7 @@ export class CostCenterForm {
     public formGroup: FormGroup;
     costCenter: any = {};
     subscription: Subscription;
-
-    costCenterTypes: any;
-    paints: any;
-
-    costCenterDate: Date;
-    costCenterTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    costCenterType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    costCenterType: any ;
 
     constructor(protected service: CostCenterService,
         private route: ActivatedRoute,

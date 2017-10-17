@@ -13,20 +13,13 @@ import { ShiftService } from '../../shift.service';
     templateUrl: './shiftForm.html',
 })
 export class ShiftForm {
+
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     shift: any = {};
     subscription: Subscription;
-
-    shiftTypes: any;
-    paints: any;
-
-    shiftDate: Date;
-    shiftTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    shiftType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    shiftType: any;
 
     constructor(protected service: ShiftService,
         private route: ActivatedRoute,

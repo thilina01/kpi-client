@@ -14,7 +14,6 @@ import { SectionService } from './section.service';
 import { WorkCenterService } from '../workCenter/workCenter.service';
 import { SectionTypeService } from '../sectionType/sectionType.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

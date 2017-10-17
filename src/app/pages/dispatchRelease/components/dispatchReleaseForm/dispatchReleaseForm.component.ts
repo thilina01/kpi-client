@@ -16,24 +16,24 @@ import { DispatchService } from '../../../../services/dispatch.service';
 
 })
 export class DispatchReleaseForm {
-    dataTable: any;
-    dispatchNoteList: any;
 
     @Input('formGroup')
     public formGroup: FormGroup;
     @ViewChild(DataTable) dataTableComponent: DataTable;
     public dispatchNoteFormGroup: FormGroup;
+    dataTable: any;
+    JSON: any = JSON;
+
+    public FormGroup: FormGroup;
+    dispatchRelease: any = {};
+    subscription: Subscription;
 
     dispatchNote: any = {};
     dispatchReleaseTime: Date;
     totalRecords: number;
-    JSON: any = JSON;
     rows = [];
-
+    dispatchNoteList = [];
     dispatchList = [];
-    public FormGroup: FormGroup;
-    dispatchRelease: any = {};
-    subscription: Subscription;
 
     constructor(protected service: DispatchNoteService,
         private route: ActivatedRoute,

@@ -12,7 +12,6 @@ import { PaintForm } from './components/paintForm/paintForm.component';
 import { routing } from './paint.routing';
 import { PaintService } from './paint.service';
 
-
 @NgModule({
   imports: [
     CommonModule,

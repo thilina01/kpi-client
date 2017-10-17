@@ -15,23 +15,14 @@ import { WorkCenterService } from '../../workCenter.service';
 })
 export class WorkCenterForm {
 
-    costCenters: any;
-
-    costCenter: any;
     JSON: any = JSON;
 
     public formGroup: FormGroup;
     workCenter: any = {};
     subscription: Subscription;
-
-    workCenterTypes: any;
-    paints: any;
-
-    workCenterDate: Date;
-    workCenterTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    workCenterType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    workCenterType: any;
+    costCenters: any;
+    costCenter: any;
 
     constructor(protected service: WorkCenterService,
         private route: ActivatedRoute,

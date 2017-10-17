@@ -6,8 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { ControlPointType } from './controlPointType.component';
-
-
 import { ControlPointTypeTable } from './components/controlPointTypeTable/controlPointTypeTable.component';
 import { ControlPointTypeForm } from './components/controlPointTypeForm/controlPointTypeForm.component';
 

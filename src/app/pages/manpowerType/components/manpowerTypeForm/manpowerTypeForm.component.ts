@@ -18,15 +18,7 @@ export class ManpowerTypeForm {
     public formGroup: FormGroup;
     manpowerType: any = {};
     subscription: Subscription;
-
-    manpowerTypeTypes: any;
-    paints: any;
-
-    manpowerTypeDate: Date;
-    manpowerTypeTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    manpowerTypeType: any = { id: '', code: '', type: '' }
-    paint: any = { id: '', code: '', description: '' }
+    manpowerTypeType: any;
 
     constructor(protected service: ManpowerTypeService,
         private route: ActivatedRoute,

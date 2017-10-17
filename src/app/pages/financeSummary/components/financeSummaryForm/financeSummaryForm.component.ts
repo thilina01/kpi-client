@@ -14,7 +14,6 @@ import { FinanceSummaryService } from '../../financeSummary.service';
 })
 export class FinanceSummaryForm {
     JSON: any = JSON;
-
     public formGroup: FormGroup;
     financeSummary: any = {};
     subscription: Subscription;

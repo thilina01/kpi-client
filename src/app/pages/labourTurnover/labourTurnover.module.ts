@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
-import { MaterialModule } from '@angular/material';
 
 import { LabourTurnover } from './labourTurnover.component';
 import { LossTypeService } from '../../services/lossType.service';
@@ -14,7 +14,6 @@ import { LabourTurnoverForm } from './components/labourTurnoverForm/labourTurnov
 import { routing } from './labourTurnover.routing';
 import { LabourSourceService } from '../labourSource/labourSource.service';
 import { LabourTurnoverService } from './labourTurnover.service';
-
 
 @NgModule({
   imports: [

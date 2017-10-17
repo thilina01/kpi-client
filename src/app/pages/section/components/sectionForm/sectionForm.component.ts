@@ -20,15 +20,7 @@ export class SectionForm {
     public formGroup: FormGroup;
     section: any = {};
     subscription: Subscription;
-
-    sectionTypes: any;
-    workCenters: any;
-
-    sectionDate: Date;
-    sectionTime: Date = new Date();
-    recoveryTime: Date = new Date();
-    sectionType: any = { id: '', code: '', name: '' }
-    workCenter: any = { id: '', code: '', name: '' }
+    sectionType: any;
 
     constructor(protected service: SectionService,
         private route: ActivatedRoute,
@@ -47,17 +39,7 @@ export class SectionForm {
         });
     }
 
-    getSectionTypes(): void {
-        this.sectionTypeService.getAll().subscribe(sectionTypes => this.sectionTypes = sectionTypes);
-    }
-
-    getWorkCenterss(): void {
-        this.workCenterService.getCombo().subscribe(workCenters => this.workCenters = workCenters);
-    }
-
     ngOnInit(): void {
-        this.getSectionTypes();
-        this.getWorkCenterss();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
