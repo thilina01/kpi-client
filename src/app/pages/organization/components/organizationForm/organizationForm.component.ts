@@ -33,6 +33,11 @@ export class OrganizationForm {
             slogan2: '',
             vat: '',
             svat: '',
+            address1: '',
+            address2: '',
+            address3: '',
+            address4: '',
+            address5: '',
 
         });
     }
