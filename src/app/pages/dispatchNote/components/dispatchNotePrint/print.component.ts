@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DispatchNoteService } from '../../dispatchNote.service';
 import { PrintService } from '../../../../services/print.service';
+import { OrganizationService } from '../../../organization/organization.service';
 
 @Component({
   selector: 'print',
@@ -24,9 +25,19 @@ export class Print {
     }
   }
 
+  organization: any;
   dispatchNote: any;
 
-  constructor(private service: DispatchNoteService, private printService: PrintService) { }
+  constructor(private service: DispatchNoteService,
+    private printService: PrintService,
+    private organizationService: OrganizationService) {
+    this.getOrganization();
+  }
 
+  getOrganization() {
+    this.organizationService.getAll().subscribe((data: any) => {
+      this.organization = data[0];
+    });
+  }
 }
 

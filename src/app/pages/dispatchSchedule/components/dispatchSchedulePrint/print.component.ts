@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PrintService } from '../../../../services/print.service';
 import { SalesOrderService } from '../../../salesOrder/salesOrder.service';
 import { DispatchScheduleService } from '../../dispatchSchedule.service';
+import { OrganizationService } from '../../../organization/organization.service';
 
 @Component({
   selector: 'print',
@@ -32,10 +33,20 @@ export class Print {
 
   salesOrder: any;
   dispatchScheduleList: any;
+  organization: any;
+
   constructor(
     private salesOrderService: SalesOrderService,
     private dispatchScheduleService: DispatchScheduleService,
-    private printService: PrintService) { }
+    private printService: PrintService,
+    private organizationService: OrganizationService) {
+    this.getOrganization();
+  }
 
+  getOrganization() {
+    this.organizationService.getAll().subscribe((data: any) => {
+      this.organization = data[0];
+    });
+  }
 }
 
