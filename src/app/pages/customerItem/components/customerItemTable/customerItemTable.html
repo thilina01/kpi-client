@@ -20,7 +20,7 @@
 		<p-column field="name" header="Customer Item Name" [sortable]="true"></p-column>
 		<p-column field="customer.code" header="Customer Code" [sortable]="true"></p-column>
 		<p-column field="customer.name" header="Customer Name" [sortable]="true"></p-column>
-		<p-column field="item.code" header="OTR Item Code" [sortable]="true"></p-column>
+		<p-column field="item.code" header="Item Code" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/customerItem/form/'+data.id">
