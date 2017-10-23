@@ -91,6 +91,7 @@ export class Pages {
     { routerLink: '/pages/financeSummary/table', name: 'Finance Summary', menuType: this.menuType },
     { routerLink: '/pages/home', name: 'Home', menuType: this.menuType },
     { routerLink: '/pages/incoterm/table', name: 'Incoterm', menuType: this.menuType },
+    { routerLink: '/pages/invoiceType/table', name: 'Invoice Type', menuType: this.menuType },
     { routerLink: '/pages/item/table', name: 'Item', menuType: this.menuType },
     { routerLink: '/pages/itemType/table', name: 'Item Type', menuType: this.menuType },
     { routerLink: '/pages/job/info', name: 'Job Information', menuType: this.menuType },
