@@ -31,7 +31,7 @@ export class Pages {
       message => {
         this.msgs.push(message);
       });
-      this.getOrganization();
+    this.getOrganization();
   }
 
   getOrganization() {
@@ -91,6 +91,7 @@ export class Pages {
     { routerLink: '/pages/financeSummary/table', name: 'Finance Summary', menuType: this.menuType },
     { routerLink: '/pages/home', name: 'Home', menuType: this.menuType },
     { routerLink: '/pages/incoterm/table', name: 'Incoterm', menuType: this.menuType },
+   // { routerLink: '/pages/invoice/table', name: 'Invoice', menuType: this.menuType },
     { routerLink: '/pages/invoiceType/table', name: 'Invoice Type', menuType: this.menuType },
     { routerLink: '/pages/item/table', name: 'Item', menuType: this.menuType },
     { routerLink: '/pages/itemType/table', name: 'Item Type', menuType: this.menuType },
@@ -130,6 +131,7 @@ export class Pages {
     { routerLink: '/pages/section/table', name: 'Section', menuType: this.menuType },
     { routerLink: '/pages/sectionType/table', name: 'Section Type', menuType: this.menuType },
     { routerLink: '/pages/shift/table', name: 'Shift', menuType: this.menuType },
+    { routerLink: '/pages/shiftRoster/table', name: 'Shift Roster', menuType: this.menuType },
     { routerLink: '/pages/shiftType/table', name: 'Shift Type', menuType: this.menuType },
     { routerLink: '/pages/supplier/table', name: 'Supplier', menuType: this.menuType },
     { routerLink: '/pages/supplierType/table', name: 'Supplier Type', menuType: this.menuType },
