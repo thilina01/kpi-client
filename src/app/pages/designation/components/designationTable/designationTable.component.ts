@@ -3,21 +3,21 @@ import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
-import { DesignationTypeService } from '../../designationType.service';
+import { DesignationService } from '../../designation.service';
 
 @Component({
-  selector: 'designation-type-table',
+  selector: 'designation-table',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./designationTypeTable.scss'],
-  templateUrl: './designationTypeTable.html',
+  styleUrls: ['./designationTable.scss'],
+  templateUrl: './designationTable.html',
 })
 
-export class DesignationTypeTable {
+export class DesignationTable {
   rows = [];
   timeout: any;
   totalRecords: number;
 
-  constructor(protected service: DesignationTypeService,
+  constructor(protected service: DesignationService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private sharedService: SharedService) {
@@ -47,11 +47,11 @@ export class DesignationTypeTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/designationType/form/' + data.id]);
+    this.router.navigate(['/pages/designation/form/' + data.id]);
   }
 
   navigateToForm(id: any): void {
-    this.router.navigate(['/pages/designationType/form/' + id]);
+    this.router.navigate(['/pages/designation/form/' + id]);
   }
 
   delete(id: number) {

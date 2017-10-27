@@ -4,24 +4,24 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { DesignationTypeService } from '../../designationType.service';
+import { DesignationService } from '../../designation.service';
 
 @Component({
-    selector: 'designation-type-form',
+    selector: 'designation-form',
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./designationTypeForm.scss'],
-    templateUrl: './designationTypeForm.html',
+    styleUrls: ['./designationForm.scss'],
+    templateUrl: './designationForm.html',
 })
-export class DesignationTypeForm {
+export class DesignationForm {
 
     JSON: any = JSON;
 
     public formGroup: FormGroup;
-    designationType: any = {};
+    designation: any = {};
     subscription: Subscription;
-    designationTypeType: any;
+    designationType: any;
 
-    constructor(protected service: DesignationTypeService,
+    constructor(protected service: DesignationService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
@@ -51,10 +51,10 @@ export class DesignationTypeForm {
 
     loadForm(data: any) {
         if (data != null) {
-            this.designationType = data;
+            this.designation = data;
         }
-        this.formGroup.patchValue(this.designationType, { onlySelf: true });
-        this.designationTypeType = this.designationType.designationTypeType;
+        this.formGroup.patchValue(this.designation, { onlySelf: true });
+        this.designationType = this.designation.designationType;
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -64,7 +64,7 @@ export class DesignationTypeForm {
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();
-                this.router.navigate(['/pages/designationType/form/']);
+                this.router.navigate(['/pages/designation/form/']);
             }
         );
     }

@@ -5,12 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
-import { DesignationType } from './designationType.component';
-import { DesignationTypeTable } from './components/designationTypeTable/designationTypeTable.component';
-import { DesignationTypeForm } from './components/designationTypeForm/designationTypeForm.component';
+import { Designation } from './designation.component';
+import { DesignationTable } from './components/designationTable/designationTable.component';
+import { DesignationForm } from './components/designationForm/designationForm.component';
 
-import { routing } from './designationType.routing';
-import { DesignationTypeService } from './designationType.service';
+import { routing } from './designation.routing';
+import { DesignationService } from './designation.service';
 
 @NgModule({
   imports: [
@@ -26,12 +26,12 @@ import { DesignationTypeService } from './designationType.service';
     routing
   ],
   declarations: [
-    DesignationType,
-    DesignationTypeTable,
-    DesignationTypeForm
+    Designation,
+    DesignationTable,
+    DesignationForm
   ],
   providers: [
-    DesignationTypeService
+    DesignationService
   ]
 })
-export class DesignationTypeModule { }
+export class DesignationModule { }

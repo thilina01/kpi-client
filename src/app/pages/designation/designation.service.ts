@@ -5,10 +5,10 @@ import { APP_CONFIG, IAppConfig } from '../../app.config';
 import { AuthService } from '../../services/auth.service';
 
 @Injectable()
-export class DesignationTypeService extends MasterService {
+export class DesignationService extends MasterService {
 
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp, aConfig, anAuthService);
-    this.setApiUrl('designationTypes/');
+    this.setApiUrl('designations/');
   }
 }

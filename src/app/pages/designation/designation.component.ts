@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'designationType',
+  selector: 'designation',
   template: ` 
     <router-outlet></router-outlet>`
 })
-export class DesignationType {
+export class Designation {
 
 }
