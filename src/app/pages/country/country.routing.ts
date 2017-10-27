@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { Country } from './country.component';
 import { CountryForm } from './components/countryForm/countryForm.component';
 import { CountryTable } from './components/countryTable/countryTable.component';
-import { ModuleWithProviders } from '@angular/core';
 
 export const routes: Routes = [
   {
