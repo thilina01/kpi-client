@@ -36,7 +36,7 @@
               [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeDropdownClick($event)" (onSelect)="onEmployeeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.firstName}}</div>
+                  <div>{{option.code}} : {{option.fullName}}</div>
                 </div>
               </ng-template>
             </p-autoComplete>

@@ -61,7 +61,6 @@ export class DispatchNoteForm {
     this.formGroup = fb.group({
       id: '',
       quantity: 0,
-      //dispatchDate: [this.dispatchDate, Validators.required],
       customer: [this.customer, Validators.required],
       address: [this.address, Validators.required],
       employee: [this.employee, Validators.required],
@@ -312,7 +311,7 @@ export class DispatchNoteForm {
     let employee = this.formGroup.value.employee;
     if (employee != null && employee != undefined) {
       let display = employee.code != null && employee.code != undefined ? employee.code + ' : ' : '';
-      display += employee.firstName != null && employee.firstName != undefined ? employee.firstName : '';
+      display += employee.fullName != null && employee.fullName != undefined ? employee.fullName : '';
       this.formGroup.value.employee.display = display;
     }
   }

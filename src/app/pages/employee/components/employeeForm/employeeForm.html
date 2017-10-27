@@ -17,28 +17,35 @@
     <div class="col-sm-12">
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="code">Employee ID</label>
               <br/>
               <input type="text" pInputText formControlName="code">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="firstName">First Name</label>
+              <label for="fullName">Full Name</label>
               <br/>
-              <input type="text" pInputText formControlName="firstName">
+              <input type="text" pInputText formControlName="fullName">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
-              <label for="lastName">Last Name</label>
+              <label for="callingName">Calling Name</label>
               <br/>
-              <input type="text" pInputText formControlName="lastName">
+              <input type="text" pInputText formControlName="callingName">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
+            <div class="ui-inputgroup">
+              <label for="nic">NIC</label>
+              <br/>
+              <input type="text" pInputText formControlName="nic">
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="dateOfBirth">Date Of Birth</label>
               <br/>
@@ -47,28 +54,76 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="nic">NIC</label>
-              <br/>
-              <input type="text" pInputText formControlName="nic">
-            </div>
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
+            <label for=" employeeCategory"> Employee Category</label>
+            <br/>
+            <p-autoComplete formControlName="employeeCategory" [dropdown]="true" field="display" [suggestions]="filteredEmployeeCategorys"
+              (completeMethod)="filterEmployeeCategory($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeCategoryDropdownClick($event)"
+              (onSelect)="onEmployeeCategorySelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
+            <label for=" designationType"> Designation</label>
+            <br/>
+            <p-autoComplete formControlName="designation" [dropdown]="true" field="display" [suggestions]="filteredDesignations" (completeMethod)="filterDesignation($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleDesignationDropdownClick($event)" (onSelect)="onDesignationSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
+            <label for="labourSource">Labour Source </label>
+            <br/>
+            <p-autoComplete formControlName="labourSource" [dropdown]="true" field="display" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSource($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLabourSourceDropdownClick($event)"
+              (onSelect)="onLabourSourceSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
+            <label for=" section"> Section</label>
+            <br/>
+            <p-autoComplete formControlName="section" [dropdown]="true" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
+            <label for=" shift"> Shift</label>
+            <br/>
+            <p-autoComplete formControlName="shift" [dropdown]="true" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShift($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
             <div class="ui-inputgroup">
               <label for="contactNumber">Contact Number</label>
               <br/>
               <input type="text" pInputText formControlName="contactNumber">
             </div>
           </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="address">Address</label>
-              <br/>
-              <input type="text" pInputText formControlName="address">
-            </div>
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="ui-inputgroup">
               &nbsp;
               <br/>

@@ -17,12 +17,16 @@
 	 resizableColumns="true" exportFilename="employees" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="code" header="Employee ID" [sortable]="true"></p-column>
-		<p-column field="firstName" header="First Name" [sortable]="true"></p-column>
-		<p-column field="lastName" header="Last Name" [sortable]="true"></p-column>
+		<p-column field="fullName" header="Full Name" [sortable]="true"></p-column>
+		<p-column field="callingName" header="Calling Name" [sortable]="true"></p-column>
 		<p-column field="dateOfBirth" header="Date Of Birth" [sortable]="true"></p-column>
 		<p-column field="nic" header="NIC" [sortable]="true"></p-column>
 		<p-column field="contactNumber" header="Contact Number" [sortable]="true"></p-column>
-		<p-column field="address" header="Address" [sortable]="true"></p-column>
+		<p-column field="designation.name" header="Designation" [sortable]="true"></p-column>
+		<p-column field="employeeCategory.name" header="Employee Category" [sortable]="true"></p-column>
+		<p-column field="shift.name" header="Shift" [sortable]="true"></p-column>
+		<p-column field="section.name" header="Section" [sortable]="true"></p-column>
+		<p-column field="labourSource.name" header="LabourSource" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/employee/form/'+data.id">

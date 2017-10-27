@@ -141,7 +141,7 @@ export class ComputerForm {
         let employee = this.formGroup.value.employee;
         if (employee != null && employee != undefined) {
             let display = employee.code != null && employee.code != undefined ? employee.code + ' : ' : '';
-            display += employee.firstName != null && employee.firstName != undefined ? employee.firstName : '';
+            display += employee.fullName != null && employee.fullName != undefined ? employee.fullName : '';
             this.formGroup.value.employee.display = display;
         }
     }
