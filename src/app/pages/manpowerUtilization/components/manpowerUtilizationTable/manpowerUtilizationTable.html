@@ -1,0 +1,81 @@
+<p-panel>
+	<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>Manpower Utilization List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+			</div>
+		</div>
+	</p-header>
+	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+	 resizableColumns="true" exportFilename="manpowerUtilizations">
+		<p-header>
+			<div class="row">
+				<div class="col" style="text-align: left">
+					<div class="ui-inputgroup">
+						Duration
+						<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+						<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<div class="ui-inputgroup">
+						Shift
+						<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
+						 [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<div class="ui-inputgroup">
+						Section
+						<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+						 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<div class="ui-inputgroup">
+						Employee
+						<p-autoComplete [(ngModel)]="employee" field="name" [suggestions]="filteredEmployees" (completeMethod)="filterEmployees($event)"
+						 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeDropdownClick($event)" (onSelect)="onEmployeeSelect($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<div class="ui-inputgroup">
+						<button type="button" class="btn btn-primary btn-xs" (click)="search()">
+							<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+						</button> &nbsp;&nbsp;{{totalRecords}}
+					</div>
+				</div>
+			</div>
+		</p-header>
+		<p-column field="id" header="ID"></p-column>
+		<p-column field="production.controlPoint.code" header="Control Point"></p-column>
+		<p-column field="production.productionDate" header="Production Date"></p-column>
+		<p-column field="plannedDuration" header="Planned Duration" styleClass="text-right"></p-column>
+		<p-column field="actualDuration" header="Actual Duration" styleClass="text-right"></p-column>
+		<p-column field="production.shift.name" header="Shift" [sortable]="true"></p-column>
+		<p-column field="employee.fullName" header="Employee" [sortable]="true"></p-column>
+	</p-dataTable>
+</p-panel>
