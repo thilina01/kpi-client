@@ -1,14 +1,15 @@
-import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params } from '@angular/router'
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import {Component, ViewEncapsulation, Input} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute, Params} from '@angular/router'
+import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
 
-import { SharedService } from '../../../../services/shared.service';
-import { ControlPointService } from '../../../controlPoint/controlPoint.service';
-import { LossTypeService } from '../../../lossType/lossType.service';
-import { ProductionService } from '../../production.service';
-import { ShiftService } from '../../../shift/shift.service';
-import { OrganizationService } from '../../../organization/organization.service';
+import {SharedService} from '../../../../services/shared.service';
+import {ControlPointService} from '../../../controlPoint/controlPoint.service';
+import {LossTypeService} from '../../../lossType/lossType.service';
+import {ProductionService} from '../../production.service';
+import {ShiftService} from '../../../shift/shift.service';
+import {OrganizationService} from '../../../organization/organization.service';
+import {EmployeeService} from "../../../employee/employee.service";
 
 @Component({
   selector: 'production-form',
@@ -39,13 +40,14 @@ export class ProductionForm {
   lossType: any = {}
 
   constructor(protected service: ProductionService,
-    private route: ActivatedRoute,
-    fb: FormBuilder,
-    private sharedService: SharedService,
-    private controlPointService: ControlPointService,
-    private shiftService: ShiftService,
-    private organizationService: OrganizationService,
-    private lossTypeService: LossTypeService) {
+              private route: ActivatedRoute,
+              fb: FormBuilder,
+              private sharedService: SharedService,
+              private controlPointService: ControlPointService,
+              private shiftService: ShiftService,
+              private employeeService: EmployeeService,
+              private organizationService: OrganizationService,
+              private lossTypeService: LossTypeService) {
     this.formGroup = fb.group({
       plannedDuration: 0,
       actualDuration: 0,
@@ -70,7 +72,9 @@ export class ProductionForm {
   }
 
   searchProduction(): void {
-    console.log(this.productionDate); console.log(this.controlPoint); console.log(this.shift)
+    console.log(this.productionDate);
+    console.log(this.controlPoint);
+    console.log(this.shift)
     this.display = false;
     let production = {
       productionDate: this.productionDate,
@@ -82,7 +86,7 @@ export class ProductionForm {
         this.loadForm(data);
         if (data != null) {
           this.sharedService.addMessage(
-            { severity: 'info', summary: 'Success', detail: 'Operation Success' }
+            {severity: 'info', summary: 'Success', detail: 'Operation Success'}
           );
         }
       }
@@ -106,6 +110,7 @@ export class ProductionForm {
     this.getControlPoints();
     this.getShifts();
     this.getLossTypes();
+    this.getEmployeeList();
 
     this.route.params.subscribe(
       (params: Params) => {
@@ -128,7 +133,8 @@ export class ProductionForm {
     this.calculateTotalPlannedManpowerQuantity();
     this.calculateTotalLossQuantity();
     this.setOperationIdOnLoss();
-    this.formGroup.patchValue(this.production, { onlySelf: true });
+    this.production.productionEmployeeList = this.production.productionEmployeeList == undefined ? [] : this.production.productionEmployeeList;
+    this.formGroup.patchValue(this.production, {onlySelf: true});
   }
 
   calculateTotalPlannedProductionQuantity() {
@@ -161,7 +167,7 @@ export class ProductionForm {
       for (let operation of this.production.operationList) {
         if (operation.lossList) {
           for (let loss of operation.lossList) {
-            loss.operation = { id: operation.id }
+            loss.operation = {id: operation.id}
           }
         }
       }
@@ -177,7 +183,11 @@ export class ProductionForm {
               let index = operation.lossList.indexOf(loss);
               operation.lossList.splice(index, 1);
               this.calculateTotalLossQuantity();
-              this.sharedService.addMessage({ severity: 'warn', summary: 'Delete Success', detail: 'loss details deleted' });
+              this.sharedService.addMessage({
+                severity: 'warn',
+                summary: 'Delete Success',
+                detail: 'loss details deleted'
+              });
               return;
             }
           }
@@ -204,7 +214,7 @@ export class ProductionForm {
     console.log(this.production);
     this.service.save(this.production).subscribe(
       (data) => {
-        this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
+        this.sharedService.addMessage({severity: 'info', summary: 'Success', detail: 'Operation Success'});
       }
     );
   }
@@ -219,9 +229,9 @@ export class ProductionForm {
       return;
     }
 
-    values.lossReason.lossType = { id: values.lossType.id, code: values.lossType.code, name: values.lossType.name };
+    values.lossReason.lossType = {id: values.lossType.id, code: values.lossType.code, name: values.lossType.name};
     let loss = {
-      operation: { id: values.operation.id },
+      operation: {id: values.operation.id},
       lossReason: values.lossReason,
       quantity: values.quantity,
       timestamp: new Date().getTime()
@@ -234,9 +244,63 @@ export class ProductionForm {
     }
     values.operation.lossQuantity = lossQuantity;
     this.qualityFormGroup.reset();
-    this.sharedService.addMessage({ severity: 'info', summary: 'Added', detail: 'Loss Detail Added' });
+    this.sharedService.addMessage({severity: 'info', summary: 'Added', detail: 'Loss Detail Added'});
     //alert(JSON.stringify(values.operation));
   }
+
+  getEmployeeList(): void {
+    this.employeeService.getCombo().subscribe(employeeList => this.employeeList = employeeList);
+  }
+
+  addProductionEmployee(event: Event): void {
+    event.preventDefault();
+    if (this.employee != null && this.employee != undefined) {
+      let productionEmployee = {
+        employee: {id: this.employee.id, code: this.employee.code, callingName: this.employee.name}
+      };
+      this.production.productionEmployeeList.push(productionEmployee);
+      this.production.productionEmployeeList = this.production.productionEmployeeList.slice();
+      console.log(this.production.productionEmployeeList);
+    }
+  }
+
+  /*================== EmployeeFilter ===================*/
+  filteredEmployeeList: any[];
+  employeeList: any[];
+  employee: any;
+
+  filterEmployeeList(event) {
+    let query = event.query.toLowerCase();
+    this.filteredEmployeeList = [];
+    for (let i = 0; i < this.employeeList.length; i++) {
+      let employee = this.employeeList[i];
+      if (employee.code.toLowerCase().indexOf(query) == 0 || employee.name.toLowerCase().indexOf(query) == 0) {
+        this.filteredEmployeeList.push(employee);
+      }
+    }
+  }
+
+  handleEmployeeDropdownClick() {
+    this.filteredEmployeeList = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredEmployeeList = this.employeeList;
+    }, 100)
+  }
+
+  onEmployeeSelect(event: any) {
+    this.setDisplayOfEmployee();
+  }
+
+  setDisplayOfEmployee() {
+    if (this.employee != null && this.employee != undefined) {
+      let display = this.employee.code != null && this.employee.code != undefined ? this.employee.code + ' : ' : '';
+      display += this.employee.name != null && this.employee.name != undefined ? this.employee.name : '';
+      this.employee.display = display;
+    }
+  }
+
+  /*================== End of EmployeeFilter ===================*/
 
   print(): void {
     let printContents, popupWin;

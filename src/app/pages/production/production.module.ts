@@ -1,21 +1,30 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgaModule } from '../../theme/nga.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NgaModule} from '../../theme/nga.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from '@angular/material';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, AutoCompleteModule } from 'primeng/primeng';
+import {
+  DataTableModule,
+  SharedModule,
+  DialogModule,
+  CalendarModule,
+  PanelModule,
+  AutoCompleteModule,
+  TabViewModule
+} from 'primeng/primeng';
 
-import { Production } from './production.component';
-import { ProductionTable } from './components/productionTable/productionTable.component';
-import { ProductionForm } from './components/productionForm/productionForm.component';
+import {Production} from './production.component';
 
-import { routing } from './production.routing';
-import { ControlPointService } from '../controlPoint/controlPoint.service';
-import { LossTypeService } from '../lossType/lossType.service';
-import { ProductionService } from './production.service';
-import { ShiftService } from '../shift/shift.service';
-import { SectionService } from '../section/section.service';
+import {routing} from './production.routing';
+import {ControlPointService} from '../controlPoint/controlPoint.service';
+import {LossTypeService} from '../lossType/lossType.service';
+import {ProductionService} from './production.service';
+import {ShiftService} from '../shift/shift.service';
+import {SectionService} from '../section/section.service';
+import {ProductionTable} from "./components/productionTable";
+import {ProductionForm} from "./components/productionForm";
+import {EmployeeService} from "../employee/employee.service";
 
 @NgModule({
   imports: [
@@ -30,7 +39,7 @@ import { SectionService } from '../section/section.service';
     MaterialModule,
     SharedModule,
     AutoCompleteModule,
-
+    TabViewModule,
     routing
   ],
   declarations: [
@@ -43,7 +52,9 @@ import { SectionService } from '../section/section.service';
     ShiftService,
     ControlPointService,
     SectionService,
-    LossTypeService
+    LossTypeService,
+    EmployeeService
   ]
 })
-export class ProductionModule { }
+export class ProductionModule {
+}

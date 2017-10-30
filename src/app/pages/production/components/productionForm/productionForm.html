@@ -1,552 +1,615 @@
 <div class="widgets">
-	<div class="row">
-		<div class="col-sm-12">
-			<p-panel>
-				<p-header>
-					<div class="row">
-						<div class="col">
-							<h4>Production Information</h4>
-						</div>
-						<div class="col">
-							<a routerLink="/pages/production/table">
-								<button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
-									<i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
-								</button>
-							</a>
-						</div>
-					</div>
-				</p-header>
-				<div class="row">
-					<div class="col-sm-2">
-						<a [routerLink]="'/pages/production/form/'+(production.id-1)">
-							<span class="fa fa-backward"></span>
-						</a> |
-						<a [routerLink]="'/pages/production/form/'+(production.id+1)">
-							<span class="fa fa-forward"></span>
-						</a> |
-						<span class="fa fa-search" (click)="displaySearch()"></span> |
-						<span class="fa fa-print" (click)="print()"></span>
-					</div>
-					<div class="col-sm-1"></div>
-				</div>
-				<br />
+  <div class="row">
+    <div class="col-sm-12">
+      <p-panel>
+        <p-header>
+          <div class="row">
+            <div class="col">
+              <h4>Production Information</h4>
+            </div>
+            <div class="col">
+              <a routerLink="/pages/production/table">
+                <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+                  <i ng-reflect-class-name="fa fa-file-text-o"
+                     class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+                </button>
+              </a>
+            </div>
+          </div>
+        </p-header>
+        <div class="row">
+          <div class="col-sm-2">
+            <a [routerLink]="'/pages/production/form/'+(production.id-1)">
+              <span class="fa fa-backward"></span>
+            </a> |
+            <a [routerLink]="'/pages/production/form/'+(production.id+1)">
+              <span class="fa fa-forward"></span>
+            </a> |
+            <span class="fa fa-search" (click)="displaySearch()"></span> |
+            <span class="fa fa-print" (click)="print()"></span>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+        <br/>
 
-				<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" novalidate>
-					<div class='row'>
+        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" novalidate>
+          <div class='row'>
 
-						<div class="col-sm-1 ">
-							<label>ID</label>
-						</div>
+            <div class="col-sm-1 ">
+              <label>ID</label>
+            </div>
 
-						<div class="col-sm-1 ">
-							<label>Date</label>
-						</div>
-						<div class="col-sm-1 ">
-							<label *ngIf="production.shift != undefined">Shift </label>
-						</div>
-						<div class="col-sm-1 ">
-							<label *ngIf="production.shiftType != undefined">Shift Type</label>
-						</div>
-						<div class="col-sm-4 ">
-							<label *ngIf="production.controlPoint != undefined">Control Point
-							</label>
-						</div>
-						<div class="col-sm-2 ">
-							<label>Planned Duration</label>
-						</div>
-						<div class="col-sm-2 ">
-							<label>Actual Duration</label>
-						</div>
-					</div>
-					<div class='row'>
+            <div class="col-sm-1 ">
+              <label>Date</label>
+            </div>
+            <div class="col-sm-1 ">
+              <label *ngIf="production.shift != undefined">Shift </label>
+            </div>
+            <div class="col-sm-1 ">
+              <label *ngIf="production.shiftType != undefined">Shift Type</label>
+            </div>
+            <div class="col-sm-4 ">
+              <label *ngIf="production.controlPoint != undefined">Control Point
+              </label>
+            </div>
+            <div class="col-sm-2 ">
+              <label>Planned Duration</label>
+            </div>
+            <div class="col-sm-2 ">
+              <label>Actual Duration</label>
+            </div>
+          </div>
+          <div class='row'>
 
-						<div class="col-sm-1 ">
-							<label>{{production.id}}</label>
-						</div>
+            <div class="col-sm-1 ">
+              <label>{{production.id}}</label>
+            </div>
 
-						<div class="col-sm-1 ">
-							<label>{{production.productionDate}}</label>
-						</div>
-						<div class="col-sm-1 ">
-							<label *ngIf="production.shift != undefined">{{production.shift.name}} </label>
-						</div>
-						<div class="col-sm-1 ">
-							<label *ngIf="production.shiftType != undefined">{{production.shiftType.name}}</label>
-						</div>
-						<div class="col-sm-4 ">
-							<label *ngIf="production.controlPoint != undefined">{{production.controlPoint.code}} {{production.controlPoint.name}}
-							</label>
-						</div>
-						<div class="col-sm-2 ">
-							<input type="text" class="form-control form-control-sm" placeholder="Planned Duration" formControlName="plannedDuration">
-						</div>
-						<div class="col-sm-2 ">
-							<input type="text" class="form-control form-control-sm" placeholder="Actual Duration" formControlName="actualDuration">
-						</div>
-					</div>
-					<br/>
-					<div class='row' *ngIf="production.operationList != undefined">
-						<p-panel header="Operations">
-							<p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true" [editable]="true" expandableRows="true"
-							 (onEditComplete)="onEditComplete($event)">
+            <div class="col-sm-1 ">
+              <label>{{production.productionDate}}</label>
+            </div>
+            <div class="col-sm-1 ">
+              <label *ngIf="production.shift != undefined">{{production.shift.name}} </label>
+            </div>
+            <div class="col-sm-1 ">
+              <label *ngIf="production.shiftType != undefined">{{production.shiftType.name}}</label>
+            </div>
+            <div class="col-sm-4 ">
+              <label *ngIf="production.controlPoint != undefined">{{production.controlPoint.code}}
+                {{production.controlPoint.name}}
+              </label>
+            </div>
+            <div class="col-sm-2 ">
+              <input type="text" class="form-control form-control-sm" placeholder="Planned Duration"
+                     formControlName="plannedDuration">
+            </div>
+            <div class="col-sm-2 ">
+              <input type="text" class="form-control form-control-sm" placeholder="Actual Duration"
+                     formControlName="actualDuration">
+            </div>
+          </div>
+          <br/>
+          <div class='row' *ngIf="production.operationList != undefined">
+            <p-panel header="Operations">
+              <p-dataTable #dt [value]="production.operationList" [responsive]="true" resizableColumns="true"
+                           [editable]="true" expandableRows="true"
+                           (onEditComplete)="onEditComplete($event)">
 
-								<p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
-								<p-column field="id" header="ID"></p-column>
-								<p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
-								<p-column field="job.item.code" header="Item" [sortable]="true"></p-column>
-								<p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
-								<p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
-								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true" [editable]="true"></p-column>
-								<p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
-								<p-column field="lossQuantity" header="Loss Quantity" [sortable]="true"></p-column>
-								<!--
+                <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
+                <p-column field="id" header="ID"></p-column>
+                <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
+                <p-column field="job.item.code" header="Item" [sortable]="true"></p-column>
+                <p-column field="productType.description" header="Product Type" [sortable]="true"></p-column>
+                <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>
+                <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"
+                          [editable]="true"></p-column>
+                <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true"
+                          [editable]="true"></p-column>
+                <p-column field="lossQuantity" header="Loss Quantity" [sortable]="true"></p-column>
+                <!--
                                 <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
                                 -->
-								<ng-template let-operation pTemplate="rowexpansion">
-									<p-header>Loss Details
-									</p-header>
-									<p-dataTable #dt2 [value]="operation.lossList" selectionMode="single">
-										<p-column field="id" [style]="{'width':'50px'}"></p-column>
-										<p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
-										<p-column field="lossReason.name"></p-column>
-										<p-column field="quantity"></p-column>
-										<p-column [style]="{'width':'30px'}">
-											<ng-template let-data="rowData" pTemplate="body">
-												<i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
-											</ng-template>
-										</p-column>
-									</p-dataTable>
-								</ng-template>
-							</p-dataTable>
-						</p-panel>
-					</div>
-					<br/>
-					<div class='row' *ngIf="production.operationList != undefined">
-						<p-panel header="Quality" class="col-sm-12">
-							<form [formGroup]="qualityFormGroup" (ngSubmit)="onQualityFormSubmit(qualityFormGroup.value)" novalidate>
+                <ng-template let-operation pTemplate="rowexpansion">
+                  <p-header>Loss Details
+                  </p-header>
+                  <p-dataTable #dt2 [value]="operation.lossList" selectionMode="single">
+                    <p-column field="id" [style]="{'width':'50px'}"></p-column>
+                    <p-column field="lossReason.lossType.name" [style]="{'width':'150px'}"></p-column>
+                    <p-column field="lossReason.name"></p-column>
+                    <p-column field="quantity"></p-column>
+                    <p-column [style]="{'width':'30px'}">
+                      <ng-template let-data="rowData" pTemplate="body">
+                        <i *ngIf="data.id==undefined" (click)="deleteLoss(data,dt2)"
+                           ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                      </ng-template>
+                    </p-column>
+                  </p-dataTable>
+                </ng-template>
+              </p-dataTable>
+            </p-panel>
+          </div>
+          <br/>
+          <div *ngIf="production.operationList != undefined">
 
-								<div class="row">
-									<div class="col-sm-2">
-										<div class="form-group">
-											<label>Job</label>
-											<select formControlName="operation" class="form-control">
-												<option *ngFor="let operation of production.operationList" [ngValue]="operation">
-													{{operation.job.jobNo}}
-												</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-2">
-										<div class="form-group">
-											<label>Loss Type</label>
-											<select formControlName="lossType" class="form-control">
-												<option *ngFor="let lossType of lossTypes" [ngValue]="lossType">{{lossType.name}}</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label>Reason</label>
-											<select *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
-											 formControlName="lossReason" class="form-control">
-												<option *ngFor="let lossReason of qualityFormGroup.value.lossType.lossReasonList" [ngValue]="lossReason">{{lossReason.code}} | {{lossReason.name}}</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-2">
-										<div class="form-group">
-											<label>Quantity</label>
-											<input *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined" type="number"
-											 class="form-control" formControlName="quantity">
-										</div>
-									</div>
-									<div class="col-sm-2">
-										<br />
-										<button type="submit" class="btn btn-primary">
-											<i class="icon-save"></i>{{qualityFormGroup.valid?"Add":"Reset"}}
-										</button>
-									</div>
-								</div>
-							</form>
-						</p-panel>
-					</div>
-					<br/>
-					<div class='row' *ngIf="production.manpowerList != undefined">
-						<p-panel header="Manpower">
-							<p-dataTable #dt [value]="production.manpowerList" [responsive]="true" resizableColumns="true" [editable]="true">
-								<p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
-								<p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
-								<p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
-							</p-dataTable>
-						</p-panel>
-					</div>
-					&nbsp;
-					<br/>
-					<div class="row">
-						<div class="col-sm-1">
-							<button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-						</div>
-					</div>
-				</form>
-			</p-panel>
-		</div>
-	</div>
+            <p-tabView>
+              <div class='row col-12'>
+                <p-tabPanel header="Quality">
+                  <form [formGroup]="qualityFormGroup" (ngSubmit)="onQualityFormSubmit(qualityFormGroup.value)"
+                        novalidate>
+
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <div class="form-group">
+                          <label>Job</label>
+                          <select formControlName="operation" class="form-control">
+                            <option *ngFor="let operation of production.operationList" [ngValue]="operation">
+                              {{operation.job.jobNo}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="form-group">
+                          <label>Loss Type</label>
+                          <select formControlName="lossType" class="form-control">
+                            <option *ngFor="let lossType of lossTypes" [ngValue]="lossType">{{lossType.name}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Reason</label>
+                          <select
+                            *ngIf="qualityFormGroup.value.lossType != undefined && qualityFormGroup.value.lossType.lossReasonList != undefined"
+                            formControlName="lossReason" class="form-control">
+                            <option *ngFor="let lossReason of qualityFormGroup.value.lossType.lossReasonList"
+                                    [ngValue]="lossReason">{{lossReason.code}} | {{lossReason.name}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div class="form-group">
+                          <label>Quantity</label>
+                          <input
+                            *ngIf="qualityFormGroup.value.lossReason != undefined && qualityFormGroup.value.lossReason.id != undefined"
+                            type="number"
+                            class="form-control" formControlName="quantity">
+                        </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <br/>
+                        <button type="submit" class="btn btn-primary">
+                          <i class="icon-save"></i>{{qualityFormGroup.valid?"Add":"Reset"}}
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </p-tabPanel>
+                <div *ngIf="production.manpowerList != undefined">
+                  <p-tabPanel header="Manpower Quantity">
+
+                    <p-dataTable #dt [value]="production.manpowerList" [responsive]="true" resizableColumns="true"
+                                 [editable]="true">
+                      <p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
+                      <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
+                      <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true"
+                                [editable]="true"></p-column>
+                    </p-dataTable>
+                  </p-tabPanel>
+                </div>
+                <p-tabPanel header="Manpower">
+                  <div class="row">
+                    <div class="col-12">
+                      <label>Employee</label>
+                      <p-autoComplete [dropdown]="true" [(ngModel)]="employee" [ngModelOptions]="{standalone: true}"
+                                      field="display" [suggestions]="filteredEmployeeList"
+                                      (completeMethod)="filterEmployeeList($event)"
+                                      [size]="50" [minLength]="1" placeholder="Search"
+                                      (onDropdownClick)="handleEmployeeDropdownClick($event)"
+                                      (onSelect)="onEmployeeSelect($event)">
+                        <ng-template let-option pTemplate="option">
+                          <div class="ui-helper-clearfix">
+                            <div>{{option.code}} : {{option.name}}</div>
+                          </div>
+                        </ng-template>
+                      </p-autoComplete>
+                      <button (click)="addProductionEmployee($event)" pButton type="button" icon="fa-plus-circle"
+                              label="Add"></button>
+                      <p-dataTable [value]="production.productionEmployeeList" [responsive]="true"
+                                   resizableColumns="true">
+                        <p-column field="employee.code" header="ID"
+                                  [sortable]="true"></p-column>
+                        <p-column field="employee.callingName" header="Name"
+                                  [sortable]="true"></p-column>
+                      </p-dataTable>
+                    </div>
+                  </div>
+                </p-tabPanel>
+              </div>
+            </p-tabView>
+
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-1">
+              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            </div>
+          </div>
+        </form>
+      </p-panel>
+    </div>
+  </div>
 </div>
-
+<!-- Search Modal ************************************************************************************************** -->
 <p-dialog header="Select" [(visible)]="display" modal="modal" responsive="true">
-	<p-calendar id="productionDatePicker" [(ngModel)]="productionDate" showIcon="true" dateFormat="yy-mm-dd" [inline]="true">
-	</p-calendar>
-	<br />
-	<select class="form-control" [(ngModel)]="shift">
-		<option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
-	</select>
-	<br />
-	<select class="form-control" [(ngModel)]="controlPoint">
-		<option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}} {{c.name}}
-		</option>
-	</select>
-	<br />
-	<div class="text-center">
-		<button class="btn btn-primary" (click)="searchProduction()">
-			<span class="fa fa-search"> Search</span>
-		</button>
-	</div>
+  <p-calendar id="productionDatePicker" [(ngModel)]="productionDate" showIcon="true" dateFormat="yy-mm-dd"
+              [inline]="true">
+  </p-calendar>
+  <br/>
+  <select class="form-control" [(ngModel)]="shift">
+    <option *ngFor="let c of shifts" [ngValue]="c">{{c.name}}</option>
+  </select>
+  <br/>
+  <select class="form-control" [(ngModel)]="controlPoint">
+    <option *ngFor="let c of controlPoints" [ngValue]="c">{{c.code}} {{c.name}}
+    </option>
+  </select>
+  <br/>
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="searchProduction()">
+      <span class="fa fa-search"> Search</span>
+    </button>
+  </div>
 </p-dialog>
 
 <!-- Print Layout *************************************************************************************************** -->
 <div id="print-section" hidden>
-	<div class="container-fluid ">
-		<!-- Full Page -->
-		<div>
-			<!-- Page Header -->
-			<div class='row'>
-				<h4 class="col-sm-12 text-center">{{organization===undefined?'':organization.name}}</h4>
-			</div>
-			<!-- Sub Header -->
-			<div class='row'>
-				<h5 class="col-sm-12 text-center">DAILY PRODUCTION REPORT</h5>
-			</div>
-			<!-- Production Table -->
-			<div class="row" style="margin-left: 10px">
-				<table class="table table-bordered table-condensed table-sm">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Date</th>
-							<th>Shift</th>
-							<th>Shift Type</th>
-							<th>Section</th>
-							<th>Control Point</th>
-							<th>Planned Duration</th>
-							<th>Actual Duration</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>{{production.id}}</td>
-							<td>{{production.productionDate}}</td>
-							<td>
-								<div *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</div>
-							</td>
-							<td>
-								<div *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</div>
-							</td>
-							<td>
+  <div class="container-fluid ">
+    <!-- Full Page -->
+    <div>
+      <!-- Page Header -->
+      <div class='row'>
+        <h4 class="col-sm-12 text-center">{{organization===undefined?'':organization.name}}</h4>
+      </div>
+      <!-- Sub Header -->
+      <div class='row'>
+        <h5 class="col-sm-12 text-center">DAILY PRODUCTION REPORT</h5>
+      </div>
+      <!-- Production Table -->
+      <div class="row" style="margin-left: 10px">
+        <table class="table table-bordered table-condensed table-sm">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Shift</th>
+            <th>Shift Type</th>
+            <th>Section</th>
+            <th>Control Point</th>
+            <th>Planned Duration</th>
+            <th>Actual Duration</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{production.id}}</td>
+            <td>{{production.productionDate}}</td>
+            <td>
+              <div *ngIf="production.shift != undefined && production.shift.code != undefined">
+                {{production.shift.name}}
+              </div>
+            </td>
+            <td>
+              <div *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">
+                {{production.shiftType.name}}
+              </div>
+            </td>
+            <td>
 
-								<div *ngIf="
+              <div *ngIf="
                                         production.controlPoint != undefined &&
                                         production.controlPoint.workCenter != undefined &&
                                         production.controlPoint.workCenter.costCenter != undefined &&
                                         production.controlPoint.workCenter.costCenter.section != undefined &&
                                         production.controlPoint.workCenter.costCenter.section.code != undefined">
-									{{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
-								</div>
+                {{production.controlPoint.workCenter.costCenter.section.code}} |
+                {{production.controlPoint.workCenter.costCenter.section.name}}
+              </div>
 
-							</td>
-							<td>
-								<div *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
-									{{production.controlPoint.code}} | {{production.controlPoint.name}}
-								</div>
-							</td>
-							<td class="text-right">{{production.plannedDuration}}</td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- Job Table -->
-			<div class="row" style="margin-left: 10px">
-				<table class="table table-condensed table-bordered table-striped table-sm">
-					<thead>
-						<tr>
-							<th>Job</th>
-							<th class="col-sm-2">Item</th>
-							<th>Product Type</th>
-							<th>Operation Type</th>
-							<th>Planned</th>
-							<th>Actual</th>
-							<th>Defect</th>
-							<th>Scrap</th>
-							<th class="col-sm-3">Reason</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr *ngFor="let operation of production.operationList">
-							<td>{{operation.job.jobNo}}</td>
-							<td>{{operation.job.item != undefined && operation.job.item.code != undefined ? operation.job.item.code:""}}</td>
-							<td>{{operation.productType.description}}</td>
-							<td>{{operation.operationType.description}}</td>
-							<td class="text-right">{{operation.plannedQuantity}}</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>&nbsp;</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td colspan="4" class="text-right">Total</td>
-							<td class="text-right">{{totalPlannedProductionQuantity}}</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+            </td>
+            <td>
+              <div *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
+                {{production.controlPoint.code}} | {{production.controlPoint.name}}
+              </div>
+            </td>
+            <td class="text-right">{{production.plannedDuration}}</td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Job Table -->
+      <div class="row" style="margin-left: 10px">
+        <table class="table table-condensed table-bordered table-striped table-sm">
+          <thead>
+          <tr>
+            <th>Job</th>
+            <th class="col-sm-2">Item</th>
+            <th>Product Type</th>
+            <th>Operation Type</th>
+            <th>Planned</th>
+            <th>Actual</th>
+            <th>Defect</th>
+            <th>Scrap</th>
+            <th class="col-sm-3">Reason</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let operation of production.operationList">
+            <td>{{operation.job.jobNo}}</td>
+            <td>{{operation.job.item != undefined && operation.job.item.code != undefined ?
+              operation.job.item.code:""}}
+            </td>
+            <td>{{operation.productType.description}}</td>
+            <td>{{operation.operationType.description}}</td>
+            <td class="text-right">{{operation.plannedQuantity}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">Total</td>
+            <td class="text-right">{{totalPlannedProductionQuantity}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
-			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="pagebreak"> </div>
-			<!-- Page Header -->
-			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
-				<h4 class="col-sm-12 text-center">{{organization===undefined?'':organization.name}}</h4>
-			</div>
-			<!-- Sub Header -->
-			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
-				<h5 class="col-sm-12 text-center">DAILY PRODUCTION REPORT</h5>
-			</div>
-			<div *ngIf="production.operationList != undefined && production.operationList.length >7" class="row" style="margin-left: 10px">
-				<table class="table table-bordered table-condensed table-sm">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Date</th>
-							<th>Shift</th>
-							<th>Shift Type</th>
-							<th>Section</th>
-							<th>Control Point</th>
-							<th>Planned Duration</th>
-							<th>Actual Duration</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>{{production.id}}</td>
-							<td>{{production.productionDate}}</td>
-							<td>
-								<p *ngIf="production.shift != undefined && production.shift.code != undefined">{{production.shift.name}}</p>
-							</td>
-							<td>
-								<p *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">{{production.shiftType.name}}</p>
-							</td>
-							<td>
+      <div *ngIf="production.operationList != undefined && production.operationList.length >7" class="pagebreak"></div>
+      <!-- Page Header -->
+      <div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
+        <h4 class="col-sm-12 text-center">{{organization===undefined?'':organization.name}}</h4>
+      </div>
+      <!-- Sub Header -->
+      <div *ngIf="production.operationList != undefined && production.operationList.length >7" class='row'>
+        <h5 class="col-sm-12 text-center">DAILY PRODUCTION REPORT</h5>
+      </div>
+      <div *ngIf="production.operationList != undefined && production.operationList.length >7" class="row"
+           style="margin-left: 10px">
+        <table class="table table-bordered table-condensed table-sm">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Shift</th>
+            <th>Shift Type</th>
+            <th>Section</th>
+            <th>Control Point</th>
+            <th>Planned Duration</th>
+            <th>Actual Duration</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>{{production.id}}</td>
+            <td>{{production.productionDate}}</td>
+            <td>
+              <p *ngIf="production.shift != undefined && production.shift.code != undefined">
+                {{production.shift.name}}</p>
+            </td>
+            <td>
+              <p *ngIf="production.shiftType != undefined && production.shiftType.code != undefined">
+                {{production.shiftType.name}}</p>
+            </td>
+            <td>
 
-								<p *ngIf="
+              <p *ngIf="
                                         production.controlPoint != undefined &&
                                         production.controlPoint.workCenter != undefined &&
                                         production.controlPoint.workCenter.costCenter != undefined &&
                                         production.controlPoint.workCenter.costCenter.section != undefined &&
                                         production.controlPoint.workCenter.costCenter.section.code != undefined">
-									{{production.controlPoint.workCenter.costCenter.section.code}} | {{production.controlPoint.workCenter.costCenter.section.name}}
-								</p>
+                {{production.controlPoint.workCenter.costCenter.section.code}} |
+                {{production.controlPoint.workCenter.costCenter.section.name}}
+              </p>
 
-							</td>
-							<td>
-								<p *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
-									{{production.controlPoint.code}} | {{production.controlPoint.name}}
-								</p>
-							</td>
-							<td class="text-right">{{production.plannedDuration}}</td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="row" style="margin-left: 10px">
-				<div class="col-sm-4" style="padding-left: 0;">
-					<p class="text-center">Manpower</p>
-					<table class="table table-condensed table-bordered table-striped table-sm">
-						<thead>
-							<tr>
-								<th>Type</th>
-								<th>Planned</th>
-								<th>Actual</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let mapower of production.manpowerList">
-								<td>{{mapower.manpowerType.name}}</td>
-								<td class="text-right">{{mapower.plannedQuantity}}</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>Total</td>
-								<td class="text-right">{{totalPlannedManpowerQuantity}}</td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<!--
-				<div class="col-sm-4">
-					<p class="text-center">Quality</p>
-					<table class="table table-condensed table-bordered table-striped table-sm">
-						<thead>
-							<tr>
-								<th>Job</th>
-								<th>Defect</th>
-								<th>Scrap</th>
-								<th class="col-6">Reason</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let operation of production.operationList">
-								<td>{{operation.job.jobNo}}</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+            </td>
+            <td>
+              <p *ngIf="production.controlPoint != undefined && production.controlPoint.code != undefined">
+                {{production.controlPoint.code}} | {{production.controlPoint.name}}
+              </p>
+            </td>
+            <td class="text-right">{{production.plannedDuration}}</td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="row" style="margin-left: 10px">
+        <div class="col-sm-4" style="padding-left: 0;">
+          <p class="text-center">Manpower</p>
+          <table class="table table-condensed table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <th>Type</th>
+              <th>Planned</th>
+              <th>Actual</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let mapower of production.manpowerList">
+              <td>{{mapower.manpowerType.name}}</td>
+              <td class="text-right">{{mapower.plannedQuantity}}</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td class="text-right">{{totalPlannedManpowerQuantity}}</td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--
+                <div class="col-sm-4">
+                    <p class="text-center">Quality</p>
+                    <table class="table table-condensed table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Job</th>
+                                <th>Defect</th>
+                                <th>Scrap</th>
+                                <th class="col-6">Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let operation of production.operationList">
+                                <td>{{operation.job.jobNo}}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
 
-							<tr>
-								<td class="text-right">Total</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+                            <tr>
+                                <td class="text-right">Total</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 -->
-				<div class="col-sm-4" style="padding-right: 0;">
-					<p class="text-center">Breakdown</p>
-					<table class="table table-condensed table-bordered table-striped table-sm">
-						<thead>
-							<tr>
-								<th>Count</th>
-								<th>Duration</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+        <div class="col-sm-4" style="padding-right: 0;">
+          <p class="text-center">Breakdown</p>
+          <table class="table table-condensed table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <th>Count</th>
+              <th>Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
 
-				<div class="col-sm-4">
-					<p class="text-center">Attendance</p>
-					<table class="table table-condensed table-bordered table-striped table-sm">
-						<thead>
-							<tr>
-								<th class="col-sm-4">Emp #</th>
-								<th>Name</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>&nbsp;</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="divFooter">
-		<div class="row" style="margin-left: 10px">
-			<div class="col-sm-1 text-center">
-			</div>
-			<div class="col-sm-2 text-center">
-				<hr />
-			</div>
-			<div class="col-sm-2 text-center">
-				<hr />
-			</div>
-			<div class="col-sm-2 text-center">
-				<hr />
-			</div>
-			<div class="col-sm-3 text-center">
-				<hr />
-			</div>
-			<div class="col-sm-2 text-center">
-				<hr />
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-1 text-center">
-			</div>
-			<div class="col-sm-2 text-center">Filled By</div>
-			<div class="col-sm-2 text-center">Control Point Leader</div>
-			<div class="col-sm-2 text-center">Checked By Planner</div>
-			<div class="col-sm-3 text-center">Approved By Production Manager</div>
-			<div class="col-sm-2 text-center">System Entered By </div>
-		</div>
-	</div>
+        <div class="col-sm-4">
+          <p class="text-center">Attendance</p>
+          <table class="table table-condensed table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <th class="col-sm-4">Emp #</th>
+              <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divFooter">
+    <div class="row" style="margin-left: 10px">
+      <div class="col-sm-1 text-center">
+      </div>
+      <div class="col-sm-2 text-center">
+        <hr/>
+      </div>
+      <div class="col-sm-2 text-center">
+        <hr/>
+      </div>
+      <div class="col-sm-2 text-center">
+        <hr/>
+      </div>
+      <div class="col-sm-3 text-center">
+        <hr/>
+      </div>
+      <div class="col-sm-2 text-center">
+        <hr/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-1 text-center">
+      </div>
+      <div class="col-sm-2 text-center">Filled By</div>
+      <div class="col-sm-2 text-center">Control Point Leader</div>
+      <div class="col-sm-2 text-center">Checked By Planner</div>
+      <div class="col-sm-3 text-center">Approved By Production Manager</div>
+      <div class="col-sm-2 text-center">System Entered By</div>
+    </div>
+  </div>
+</div>
