@@ -18,76 +18,39 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="scrapDate">Scrap Date</label>
-              <br/>
-              <p-calendar id="datePicker" formControlName="scrapDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="job">Job Number</label>
-              <br/>
-              <p-autoComplete formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} </div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="itemType">Item Type</label>
-              <br/>
-              <p-autoComplete [dropdown]="true" formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleItemTypeDropdownClick($event)" (onSelect)="onItemTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="operationType">Operation Type</label>
-              <br/>
-              <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList"
-                (completeMethod)="filterOperationTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleOperationTypeDropdownClick($event)"
-                (onSelect)="onOperationTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="lossReason">Scrap Reason</label>
-              <br/>
-              <p-autoComplete [dropdown]="true" formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossReasonDropdownClick($event)"
-                (onSelect)="onLossReasonSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for="section">Section</label>
+            <label for="scrapDate">Scrap Date</label>
             <br/>
-            <p-autoComplete formControlName="section" field="display" [dropdown]="true" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)"
-              appendTo="body">
+            <p-calendar id="datePicker" formControlName="scrapDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="job">Job Number</label>
+            <br/>
+            <p-autoComplete formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onJobSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} </div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="itemType">Item Type</label>
+            <br/>
+            <p-autoComplete [dropdown]="true" formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemTypeSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="operationType">Operation Type</label>
+            <br/>
+            <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList"
+              (completeMethod)="filterOperationTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onOperationTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -96,26 +59,44 @@
             </p-autoComplete>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="quantity">Quantity</label>
-              <br/>
-              <input type="number" pInputText formControlName="quantity">
-            </div>
+            <label for="lossReason">Scrap Reason</label>
+            <br/>
+            <p-autoComplete [dropdown]="true" formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLossReasonSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="unitValue">Unit Value</label>
-              <br/>
-              <input type="number" pInputText formControlName="unitValue">
-            </div>
+            <label for="section">Section</label>
+            <br/>
+            <p-autoComplete formControlName="section" field="display" [dropdown]="true" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="quantity">Quantity</label>
+            <br/>
+            <input type="number" pInputText formControlName="quantity">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="unitValue">Unit Value</label>
+            <br/>
+            <input type="number" pInputText formControlName="unitValue">
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

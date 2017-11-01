@@ -54,6 +54,10 @@ export class ComputerTypeTable {
     this.router.navigate(['/pages/computerType/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/computerType/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { ContainerSize } from './containerSize.component';
 import { ContainerSizeTable } from './components/containerSizeTable/containerSizeTable.component';
@@ -11,6 +11,7 @@ import { ContainerSizeForm } from './components/containerSizeForm/containerSizeF
 
 import { routing } from './containerSize.routing';
 import { ContainerSizeService } from './containerSize.service';
+import { ContainerSizeImport } from './components/containerSizeImport/containerSizeImport.component';
 
 @NgModule({
   imports: [
@@ -23,12 +24,15 @@ import { ContainerSizeService } from './containerSize.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
+    FileUploadModule,
     routing
   ],
   declarations: [
     ContainerSize,
     ContainerSizeTable,
-    ContainerSizeForm
+    ContainerSizeForm,
+    ContainerSizeImport
+    
   ],
   providers: [
     ContainerSizeService

@@ -18,68 +18,54 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="location">Location</label>
-              <br/>
-              <p-autoComplete formControlName="location" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLocationDropdownClick($event)" (onSelect)="onLocationSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
+            <label for="location">Location</label>
+            <br/>
+            <p-autoComplete formControlName="location" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="effectiveMonth">Effective Month</label>
+            <br/>
+            <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="kwh">KWH</label>
+            <br/>
+            <input type="number" pInputText formControlName="kwh">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched), 'has-success': (formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched)}">
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="effectiveMonth">Effective Month</label>
-              <br/>
-              <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
+            <label for="kva">KVA</label>
+            <br/>
+            <input type="number" pInputText formControlName="kva">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kva'].valid && formGroup.controls['kva'].touched), 'has-success': (formGroup.controls['kva'].valid && formGroup.controls['kva'].touched)}">
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="kwh">KWH</label>
-              <br/>
-              <input type="number" pInputText formControlName="kwh">
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched), 'has-success': (formGroup.controls['kwh'].valid && formGroup.controls['kwh'].touched)}">
-              </div>
+            <label for="cost">Cost</label>
+            <br/>
+            <input type="number" pInputText formControlName="cost">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['cost'].valid && formGroup.controls['cost'].touched), 'has-success': (formGroup.controls['cost'].valid && formGroup.controls['cost'].touched)}">
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="kva">KVA</label>
-              <br/>
-              <input type="number" pInputText formControlName="kva">
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['kva'].valid && formGroup.controls['kva'].touched), 'has-success': (formGroup.controls['kva'].valid && formGroup.controls['kva'].touched)}">
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="cost">Cost</label>
-              <br/>
-              <input type="number" pInputText formControlName="cost">
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['cost'].valid && formGroup.controls['cost'].touched), 'has-success': (formGroup.controls['cost'].valid && formGroup.controls['cost'].touched)}">
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="reference">Reference</label>
-              <br/>
-              <input type="text" pInputText formControlName="reference">
-            </div>
+            <label for="reference">Reference</label>
+            <br/>
+            <input type="text" pInputText formControlName="reference">
           </div>
         </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-          <div class="ui-inputgroup">
-            &nbsp;
-            <br/>
-            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-          </div>
+          &nbsp;
+          <br/>
+          <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+          <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
         </div>
       </form>
     </div>

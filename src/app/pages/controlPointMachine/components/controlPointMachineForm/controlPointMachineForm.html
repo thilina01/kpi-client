@@ -18,41 +18,34 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="controlPoint">ControlPoint</label>
-              <br/>
-              <p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointDropdownClick($event)"
-                (onSelect)="onControlPointSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="controlPoint">ControlPoint</label>
+            <br/>
+            <p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onControlPointSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="machine">Machine</label>
-              <br/>
-              <p-autoComplete formControlName="machine" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleMachineDropdownClick($event)" (onSelect)="onMachineSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="machine">Machine</label>
+            <br/>
+            <p-autoComplete formControlName="machine" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

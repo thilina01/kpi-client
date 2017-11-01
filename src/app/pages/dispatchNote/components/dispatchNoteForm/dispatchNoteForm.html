@@ -21,7 +21,7 @@
             <label for=" customer"> Customer</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-              [size]="50" [minLength]="1" placeholder="Search" (onDropdownClick)="handleCustomerDropdownClick($event)" (onSelect)="onCustomerSelect($event)">
+              [size]="50" [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -33,7 +33,7 @@
             <label for="employee">Sales Person</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeDropdownClick($event)" (onSelect)="onEmployeeSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.fullName}}</div>
@@ -45,7 +45,7 @@
             <label for="address">Ship To</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
-              [size]="76" [minLength]="1" placeholder="Search" (onDropdownClick)="handleAddressDropdownClick($event)" (onSelect)="onAddressSelect($event)">
+              [size]="76" [minLength]="1" placeholder="Search"  (onSelect)="onAddressSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -69,7 +69,7 @@
                   <br/>
                   <p-autoComplete [dropdown]="true" id="dispatchScheduleSelector" formControlName="dispatchSchedule" field="display" [suggestions]="filteredDispatchScheduleList"
                     (completeMethod)="filterDispatchScheduleList($event)" [size]="50" [minLength]="1" placeholder="Search"
-                    (onDropdownClick)="handleDispatchScheduleDropdownClick($event)" (onSelect)="onDispatchScheduleSelect($event)">
+                     (onSelect)="onDispatchScheduleSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
                         <div>{{option.code}} : {{option.name}}</div>
@@ -79,14 +79,12 @@
                 </div>
               </div>
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                <div class="ui-inputgroup">
                   <div class="form-group" [ngClass]="{'has-error': (! dispatchFormGroup.controls['quantity'].valid &&  dispatchFormGroup.controls['Quantity'].touched), 'has-success': ( dispatchFormGroup.controls['quantity'].valid && dispatchFormGroup.controls['quantity'].touched)}">
                     <label for="quantity"> Quantity</label>
                     <br/>
                     <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
                   </div>
                 </div>
-              </div>
               <div class="col">
                 <label for="inputFirstName">&nbsp;</label>
                 <br/>

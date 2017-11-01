@@ -4,6 +4,7 @@ import { AddressType } from './addressType.component';
 import { AddressTypeForm } from './components/addressTypeForm/addressTypeForm.component';
 import { AddressTypeTable } from './components/addressTypeTable/addressTypeTable.component';
 import { ModuleWithProviders } from '@angular/core';
+import { AddressTypeImport } from './components/addressTypeImport/addressTypeImport.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,9 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: AddressTypeForm },
       { path: 'form/:id', component: AddressTypeForm },
-      { path: 'table', component: AddressTypeTable }
+      { path: 'table', component: AddressTypeTable },
+      { path: 'import', component: AddressTypeImport }
+
     ]
   }
 ];

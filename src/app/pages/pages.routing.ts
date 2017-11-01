@@ -58,7 +58,7 @@ export const routes: Routes = [
       { path: 'home', canActivate: [AuthGuard], loadChildren: 'app/pages/home/home.module#HomeModule' },
       { path: 'humanResourceKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/humanResourceKpi/humanResourceKpi.module#HumanResourceKpiModule' },
       { path: 'incoterm', canActivate: [AuthGuard], loadChildren: 'app/pages/incoterm/incoterm.module#IncotermModule' },
-      // { path: 'invoice', canActivate: [AuthGuard], loadChildren: 'app/pages/invoice/invoice.module#InvoiceModule' },
+      { path: 'invoice', canActivate: [AuthGuard], loadChildren: 'app/pages/invoice/invoice.module#InvoiceModule' },
       { path: 'invoiceType', canActivate: [AuthGuard], loadChildren: 'app/pages/invoiceType/invoiceType.module#InvoiceTypeModule' },
       { path: 'item', canActivate: [AuthGuard], loadChildren: 'app/pages/item/item.module#ItemModule' },
       { path: 'itemType', canActivate: [AuthGuard], loadChildren: 'app/pages/itemType/itemType.module#ItemTypeModule' },

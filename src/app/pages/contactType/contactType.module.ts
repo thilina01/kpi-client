@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { ContactType } from './contactType.component';
 import { ContactTypeTable } from './components/contactTypeTable/contactTypeTable.component';
@@ -11,6 +11,7 @@ import { ContactTypeForm } from './components/contactTypeForm/contactTypeForm.co
 
 import { routing } from './contactType.routing';
 import { ContactTypeService } from './contactType.service';
+import { ContactTypeImport } from './components/contactTypeImport/contactTypeImport.component';
 
 @NgModule({
   imports: [
@@ -23,12 +24,16 @@ import { ContactTypeService } from './contactType.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     ContactType,
     ContactTypeTable,
-    ContactTypeForm
+    ContactTypeForm,
+    ContactTypeImport
+    
   ],
   providers: [
     ContactTypeService

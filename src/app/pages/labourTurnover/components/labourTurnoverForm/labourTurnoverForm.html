@@ -18,56 +18,44 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="labourSource">Labour Source</label>
-              <br/>
-              <p-autoComplete formControlName="labourSource" field="display" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSources($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLabourSourceDropdownClick($event)"
-                (onSelect)="onLabourSourceSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="labourSource">Labour Source</label>
+            <br/>
+            <p-autoComplete formControlName="labourSource" field="display" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSources($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLabourSourceSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="effectiveMonth">Effective Month</label>
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched), 'has-success': (formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched)}">
-                <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
-              </div>
+            <label for="effectiveMonth">Effective Month</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched), 'has-success': (formGroup.controls['effectiveMonth'].valid && formGroup.controls['effectiveMonth'].touched)}">
+              <p-calendar id="effectiveMonthPicker" formControlName="effectiveMonth" showIcon="true" dateFormat="yy-mm"></p-calendar>
             </div>
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="turnover">Turnover</label>
-              <br/>
-              <input type="number" pInputText formControlName="turnover">
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched), 'has-success': (formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched)}">
-              </div>
+            <label for="turnover">Turnover</label>
+            <br/>
+            <input type="number" pInputText formControlName="turnover">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched), 'has-success': (formGroup.controls['turnover'].valid && formGroup.controls['turnover'].touched)}">
             </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="target">Target</label>
-              <br/>
-              <input type="number" pInputText formControlName="target">
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['target'].valid && formGroup.controls['target'].touched), 'has-success': (formGroup.controls['target'].valid && formGroup.controls['target'].touched)}">
-              </div>
+            <label for="target">Target</label>
+            <br/>
+            <input type="number" pInputText formControlName="target">
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['target'].valid && formGroup.controls['target'].touched), 'has-success': (formGroup.controls['target'].valid && formGroup.controls['target'].touched)}">
             </div>
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

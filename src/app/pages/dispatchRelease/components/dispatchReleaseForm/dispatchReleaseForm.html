@@ -16,12 +16,10 @@
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
     <div class="row">
       <div class="col-12">
-        <div class="ui-inputgroup">
-          <label for="id">Dispatch Note ID</label>
-          <input type="text" pInputText formControlName="id">
-          <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
-            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
-        </div>
+        <label for="id">Dispatch Note ID</label>
+        <input type="text" pInputText formControlName="id">
+        <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+          <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
       </div>
     </div>
     <br/>
@@ -44,7 +42,7 @@
           <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
           <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Description"></p-column>
           <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-          <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
+          <p-column field="quantity" header="Quantity"></p-column>
         </p-dataTable>
       </div>
     </div>
@@ -53,34 +51,26 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="vehicleNumber">Vehicle Number</label>
-              <br/>
-              <input type="text" pInputText formControlName="vehicleNumber">
+            <label for="vehicleNumber">Vehicle Number</label>
+            <br/>
+            <input type="text" pInputText formControlName="vehicleNumber">
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="recipient">Recipient</label>
+            <br/>
+            <input type="text" pInputText formControlName="recipient">
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="dispatchReleaseTime">Time</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched), 'has-success':(formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched)}">
+              <p-calendar id="timePicker" formControlName="dispatchReleaseTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                hourFormat="24"></p-calendar>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="recipient">Recipient</label>
-              <br/>
-              <input type="text" pInputText formControlName="recipient">
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="dispatchReleaseTime">Time</label>
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched), 'has-success':(formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched)}">
-                <p-calendar id="timePicker" formControlName="dispatchReleaseTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
-                  hourFormat="24"></p-calendar>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="containerNumber">Container Number</label>
-              <br/>
-              <input type="text" pInputText formControlName="containerNumber">
-            </div>
+            <label for="containerNumber">Container Number</label>
+            <br/>
+            <input type="text" pInputText formControlName="containerNumber">
           </div>
         </div>
       </div>

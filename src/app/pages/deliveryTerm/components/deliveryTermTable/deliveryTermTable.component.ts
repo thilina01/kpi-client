@@ -54,6 +54,10 @@ export class DeliveryTermTable {
     this.router.navigate(['/pages/deliveryTerm/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/deliveryTerm/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

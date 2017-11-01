@@ -18,19 +18,14 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="code">Code</label>
-              <br/>
-              <input type="text" pInputText formControlName="code">
-            </div>
+            <label for="code">Code</label>
+            <br/>
+            <input type="text" pInputText formControlName="code">
           </div>
-          <br/>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="name">Name</label>
-              <br/>
-              <input type="text" pInputText formControlName="name">
-            </div>
+            <label for="name">Name</label>
+            <br/>
+            <input type="text" pInputText formControlName="name">
           </div>
         </div>
         <br/>

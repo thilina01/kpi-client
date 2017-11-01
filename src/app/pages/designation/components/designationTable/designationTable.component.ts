@@ -53,6 +53,9 @@ export class DesignationTable {
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/designation/form/' + id]);
   }
+  navigateToImport(): void {
+    this.router.navigate(['/pages/designation/import']);
+  }
 
   delete(id: number) {
     this.confirmationService.confirm({

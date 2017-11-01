@@ -18,20 +18,16 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="code">Code</label>
-              <br/>
-              <input type="text" pInputText formControlName="code">
-            </div>
+            <label for="code">Code</label>
+            <br/>
+            <input type="text" pInputText formControlName="code">
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="name">Name</label>
-              <br/>
-              <input type="text" pInputText formControlName="name">
-            </div>
+            <label for="name">Name</label>
+            <br/>
+            <input type="text" pInputText formControlName="name">
           </div>
           <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
@@ -39,7 +35,7 @@
             <label for=" section"> Section</label>
             <br/>
             <p-autoComplete formControlName="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -48,12 +44,10 @@
             </p-autoComplete>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

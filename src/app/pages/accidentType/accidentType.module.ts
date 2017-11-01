@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, FileUploadModule } from 'primeng/primeng';
 
 import { AccidentType } from './accidentType.component';
 import { AccidentTypeTable } from './components/accidentTypeTable/accidentTypeTable.component';
@@ -12,6 +12,7 @@ import { AccidentTypeForm } from './components/accidentTypeForm/accidentTypeForm
 import { routing } from './accidentType.routing';
 import { AccidentTypeService } from './accidentType.service';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { AccidentTypeImport } from './components/accidentTypeImport/accidentTypeImport.component';
 
 @NgModule({
   imports: [
@@ -24,12 +25,14 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
     PanelModule,
     InputTextModule,
     CalendarModule,
+    FileUploadModule,
     routing
   ],
   declarations: [
     AccidentType,
     AccidentTypeTable,
-    AccidentTypeForm
+    AccidentTypeForm,
+    AccidentTypeImport
   ],
   providers: [
     AccidentTypeService

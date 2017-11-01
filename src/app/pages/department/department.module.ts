@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { Department } from './department.component';
 import { DepartmentTable } from './components/departmentTable/departmentTable.component';
@@ -11,6 +11,7 @@ import { DepartmentForm } from './components/departmentForm/departmentForm.compo
 
 import { routing } from './department.routing';
 import { DepartmentService } from './department.service';
+import { DepartmentImport } from './components/departmentImport/departmentImport.component';
 
 @NgModule({
   imports: [
@@ -23,12 +24,15 @@ import { DepartmentService } from './department.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
+    FileUploadModule,
     routing
   ],
   declarations: [
     Department,
     DepartmentTable,
-    DepartmentForm
+    DepartmentForm,
+    DepartmentImport
+    
   ],
   providers: [
     DepartmentService

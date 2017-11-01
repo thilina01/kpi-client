@@ -18,48 +18,37 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="code">Employee ID</label>
-              <br/>
-              <input type="text" pInputText formControlName="code">
-            </div>
+            <label for="code">Employee ID</label>
+            <br/>
+            <input type="text" pInputText formControlName="code">
           </div>
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="fullName">Full Name</label>
-              <br/>
-              <input type="text" pInputText formControlName="fullName">
-            </div>
+            <label for="fullName">Full Name</label>
+            <br/>
+            <input type="text" pInputText formControlName="fullName">
           </div>
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="callingName">Calling Name</label>
-              <br/>
-              <input type="text" pInputText formControlName="callingName">
-            </div>
+            <label for="callingName">Calling Name</label>
+            <br/>
+            <input type="text" pInputText formControlName="callingName">
           </div>
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="nic">NIC</label>
-              <br/>
-              <input type="text" pInputText formControlName="nic">
-            </div>
+            <label for="nic">NIC</label>
+            <br/>
+            <input type="text" pInputText formControlName="nic">
           </div>
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="dateOfBirth">Date Of Birth</label>
-              <br/>
-              <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched), 'has-success': (formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched)}">
-                <p-calendar id="dateOfBirthPicker" formControlName="dateOfBirth" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
-              </div>
+            <label for="dateOfBirth">Date Of Birth</label>
+            <br/>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched), 'has-success': (formGroup.controls['dateOfBirth'].valid && formGroup.controls['dateOfBirth'].touched)}">
+              <p-calendar id="dateOfBirthPicker" formControlName="dateOfBirth" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
             </div>
           </div>
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
             <label for=" employeeCategory"> Employee Category</label>
             <br/>
             <p-autoComplete formControlName="employeeCategory" [dropdown]="true" field="display" [suggestions]="filteredEmployeeCategorys"
-              (completeMethod)="filterEmployeeCategory($event)" [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeCategoryDropdownClick($event)"
-              (onSelect)="onEmployeeCategorySelect($event)">
+              (completeMethod)="filterEmployeeCategory($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeCategorySelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -71,7 +60,7 @@
             <label for=" designationType"> Designation</label>
             <br/>
             <p-autoComplete formControlName="designation" [dropdown]="true" field="display" [suggestions]="filteredDesignations" (completeMethod)="filterDesignation($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleDesignationDropdownClick($event)" (onSelect)="onDesignationSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onDesignationSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -83,8 +72,7 @@
             <label for="labourSource">Labour Source </label>
             <br/>
             <p-autoComplete formControlName="labourSource" [dropdown]="true" field="display" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSource($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLabourSourceDropdownClick($event)"
-              (onSelect)="onLabourSourceSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLabourSourceSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -96,7 +84,7 @@
             <label for=" section"> Section</label>
             <br/>
             <p-autoComplete formControlName="section" [dropdown]="true" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -108,7 +96,7 @@
             <label for=" shift"> Shift</label>
             <br/>
             <p-autoComplete formControlName="shift" [dropdown]="true" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShift($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -117,20 +105,16 @@
             </p-autoComplete>
           </div>
           <div class="col-xl-4 col-lg-3 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="contactNumber">Contact Number</label>
-              <br/>
-              <input type="text" pInputText formControlName="contactNumber">
-            </div>
+            <label for="contactNumber">Contact Number</label>
+            <br/>
+            <input type="text" pInputText formControlName="contactNumber">
           </div>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-              <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
           </div>
         </div>
       </form>

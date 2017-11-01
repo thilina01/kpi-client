@@ -16,44 +16,36 @@
 		<p-header>
 			<div class="row">
 				<div class="col" style="text-align: left">
-					<div class="ui-inputgroup">
-						Duration
-						<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-						<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-					</div>
+					Duration
+					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
 				</div>
 				<div class="col" style="text-align: left">
-					<div class="ui-inputgroup">
-						Shift
-						<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
-						 [minLength]="1" [dropdown]="true"placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
-							<ng-template let-option pTemplate="option">
-								<div class="ui-helper-clearfix">
-									<div>{{option.code}}</div>
-								</div>
-							</ng-template>
-						</p-autoComplete>
-					</div>
+					Shift
+					<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
+					 [minLength]="1" [dropdown]="true" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
+						<ng-template let-option pTemplate="option">
+							<div class="ui-helper-clearfix">
+								<div>{{option.code}}</div>
+							</div>
+						</ng-template>
+					</p-autoComplete>
 				</div>
 				<div class="col" style="text-align: left">
-					<div class="ui-inputgroup">
-						Section
-						<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-						 [size]="30" [minLength]="1"[dropdown]="true" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onSectionSelect($event)">
-							<ng-template let-option pTemplate="option">
-								<div class="ui-helper-clearfix">
-									<div>{{option.code}}</div>
-								</div>
-							</ng-template>
-						</p-autoComplete>
-					</div>
+					Section
+					<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+					 [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onSectionSelect($event)">
+						<ng-template let-option pTemplate="option">
+							<div class="ui-helper-clearfix">
+								<div>{{option.code}}</div>
+							</div>
+						</ng-template>
+					</p-autoComplete>
 				</div>
 				<div class="col" style="text-align: left">
-					<div class="ui-inputgroup">
-						<button type="button" class="btn btn-primary btn-xs" (click)="search()">
-							<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
-						</button> &nbsp;&nbsp;{{totalRecords}}
-					</div>
+					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
+						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+					</button> &nbsp;&nbsp;{{totalRecords}}
 				</div>
 			</div>
 		</p-header>

@@ -12,7 +12,8 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: ItemTypeForm },
       { path: 'form/:id', component: ItemTypeForm },
-      { path: 'table', component: ItemTypeTable }
+      { path: 'table', component: ItemTypeTable },
+      
     ]
   }
 ];

@@ -54,6 +54,10 @@ export class AddressTypeTable {
     this.router.navigate(['/pages/addressType/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/addressType/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

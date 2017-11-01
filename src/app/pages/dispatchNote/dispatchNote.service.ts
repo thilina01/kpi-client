@@ -18,4 +18,12 @@ export class DispatchNoteService extends MasterService {
       .post(this.apiUrl + 'release', JSON.stringify(object), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+  getComboByCustomer(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + 'comboByCustomer/' + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getOneById(id: any): Observable<any> {
+    return this.http.get(this.apiUrl + 'id/' + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }

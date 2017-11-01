@@ -4,6 +4,7 @@ import { ContactType } from './contactType.component';
 import { ContactTypeForm } from './components/contactTypeForm/contactTypeForm.component';
 import { ContactTypeTable } from './components/contactTypeTable/contactTypeTable.component';
 import { ModuleWithProviders } from '@angular/core';
+import { ContactTypeImport } from './components/contactTypeImport/contactTypeImport.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,8 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: ContactTypeForm },
       { path: 'form/:id', component: ContactTypeForm },
-      { path: 'table', component: ContactTypeTable }
+      { path: 'table', component: ContactTypeTable },
+      { path: 'import', component: ContactTypeImport }
     ]
   }
 ];

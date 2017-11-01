@@ -18,56 +18,44 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class=" col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="code">Code</label>
-              <br/>
-              <input type="text" pInputText formControlName="code">
-            </div>
+            <label for="code">Code</label>
+            <br/>
+            <input type="text" pInputText formControlName="code">
           </div>
           <div class=" col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="name">Name</label>
-              <br/>
-              <input type="text" pInputText formControlName="name">
-            </div>
+            <label for="name">Name</label>
+            <br/>
+            <input type="text" pInputText formControlName="name">
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="controlPointType">Type</label>
-              <br/>
-              <p-autoComplete formControlName="controlPointType" field="display" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointTypeDropdownClick($event)"
-                (onSelect)="onControlPointTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="controlPointType">Type</label>
+            <br/>
+            <p-autoComplete formControlName="controlPointType" field="display" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onControlPointTypeSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="workCenter">Section</label>
-              <br/>
-              <p-autoComplete formControlName="workCenter" field="display" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleWorkCenterDropdownClick($event)"
-                (onSelect)="onWorkCenterSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="workCenter">Section</label>
+            <br/>
+            <p-autoComplete formControlName="workCenter" field="display" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onWorkCenterSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

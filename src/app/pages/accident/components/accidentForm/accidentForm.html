@@ -18,32 +18,26 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="code">Code</label>
-              <br/>
-              <input type="text" pInputText formControlName="code">
-            </div>
+            <label for="code">Code</label>
+            <br/>
+            <input type="text" pInputText formControlName="code">
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="referenceNo">Reference No</label>
-              <br/>
-              <input type="text" pInputText formControlName="referenceNo">
-            </div>
+            <label for="referenceNo">Reference No</label>
+            <br/>
+            <input type="text" pInputText formControlName="referenceNo">
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="accidentDate">Accident Date</label>
-              <br/>
-              <p-calendar id="orderDatePicker" formControlName="accidentDate" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
-                hourFormat="24"></p-calendar>
-            </div>
+            <label for="accidentDate">Accident Date</label>
+            <br/>
+            <p-calendar id="orderDatePicker" formControlName="accidentDate" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+              hourFormat="24"></p-calendar>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="employee">Employee</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleEmployeeDropdownClick($event)" (onSelect)="onEmployeeSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}}:{{option.fullName}}</div>
@@ -55,7 +49,7 @@
             <label for="section">Section</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="section" field="display" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleSectionDropdownClick($event)" (onSelect)="onSectionSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -67,7 +61,7 @@
             <label for="shift">Shift</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="shift" field="display" [suggestions]="filteredShiftList" (completeMethod)="filterShiftList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -79,7 +73,7 @@
             <label for="machine">Machine</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="machine" field="display" [suggestions]="filteredMachineList" (completeMethod)="filterMachineList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleMachineDropdownClick($event)" (onSelect)="onMachineSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -91,8 +85,7 @@
             <label for=" accidentType"> Accident Type</label>
             <br/>
             <p-autoComplete [dropdown]="true" formControlName="accidentType" field="display" [suggestions]="filteredAccidentTypes" (completeMethod)="filterAccidentTypes($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleAccidentTypeDropdownClick($event)"
-              (onSelect)="onAccidentTypeSelect($event)">
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAccidentTypeSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -101,25 +94,19 @@
             </p-autoComplete>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="responsiblePerson">Responsible Person</label>
-              <br/>
-              <input type="text" pInputText formControlName="responsiblePerson">
-            </div>
+            <label for="responsiblePerson">Responsible Person</label>
+            <br/>
+            <input type="text" pInputText formControlName="responsiblePerson">
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="rootCause">Root Cause</label>
-              <br/>
-              <input type="text" [size]="136" pInputText formControlName="rootCause">
-            </div>
+            <label for="rootCause">Root Cause</label>
+            <br/>
+            <input type="text" [size]="136" pInputText formControlName="rootCause">
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <div class="ui-inputgroup">
-              <label for="correctiveAction">Corrective Action</label>
-              <br/>
-              <input type="text" [size]="83" pInputText formControlName="correctiveAction">
-            </div>
+            <label for="correctiveAction">Corrective Action</label>
+            <br/>
+            <input type="text" [size]="83" pInputText formControlName="correctiveAction">
           </div>
         </div>
       </div>
@@ -137,7 +124,7 @@
                   <br/>
                   <p-autoComplete id="treatmentTypeSelector" formControlName="treatmentType" field="display" [suggestions]="filteredTreatmentTypes"
                     (completeMethod)="filterTreatmentTypes($event)" [dropdown]="true" [size]="20" [minLength]="1" placeholder="Search"
-                    (onDropdownClick)="handleTreatmentTypeDropdownClick($event)" (onSelect)="onTreatmentTypeSelect($event)">
+                    (onSelect)="onTreatmentTypeSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
                         <div>{{option.code}} : {{option.name}}</div>
@@ -147,41 +134,33 @@
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="ui-inputgroup">
-                  <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['description'].valid &&  treatmentFormGroup.controls['description'].touched), 'has-success': ( treatmentFormGroup.controls['description'].valid && treatmentFormGroup.controls['description'].touched)}">
-                    <label for="description">Description</label>
-                    <br/>
-                    <input type="text" [size]="138" pInputText formControlName="description">
-                  </div>
+                <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['description'].valid &&  treatmentFormGroup.controls['description'].touched), 'has-success': ( treatmentFormGroup.controls['description'].valid && treatmentFormGroup.controls['description'].touched)}">
+                  <label for="description">Description</label>
+                  <br/>
+                  <input type="text" [size]="138" pInputText formControlName="description">
                 </div>
               </div>
               &nbsp;
               <br/>
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-                <div class="ui-inputgroup">
-                  <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['startTime'].valid &&  treatmentFormGroup.controls['startTime'].touched), 'has-success': ( treatmentFormGroup.controls['startTime'].valid && treatmentFormGroup.controls['startTime'].touched)}">
-                    <label for="startTime">Start Time</label>
-                    <br/>
-                    <p-calendar id="orderDatePicker" formControlName="startTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
-                  </div>
+                <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['startTime'].valid &&  treatmentFormGroup.controls['startTime'].touched), 'has-success': ( treatmentFormGroup.controls['startTime'].valid && treatmentFormGroup.controls['startTime'].touched)}">
+                  <label for="startTime">Start Time</label>
+                  <br/>
+                  <p-calendar id="orderDatePicker" formControlName="startTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-                <div class="ui-inputgroup">
-                  <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['endTime'].valid &&  treatmentFormGroup.controls['endTime'].touched), 'has-success': ( treatmentFormGroup.controls['endTime'].valid && treatmentFormGroup.controls['endTime'].touched)}">
-                    <label for="endTime">End Time</label>
-                    <br/>
-                    <p-calendar id="orderDatePicker" formControlName="endTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
-                  </div>
+                <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['endTime'].valid &&  treatmentFormGroup.controls['endTime'].touched), 'has-success': ( treatmentFormGroup.controls['endTime'].valid && treatmentFormGroup.controls['endTime'].touched)}">
+                  <label for="endTime">End Time</label>
+                  <br/>
+                  <p-calendar id="orderDatePicker" formControlName="endTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-                <div class="ui-inputgroup">
-                  <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['lossManHours'].valid &&  treatmentFormGroup.controls['lossManHours'].touched), 'has-success': ( treatmentFormGroup.controls['lossManHours'].valid && treatmentFormGroup.controls['lossManHours'].touched)}">
-                    <label for="lossManHours">Loss Man Hours</label>
-                    <br/>
-                    <input type="number" #lossManHours (keyup.enter)="onEnter(lossManHours.value,dt)" pInputText formControlName="lossManHours">
-                  </div>
+                <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['lossManHours'].valid &&  treatmentFormGroup.controls['lossManHours'].touched), 'has-success': ( treatmentFormGroup.controls['lossManHours'].valid && treatmentFormGroup.controls['lossManHours'].touched)}">
+                  <label for="lossManHours">Loss Man Hours</label>
+                  <br/>
+                  <input type="number" #lossManHours (keyup.enter)="onEnter(lossManHours.value,dt)" pInputText formControlName="lossManHours">
                 </div>
               </div>
               <div class="col">

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { ComputerType } from './computerType.component';
 import { ComputerTypeTable } from './components/computerTypeTable/computerTypeTable.component';
@@ -11,6 +11,7 @@ import { ComputerTypeForm } from './components/computerTypeForm/computerTypeForm
 
 import { routing } from './computerType.routing';
 import { ComputerTypeService } from './computerType.service';
+import { ComputerTypeImport } from './components/computerTypeImport/computerTypeImport.component';
 
 @NgModule({
   imports: [
@@ -23,12 +24,15 @@ import { ComputerTypeService } from './computerType.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
+    FileUploadModule,
     routing
   ],
   declarations: [
     ComputerType,
     ComputerTypeTable,
-    ComputerTypeForm
+    ComputerTypeForm,
+    ComputerTypeImport
+    
   ],
   providers: [
     ComputerTypeService

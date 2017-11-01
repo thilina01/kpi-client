@@ -4,6 +4,7 @@ import { DeliveryTerm } from './deliveryTerm.component';
 import { DeliveryTermForm } from './components/deliveryTermForm/deliveryTermForm.component';
 import { DeliveryTermTable } from './components/deliveryTermTable/deliveryTermTable.component';
 import { ModuleWithProviders } from '@angular/core';
+import { DeliveryTermImport } from './components/deliveryTermImport/deliveryTermImport.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,9 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: DeliveryTermForm },
       { path: 'form/:id', component: DeliveryTermForm },
-      { path: 'table', component: DeliveryTermTable }
+      { path: 'table', component: DeliveryTermTable },
+      { path: 'import', component: DeliveryTermImport }
+
     ]
   }
 ];

@@ -18,46 +18,38 @@
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="lossType">Loss Type</label>
-              <br/>
-              <p-autoComplete formControlName="lossType" field="display" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onDropdownClick)="handleLossTypeDropdownClick($event)" (onSelect)="onLossTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-            </div>
+            <label for="lossType">Loss Type</label>
+            <br/>
+            <p-autoComplete formControlName="lossType" field="display" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
+              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLossTypeSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} : {{option.name}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="code">Code</label>
-              <br/>
-              <input type="text" pInputText formControlName="code">
-            </div>
+            <label for="code">Code</label>
+            <br/>
+            <input type="text" pInputText formControlName="code">
           </div>
         </div>
         <br/>
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              <label for="name">Name</label>
-              <br/>
-              <input type="text" pInputText formControlName="name">
-            </div>
+            <label for="name">Name</label>
+            <br/>
+            <input type="text" pInputText formControlName="name">
           </div>
         </div>
         <br/>
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="ui-inputgroup">
-              &nbsp;
-              <br/>
-              <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-              <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            </div>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

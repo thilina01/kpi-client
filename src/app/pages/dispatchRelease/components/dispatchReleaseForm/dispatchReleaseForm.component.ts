@@ -49,10 +49,8 @@ export class DispatchReleaseForm {
             dispatchReleaseTime: [this.dispatchReleaseTime, Validators.required],
             containerNumber: '',
             recipient: ''
-
         });
     }
-
     ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {

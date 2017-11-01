@@ -53,6 +53,9 @@ export class IncotermTable {
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/incoterm/form/' + id]);
   }
+  navigateToImport(): void {
+    this.router.navigate(['/pages/incoterm/import']);
+  }
 
   delete(id: number) {
     this.confirmationService.confirm({
