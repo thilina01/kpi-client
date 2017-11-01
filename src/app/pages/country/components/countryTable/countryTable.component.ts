@@ -54,6 +54,10 @@ export class CountryTable {
     this.router.navigate(['/pages/country/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/country/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',
