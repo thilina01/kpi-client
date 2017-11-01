@@ -114,7 +114,15 @@ export class EmployeeForm {
         this.setDisplayOfShift();
         this.setDisplayOfEmployeeCategory();
         this.setDisplayOfLabourSource();
-        this.setDisplayOfDesignation();        
+        this.setDisplayOfDesignation();
+    }
+
+    refresh(): void {
+        this.getSections();
+        this.getShifts();
+        this.getDesignations();
+        this.getEmployeeCategorys();
+        this.getLabourSources();
     }
 
     public onSubmit(values: any, event: Event): void {

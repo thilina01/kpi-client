@@ -10,7 +10,7 @@ export class ManpowerUtilizationService extends MasterService {
 
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp, aConfig, anAuthService);
-    this.setApiUrl('manpowerUtilizations/');
+    this.setApiUrl('productionEmployees/');
   }
 
   getByJobPage(job, page, size): Observable<any> {

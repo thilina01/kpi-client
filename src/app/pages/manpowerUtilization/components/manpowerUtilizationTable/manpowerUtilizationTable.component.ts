@@ -178,12 +178,12 @@ export class ManpowerUtilizationTable {
   }
   /*================== End Of Section Filter ===================*/
   /*================== Employee Filter ===================*/
-  filteredEmployees: any[];
+  filteredEmployees: any;
   filterEmployees(event) {
     let query = event.query.toLowerCase();
     this.filteredEmployees = [];
-    for (let i = 0; i < this.sections.length; i++) {
-      let employee = this.sections[i];
+    for (let i = 0; i < this.employees.length; i++) {
+      let employee = this.employees[i];
       if (employee.code.toLowerCase().indexOf(query) == 0) {
         this.filteredEmployees.push(employee);
       }
@@ -194,17 +194,16 @@ export class ManpowerUtilizationTable {
     this.filteredEmployees = [];
     //mimic remote call
     setTimeout(() => {
-      this.filteredEmployees = this.sections;
+      this.filteredEmployees = this.employees;
     }, 100)
   }
 
-  onEmployeeSelect(section: any) {
+  onEmployeeSelect(employee: any) {
     console.log(event)
   }
   /*================== End Of Employee Filter ===================*/
+
 }
-
-
 
 
 
