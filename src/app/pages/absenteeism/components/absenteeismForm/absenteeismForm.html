@@ -25,10 +25,9 @@
           <div class=' col-lg-6 col-md-6 col-sm-6 col-xs-12'>
             <label for='labourSource'>Labour Source</label>
             <br/>
-            <p-autoComplete formControlName='labourSource' id='labourSource' field='display'
+            <p-autoComplete formControlName='labourSource' id='labourSource' field='display' [dropdown]="true"
                             [suggestions]='filteredLabourSources' (completeMethod)='filterLabourSources($event)'
-                            [size]='20' [minLength]='1' placeholder='Search'
-                            (onSelect)='onLabourSourceSelect($event)'>
+                            [size]='20' [minLength]='1' placeholder='Search'>
               <ng-template let-option pTemplate='option'>
                 <div class='ui-helper-clearfix'>
                   <div>{{option.code}} : {{option.name}}</div>
