@@ -19,7 +19,7 @@
 	</p-header>
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-	 resizableColumns="true" exportFilename="countries" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
+	 resizableColumns="true" exportFilename="accidentTypes" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="code" header="Code" [sortable]="true"></p-column>
 		<p-column field="name" header="Name" [sortable]="true"></p-column>

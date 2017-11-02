@@ -54,6 +54,10 @@ export class ItemTypeTable {
     this.router.navigate(['/pages/itemType/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/itemType/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',
