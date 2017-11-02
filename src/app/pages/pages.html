@@ -8,7 +8,7 @@
       <img [src]="logoPath" height="48px" style="padding: 2px;">
     </a> &nbsp;&nbsp;&nbsp;
     <p-autoComplete [(ngModel)]="menu" field="name" [suggestions]="filteredMenus" (completeMethod)="filterMenus($event)" [size]="30"
-      [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onDropdownClick)="handleDropdownClick($event)" (onSelect)="onSelect($event)">
+      [minLength]="1" placeholder="Menu : Search" [dropdown]="true" (onSelect)="onSelect($event)">
       <ng-template let-menu pTemplate="menu">
         <div class="ui-helper-clearfix">
           <div>{{menu.name}}</div>
