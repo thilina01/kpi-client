@@ -1,62 +1,52 @@
 <div [formGroup]="formGroup">
 	<div class="row">
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-			<div class="ui-inputgroup">
-				<label for="productionDate">Date</label>
-				<br/>
-				<p-calendar id="productionDatePicker" formControlName="productionDate" showIcon="true" dateFormat="yy-mm-dd" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}"></p-calendar>
-			</div>
+			<label for="productionDate">Date</label>
+			<br/>
+			<p-calendar id="productionDatePicker" formControlName="productionDate" showIcon="true" dateFormat="yy-mm-dd" [ngClass]="{'has-error': (!formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched), 'has-success': (formGroup.controls['productionDate'].valid && formGroup.controls['productionDate'].touched)}"></p-calendar>
 		</div>
 		<div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
-			<div class="ui-inputgroup">
-				<label for="controlPoint">Control point</label>
-				<br/>
-				<p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
-				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleControlPointDropdownClick($event)" (onSelect)="onControlPointSelect($event)">
-					<ng-template let-option pTemplate="option">
-						<div class="ui-helper-clearfix">
-							<div>{{option.code}} : {{option.name}}</div>
-						</div>
-					</ng-template>
-				</p-autoComplete>
-			</div>
+			<label for="controlPoint">Control point</label>
+			<br/>
+			<p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+			 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onControlPointSelect($event)">
+				<ng-template let-option pTemplate="option">
+					<div class="ui-helper-clearfix">
+						<div>{{option.code}} : {{option.name}}</div>
+					</div>
+				</ng-template>
+			</p-autoComplete>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-			<div class="ui-inputgroup">
-				<label for="shift">Shift</label>
-				<br/>
-				<p-autoComplete formControlName="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
-				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
-					<ng-template let-option pTemplate="option">
-						<div class="ui-helper-clearfix">
-							<div>{{option.code}} : {{option.name}}</div>
-						</div>
-					</ng-template>
-				</p-autoComplete>
-			</div>
+			<label for="shift">Shift</label>
+			<br/>
+			<p-autoComplete formControlName="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+			 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
+				<ng-template let-option pTemplate="option">
+					<div class="ui-helper-clearfix">
+						<div>{{option.code}} : {{option.name}}</div>
+					</div>
+				</ng-template>
+			</p-autoComplete>
 		</div>
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-			<div class="ui-inputgroup">
-				<label for="shiftType">Shift Type</label>
-				<br/>
-				<p-autoComplete formControlName="shiftType" field="display" [suggestions]="filteredShiftTypes" (completeMethod)="filterShiftTypes($event)"
-				 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftTypeDropdownClick($event)" (onSelect)="onShiftTypeSelect($event)">
-					<ng-template let-option pTemplate="option">
-						<div class="ui-helper-clearfix">
-							<div>{{option.code}} : {{option.name}}</div>
-						</div>
-					</ng-template>
-				</p-autoComplete>
-			</div>
+			<label for="shiftType">Shift Type</label>
+			<br/>
+			<p-autoComplete formControlName="shiftType" field="display" [suggestions]="filteredShiftTypes" (completeMethod)="filterShiftTypes($event)"
+			 [size]="30" [minLength]="1" placeholder="Search" (onDropdownClick)="handleShiftTypeDropdownClick($event)" (onSelect)="onShiftTypeSelect($event)">
+				<ng-template let-option pTemplate="option">
+					<div class="ui-helper-clearfix">
+						<div>{{option.code}} : {{option.name}}</div>
+					</div>
+				</ng-template>
+			</p-autoComplete>
 		</div>
 		<div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-			<div class="ui-inputgroup">
-				<label for="plannedDuration">Duration</label>
-				<br/>
-				<input type="number" pInputText placeholder="Duration" formControlName="plannedDuration" [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
-			</div>
+			<label for="plannedDuration">Duration</label>
+			<br/>
+			<input type="number" pInputText placeholder="Duration" formControlName="plannedDuration" [ngClass]="{'has-error':!formGroup.controls['plannedDuration'].valid}">
 		</div>
 	</div>
 </div>
