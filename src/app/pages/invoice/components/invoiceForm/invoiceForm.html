@@ -94,11 +94,6 @@
                     <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
                     <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
                     <p-column field="quantity" header="Quantity"></p-column>
-                    <p-column header="Action" styleClass="text-right">
-                      <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
-                        <i (click)="removeDispatchNote(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
-                      </ng-template>
-                    </p-column>
                   </p-dataTable>
                 </div>
               </div>

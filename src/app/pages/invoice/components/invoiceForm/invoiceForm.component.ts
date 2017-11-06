@@ -137,18 +137,8 @@ export class InvoiceForm {
                 this.router.navigate(['/pages/invoice/form/']);
             }
         );
-    }   
-    public removeDispatchNote(id: number) {
-        if (this.formGroup.value.dispatchNote.dispatchList!= null) {
-            this.confirmationService.confirm({
-                message: 'Are you sure that you want to Delete?',
-                accept: () => {
-                    this.formGroup.value.dispatchNoteList.splice(id, 1);
-                    this.fillDispatchNotes();
-                }
-            });
-        }
     }
+
     public onEnter(dt: DataTable) {
         if (this.dispatchNoteFormGroup.valid) {
             let values = this.dispatchNoteFormGroup.value;
@@ -278,8 +268,6 @@ export class InvoiceForm {
         });
     }
     /*================== End Of DispatchNote Filter ===================*/
-
-
 }
 
 
