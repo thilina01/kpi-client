@@ -1,16 +1,16 @@
 <p-panel>
 	<div class="row">
-		<div class="ui-inputgroup col">
+		<div class="col">
 			<label>Duration</label>
 			<br/>
 			<p-calendar id="startDatePicker" [(ngModel)]="startDate" showIcon="true" dateFormat="yy-mm-dd" [style]="{'padding-right': '30px'}"></p-calendar>
 			<p-calendar id="endDatePicker" [(ngModel)]="endDate" showIcon="true" dateFormat="yy-mm-dd" [style]="{'padding-right': '30px'}"></p-calendar>
 		</div>
-		<div class="ui-inputgroup col">
+		<div class="col">
 			<label for="section">Section</label>
 			<br/>
 			<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-			 [size]="30" [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleSectionDropdownClick($event)"
+			 [size]="30" [minLength]="1" placeholder="Search" [dropdown]="true"
 			 (onSelect)="onSectionSelect($event)">
 				<ng-template let-option pTemplate="option">
 					<div class="ui-helper-clearfix">
@@ -19,11 +19,11 @@
 				</ng-template>
 			</p-autoComplete>
 		</div>
-		<div class="ui-inputgroup col">
+		<div class="col">
 			<label for="chart">Chart</label>
 			<br/>
 			<p-autoComplete [(ngModel)]="chart" field="name" [suggestions]="filteredCharts" (completeMethod)="filterCharts($event)" [size]="30"
-			 [minLength]="1" placeholder="Search" [dropdown]="true" (onDropdownClick)="handleChartDropdownClick($event)" (onSelect)="onChartSelect($event)">
+			 [minLength]="1" placeholder="Search" [dropdown]="true"  (onSelect)="onChartSelect($event)">
 				<ng-template let-option pTemplate="option">
 					<div class="ui-helper-clearfix">
 						<div>{{option.name}}</div>
@@ -31,7 +31,7 @@
 				</ng-template>
 			</p-autoComplete>
 		</div>
-		<div class="ui-inputgroup col">
+		<div class="col">
 			<br/>
 			<button type="button" class="btn btn-info" (click)="loadChart()">Load</button>
 		</div>
