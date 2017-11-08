@@ -12,7 +12,7 @@
 	</p-header>
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-	 resizableColumns="true" exportFilename="operations">
+	 resizableColumns="true" exportFilename="operations" (onRowDblclick)="onRowDblclick($event.data)">
 		<p-header>
 			<div class="row">
 				<div class="col" style="text-align: left">
@@ -50,6 +50,7 @@
 			</div>
 		</p-header>
 		<p-column field="id" header="ID"></p-column>
+		<p-column field="production.id" header="Production ID"></p-column>
 		<p-column field="production.controlPoint.code" header="Control Point"></p-column>
 		<p-column field="production.productionDate" header="Production Date"></p-column>
 		<p-column field="job.jobNo" header="Job"></p-column>
@@ -58,5 +59,14 @@
 		<p-column field="actualQuantity" header="Actual Quantity" styleClass="text-right"></p-column>
 		<p-column field="productType.description" header="Product Type"></p-column>
 		<p-column field="operationType.description" header="Operation Type"></p-column>
-	</p-dataTable>
+  </p-dataTable>
 </p-panel>
+<p-dialog *ngIf="selectedOpertion" header="Loss Of Operation: {{selectedOpertion.id}}" [(visible)]="display" modal="modal" [responsive]="true">
+  <div >
+      <p-dataTable [value]="selectedOpertion.lossList">
+          <p-column field="quantity" header="Quantity"></p-column>
+          <p-column field="lossReason.code" header="Reason Code"></p-column>
+          <p-column field="lossReason.name" header="Reason"></p-column>
+      </p-dataTable>
+  </div>
+</p-dialog>

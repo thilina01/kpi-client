@@ -30,6 +30,8 @@ export class OperationTable {
 
   startDate: Date;
   endDate: Date;
+  selectedOpertion: any;
+  display: boolean = false;
 
   constructor(protected service: OperationService,
     private router: Router,
@@ -110,6 +112,15 @@ export class OperationTable {
   fillTable(data: any) {
     this.rows = data.content;
     this.totalRecords = data.totalElements;
+  }
+
+  onRowDblclick(data: any): void {
+    this.selectedOpertion = data;
+    this.showDialog();
+  }
+
+  showDialog() {
+    this.display = true;
   }
 
   /*================== Shift Filter ===================*/

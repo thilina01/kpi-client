@@ -26,6 +26,7 @@ import { OperationTypeService } from '../operationType/operationType.service';
     PanelModule,
     CalendarModule,
     AutoCompleteModule,
+    DialogModule,
     routing
   ],
   declarations: [
