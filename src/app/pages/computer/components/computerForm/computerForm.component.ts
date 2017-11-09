@@ -80,6 +80,10 @@ export class ComputerForm {
             }
         );
     }
+    refresh(): void {
+        this.getEmployeeList();
+        this.getComputerTypeList();
+    }
 
     loadForm(data: any) {
         if (data != null) {

@@ -69,6 +69,11 @@ export class CustomerItemForm {
         );
     }
 
+    refresh(): void {
+        this.getCustomerList();
+        this.getItemList();
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.customerItem = data;

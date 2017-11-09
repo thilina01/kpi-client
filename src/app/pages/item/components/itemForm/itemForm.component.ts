@@ -74,6 +74,11 @@ export class ItemForm {
         );
     }
 
+    refresh(): void {
+        this.getItemTypes();
+        this.getPaints();
+    }
+
     loadForm(data: any) {
         if (data == null) {
             return;

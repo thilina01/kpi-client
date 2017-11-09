@@ -66,6 +66,11 @@ export class ControlPointMachineForm {
         );
     }
 
+    refresh(): void {
+        this.getControlPoints();
+        this.getMachines();
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.controlPointMachine = data;

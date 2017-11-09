@@ -59,6 +59,11 @@ export class OnTimeDeliveryForm {
         );
     }
 
+    refresh(): void {
+        this.getCustomerList();
+
+    }
+
     loadForm(data: any) {
         if (data != null) {
             data.effectiveMonth = new Date(data.effectiveMonth);

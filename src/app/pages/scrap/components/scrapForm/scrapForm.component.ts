@@ -96,6 +96,14 @@ export class ScrapForm {
         );
     }
 
+    refresh(): void {
+        this.getJobList();
+        this.getOperationTypeList();
+        this.getScrapReasonList();
+        this.getSectionList();
+        this.getItemTypeList();
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.scrap = data;

@@ -61,6 +61,11 @@ export class JobForm {
         );
     }
 
+    refresh(): void {
+        this.geItemList();
+
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.job = data;

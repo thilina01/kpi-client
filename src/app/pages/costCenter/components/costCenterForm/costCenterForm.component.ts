@@ -21,7 +21,7 @@ export class CostCenterForm {
     public formGroup: FormGroup;
     costCenter: any = {};
     subscription: Subscription;
-    costCenterType: any ;
+    costCenterType: any;
 
     constructor(protected service: CostCenterService,
         private route: ActivatedRoute,
@@ -56,6 +56,11 @@ export class CostCenterForm {
                 }
             }
         );
+    }
+
+    refresh(): void {
+        this.getSections();
+
     }
 
     loadForm(data: any) {

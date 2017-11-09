@@ -68,6 +68,11 @@ export class ControlPointForm {
         );
     }
 
+    refresh(): void {
+        this.getControlPointTypeList();
+        this.getWorkCenters();
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.controlPoint = data;

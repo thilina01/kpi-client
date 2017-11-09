@@ -59,6 +59,10 @@ export class LabourTurnoverForm {
         );
     }
 
+    refresh(): void {
+        this.getLabourSources();
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.labourTurnover = data;

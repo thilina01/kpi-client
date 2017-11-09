@@ -55,6 +55,11 @@ export class LossReasonForm {
         );
     }
 
+    refresh(): void {
+        this.getLossTypeList();
+
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.formGroup.patchValue(data, { onlySelf: true });

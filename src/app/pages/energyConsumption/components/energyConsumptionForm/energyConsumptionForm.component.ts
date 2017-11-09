@@ -62,6 +62,11 @@ export class EnergyConsumptionForm {
         );
     }
 
+    refresh(): void {
+        this.getLocations();
+
+    }
+
     loadForm(data: any) {
         if (data != null) {
             data.effectiveMonth = new Date(data.effectiveMonth);

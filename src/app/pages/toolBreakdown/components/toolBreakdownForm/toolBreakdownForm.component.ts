@@ -62,6 +62,11 @@ export class ToolBreakdownForm {
         );
     }
 
+    refresh(): void {
+        this.getTools();
+
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.toolBreakdown = data;

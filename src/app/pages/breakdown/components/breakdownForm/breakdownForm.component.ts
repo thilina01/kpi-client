@@ -63,6 +63,10 @@ export class BreakdownForm {
         );
     }
 
+    refresh(): void {
+        this.getMachines();
+
+    }
     loadForm(data: any) {
         if (data != null) {
             data.breakdownTime = new Date(data.breakdownTime);

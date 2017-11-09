@@ -60,6 +60,11 @@ export class WorkCenterForm {
         );
     }
 
+    refresh(): void {
+        this.getCostCenters();
+
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.workCenter = data;

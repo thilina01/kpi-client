@@ -1,10 +1,10 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router'
-import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import {SharedService} from '../../../../services/shared.service';
-import {AbsenteeismService} from '../../absenteeism.service';
-import {LabourSourceService} from '../../../labourSource/labourSource.service';
+import { SharedService } from '../../../../services/shared.service';
+import { AbsenteeismService } from '../../absenteeism.service';
+import { LabourSourceService } from '../../../labourSource/labourSource.service';
 
 @Component({
   selector: 'absenteeism-form',
@@ -18,10 +18,10 @@ export class AbsenteeismForm {
   labourSources: any;
 
   constructor(protected service: AbsenteeismService,
-              private route: ActivatedRoute,
-              private router: Router, fb: FormBuilder,
-              private sharedService: SharedService,
-              private labourSourceService: LabourSourceService) {
+    private route: ActivatedRoute,
+    private router: Router, fb: FormBuilder,
+    private sharedService: SharedService,
+    private labourSourceService: LabourSourceService) {
     this.formGroup = fb.group({
       id: null,
       effectiveMonth: [null, Validators.required],
@@ -50,20 +50,23 @@ export class AbsenteeismForm {
   loadForm(data: any) {
     if (data != null) {
       data.effectiveMonth = new Date(data.effectiveMonth);
-      this.formGroup.patchValue(data, {onlySelf: true});
+      this.formGroup.patchValue(data, { onlySelf: true });
     }
   }
 
   getLabourSources(): void {
     this.labourSourceService.getCombo().subscribe(labourSources => this.labourSources = labourSources);
   }
-
+  refresh(): void {
+    this.getLabourSources();
+  }
+  
   public onSubmit(values: any, event: Event): void {
     event.preventDefault();
     console.log(values);
     this.service.save(values).subscribe(
       () => {
-        this.sharedService.addMessage({severity: 'info', summary: 'Success', detail: 'Operation Success'});
+        this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
         this.resetForm();
         this.router.navigate(['/pages/absenteeism/form/']);
       }

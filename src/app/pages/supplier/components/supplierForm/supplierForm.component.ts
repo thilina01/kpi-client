@@ -95,6 +95,13 @@ export class SupplierForm {
         );
     }
 
+    refresh(): void {
+        this.getSupplierTypeList();
+        this.getCurrencyList();
+        this.getPaymentTermList();
+        this.getDeliveryTermList();
+    }
+
     loadForm(data: any) {
         if (data != null) {
             this.supplier = data;
