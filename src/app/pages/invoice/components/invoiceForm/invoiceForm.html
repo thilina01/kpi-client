@@ -31,26 +31,36 @@
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="invoiceType">InvoiceType</label> &nbsp;
             <br/>
-            <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes" (completeMethod)="filterInvoiceTypes($event)"
-              [minLength]="1" placeholder="Search" (onSelect)="onInvoiceTypeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes" (completeMethod)="filterInvoiceTypes($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onInvoiceTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/invoiceType/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="customer">Customer</label> &nbsp;
             <br/>
-            <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-              [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/customer/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
         </div>
         <p-panel>
@@ -62,15 +72,20 @@
                     <div class="form-group" [ngClass]="{'has-error': (! dispatchNoteFormGroup.controls['dispatchNote'].valid &&  dispatchNoteFormGroup.controls['dispatchNote'].touched), 'has-success': ( dispatchNoteFormGroup.controls['dispatchNote'].valid && dispatchNoteFormGroup.controls['dispatchNote'].touched)}">
                       <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
                       <br/>
-                      <p-autoComplete id="dispatchNoteSelector" #dispatchNote (keyup.enter)="onEnter(dispatchNote.value,dt)" formControlName="dispatchNote"
-                        [dropdown]="true" field="display" [suggestions]="filteredDispatchNoteList" (completeMethod)="filterDispatchNoteList($event)"
-                        [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
-                        <ng-template let-option pTemplate="option">
-                          <div class="ui-helper-clearfix">
-                            <div>{{option.id}}</div>
-                          </div>
-                        </ng-template>
-                      </p-autoComplete>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete id="dispatchNoteSelector" #dispatchNote (keyup.enter)="onEnter(dispatchNote.value,dt)" formControlName="dispatchNote"
+                          [dropdown]="true" field="display" [suggestions]="filteredDispatchNoteList" (completeMethod)="filterDispatchNoteList($event)"
+                          [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.id}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                        <a routerLink="/pages/dispatchNote/form" target="blank">
+                          <button pButton type="button" icon="fa-plus-circle"></button>
+                        </a>
+                      </div>
                     </div>
                   </div>
                   <div class="col">

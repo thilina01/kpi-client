@@ -36,62 +36,87 @@
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="employee">Employee</label>
             <br/>
-            <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}}:{{option.fullName}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}}:{{option.fullName}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/employee/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="section">Section</label>
             <br/>
-            <p-autoComplete [dropdown]="true" formControlName="section" field="display" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="section" field="display" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/section/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="shift">Shift</label>
             <br/>
-            <p-autoComplete [dropdown]="true" formControlName="shift" field="display" [suggestions]="filteredShiftList" (completeMethod)="filterShiftList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="shift" field="display" [suggestions]="filteredShiftList" (completeMethod)="filterShiftList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/shift/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="machine">Machine</label>
             <br/>
-            <p-autoComplete [dropdown]="true" formControlName="machine" field="display" [suggestions]="filteredMachineList" (completeMethod)="filterMachineList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="machine" field="display" [suggestions]="filteredMachineList" (completeMethod)="filterMachineList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/machine/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for=" accidentType"> Accident Type</label>
             <br/>
-            <p-autoComplete [dropdown]="true" formControlName="accidentType" field="display" [suggestions]="filteredAccidentTypes" (completeMethod)="filterAccidentTypes($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAccidentTypeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="accidentType" field="display" [suggestions]="filteredAccidentTypes" (completeMethod)="filterAccidentTypes($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAccidentTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/accidentType/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="responsiblePerson">Responsible Person</label>
@@ -122,15 +147,20 @@
                 <div class="form-group">
                   <label for="treatmentType">Treatment Type</label>
                   <br/>
-                  <p-autoComplete id="treatmentTypeSelector" formControlName="treatmentType" field="display" [suggestions]="filteredTreatmentTypes"
-                    (completeMethod)="filterTreatmentTypes($event)" [dropdown]="true" [size]="20" [minLength]="1" placeholder="Search"
-                    (onSelect)="onTreatmentTypeSelect($event)">
-                    <ng-template let-option pTemplate="option">
-                      <div class="ui-helper-clearfix">
-                        <div>{{option.code}} : {{option.name}}</div>
-                      </div>
-                    </ng-template>
-                  </p-autoComplete>
+                  <div class="ui-inputgroup">
+                    <p-autoComplete id="treatmentTypeSelector" formControlName="treatmentType" field="display" [suggestions]="filteredTreatmentTypes"
+                      (completeMethod)="filterTreatmentTypes($event)" [dropdown]="true" [size]="20" [minLength]="1" placeholder="Search"
+                      (onSelect)="onTreatmentTypeSelect($event)">
+                      <ng-template let-option pTemplate="option">
+                        <div class="ui-helper-clearfix">
+                          <div>{{option.code}} : {{option.name}}</div>
+                        </div>
+                      </ng-template>
+                    </p-autoComplete>
+                    <a routerLink="/pages/treatmentType/form" target="blank">
+                      <button pButton type="button" icon="fa-plus-circle"></button>
+                    </a>
+                  </div>
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">

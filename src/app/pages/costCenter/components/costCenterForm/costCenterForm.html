@@ -32,16 +32,21 @@
           <div class="col-md-8 col-sm-6 col-xs-12 hidden-xs-down">
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
-            <label for=" section"> Section</label>
+            <label for="section"> Section</label>
             <br/>
-            <p-autoComplete formControlName="section" [dropdown]="true" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="section" [dropdown]="true" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/section/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             &nbsp;

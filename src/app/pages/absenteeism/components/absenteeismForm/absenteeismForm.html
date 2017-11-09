@@ -17,33 +17,36 @@
     <div class='col-sm-12'>
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
         <div class='row'>
-          <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
-            <label for='effectiveMonthPicker'>Effective Month</label> <br/>
-            <p-calendar id='effectiveMonthPicker' formControlName='effectiveMonth' showIcon='true'
-                        dateFormat='yy-mm'></p-calendar>
-          </div>
-          <div class=' col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-            <label for='labourSource'>Labour Source</label>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for='effectiveMonthPicker'>Effective Month</label>
             <br/>
-            <p-autoComplete formControlName='labourSource' id='labourSource' field='display' [dropdown]="true"
-                            [suggestions]='filteredLabourSources' (completeMethod)='filterLabourSources($event)'
-                            [size]='20' [minLength]='1' placeholder='Search'>
-              <ng-template let-option pTemplate='option'>
-                <div class='ui-helper-clearfix'>
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+              <p-calendar id='effectiveMonthPicker' formControlName='effectiveMonth' showIcon='true' dateFormat='yy-mm'></p-calendar>
+            </div>
+            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+              <label for='labourSource'>Labour Source</label>
+              <br/>
+              <div class="ui-inputgroup">                
+              <p-autoComplete formControlName='labourSource' id='labourSource' field='display' [dropdown]="true" [suggestions]='filteredLabourSources'
+                (completeMethod)='filterLabourSources($event)' [size]='20' [minLength]='1' placeholder='Search'>
+                <ng-template let-option pTemplate='option'>
+                  <div class='ui-helper-clearfix'>
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/labourSource/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
-        </div>
-        <br/>
-        <div class='row'>
-          <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
-            <label for='absenteeism'>Absenteeism</label> <br/>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for='absenteeism'>Absenteeism</label>
+            <br/>
             <input type='number' pInputText id='absenteeism' formControlName='absenteeism'>
           </div>
-          <div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>
-            <label for='target'>Target</label> <br/>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for='target'>Target</label>
+            <br/>
             <input type='number' pInputText id='target' formControlName='target'>
           </div>
         </div>
@@ -51,8 +54,7 @@
         <div class='row'>
           <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
             <button pButton [disabled]='!formGroup.valid' type='submit' icon='fa-floppy-o' label='Save'></button>
-            <button type='button' pButton class='ui-button-secondary' (click)='resetForm()' icon='fa-times'
-                    label='Reset'></button>
+            <button type='button' pButton class='ui-button-secondary' (click)='resetForm()' icon='fa-times' label='Reset'></button>
           </div>
         </div>
       </form>

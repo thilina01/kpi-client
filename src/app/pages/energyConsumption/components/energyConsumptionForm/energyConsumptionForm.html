@@ -20,14 +20,19 @@
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="location">Location</label>
             <br/>
-            <p-autoComplete formControlName="location" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="location" [dropdown]="true" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/location/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="effectiveMonth">Effective Month</label>

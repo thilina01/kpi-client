@@ -6,7 +6,7 @@
 			</div>
 			<div class="col">
 				<p-autoComplete [(ngModel)]="lossType" field="name" [dropdown]="true" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
-				 [size]="30" [minLength]="1" placeholder="Loss Type" (onDropdownClick)="handleLossTypeDropdownClick($event)" (onSelect)="onLossTypeSelect($event)">
+				 [size]="30" [minLength]="1" placeholder="Loss Type" (onSelect)="onLossTypeSelect($event)">
 					<ng-template let-option pTemplate="option">
 						<div class="ui-helper-clearfix">
 							<div>{{option.code}} : {{option.name}}</div>

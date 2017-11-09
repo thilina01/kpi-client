@@ -26,25 +26,35 @@
 				</div>
 				<div class="col" style="text-align: left">
 					Shift
-					<p-autoComplete [(ngModel)]="shift" field="name" [dropdown]="true" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
-					 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect                                                      ($event)">
-						<ng-template let-option pTemplate="option">
-							<div class="ui-helper-clearfix">
-								<div>{{option.code}}</div>
-							</div>
-						</ng-template>
-					</p-autoComplete>
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="shift" field="name" [dropdown]="true" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+						 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect                                                      ($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+						<a routerLink="/pages/shift/form" target="blank">
+							<button pButton type="button" icon="fa-plus-circle"></button>
+						</a>
+					</div>
 				</div>
 				<div class="col" style="text-align: left">
 					Section
-					<p-autoComplete [(ngModel)]="section" field="name" [dropdown]="true" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-					 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
-						<ng-template let-option pTemplate="option">
-							<div class="ui-helper-clearfix">
-								<div>{{option.code}}</div>
-							</div>
-						</ng-template>
-					</p-autoComplete>
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="section" field="name" [dropdown]="true" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+						 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+						<a routerLink="/pages/section/form" target="blank">
+							<button pButton type="button" icon="fa-plus-circle"></button>
+						</a>
+					</div>
 				</div>
 				<div class="col" style="text-align: left">
 					<button type="button" class="btn btn-primary btn-xs" (click)="search()">

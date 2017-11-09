@@ -17,14 +17,19 @@
     <div class="col">
       <label>PO Number</label>
       <br/>
-      <p-autoComplete [(ngModel)]="salesOrder" [dropdown]="true" field="display" [suggestions]="filteredSalesOrders" (completeMethod)="filterSalesOrders($event)"
-        [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSalesOrderSelect($event)">
-        <ng-template let-option pTemplate="option">
-          <div class="ui-helper-clearfix">
-            <div>{{option.code}} : {{option.name}}</div>
-          </div>
-        </ng-template>
-      </p-autoComplete>
+      <div class="ui-inputgroup">
+        <p-autoComplete [(ngModel)]="salesOrder" [dropdown]="true" field="display" [suggestions]="filteredSalesOrders" (completeMethod)="filterSalesOrders($event)"
+          [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSalesOrderSelect($event)">
+          <ng-template let-option pTemplate="option">
+            <div class="ui-helper-clearfix">
+              <div>{{option.code}} : {{option.name}}</div>
+            </div>
+          </ng-template>
+        </p-autoComplete>
+        <a routerLink="/pages/salesOrder/form" target="blank">
+          <button pButton type="button" icon="fa-plus-circle"></button>
+        </a>
+      </div>
       <a *ngIf="salesOrder!=undefined" (click)="print()" href="javascript:void(0)" title="Print production confirmation ">
         &nbsp;
         <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">

@@ -1,4 +1,5 @@
 <label for=" customer"> Customer</label>
+<div class="ui-inputgroup">
 <p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
   [size]="50" [minLength]="1" placeholder="Search" [dropdown]="true" (onSelect)="onCustomerSelect($event)">
   <ng-template let-option pTemplate="option">

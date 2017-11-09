@@ -23,14 +23,19 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <label for="item">Item</label>
         <br/>
-        <p-autoComplete formControlName="item" field="display" [dropdown]="true" [suggestions]="filteredItemList" (completeMethod)="filterItemList($event)"
-          [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemSelect($event)" appendTo="body">
-          <ng-template let-option pTemplate="option">
-            <div class="ui-helper-clearfix">
-              <div>{{option.code}} : {{option.name}}</div>
-            </div>
-          </ng-template>
-        </p-autoComplete>
+        <div class="ui-inputgroup">
+          <p-autoComplete formControlName="item" field="display" [dropdown]="true" [suggestions]="filteredItemList" (completeMethod)="filterItemList($event)"
+            [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemSelect($event)" appendTo="body">
+            <ng-template let-option pTemplate="option">
+              <div class="ui-helper-clearfix">
+                <div>{{option.code}} : {{option.name}}</div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+          <a routerLink="/pages/item/form" target="blank">
+            <button pButton type="button" icon="fa-plus-circle"></button>
+          </a>
+        </div>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12">
         <label for="quantity">Quantity</label>

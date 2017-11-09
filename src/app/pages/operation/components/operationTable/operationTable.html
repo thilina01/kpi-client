@@ -22,25 +22,35 @@
 				</div>
 				<div class="col" style="text-align: left">
 					Shift
-					<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
-					 [minLength]="1" [dropdown]="true" placeholder="Search" (onDropdownClick)="handleShiftDropdownClick($event)" (onSelect)="onShiftSelect($event)">
-						<ng-template let-option pTemplate="option">
-							<div class="ui-helper-clearfix">
-								<div>{{option.code}}</div>
-							</div>
-						</ng-template>
-					</p-autoComplete>
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
+						 [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onShiftSelect($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+						<a routerLink="/pages/shift/form" target="blank">
+							<button pButton type="button" icon="fa-plus-circle"></button>
+						</a>
+					</div>
 				</div>
 				<div class="col" style="text-align: left">
 					Section
-					<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-					 [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onSectionSelect($event)">
-						<ng-template let-option pTemplate="option">
-							<div class="ui-helper-clearfix">
-								<div>{{option.code}}</div>
-							</div>
-						</ng-template>
-					</p-autoComplete>
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+						 [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onSectionSelect($event)">
+							<ng-template let-option pTemplate="option">
+								<div class="ui-helper-clearfix">
+									<div>{{option.code}}</div>
+								</div>
+							</ng-template>
+						</p-autoComplete>
+						<a routerLink="/pages/section/form" target="blank">
+							<button pButton type="button" icon="fa-plus-circle"></button>
+						</a>
+					</div>
 				</div>
 				<div class="col" style="text-align: left">
 					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
@@ -59,14 +69,15 @@
 		<p-column field="actualQuantity" header="Actual Quantity" styleClass="text-right"></p-column>
 		<p-column field="productType.description" header="Product Type"></p-column>
 		<p-column field="operationType.description" header="Operation Type"></p-column>
-  </p-dataTable>
+	</p-dataTable>
 </p-panel>
-<p-dialog *ngIf="selectedOpertion" header="Loss Of Operation: {{selectedOpertion.id}}" [(visible)]="display" modal="modal" [responsive]="true">
-  <div >
-      <p-dataTable [value]="selectedOpertion.lossList">
-          <p-column field="quantity" header="Quantity"></p-column>
-          <p-column field="lossReason.code" header="Reason Code"></p-column>
-          <p-column field="lossReason.name" header="Reason"></p-column>
-      </p-dataTable>
-  </div>
+<p-dialog *ngIf="selectedOpertion" header="Loss Of Operation: {{selectedOpertion.id}}" [(visible)]="display" modal="modal"
+ [responsive]="true">
+	<div>
+		<p-dataTable [value]="selectedOpertion.lossList">
+			<p-column field="quantity" header="Quantity"></p-column>
+			<p-column field="lossReason.code" header="Reason Code"></p-column>
+			<p-column field="lossReason.name" header="Reason"></p-column>
+		</p-dataTable>
+	</div>
 </p-dialog>

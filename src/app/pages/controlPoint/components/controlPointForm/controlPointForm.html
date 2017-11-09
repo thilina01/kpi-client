@@ -30,26 +30,36 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="controlPointType">Type</label>
             <br/>
-            <p-autoComplete formControlName="controlPointType" [dropdown]="true" field="display" [suggestions]="filteredControlPointTypes"
-              (completeMethod)="filterControlPointTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onControlPointTypeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="controlPointType" [dropdown]="true" field="display" [suggestions]="filteredControlPointTypes"
+                (completeMethod)="filterControlPointTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onControlPointTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/controlPointType/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="workCenter">Section</label>
             <br/>
-            <p-autoComplete formControlName="workCenter" [dropdown]="true" field="display" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onWorkCenterSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="workCenter" [dropdown]="true" field="display" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onWorkCenterSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/workCenter/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12">
             &nbsp;

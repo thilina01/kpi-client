@@ -55,26 +55,36 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="itemType">Type</label>
             <br/>
-            <p-autoComplete formControlName="itemType" [dropdown]="true" field="display" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemTypeSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="itemType" [dropdown]="true" field="display" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemTypeSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/itemType/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="paint">Paint</label>
             <br/>
-            <p-autoComplete formControlName="paint" [dropdown]="true" field="display" [suggestions]="filteredPaints" (completeMethod)="filterPaints($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onPaintSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="paint" [dropdown]="true" field="display" [suggestions]="filteredPaints" (completeMethod)="filterPaints($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onPaintSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/paint/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="drawingApproval">Drawing Approval</label>
