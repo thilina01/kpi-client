@@ -39,6 +39,7 @@
               </ng-template>
             </p-autoComplete>
           </div>
+
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="customerPoNumber">Customer PO Number</label>
             <br/>
@@ -48,7 +49,7 @@
             <label for=" customer"> Customer</label>
             <br/>
             <p-autoComplete formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+              [size]="20" [minLength]="1"[dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
                   <div>{{option.code}} : {{option.name}}</div>
@@ -70,7 +71,7 @@
                 <div class="form-group">
                   <label for="customerItem">Customer Item</label>
                   <br/>
-                  <p-autoComplete id="customerItemSelector" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
+                  <p-autoComplete id="customerItemSelector" [dropdown]="true" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
                     (completeMethod)="filterCustomerItems($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCustomerItemSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">

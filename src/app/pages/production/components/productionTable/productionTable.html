@@ -26,8 +26,8 @@
 				</div>
 				<div class="col" style="text-align: left">
 					Shift
-					<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
-					 [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect                                                      ($event)">
+					<p-autoComplete [(ngModel)]="shift" field="name" [dropdown]="true" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+					 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect                                                      ($event)">
 						<ng-template let-option pTemplate="option">
 							<div class="ui-helper-clearfix">
 								<div>{{option.code}}</div>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="col" style="text-align: left">
 					Section
-					<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+					<p-autoComplete [(ngModel)]="section" field="name" [dropdown]="true" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
 					 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
 						<ng-template let-option pTemplate="option">
 							<div class="ui-helper-clearfix">
@@ -72,4 +72,3 @@
 		</p-column>
 	</p-dataTable>
 </p-panel>
-<!-- (click)="edit(data.id)"  -->

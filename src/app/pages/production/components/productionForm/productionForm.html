@@ -99,9 +99,6 @@
                 <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true" [editable]="true"></p-column>
                 <p-column field="actualQuantity" header="Actual Quantity" [sortable]="true" [editable]="true"></p-column>
                 <p-column field="lossQuantity" header="Loss Quantity" [sortable]="true"></p-column>
-                <!--
-                                <p-column expander="true" styleClass="col-icon" [style]="{'width':'50px'}"></p-column>
-                                -->
                 <ng-template let-operation pTemplate="rowexpansion">
                   <p-header>Loss Details
                   </p-header>
@@ -175,7 +172,6 @@
                 </p-tabPanel>
                 <div *ngIf="production.manpowerList != undefined">
                   <p-tabPanel header="Manpower Quantity">
-
                     <p-dataTable #dt [value]="production.manpowerList" [responsive]="true" resizableColumns="true" [editable]="true">
                       <p-column field="manpowerType.name" header="Manpower Type" [sortable]="true"></p-column>
                       <p-column field="plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
@@ -187,8 +183,9 @@
                   <div class="row">
                     <div class="col-12">
                       <label>Employee</label>
-                      <p-autoComplete [dropdown]="true" [(ngModel)]="employee" [ngModelOptions]="{standalone: true}" field="display" [suggestions]="filteredEmployeeList"
-                        (completeMethod)="filterEmployeeList($event)" [size]="50" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
+                      <p-autoComplete [dropdown]="true" [(ngModel)]="employee" [dropdown]="true" [ngModelOptions]="{standalone: true}" field="display"
+                        [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)" [size]="50" [minLength]="1"
+                        placeholder="Search" (onSelect)="onEmployeeSelect($event)">
                         <ng-template let-option pTemplate="option">
                           <div class="ui-helper-clearfix">
                             <div>{{option.code}} : {{option.name}}</div>
@@ -205,10 +202,7 @@
                 </p-tabPanel>
               </div>
             </p-tabView>
-
-
           </div>
-
           <div class="row">
             <div class="col-sm-1">
               <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>

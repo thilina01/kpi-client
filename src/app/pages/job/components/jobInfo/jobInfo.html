@@ -3,8 +3,8 @@
     <div class="row" style="margin:5px;">
       <div class="col-12 row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-8">
-          <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
-            [size]="20" [minLength]="1" placeholder="Search Job" (onDropdownClick)="handleJobDropdownClick($event)" (onSelect)="onJobSelect($event)">
+          <p-autoComplete [(ngModel)]="job" field="display" [dropdown]="true" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+            [size]="15" [minLength]="1" placeholder="Search Job" (onSelect)="onJobSelect($event)">
             <ng-template let-option pTemplate="option">
               <div class="ui-helper-clearfix">
                 <div>{{option.code}} </div>

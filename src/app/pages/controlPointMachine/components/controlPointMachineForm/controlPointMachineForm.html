@@ -20,7 +20,7 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <label for="controlPoint">ControlPoint</label>
             <br/>
-            <p-autoComplete formControlName="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+            <p-autoComplete formControlName="controlPoint" [dropdown]="true" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onControlPointSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">
@@ -32,7 +32,7 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             <label for="machine">Machine</label>
             <br/>
-            <p-autoComplete formControlName="machine" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
+            <p-autoComplete formControlName="machine" [dropdown]="true" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
               [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
               <ng-template let-option pTemplate="option">
                 <div class="ui-helper-clearfix">

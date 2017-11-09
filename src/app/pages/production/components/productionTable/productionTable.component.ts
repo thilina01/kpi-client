@@ -44,7 +44,6 @@ export class ProductionTable {
         this.loadData();
         this.getSections();
         this.getShifts();
-        //sharedService.msgs$.subscribe(msgs=>this.msgs = msgs);
     }
 
     getSections(): void {
@@ -104,28 +103,16 @@ export class ProductionTable {
         this.totalRecords = data.totalElements;
     }
 
-    //selected(data: any) {
-        //this.service.setSelected(data.id);
-        //        this.service.getSelected().then((data) => {
-        //            this.production = data;
-        //        });
-    //}
     onRowDblclick(data: any): void {
         this.router.navigate(['/pages/production/form/' + data.id]);
     }
-    /*
-        edit(id: number) {
-            this.service.setSelected(id);
-            this.router.navigate(['/pages/production/form']);
-            //alert(id);
-        }*/
+
     delete(id: number) {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to Delete?',
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    //this.msgs.push();
                     this.loadData()
                 }
                 );
@@ -136,12 +123,8 @@ export class ProductionTable {
     lazy(event: any, table: any) {
         console.log(event);
         this.search((event.first / event.rows), event.rows);
-      }
-        /*
-        this.service.getAll().then((data) => {
-          this.rows = data;
-        });*/
-    
+    }
+
     onPage(event) {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
@@ -152,7 +135,7 @@ export class ProductionTable {
         this.router.navigate(['/pages/plan']);
     }
     /*================== Shift Filter ===================*/
-    filteredShifts: any; 
+    filteredShifts: any;
 
     filterShifts(event) {
         let query = event.query.toLowerCase();
