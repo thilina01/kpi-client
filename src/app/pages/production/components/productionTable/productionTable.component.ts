@@ -22,9 +22,9 @@ export class ProductionTable {
     rows = [];
     timeout: any;
     sections: any;
-    section: any = { id: 0, "code": "ALL", "name": "All Sections" }
+    section: any = { id: 0, "code": "ALL", "name": "All Sections", "display": "All" }
     shifts: any;
-    shift: any = { id: 0, "code": "ALL", "name": "All Shifts" }
+    shift: any = { id: 0, "code": "ALL", "name": "All Shifts", "display": "All" }
     startDate: Date;
     endDate: Date;
     //msgs: Message[];
@@ -49,13 +49,13 @@ export class ProductionTable {
     getSections(): void {
         this.sectionService.getCombo().subscribe(sections => {
             this.sections = sections;
-            this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections" });
+            this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections", "display": "All Sections" });
         });
     }
     getShifts(): void {
         this.shiftService.getCombo().subscribe(shifts => {
             this.shifts = shifts;
-            this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts" });
+            this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts", "display": "All Shifts" });
         });
     }
 

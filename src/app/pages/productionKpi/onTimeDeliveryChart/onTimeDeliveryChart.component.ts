@@ -64,14 +64,14 @@ export class OnTimeDeliveryChart {
   getCustomerList(): void {
     this.customerService.getCombo().subscribe(customerList => {
       this.customerList = customerList;
-      this.customerList.unshift({ "id": 0, "code": "ALL", "name": "All Customers" });
+      this.customerList.unshift({ "id": 0, "code": "ALL", "name": "All Customers","display": "All Customers" });
     });
   }
 
   /*================== CustomerFilter ===================*/
   customerList = [];
   filteredCustomerList: any[];
-  customer: any = { "id": 0, "code": "ALL", "name": "All Customers" };
+  customer: any = { "id": 0, "code": "ALL", "name": "All Customers","display": "All Customers" };
 
   filterCustomerList(event) {
     let query = event.query.toLowerCase();
