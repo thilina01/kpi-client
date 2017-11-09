@@ -36,14 +36,21 @@
           <div class="col-md-4 col-sm-6 col-xs-12">
             <label for=" costCenter"> Cost Center</label>
             <br/>
-            <p-autoComplete formControlName="costCenter" field="display" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
-              [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCostCenterSelect($event)">
-              <ng-template let-option pTemplate="option">
-                <div class="ui-helper-clearfix">
-                  <div>{{option.code}} : {{option.name}}</div>
-                </div>
-              </ng-template>
-            </p-autoComplete>
+
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="costCenter" field="display" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCostCenterSelect($event)" [dropdown]="true">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/costCenter/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             &nbsp;
