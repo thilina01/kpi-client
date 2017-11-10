@@ -54,7 +54,7 @@
             <br/>
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-                [size]="20" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>
@@ -76,13 +76,13 @@
         <div class=" col-sm-12">
           <form [formGroup]="salesOrderItemFormGroup" class="form-horizontal">
             <div class="row">
-              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="form-group">
                   <label for="customerItem">Customer Item</label>
                   <br/>
                   <div class="ui-inputgroup">
                     <p-autoComplete id="customerItemSelector" [dropdown]="true" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
-                      (completeMethod)="filterCustomerItems($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCustomerItemSelect($event)">
+                      (completeMethod)="filterCustomerItems($event)" [size]="95" [minLength]="1" placeholder="Search" (onSelect)="onCustomerItemSelect($event)">
                       <ng-template let-option pTemplate="option">
                         <div class="ui-helper-clearfix">
                           <div>{{option.code}} : {{option.name}}</div>
