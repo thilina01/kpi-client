@@ -15,8 +15,8 @@ import { DataTable, ConfirmationService } from 'primeng/primeng';
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./salesOrderForm.scss'],
     templateUrl: './salesOrderForm.html',
-
 })
+
 export class SalesOrderForm {
     @Input('formGroup')
     public formGroup: FormGroup;
@@ -74,7 +74,7 @@ export class SalesOrderForm {
     }
 
     getCustomerItemList(): void {
-        this.customerItemService.getCombo().subscribe(customerItemList => this.customerItemList = customerItemList);
+        this.customerItemService.getComboByCustomer(this.formGroup.value.customer).subscribe(customerItemList => this.customerItemList = customerItemList);
     }
 
     getSalesOrderTypeList(): void {
@@ -82,7 +82,6 @@ export class SalesOrderForm {
     }
 
     refresh(): void {
-        this.getCustomerItemList();
         this.getCustomerList();
         this.getSalesOrderTypeList();
     }
@@ -101,7 +100,6 @@ export class SalesOrderForm {
             this.refresh();
         }, 500);
         this.getCustomerList();
-        this.getCustomerItemList();
         this.getSalesOrderTypeList();
         this.route.params.subscribe(
             (params: Params) => {
@@ -127,9 +125,6 @@ export class SalesOrderForm {
         this.customer = this.salesOrder.customer;
         this.salesOrderType = this.salesOrder.salesOrderType;
         this.customerItem = this.salesOrder.customerItem;
-        this.setDisplayOfCustomerItem();
-        this.setDisplayOfSalesOrderType();
-        this.setDisplayOfCustomer();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -218,18 +213,9 @@ export class SalesOrderForm {
     }
 
     onCustomerItemSelect(event: any) {
-
-        this.setDisplayOfCustomerItem();
     }
 
-    setDisplayOfCustomerItem() {
-        let customerItem = this.salesOrderItemFormGroup.value.customerItem;
-        if (customerItem != null && customerItem != undefined) {
-            let display = customerItem.code != null && customerItem.code != undefined ? customerItem.code + ' : ' : '';
-            display += customerItem.name != null && customerItem.name != undefined ? customerItem.name : '';
-            this.salesOrderItemFormGroup.value.customerItem.display = display;
-        }
-    }
+
     /*================== End Of Customer Item Filter ===================*/
     /*================== Sales Order Type Filter ===================*/
     filteredSalesOrderTypes: any[];
@@ -254,18 +240,8 @@ export class SalesOrderForm {
     }
 
     onSalesOrderTypeSelect(event: any) {
-
-        this.setDisplayOfSalesOrderType();
     }
 
-    setDisplayOfSalesOrderType() {
-        let salesOrderType = this.formGroup.value.salesOrderType;
-        if (salesOrderType != null && salesOrderType != undefined) {
-            let display = salesOrderType.code != null && salesOrderType.code != undefined ? salesOrderType.code + ' : ' : '';
-            display += salesOrderType.name != null && salesOrderType.name != undefined ? salesOrderType.name : '';
-            this.formGroup.value.salesOrderType.display = display;
-        }
-    }
     /*================== End Of Sales Order Type Filter ===================*/
     /*================== CustomerFilter ===================*/
     filteredCustomerList: any[];
@@ -290,17 +266,9 @@ export class SalesOrderForm {
     }
 
     onCustomerSelect(event: any) {
-        this.setDisplayOfCustomer();
+        this.getCustomerItemList();
     }
 
-    setDisplayOfCustomer() {
-        let customer = this.formGroup.value.customer;
-        if (customer != null && customer != undefined) {
-            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
-            display += customer.name != null && customer.name != undefined ? customer.name : '';
-            this.formGroup.value.customer.display = display;
-        }
-    }
 }
 
 
