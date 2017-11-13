@@ -26,7 +26,6 @@ export class MtbfMttr6MonthsChartService {
       },
 
       'dataProvider': [
-        { 'month': ' Apr(2017)  ', 'mtbf': 253.02, 'mttr': 1.54 },
         { 'month': ' May(2017)  ', 'mtbf': 369.64, 'mttr': 2.06 },
         { 'month': ' June(2017)  ', 'mtbf': 79.27, 'mttr': 1.38 },
         { 'month': ' July(2017)  ', 'mtbf': 163.56, 'mttr': 1.15 },
