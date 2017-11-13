@@ -1,0 +1,207 @@
+<p-panel>
+  <p-header>
+    <div class='row'>
+      <div class='col'>
+        <h4>Packing List Form</h4>
+      </div>
+      <div class='col'>
+        <a routerLink='/pages/packingList/table'>
+          <button type='button' class='btn btn-primary btn-xs' style='float:right; margin-right:6px;'>
+            <i ng-reflect-class-name='fa fa-file-text-o' class='ui-button-icon-left ui-clickable fa fa-fw fa-close'></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+        <div class='row'>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='contactPerson'>Contact Person</label>
+            <br/>
+            <input type='text' pInputText formControlName='contactPerson'>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='port'>Port Of Loading</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName='port' id='port' field='display' [dropdown]="true" [suggestions]='filteredPorts' (completeMethod)='filterPorts($event)'
+                [size]='20' [minLength]='1' placeholder='Search'>
+                <ng-template let-option pTemplate='option'>
+                  <div class='ui-helper-clearfix'>
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/port/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='country'>Country Of Final Destination</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName='country' id='country' field='display' [dropdown]="true" [suggestions]='filteredCountries'
+                (completeMethod)='filterCountries($event)' [size]='20' [minLength]='1' placeholder='Search'>
+                <ng-template let-option pTemplate='option'>
+                  <div class='ui-helper-clearfix'>
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/country/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='port'>Final Destination</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName='port' id='port' field='display' [dropdown]="true" [suggestions]='filteredPorts' (completeMethod)='filterPorts($event)'
+                [size]='20' [minLength]='1' placeholder='Search'>
+                <ng-template let-option pTemplate='option'>
+                  <div class='ui-helper-clearfix'>
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/port/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='containerSize'>Container Size</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName='containerSize' id='containerSize' field='display' [dropdown]="true" [suggestions]='filteredContainerSizes'
+                (completeMethod)='filterContainerSizes($event)' [size]='20' [minLength]='1' placeholder='Search'>
+                <ng-template let-option pTemplate='option'>
+                  <div class='ui-helper-clearfix'>
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/containerSize/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='noOfContainers'>No Of Containers</label>
+            <br/>
+            <input type='number' pInputText formControlName='noOfContainers'>
+          </div>
+        </div>
+        <br/>
+        <p-panel>
+          <div class="row">
+            <div class=" col-sm-12">
+              <form [formGroup]=" invoiceFormGroup" class="form-horizontal">
+                <div class="row">
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                    <div class="form-group" [ngClass]="{'has-error': (! invoiceFormGroup.controls['invoice'].valid &&  invoiceFormGroup.controls['invoice'].touched), 'has-success': ( invoiceFormGroup.controls['invoice'].valid && invoiceFormGroup.controls['invoice'].touched)}">
+                      <label for="invoice">Invoice ID</label> &nbsp;
+                      <br/>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete id="invoiceSelector" formControlName="invoice" [dropdown]="true" field="display" [suggestions]="filteredInvoiceList"
+                          (completeMethod)="filterInvoiceList($event)" [minLength]="1" placeholder="Search">
+                          <ng-template let-option pTemplate="option">
+                            <div class="ui-helper-clearfix">
+                              <div>{{option.id}}</div>
+                            </div>
+                          </ng-template>
+                        </p-autoComplete>
+                        <a routerLink="/pages/invoice/form" target="blank">
+                          <button pButton type="button" icon="fa-plus-circle"></button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! invoiceFormGroup.controls['pkgs'].valid &&  invoiceFormGroup.controls['pkgs'].touched), 'has-success': ( invoiceFormGroup.controls['pkgs'].valid && invoiceFormGroup.controls['pkgs'].touched)}">
+                      <label for='pkgs'>PKGS</label>
+                      <br/>
+                      <input type='number' pInputText formControlName='pkgs'>
+                    </div>
+                  </div>
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! invoiceFormGroup.controls['netWeight'].valid &&  invoiceFormGroup.controls['netWeight'].touched), 'has-success': ( invoiceFormGroup.controls['netWeight'].valid && invoiceFormGroup.controls['netWeight'].touched)}">
+                      <label for='netWeight'>Net Weight</label>
+                      <br/>
+                      <input type='number' pInputText formControlName='netWeight'>
+                    </div>
+                  </div>
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! invoiceFormGroup.controls['grossWeight'].valid &&  invoiceFormGroup.controls['grossWeight'].touched), 'has-success': ( invoiceFormGroup.controls['grossWeight'].valid && invoiceFormGroup.controls['grossWeight'].touched)}">
+                      <label for='grossWeight'>Gross Weight</label>
+                      <br/>
+                      <input type='number' pInputText formControlName='grossWeight'>
+                    </div>
+                  </div>
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! invoiceFormGroup.controls['cbm'].valid &&  invoiceFormGroup.controls['cbm'].touched), 'has-success': ( invoiceFormGroup.controls['cbm'].valid && invoiceFormGroup.controls['cbm'].touched)}">
+                      <label for='cbm'>CBM</label>
+                      <br/>
+                      <input type='number' #cbm (keyup.enter)="onEnter(cbm.value,dt)" pInputText formControlName='cbm'>
+                    </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                    <label for="inputFirstName">&nbsp;</label>
+                    <br/>
+                    <div class="form-group form-inline">
+                      <button (click)="onEnter(cbm.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <p-dataTable #dt [value]="formGroup.value.invoiceList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                    <p-column field="id" header="ID"></p-column>
+                    <p-column field="dispatchNote.dispatchSchedule.job.jobNo" header="Job No"></p-column>
+                    <p-column field="dispatchNote.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+                    <p-column field="dispatchNote.dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+                    <p-column field="dispatchNote.dispatchSchedule.job.item.code" header="Item Code"></p-column>
+                    <p-column field="dispatchNote.dispatchSchedule.job.item.size" header="Size"></p-column>
+                    <p-column field="dispatchNote.quantity" header="Quantity"></p-column>
+                    <p-column field="pkgs" header="PKGS" [editable]="true"></p-column>
+                    <p-column field="netWeight" header="Net Weight" [editable]="true"></p-column>
+                    <p-column field="grossWeight" header="Gross Weight" [editable]="true"></p-column>
+                    <p-column field="cbm" header="CBM" [editable]="true"></p-column>
+                    <p-column header="Action" styleClass="text-right">
+                      <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
+                        <i (click)="removeInvoice(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                      </ng-template>
+                    </p-column>
+                    <p-footerColumnGroup>
+                      <p-row>
+                        <p-column footer="Totals:" colspan="7" styleClass="text-right"></p-column>
+                        <p-column footer="{{formGroup.value.pkgs}}" styleClass="text-right"></p-column>
+                        <p-column footer="{{formGroup.value.netWeight}}" styleClass="text-right"></p-column>
+                        <p-column footer="{{formGroup.value.grossWeight}}" styleClass="text-right"></p-column>
+                        <p-column footer="{{formGroup.value.cbm}}" styleClass="text-right"></p-column>
+                        <p-column footer=""></p-column>
+                      </p-row>
+                    </p-footerColumnGroup>
+                  </p-dataTable>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <br/>
+        <div class='row'>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>

@@ -82,7 +82,7 @@ export const routes: Routes = [
       { path: 'organization', canActivate: [AuthGuard], loadChildren: 'app/pages/organization/organization.module#OrganizationModule' },
       { path: 'onTimeDelivery', canActivate: [AuthGuard], loadChildren: 'app/pages/onTimeDelivery/onTimeDelivery.module#OnTimeDeliveryModule' },
       { path: 'operationType', canActivate: [AuthGuard], loadChildren: 'app/pages/operationType/operationType.module#OperationTypeModule' },
-      //{ path: 'packingList', canActivate: [AuthGuard], loadChildren: 'app/pages/packingList/packingList.module#PackingListModule' },
+      { path: 'packingList', canActivate: [AuthGuard], loadChildren: 'app/pages/packingList/packingList.module#PackingListModule' },
       { path: 'paint', canActivate: [AuthGuard], loadChildren: 'app/pages/paint/paint.module#PaintModule' },
       { path: 'paymentTerm', canActivate: [AuthGuard], loadChildren: 'app/pages/paymentTerm/paymentTerm.module#PaymentTermModule' },
       { path: 'permission', canActivate: [AuthGuard], loadChildren: 'app/pages/permission/permission.module#PermissionModule' },
