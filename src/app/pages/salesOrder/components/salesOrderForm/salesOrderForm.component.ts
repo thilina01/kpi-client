@@ -43,7 +43,7 @@ export class SalesOrderForm {
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
-        private confirmationService: ConfirmationService, 
+        private confirmationService: ConfirmationService,
         private customerItemService: CustomerItemService,
         private customerService: CustomerService,
         private salesOrderTypeService: SalesOrderTypeService,
@@ -121,7 +121,7 @@ export class SalesOrderForm {
     loadForm(data: any) {
         if (data != null) {
             data.orderDate = new Date(data.orderDate);
-            this.salesOrder = data;            
+            this.salesOrder = data;
         }
         this.formGroup.patchValue(this.salesOrder, { onlySelf: true });
         this.customer = this.salesOrder.customer;
@@ -153,7 +153,7 @@ export class SalesOrderForm {
         this.salesOrderItemFormGroup.reset();
     }
 
-    public removeSalesOrderItem(id: number) {        
+    public removeSalesOrderItem(id: number) {
         if (this.formGroup.value.salesOrderItemList != null) {
             this.confirmationService.confirm({
                 message: 'Are you sure that you want to Delete?',
@@ -179,16 +179,16 @@ export class SalesOrderForm {
             document.getElementById('customerItemSelector').focus();
             this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
         }
-        
+
     }
 
-    calculateTotal() {       
+    calculateTotal() {
         let amount = 0;
-        let quantity = 0; 
+        let quantity = 0;
         for (let i = 0; i < this.formGroup.value.salesOrderItemList.length; i++) {
             let salesOrderItem = this.formGroup.value.salesOrderItemList[i];
             salesOrderItem.amount = salesOrderItem.quantity * salesOrderItem.unitPrice;
-            amount += parseInt(salesOrderItem.amount);
+            amount += salesOrderItem.amount;
             quantity += parseInt(salesOrderItem.quantity);
         }
         this.formGroup.value.amount=amount;
