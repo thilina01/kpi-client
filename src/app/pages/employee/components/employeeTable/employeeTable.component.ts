@@ -49,9 +49,11 @@ export class EmployeeTable {
   onRowDblclick(data: any): void {
     this.router.navigate(['/pages/employee/form/' + data.id]);
   }
-
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/employee/form/' + id]);
+  }
+  navigateToImport(): void {
+    this.router.navigate(['/pages/employee/import']);
   }
 
   delete(id: number) {

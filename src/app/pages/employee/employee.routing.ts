@@ -4,6 +4,7 @@ import { Employee } from './employee.component';
 import { EmployeeForm } from './components/employeeForm/employeeForm.component';
 import { EmployeeTable } from './components/employeeTable/employeeTable.component';
 import { ModuleWithProviders } from '@angular/core';
+import { EmployeeImport } from './components/employeeImport/employeeImport.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,8 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: EmployeeForm },
       { path: 'form/:id', component: EmployeeForm },
-      { path: 'table', component: EmployeeTable }
+      { path: 'table', component: EmployeeTable },
+      { path: 'import', component: EmployeeImport }
     ]
   }
 ];

@@ -5,10 +5,15 @@
 				<h4>Employee List</h4>
 			</div>
 			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToImport()" style="float:right; margin-right:6px;">
+					<i ng-reflect-class-name="fa fa-upload" class="fa fa-upload"></i> Import
+				</button>
 				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
-					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export
+				</button>
 				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;">
-					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add
+				</button>
 			</div>
 		</div>
 	</p-header>
@@ -16,17 +21,8 @@
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="employees" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="code" header="Employee ID" [sortable]="true"></p-column>
-		<p-column field="fullName" header="Full Name" [sortable]="true"></p-column>
+		<p-column field="code" header="Code" [sortable]="true"></p-column>
 		<p-column field="callingName" header="Calling Name" [sortable]="true"></p-column>
-		<p-column field="dateOfBirth" header="Date Of Birth" [sortable]="true"></p-column>
-		<p-column field="nic" header="NIC" [sortable]="true"></p-column>
-		<p-column field="contactNumber" header="Contact Number" [sortable]="true"></p-column>
-		<p-column field="designation.name" header="Designation" [sortable]="true"></p-column>
-		<p-column field="employeeCategory.name" header="Employee Category" [sortable]="true"></p-column>
-		<p-column field="shift.name" header="Shift" [sortable]="true"></p-column>
-		<p-column field="section.name" header="Section" [sortable]="true"></p-column>
-		<p-column field="labourSource.name" header="LabourSource" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/employee/form/'+data.id">
