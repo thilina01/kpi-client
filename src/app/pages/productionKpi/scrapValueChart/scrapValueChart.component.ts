@@ -29,13 +29,13 @@ export class ScrapValueChart {
     "gridAboveGraphs": true,
     "startDuration": 1,
     "graphs": [{
-      "balloonText": "[[category]]: <b>[[scrap]]%</b>",
+      "balloonText": "[[category]]: <b>[[value]]</b>",
       "fillAlphas": 0.8,
       "lineAlpha": 0.2,
       "type": "column",
-      "valueField": "scrap",
-      "labelText": "[[scrap]]%",
-      "title": "Scrap"
+      "valueField": "value",
+      "labelText": "[[value]]",
+      "title": "Value"
     }],
     "chartCursor": {
       "categoryBalloonEnabled": false,
