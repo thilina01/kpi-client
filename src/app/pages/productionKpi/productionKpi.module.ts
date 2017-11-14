@@ -15,6 +15,8 @@ import { ChartService } from '../chart/chart.service';
 import { OnTimeDeliveryChart } from './onTimeDeliveryChart/onTimeDeliveryChart.component';
 import { OnTimeDeliveryChartService } from './onTimeDeliveryChart/onTimeDeliveryChart.service';
 import { CustomerService } from '../customer/customer.service';
+import { ScrapValueChartService } from './scrapValueChart/scrapValueChart.service';
+import { ScrapValueChart } from './scrapValueChart/scrapValueChart.component';
 
 @NgModule({
   imports: [
@@ -30,11 +32,13 @@ import { CustomerService } from '../customer/customer.service';
   declarations: [
     ScheduleAdherenceFactorySixMonthsChart,
     OnTimeDeliveryChart,
+    ScrapValueChart,
     ProductionKpi
   ],
   providers: [
     ScheduleAdherenceFactorySixMonthsChartService,
     OnTimeDeliveryChartService,
+    ScrapValueChartService,
     ChartService,
     CustomerService
   ]

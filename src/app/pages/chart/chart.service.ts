@@ -121,6 +121,10 @@ export class ChartService {
       .catch(err => this.handleError(err));
   }
 
+  getMonthlyScrapValue(startDate: string, endDate: string): Observable<any> {
+    return this.http.get(this.apiUrl + 'monthlyScrapValue?startDate=' + startDate + '&endDate=' + endDate)
+      .catch(err => this.handleError(err));
+  }
   getMonthlyOnTimeDelivery(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'monthlyOnTimeDelivery?startDate=' + startDate + '&endDate=' + endDate)
       .catch(err => this.handleError(err));
