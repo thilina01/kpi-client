@@ -29,8 +29,8 @@ export class EmployeeImport {
   ngOnInit() {
     this.cols = [
       { field: 'id', header: 'id' },
-      { field: 'code', header: 'code' },
-      { field: 'callingName', header: 'callingName' }
+      { field: 'code', header: 'Employee ID' },
+      { field: 'callingName', header: 'Calling Name' }
     ];
     this.dataSubject.subscribe(data => {
       this.jsonData = data;
