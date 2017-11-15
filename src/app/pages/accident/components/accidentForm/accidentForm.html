@@ -23,11 +23,6 @@
             <input type="text" pInputText formControlName="code">
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <label for="referenceNo">Reference No</label>
-            <br/>
-            <input type="text" pInputText formControlName="referenceNo">
-          </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="accidentDate">Accident Date</label>
             <br/>
             <p-calendar id="orderDatePicker" formControlName="accidentDate" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
@@ -39,11 +34,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}}:{{option.fullName}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/employee/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -56,11 +46,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="section" field="display" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/section/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -73,11 +58,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="shift" field="display" [suggestions]="filteredShiftList" (completeMethod)="filterShiftList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/shift/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -90,11 +70,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="machine" field="display" [suggestions]="filteredMachineList" (completeMethod)="filterMachineList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/machine/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -107,11 +82,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="accidentType" field="display" [suggestions]="filteredAccidentTypes" (completeMethod)="filterAccidentTypes($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAccidentTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/accidentType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -121,12 +91,19 @@
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="responsiblePerson">Responsible Person</label>
             <br/>
-            <input type="text" pInputText formControlName="responsiblePerson">
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="responsiblePerson" field="display" [suggestions]="filteredEmployeeList"
+                (completeMethod)="filterEmployeeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/employee/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <label for="rootCause">Root Cause</label>
             <br/>
-            <input type="text" [size]="136" pInputText formControlName="rootCause">
+            <input type="text" [size]="100" pInputText formControlName="rootCause">
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
             <label for="correctiveAction">Corrective Action</label>
@@ -151,11 +128,6 @@
                     <p-autoComplete id="treatmentTypeSelector" formControlName="treatmentType" field="display" [suggestions]="filteredTreatmentTypes"
                       (completeMethod)="filterTreatmentTypes($event)" [dropdown]="true" [size]="20" [minLength]="1" placeholder="Search"
                       (onSelect)="onTreatmentTypeSelect($event)">
-                      <ng-template let-option pTemplate="option">
-                        <div class="ui-helper-clearfix">
-                          <div>{{option.code}} : {{option.name}}</div>
-                        </div>
-                      </ng-template>
                     </p-autoComplete>
                     <a routerLink="/pages/treatmentType/form" target="blank">
                       <button pButton type="button" icon="fa-plus-circle"></button>
@@ -183,22 +155,15 @@
                 <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['endTime'].valid &&  treatmentFormGroup.controls['endTime'].touched), 'has-success': ( treatmentFormGroup.controls['endTime'].valid && treatmentFormGroup.controls['endTime'].touched)}">
                   <label for="endTime">End Time</label>
                   <br/>
-                  <p-calendar id="orderDatePicker" formControlName="endTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
-                </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-                <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['lossManHours'].valid &&  treatmentFormGroup.controls['lossManHours'].touched), 'has-success': ( treatmentFormGroup.controls['lossManHours'].valid && treatmentFormGroup.controls['lossManHours'].touched)}">
-                  <label for="lossManHours">Loss Man Hours</label>
-                  <br/>
-                  <input type="number" #lossManHours (keyup.enter)="onEnter(lossManHours.value,dt)" pInputText formControlName="lossManHours">
+                  <p-calendar id="orderDatePicker" formControlName="endTime" #endTimes (keyup.enter)="onEnter(endTimes.value,dt)" showIcon="true"
+                    dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
                 </div>
               </div>
               <div class="col">
                 <label for="inputFirstName">&nbsp;</label>
                 <br/>
                 <div class="form-group form-inline">
-                  <button (click)="onEnter(lossManHours.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle"
-                    label="Add"></button>&nbsp;&nbsp;
+                  <button (click)="onEnter(endTimes.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>&nbsp;&nbsp;
                 </div>
               </div>
             </div>
@@ -221,19 +186,11 @@
                     {{rowData.endTime|date:'y-MM-dd HH:mm'}}
                   </ng-template>
                 </p-column>
-                <p-column field="lossManHours" header="Loss Man Hours"></p-column>
                 <p-column header="Action" styleClass="text-right">
                   <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
                     <i (click)="removeTreatment(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
                   </ng-template>
                 </p-column>
-                <p-footerColumnGroup>
-                  <p-row>
-                    <p-column footer="Totals:" colspan="5" styleClass="text-right"></p-column>
-                    <p-column footer="{{formGroup.value.lossManHours}}" styleClass="text-left"></p-column>
-                    <p-column footer=""></p-column>
-                  </p-row>
-                </p-footerColumnGroup>
               </p-dataTable>
             </div>
           </div>

@@ -21,7 +21,7 @@ export class AccidentTable {
     constructor(protected service: AccidentService,
         private router: Router,
         private confirmationService: ConfirmationService,
-        private sharedService: SharedService) {
+        protected sharedService: SharedService) {
         this.loadData();
     }
 

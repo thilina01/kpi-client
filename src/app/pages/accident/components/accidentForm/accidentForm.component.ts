@@ -25,6 +25,9 @@ export class AccidentForm {
     public formGroup: FormGroup;
     @ViewChild(DataTable) dataTable: DataTable;
     public treatmentFormGroup: FormGroup;
+    public FormGroup: FormGroup;
+    JSON: any = JSON;
+    totalRecords = 0;
     treatmentType: Array<any>;
     accidentType: any;
     shift: any;
@@ -34,16 +37,11 @@ export class AccidentForm {
     accidentDate: Date = new Date();
     startTime: Date = new Date();
     endTime: Date = new Date();
-    totalRecords = 0;
-
-    JSON: any = JSON;
-
-    public FormGroup: FormGroup;
     accident: any = {};
     subscription: Subscription;
-
     accidentTypeList = [];
     treatmentTypeList = [];
+    responsiblePersonList = [];
     machineList = [];
     shiftList = [];
     sectionList = [];
@@ -64,9 +62,7 @@ export class AccidentForm {
 
         this.formGroup = fb.group({
             id: '',
-            lossManHours: 0,
             code: ['', Validators.required],
-            referenceNo: ['', Validators.required],
             accidentDate: [this.accidentDate, Validators.required],
             employee: [{}, Validators.compose([Validators.required])],
             section: [{}, Validators.compose([Validators.required])],
@@ -75,7 +71,7 @@ export class AccidentForm {
             accidentType: [{}, Validators.compose([Validators.required])],
             rootCause: ['', Validators.required],
             correctiveAction: ['', Validators.required],
-            responsiblePerson: ['', Validators.required],
+            responsiblePerson: [{}],
             treatmentList: [[]],
 
         });
@@ -85,7 +81,6 @@ export class AccidentForm {
             description: ['', Validators.required],
             startTime: [this.startTime, Validators.required],
             endTime: [this.endTime, Validators.required],
-            lossManHours: ['', Validators.required]
         });
     }
 
@@ -162,13 +157,6 @@ export class AccidentForm {
         this.machine = this.accident.machine;
         this.treatmentType = this.accident.treatmentType;
         this.shift = this.accident.shift;
-        this.setDisplayOfAccidentType();
-        this.setDisplayOfTreatmentType();
-        this.setDisplayOfEmployee();
-        this.setDisplayOfShift();
-        this.setDisplayOfMachine();
-        this.setDisplayOfSection();
-        this.calculateTotal();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -198,14 +186,12 @@ export class AccidentForm {
                 message: 'Are you sure that you want to Delete?',
                 accept: () => {
                     this.formGroup.value.treatmentList.splice(id, 1);
-                    this.calculateTotal();
                     this.fillTreatments();
                 }
             });
         }
     }
-
-    public onEnter(lossManHours: string, dt: DataTable) {
+    public onEnter(endTimes: string, dt: DataTable) {
         if (this.treatmentFormGroup.valid) {
             let values = this.treatmentFormGroup.value;
             if (this.formGroup.value.treatmentList == null) {
@@ -213,7 +199,6 @@ export class AccidentForm {
             }
             this.formGroup.value.treatmentList.push(values);
             this.treatmentFormGroup.reset();
-            this.calculateTotal();
             document.getElementById('treatmentTypeSelector').focus();
             this.formGroup.value.treatmentList = this.formGroup.value.treatmentList.slice();
         }
@@ -222,16 +207,6 @@ export class AccidentForm {
 
         }
     }
-
-    calculateTotal() {
-        let lossManHours = 0;
-        for (let i = 0; i < this.formGroup.value.treatmentList.length; i++) {
-            let treatment = this.formGroup.value.treatmentList[i];
-            lossManHours += parseInt(treatment.lossManHours);
-        }
-        this.formGroup.value.lossManHours = lossManHours;
-    }
-
     /*================== Accident Type Filter ===================*/
     filteredAccidentTypes: any[];
 
@@ -240,7 +215,7 @@ export class AccidentForm {
         this.filteredAccidentTypes = [];
         for (let i = 0; i < this.accidentTypeList.length; i++) {
             let accidentType = this.accidentTypeList[i];
-            if ((accidentType.code != null && accidentType.code.toLowerCase().indexOf(query) == 0) || (accidentType.name != null && accidentType.name.toLowerCase().indexOf(query) == 0)) {
+            if (accidentType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredAccidentTypes.push(accidentType);
             }
         }
@@ -256,17 +231,8 @@ export class AccidentForm {
 
     onAccidentTypeSelect(event: any) {
 
-        this.setDisplayOfAccidentType();
     }
 
-    setDisplayOfAccidentType() {
-        let accidentType = this.formGroup.value.accidentType;
-        if (accidentType != null && accidentType != undefined) {
-            let display = accidentType.code != null && accidentType.code != undefined ? accidentType.code + " : " : "";
-            display += accidentType.name != null && accidentType.name != undefined ? accidentType.name : "";
-            this.formGroup.value.accidentType.display = display;
-        }
-    }
     /*================== End Of Accident Type Filter ===================*/
     /*================== Treatment Type Filter ===================*/
     filteredTreatmentTypes: any[];
@@ -276,7 +242,7 @@ export class AccidentForm {
         this.filteredTreatmentTypes = [];
         for (let i = 0; i < this.treatmentTypeList.length; i++) {
             let treatmentType = this.treatmentTypeList[i];
-            if ((treatmentType.code != null && treatmentType.code.toLowerCase().indexOf(query) == 0) || (treatmentType.name != null && treatmentType.name.toLowerCase().indexOf(query) == 0)) {
+            if (treatmentType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredTreatmentTypes.push(treatmentType);
             }
         }
@@ -292,16 +258,6 @@ export class AccidentForm {
 
     onTreatmentTypeSelect(event: any) {
 
-        this.setDisplayOfTreatmentType();
-    }
-
-    setDisplayOfTreatmentType() {
-        let treatmentType = this.treatmentFormGroup.value.treatmentType;
-        if (treatmentType != null && treatmentType != undefined) {
-            let display = treatmentType.code != null && treatmentType.code != undefined ? treatmentType.code + " : " : "";
-            display += treatmentType.name != null && treatmentType.name != undefined ? treatmentType.name : "";
-            this.treatmentFormGroup.value.treatmentType.display = display;
-        }
     }
     /*================== End Of Treatment Type Filter ===================*/
     /*================== EmployeeFilter ===================*/
@@ -312,7 +268,7 @@ export class AccidentForm {
         this.filteredEmployeeList = [];
         for (let i = 0; i < this.employeeList.length; i++) {
             let employee = this.employeeList[i];
-            if (employee.code.toLowerCase().indexOf(query) == 0 || employee.firstName.toLowerCase().indexOf(query) == 0) {
+            if (employee.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredEmployeeList.push(employee);
             }
         }
@@ -327,17 +283,9 @@ export class AccidentForm {
     }
 
     onEmployeeSelect(event: any) {
-        this.setDisplayOfEmployee();
+
     }
 
-    setDisplayOfEmployee() {
-        let employee = this.formGroup.value.employee;
-        if (employee != null && employee != undefined) {
-            let display = employee.code != null && employee.code != undefined ? employee.code + " : " : "";
-            display += employee.fullName != null && employee.fullName != undefined ? employee.fullName : "";
-            this.formGroup.value.employee.display = display;
-        }
-    }
     /*================== End Of Employee Filter ===================*/
     /*================== Shift Filter ===================*/
     filteredShiftList: any[];
@@ -347,7 +295,7 @@ export class AccidentForm {
         this.filteredShiftList = [];
         for (let i = 0; i < this.shiftList.length; i++) {
             let shift = this.shiftList[i];
-            if (shift.code.toLowerCase().indexOf(query) == 0 || shift.firstName.toLowerCase().indexOf(query) == 0) {
+            if (shift.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredShiftList.push(shift);
             }
         }
@@ -362,17 +310,9 @@ export class AccidentForm {
     }
 
     onShiftSelect(event: any) {
-        this.setDisplayOfShift();
     }
 
-    setDisplayOfShift() {
-        let shift = this.formGroup.value.shift;
-        if (shift != null && shift != undefined) {
-            let display = shift.code != null && shift.code != undefined ? shift.code + " : " : "";
-            display += shift.name != null && shift.name != undefined ? shift.name : "";
-            this.formGroup.value.shift.display = display;
-        }
-    }
+
     /*================== End Of Shift Filter ===================*/
     /*================== Machine Filter ===================*/
     filteredMachineList: any[];
@@ -383,7 +323,7 @@ export class AccidentForm {
         this.filteredMachineList = [];
         for (let i = 0; i < this.machineList.length; i++) {
             let machine = this.machineList[i];
-            if (machine.code.toLowerCase().indexOf(query) == 0 || machine.firstName.toLowerCase().indexOf(query) == 0) {
+            if (machine.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredMachineList.push(machine);
             }
         }
@@ -398,16 +338,6 @@ export class AccidentForm {
     }
 
     onMachineSelect(event: any) {
-        this.setDisplayOfMachine();
-    }
-
-    setDisplayOfMachine() {
-        let machine = this.formGroup.value.machine;
-        if (machine != null && machine != undefined) {
-            let display = machine.code != null && machine.code != undefined ? machine.code + " : " : "";
-            display += machine.name != null && machine.name != undefined ? machine.name : "";
-            this.formGroup.value.machine.display = display;
-        }
     }
     /*================== End Of Machine Filter ===================*/
     /*================== Section Filter ===================*/
@@ -418,7 +348,7 @@ export class AccidentForm {
         this.filteredSectionList = [];
         for (let i = 0; i < this.sectionList.length; i++) {
             let section = this.sectionList[i];
-            if (section.code.toLowerCase().indexOf(query) == 0 || section.firstName.toLowerCase().indexOf(query) == 0) {
+            if (section.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSectionList.push(section);
             }
         }
@@ -433,16 +363,6 @@ export class AccidentForm {
     }
 
     onSectionSelect(event: any) {
-        this.setDisplayOfSection();
-    }
-
-    setDisplayOfSection() {
-        let section = this.formGroup.value.section;
-        if (section != null && section != undefined) {
-            let display = section.code != null && section.code != undefined ? section.code + " : " : "";
-            display += section.name != null && section.name != undefined ? section.name : "";
-            this.formGroup.value.section.display = display;
-        }
     }
 
 }
