@@ -51,7 +51,7 @@ export class InvoiceForm {
             invoiceDate: [this.invoiceDate, Validators.required],
             invoiceType: [this.invoiceType, Validators.required],
             customer: [this.customer, Validators.required],
-            dispatchNoteList: [[]],
+            invoiceDispatchNoteList: [[]],
         });
 
         this.dispatchNoteFormGroup = fb.group({
@@ -106,10 +106,10 @@ export class InvoiceForm {
         this.formGroup.patchValue(this.invoice, { onlySelf: true });
         this.invoiceType = this.invoice.invoiceType;
         this.customer = this.invoice.customer;
-        this.dispatchNote = this.invoice.dispatchNote;
         this.setDisplayOfCustomer();
         this.setDisplayOfInvoiceType();
         this.setDisplayOfDispatchNote();
+        this.fillDispatcList();
     }
 
     public resetForm() {
@@ -125,7 +125,7 @@ export class InvoiceForm {
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
         console.log(values);
-        if (values.dispatchNoteList === null || values.dispatchNoteList.length === 0) {
+        if (values.invoiceDispatchNoteList === null || values.invoiceDispatchNoteList.length === 0) {
             alert('dispatchNote Required');
             return;
         }
@@ -142,29 +142,29 @@ export class InvoiceForm {
     public onEnter(dt: DataTable) {
         if (this.dispatchNoteFormGroup.valid) {
             let values = this.dispatchNoteFormGroup.value;
-            if (this.formGroup.value.dispatchNoteList == null) {
-                this.formGroup.value.dispatchNoteList = [];
+            if (this.formGroup.value.invoiceDispatchNoteList == null) {
+                this.formGroup.value.invoiceDispatchNoteList = [];
             }
 
             this.dispatchNoteService.getOne(+values.dispatchNote.id).subscribe(dispatchNote => {
                 values.dispatchNote = dispatchNote;
-                this.formGroup.value.dispatchNoteList.push(values);
+                this.formGroup.value.invoiceDispatchNoteList.push({dispatchNote: dispatchNote});
                 this.dispatchNoteFormGroup.reset();
                 document.getElementById('dispatchNoteSelector').focus();
-                this.formGroup.value.dispatchNoteList = this.formGroup.value.dispatchNoteList.slice();
-                this.dispatchList = [];
-                this.formGroup.value.dispatchNoteList.forEach(item => {
-                    let dispatchNote = item.dispatchNote;
-                    console.log(dispatchNote);
-                    console.log(dispatchNote.dispatchList);
-                    this.dispatchList = this.dispatchList.concat(dispatchNote.dispatchList);
-                });
-                this.dispatchList = this.dispatchList.slice();
+                this.formGroup.value.invoiceDispatchNoteList = this.formGroup.value.invoiceDispatchNoteList.slice();
+                this.fillDispatcList();
                 console.log(this.dispatchList);
             });
 
         }
+    }
 
+    fillDispatcList(): any {
+      this.dispatchList = [];
+      this.formGroup.value.invoiceDispatchNoteList.forEach(item => {
+          this.dispatchList = this.dispatchList.concat(item.dispatchNote.dispatchList);
+      });
+      this.dispatchList = this.dispatchList.slice();
     }
 
     /*================== Invoice Type Filter ===================*/
