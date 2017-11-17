@@ -111,6 +111,7 @@ export const routes: Routes = [
       { path: 'test', canActivate: [AuthGuard], loadChildren: 'app/pages/test/test.module#TestModule' },
       { path: 'tool', canActivate: [AuthGuard], loadChildren: 'app/pages/tool/tool.module#ToolModule' },
       { path: 'toolBreakdown', canActivate: [AuthGuard], loadChildren: 'app/pages/toolBreakdown/toolBreakdown.module#ToolBreakdownModule' },
+      { path: 'treatment', canActivate: [AuthGuard], loadChildren: 'app/pages/treatment/treatment.module#TreatmentModule' },
       { path: 'treatmentType', canActivate: [AuthGuard], loadChildren: 'app/pages/treatmentType/treatmentType.module#TreatmentTypeModule' },
       { path: 'user', canActivate: [AuthGuard], loadChildren: 'app/pages/user/user.module#UserModule' },
       { path: 'workCenter', canActivate: [AuthGuard], loadChildren: 'app/pages/workCenter/workCenter.module#WorkCenterModule' }
