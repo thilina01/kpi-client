@@ -28,11 +28,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
                 [minLength]="1" [size]="75" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/customer/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

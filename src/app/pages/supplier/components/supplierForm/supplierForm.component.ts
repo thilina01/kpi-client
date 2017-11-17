@@ -111,11 +111,6 @@ export class SupplierForm {
         this.deliveryTerm = this.supplier.deliveryTerm;
         this.currency = this.supplier.currency;
         this.paymentTerm = this.supplier.paymentTerm;
-        this.setDisplayOfSupplierType();
-        this.setDisplayOfPaymentTerm();
-        this.setDisplayOfCurrency();
-        this.setDisplayOfDeliveryTerm();
-
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -142,31 +137,14 @@ export class SupplierForm {
         this.filteredSupplierTypeList = [];
         for (let i = 0; i < this.supplierTypeList.length; i++) {
             let supplierType = this.supplierTypeList[i];
-            if (supplierType.code.toLowerCase().indexOf(query) == 0 || supplierType.name.toLowerCase().indexOf(query) == 0) {
+            if (supplierType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSupplierTypeList.push(supplierType);
+
             }
         }
     }
 
-    handleSupplierTypeDropdownClick() {
-        this.filteredSupplierTypeList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSupplierTypeList = this.supplierTypeList;
-        }, 100)
-    }
-
     onSupplierTypeSelect(event: any) {
-        this.setDisplayOfSupplierType();
-    }
-
-    setDisplayOfSupplierType() {
-        let supplierType = this.formGroup.value.supplierType;
-        if (supplierType != null && supplierType != undefined) {
-            let display = supplierType.code != null && supplierType.code != undefined ? supplierType.code + ' : ' : '';
-            display += supplierType.name != null && supplierType.name != undefined ? supplierType.name : '';
-            this.formGroup.value.supplierType.display = display;
-        }
     }
     /*================== SupplierType Filter ===================*/
     /*================== Payment TermFilter ===================*/
@@ -177,30 +155,13 @@ export class SupplierForm {
         this.filteredPaymentTerms = [];
         for (let i = 0; i < this.paymentTermList.length; i++) {
             let paymentTerm = this.paymentTermList[i];
-            if (paymentTerm.code.toLowerCase().indexOf(query) == 0 || paymentTerm.name.toLowerCase().indexOf(query) == 0) {
+            if (paymentTerm.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredPaymentTerms.push(paymentTerm);
             }
         }
     }
 
-    handlePaymentTermDropdownClick() {
-        this.filteredPaymentTerms = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredPaymentTerms = this.paymentTermList;
-        }, 100)
-    }
-
     onPaymentTermSelect(event: any) {
-        this.setDisplayOfPaymentTerm();
-    }
-    setDisplayOfPaymentTerm() {
-        let paymentTerm = this.formGroup.value.paymentTerm;
-        if (paymentTerm != null && paymentTerm != undefined) {
-            let display = paymentTerm.code != null && paymentTerm.code != undefined ? paymentTerm.code + ' : ' : '';
-            display += paymentTerm.name != null && paymentTerm.name != undefined ? paymentTerm.name : '';
-            this.formGroup.value.paymentTerm.display = display;
-        }
     }
     /*================== End Of Payment TermFilter =======================*/
     /*================== CurrencyFilter ===================*/
@@ -211,31 +172,15 @@ export class SupplierForm {
         this.filteredCurrencyList = [];
         for (let i = 0; i < this.currencyList.length; i++) {
             let currency = this.currencyList[i];
-            if (currency.code.toLowerCase().indexOf(query) == 0 || currency.name.toLowerCase().indexOf(query) == 0) {
+            if (currency.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCurrencyList.push(currency);
+
             }
         }
     }
 
-    handleCurrencyDropdownClick() {
-        this.filteredCurrencyList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCurrencyList = this.currencyList;
-        }, 100)
-    }
-
     onCurrencySelect(event: any) {
-        this.setDisplayOfCurrency();
 
-    }
-    setDisplayOfCurrency() {
-        let currency = this.formGroup.value.currency;
-        if (currency != null && currency != undefined) {
-            let display = currency.code != null && currency.code != undefined ? currency.code + ' : ' : '';
-            display += currency.name != null && currency.name != undefined ? currency.name : '';
-            this.formGroup.value.currency.display = display;
-        }
     }
 
     /*================== DeliveryTermFilter ===================*/
@@ -246,33 +191,15 @@ export class SupplierForm {
         this.filteredDeliveryTermList = [];
         for (let i = 0; i < this.deliveryTermList.length; i++) {
             let deliveryTerm = this.deliveryTermList[i];
-            if (deliveryTerm.code.toLowerCase().indexOf(query) == 0 || deliveryTerm.name.toLowerCase().indexOf(query) == 0) {
+            if (deliveryTerm.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredDeliveryTermList.push(deliveryTerm);
+
             }
         }
     }
-
-    handleDeliveryTermDropdownClick() {
-        this.filteredDeliveryTermList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredDeliveryTermList = this.deliveryTermList;
-        }, 100)
-    }
-
     onDeliveryTermSelect(event: any) {
-        this.setDisplayOfDeliveryTerm();
 
     }
-    setDisplayOfDeliveryTerm() {
-        let deliveryTerm = this.formGroup.value.deliveryTerm;
-        if (deliveryTerm != null && deliveryTerm != undefined) {
-            let display = deliveryTerm.code != null && deliveryTerm.code != undefined ? deliveryTerm.code + ' : ' : '';
-            display += deliveryTerm.name != null && deliveryTerm.name != undefined ? deliveryTerm.name : '';
-            this.formGroup.value.deliveryTerm.display = display;
-        }
-    }
-
 }
 
 

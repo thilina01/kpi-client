@@ -91,7 +91,7 @@ export class SalesOrderForm {
         this.dataTable.reset();
     }
 
-    onEditComplete(){
+    onEditComplete() {
         this.calculateTotal();
     }
 
@@ -186,8 +186,8 @@ export class SalesOrderForm {
             amount += salesOrderItem.amount;
             quantity += parseInt(salesOrderItem.quantity);
         }
-        this.formGroup.value.amount=amount;
-        this.formGroup.value.quantity=quantity;
+        this.formGroup.value.amount = amount;
+        this.formGroup.value.quantity = quantity;
     }
 
     /*================== Customer Item Filter ===================*/
@@ -198,24 +198,14 @@ export class SalesOrderForm {
         this.filteredCustomerItems = [];
         for (let i = 0; i < this.customerItemList.length; i++) {
             let customerItem = this.customerItemList[i];
-            if (customerItem.code.toLowerCase().indexOf(query) == 0 || customerItem.name.toLowerCase().indexOf(query) == 0) {
+            if (customerItem.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCustomerItems.push(customerItem);
+
             }
         }
     }
-
-    handleCustomerItemDropdownClick() {
-        this.filteredCustomerItems = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCustomerItems = this.customerItemList;
-        }, 100)
-    }
-
     onCustomerItemSelect(event: any) {
     }
-
-
     /*================== End Of Customer Item Filter ===================*/
     /*================== Sales Order Type Filter ===================*/
     filteredSalesOrderTypes: any[];
@@ -225,18 +215,10 @@ export class SalesOrderForm {
         this.filteredSalesOrderTypes = [];
         for (let i = 0; i < this.salesOrderTypeList.length; i++) {
             let salesOrderType = this.salesOrderTypeList[i];
-            if ((salesOrderType.code != null && salesOrderType.code.toLowerCase().indexOf(query) == 0) || (salesOrderType.name != null && salesOrderType.name.toLowerCase().indexOf(query) == 0)) {
+            if (salesOrderType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSalesOrderTypes.push(salesOrderType);
             }
         }
-    }
-
-    handleSalesOrderTypeDropdownClick() {
-        this.filteredSalesOrderTypes = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSalesOrderTypes = this.salesOrderTypeList;
-        }, 100)
     }
 
     onSalesOrderTypeSelect(event: any) {
@@ -251,18 +233,10 @@ export class SalesOrderForm {
         this.filteredCustomerList = [];
         for (let i = 0; i < this.customerList.length; i++) {
             let customer = this.customerList[i];
-            if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
+            if (customer.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCustomerList.push(customer);
             }
         }
-    }
-
-    handleCustomerDropdownClick() {
-        this.filteredCustomerList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCustomerList = this.customerList;
-        }, 100)
     }
 
     onCustomerSelect(event: any) {

@@ -63,7 +63,6 @@ export class LossReasonForm {
     loadForm(data: any) {
         if (data != null) {
             this.formGroup.patchValue(data, { onlySelf: true });
-            this.setDisplayOfLossType();
         }
     }
 
@@ -91,31 +90,13 @@ export class LossReasonForm {
         this.filteredLossTypes = [];
         for (let i = 0; i < this.lossTypeList.length; i++) {
             let lossType = this.lossTypeList[i];
-            if (lossType.code.toLowerCase().indexOf(query) == 0 || lossType.name.toLowerCase().indexOf(query) == 0) {
+            if (lossType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredLossTypes.push(lossType);
+
             }
         }
     }
-
-    handleLossTypeDropdownClick() {
-        this.filteredLossTypes = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredLossTypes = this.lossTypeList;
-        }, 100)
-    }
-
     onLossTypeSelect(event: any) {
-        this.setDisplayOfLossType();
-    }
-
-    setDisplayOfLossType() {
-        let lossType = this.formGroup.value.lossType;
-        if (lossType != null && lossType != undefined) {
-            let display = lossType.code != null && lossType.code != undefined ? lossType.code + ' : ' : '';
-            display += lossType.name != null && lossType.name != undefined ? lossType.name : '';
-            this.formGroup.value.lossType.display = display;
-        }
     }
     /*================== End Of Loss Type Filter ===================*/
 }

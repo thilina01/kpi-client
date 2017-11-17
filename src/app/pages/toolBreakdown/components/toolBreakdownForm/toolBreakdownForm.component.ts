@@ -75,7 +75,6 @@ export class ToolBreakdownForm {
         }
         this.formGroup.patchValue(this.toolBreakdown, { onlySelf: true });
         this.tool = this.toolBreakdown.tool;
-        this.setDisplayOfTool();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -102,31 +101,14 @@ export class ToolBreakdownForm {
         this.filteredTools = [];
         for (let i = 0; i < this.tools.length; i++) {
             let tool = this.tools[i];
-            if (tool.code.toLowerCase().indexOf(query) == 0 || tool.name.toLowerCase().indexOf(query) == 0) {
+            if (tool.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredTools.push(tool);
+
             }
         }
     }
 
-    handleToolDropdownClick() {
-        this.filteredTools = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredTools = this.tools;
-        }, 100)
-    }
-
     onToolSelect(event: any) {
-        this.setDisplayOfTool();
-    }
-
-    setDisplayOfTool() {
-        let tool = this.formGroup.value.tool;
-        if (tool != null && tool != undefined) {
-            let display = tool.code != null && tool.code != undefined ? tool.code + ' : ' : '';
-            display += tool.name != null && tool.name != undefined ? tool.name : '';
-            this.formGroup.value.tool.display = display;
-        }
     }
     /*================== End Of Tool Filter ===================*/
 }

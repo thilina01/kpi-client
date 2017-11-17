@@ -38,11 +38,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="supplierType" field="display" [suggestions]="filteredSupplierTypeList"
                 (completeMethod)="filterSupplierTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSupplierTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/supplierType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -55,11 +50,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="currency" field="display" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCurrencySelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/currency/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -97,11 +87,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="paymentTerm" field="display" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onPaymentTermSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/paymentTerm/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -114,11 +99,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="deliveryTerm" field="display" [suggestions]="filteredDeliveryTermList"
                 (completeMethod)="filterDeliveryTermList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onDeliveryTermSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/deliveryTerm/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

@@ -94,9 +94,6 @@ export class ComputerForm {
         this.formGroup.patchValue(this.computer, { onlySelf: true });
         this.employee = this.computer.employee;
         this.computerType = this.computer.computerType;
-        this.setDisplayOfEmployee();
-        this.setDisplayOfComputerType();
-
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -123,31 +120,13 @@ export class ComputerForm {
         this.filteredEmployeeList = [];
         for (let i = 0; i < this.employeeList.length; i++) {
             let employee = this.employeeList[i];
-            if (employee.code.toLowerCase().indexOf(query) == 0 || employee.firstName.toLowerCase().indexOf(query) == 0) {
+            if (employee.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredEmployeeList.push(employee);
             }
         }
     }
 
-    handleEmployeeDropdownClick() {
-        this.filteredEmployeeList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredEmployeeList = this.employeeList;
-        }, 100)
-    }
-
     onEmployeeSelect(event: any) {
-        this.setDisplayOfEmployee();
-    }
-
-    setDisplayOfEmployee() {
-        let employee = this.formGroup.value.employee;
-        if (employee != null && employee != undefined) {
-            let display = employee.code != null && employee.code != undefined ? employee.code + ' : ' : '';
-            display += employee.fullName != null && employee.fullName != undefined ? employee.fullName : '';
-            this.formGroup.value.employee.display = display;
-        }
     }
     /*================== ComputerTypeFilter ===================*/
     filteredComputerTypeList: any[];
@@ -157,32 +136,14 @@ export class ComputerForm {
         this.filteredComputerTypeList = [];
         for (let i = 0; i < this.computerTypeList.length; i++) {
             let computerType = this.computerTypeList[i];
-            if (computerType.code.toLowerCase().indexOf(query) == 0 || computerType.name.toLowerCase().indexOf(query) == 0) {
+            if (computerType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredComputerTypeList.push(computerType);
             }
         }
     }
-
-    handleComputerTypeDropdownClick() {
-        this.filteredComputerTypeList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredComputerTypeList = this.computerTypeList;
-        }, 100)
-    }
-
     onComputerTypeSelect(event: any) {
-        this.setDisplayOfComputerType();
     }
 
-    setDisplayOfComputerType() {
-        let computerType = this.formGroup.value.computerType;
-        if (computerType != null && computerType != undefined) {
-            let display = computerType.code != null && computerType.code != undefined ? computerType.code + ' : ' : '';
-            display += computerType.name != null && computerType.name != undefined ? computerType.name : '';
-            this.formGroup.value.computerType.display = display;
-        }
-    }
 }
 
 

@@ -97,11 +97,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.fullName}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/employee/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -114,11 +109,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="computerType" field="display" [suggestions]="filteredComputerTypeList"
                 (completeMethod)="filterComputerTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onComputerTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/computerType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

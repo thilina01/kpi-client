@@ -88,8 +88,6 @@ export class ItemForm {
         this.item.productionToolAvailability = this.item.productionToolAvailability === 'yes' ? true : false;
         this.formGroup.patchValue(this.item, { onlySelf: true });
         this.itemType = this.item.itemType;
-        this.setDisplayOfItemType();
-        this.setDisplayOfPaint();
     }
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
@@ -118,33 +116,15 @@ export class ItemForm {
         this.filteredItemTypes = [];
         for (let i = 0; i < this.itemTypeList.length; i++) {
             let itemType = this.itemTypeList[i];
-            if (itemType.code != null && itemType.code.toLowerCase().indexOf(query) == 0 || itemType.name != null && itemType.name.toLowerCase().indexOf(query) == 0) {
+            if (itemType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredItemTypes.push(itemType);
+
             }
         }
     }
 
-    handleItemTypeDropdownClick() {
-        this.filteredItemTypes = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredItemTypes = this.itemTypeList;
-        }, 100)
-    }
-
     onItemTypeSelect
         (event: any) {
-
-        this.setDisplayOfItemType();
-
-    }
-    setDisplayOfItemType() {
-        let itemType = this.formGroup.value.itemType;
-        if (itemType != null && itemType != undefined) {
-            let display = itemType.code != null && itemType.code != undefined ? itemType.code + ' : ' : '';
-            display += itemType.name != null && itemType.name != undefined ? itemType.name : '';
-            this.formGroup.value.itemType.display = display;
-        }
     }
 
     /*================== End Of Item Type Filter ===================*/
@@ -156,35 +136,16 @@ export class ItemForm {
         this.filteredPaints = [];
         for (let i = 0; i < this.paints.length; i++) {
             let paint = this.paints[i];
-            if (paint.code != null && paint.code.toLowerCase().indexOf(query) == 0 || paint.name != null && paint.name.toLowerCase().indexOf(query) == 0) {
+            if (paint.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredPaints.push(paint);
+
             }
         }
     }
 
-    handlePaintDropdownClick() {
-        this.filteredPaints = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredPaints = this.paints;
-        }, 100)
-    }
-
     onPaintSelect(event: any) {
 
-
-        this.setDisplayOfPaint();
     }
-
-    setDisplayOfPaint() {
-        let paint = this.formGroup.value.paint;
-        if (paint != null && paint != undefined) {
-            let display = paint.code != null && paint.code != undefined ? paint.code + ' : ' : '';
-            display += paint.name != null && paint.name != undefined ? paint.name : '';
-            this.formGroup.value.paint.display = display;
-
-        }
-        /*================== End Of Paint Filter ===================*/
-    }
-
+    /*================== End Of Paint Filter ===================*/
 }
+

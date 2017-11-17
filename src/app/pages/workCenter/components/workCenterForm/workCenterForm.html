@@ -39,11 +39,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="costCenter" field="display" [suggestions]="filteredCostCenters" (completeMethod)="filterCostCenters($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCostCenterSelect($event)" [dropdown]="true">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/costCenter/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

@@ -30,11 +30,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="tool" [dropdown]="true" field="display" [suggestions]="filteredTools" (completeMethod)="filterTools($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)=" onToolSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/tool/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

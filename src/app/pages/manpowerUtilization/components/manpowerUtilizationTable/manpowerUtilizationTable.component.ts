@@ -139,15 +139,6 @@ export class ManpowerUtilizationTable {
       }
     }
   }
-
-  handleShiftDropdownClick() {
-    this.filteredShifts = [];
-    //mimic remote call
-    setTimeout(() => {
-      this.filteredShifts = this.shifts;
-    }, 100)
-  }
-
   onShiftSelect(shift: any) {
     console.log(event)
   }
@@ -164,15 +155,6 @@ export class ManpowerUtilizationTable {
       }
     }
   }
-
-  handleSectionDropdownClick() {
-    this.filteredSections = [];
-    //mimic remote call
-    setTimeout(() => {
-      this.filteredSections = this.sections;
-    }, 100)
-  }
-
   onSectionSelect(section: any) {
     console.log(event)
   }
@@ -184,20 +166,11 @@ export class ManpowerUtilizationTable {
     this.filteredEmployees = [];
     for (let i = 0; i < this.employees.length; i++) {
       let employee = this.employees[i];
-      if (employee.code.toLowerCase().indexOf(query) == 0) {
+      if (employee.code.toLowerCase().indexOf(query) == 0 || employee.callingName.toLowerCase().indexOf(query) == 0) {
         this.filteredEmployees.push(employee);
       }
     }
   }
-
-  handleEmployeeDropdownClick() {
-    this.filteredEmployees = [];
-    //mimic remote call
-    setTimeout(() => {
-      this.filteredEmployees = this.employees;
-    }, 100)
-  }
-
   onEmployeeSelect(employee: any) {
     console.log(event)
   }

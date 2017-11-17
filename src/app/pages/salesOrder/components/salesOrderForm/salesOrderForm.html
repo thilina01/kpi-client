@@ -33,11 +33,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes"
                 (completeMethod)="filterSalesOrderTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSalesOrderTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/salesOrderType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -55,11 +50,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
                 [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/customer/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -83,11 +73,6 @@
                   <div class="ui-inputgroup">
                     <p-autoComplete id="customerItemSelector" [dropdown]="true" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
                       (completeMethod)="filterCustomerItems($event)" [size]="95" [minLength]="1" placeholder="Search" (onSelect)="onCustomerItemSelect($event)">
-                      <ng-template let-option pTemplate="option">
-                        <div class="ui-helper-clearfix">
-                          <div>{{option.code}} : {{option.name}}</div>
-                        </div>
-                      </ng-template>
                     </p-autoComplete>
                     <a routerLink="/pages/customerItem/form" target="blank">
                       <button pButton type="button" icon="fa-plus-circle"></button>

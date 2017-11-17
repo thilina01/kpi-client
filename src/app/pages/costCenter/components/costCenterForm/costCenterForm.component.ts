@@ -69,7 +69,6 @@ export class CostCenterForm {
         }
         this.formGroup.patchValue(this.costCenter, { onlySelf: true });
         this.costCenterType = this.costCenter.costCenterType;
-        this.setDisplayOfSection();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -95,33 +94,15 @@ export class CostCenterForm {
         this.filteredSections = [];
         for (let i = 0; i < this.sections.length; i++) {
             let section = this.sections[i];
-            if (section.code.toLowerCase().indexOf(query) == 0 || section.name.toLowerCase().indexOf(query) == 0) {
+            if (section.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSections.push(section);
+
             }
         }
     }
 
-    handleSectionDropdownClick() {
-        this.filteredSections = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSections = this.sections;
-        }, 100)
-    }
-
     onSectionSelect(event: any) {
-        this.setDisplayOfSection();
     }
 
-    setDisplayOfSection() {
-
-        let section = this.formGroup.value.section;
-        if (section != null && section != undefined) {
-            let display = section.code != null && section.code != undefined ? section.code + ' : ' : '';
-            display += section.name != null && section.name != undefined ? section.name : '';
-            this.formGroup.value.section.display = display;
-        }
-
-    }
     /*================== End Of Section Filter ===================*/
 }

@@ -76,9 +76,7 @@ export class ControlPointMachineForm {
             this.controlPointMachine = data;
         }
         this.formGroup.patchValue(this.controlPointMachine, { onlySelf: true });
-        this.setDisplayOfMachine();
-        this.setDisplayOfControlPoint();
-
+       
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -104,34 +102,16 @@ export class ControlPointMachineForm {
         this.filteredControlPoints = [];
         for (let i = 0; i < this.controlPoints.length; i++) {
             let controlPoint = this.controlPoints[i];
-            if (controlPoint.code.toLowerCase().indexOf(query) == 0 || controlPoint.name.toLowerCase().indexOf(query) == 0) {
+            if (controlPoint.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredControlPoints.push(controlPoint);
 
             }
         }
     }
 
-    handleControlPointDropdownClick() {
-        this.filteredControlPoints = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredControlPoints = this.controlPoints;
-        }, 100)
-    }
-
     onControlPointSelect(event: any) {
-        this.setDisplayOfControlPoint();
     }
 
-    setDisplayOfControlPoint() {
-
-        let controlPoint = this.formGroup.value.controlPoint;
-        if (controlPoint != null && controlPoint != undefined) {
-            let display = controlPoint.code != null && controlPoint.code != undefined ? controlPoint.code + ' : ' : '';
-            display += controlPoint.name != null && controlPoint.name != undefined ? controlPoint.name : '';
-            this.formGroup.value.controlPoint.display = display;
-        }
-    }
     /*================== End Of Control Point Filter ===================*/
     /*================== Machine Filter ===================*/
     filteredMachines: any[];
