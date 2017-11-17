@@ -74,7 +74,6 @@ export class EnergyConsumptionForm {
         }
         this.formGroup.patchValue(this.energyConsumption, { onlySelf: true });
         this.location = this.energyConsumption.location;
-        this.setDisplayOfLocation();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -101,7 +100,7 @@ export class EnergyConsumptionForm {
         this.filteredLocations = [];
         for (let i = 0; i < this.locations.length; i++) {
             let location = this.locations[i];
-            if (location.code.toLowerCase().indexOf(query) == 0 || location.name.toLowerCase().indexOf(query) == 0) {
+            if (location.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredLocations.push(location);
             }
         }
@@ -117,15 +116,6 @@ export class EnergyConsumptionForm {
 
     onLocationSelect(event: any) {
 
-        this.setDisplayOfLocation();
-    }
-    setDisplayOfLocation() {
-        let location = this.formGroup.value.location;
-        if (location != null && location != undefined) {
-            let display = location.code != null && location.code != undefined ? location.code + ' : ' : '';
-            display += location.name != null && location.name != undefined ? location.name : '';
-            this.formGroup.value.location.display = display;
-        }
     }
     /*================== End Of Location Filter ===================*/
 }

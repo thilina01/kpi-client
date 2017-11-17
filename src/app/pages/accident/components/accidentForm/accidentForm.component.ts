@@ -28,7 +28,7 @@ export class AccidentForm {
     public FormGroup: FormGroup;
     JSON: any = JSON;
     totalRecords = 0;
-    treatmentType: Array<any>;
+    treatmentType: any;
     accidentType: any;
     shift: any;
     machine: any;
@@ -221,14 +221,6 @@ export class AccidentForm {
         }
     }
 
-    handleAccidentTypeDropdownClick() {
-        this.filteredAccidentTypes = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredAccidentTypes = this.accidentTypeList;
-        }, 100)
-    }
-
     onAccidentTypeSelect(event: any) {
 
     }
@@ -246,14 +238,6 @@ export class AccidentForm {
                 this.filteredTreatmentTypes.push(treatmentType);
             }
         }
-    }
-
-    handleTreatmentTypeDropdownClick() {
-        this.filteredTreatmentTypes = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredTreatmentTypes = this.treatmentTypeList;
-        }, 100)
     }
 
     onTreatmentTypeSelect(event: any) {
@@ -274,14 +258,6 @@ export class AccidentForm {
         }
     }
 
-    handleEmployeeDropdownClick() {
-        this.filteredEmployeeList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredEmployeeList = this.employeeList;
-        }, 100)
-    }
-
     onEmployeeSelect(event: any) {
 
     }
@@ -299,14 +275,6 @@ export class AccidentForm {
                 this.filteredShiftList.push(shift);
             }
         }
-    }
-
-    handleShiftDropdownClick() {
-        this.filteredShiftList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredShiftList = this.shiftList;
-        }, 100)
     }
 
     onShiftSelect(event: any) {
@@ -329,14 +297,6 @@ export class AccidentForm {
         }
     }
 
-    handleMachineDropdownClick() {
-        this.filteredMachineList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredMachineList = this.machineList;
-        }, 100)
-    }
-
     onMachineSelect(event: any) {
     }
     /*================== End Of Machine Filter ===================*/
@@ -352,14 +312,6 @@ export class AccidentForm {
                 this.filteredSectionList.push(section);
             }
         }
-    }
-
-    handleSectionDropdownClick() {
-        this.filteredSectionList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSectionList = this.sectionList;
-        }, 100)
     }
 
     onSectionSelect(event: any) {

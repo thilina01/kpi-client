@@ -28,11 +28,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onJobSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} </div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/job/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -45,11 +40,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/itemType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -62,11 +52,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList"
                 (completeMethod)="filterOperationTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onOperationTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/operationType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -79,11 +64,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLossReasonSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/lossReason/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -96,11 +76,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="section" field="display" [dropdown]="true" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/section/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

@@ -50,11 +50,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="employeeCategory" [dropdown]="true" field="display" [suggestions]="filteredEmployeeCategorys"
                 (completeMethod)="filterEmployeeCategory($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeCategorySelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/employeeCategory/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -67,11 +62,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="designation" [dropdown]="true" field="display" [suggestions]="filteredDesignations" (completeMethod)="filterDesignation($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onDesignationSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/designation/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -84,11 +74,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="labourSource" [dropdown]="true" field="display" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSource($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLabourSourceSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/labourSource/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -101,11 +86,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="section" [dropdown]="true" field="display" [suggestions]="filteredSections" (completeMethod)="filterSection($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/section/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -118,11 +98,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="shift" [dropdown]="true" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShift($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/shift/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

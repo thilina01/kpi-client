@@ -82,9 +82,6 @@ export class CustomerItemForm {
         this.customerItemType = this.customerItem.customerItemType;
         this.customer = this.customerItem.customer;
         this.item = this.customerItem.item;
-        this.setDisplayOfItem();
-        this.setDisplayOfCustomer();
-
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -102,8 +99,6 @@ export class CustomerItemForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
-
     /*================== CustomerFilter ===================*/
     filteredCustomerList: any[];
 
@@ -112,33 +107,16 @@ export class CustomerItemForm {
         this.filteredCustomerList = [];
         for (let i = 0; i < this.customerList.length; i++) {
             let customer = this.customerList[i];
-            if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
+            if (customer.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCustomerList.push(customer);
+
             }
         }
     }
 
-    handleCustomerDropdownClick() {
-        this.filteredCustomerList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCustomerList = this.customerList;
-        }, 100)
-    }
-
     onCustomerSelect(event: any) {
-        this.setDisplayOfCustomer();
     }
 
-    setDisplayOfCustomer() {
-        let customer = this.formGroup.value.customer;
-        if (customer != null && customer != undefined) {
-            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
-            display += customer.name != null && customer.name != undefined ? customer.name : '';
-            this.formGroup.value.customer.display = display;
-        }
-
-    }
     /*================== ItemFilter ===================*/
     filteredItemList: any[];
 
@@ -147,29 +125,12 @@ export class CustomerItemForm {
         this.filteredItemList = [];
         for (let i = 0; i < this.itemList.length; i++) {
             let item = this.itemList[i];
-            if (item.code.toLowerCase().indexOf(query) == 0 || item.name.toLowerCase().indexOf(query) == 0) {
+            if (item.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredItemList.push(item);
+
             }
         }
     }
-
-    handleItemDropdownClick() {
-        this.filteredItemList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredItemList = this.itemList;
-        }, 100)
-    }
-
     onItemSelect(event: any) {
-        this.setDisplayOfItem();
-    }
-    setDisplayOfItem() {
-        let item = this.formGroup.value.item;
-        if (item != null && item != undefined) {
-            let display = item.code != null && item.code != undefined ? item.code + ' : ' : '';
-            display += item.name != null && item.name != undefined ? item.name : '';
-            this.formGroup.value.item.display = display;
-        }
     }
 }

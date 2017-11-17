@@ -71,7 +71,6 @@ export class OnTimeDeliveryForm {
         }
         this.formGroup.patchValue(this.onTimeDelivery, { onlySelf: true });
         this.customer = this.onTimeDelivery.customer;
-        this.setDisplayOfCustomer();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -89,7 +88,6 @@ export class OnTimeDeliveryForm {
     public resetForm() {
         this.formGroup.reset();
     }
-
     /*================== CustomerFilter ===================*/
     filteredCustomerList: any[];
 
@@ -98,32 +96,13 @@ export class OnTimeDeliveryForm {
         this.filteredCustomerList = [];
         for (let i = 0; i < this.customerList.length; i++) {
             let customer = this.customerList[i];
-            if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
+            if (customer.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCustomerList.push(customer);
+
             }
         }
     }
-
-    handleCustomerDropdownClick() {
-        this.filteredCustomerList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCustomerList = this.customerList;
-        }, 100)
-    }
-
     onCustomerSelect(event: any) {
-        this.setDisplayOfCustomer();
-    }
-
-    setDisplayOfCustomer() {
-        let customer = this.formGroup.value.customer;
-        if (customer != null && customer != undefined) {
-            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
-            display += customer.name != null && customer.name != undefined ? customer.name : '';
-            this.formGroup.value.customer.display = display;
-        }
-
     }
     /*================== Customer Filter ===================*/
 }

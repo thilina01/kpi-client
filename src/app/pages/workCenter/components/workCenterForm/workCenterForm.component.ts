@@ -71,7 +71,6 @@ export class WorkCenterForm {
         }
         this.formGroup.patchValue(this.workCenter, { onlySelf: true });
         this.workCenterType = this.workCenter.workCenterType;
-        this.setDisplayOfCostCenter();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -98,30 +97,13 @@ export class WorkCenterForm {
         this.filteredCostCenters = [];
         for (let i = 0; i < this.costCenters.length; i++) {
             let costCenter = this.costCenters[i];
-            if (costCenter.code.toLowerCase().indexOf(query) == 0 || costCenter.name.toLowerCase().indexOf(query) == 0) {
+            if (costCenter.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCostCenters.push(costCenter);
+
             }
         }
     }
-
-    handleCostCenterDropdownClick() {
-        this.filteredCostCenters = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCostCenters = this.costCenters;
-        }, 100)
-    }
-
     onCostCenterSelect(event: any) {
-        this.setDisplayOfCostCenter();
-    }
-    setDisplayOfCostCenter() {
-        let costCenter = this.formGroup.value.costCenter;
-        if (costCenter != null && costCenter != undefined) {
-            let display = costCenter.code != null && costCenter.code != undefined ? costCenter.code + ' : ' : '';
-            display += costCenter.name != null && costCenter.name != undefined ? costCenter.name : '';
-            this.formGroup.value.costCenter.display = display;
-        }
     }
     /*================== End Of Cost Center Filter ===================*/
 }

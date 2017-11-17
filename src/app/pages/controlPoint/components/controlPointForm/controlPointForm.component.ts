@@ -79,8 +79,6 @@ export class ControlPointForm {
         }
         this.formGroup.patchValue(this.controlPoint, { onlySelf: true });
         this.controlPointType = this.controlPoint.controlPointType;
-        this.setDisplayOfWorkCenter();
-        this.setDisplayOfControlPoint();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -106,31 +104,13 @@ export class ControlPointForm {
         this.filteredControlPointTypes = [];
         for (let i = 0; i < this.controlPointTypeList.length; i++) {
             let controlPointType = this.controlPointTypeList[i];
-            if (controlPointType.code.toLowerCase().indexOf(query) == 0 || controlPointType.name.toLowerCase().indexOf(query) == 0) {
+            if (controlPointType.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredControlPointTypes.push(controlPointType);
             }
         }
     }
-
-    handleControlPointTypeDropdownClick() {
-        this.filteredControlPointTypes = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredControlPointTypes = this.controlPointTypeList;
-        }, 100)
-    }
-
     onControlPointTypeSelect(event: any) {
 
-        this.setDisplayOfControlPoint();
-    }
-    setDisplayOfControlPoint() {
-        let controlPointType = this.formGroup.value.controlPointType;
-        if (controlPointType != null && controlPointType != undefined) {
-            let display = controlPointType.code != null && controlPointType.code != undefined ? controlPointType.code + ' : ' : '';
-            display += controlPointType.name != null && controlPointType.name != undefined ? controlPointType.name : '';
-            this.formGroup.value.controlPointType.display = display;
-        }
     }
     /*================== End Of Control Point Type Filter ===================*/
     /*================== Work Center Filter ===================*/
@@ -141,31 +121,14 @@ export class ControlPointForm {
         this.filteredWorkCenters = [];
         for (let i = 0; i < this.workCenters.length; i++) {
             let workCenter = this.workCenters[i];
-            if (workCenter.code.toLowerCase().indexOf(query) == 0 || workCenter.name.toLowerCase().indexOf(query) == 0) {
+            if (workCenter.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredWorkCenters.push(workCenter);
             }
         }
     }
-    handleWorkCenterDropdownClick() {
-        this.filteredWorkCenters = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredWorkCenters = this.workCenters;
-        }, 100)
-    }
 
     onWorkCenterSelect(event: any) {
-        this.setDisplayOfWorkCenter();
     }
 
-    setDisplayOfWorkCenter() {
-        let workCenter = this.formGroup.value.workCenter;
-        if (workCenter != null && workCenter != undefined) {
-            let display = workCenter.code != null && workCenter.code != undefined ? workCenter.code + ' : ' : '';
-            display += workCenter.name != null && workCenter.name != undefined ? workCenter.name : '';
-            this.formGroup.value.workCenter.display = display;
-        }
-
-    }
     /*================== End Of Work Center Filter ===================*/
 }

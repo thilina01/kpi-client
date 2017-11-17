@@ -70,7 +70,6 @@ export class LabourTurnoverForm {
         }
         this.formGroup.patchValue(this.labourTurnover, { onlySelf: true });
         this.labourSource = this.labourTurnover.labourSource;
-        this.setDisplayOfLabourSource();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -96,30 +95,14 @@ export class LabourTurnoverForm {
         this.filteredLabourSources = [];
         for (let i = 0; i < this.labourSources.length; i++) {
             let labourSource = this.labourSources[i];
-            if (labourSource.code.toLowerCase().indexOf(query) == 0 || labourSource.name.toLowerCase().indexOf(query) == 0) {
+            if (labourSource.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredLabourSources.push(labourSource);
+
             }
         }
     }
 
-    handleLabourSourceDropdownClick() {
-        this.filteredLabourSources = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredLabourSources = this.labourSources;
-        }, 100)
-    }
-
     onLabourSourceSelect(event: any) {
-        this.setDisplayOfLabourSource();
-    }
-    setDisplayOfLabourSource() {
-        let labourSource = this.formGroup.value.labourSource;
-        if (labourSource != null && labourSource != undefined) {
-            let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + ' : ' : '';
-            display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : '';
-            this.formGroup.value.labourSource.display = display;
-        }
     }
     /*================== End Of Labour Source Filter ===================*/
 }

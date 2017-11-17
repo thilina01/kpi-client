@@ -110,11 +110,6 @@ export class EmployeeForm {
         this.labourSource = this.employee.labourSource;
         this.employeeCategory = this.employee.employeeCategory;
         this.designation = this.employee.designation;
-        this.setDisplayOfSection();
-        this.setDisplayOfShift();
-        this.setDisplayOfEmployeeCategory();
-        this.setDisplayOfLabourSource();
-        this.setDisplayOfDesignation();
     }
 
     refresh(): void {
@@ -148,33 +143,13 @@ export class EmployeeForm {
         this.filteredSections = [];
         for (let i = 0; i < this.sections.length; i++) {
             let section = this.sections[i];
-            if (section.code.toLowerCase().indexOf(query) == 0 || section.name.toLowerCase().indexOf(query) == 0) {
+            if (section.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSections.push(section);
+
             }
         }
     }
-
-    handleSectionDropdownClick() {
-        this.filteredSections = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSections = this.sections;
-        }, 100)
-    }
-
     onSectionSelect(event: any) {
-        this.setDisplayOfSection();
-    }
-
-    setDisplayOfSection() {
-
-        let section = this.formGroup.value.section;
-        if (section != null && section != undefined) {
-            let display = section.code != null && section.code != undefined ? section.code + ' : ' : '';
-            display += section.name != null && section.name != undefined ? section.name : '';
-            this.formGroup.value.section.display = display;
-        }
-
     }
     /*================== End Of Section Filter ===================*/
     /*================== Shift Filter ===================*/
@@ -185,33 +160,13 @@ export class EmployeeForm {
         this.filteredShifts = [];
         for (let i = 0; i < this.shifts.length; i++) {
             let shift = this.shifts[i];
-            if (shift.code.toLowerCase().indexOf(query) == 0 || shift.name.toLowerCase().indexOf(query) == 0) {
+            if (shift.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredShifts.push(shift);
+
             }
         }
     }
-
-    handleShiftDropdownClick() {
-        this.filteredShifts = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredShifts = this.shifts;
-        }, 100)
-    }
-
     onShiftSelect(event: any) {
-        this.setDisplayOfShift();
-    }
-
-    setDisplayOfShift() {
-
-        let shift = this.formGroup.value.shift;
-        if (shift != null && shift != undefined) {
-            let display = shift.code != null && shift.code != undefined ? shift.code + ' : ' : '';
-            display += shift.name != null && shift.name != undefined ? shift.name : '';
-            this.formGroup.value.shift.display = display;
-        }
-
     }
     /*================== End Of Shift Filter ===================*/
     /*================== Designation Filter ===================*/
@@ -222,33 +177,14 @@ export class EmployeeForm {
         this.filteredDesignations = [];
         for (let i = 0; i < this.designations.length; i++) {
             let designation = this.designations[i];
-            if (designation.code.toLowerCase().indexOf(query) == 0 || designation.name.toLowerCase().indexOf(query) == 0) {
+            if (designation.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredDesignations.push(designation);
+
             }
         }
     }
 
-    handleDesignationDropdownClick() {
-        this.filteredDesignations = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredDesignations = this.designations;
-        }, 100)
-    }
-
     onDesignationSelect(event: any) {
-        this.setDisplayOfDesignation();
-    }
-
-    setDisplayOfDesignation() {
-
-        let designation = this.formGroup.value.designation;
-        if (designation != null && designation != undefined) {
-            let display = designation.code != null && designation.code != undefined ? designation.code + ' : ' : '';
-            display += designation.name != null && designation.name != undefined ? designation.name : '';
-            this.formGroup.value.designation.display = display;
-        }
-
     }
     /*================== End Of Designation Filter ===================*/
     /*================== EmployeeCategory Filter ===================*/
@@ -259,33 +195,14 @@ export class EmployeeForm {
         this.filteredEmployeeCategorys = [];
         for (let i = 0; i < this.employeeCategorys.length; i++) {
             let employeeCategory = this.employeeCategorys[i];
-            if (employeeCategory.code.toLowerCase().indexOf(query) == 0 || employeeCategory.name.toLowerCase().indexOf(query) == 0) {
+            if (employeeCategory.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredEmployeeCategorys.push(employeeCategory);
+
             }
         }
     }
 
-    handleEmployeeCategoryDropdownClick() {
-        this.filteredEmployeeCategorys = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredEmployeeCategorys = this.employeeCategorys;
-        }, 100)
-    }
-
     onEmployeeCategorySelect(event: any) {
-        this.setDisplayOfEmployeeCategory();
-    }
-
-    setDisplayOfEmployeeCategory() {
-
-        let employeeCategory = this.formGroup.value.employeeCategory;
-        if (employeeCategory != null && employeeCategory != undefined) {
-            let display = employeeCategory.code != null && employeeCategory.code != undefined ? employeeCategory.code + ' : ' : '';
-            display += employeeCategory.name != null && employeeCategory.name != undefined ? employeeCategory.name : '';
-            this.formGroup.value.employeeCategory.display = display;
-        }
-
     }
     /*================== End Of EmployeeCategory Filter ===================*/
     /*================== LabourSource Filter ===================*/
@@ -296,34 +213,16 @@ export class EmployeeForm {
         this.filteredLabourSources = [];
         for (let i = 0; i < this.labourSources.length; i++) {
             let labourSource = this.labourSources[i];
-            if (labourSource.code.toLowerCase().indexOf(query) == 0 || labourSource.name.toLowerCase().indexOf(query) == 0) {
+            if (labourSource.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredLabourSources.push(labourSource);
+
             }
         }
     }
 
-    handleLabourSourceDropdownClick() {
-        this.filteredLabourSources = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredLabourSources = this.labourSources;
-        }, 100)
-    }
-
     onLabourSourceSelect(event: any) {
-        this.setDisplayOfLabourSource();
     }
 
-    setDisplayOfLabourSource() {
-
-        let labourSource = this.formGroup.value.labourSource;
-        if (labourSource != null && labourSource != undefined) {
-            let display = labourSource.code != null && labourSource.code != undefined ? labourSource.code + ' : ' : '';
-            display += labourSource.name != null && labourSource.name != undefined ? labourSource.name : '';
-            this.formGroup.value.labourSource.display = display;
-        }
-
-    }
     /*================== End Of LabourSource Filter ===================*/
 }
 

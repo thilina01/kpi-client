@@ -33,11 +33,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="controlPointType" [dropdown]="true" field="display" [suggestions]="filteredControlPointTypes"
                 (completeMethod)="filterControlPointTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onControlPointTypeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/controlPointType/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -50,11 +45,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="workCenter" [dropdown]="true" field="display" [suggestions]="filteredWorkCenters" (completeMethod)="filterWorkCenters($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onWorkCenterSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/workCenter/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>

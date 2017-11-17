@@ -71,7 +71,6 @@ export class JobForm {
             this.job = data;
         }
         this.formGroup.patchValue(this.job, { onlySelf: true });
-        this.setDisplayOfItem();
     }
 
     public onSubmit(values: any, event: Event): void {
@@ -97,31 +96,13 @@ export class JobForm {
         this.filteredItemList = [];
         for (let i = 0; i < this.itemList.length; i++) {
             let item = this.itemList[i];
-            if ((item.code != undefined && item.code.toLowerCase().indexOf(query) == 0) || (item.name != undefined && item.name.toLowerCase().indexOf(query) == 0)) {
+            if (item.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredItemList.push(item);
             }
         }
     }
 
-    handleItemDropdownClick() {
-        this.filteredItemList = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredItemList = this.itemList;
-        }, 100)
-    }
-
     onItemSelect(event: any) {
-        this.setDisplayOfItem();
-    }
-
-    setDisplayOfItem() {
-        let item = this.formGroup.value.item;
-        if (item != null && item != undefined) {
-            let display = item.code != null && item.code != undefined ? item.code + ' : ' : '';
-            display += item.name != null && item.name != undefined ? item.name : '';
-            this.formGroup.value.item.display = display;
-        }
     }
     /*================== End of Item Filter ===================*/
 }

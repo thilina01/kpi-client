@@ -143,6 +143,7 @@ export class Pages {
     { routerLink: '/pages/team/table', name: 'Team', menuType: this.menuType },
     { routerLink: '/pages/tool/table', name: 'Tool', menuType: this.menuType },
     { routerLink: '/pages/toolBreakdown/table', name: 'Tool Breakdown', menuType: this.menuType },
+    { routerLink: '/pages/treatment/table', name: 'Treatment', menuType: this.menuType },
     { routerLink: '/pages/treatmentType/table', name: 'Treatment Type', menuType: this.menuType },
     { routerLink: '/pages/workCenter/table', name: 'Work Center', menuType: this.menuType }
   ];
