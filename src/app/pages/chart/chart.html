@@ -10,13 +10,8 @@
 			<label for="section">Section</label>
 			<br/>
 			<div class="ui-inputgroup">
-				<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+				<p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
 				 [size]="30" [minLength]="1" placeholder="Search" [dropdown]="true" (onSelect)="onSectionSelect($event)">
-					<ng-template let-option pTemplate="option">
-						<div class="ui-helper-clearfix">
-							<div>{{option.code}}</div>
-						</div>
-					</ng-template>
 				</p-autoComplete>
 				<a routerLink="/pages/section/form" target="blank">
 					<button pButton type="button" icon="fa-plus-circle"></button>

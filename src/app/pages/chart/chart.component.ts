@@ -37,7 +37,7 @@ export class Chart {
     loadData() {
         this.sectionService.getAll().subscribe((data) => {
             this.sections = data;
-            this.sections.unshift({ 'id': 0, 'code': 'ALL', 'name': 'All Sections' });
+            this.sections.unshift({ 'id': 0, 'code': 'ALL', 'display': 'All Sections' });
         });
     }
 
@@ -57,20 +57,11 @@ export class Chart {
         this.filteredSections = [];
         for (let i = 0; i < this.sections.length; i++) {
             let section = this.sections[i];
-            if (section.code.toLowerCase().indexOf(query) == 0) {
+            if (section.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSections.push(section);
             }
         }
     }
-
-    handleSectionDropdownClick() {
-        this.filteredSections = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSections = this.sections;
-        }, 100)
-    }
-
     onSectionSelect(section: any) {
         console.log(event)
     }
@@ -88,15 +79,6 @@ export class Chart {
             }
         }
     }
-
-    handleChartDropdownClick() {
-        this.filteredCharts = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredCharts = this.charts;
-        }, 100)
-    }
-
     onChartSelect(chart: any) {
         console.log(event)
     }

@@ -26,9 +26,9 @@ export class ManpowerUtilizationTable {
   sections: any;
   employees: any;
   shifts: any;
-  section: any = { id: 0, 'code': 'ALL', 'name': 'All Sections' }
-  shift: any = { id: 0, 'code': 'ALL', 'name': 'All Shifts' }
-  employee: any = { id: 0, 'code': 'ALL', 'name': 'All Employees' }
+  section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' }
+  shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' }
+  employee: any = { id: 0, 'code': 'ALL', 'display': 'All Employees' }
   startDate: Date;
   endDate: Date;
 
@@ -48,20 +48,20 @@ export class ManpowerUtilizationTable {
   getSections(): void {
     this.sectionService.getCombo().subscribe(sections => {
       this.sections = sections;
-      this.sections.unshift({ id: 0, 'code': 'ALL', 'name': 'All Sections' });
+      this.sections.unshift({ id: 0, 'code': 'ALL', 'display': 'All Sections' });
     });
   }
 
   getShifts(): void {
     this.shiftService.getCombo().subscribe(shifts => {
       this.shifts = shifts;
-      this.shifts.unshift({ id: 0, 'code': 'ALL', 'name': 'All Shifts' });
+      this.shifts.unshift({ id: 0, 'code': 'ALL', 'display': 'All Shifts' });
     });
   }
   getEmployees(): void {
     this.employeeService.getCombo().subscribe(employees => {
       this.employees = employees;
-      this.employees.unshift({ id: 0, 'code': 'ALL', 'name': 'All Employees' });
+      this.employees.unshift({ id: 0, 'code': 'ALL', 'display': 'All Employees' });
     });
   }
 
@@ -134,7 +134,7 @@ export class ManpowerUtilizationTable {
     this.filteredShifts = [];
     for (let i = 0; i < this.shifts.length; i++) {
       let shift = this.shifts[i];
-      if (shift.code.toLowerCase().indexOf(query) == 0) {
+      if (shift.display.toLowerCase().indexOf(query) >= 0) {
         this.filteredShifts.push(shift);
       }
     }
@@ -150,7 +150,7 @@ export class ManpowerUtilizationTable {
     this.filteredSections = [];
     for (let i = 0; i < this.sections.length; i++) {
       let section = this.sections[i];
-      if (section.code.toLowerCase().indexOf(query) == 0) {
+      if (section.display.toLowerCase().indexOf(query) >= 0) {
         this.filteredSections.push(section);
       }
     }
@@ -166,7 +166,7 @@ export class ManpowerUtilizationTable {
     this.filteredEmployees = [];
     for (let i = 0; i < this.employees.length; i++) {
       let employee = this.employees[i];
-      if (employee.code.toLowerCase().indexOf(query) == 0 || employee.callingName.toLowerCase().indexOf(query) == 0) {
+      if (employee.display.toLowerCase().indexOf(query) >= 0) {
         this.filteredEmployees.push(employee);
       }
     }

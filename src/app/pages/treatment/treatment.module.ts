@@ -45,7 +45,6 @@ import { AccidentService } from '../accident/accident.service';
     SectionService,
     ShiftService,
     MachineService,
-    TreatmentTypeService
   ]
 })
 export class TreatmentModule { }

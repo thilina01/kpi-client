@@ -1,11 +1,6 @@
 <label for=" customer"> Customer</label>
 <p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
   [size]="50" [minLength]="1" placeholder="Search" [dropdown]="true" (onSelect)="onCustomerSelect($event)">
-  <ng-template let-option pTemplate="option">
-    <div class="ui-helper-clearfix">
-      <div>{{option.code}} : {{option.name}}</div>
-    </div>
-  </ng-template>
 </p-autoComplete>
 <ba-am-chart id="onTimeDeliverychartdiv" baAmChartClass="dashboard-on-time-delivery-chart" [baAmChartConfiguration]="chartData"
   (onChartReady)="initChart($event)"></ba-am-chart>
