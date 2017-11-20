@@ -125,12 +125,6 @@ export class DispatchNoteForm {
     if (data != null) {
       data.dispatchDate = new Date(data.dispatchDate);
       this.dispatchNote = data;
-      this.dispatchNote.address.code = this.dispatchNote.address.line1;
-      this.dispatchNote.address.name = this.dispatchNote.address.line2;
-      this.dispatchNote.address.name = this.dispatchNote.address.line3;
-      this.dispatchNote.address.name = this.dispatchNote.address.line4;
-      this.dispatchNote.address.name = this.dispatchNote.address.line5;
-
     }
     this.formGroup.patchValue(this.dispatchNote, { onlySelf: true });
     this.customer = this.dispatchNote.customer;
