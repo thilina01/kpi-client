@@ -115,6 +115,7 @@ export class InvoiceForm {
     public resetForm() {
         this.formGroup.reset();
         this.dispatchNoteFormGroup.reset();
+        this.dispatchList = [];
     }
 
     fillDispatchNotes(): void {
