@@ -17,6 +17,7 @@ import { PortService } from '../port/port.service';
 import { ContainerSizeService } from '../containerSize/containerSize.service';
 import { CountryService } from '../country/country.service';
 import { InvoiceService } from '../invoice/invoice.service';
+import { EmployeeService } from '../employee/employee.service';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { InvoiceService } from '../invoice/invoice.service';
     ContainerSizeService,
     CountryService,
     InvoiceService,
+    EmployeeService,
     DispatchService
 
 
