@@ -22,9 +22,9 @@ export class ProductionTable {
     rows = [];
     timeout: any;
     sections: any;
-    section: any = { id: 0, "code": "ALL", "name": "All Sections", "display": "All" }
+    section: any = { id: 0, "code": "ALL", "display": "All" }
     shifts: any;
-    shift: any = { id: 0, "code": "ALL", "name": "All Shifts", "display": "All" }
+    shift: any = { id: 0, "code": "ALL", "display": "All" }
     startDate: Date;
     endDate: Date;
     //msgs: Message[];
@@ -49,13 +49,13 @@ export class ProductionTable {
     getSections(): void {
         this.sectionService.getCombo().subscribe(sections => {
             this.sections = sections;
-            this.sections.unshift({ id: 0, "code": "ALL", "name": "All Sections", "display": "All Sections" });
+            this.sections.unshift({ id: 0, "code": "ALL", "display": "All Sections" });
         });
     }
     getShifts(): void {
         this.shiftService.getCombo().subscribe(shifts => {
             this.shifts = shifts;
-            this.shifts.unshift({ id: 0, "code": "ALL", "name": "All Shifts", "display": "All Shifts" });
+            this.shifts.unshift({ id: 0, "code": "ALL", "display": "All Shifts" });
         });
     }
 
@@ -142,20 +142,11 @@ export class ProductionTable {
         this.filteredShifts = [];
         for (let i = 0; i < this.shifts.length; i++) {
             let shift = this.shifts[i];
-            if (shift.code.toLowerCase().indexOf(query) == 0) {
+            if (shift.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredShifts.push(shift);
             }
         }
     }
-
-    handleShiftDropdownClick() {
-        this.filteredShifts = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredShifts = this.shifts;
-        }, 100)
-    }
-
     onShiftSelect(shift: any) {
         console.log(event)
     }
@@ -169,20 +160,11 @@ export class ProductionTable {
         this.filteredSections = [];
         for (let i = 0; i < this.sections.length; i++) {
             let section = this.sections[i];
-            if (section.code.toLowerCase().indexOf(query) == 0) {
+            if (section.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredSections.push(section);
             }
         }
     }
-
-    handleSectionDropdownClick() {
-        this.filteredSections = [];
-        //mimic remote call
-        setTimeout(() => {
-            this.filteredSections = this.sections;
-        }, 100)
-    }
-
     onSectionSelect(section: any) {
         console.log(event)
     }

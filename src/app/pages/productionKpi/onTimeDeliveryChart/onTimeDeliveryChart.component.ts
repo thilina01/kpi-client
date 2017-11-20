@@ -64,36 +64,27 @@ export class OnTimeDeliveryChart {
   getCustomerList(): void {
     this.customerService.getCombo().subscribe(customerList => {
       this.customerList = customerList;
-      this.customerList.unshift({ "id": 0, "code": "ALL", "name": "All Customers","display": "All Customers" });
+      this.customerList.unshift({ "id": 0, "code": "ALL", "display": "All Customers" });
     });
   }
 
   /*================== CustomerFilter ===================*/
   customerList = [];
   filteredCustomerList: any[];
-  customer: any = { "id": 0, "code": "ALL", "name": "All Customers","display": "All Customers" };
+  customer: any = { "id": 0, "code": "ALL", "display": "All Customers" };
 
   filterCustomerList(event) {
     let query = event.query.toLowerCase();
     this.filteredCustomerList = [];
     for (let i = 0; i < this.customerList.length; i++) {
       let customer = this.customerList[i];
-      if (customer.code.toLowerCase().indexOf(query) === 0 || customer.name.toLowerCase().indexOf(query) === 0) {
+      if (customer.display.toLowerCase().indexOf(query) >= 0) {
         this.filteredCustomerList.push(customer);
       }
     }
   }
 
   onCustomerSelect(event: any) {
-    this.setDisplayOfCustomer();
     this.getData();
-  }
-
-  setDisplayOfCustomer() {
-    if (this.customer != null && this.customer !== undefined) {
-      let display = this.customer.code != null && this.customer.code !== undefined ? this.customer.code + ' : ' : '';
-      display += this.customer.name != null && this.customer.name !== undefined ? this.customer.name : '';
-      this.customer.display = display;
-    }
   }
 }

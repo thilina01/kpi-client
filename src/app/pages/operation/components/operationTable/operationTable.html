@@ -23,13 +23,8 @@
 				<div class="col" style="text-align: left">
 					Shift
 					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="shift" field="name" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)" [size]="30"
-						 [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onShiftSelect($event)">
-							<ng-template let-option pTemplate="option">
-								<div class="ui-helper-clearfix">
-									<div>{{option.code}}</div>
-								</div>
-							</ng-template>
+						<p-autoComplete [(ngModel)]="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+						 [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onShiftSelect($event)">
 						</p-autoComplete>
 						<a routerLink="/pages/shift/form" target="blank">
 							<button pButton type="button" icon="fa-plus-circle"></button>
@@ -39,13 +34,8 @@
 				<div class="col" style="text-align: left">
 					Section
 					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="section" field="name" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+						<p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
 						 [size]="30" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onSectionSelect($event)">
-							<ng-template let-option pTemplate="option">
-								<div class="ui-helper-clearfix">
-									<div>{{option.code}}</div>
-								</div>
-							</ng-template>
 						</p-autoComplete>
 						<a routerLink="/pages/section/form" target="blank">
 							<button pButton type="button" icon="fa-plus-circle"></button>
