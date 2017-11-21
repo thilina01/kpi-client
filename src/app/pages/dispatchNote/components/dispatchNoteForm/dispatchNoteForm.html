@@ -40,11 +40,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.fullName}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/employee/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -57,11 +52,6 @@
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
                 [size]="76" [minLength]="1" placeholder="Search" (onSelect)="onAddressSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
               </p-autoComplete>
               <a routerLink="/pages/customer/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
@@ -86,11 +76,6 @@
                     <p-autoComplete [dropdown]="true" id="dispatchScheduleSelector" formControlName="dispatchSchedule" field="display" [suggestions]="filteredDispatchScheduleList"
                       (completeMethod)="filterDispatchScheduleList($event)" [size]="50" [minLength]="1" placeholder="Search"
                       (onSelect)="onDispatchScheduleSelect($event)">
-                      <ng-template let-option pTemplate="option">
-                        <div class="ui-helper-clearfix">
-                          <div>{{option.code}} : {{option.name}}</div>
-                        </div>
-                      </ng-template>
                     </p-autoComplete>
                     <a routerLink="/pages/dispatchSchedule/form" target="blank">
                       <button pButton type="button" icon="fa-plus-circle"></button>

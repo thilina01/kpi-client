@@ -20,7 +20,7 @@
     <p-column field="dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
     <p-column field="customer.name" header="Customer" [sortable]="true"></p-column>
     <p-column field="address.line1" header="Ship To" [sortable]="true"></p-column>
-    <p-column field="employee.firstName" header="Sales Person" [sortable]="true"></p-column>
+    <p-column field="employee.callingName" header="Sales Person" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">
         <a (click)="print(data.id)" href="javascript:void(0)">
