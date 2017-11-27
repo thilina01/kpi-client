@@ -22,7 +22,7 @@ export class PrintService {
 
   print(printContents: string, width: string, height: string): void {
     let popupWin;
-    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin = window.open('', '_blank', 'top=15,left=10,height=100%,width=auto');
     popupWin.document.open();
     popupWin.document.write(`
   <html>
@@ -50,16 +50,14 @@ margin: 1em 0;
 padding: 0;
 }
 div.divFooter {
-position: fixed;
+page-break-inside: avoid;
 bottom: 0;
 font-size: 10px;
-width: 95%;
 margin-bottom: 1em;
 }
 
 @page {
 size: ${width} ${height};
-margin: 1em;
 }
 
 html, body {
