@@ -17,18 +17,18 @@
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowDblclick)="onRowDblclick($event.data)"
 	 sortMode="multiple" resizableColumns="true" exportFilename="accidents" [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="code" header="Code" [sortable]="true"></p-column>
+		<p-column field="code" header="Code" [sortable]="true" styleClass="text-left"></p-column>
 		<p-column field="accidentDate" header="Accident Date">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
 				{{rowData.accidentDate|date:'y-MM-dd HH:mm'}}
 			</ng-template>
 		</p-column>
-		<p-column field="employee.callingName" header="Employee" [sortable]="true"></p-column>
-		<p-column field="shift.name" header="Shift" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column field="machine.name" header="Machine" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column field="section.name" header="Section" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column field="accidentType.name" header="Accident Type" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column field="rootCause" header="Root Cause" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column field="correctiveAction" header="Corrective Action" [sortable]="true" styleClass="text-right"></p-column>
-		<p-column field="responsiblePerson.callingName" header="Responsible Person" [sortable]="true" styleClass="text-right"></p-column>
+		<p-column field="employee.callingName" header="Employee" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="shift.name" header="Shift" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="machine.name" header="Machine" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="section.name" header="Section" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="accidentType.name" header="Accident Type" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="rootCause" header="Root Cause" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="correctiveAction" header="Corrective Action" [sortable]="true" styleClass="text-left"></p-column>
+		<p-column field="responsiblePerson.callingName" header="Responsible Person" [sortable]="true" styleClass="text-left"></p-column>
 	</p-dataTable>
