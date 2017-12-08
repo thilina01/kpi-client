@@ -111,7 +111,7 @@ export class DispatchNoteForm {
         let id = params['id'];
         id = id == undefined ? '0' : id;
         if (id != '0') {
-          this.service.getOne(+id).subscribe(
+          this.service.get(+id).subscribe(
             (data) => {
               this.loadForm(data);
             }
@@ -182,7 +182,7 @@ export class DispatchNoteForm {
         this.formGroup.value.dispatchList = [];
       }
 
-      this.dispatchScheduleService.getOne(+values.dispatchSchedule.id).subscribe(dispatchSchedule => {
+      this.dispatchScheduleService.get(+values.dispatchSchedule.id).subscribe(dispatchSchedule => {
         values.dispatchSchedule = dispatchSchedule;
         this.formGroup.value.dispatchList.push(values);
         this.calculateTotal();

@@ -86,7 +86,7 @@ export class ScrapForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).subscribe(
+                    this.service.get(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }

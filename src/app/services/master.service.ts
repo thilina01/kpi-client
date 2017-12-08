@@ -41,7 +41,7 @@ export class MasterService {
       .catch(err => this.handleError(err));
   }
 
-  getOne(id: number): Observable<any> {
+  get(id: number): Observable<any> {
     return this.http.get(this.apiUrl + id, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }

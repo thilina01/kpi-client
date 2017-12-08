@@ -12,7 +12,7 @@ export class Print {
 
   @Input() set id(id: number) {
     if (this.id !== 0) {
-      this.salesOrderService.getOne(+id).subscribe(
+      this.salesOrderService.get(+id).subscribe(
         (salesOrder) => {
           this.salesOrder = salesOrder;
           this.dispatchScheduleService.getBySalesOrder(+id).subscribe(

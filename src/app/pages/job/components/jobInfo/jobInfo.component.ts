@@ -68,7 +68,7 @@ export class JobInfo {
     fill(id: any): void {
         this.clear();
         if (id != '0') {
-            this.service.getOne(+id).subscribe(
+            this.service.get(+id).subscribe(
                 (data) => {
                     if (data != null) {
                         this.job = data;

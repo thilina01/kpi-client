@@ -141,7 +141,7 @@ export class DispatchScheduleForm {
 
 
   fill(salesOrderId: number) {
-    this.salesOrderService.getOne(salesOrderId).subscribe(
+    this.salesOrderService.get(salesOrderId).subscribe(
       (data) => {
         this.salesOrder = data;
         this.setDisplayOfSalesOrder();

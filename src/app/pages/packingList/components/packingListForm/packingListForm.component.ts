@@ -95,7 +95,7 @@ export class PackingListForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).subscribe(
+                    this.service.get(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -142,7 +142,7 @@ export class PackingListForm {
                 this.formGroup.value.invoiceList = [];
             }
 
-            this.invoiceService.getOne(+values.invoice.id).subscribe(invoice => {
+            this.invoiceService.get(+values.invoice.id).subscribe(invoice => {
                 values.invoice = invoice;
                 this.formGroup.value.invoiceList.push(values);
                 this.calculateTotal();

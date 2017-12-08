@@ -116,7 +116,7 @@ export class ProductionForm {
       (params: Params) => {
         let id = params['id'];
         id = id == undefined ? 1 : id;
-        this.service.getOne(+id).subscribe(
+        this.service.get(+id).subscribe(
           (data) => {
             this.loadForm(data);
           }

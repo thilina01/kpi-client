@@ -46,7 +46,7 @@ export class Plan {
         console.log(params);
         id = id == undefined ? '0' : id;
         if (id != '0') {
-          this.productionService.getOne(+id).subscribe(
+          this.productionService.get(+id).subscribe(
             (data) => {
               this.loadForm(data);
               console.log(data);

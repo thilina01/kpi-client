@@ -11,7 +11,7 @@ export class Print {
 
   @Input() set id(id: number) {
     if (this.id !== 0) {
-      this.service.getOne(+id).subscribe(
+      this.service.get(+id).subscribe(
         (data) => {
           this.dispatchNote = data;
           setTimeout(() => {

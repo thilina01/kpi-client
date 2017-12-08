@@ -86,7 +86,7 @@ export class DispatchReleaseForm {
     }
 
     loadForm(id: any) {
-        this.service.getOne(+id).subscribe(
+        this.service.get(+id).subscribe(
             (data) => {
                 if (data != null) {
                     data.dispatchReleaseTime = new Date(data.dispatchReleaseTime);

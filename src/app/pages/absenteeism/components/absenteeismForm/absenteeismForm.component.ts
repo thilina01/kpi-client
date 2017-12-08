@@ -36,7 +36,7 @@ export class AbsenteeismForm {
       (params: Params) => {
         let id = params['id'];
         if (id != undefined && id != '0') {
-          this.service.getOne(+id).subscribe(
+          this.service.get(+id).subscribe(
             (data) => {
               this.loadForm(data);
             }

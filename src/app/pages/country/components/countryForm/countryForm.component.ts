@@ -25,7 +25,7 @@ export class CountryForm {
     ngOnInit(): void {
         let id = this.route.snapshot.paramMap.get('id');
         if (id) {
-          this.service.getOne(+id).subscribe(country => { if (country) this.country = country; } );
+          this.service.get(+id).subscribe(country => { if (country) this.country = country; } );
         }
     }
 

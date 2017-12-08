@@ -83,7 +83,7 @@ export class InvoiceForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.getOne(+id).subscribe(
+                    this.service.get(+id).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -147,7 +147,7 @@ export class InvoiceForm {
                 this.formGroup.value.invoiceDispatchNoteList = [];
             }
 
-            this.dispatchNoteService.getOne(+values.dispatchNote.id).subscribe(dispatchNote => {
+            this.dispatchNoteService.get(+values.dispatchNote.id).subscribe(dispatchNote => {
                 values.dispatchNote = dispatchNote;
                 this.formGroup.value.invoiceDispatchNoteList.push({dispatchNote: dispatchNote});
                 this.dispatchNoteFormGroup.reset();
