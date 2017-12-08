@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { DispatchNoteService } from '../../dispatchNote.service';
 import { PrintService } from '../../../../services/print.service';
 import { OrganizationService } from '../../../organization/organization.service';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'print',
@@ -11,7 +12,7 @@ export class Print {
 
   @Input() set id(id: number) {
     if (this.id !== 0) {
-      this.service.get(+id).subscribe(
+      this.service.get(+id).take(1).subscribe(
         (data) => {
           this.dispatchNote = data;
           setTimeout(() => {

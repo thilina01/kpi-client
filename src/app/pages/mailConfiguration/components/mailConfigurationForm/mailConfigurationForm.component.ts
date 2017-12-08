@@ -5,6 +5,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { SharedService } from '../../../../services/shared.service';
 import { MailConfigurationService } from '../../mailConfiguration.service';
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'mail-configuration-form',
@@ -40,7 +41,7 @@ export class MailConfigurationForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.get(+id).subscribe(
+                    this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }

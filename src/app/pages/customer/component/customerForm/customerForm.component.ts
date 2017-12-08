@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -14,6 +14,7 @@ import { CountryService } from "../../../country/country.service";
 import { AddressTypeService } from "../../../addressType/addressType.service";
 import { ContactTypeService } from "../../../contactType/contactType.service";
 import { DataTable, ConfirmationService } from "primeng/primeng";
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'customer-form',
@@ -178,7 +179,7 @@ export class CustomerForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.get(+id).subscribe(
+                    this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }

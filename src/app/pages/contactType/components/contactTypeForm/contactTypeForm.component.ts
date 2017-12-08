@@ -5,6 +5,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { SharedService } from '../../../../services/shared.service';
 import { ContactTypeService } from '../../contactType.service';
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'contact-type-form',
@@ -46,7 +47,7 @@ export class ContactTypeForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.get(+id).subscribe(
+                    this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }

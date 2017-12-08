@@ -1,12 +1,13 @@
 import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
 import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service';
 import { DispatchService } from '../../../../services/dispatch.service';
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'dispatch-release-form',
@@ -86,7 +87,7 @@ export class DispatchReleaseForm {
     }
 
     loadForm(id: any) {
-        this.service.get(+id).subscribe(
+        this.service.get(+id).take(1).subscribe(
             (data) => {
                 if (data != null) {
                     data.dispatchReleaseTime = new Date(data.dispatchReleaseTime);

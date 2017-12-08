@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -11,6 +11,7 @@ import { PortService } from '../../../port/port.service';
 import { CountryService } from '../../../country/country.service';
 import { ContainerSizeService } from '../../../containerSize/containerSize.service';
 import { InvoiceService } from '../../../invoice/invoice.service';
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'packing-list-form',
@@ -95,7 +96,7 @@ export class PackingListForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.get(+id).subscribe(
+                    this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
@@ -201,7 +202,7 @@ export class PackingListForm {
         this.formGroup.value.cbm = cbm;
         this.formGroup.value.pkgs = pkgs;
     }
-    
+
     /*================== Port Filter ===================*/
     filteredPorts: any[];
 

@@ -10,6 +10,7 @@ import {ProductionService} from '../../production.service';
 import {ShiftService} from '../../../shift/shift.service';
 import {OrganizationService} from '../../../organization/organization.service';
 import {EmployeeService} from "../../../employee/employee.service";
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'production-form',
@@ -116,7 +117,7 @@ export class ProductionForm {
       (params: Params) => {
         let id = params['id'];
         id = id == undefined ? 1 : id;
-        this.service.get(+id).subscribe(
+        this.service.get(+id).take(1).subscribe(
           (data) => {
             this.loadForm(data);
           }

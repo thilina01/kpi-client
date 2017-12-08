@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../../../services/shared.service';
 import { AbsenteeismService } from '../../absenteeism.service';
 import { LabourSourceService } from '../../../labourSource/labourSource.service';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'absenteeism-form',
@@ -36,7 +37,7 @@ export class AbsenteeismForm {
       (params: Params) => {
         let id = params['id'];
         if (id != undefined && id != '0') {
-          this.service.get(+id).subscribe(
+          this.service.get(+id).take(1).subscribe(
             (data) => {
               this.loadForm(data);
             }
@@ -60,7 +61,7 @@ export class AbsenteeismForm {
   refresh(): void {
     this.getLabourSources();
   }
-  
+
   public onSubmit(values: any, event: Event): void {
     event.preventDefault();
     console.log(values);

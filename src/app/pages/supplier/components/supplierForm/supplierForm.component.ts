@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -9,6 +9,7 @@ import { SupplierTypeService } from '../../../supplierType/supplierType.service'
 import { PaymentTermService } from '../../../paymentTerm/paymentTerm.service';
 import { CurrencyService } from '../../../currency/currency.service';
 import { DeliveryTermService } from '../../../deliveryTerm/deliveryTerm.service';
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'supplier-form',
@@ -85,7 +86,7 @@ export class SupplierForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.get(+id).subscribe(
+                    this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }

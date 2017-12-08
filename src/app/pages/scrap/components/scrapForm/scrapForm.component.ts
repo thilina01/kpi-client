@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -10,6 +10,7 @@ import { SectionService } from '../../../section/section.service';
 import { LossReasonService } from '../../../lossReason/lossReason.service';
 import { OperationTypeService } from '../../../operationType/operationType.service';
 import { ItemTypeService } from '../../../itemType/itemType.service';
+import 'rxjs/add/operator/take';
 
 @Component({
     selector: 'scrap-form',
@@ -86,7 +87,7 @@ export class ScrapForm {
                 let id = params['id'];
                 id = id == undefined ? '0' : id;
                 if (id != '0') {
-                    this.service.get(+id).subscribe(
+                    this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
                         }
