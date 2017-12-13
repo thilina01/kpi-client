@@ -260,6 +260,8 @@
               <th>Control Point</th>
               <th>Planned Duration</th>
               <th>Actual Duration</th>
+              <th>Breakdown Count</th>
+              <th>Breakdown Duration</th>
             </tr>
           </thead>
           <tbody>
@@ -295,6 +297,8 @@
               </td>
               <td class="text-right">{{production.plannedDuration}}</td>
               <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
@@ -304,12 +308,17 @@
         <table class="table table-condensed table-bordered table-striped table-sm">
           <thead>
             <tr>
+              <th>Operation ID</th>
               <th>Job</th>
               <th class="col-sm-2">Item</th>
               <th>Product Type</th>
               <th>Operation Type</th>
               <th>Planned</th>
-              <th>Actual</th>
+              <th>&nbsp;&nbsp;10&nbsp;</th>
+              <th>&nbsp;&nbsp;13&nbsp;</th>
+              <th>&nbsp;&nbsp;16&nbsp;</th>
+              <th>&nbsp;&nbsp;19&nbsp;</th>
+              <th>Total</th>
               <th>Defect</th>
               <th>Scrap</th>
               <th class="col-sm-3">Reason</th>
@@ -317,6 +326,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let operation of production.operationList">
+              <td>{{operation.id}}</td>
               <td>{{operation.job.jobNo}}</td>
               <td>{{operation.job.item != undefined && operation.job.item.code != undefined ? operation.job.item.code:""}}
               </td>
@@ -327,13 +337,6 @@
               <td></td>
               <td></td>
               <td></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
               <td></td>
               <td></td>
               <td></td>
@@ -349,10 +352,35 @@
               <td></td>
               <td></td>
               <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
             <tr>
-              <td colspan="4" class="text-right">Total</td>
+              <td>&nbsp;</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="5" class="text-right">Total</td>
               <td class="text-right">{{totalPlannedProductionQuantity}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
               <td></td>
               <td></td>
               <td></td>
@@ -382,6 +410,8 @@
               <th>Control Point</th>
               <th>Planned Duration</th>
               <th>Actual Duration</th>
+              <th>Breakdown Count</th>
+              <th>Breakdown Duration</th>
             </tr>
           </thead>
           <tbody>
@@ -415,12 +445,14 @@
               </td>
               <td class="text-right">{{production.plannedDuration}}</td>
               <td></td>
+              <td></td>
+              <td></td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="row" style="margin-left: 10px">
-        <div class="col-sm-4" style="padding-left: 0;">
+        <!-- <div class="col-sm-3" style="padding-left: 0;">
           <p class="text-center">Manpower</p>
           <table class="table table-condensed table-bordered table-striped table-sm">
             <thead>
@@ -443,8 +475,8 @@
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="col-sm-4" style="padding-right: 0;">
+        </div> -->
+        <!-- <div class="col-sm-4" style="padding-right: 0;">
           <p class="text-center">Breakdown</p>
           <table class="table table-condensed table-bordered table-striped table-sm">
             <thead>
@@ -460,55 +492,88 @@
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> -->
 
-        <div class="col-sm-4">
-          <p class="text-center">Attendance</p>
+        <div class="col-sm-8">
+          <p class="text-center">Utilization</p>
           <table class="table table-condensed table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th class="col-sm-4">Emp #</th>
-                <th>Name</th>
+                <th>Employee</th>
+                <th>Machine</th>
+                <th class="col-sm-3">Operation</th>
+                <th class="col-sm-2">Start</th>
+                <th class="col-sm-2">End</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-              </tr>
-              <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-              </tr>
-              <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
-              </tr>
-              <tr>
                 <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
               <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
               </tr>
