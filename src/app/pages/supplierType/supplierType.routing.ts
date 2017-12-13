@@ -4,6 +4,7 @@ import { SupplierType } from './supplierType.component';
 import { SupplierTypeForm } from './components/supplierTypeForm/supplierTypeForm.component';
 import { SupplierTypeTable } from './components/supplierTypeTable/supplierTypeTable.component';
 import { ModuleWithProviders } from '@angular/core';
+import { SupplierTypeImport } from './components/supplierTypeImport/supplierTypeImport.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,8 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: SupplierTypeForm },
       { path: 'form/:id', component: SupplierTypeForm },
-      { path: 'table', component: SupplierTypeTable }
+      { path: 'table', component: SupplierTypeTable },
+      { path: 'import', component: SupplierTypeImport }
     ]
   }
 ];

@@ -54,6 +54,10 @@ export class TreatmentTypeTable {
     this.router.navigate(['/pages/treatmentType/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/treatmentType/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

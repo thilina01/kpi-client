@@ -54,6 +54,10 @@ export class JobTypeTable {
     this.router.navigate(['/pages/jobType/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/jobType/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

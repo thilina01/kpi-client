@@ -24,8 +24,9 @@ import { ComputerTypeImport } from './components/computerTypeImport/computerType
     PanelModule,
     InputTextModule,
     CalendarModule,
-    FileUploadModule,
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     ComputerType,

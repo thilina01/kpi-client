@@ -15,8 +15,6 @@ export const routes: Routes = [
       { path: 'form/:id', component: ComputerTypeForm },
       { path: 'table', component: ComputerTypeTable },
       { path: 'import', component: ComputerTypeImport }
-
-
     ]
   }
 ];

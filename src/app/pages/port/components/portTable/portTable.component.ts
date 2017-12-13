@@ -54,11 +54,6 @@ export class PortTable {
     this.router.navigate(['/pages/port/form/' + id]);
   }
 
-  navigateToImport(): void {
-    this.router.navigate(['/pages/port/import']);
-  }
-
-
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

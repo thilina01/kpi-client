@@ -1,18 +1,18 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import * as Papa from 'papaparse/papaparse.min.js';
 import {Subject} from "rxjs/Subject";
-import {PortService} from "../../port.service";
+import {TreatmentTypeService} from "../../treatmentType.service";
 import {Router} from "@angular/router";
 import {SharedService} from "../../../../services/shared.service";
 
 @Component({
   selector: '',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./portImport.scss'],
-  templateUrl: './portImport.html',
+  styleUrls: ['./treatmentTypeImport.scss'],
+  templateUrl: './treatmentTypeImport.html',
 })
 
-export class PortImport {
+export class TreatmentTypeImport {
 
 
   dataSubject: Subject<any> = new Subject<any>();
@@ -20,7 +20,7 @@ export class PortImport {
   jsonData: any[] = [];
   cols: any[];
 
-  constructor(protected service: PortService,
+  constructor(protected service: TreatmentTypeService,
               private router: Router,
               private sharedService: SharedService) {
 
@@ -41,7 +41,7 @@ export class PortImport {
     this.service.saveMany(this.jsonData).subscribe(
       (data) => {
         this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-        this.router.navigate(['/pages/port/table/']);
+        this.router.navigate(['/pages/treatmentType/table/']);
       }
     );
   }

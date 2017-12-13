@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, FileUploadModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { DeliveryTerm } from './deliveryTerm.component';
 import { DeliveryTermTable } from './components/deliveryTermTable/deliveryTermTable.component';
@@ -11,7 +11,6 @@ import { DeliveryTermForm } from './components/deliveryTermForm/deliveryTermForm
 
 import { routing } from './deliveryTerm.routing';
 import { DeliveryTermService } from './deliveryTerm.service';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { DeliveryTermImport } from './components/deliveryTermImport/deliveryTermImport.component';
 
 @NgModule({
@@ -25,8 +24,9 @@ import { DeliveryTermImport } from './components/deliveryTermImport/deliveryTerm
     PanelModule,
     InputTextModule,
     CalendarModule,
-    FileUploadModule,
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     DeliveryTerm,

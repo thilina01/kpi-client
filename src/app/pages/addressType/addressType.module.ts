@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, FileUploadModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { AddressType } from './addressType.component';
 import { AddressTypeTable } from './components/addressTypeTable/addressTypeTable.component';
@@ -11,7 +11,6 @@ import { AddressTypeForm } from './components/addressTypeForm/addressTypeForm.co
 
 import { routing } from './addressType.routing';
 import { AddressTypeService } from './addressType.service';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { AddressTypeImport } from './components/addressTypeImport/addressTypeImport.component';
 
 @NgModule({
@@ -25,8 +24,9 @@ import { AddressTypeImport } from './components/addressTypeImport/addressTypeImp
     PanelModule,
     InputTextModule,
     CalendarModule,
-    FileUploadModule,
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     AddressType,

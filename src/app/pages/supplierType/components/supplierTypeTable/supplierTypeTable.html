@@ -5,10 +5,15 @@
 				<h4>Supplier Type List</h4>
 			</div>
 			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToImport()" style="float:right; margin-right:6px;">
+					<i ng-reflect-class-name="fa fa-upload" class="fa fa-upload"></i> Import
+				</button>
 				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
-					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export
+				</button>
 				<button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;">
-					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add
+				</button>
 			</div>
 		</div>
 	</p-header>

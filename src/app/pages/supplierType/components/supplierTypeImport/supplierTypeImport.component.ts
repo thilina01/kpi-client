@@ -1,18 +1,18 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import * as Papa from 'papaparse/papaparse.min.js';
 import {Subject} from "rxjs/Subject";
-import {ContainerSizeService} from "../../containerSize.service";
+import {SupplierTypeService} from "../../supplierType.service";
 import {Router} from "@angular/router";
 import {SharedService} from "../../../../services/shared.service";
 
 @Component({
   selector: '',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./containerSizeImport.scss'],
-  templateUrl: './containerSizeImport.html',
+  styleUrls: ['./supplierTypeImport.scss'],
+  templateUrl: './supplierTypeImport.html',
 })
 
-export class ContainerSizeImport {
+export class SupplierTypeImport {
 
 
   dataSubject: Subject<any> = new Subject<any>();
@@ -20,7 +20,7 @@ export class ContainerSizeImport {
   jsonData: any[] = [];
   cols: any[];
 
-  constructor(protected service: ContainerSizeService,
+  constructor(protected service: SupplierTypeService,
               private router: Router,
               private sharedService: SharedService) {
 
@@ -41,7 +41,7 @@ export class ContainerSizeImport {
     this.service.saveMany(this.jsonData).subscribe(
       (data) => {
         this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-        this.router.navigate(['/pages/containerSize/table/']);
+        this.router.navigate(['/pages/supplierType/table/']);
       }
     );
   }

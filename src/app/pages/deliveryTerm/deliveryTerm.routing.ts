@@ -15,7 +15,6 @@ export const routes: Routes = [
       { path: 'form/:id', component: DeliveryTermForm },
       { path: 'table', component: DeliveryTermTable },
       { path: 'import', component: DeliveryTermImport }
-
     ]
   }
 ];

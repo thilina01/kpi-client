@@ -4,7 +4,6 @@ import { Paint } from './paint.component';
 import { PaintForm } from './components/paintForm/paintForm.component';
 import { PaintTable } from './components/paintTable/paintTable.component';
 import { ModuleWithProviders } from '@angular/core';
-import { PaintImport } from './components/paintImport/paintImport.component';
 
 export const routes: Routes = [
   {
@@ -13,9 +12,7 @@ export const routes: Routes = [
     children: [
       { path: 'form', component: PaintForm },
       { path: 'form/:id', component: PaintForm },
-      { path: 'table', component: PaintTable },
-      { path: 'import', component: PaintImport }
-
+      { path: 'table', component: PaintTable }
     ]
   }
 ];

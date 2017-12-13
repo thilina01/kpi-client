@@ -13,31 +13,37 @@
       </div>
     </div>
   </p-header>
-  <div class='row'>
-    <div class='col-sm-12'>
-      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
-        <div class='row'>
-          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-            <label for='code'>Code</label>
+  <div class="row">
+    <div class="col-sm-12">
+      <form #form="ngForm" (ngSubmit)="save(form.value)" class="form-horizontal">
+        <input type="hidden" id="id" name="id" #id="ngModel" [(ngModel)]="application.id">
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="code">Code</label>
             <br/>
-            <input type='text' pInputText formControlName='code'>
-          </div>
-          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-            <label for='name'>Name</label>
-            <br/>
-            <input type='text' pInputText formControlName='name'>
-          </div>
-          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-            <label for='shortName'>Short Name</label>
-            <br/>
-            <input type='text' pInputText formControlName='shortName'>
+            <input type="text" pInputText id="code" name="code" [(ngModel)]="application.code" required>
           </div>
         </div>
         <br/>
-        <div class='row'>
-          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-            <button pButton [disabled]='!formGroup.valid' type='submit' icon='fa-floppy-o' label='Save'></button>
-            <button type='button' pButton class='ui-button-secondary' (click)='resetForm()' icon='fa-times' label='Reset'></button>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="name">Name</label>
+            <br/>
+            <input type="text" pInputText id="name" name="name" [(ngModel)]="application.name" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="shortName">ShortName</label>
+            <br/>
+            <input type="text" pInputText id="shortName" name="shortName" [(ngModel)]="application.shortName" >
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <button pButton [disabled]="!form.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="reset" pButton class="ui-button-secondary" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

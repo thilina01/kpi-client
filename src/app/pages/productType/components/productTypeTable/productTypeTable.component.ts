@@ -54,6 +54,10 @@ export class ProductTypeTable {
     this.router.navigate(['/pages/productType/form/' + id]);
   }
 
+  navigateToImport(): void {
+    this.router.navigate(['/pages/productType/import']);
+  }
+
   delete(id: number) {
     this.confirmationService.confirm({
       message: 'Are you sure that you want to Delete?',

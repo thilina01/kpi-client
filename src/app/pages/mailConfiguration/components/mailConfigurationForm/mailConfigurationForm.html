@@ -15,37 +15,46 @@
   </p-header>
   <div class="row">
     <div class="col-sm-12">
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+      <form #form="ngForm" (ngSubmit)="save(form.value)" class="form-horizontal">
+        <input type="hidden" id="id" name="id" #id="ngModel" [(ngModel)]="mailConfiguration.id">
         <div class="row">
           <div class="col-md-6 col-sm-10 col-xs-12">
             <label for="host">Host</label>
             <br/>
-            <input type="text" pInputText formControlName="host">
-          </div>
-          <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="port">Port</label>
-            <br/>
-            <input type="text" pInputText formControlName="port">
-          </div>
-          <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="user">User</label>
-            <br/>
-            <input type="text" pInputText formControlName="user">
-          </div>
-          <div class="col-md-6 col-sm-10 col-xs-12">
-            <label for="password">Password</label>
-            <br/>
-            <input type="text" pInputText formControlName="password">
+            <input type="text" pInputText id="host" name="host" [(ngModel)]="mailConfiguration.host" required>
           </div>
         </div>
         <br/>
         <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="port">Port</label>
+            <br/>
+            <input type="text" pInputText id="port" name="port" [(ngModel)]="mailConfiguration.port" required>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="user">User</label>
+            <br/>
+            <input type="text" pInputText id="user" name="user" [(ngModel)]="mailConfiguration.user" required>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="password">Password</label>
+            <br/>
+            <input type="text" pInputText id="password" name="password" [(ngModel)]="mailConfiguration.password" required>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <button pButton [disabled]="!form.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="reset" pButton class="ui-button-secondary" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>
     </div>
   </div>
-</p-panel>

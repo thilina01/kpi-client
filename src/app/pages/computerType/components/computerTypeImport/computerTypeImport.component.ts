@@ -1,9 +1,9 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import * as Papa from 'papaparse/papaparse.min.js';
-import { Subject } from "rxjs/Subject";
-import { ComputerTypeService } from "../../computerType.service";
-import { Router } from "@angular/router";
-import { SharedService } from "../../../../services/shared.service";
+import {Subject} from "rxjs/Subject";
+import {ComputerTypeService} from "../../computerType.service";
+import {Router} from "@angular/router";
+import {SharedService} from "../../../../services/shared.service";
 
 @Component({
   selector: '',
@@ -21,16 +21,16 @@ export class ComputerTypeImport {
   cols: any[];
 
   constructor(protected service: ComputerTypeService,
-    private router: Router,
-    private sharedService: SharedService) {
+              private router: Router,
+              private sharedService: SharedService) {
 
   }
 
   ngOnInit() {
     this.cols = [
-      { field: 'id', header: 'id' },
-      { field: 'code', header: 'code' },
-      { field: 'name', header: 'name' }
+      {field: 'id', header: 'id'},
+      {field: 'code', header: 'code'},
+      {field: 'name', header: 'name'}
     ];
     this.dataSubject.subscribe(data => {
       this.jsonData = data;
@@ -45,12 +45,12 @@ export class ComputerTypeImport {
       }
     );
   }
-  
+
   onSelect(event) {
     let file = event.files[0];
     let ds = this.dataSubject;
     Papa.parse(file, {
-      skipEmptyLines: true,
+      skipEmptyLines:true,
       header: true,
       complete: function (results) {
         ds.next(results.data);

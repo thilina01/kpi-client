@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router'
+import { AbstractControl, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
 import { InvoiceTypeService } from '../../invoiceType.service';
@@ -16,60 +16,27 @@ import 'rxjs/add/operator/take';
 export class InvoiceTypeForm {
     JSON: any = JSON;
 
-    public formGroup: FormGroup;
-    invoiceType: any;
-    subscription: Subscription;
+    invoiceType: any = {};
 
     constructor(protected service: InvoiceTypeService,
         private route: ActivatedRoute,
         private router: Router,
-        fb: FormBuilder,
         private sharedService: SharedService) {
-        this.formGroup = fb.group({
-            id: '',
-            code: ['', Validators.required],
-            name: ['', Validators.required]
-        });
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(
-            (params: Params) => {
-                let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
-                    this.service.get(+id).take(1).subscribe(
-                        (data) => {
-                            this.loadForm(data);
-                        }
-                    )
-                }
-            }
-        );
-    }
-
-    loadForm(data: any) {
-        if (data != null) {
-            this.invoiceType = data;
+        let id = this.route.snapshot.paramMap.get('id');
+        if (id) {
+            this.service.get(+id).take(1).subscribe(invoiceType => { if (invoiceType) this.invoiceType = invoiceType; });
         }
-        this.formGroup.patchValue(this.invoiceType, { onlySelf: true });
-        this.invoiceType = this.invoiceType.invoiceType;
     }
 
-    public onSubmit(values: any, event: Event): void {
-        event.preventDefault();
-        console.log(values);
-        this.service.save(values).subscribe(
+    public save(invoiceType: any): void {
+        this.service.save(invoiceType).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-                this.resetForm();
                 this.router.navigate(['/pages/invoiceType/form/']);
             }
         );
     }
-
-    public resetForm() {
-        this.formGroup.reset();
-    }
-
 }

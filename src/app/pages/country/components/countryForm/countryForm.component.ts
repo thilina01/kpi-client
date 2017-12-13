@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router'
-import {  AbstractControl, Validators } from '@angular/forms';
+import { AbstractControl, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
 import { CountryService } from '../../country.service';
@@ -26,7 +26,7 @@ export class CountryForm {
     ngOnInit(): void {
         let id = this.route.snapshot.paramMap.get('id');
         if (id) {
-          this.service.get(+id).take(1).subscribe(country => { if (country) this.country = country; } );
+            this.service.get(+id).take(1).subscribe(country => { if (country) this.country = country; });
         }
     }
 

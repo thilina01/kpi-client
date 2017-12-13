@@ -1,38 +1,42 @@
 <p-panel>
   <p-header>
-    <div class='row'>
-      <div class='col'>
+    <div class="row">
+      <div class="col">
         <h4>Accident Type Form</h4>
       </div>
-      <div class='col'>
-        <a routerLink='/pages/accidentType/table'>
-          <button type='button' class='btn btn-primary btn-xs' style='float:right; margin-right:6px;'>
-            <i ng-reflect-class-name='fa fa-file-text-o' class='ui-button-icon-left ui-clickable fa fa-fw fa-close'></i>
+      <div class="col">
+        <a routerLink="/pages/accidentType/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
           </button>
         </a>
       </div>
     </div>
   </p-header>
-  <div class='row'>
-    <div class='col-sm-12'>
-      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
-        <div class='row'>
-          <div class='col-md-12 col-sm-12 col-xs-12'>
-            <label for='code'>Code</label>
+  <div class="row">
+    <div class="col-sm-12">
+      <form #form="ngForm" (ngSubmit)="save(form.value)" class="form-horizontal">
+        <input type="hidden" id="id" name="id" #id="ngModel" [(ngModel)]="accidentType.id">
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="code">Code</label>
             <br/>
-            <input type='text' pInputText formControlName='code'>
-          </div>
-          <div class='col-md-12 col-sm-12 col-xs-12'>
-            <label for='name'>Name</label>
-            <br/>
-            <input type='text' pInputText formControlName='name'>
+            <input type="text" pInputText id="code" name="code" [(ngModel)]="accidentType.code" required>
           </div>
         </div>
         <br/>
-        <div class='row'>
-          <div class='col-md-12 col-sm-12 col-xs-12'>
-            <button pButton [disabled]='!formGroup.valid' type='submit' icon='fa-floppy-o' label='Save'></button>
-            <button type='button' pButton class='ui-button-secondary' (click)='resetForm()' icon='fa-times' label='Reset'></button>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <label for="name">Name</label>
+            <br/>
+            <input type="text" pInputText id="name" name="name" [(ngModel)]="accidentType.name" required>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-md-6 col-sm-10 col-xs-12">
+            <button pButton [disabled]="!form.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="reset" pButton class="ui-button-secondary" icon="fa-times" label="Reset"></button>
           </div>
         </div>
       </form>

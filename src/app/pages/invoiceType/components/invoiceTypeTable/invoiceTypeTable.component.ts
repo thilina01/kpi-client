@@ -53,6 +53,7 @@ export class InvoiceTypeTable {
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/invoiceType/form/' + id]);
   }
+
   navigateToImport(): void {
     this.router.navigate(['/pages/invoiceType/import']);
   }

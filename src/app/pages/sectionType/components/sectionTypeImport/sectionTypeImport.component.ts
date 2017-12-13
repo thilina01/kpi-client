@@ -1,18 +1,18 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import * as Papa from 'papaparse/papaparse.min.js';
 import {Subject} from "rxjs/Subject";
-import {PaintService} from "../../paint.service";
+import {SectionTypeService} from "../../sectionType.service";
 import {Router} from "@angular/router";
 import {SharedService} from "../../../../services/shared.service";
 
 @Component({
   selector: '',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./paintImport.scss'],
-  templateUrl: './paintImport.html',
+  styleUrls: ['./sectionTypeImport.scss'],
+  templateUrl: './sectionTypeImport.html',
 })
 
-export class PaintImport {
+export class SectionTypeImport {
 
 
   dataSubject: Subject<any> = new Subject<any>();
@@ -20,7 +20,7 @@ export class PaintImport {
   jsonData: any[] = [];
   cols: any[];
 
-  constructor(protected service: PaintService,
+  constructor(protected service: SectionTypeService,
               private router: Router,
               private sharedService: SharedService) {
 
@@ -41,7 +41,7 @@ export class PaintImport {
     this.service.saveMany(this.jsonData).subscribe(
       (data) => {
         this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-        this.router.navigate(['/pages/paint/table/']);
+        this.router.navigate(['/pages/sectionType/table/']);
       }
     );
   }

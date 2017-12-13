@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule } from 'primeng/primeng';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { MailConfiguration } from './mailConfiguration.component';
 import { MailConfigurationTable } from './components/mailConfigurationTable/mailConfigurationTable.component';

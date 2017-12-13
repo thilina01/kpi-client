@@ -24,8 +24,9 @@ import { ItemTypeImport } from './components/itemTypeImport/itemTypeImport.compo
     PanelModule,
     InputTextModule,
     CalendarModule,
-    FileUploadModule,
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     ItemType,

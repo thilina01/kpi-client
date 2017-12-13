@@ -12,3 +12,4 @@ export class ContainerSizeService extends MasterService {
     this.setApiUrl('containerSizes/');
   }
 }
+

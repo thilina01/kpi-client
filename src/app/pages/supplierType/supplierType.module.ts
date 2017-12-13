@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
 
 import { SupplierType } from './supplierType.component';
 import { SupplierTypeTable } from './components/supplierTypeTable/supplierTypeTable.component';
@@ -11,6 +11,7 @@ import { SupplierTypeForm } from './components/supplierTypeForm/supplierTypeForm
 
 import { routing } from './supplierType.routing';
 import { SupplierTypeService } from './supplierType.service';
+import { SupplierTypeImport } from './components/supplierTypeImport/supplierTypeImport.component';
 
 @NgModule({
   imports: [
@@ -23,12 +24,16 @@ import { SupplierTypeService } from './supplierType.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     SupplierType,
     SupplierTypeTable,
-    SupplierTypeForm
+    SupplierTypeForm,
+    SupplierTypeImport
+    
   ],
   providers: [
     SupplierTypeService

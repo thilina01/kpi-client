@@ -12,3 +12,4 @@ export class MailConfigurationService extends MasterService {
     this.setApiUrl('mailConfigurations/');
   }
 }
+

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule, FileUploadModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, PanelModule, InputTextModule, CalendarModule } from 'primeng/primeng';
 
 import { Port } from './port.component';
 import { PortTable } from './components/portTable/portTable.component';
@@ -11,7 +11,6 @@ import { PortForm } from './components/portForm/portForm.component';
 
 import { routing } from './port.routing';
 import { PortService } from './port.service';
-import { PortImport } from './components/portImport/portImport.component';
 
 @NgModule({
   imports: [
@@ -24,15 +23,12 @@ import { PortImport } from './components/portImport/portImport.component';
     PanelModule,
     InputTextModule,
     CalendarModule,
-    FileUploadModule,
     routing
   ],
   declarations: [
     Port,
     PortTable,
-    PortForm,
-    PortImport
-    
+    PortForm
   ],
   providers: [
     PortService

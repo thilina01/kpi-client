@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
 import { NotifyPartyService } from '../../notifyParty.service';
@@ -16,61 +16,27 @@ import 'rxjs/add/operator/take';
 export class NotifyPartyForm {
     JSON: any = JSON;
 
-    public formGroup: FormGroup;
     notifyParty: any = {};
-    subscription: Subscription;
-    notifyPartyType: any;
 
     constructor(protected service: NotifyPartyService,
         private route: ActivatedRoute,
         private router: Router,
-        fb: FormBuilder,
         private sharedService: SharedService) {
-        this.formGroup = fb.group({
-            id: '',
-            code: ['', Validators.required],
-            name: ['', Validators.required]
-        });
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(
-            (params: Params) => {
-                let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
-                    this.service.get(+id).take(1).subscribe(
-                        (data) => {
-                            this.loadForm(data);
-                        }
-                    )
-                }
-            }
-        );
-    }
-
-    loadForm(data: any) {
-        if (data != null) {
-            this.notifyParty = data;
+        let id = this.route.snapshot.paramMap.get('id');
+        if (id) {
+            this.service.get(+id).take(1).subscribe(notifyParty => { if (notifyParty) this.notifyParty = notifyParty; });
         }
-        this.formGroup.patchValue(this.notifyParty, { onlySelf: true });
-        this.notifyPartyType = this.notifyParty.notifyPartyType;
     }
 
-    public onSubmit(values: any, event: Event): void {
-        event.preventDefault();
-        console.log(values);
-        this.service.save(values).subscribe(
+    public save(notifyParty: any): void {
+        this.service.save(notifyParty).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-                this.resetForm();
                 this.router.navigate(['/pages/notifyParty/form/']);
             }
         );
     }
-
-    public resetForm() {
-        this.formGroup.reset();
-    }
-
 }

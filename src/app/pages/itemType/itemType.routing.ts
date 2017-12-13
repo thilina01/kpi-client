@@ -14,7 +14,7 @@ export const routes: Routes = [
       { path: 'form', component: ItemTypeForm },
       { path: 'form/:id', component: ItemTypeForm },
       { path: 'table', component: ItemTypeTable },
-      { path: 'import', component:  ItemTypeImport }
+      { path: 'import', component: ItemTypeImport }
     ]
   }
 ];

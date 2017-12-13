@@ -24,8 +24,9 @@ import { InvoiceTypeImport } from './components/invoiceTypeImport/invoiceTypeImp
     PanelModule,
     InputTextModule,
     CalendarModule,
-    FileUploadModule,    
-    routing
+    routing,
+    FileUploadModule
+    
   ],
   declarations: [
     InvoiceType,
