@@ -16,10 +16,16 @@ export class MasterService {
 
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
   public apiUrl: string;  // URL to web api
-
+  public endPoint: string;  // URL to web api
+  
   constructor(public http: HttpClient,
               private config: IAppConfig,
               private authService: AuthService) {
+  }
+
+  setEndPoint(endPoint: string) {
+    this.endPoint = endPoint;
+    this.setApiUrl(endPoint+'/')
   }
 
   setApiUrl(path: string) {
