@@ -55,6 +55,7 @@
     "ngx-uploader": "^2.2.8",
     "normalize.css": "^6.0.0",
     "papaparse": "^4.3.6",
+    "pluralize": "^7.0.0",
     "primeng": "^4.3.0",
     "promise-polyfill": "^6.0.2",
     "reflect-metadata": "^0.1.10",
