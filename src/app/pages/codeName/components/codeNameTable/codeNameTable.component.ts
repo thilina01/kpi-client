@@ -1,4 +1,3 @@
-
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
@@ -6,6 +5,8 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { CodeNameService } from '../../codeName.service';
 import { Subscription } from 'rxjs';
 import 'rxjs/add/operator/filter';
+import * as _ from 'lodash';
+import * as pluralize from 'pluralize';
 
 @Component({
   selector: 'code-name-table',
@@ -37,7 +38,7 @@ export class CodeNameTable {
   }
 
   loadData() {
-    this.title = this.service.endPoint;
+    this.title = _.startCase(pluralize.singular(this.service.endPoint));
     this.rows = [];
     this.service.getPage(0, 20).subscribe((data: any) => {
       this.rows = data.content;
@@ -61,15 +62,15 @@ export class CodeNameTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/' + this.title + '/form/' + data.id]);
+    this.router.navigate(['/pages/' + this.service.endPoint + '/form/' + data.id]);
   }
 
   navigateToForm(id: any): void {
-    this.router.navigate(['/pages/' + this.title + '/form/' + id]);
+    this.router.navigate(['/pages/' + this.service.endPoint + '/form/' + id]);
   }
 
   navigateToImport(): void {
-    this.router.navigate(['/pages/' + this.title + '/import']);
+    this.router.navigate(['/pages/' + this.service.endPoint + '/import']);
   }
 
   delete(id: number) {

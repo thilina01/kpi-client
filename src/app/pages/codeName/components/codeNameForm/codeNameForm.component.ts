@@ -7,6 +7,8 @@ import { CodeNameService } from '../../codeName.service';
 import { Subscription } from 'rxjs';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/filter';
+import * as _ from 'lodash';
+import * as pluralize from 'pluralize';
 
 @Component({
     selector: 'code-name-form',
@@ -35,7 +37,7 @@ export class CodeNameForm {
     }
 
     loadData() {
-        this.title = this.service.endPoint;
+        this.title = _.startCase(pluralize.singular(this.service.endPoint));
         let id = this.route.snapshot.paramMap.get('id');
         if (id) {
             this.service.get(+id).take(1).subscribe(codeName => { if (codeName) this.codeName = codeName; });
@@ -49,7 +51,7 @@ export class CodeNameForm {
         this.service.save(codeName).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-                this.router.navigate(['/pages/' + this.title + '/form/']);
+                this.router.navigate(['/pages/' + this.service.endPoint + '/form/']);
             }
         );
     }
