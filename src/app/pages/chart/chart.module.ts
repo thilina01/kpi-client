@@ -17,6 +17,7 @@ import { ItemService } from '../item/item.service';
 import { LossTypeService } from '../lossType/lossType.service';
 import { SectionService } from '../section/section.service';
 import { ChartService } from './chart.service';
+import { ScrapChart } from './components/scrapChart/scrapChart.component';
 
 
 
@@ -37,7 +38,8 @@ import { ChartService } from './chart.service';
   declarations: [
     Chart,
     ScheduleAdherenceChart,
-    BreakdownChart
+    BreakdownChart,
+    ScrapChart
   ],
   providers: [
     ItemService,

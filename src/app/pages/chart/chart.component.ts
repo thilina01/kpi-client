@@ -17,6 +17,10 @@ export class Chart {
         {
             path: 'breakdown',
             name: 'Breakdown'
+        },
+        {
+            path: 'scrap',
+            name: 'Scrap'
         }
     ]
     chart: any;
