@@ -92,6 +92,7 @@ export const routes: Routes = [
       { path: 'productionKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/productionKpi/productionKpi.module#ProductionKpiModule' },
       { path: 'productionOverheadCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/productionOverheadCostPerKg/productionOverheadCostPerKg.module#ProductionOverheadCostPerKgModule' },
       { path: 'productType', canActivate: [AuthGuard], loadChildren: 'app/pages/productType/productType.module#ProductTypeModule' },
+      { path: 'resourceUtilization', canActivate: [AuthGuard], loadChildren: 'app/pages/resourceUtilization/resourceUtilization.module#ResourceUtilizationModule' },
       { path: 'salesKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/salesKpi/salesKpi.module#SalesKpiModule' },
       { path: 'salesPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/salesPerKg/salesPerKg.module#SalesPerKgModule' },
       { path: 'salesOrder', canActivate: [AuthGuard], loadChildren: 'app/pages/salesOrder/salesOrder.module#SalesOrderModule' },

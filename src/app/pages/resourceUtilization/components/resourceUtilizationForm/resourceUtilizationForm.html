@@ -1,0 +1,124 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Resource Utilization Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/resourceUtilization/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+    <div class="row">
+      <div class="col-12">
+        <label for="id">Production ID</label>
+        <input type="text" pInputText formControlName="id">
+        <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+          <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-12 row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.productionDate == undefined || production.productionDate == undefined">Date : {{production==null || production.id == undefined?'':production.productionDate}}</div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.shift == undefined || production.shift.name == undefined">Shift : {{production==null || production.id == undefined?'':production.shift.name}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.controlPoint == undefined ||  production.controlPoint.name == undefined">Control Point : {{production==null || production.id == undefined?'':production.controlPoint.name}}</div>
+      </div>
+    </div>
+    <br/>
+    <p-panel>
+      <div class="row">
+        <div class=" col-sm-12">
+          <form [formGroup]="resourceUtilizationFormGroup" (ngSubmit)="onSubmit(resourceUtilizationFormGroup.value,$event)" class="form-horizontal">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <label for="employee">Employee</label>
+                <br/>
+                <div class="ui-inputgroup">
+                  <p-autoComplete formControlName="employee" [dropdown]="true" field="display" [suggestions]="filteredEmployees" (completeMethod)="filterEmployee($event)"
+                    [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
+                  </p-autoComplete>
+                  <a routerLink="/pages/employee/form" target="blank">
+                    <button pButton type="button" icon="fa-plus-circle"></button>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <label for="machine">Machine</label>
+                <br/>
+                <div class="ui-inputgroup">
+                  <p-autoComplete formControlName="machine" [dropdown]="true" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachine($event)"
+                    [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
+                  </p-autoComplete>
+                  <a routerLink="/pages/machine/form" target="blank">
+                    <button pButton type="button" icon="fa-plus-circle"></button>
+                  </a>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="form-group" [ngClass]="{'has-error': (!resourceUtilizationFormGroup.controls['startTime'].valid &&  resourceUtilizationFormGroup.controls['startTime'].touched), 'has-success': (resourceUtilizationFormGroup.controls['startTime'].valid && resourceUtilizationFormGroup.controls['startTime'].touched)}">
+                  <label for="startTime">Start Time</label>
+                  <br/>
+                  <input type="text" pInputText formControlName="startTime">
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <div class="form-group" [ngClass]="{'has-error': (!resourceUtilizationFormGroup.controls['endTime'].valid &&  resourceUtilizationFormGroup.controls['endTime'].touched), 'has-success': ( resourceUtilizationFormGroup.controls['endTime'].valid && resourceUtilizationFormGroup.controls['endTime'].touched)}">
+                  <label for="endTime">End Time</label>
+                  <br/>
+                  <input type="text" id="endTime" pInputText formControlName="endTime">
+                </div>
+              </div>
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <label for="inputFirstName">&nbsp;</label>
+                <br/>
+                <div class="form-group form-inline">
+                  <button (click)="addResourceUtilization(resourceUtilizationFormGroup.value)" pButton type="button" class="ui-button-secondary"
+                    icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <p-dataTable #dt [value]="production.resourceUtilizationList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                    <p-column field="id" header="ID"></p-column>
+                    <p-column field="employee.callingName" header="Employee"></p-column>
+                    <p-column field="machine.name" header="Machine"></p-column>
+                    <p-column field="startTime" header="Start Time">
+                      <ng-template let-col let-rowData="rowData" pTemplate="body">
+                        {{rowData.startTime | date:'y-MM-dd HH:mm'}}
+                      </ng-template>
+                    </p-column>
+                    <p-column field="endTime" header="End Time">
+                      <ng-template let-col let-rowData="rowData" pTemplate="body">
+                        {{rowData.endTime | date:'y-MM-dd HH:mm'}}
+                      </ng-template>
+                    </p-column>
+                    <p-column header="Action" styleClass="text-right">
+                      <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                        <i (click)="removeResourceUtilization(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                      </ng-template>
+                    </p-column>
+                  </p-dataTable>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </p-panel>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        &nbsp;
+        <br/>
+        <button pButton [disabled]="!formGroup.valid" type="button" (click)="save()" icon="fa-floppy-o" label="Save"></button>
+        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+        <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+      </div>
+    </div>
+  </form>
+</p-panel>

@@ -126,6 +126,7 @@ export class Pages {
     { routerLink: '/pages/production/table', name: 'Production', menuType: this.menuType },
     { routerLink: '/pages/productionOverheadCostPerKg/table', name: 'Production Overhead Cost Per Kg', menuType: this.menuType },
     { routerLink: '/pages/productType/table', name: 'Product Type', menuType: this.menuType },
+    { routerLink: '/pages/resourceUtilization/table', name: 'Resource Utilization', menuType: this.menuType },
     { routerLink: '/pages/salesPerKg/table', name: 'Sales Per Kg', menuType: this.menuType },
     { routerLink: '/pages/salesOrder/table', name: 'Sales Order', menuType: this.menuType },
     { routerLink: '/pages/salesOrderTypes/table', name: 'Sales Order Type', menuType: this.menuType },
