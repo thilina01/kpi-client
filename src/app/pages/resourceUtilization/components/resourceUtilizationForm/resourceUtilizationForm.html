@@ -62,16 +62,16 @@
               </div>
               <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                 <div class="form-group" [ngClass]="{'has-error': (!resourceUtilizationFormGroup.controls['startTime'].valid &&  resourceUtilizationFormGroup.controls['startTime'].touched), 'has-success': (resourceUtilizationFormGroup.controls['startTime'].valid && resourceUtilizationFormGroup.controls['startTime'].touched)}">
-                  <label for="startTime">Start Time</label>
+                  <label for="startTime">Start Time (24H)</label>
                   <br/>
-                  <input type="text" pInputText formControlName="startTime">
+                  <input type="text" pInputText formControlName="startTime" placeholder="HH:MM">
                 </div>
               </div>
               <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
                 <div class="form-group" [ngClass]="{'has-error': (!resourceUtilizationFormGroup.controls['endTime'].valid &&  resourceUtilizationFormGroup.controls['endTime'].touched), 'has-success': ( resourceUtilizationFormGroup.controls['endTime'].valid && resourceUtilizationFormGroup.controls['endTime'].touched)}">
-                  <label for="endTime">End Time</label>
+                  <label for="endTime">End Time (24H)</label>
                   <br/>
-                  <input type="text" id="endTime" pInputText formControlName="endTime">
+                  <input type="text" id="endTime" pInputText formControlName="endTime" placeholder="HH:MM">
                 </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">

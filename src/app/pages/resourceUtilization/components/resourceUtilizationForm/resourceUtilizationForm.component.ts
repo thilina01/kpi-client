@@ -92,7 +92,7 @@ export class ResourceUtilizationForm {
     }
 
     keyDown(event) {
-        if (event.keyCode == 13) {
+        if (event.keyCode === 13) {
             this.clear();
             this.fill();
         }
@@ -112,12 +112,15 @@ export class ResourceUtilizationForm {
 
     addResourceUtilization(value) {
 
-        if (this.production.resourceUtilizationList == undefined) {
+        if (this.production.resourceUtilizationList === undefined) {
             this.production.resourceUtilizationList = [];
         }
 
-        value.startTime = new Date(this.production.productionDate + " " + value.startTime + ":00")
-        value.endTime = new Date(this.production.productionDate + " " + value.endTime + ":00")
+        value.startTime = value.startTime.replace(/\./g, ':');
+        value.endTime = value.endTime.replace(/\./g, ':');
+
+        value.startTime = new Date(this.production.productionDate + ' ' + value.startTime + ':00');
+        value.endTime = new Date(this.production.productionDate + ' ' + value.endTime + ':00');
         value.employee.callingName = value.employee.name;
         this.production.resourceUtilizationList.push(value);
         this.production.resourceUtilizationList = this.production.resourceUtilizationList.slice();
