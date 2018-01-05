@@ -47,7 +47,7 @@ export class ResourceUtilizationForm {
         private sharedService: SharedService) {
 
         this.formGroup = fb.group({
-            id: '',
+            id: ['', Validators.required],
             resourceUtilizationList: [[]],
         });
         this.resourceUtilizationFormGroup = fb.group({
@@ -129,16 +129,17 @@ export class ResourceUtilizationForm {
     }
 
     public onSubmit(values: any, event: Event): void {
+
         if (this.formGroup.valid) {
-            if (values.resourceUtilizationList === null || values.resourceUtilizationList.length === 0) {
+            if (values.production.resourceUtilizationList === null || values.production.resourceUtilizationList.length === 0) {
                 alert('Resource Utilization Required');
                 return;
             }
         }
 
         event.preventDefault();
-        console.log(values);
-        this.service.save(values).subscribe(
+        console.log(this.production);
+        this.service.save(this.production).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
                 this.resetForm();
@@ -158,12 +159,6 @@ export class ResourceUtilizationForm {
         );
     }
 
-    fillResourceUtilizations(): void {
-        this.production.resourceUtilizationList = this.production.resourceUtilizationList.slice();
-        this.dataTable.reset();
-
-    }
-
     public removeResourceUtilization(id: number) {
         if (this.production.resourceUtilizationList != null) {
             this.confirmationService.confirm({
@@ -171,7 +166,6 @@ export class ResourceUtilizationForm {
                 accept: () => {
                     this.production.resourceUtilizationList.splice(id, 1);
                     this.production.resourceUtilizationList = this.production.resourceUtilizationList.slice();
-                    this.fillResourceUtilizations();
 
                 }
             });

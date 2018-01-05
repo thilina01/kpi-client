@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-12">
         <label for="id">Production ID</label>
-        <input type="text" pInputText formControlName="id">
+        <input type="text" #id (keyDown.enter)="fill()" pInputText formControlName="id">
         <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
           <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
       </div>
@@ -71,7 +71,8 @@
                 <div class="form-group" [ngClass]="{'has-error': (!resourceUtilizationFormGroup.controls['endTime'].valid &&  resourceUtilizationFormGroup.controls['endTime'].touched), 'has-success': ( resourceUtilizationFormGroup.controls['endTime'].valid && resourceUtilizationFormGroup.controls['endTime'].touched)}">
                   <label for="endTime">End Time (24H)</label>
                   <br/>
-                  <input type="text" id="endTime" pInputText formControlName="endTime" placeholder="HH:MM">
+                  <input type="text" id="endTime" #endTime (keyup.enter)="addResourceUtilization(resourceUtilizationFormGroup.value)" pInputText
+                    formControlName="endTime" placeholder="HH:MM">
                 </div>
               </div>
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
