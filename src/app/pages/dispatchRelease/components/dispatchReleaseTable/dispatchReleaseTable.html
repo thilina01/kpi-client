@@ -17,10 +17,16 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="dispatchReleases"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
+		<p-column field="dispatchDate" header="Dispatch Date">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.dispatchDate | date:'y-MM-dd'}}
+			</ng-template>
+		</p-column>
 		<p-column field="dispatchReleaseTime" header="Dispatch Release Time" [sortable]="true"></p-column>
 		<p-column field="vehicleNumber" header="Vehicle Number" [sortable]="true"></p-column>
 		<p-column field="recipient" header="Recipient" [sortable]="true"></p-column>
 		<p-column field="containerNumber" header="Container Number" [sortable]="true"></p-column>
+		<p-column field="customer.name" header="Customer" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/dispatchRelease/form/'+data.id">
