@@ -1,7 +1,12 @@
 import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  AbstractControl,
+  FormBuilder,
+  Validators
+} from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
 import { DispatchNoteService } from '../../dispatchNote.service';
@@ -11,21 +16,19 @@ import { EmployeeService } from '../../../employee/employee.service';
 import { CustomerService } from '../../../customer/customer.service';
 import { AddressService } from '../../../../services/address.service';
 import 'rxjs/add/operator/take';
+import { DispatchService } from '../../../../services/dispatch.service';
 
 @Component({
   selector: 'dispatch-note-form',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./dispatchNoteForm.scss'],
-  templateUrl: './dispatchNoteForm.html',
-
+  templateUrl: './dispatchNoteForm.html'
 })
 export class DispatchNoteForm {
-
   fillDispatchNotes(): any {
     throw new Error('Method not implemented.');
   }
-  @Input('formGroup')
-  public formGroup: FormGroup;
+  @Input('formGroup') public formGroup: FormGroup;
   @ViewChild(DataTable) dataTable: DataTable;
   public dispatchFormGroup: FormGroup;
 
@@ -48,7 +51,8 @@ export class DispatchNoteForm {
   employeeList = [];
   addressList = [];
 
-  constructor(protected service: DispatchNoteService,
+  constructor(
+    protected service: DispatchNoteService,
     private route: ActivatedRoute,
     private router: Router,
     fb: FormBuilder,
@@ -56,38 +60,50 @@ export class DispatchNoteForm {
     private addressService: AddressService,
     private employeeService: EmployeeService,
     private dispatchScheduleService: DispatchScheduleService,
+    private dispatchService: DispatchService,
     private customerService: CustomerService,
-    private sharedService: SharedService) {
-
+    private sharedService: SharedService
+  ) {
     this.formGroup = fb.group({
       id: '',
       quantity: 0,
       customer: [this.customer, Validators.required],
       address: [this.address, Validators.required],
-      employee: [this.employee, Validators.required],
-      dispatchList: [[]],
+      // employee: [this.employee, Validators.required],
+      dispatchList: [[]]
     });
 
     this.dispatchFormGroup = fb.group({
       quantity: '',
-      dispatchSchedule: [{}, Validators.compose([Validators.required])],
+      dispatchSchedule: [{}, Validators.compose([Validators.required])]
     });
   }
 
   getCustomerList(): void {
-    this.customerService.getCombo().subscribe(customerList => this.customerList = customerList);
+    this.customerService
+      .getCombo()
+      .subscribe(customerList => (this.customerList = customerList));
   }
 
   getaAddressListByCustomer(id: number): void {
-    this.addressService.getComboByCustomer(id).subscribe(addressList => this.addressList = addressList);
+    this.addressService
+      .getComboByCustomer(id)
+      .subscribe(addressList => (this.addressList = addressList));
   }
 
   getEmployeeList(): void {
-    this.employeeService.getCombo().subscribe(employeeList => this.employeeList = employeeList);
+    this.employeeService
+      .getCombo()
+      .subscribe(employeeList => (this.employeeList = employeeList));
   }
 
   getDispatchScheduleListByCustomer(id: number): void {
-    this.dispatchScheduleService.getComboByCustomer(id).subscribe(dispatchScheduleList => this.dispatchScheduleList = dispatchScheduleList);
+    this.dispatchScheduleService
+      .getComboByCustomer(id)
+      .subscribe(
+        dispatchScheduleList =>
+          (this.dispatchScheduleList = dispatchScheduleList)
+      );
   }
 
   refresh(): void {
@@ -96,7 +112,6 @@ export class DispatchNoteForm {
   }
 
   fillDispatchs(): void {
-
     this.formGroup.value.dispatchList = this.formGroup.value.dispatchList.slice();
     this.dataTable.reset();
   }
@@ -107,19 +122,18 @@ export class DispatchNoteForm {
     }, 500);
     this.getCustomerList();
     this.getEmployeeList();
-    this.route.params.subscribe(
-      (params: Params) => {
-        let id = params['id'];
-        id = id == undefined ? '0' : id;
-        if (id != '0') {
-          this.service.get(+id).take(1).subscribe(
-            (data) => {
-              this.loadForm(data);
-            }
-          )
-        }
+    this.route.params.subscribe((params: Params) => {
+      let id = params['id'];
+      id = id == undefined ? '0' : id;
+      if (id != '0') {
+        this.service
+          .get(+id)
+          .take(1)
+          .subscribe(data => {
+            this.loadForm(data);
+          });
       }
-    );
+    });
   }
 
   loadForm(data: any) {
@@ -137,7 +151,6 @@ export class DispatchNoteForm {
     this.setDisplayOfAddress();
     this.setDisplayOfDispatchSchedule();
     this.calculateTotal();
-
   }
 
   public onSubmit(values: any, event: Event): void {
@@ -148,13 +161,15 @@ export class DispatchNoteForm {
       return;
     }
     values.dispatchDate = new Date();
-    this.service.save(values).subscribe(
-      (data) => {
-        this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-        this.resetForm();
-        this.router.navigate(['/pages/dispatchNote/form/']);
-      }
-    );
+    this.service.save(values).subscribe(data => {
+      this.sharedService.addMessage({
+        severity: 'info',
+        summary: 'Success',
+        detail: 'Operation Success'
+      });
+      this.resetForm();
+      this.router.navigate(['/pages/dispatchNote/form/']);
+    });
   }
 
   public resetForm() {
@@ -162,15 +177,23 @@ export class DispatchNoteForm {
     this.dispatchFormGroup.reset();
   }
 
-  public removeDispatch(id: number) {
+  public removeDispatch(id: number, dispatch: any) {
     if (this.formGroup.value.dispatchList != null) {
       this.confirmationService.confirm({
         message: 'Are you sure that you want to Delete?',
         accept: () => {
+          if (dispatch.id){
+            this.dispatchService.delete(dispatch.id).subscribe(response => {
+              this.sharedService.addMessage({
+                severity: 'info',
+                summary: 'Deleted',
+                detail: 'Delete success'
+              });
+            });
+        }
           this.formGroup.value.dispatchList.splice(id, 1);
-          this.fillDispatchs();
-          this.calculateTotal();
-
+            this.fillDispatchs();
+            this.calculateTotal();
         }
       });
     }
@@ -183,17 +206,17 @@ export class DispatchNoteForm {
         this.formGroup.value.dispatchList = [];
       }
 
-      this.dispatchScheduleService.get(+values.dispatchSchedule.id).subscribe(dispatchSchedule => {
-        values.dispatchSchedule = dispatchSchedule;
-        this.formGroup.value.dispatchList.push(values);
-        this.calculateTotal();
-        this.dispatchFormGroup.reset();
-        document.getElementById('dispatchScheduleSelector').focus();
-        this.formGroup.value.dispatchList = this.formGroup.value.dispatchList.slice();
-      });
-
+      this.dispatchScheduleService
+        .get(+values.dispatchSchedule.id)
+        .subscribe(dispatchSchedule => {
+          values.dispatchSchedule = dispatchSchedule;
+          this.formGroup.value.dispatchList.push(values);
+          this.calculateTotal();
+          this.dispatchFormGroup.reset();
+          document.getElementById('dispatchScheduleSelector').focus();
+          this.formGroup.value.dispatchList = this.formGroup.value.dispatchList.slice();
+        });
     }
-
   }
 
   calculateTotal() {
@@ -212,7 +235,10 @@ export class DispatchNoteForm {
     this.filteredCustomerList = [];
     for (let i = 0; i < this.customerList.length; i++) {
       let customer = this.customerList[i];
-      if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
+      if (
+        customer.code.toLowerCase().indexOf(query) == 0 ||
+        customer.name.toLowerCase().indexOf(query) == 0
+      ) {
         this.filteredCustomerList.push(customer);
       }
     }
@@ -223,7 +249,7 @@ export class DispatchNoteForm {
     //mimic remote call
     setTimeout(() => {
       this.filteredCustomerList = this.customerList;
-    }, 100)
+    }, 100);
   }
 
   onCustomerSelect(event: any) {
@@ -235,8 +261,14 @@ export class DispatchNoteForm {
 
   setDisplayOfCustomer(customer: any) {
     if (customer != null && customer != undefined) {
-      let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
-      display += customer.name != null && customer.name != undefined ? customer.name : '';
+      let display =
+        customer.code != null && customer.code != undefined
+          ? customer.code + ' : '
+          : '';
+      display +=
+        customer.name != null && customer.name != undefined
+          ? customer.name
+          : '';
       this.formGroup.value.customer.display = display;
     }
   }
@@ -249,7 +281,10 @@ export class DispatchNoteForm {
     this.filteredAddressList = [];
     for (let i = 0; i < this.addressList.length; i++) {
       let address = this.addressList[i];
-      if (address.code.toLowerCase().indexOf(query) == 0 || address.name.toLowerCase().indexOf(query) == 0) {
+      if (
+        address.code.toLowerCase().indexOf(query) == 0 ||
+        address.name.toLowerCase().indexOf(query) == 0
+      ) {
         this.filteredAddressList.push(address);
       }
     }
@@ -260,7 +295,7 @@ export class DispatchNoteForm {
     //mimic remote call
     setTimeout(() => {
       this.filteredAddressList = this.addressList;
-    }, 100)
+    }, 100);
   }
 
   onAddressSelect(event: any) {
@@ -270,8 +305,12 @@ export class DispatchNoteForm {
   setDisplayOfAddress() {
     let address = this.formGroup.value.address;
     if (address != null && address != undefined) {
-      let display = address.code != null && address.code != undefined ? address.code + ' : ' : '';
-      display += address.name != null && address.name != undefined ? address.name : '';
+      let display =
+        address.code != null && address.code != undefined
+          ? address.code + ' : '
+          : '';
+      display +=
+        address.name != null && address.name != undefined ? address.name : '';
       this.formGroup.value.address.display = display;
     }
   }
@@ -284,7 +323,10 @@ export class DispatchNoteForm {
     this.filteredEmployeeList = [];
     for (let i = 0; i < this.employeeList.length; i++) {
       let employee = this.employeeList[i];
-      if (employee.code.toLowerCase().indexOf(query) == 0 || employee.firstName.toLowerCase().indexOf(query) == 0) {
+      if (
+        employee.code.toLowerCase().indexOf(query) == 0 ||
+        employee.firstName.toLowerCase().indexOf(query) == 0
+      ) {
         this.filteredEmployeeList.push(employee);
       }
     }
@@ -295,7 +337,7 @@ export class DispatchNoteForm {
     //mimic remote call
     setTimeout(() => {
       this.filteredEmployeeList = this.employeeList;
-    }, 100)
+    }, 100);
   }
 
   onEmployeeSelect(event: any) {
@@ -305,8 +347,14 @@ export class DispatchNoteForm {
   setDisplayOfEmployee() {
     let employee = this.formGroup.value.employee;
     if (employee != null && employee != undefined) {
-      let display = employee.code != null && employee.code != undefined ? employee.code + ' : ' : '';
-      display += employee.fullName != null && employee.fullName != undefined ? employee.fullName : '';
+      let display =
+        employee.code != null && employee.code != undefined
+          ? employee.code + ' : '
+          : '';
+      display +=
+        employee.fullName != null && employee.fullName != undefined
+          ? employee.fullName
+          : '';
       this.formGroup.value.employee.display = display;
     }
   }
@@ -319,7 +367,10 @@ export class DispatchNoteForm {
     this.filteredDispatchScheduleList = [];
     for (let i = 0; i < this.dispatchScheduleList.length; i++) {
       let dispatchSchedule = this.dispatchScheduleList[i];
-      if (dispatchSchedule.code.toLowerCase().indexOf(query) == 0 || dispatchSchedule.name.toLowerCase().indexOf(query) == 0) {
+      if (
+        dispatchSchedule.code.toLowerCase().indexOf(query) == 0 ||
+        dispatchSchedule.name.toLowerCase().indexOf(query) == 0
+      ) {
         this.filteredDispatchScheduleList.push(dispatchSchedule);
       }
     }
@@ -330,7 +381,7 @@ export class DispatchNoteForm {
     //mimic remote call
     setTimeout(() => {
       this.filteredDispatchScheduleList = this.dispatchScheduleList;
-    }, 100)
+    }, 100);
   }
 
   onDispatchScheduleSelect(event: any) {
@@ -340,18 +391,15 @@ export class DispatchNoteForm {
   setDisplayOfDispatchSchedule() {
     let dispatchSchedule = this.dispatchFormGroup.value.dispatchSchedule;
     if (dispatchSchedule != null && dispatchSchedule != undefined) {
-      let display = dispatchSchedule.code != null && dispatchSchedule.code != undefined ? dispatchSchedule.code + ' : ' : '';
-      display += dispatchSchedule.name != null && dispatchSchedule.name != undefined ? dispatchSchedule.name : '';
+      let display =
+        dispatchSchedule.code != null && dispatchSchedule.code != undefined
+          ? dispatchSchedule.code + ' : '
+          : '';
+      display +=
+        dispatchSchedule.name != null && dispatchSchedule.name != undefined
+          ? dispatchSchedule.name
+          : '';
       this.dispatchFormGroup.value.dispatchSchedule.display = display;
     }
   }
 }
-
-
-
-
-
-
-
-
-

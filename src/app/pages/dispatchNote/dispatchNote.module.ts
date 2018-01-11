@@ -21,6 +21,7 @@ import { CustomerItemService } from '../customerItem/customerItem.service';
 import { PrintService } from '../../services/print.service';
 import { Print } from './components/dispatchNotePrint/print.component';
 import { LossTypeService } from '../../services/lossType.service';
+import { DispatchService } from '../../services/dispatch.service';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { LossTypeService } from '../../services/lossType.service';
   providers: [
     CustomerService,
     DispatchNoteService,
+    DispatchService,
     AddressService,
     EmployeeService,
     PrintService,

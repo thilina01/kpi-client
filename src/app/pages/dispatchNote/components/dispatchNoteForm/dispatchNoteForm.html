@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <label for="employee">Sales Person</label>
+            <!-- <label for="employee">Sales Person</label>
             <br/>
             <div class="ui-inputgroup">
               <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
@@ -44,7 +44,7 @@
               <a routerLink="/pages/employee/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
-            </div>
+            </div> -->
           </div>
           <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <label for="address">Ship To</label>
@@ -113,7 +113,7 @@
                 <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
                 <p-column header="Action" styleClass="text-right">
                   <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
-                    <i (click)="removeDispatch(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                    <i (click)="removeDispatch(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
                   </ng-template>
                 </p-column>
                 <p-footerColumnGroup>
