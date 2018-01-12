@@ -36,12 +36,6 @@
               </td>
               <td>{{dispatchNote.dispatchDate}}</td>
             </tr>
-            <tr>
-              <td>
-                <b>Sales Person</b>
-              </td>
-              <td>{{dispatchNote.employee.firstName}} {{dispatchNote.employee.lastName}}</td>
-            </tr>
           </table>
         </div>
       </div>
@@ -57,9 +51,11 @@
           <div class="panel-body">
             {{dispatchNote.customer.code}}
             <br/> {{dispatchNote.customer.name}}
-            <br/>
-            <br/>
-            <br/>
+            <br/> {{dispatchNote.address.line1}}
+            <br/> {{dispatchNote.address.line2}}
+            <br/> {{dispatchNote.address.line3}}
+            <br/> {{dispatchNote.address.line4}}
+            <br/> {{dispatchNote.address.line5}}
           </div>
         </div>
       </div>
