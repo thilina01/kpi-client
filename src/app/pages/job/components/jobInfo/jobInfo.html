@@ -2,7 +2,7 @@
   <p-header>
     <div class="row" style="margin:5px;">
       <div class="col-12 row">
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-8">
+        <div class="col-12">
           <p-autoComplete [(ngModel)]="job" field="display" [dropdown]="true" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
             [size]="15" [minLength]="1" placeholder="Search Job" (onSelect)="onJobSelect($event)">
             <ng-template let-option pTemplate="option">
@@ -13,11 +13,14 @@
           </p-autoComplete>
           <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
             <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+          <br/>
+          <br/>
         </div>
       </div>
       <div class="col-12 row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Job: {{job==null || job.id == undefined?'':job.jobNo}}</div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">ID: {{job==null || job.id == undefined?'':job.id}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Job: {{job==null || job.id == undefined?'':job.jobNo}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate}}</div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Quantity: {{job==null || job.id == undefined?'':job.quantity}}</div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" [hidden]="job==null || job.item == undefined">Item: {{job==null || job.id == undefined?'':job.item.code}} </div>
       </div>
