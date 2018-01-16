@@ -95,7 +95,10 @@
             <td> {{ dispatch.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </td>
             <td> {{ dispatch.dispatchSchedule.salesOrderItem.customerItem.code }} </td>
             <td> {{ dispatch.dispatchSchedule.job.item.code }} </td>
-            <td> {{ dispatch.dispatchSchedule.job.item.description }} </td>
+            <td>
+                {{ dispatch.dispatchSchedule.job.item.size }} <br/>
+                {{ dispatch.dispatchSchedule.job.item.description }}
+            </td>
             <td class="text-right"> {{ dispatch.quantity}} </td>
           </tr>
           <tr>
