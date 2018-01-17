@@ -27,7 +27,7 @@
       <div class="col-12 row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.productionDate == undefined || production.productionDate == undefined">Date : {{production==null || production.id == undefined?'':production.productionDate}}</div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.shift == undefined || production.shift.name == undefined">Shift : {{production==null || production.id == undefined?'':production.shift.name}}</div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.controlPoint == undefined ||  production.controlPoint.name == undefined">Control Point : {{production==null || production.id == undefined?'':production.controlPoint.name}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.controlPoint == undefined ||  production.controlPoint.name == undefined">Control Point : {{production==null || production.id == undefined?'':production.controlPoint.code + ' ' + production.controlPoint.name}}</div>
       </div>
     </div>
     <br/>
@@ -87,6 +87,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                   <p-dataTable #dt [value]="production.resourceUtilizationList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
                     <p-column field="id" header="ID"></p-column>
+                    <p-column field="employee.code" header="Employee ID" [sortable]="true"></p-column>
                     <p-column field="employee.callingName" header="Employee"></p-column>
                     <p-column field="machine.name" header="Machine"></p-column>
                     <p-column field="startTime" header="Start Time">
