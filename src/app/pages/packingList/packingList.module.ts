@@ -10,14 +10,15 @@ import { PackingListForm } from './components/packingListForm/packingListForm.co
 
 import { routing } from './packingList.routing';
 import { PackingListService } from './packingList.service';
-import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 import { MaterialModule } from '@angular/material';
 import { DispatchService } from '../../services/dispatch.service';
 import { PortService } from '../port/port.service';
 import { ContainerSizeService } from '../containerSize/containerSize.service';
 import { CountryService } from '../country/country.service';
-import { InvoiceService } from '../invoice/invoice.service';
+import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 import { EmployeeService } from '../employee/employee.service';
+import { AddressService } from '../../services/address.service';
+import { CustomerService } from '../customer/customer.service';
 
 @NgModule({
   imports: [
@@ -46,11 +47,12 @@ import { EmployeeService } from '../employee/employee.service';
     PortService,
     ContainerSizeService,
     CountryService,
-    InvoiceService,
+    DispatchNoteService,
     EmployeeService,
-    DispatchService
-
-
+    DispatchService,
+    AddressService,
+    CustomerService
   ]
+
 })
 export class PackingListModule { }

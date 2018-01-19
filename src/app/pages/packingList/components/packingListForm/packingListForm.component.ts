@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router'
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -10,8 +10,11 @@ import { DispatchService } from '../../../../services/dispatch.service';
 import { PortService } from '../../../port/port.service';
 import { CountryService } from '../../../country/country.service';
 import { ContainerSizeService } from '../../../containerSize/containerSize.service';
-import { InvoiceService } from '../../../invoice/invoice.service';
+import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service';
+import { EmployeeService } from '../../../employee/employee.service';
 import 'rxjs/add/operator/take';
+import { CustomerService } from '../../../customer/customer.service';
+import { AddressService } from '../../../../services/address.service';
 
 @Component({
     selector: 'packing-list-form',
@@ -20,59 +23,83 @@ import 'rxjs/add/operator/take';
     templateUrl: './packingListForm.html',
 })
 export class PackingListForm {
+
     public formGroup: FormGroup;
     @ViewChild(DataTable) dataTable: DataTable;
-    public invoiceFormGroup: FormGroup;
-    subscription: Subscription;
+    public dispatchNoteFormGroup: FormGroup;
     JSON: any = JSON;
-    totalRecords = 0;
+    totalRecords: number;
     rows = [];
-    packingList: any;
+    packingList: any = {};
     packingListType: any;
     containerSizes: any;
+    employee: any;
+    address: any;
+    customer: any;
     containerSize: any;
-    invoices: any;
-    invoice: any;
+    dispatchNotes: any;
+    dispatchNote: any = {};
     countries: any;
     country: any;
     ports: any;
     port: any;
     dispatchList = [];
-    invoiceList = [];
+    dispatchNoteList = [];
+    addressList = [];
+    customerList = [];
+    employeeList = [];
 
     constructor(protected service: PackingListService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
         private confirmationService: ConfirmationService,
-        private invoiceService: InvoiceService,
+        private dispatchNoteService: DispatchNoteService,
         private portService: PortService,
         private countryService: CountryService,
         private containerSizeService: ContainerSizeService,
         private dispatchService: DispatchService,
+        private employeeService: EmployeeService,
+        private customerService: CustomerService,
+        private addressService: AddressService,
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
-            netWeight: 0,
-            grossWeight: 0,
-            cbm: 0,
-            pkgs: 0,
             noOfContainers: ['', Validators.required],
-            contactPerson: ['', Validators.required],
+            employee: [this.employee, Validators.required],
             port: [this.port, Validators.required],
+            portOfLoading: [this.port, Validators.required],
             country: [this.country, Validators.required],
             containerSize: [this.containerSize, Validators.required],
-            invoiceList: [[]],
-        });
-        this.invoiceFormGroup = fb.group({
-            invoice: [{}, Validators.compose([Validators.required])],
             netWeight: ['', Validators.required],
             grossWeight: ['', Validators.required],
-            cbm: ['', Validators.required],
-            pkgs: ['', Validators.required]
+            cubicMeter: ['', Validators.required],
+            numberOfPackage: ['', Validators.required],
+            customer: [this.customer, Validators.required],
+            address: [this.address, Validators.required],
+            dispatchNoteList: [[]],
+        });
+
+        this.dispatchNoteFormGroup = fb.group({
+            dispatchNote: [{}, Validators.compose([Validators.required])],
         });
     }
 
+    getCustomerList(): void {
+        this.customerService.getCombo().subscribe(customerList => {
+            this.customerList = customerList;
+            this.setDisplayOfCustomers();
+        });
+    }
+    getDispatchNoteListByCustomer(id: number): void {
+        this.dispatchNoteService.getComboByCustomer(id).subscribe(dispatchNoteList => {
+            this.dispatchNoteList = dispatchNoteList;
+            this.setDisplayOfDispatchNotes();
+        });
+    }
+    getAddressListByCustomer(id: number): void {
+        this.addressService.getComboByCustomer(id).subscribe(addressList => (this.addressList = addressList));
+    }
     getPorts(): void {
         this.portService.getCombo().subscribe(ports => this.ports = ports);
     }
@@ -82,15 +109,16 @@ export class PackingListForm {
     getContainerSizes(): void {
         this.containerSizeService.getCombo().subscribe(containerSizes => this.containerSizes = containerSizes);
     }
-    getInvoices(): void {
-        this.invoiceService.getCombo().subscribe(invoices => this.invoices = invoices);
+    getEmployeeList(): void {
+        this.employeeService.getCombo().subscribe(employeeList => this.employeeList = employeeList);
     }
 
     ngOnInit(): void {
         this.getPorts();
         this.getCountries();
         this.getContainerSizes();
-        this.getInvoices();
+        this.getEmployeeList();
+        this.getCustomerList();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -110,59 +138,67 @@ export class PackingListForm {
         this.getPorts();
         this.getCountries();
         this.getContainerSizes();
-        this.getInvoices();
+        this.getEmployeeList();
+
     }
 
     loadForm(data: any) {
-        if (data != null) {
-            this.packingList = data;
+        (data) => {
+            if (data != null) {
+                this.packingList = data;
+                this.dispatchNote = {};
+            }
+            this.formGroup.patchValue(this.packingList, { onlySelf: true });
+            this.setDisplayOfCustomer();
+            this.setDisplayOfDispatchNote();
+            this.setDisplayOfAddress();
+            this.fillDispatcList();
         }
-        this.formGroup.patchValue(this.packingList, { onlySelf: true });
-        this.packingListType = this.packingList.packingListType;
-        this.port = this.packingList.port;
-        this.country = this.packingList.country;
-        this.containerSize = this.packingList.containerSize;
-        this.invoice = this.packingList.invoice;
-        this.calculateTotal();
-
-    }
-    public resetForm() {
-        this.formGroup.reset();
-        this.invoiceFormGroup.reset();
     }
 
-    fillInvoices(): void {
-        this.formGroup.value.invoiceList = this.formGroup.value.invoiceList.slice();
+    fillDispatchNotes(): void {
+        this.formGroup.value.dispatchNoteList = this.formGroup.value.dispatchNoteList.slice();
         this.dataTable.reset();
 
     }
-    public onEnter(cbm: string, dt: DataTable) {
-        if (this.invoiceFormGroup.valid) {
-            let values = this.invoiceFormGroup.value;
-            if (this.formGroup.value.invoiceList == null) {
-                this.formGroup.value.invoiceList = [];
+
+    fillDispatcList(): any {
+        this.dispatchList = [];
+        this.formGroup.value.dispatchNoteList.forEach(item => {
+            this.dispatchList = this.dispatchList.concat(item.dispatchNote.dispatchList);
+        });
+        this.dispatchList = this.dispatchList.slice();
+    }
+
+    public onEnter(dt: DataTable) {
+        if (this.dispatchNoteFormGroup.valid) {
+            let values = this.dispatchNoteFormGroup.value;
+            if (this.formGroup.value.dispatchNoteList == null) {
+                this.formGroup.value.dispatchNoteList = [];
             }
 
-            this.invoiceService.get(+values.invoice.id).subscribe(invoice => {
-                values.invoice = invoice;
-                this.formGroup.value.invoiceList.push(values);
-                this.calculateTotal();
-                this.invoiceFormGroup.reset();
-                document.getElementById('invoiceSelector').focus();
-                this.formGroup.value.invoiceList = this.formGroup.value.invoiceList.slice();
+            this.dispatchNoteService.get(+values.dispatchNote.id).subscribe(dispatchNote => {
+                values.dispatchNote = dispatchNote;
+                this.formGroup.value.dispatchNoteList.push(values);
+                this.dispatchNoteFormGroup.reset();
+                document.getElementById('dispatchNoteSelector').focus();
+                this.formGroup.value.dispatchNoteList = this.formGroup.value.dispatchNoteList.slice();
+                this.fillDispatcList();
+                console.log(this.dispatchList);
             });
 
         }
-
     }
 
     public onSubmit(values: any, event: Event): void {
-        event.preventDefault();
-        console.log(values);
-        if (values.invoiceList === null || values.invoiceList.length === 0) {
-            alert('invoiceForm Required');
+
+        if (values.dispatchNoteList === null || values.dispatchNoteList.length === 0) {
+            alert('dispatchNote Required');
             return;
         }
+
+        event.preventDefault();
+        console.log(values);
         this.service.save(values).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
@@ -172,35 +208,11 @@ export class PackingListForm {
         );
     }
 
-    public removeInvoice(id: number) {
-        if (this.formGroup.value.invoiceList != null) {
-            this.confirmationService.confirm({
-                message: 'Are you sure that you want to Delete?',
-                accept: () => {
-                    this.formGroup.value.invoiceList.splice(id, 1);
-                    this.fillInvoices();
-                    this.calculateTotal();
-                }
-            });
-        }
-    }
+    public resetForm() {
+        this.formGroup.reset();
+        this.dispatchNoteFormGroup.reset();
+        this.dispatchList = [];
 
-    calculateTotal() {
-        let netWeight = 0;
-        let grossWeight = 0;
-        let cbm = 0;
-        let pkgs = 0;
-        for (let i = 0; i < this.formGroup.value.invoiceList.length; i++) {
-            let invoice = this.formGroup.value.invoiceList[i];
-            netWeight += parseInt(invoice.netWeight);
-            grossWeight += parseInt(invoice.grossWeight);
-            cbm += parseInt(invoice.cbm);
-            pkgs += parseInt(invoice.pkgs);
-        }
-        this.formGroup.value.netWeight = netWeight;
-        this.formGroup.value.grossWeight = grossWeight;
-        this.formGroup.value.cbm = cbm;
-        this.formGroup.value.pkgs = pkgs;
     }
 
     /*================== Port Filter ===================*/
@@ -210,7 +222,7 @@ export class PackingListForm {
         let query = event.query.toLowerCase();
         this.filteredPorts = [];
         for (let port of this.ports) {
-            if (port.code.toLowerCase().indexOf(query) == 0 || port.name.toLowerCase().indexOf(query) == 0) {
+            if (port.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredPorts.push(port);
             }
         }
@@ -223,7 +235,7 @@ export class PackingListForm {
         let query = event.query.toLowerCase();
         this.filteredCountries = [];
         for (let country of this.countries) {
-            if (country.code.toLowerCase().indexOf(query) == 0 || country.name.toLowerCase().indexOf(query) == 0) {
+            if (country.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredCountries.push(country);
             }
         }
@@ -236,33 +248,152 @@ export class PackingListForm {
         let query = event.query.toLowerCase();
         this.filteredContainerSizes = [];
         for (let containerSize of this.containerSizes) {
-            if (containerSize.code.toLowerCase().indexOf(query) == 0 || containerSize.name.toLowerCase().indexOf(query) == 0) {
+            if (containerSize.display.toLowerCase().indexOf(query) >= 0) {
                 this.filteredContainerSizes.push(containerSize);
             }
         }
     }
     /*================== End Of ContainerSize Filter ===================*/
-    /*================== InvoiceFilter ===================*/
-    filteredInvoiceList: any[];
+    /*================== EmployeeFilter ===================*/
+    filteredEmployeeList: any[];
 
-    filterInvoiceList(event) {
+    filterEmployeeList(event) {
         let query = event.query.toLowerCase();
-        this.filteredInvoiceList = [];
-        for (let i = 0; i < this.invoiceList.length; i++) {
-            let invoice = this.invoiceList[i];
-            if (invoice.id.toLowerCase().indexOf(query) == 0) {
-                this.filteredInvoiceList.push(invoice);
+        this.filteredEmployeeList = [];
+        for (let i = 0; i < this.employeeList.length; i++) {
+            let employee = this.employeeList[i];
+            if (employee.display.toLowerCase().indexOf(query) >= 0) {
+                this.filteredEmployeeList.push(employee);
             }
         }
     }
 
-    setDisplayOfInvoice() {
-        let invoice = this.invoiceFormGroup.value.invoice;
-        if (invoice != null && invoice != undefined) {
-            let display = invoice.id != null && invoice.id != undefined ? invoice.id + ' : ' : '';
-            this.invoiceFormGroup.value.invoice.display = display;
+    /*================== End Of Employee Filter ===================*/
+    /*================== Customer Filter ===================*/
+    filteredCustomerList: any[];
+
+    filterCustomerList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredCustomerList = [];
+        for (let i = 0; i < this.customerList.length; i++) {
+            let customer = this.customerList[i];
+            if (customer.code.toLowerCase().indexOf(query) == 0 || customer.name.toLowerCase().indexOf(query) == 0) {
+                this.filteredCustomerList.push(customer);
+            }
         }
     }
+
+    onCustomerSelect(event: any) {
+        let customer = this.formGroup.value.customer;
+        this.setDisplayOfCustomer();
+        this.getDispatchNoteListByCustomer(+customer.id);
+        this.getAddressListByCustomer(+customer.id);
+
+    }
+
+    setDisplayOfCustomer() {
+        let customer = this.formGroup.value.customer;
+        if (customer != null && customer != undefined) {
+            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
+            display += customer.name != null && customer.name != undefined ? customer.name : '';
+            this.formGroup.value.customer.display = display;
+        }
+    }
+
+    setDisplayOfCustomers() {
+        this.customerList.forEach(customer => {
+            let display = customer.code != null && customer.code != undefined ? customer.code + ' : ' : '';
+            display += customer.name != null && customer.name != undefined ? customer.name : '';
+            customer.display = display;
+        });
+    }
+    /*================== End Of Customer Filter ===================*/
+    /*================== DispatchNote Filter ===================*/
+    filteredDispatchNoteList: any[];
+
+    filterDispatchNoteList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredDispatchNoteList = [];
+        for (let i = 0; i < this.dispatchNoteList.length; i++) {
+            let dispatchNote = this.dispatchNoteList[i];
+            if ((dispatchNote.id + '').indexOf(query) == 0) {
+                this.filteredDispatchNoteList.push(dispatchNote);
+            }
+        }
+    }
+
+    onDispatchNoteSelect(event: any) {
+        console.log(event);
+        this.dispatchNoteFormGroup.value.dispatchNote = event;
+        this.setDisplayOfDispatchNote();
+    }
+
+    setDisplayOfDispatchNote() {
+        let dispatchNote = this.dispatchNoteFormGroup.value.dispatchNote;
+        if (dispatchNote != null && dispatchNote != undefined) {
+            let display = dispatchNote.id != null && dispatchNote.id != undefined ? dispatchNote.id : '';
+            this.dispatchNoteFormGroup.value.dispatchNote.display = display;
+        }
+    }
+
+    setDisplayOfDispatchNotes() {
+        this.dispatchNoteList.forEach(dispatchNote => {
+            let display = dispatchNote.id != null && dispatchNote.id != undefined ? dispatchNote.id : '';
+            dispatchNote.display = display;
+        });
+    }
+    /*================== AddressFilter ===================*/
+    filteredAddressList: any[];
+
+    filterAddressList(event) {
+        let query = event.query.toLowerCase();
+        this.filteredAddressList = [];
+        for (let i = 0; i < this.addressList.length; i++) {
+            let address = this.addressList[i];
+            if (
+                address.code.toLowerCase().indexOf(query) == 0 ||
+                address.name.toLowerCase().indexOf(query) == 0
+            ) {
+                this.filteredAddressList.push(address);
+            }
+        }
+    }
+
+    handleAddressDropdownClick() {
+        this.filteredAddressList = [];
+        //mimic remote call
+        setTimeout(() => {
+            this.filteredAddressList = this.addressList;
+        }, 100);
+    }
+
+    onAddressSelect(event: any) {
+        this.setDisplayOfAddress();
+    }
+
+    setDisplayOfAddress() {
+        let address = this.formGroup.value.address;
+        if (address != null && address != undefined) {
+            let display =
+                address.code != null && address.code != undefined
+                    ? address.code + ' : '
+                    : '';
+            display +=
+                address.name != null && address.name != undefined ? address.name : '';
+            this.formGroup.value.address.display = display;
+        }
+    }
+
+    /*================== End Of DispatchNote Filter ===================*/
 }
+
+
+
+
+
+
+
+
+
 
 

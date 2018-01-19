@@ -16,11 +16,12 @@
 	 (onLazyLoad)='lazy($event,dt)' [pageLinks]='5' [rowsPerPageOptions]='[10,20,50,100,10000]' selectionMode='single' sortMode='multiple'
 	 resizableColumns='true' exportFilename='packingLists' [globalFilter]='gb' (onRowDblclick)='onRowDblclick($event.data)'>
 		<p-column field='id' header='ID'></p-column>
-		<p-column field='contactPerson' header='Contact Person'></p-column>
+		<p-column field='invoice.invoiceNumber' header='Invoice Number'></p-column>
+		<p-column field='employee.callingName' header='Contact Person'></p-column>
 		<p-column field='country.name' header='Country Of Final Destination ' [sortable]='true'></p-column>
 		<p-column field='port.name' header='Port Of Loading ' [sortable]='true'></p-column>
 		<p-column field='port.name' header='Final Destination ' [sortable]='true'></p-column>
-		<p-column field='containerSize' header='Container Size ' [sortable]='true'></p-column>
+		<p-column field='containerSize.name' header='Container Size ' [sortable]='true'></p-column>
 		<p-column field='noOfContainers' header='No Of Containers ' [sortable]='true'></p-column>
 		<p-column header='Action' styleClass='text-right'>
 			<ng-template let-data='rowData' pTemplate='body'>

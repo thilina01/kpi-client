@@ -12,5 +12,4 @@ export class PackingListService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('packingLists/');
   }
-  
 }
