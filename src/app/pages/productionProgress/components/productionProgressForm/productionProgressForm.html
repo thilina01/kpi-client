@@ -1,0 +1,97 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Production Progress Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/productionProgress/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+    <div class="row">
+      <div class="col-12">
+        <label for="id">Operation ID</label>
+        <input type="text" #id (keyDown.enter)="fill()" pInputText formControlName="id">
+        <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+          <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-12 row">
+        <div style="margin:12px;" class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12" [hidden]="operation==null || operation.production == undefined || operation.production.id == undefined">Production ID : {{operation==null || operation.id == undefined?'':operation.production.id}}</div>
+        <div style="margin:12px;" class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12" [hidden]="operation==null || operation.production == undefined ||operation.production.productionDate == undefined">Date : {{operation==null || operation.id == undefined?'':operation.production.productionDate}}</div>
+        <div style="margin:12px;" class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12" [hidden]="operation==null || operation.production == undefined ||operation.production.controlPoint.name == undefined">Control Point : {{operation==null || operation.id == undefined?'':operation.production.controlPoint.name}}</div>
+        <div style="margin:12px;" class="col-xl-2 col-lg-4 col-md-6 col-sm-6 col-12" [hidden]="operation==null || operation.job == undefined || operation.job.jobNo== undefined">Job : {{operation==null ||operation.id == undefined?'':operation.job.jobNo}}</div>
+        <div style="margin:12px;" class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12" [hidden]="operation==null || operation.operationType == undefined || operation.operationType.description== undefined">Operation Type : {{operation==null ||operation.id == undefined?'':operation.operationType.description}}</div>
+        <div style="margin:12px;" class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12" [hidden]="operation==null || operation.productType == undefined || operation.productType.description== undefined">Product Type : {{operation==null ||operation.id == undefined?'':operation.productType.description}}</div>
+        <div style="margin:12px;" class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12" [hidden]="operation==null || operation.job == undefined || operation.job.display== undefined">Item: {{operation==null ||operation.id == undefined?'':operation.job.display}}</div>
+      </div>
+    </div>
+    <br/>
+    <p-panel>
+      <div class="row">
+        <div class=" col-sm-12">
+          <form [formGroup]="productionProgressFormGroup" (ngSubmit)="onSubmit(productionProgressFormGroup.value,$event)" class="form-horizontal">
+            <div class="row">
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="timeSlot">Time Slot</label>
+                  <br/>
+                  <div class="ui-inputgroup">
+                    <p-autoComplete id="timeSlotSelector" [dropdown]="true" formControlName="timeSlot" field="display" [suggestions]="filteredTimeSlots"
+                      (completeMethod)="filterTimeSlot($event)" [size]="20" [minLength]="1">
+                    </p-autoComplete>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <div class="form-group" [ngClass]="{'has-error': (! productionProgressFormGroup.controls['quantity'].valid &&  productionProgressFormGroup.controls['quantity'].touched), 'has-success': ( productionProgressFormGroup.controls['quantity'].valid && productionProgressFormGroup.controls['quantity'].touched)}">
+                  <label for="quantity">Quantity</label>
+                  <br/>
+                  <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <label for="inputFirstName">&nbsp;</label>
+                <br/>
+                <div class="form-group form-inline">
+                  <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <p-dataTable #dt [value]="this.formGroup.value.productionProgressList" [editable]="true" [rows]="20" [responsive]="true"
+                    resizableColumns="true">
+                    <p-column field="id" header="ID"></p-column>
+                    <p-column field="timeSlot" header="Time Slot"></p-column>
+                    <p-column field="quantity" header="Quantity"></p-column>
+                    <p-column header="Action" styleClass="text-right">
+                      <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                        <i (click)="removeProductionProgress(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                      </ng-template>
+                    </p-column>
+                  </p-dataTable>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </p-panel>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        &nbsp;
+        <br/>
+        <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+      </div>
+    </div>
+  </form>
+</p-panel>
