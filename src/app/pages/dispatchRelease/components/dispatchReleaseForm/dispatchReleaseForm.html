@@ -62,8 +62,9 @@
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="dispatchReleaseTime">Time</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched), 'has-success':(formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched)}">
-              <p-calendar id="timePicker" formControlName="dispatchReleaseTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
-                hourFormat="24"></p-calendar>
+              <!-- <p-calendar id="timePicker" formControlName="dispatchReleaseTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                hourFormat="24"></p-calendar> -->
+                <p-calendar id="timePicker" hourFormat="24" showIcon="true"formControlName="dispatchReleaseTime"  showTime="showTime" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
