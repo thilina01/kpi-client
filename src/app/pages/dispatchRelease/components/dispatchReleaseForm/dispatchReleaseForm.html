@@ -27,8 +27,7 @@
       <div class="col-12 row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.customer == undefined || dispatchNote.customer.name == undefined">Customer : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.customer.name}}</div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.address == undefined || dispatchNote.address.line1 == undefined">Ship To : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.address.line1}}</div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.employee == undefined ||  dispatchNote.employee.firstName == undefined">Sales Person : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.employee.firstName}}</div>
-      </div>
+    </div>
     </div>
     <br/>
     <div class="row">
