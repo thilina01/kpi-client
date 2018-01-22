@@ -90,7 +90,7 @@ export const routes: Routes = [
       { path: 'plan', canActivate: [AuthGuard], loadChildren: 'app/pages/plan/plan.module#PlanModule' },
       // { path: 'port', canActivate: [AuthGuard], loadChildren: 'app/pages/port/port.module#PortModule' },
       { path: 'production', canActivate: [AuthGuard], loadChildren: 'app/pages/production/production.module#ProductionModule' },
-      { path: 'productionProgress', canActivate: [AuthGuard], loadChildren: 'app/pages/productionProgress/productionProgress.module#ProductionProgressModule' },
+      { path: 'operationProgress', canActivate: [AuthGuard], loadChildren: 'app/pages/operationProgress/operationProgress.module#OperationProgressModule' },
       { path: 'productionKpi', canActivate: [AuthGuard], loadChildren: 'app/pages/productionKpi/productionKpi.module#ProductionKpiModule' },
       { path: 'productionOverheadCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/productionOverheadCostPerKg/productionOverheadCostPerKg.module#ProductionOverheadCostPerKgModule' },
       { path: 'productType', canActivate: [AuthGuard], loadChildren: 'app/pages/productType/productType.module#ProductTypeModule' },

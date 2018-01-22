@@ -1,0 +1,103 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Operation Progress Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/operationProgress/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col">
+      <label for="id">Operation ID</label>
+      <input type="number" #id [(ngModel)]="operationId" (keyDown.enter)="fill()" pInputText>
+      <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+        <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12"> Production ID :
+      <span [hidden]="operation?.production?.id == undefined"> {{operation?.production?.id}} </span>
+    </div>
+    <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Date :
+      <span [hidden]="operation?.production?.productionDate == undefined">{{operation?.production?.productionDate}}</span>
+    </div>
+    <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Control Point :
+      <span [hidden]="operation?.production?.controlPoint.name == undefined">{{operation?.production?.controlPoint?.code+' '+operation?.production?.controlPoint?.name}}</span>
+    </div>
+    <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Job :
+      <span [hidden]="operation?.job?.jobNo== undefined">{{operation?.job?.display}}</span>
+    </div>
+    <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Operation Type :
+      <span [hidden]="operation?.operationType?.description== undefined">{{operation?.operationType?.description}}</span>
+    </div>
+    <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Product Type :
+      <span [hidden]="operation?.productType?.description== undefined">{{operation?.productType?.description}}</span>
+    </div>
+  </div>
+  <br/>
+  <p-panel>
+    <div class="row">
+      <div class=" col-sm-12">
+        <form [formGroup]="operationProgressFormGroup" class="form-horizontal">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="timeSlot">Time Slot</label>
+                <br/>
+                <p-dropdown [options]="timeSlots" id="timeSlotSelector" placeholder="Select a Time Slot" optionLabel="code" formControlName="timeSlot"></p-dropdown>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+              <div class="form-group" [ngClass]="{'has-error': (! operationProgressFormGroup.controls['quantity'].valid &&  operationProgressFormGroup.controls['quantity'].touched), 'has-success': ( operationProgressFormGroup.controls['quantity'].valid && operationProgressFormGroup.controls['quantity'].touched)}">
+                <label for="quantity">Quantity</label>
+                <br/>
+                <input type="number" #quantity (keyup.enter)="onEnter()" pInputText formControlName="quantity">
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+              <label for="addButton">&nbsp;</label>
+              <br/>
+              <div class="form-group form-inline">
+                <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p-dataTable #dt [value]="operation?.operationProgressList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                <p-column field="id" header="ID"></p-column>
+                <p-column field="timeSlot" header="Time Slot">
+                  <ng-template let-col let-rowData="rowData" pTemplate="body">
+                    {{rowData.timeSlot | date:'y-MM-dd HH:mm'}}
+                  </ng-template>
+                </p-column>
+                <p-column field="quantity" header="Quantity" styleClass="text-right"></p-column>
+                <p-column header="Action" styleClass="text-right">
+                  <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
+                    <i (click)="removeOperationProgress(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                  </ng-template>
+                </p-column>
+              </p-dataTable>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-panel>
+  <div class="row">
+    <div class="col">
+      &nbsp;
+      <br/>
+      <button type="button" pButton [disabled]="operation?.operationProgressList?.length < 1" (click)="save()" icon="fa-floppy-o" label="Save"></button>
+      <button type="button" pButton class="ui-button-secondary" (click)="reset()" icon="fa-times" label="Reset"></button>
+    </div>
+  </div>
+</p-panel>
