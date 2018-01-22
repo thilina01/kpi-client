@@ -12,6 +12,7 @@ import { PlanFormTop } from './components/planFormTop/planFormTop.component';
 import { PlanFormJob } from './components/planFormJob/planFormJob.component';
 import { PlanFormHr } from './components/planFormHr/planFormHr.component';
 import { ProductionService } from '../production/production.service';
+import { OperationService } from '../operation/operation.service';
 
 @NgModule({
   imports: [
@@ -35,6 +36,6 @@ import { ProductionService } from '../production/production.service';
     PlanFormJob,
     PlanFormHr
   ],
-  providers: [ProductionService]
+  providers: [ProductionService, OperationService]
 })
 export class PlanModule { }

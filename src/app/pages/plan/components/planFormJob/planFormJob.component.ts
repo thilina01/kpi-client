@@ -2,10 +2,12 @@ import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { CustomValidators } from 'ng2-validation';
 
-import { DataTable } from 'primeng/primeng';
+import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { JobService } from '../../../job/job.service';
 import { OperationTypeService } from '../../../operationType/operationType.service';
 import { ProductTypeService } from '../../../productType/productType.service';
+import { OperationService } from '../../../operation/operation.service';
+import { SharedService } from '../../../../services/shared.service';
 
 @Component({
   selector: 'plan-form-job',
@@ -28,8 +30,11 @@ export class PlanFormJob {
 
   constructor(
     fb: FormBuilder,
+    private confirmationService: ConfirmationService,
+    private sharedService: SharedService,
     private jobService: JobService,
     private productTypeService: ProductTypeService,
+    private operationService: OperationService,
     private operationTypeService: OperationTypeService
   ) {
     this.jobFormGroup = fb.group({
@@ -74,7 +79,21 @@ export class PlanFormJob {
 
   public removeOperation(id: number) {
     if (this.formGroup.value.operationList != null) {
-      this.formGroup.value.operationList.splice(id, 1);
+      let operationToDelete = this.formGroup.value.operationList[id];
+      if (operationToDelete.id !== undefined) {
+        this.confirmationService.confirm({
+          message: 'Are you sure that you want to Delete this from server?',
+          accept: () => {
+            this.operationService.delete(operationToDelete.id).subscribe(response => {
+              this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
+              this.formGroup.value.operationList.splice(id, 1);
+            }
+            );
+          }
+        });
+      } else {
+        this.formGroup.value.operationList.splice(id, 1);
+      }
     }
     this.fillOperations();
   }
