@@ -44,7 +44,7 @@ export class OperationProgressTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/operationProgress/form/' + data.production.id]);
+        this.router.navigate(['/pages/operationProgress/form/' + data.operation.id]);
     }
 
     navigateToForm(id: any): void {
