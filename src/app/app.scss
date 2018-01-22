@@ -8,6 +8,12 @@ select option {
     font-weight: bold;*/
 }
 
+.ui-dropdown .ui-dropdown-label {
+  line-height: inherit;
+  background: #555555;
+  color: #eeeeee;
+}
+
 .form-control{
     margin-right:15px;
     margin-bottom:10px;
