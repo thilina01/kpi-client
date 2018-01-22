@@ -17,11 +17,13 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="operationProgresss"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="production.id" header="Production id" [sortable]="true"></p-column>
-		<p-column field="production.productionDate" header="Production Date" [sortable]="true"></p-column>
-		<ng-template let-col let-rowData="rowData" pTemplate="body">
-			{{rowData.production.productionDate|date:'y-MM-dd'}}
-		</ng-template>
+		<p-column field="operation.id" header="Production id" [sortable]="true"></p-column>
+		<p-column field="quantity" header="Quantity" [sortable]="true"></p-column>
+		<p-column field="timeSlot" header="Time Slot" [sortable]="true">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.timeSlot| date:'y-MM-dd HH:mm'}}
+			</ng-template>
+		</p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/operationProgress/form/'+data.id">
