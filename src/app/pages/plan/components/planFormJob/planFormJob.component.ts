@@ -72,7 +72,12 @@ export class PlanFormJob {
   }
 
   fillOperations(): void {
+    this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
+    this.dataTable.reset();
+  }
 
+  public removeOperationFromView(id: number) {
+    this.formGroup.value.operationList.splice(id, 1);
     this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
     this.dataTable.reset();
   }
@@ -86,16 +91,15 @@ export class PlanFormJob {
           accept: () => {
             this.operationService.delete(operationToDelete.id).subscribe(response => {
               this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-              this.formGroup.value.operationList.splice(id, 1);
+              this.removeOperationFromView(id);
             }
             );
           }
         });
       } else {
-        this.formGroup.value.operationList.splice(id, 1);
+        this.removeOperationFromView(id);
       }
     }
-    this.fillOperations();
   }
 
   public onEnter(plannedQuantity: string, dt: DataTable) {
