@@ -17,7 +17,15 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="operationProgresss"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="operation.id" header="Production id" [sortable]="true"></p-column>
+		<p-column field="operation.id" header="Operation ID" [sortable]="true"></p-column>
+		<p-column field="operation.production.id" header="Production ID" [sortable]="true"></p-column>
+		<p-column field="operation.production.controlPoint.code" header="Control Point Code" [sortable]="true"></p-column>
+		<p-column field="operation.production.controlPoint.name" header="Control Point Name" [sortable]="true"></p-column>
+		<p-column field="operation.job.jobNo" header="Job No" [sortable]="true"></p-column>
+		<p-column field="operation.productType.code" header="Product Type Code" [sortable]="true"></p-column>
+		<p-column field="operation.productType.description" header="Product Type Name" [sortable]="true"></p-column>
+		<p-column field="operation.production.shift.code" header="Shift" [sortable]="true"></p-column>
+		<p-column field="operation.plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
 		<p-column field="quantity" header="Quantity" [sortable]="true"></p-column>
 		<p-column field="timeSlot" header="Time Slot" [sortable]="true">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
