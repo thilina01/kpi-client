@@ -13,11 +13,11 @@
       </div>
     </div>
   </p-header>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" (keydown.enter)="$event.preventDefault()" class="form-horizontal">
     <div class="row">
       <div class="col-12">
         <label for="id">Dispatch Note ID</label>
-        <input type="text" pInputText formControlName="id">
+        <input type="text" pInputText formControlName="id" id="id" (keydown.enter)="fill()">
         <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
           <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
       </div>
@@ -25,8 +25,8 @@
     <br/>
     <div class="row">
       <div class="col-12 row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.customer == undefined || dispatchNote.customer.name == undefined">Customer : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.customer.name}}</div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="dispatchNote==null || dispatchNote.address == undefined || dispatchNote.address.line1 == undefined">Ship To : {{dispatchNote==null || dispatchNote.id == undefined?'':dispatchNote.address.line1}}</div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >Customer : {{dispatchNote?.customer?.name}} </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >Ship To : {{dispatchNote?.address?.line1}} </div>
     </div>
     </div>
     <br/>
@@ -62,8 +62,6 @@
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="dispatchReleaseTime">Time</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched), 'has-success':(formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched)}">
-              <!-- <p-calendar id="timePicker" formControlName="dispatchReleaseTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
-                hourFormat="24"></p-calendar> -->
                 <p-calendar id="timePicker" hourFormat="24" showIcon="true"formControlName="dispatchReleaseTime"  showTime="showTime" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
             </div>
           </div>
