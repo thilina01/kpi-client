@@ -88,7 +88,6 @@ export class OperationProgressForm {
       }
       let productionDate = this.operation.production.productionDate;
       let operationProgress = {
-        operation: { id: this.operation.id },
         quantity: values.quantity,
         timeSlot: new Date(productionDate + ' ' + values.timeSlot.code + ':00')
 
@@ -116,6 +115,11 @@ export class OperationProgressForm {
   }
 
   public save() {
+
+    for (let index = 0; index < this.operation.operationProgressList.length; ++index) {
+      this.operation.operationProgressList[index].operation = { id: this.operation.id };
+    }
+
     this.service.saveMany(this.operation.operationProgressList).subscribe(
       (data) => {
         this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
