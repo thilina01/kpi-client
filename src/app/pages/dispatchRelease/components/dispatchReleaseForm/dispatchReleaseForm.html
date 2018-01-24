@@ -25,9 +25,9 @@
     <br/>
     <div class="row">
       <div class="col-12 row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >Customer : {{dispatchNote?.customer?.name}} </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" >Ship To : {{dispatchNote?.address?.line1}} </div>
-    </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Customer : {{dispatchNote?.customer?.name}} </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Ship To : {{dispatchNote?.address?.line1}} </div>
+      </div>
     </div>
     <br/>
     <div class="row">
@@ -50,6 +50,27 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="location">Location</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="location" [dropdown]="true" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/location/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="dispatchReleaseTime">Time</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched), 'has-success':(formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched)}">
+              <p-calendar id="timePicker" hourFormat="24" showIcon="true" formControlName="dispatchReleaseTime" showTime="showTime" dateFormat="yy-mm-dd"
+                appendTo="body"></p-calendar>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="vehicleNumber">Vehicle Number</label>
             <br/>
             <input type="text" pInputText formControlName="vehicleNumber">
@@ -59,12 +80,7 @@
             <br/>
             <input type="text" pInputText formControlName="recipient">
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <label for="dispatchReleaseTime">Time</label>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched), 'has-success':(formGroup.controls['dispatchReleaseTime'].valid && formGroup.controls['dispatchReleaseTime'].touched)}">
-                <p-calendar id="timePicker" hourFormat="24" showIcon="true"formControlName="dispatchReleaseTime"  showTime="showTime" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-            </div>
-          </div>
+
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="containerNumber">Container Number</label>
             <br/>

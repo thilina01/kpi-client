@@ -22,6 +22,7 @@ import { DispatchService } from '../../services/dispatch.service';
 import { CustomerTypeService } from '../customerType/customerType.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 import { LossTypeService } from '../../services/lossType.service';
+import { LocationService } from '../location/location.service';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { LossTypeService } from '../../services/lossType.service';
     DispatchScheduleService,
     CustomerTypeService,
     DispatchNoteService,
-    DispatchService
+    DispatchService,
+    LocationService
   ]
 })
 export class DispatchReleaseModule { }

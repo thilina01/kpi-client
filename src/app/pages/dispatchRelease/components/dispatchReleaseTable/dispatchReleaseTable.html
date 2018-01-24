@@ -27,6 +27,8 @@
 				{{rowData.dispatchReleaseTime | date:'y-MM-dd HH:mm'}}
 			</ng-template>
 		</p-column>
+		<p-column field="location.code" header="Location Code" [sortable]="true"></p-column>
+		<p-column field="location.name" header="Location Name" [sortable]="true"></p-column>
 		<p-column field="vehicleNumber" header="Vehicle Number" [sortable]="true"></p-column>
 		<p-column field="recipient" header="Recipient" [sortable]="true"></p-column>
 		<p-column field="containerNumber" header="Container Number" [sortable]="true"></p-column>

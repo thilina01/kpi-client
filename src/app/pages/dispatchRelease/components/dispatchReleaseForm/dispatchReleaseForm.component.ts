@@ -8,6 +8,7 @@ import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service';
 import { DispatchService } from '../../../../services/dispatch.service';
 import 'rxjs/add/operator/take';
+import { LocationService } from '../../../location/location.service';
 
 @Component({
   selector: 'dispatch-release-form',
@@ -30,9 +31,11 @@ export class DispatchReleaseForm {
     fb: FormBuilder,
     private confirmationService: ConfirmationService,
     private dispatchService: DispatchService,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    private locationService: LocationService) {
     this.formGroup = fb.group({
       id: '',
+      location: '',
       vehicleNumber: '',
       dispatchReleaseTime: [null, Validators.required],
       containerNumber: '',
@@ -40,7 +43,8 @@ export class DispatchReleaseForm {
     });
   }
   ngOnInit(): void {
-    this.idTextField = <HTMLInputElement> document.getElementById('id');
+    this.getLocations();
+    this.idTextField = <HTMLInputElement>document.getElementById('id');
     this.route.params.subscribe(
       (params: Params) => {
         let id = params['id'];
@@ -97,4 +101,36 @@ export class DispatchReleaseForm {
     this.fill();
 
   }
+
+  /*================== Location Filter ===================*/
+  locations: any;
+  filteredLocations: any[];
+
+  getLocations(): void {
+    this.locationService.getAll().subscribe(locations => this.locations = locations);
+  }
+
+  filterLocations(event) {
+    let query = event.query.toLowerCase();
+    this.filteredLocations = [];
+    for (let i = 0; i < this.locations.length; i++) {
+      let location = this.locations[i];
+      if (location.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredLocations.push(location);
+      }
+    }
+  }
+
+  handleLocationDropdownClick() {
+    this.filteredLocations = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredLocations = this.locations;
+    }, 100)
+  }
+
+  onLocationSelect(event: any) {
+
+  }
+  /*================== End Of Location Filter ===================*/
 }
