@@ -21,9 +21,13 @@
 		<p-column field="operation.production.id" header="Production ID" [sortable]="true"></p-column>
 		<p-column field="operation.production.controlPoint.code" header="Control Point Code" [sortable]="true"></p-column>
 		<p-column field="operation.production.controlPoint.name" header="Control Point Name" [sortable]="true"></p-column>
+		<p-column field="operation.production.controlPoint.workCenter.costCenter.section.code" header="Section Code" [sortable]="true"></p-column>
+		<p-column field="operation.production.controlPoint.workCenter.costCenter.section.name" header="Section Name" [sortable]="true"></p-column>
 		<p-column field="operation.job.jobNo" header="Job No" [sortable]="true"></p-column>
 		<p-column field="operation.productType.code" header="Product Type Code" [sortable]="true"></p-column>
 		<p-column field="operation.productType.description" header="Product Type Name" [sortable]="true"></p-column>
+		<p-column field="operation.operationType.code" header="Operation Type Code" [sortable]="true"></p-column>
+		<p-column field="operation.operationType.description" header="Operation Type Name" [sortable]="true"></p-column>
 		<p-column field="operation.production.shift.code" header="Shift" [sortable]="true"></p-column>
 		<p-column field="operation.plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
 		<p-column field="quantity" header="Quantity" [sortable]="true"></p-column>
