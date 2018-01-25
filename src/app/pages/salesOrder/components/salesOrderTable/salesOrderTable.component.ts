@@ -46,7 +46,7 @@ export class SalesOrderTable {
     getSalesOrderTypes(): void {
         this.salesOrderTypeService.getCombo().subscribe(salesOrderTypes => {
             this.salesOrderTypes = salesOrderTypes;
-            this.salesOrderTypes.unsalesOrderType({ id: 0, 'code': 'ALL', 'display': 'All SalesOrderTypes' });
+            this.salesOrderTypes.unshift({ id: 0, 'code': 'ALL', 'display': 'All SalesOrderTypes' });
         });
     }
 
