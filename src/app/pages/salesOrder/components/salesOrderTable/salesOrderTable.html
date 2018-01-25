@@ -15,6 +15,41 @@
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="salesOrders" [globalFilter]="gb">
+		<p-header>
+			<div class="row">
+				<div class="col" style="text-align: left">
+					Duration Start
+					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+				</div>
+				<div class="col" style="text-align: left">
+					Duration End
+					<br/>
+					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+				</div>
+				<div class="col" style="text-align: left">
+					Customer
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
+						 [size]="15" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					Sales Order Type
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes" (completeMethod)="filterSalesOrderTypes($event)"
+						 [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSalesOrderTypeSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<br/>
+					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
+						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+					</button> &nbsp;&nbsp;{{totalRecords}}
+				</div>
+			</div>
+		</p-header>
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="salesOrderNumber" header="Sales Order Number" [sortable]="true"></p-column>
 		<p-column field="orderDate" header="Order Date" [sortable]="true"></p-column>
