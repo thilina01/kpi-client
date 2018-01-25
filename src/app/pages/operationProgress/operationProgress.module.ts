@@ -13,6 +13,9 @@ import { OperationProgressForm } from './components/operationProgressForm/operat
 import { routing } from './operationProgress.routing';
 import { OperationProgressService } from './operationProgress.service';
 import { OperationService } from '../operation/operation.service';
+import { SectionService } from '../section/section.service';
+import { ControlPointService } from '../controlPoint/controlPoint.service';
+import { JobService } from '../job/job.service';
 
 @NgModule({
   imports: [
@@ -38,7 +41,11 @@ import { OperationService } from '../operation/operation.service';
   ],
   providers: [
     OperationProgressService,
-    OperationService
+    OperationService,
+    SectionService,
+    ControlPointService,
+    JobService
+
   ]
 })
 export class OperationProgressModule { }

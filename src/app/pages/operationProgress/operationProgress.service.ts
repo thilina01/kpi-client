@@ -12,5 +12,26 @@ export class OperationProgressService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('operationProgresses/');
   }
+  getByProductionDurationPage(startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+
+  getByProductionDurationAndControlPointPage(startDate, endDate, controlPoint, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationAndControlPointPage?startDate=' + startDate + '&endDate=' + endDate + '&controlPoint=' + controlPoint + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getBySectionAndProductionDurationPage(section, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'sectionAndProductionDurationPage?section=' + section + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByProductionDurationAndJobPage(job, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationAndJobPage?job=' + job + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getBySectionAndJobAndProductionDurationAndControlPointPage(section, startDate, job, endDate, controlPoint, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'sectionAndJobAndProductionDurationAndControlPointPage?section=' + section + '&startDate=' + startDate + '&job=' + job + '&endDate=' + endDate + '&controlPoint=' + controlPoint + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 
 }
