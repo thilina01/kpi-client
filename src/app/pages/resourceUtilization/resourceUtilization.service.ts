@@ -13,4 +13,27 @@ export class ResourceUtilizationService extends MasterService {
     this.setApiUrl('resourceUtilizations/');
   }
 
+  getByProductionDurationPage(startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByProductionDurationAndShiftPage(startDate, endDate, shift, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationAndShiftPage?startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByMachineAndProductionDurationPage(machine, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'machineAndProductionDurationPage?machine=' + machine + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByProductionDurationAndEmployeePage(employee, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationAndEmployeePage?employee=' + employee + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByMachineAndEmployeeAndProductionDurationAndShiftPage(machine, startDate, employee, endDate, shift, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'machineAndEmployeeAndProductionDurationAndShiftPage?machine=' + machine + '&startDate=' + startDate + '&employee=' + employee + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 }
+
+
+

@@ -16,6 +16,49 @@
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="resourceUtilizations"
 	 [globalFilter]="gb">
+		<p-header>
+			<div class="row">
+				<div class="col" style="text-align: left">
+					Duration Start
+					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+				</div>
+				<div class="col" style="text-align: left">
+					Duration End
+					<br/>
+					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+				</div>
+				<div class="col" style="text-align: left">
+					Shift
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+						 [size]="15" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onShiftSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					Machine
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="machine" field="display" [suggestions]="filteredMachines" (completeMethod)="filterMachines($event)"
+						 [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					Employee
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="employee" field="display" [suggestions]="filteredEmployees" (completeMethod)="filterEmployees($event)"
+						 [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<br/>
+					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
+						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+					</button> &nbsp;&nbsp;{{totalRecords}}
+				</div>
+			</div>
+		</p-header>
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="production.id" header="Production id" [sortable]="true"></p-column>
 		<p-column field="production.productionDate" header="Production Date" [sortable]="true"></p-column>
@@ -23,10 +66,10 @@
 			{{rowData.production.productionDate|date:'y-MM-dd'}}
 		</ng-template>
 		<p-column field="production.shift.code" header="Shift" [sortable]="true"></p-column>
-		<p-column field="production.controlPoint.name" header="ControlPoint Name" [sortable]="true"></p-column>
 		<p-column field="production.controlPoint.code" header="ControlPoint Code" [sortable]="true"></p-column>
-		<p-column field="machine.name" header="Machine Name" [sortable]="true"></p-column>
+		<p-column field="production.controlPoint.name" header="ControlPoint Name" [sortable]="true"></p-column>
 		<p-column field="machine.code" header="Machine Code" [sortable]="true"></p-column>
+		<p-column field="machine.name" header="Machine Name" [sortable]="true"></p-column>
 		<p-column field="employee.code" header="Employee ID" [sortable]="true"></p-column>
 		<p-column field="employee.callingName" header="Employee Name" [sortable]="true"></p-column>
 		<p-column field="startTime" header="Start Time" [sortable]="true">

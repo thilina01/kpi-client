@@ -15,6 +15,7 @@ import { ResourceUtilizationService } from './resourceUtilization.service';
 import { EmployeeService } from '../employee/employee.service';
 import { ProductionService } from '../production/production.service';
 import { MachineService } from '../machine/machine.service';
+import { ShiftService } from '../shift/shift.service';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { MachineService } from '../machine/machine.service';
     ResourceUtilizationService,
     EmployeeService,
     ProductionService,
-    MachineService
+    MachineService,
+    ShiftService
   ]
 })
 export class ResourceUtilizationModule { }
