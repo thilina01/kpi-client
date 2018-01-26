@@ -159,7 +159,6 @@ export class PackingListForm {
     fillDispatchNotes(): void {
         this.formGroup.value.dispatchNoteList = this.formGroup.value.dispatchNoteList.slice();
         this.dataTable.reset();
-
     }
 
     fillDispatcList(): any {
@@ -170,7 +169,7 @@ export class PackingListForm {
         this.dispatchList = this.dispatchList.slice();
     }
 
-    public onEnter(dt: DataTable) {
+     public onEnter() {
         if (this.dispatchNoteFormGroup.valid) {
             let values = this.dispatchNoteFormGroup.value;
             if (this.formGroup.value.dispatchNoteList == null) {
@@ -361,7 +360,6 @@ export class PackingListForm {
 
     handleAddressDropdownClick() {
         this.filteredAddressList = [];
-        //mimic remote call
         setTimeout(() => {
             this.filteredAddressList = this.addressList;
         }, 100);
