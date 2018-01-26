@@ -17,6 +17,36 @@
     <div class='col-sm-12'>
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
         <div class='row'>
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <label for='packingList'>Packing List ID</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete  formControlName='packingList' id='packingList' field='display' [dropdown]="true" [suggestions]='filteredPackingListList'
+                (completeMethod)='filterPackingListList($event)' [size]='20' [minLength]='1' placeholder='Search'>
+              </p-autoComplete>
+              <button type="button" class="btn btn-primary btn-xs" (click)="onFillButtonClick()">
+                <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <p-dataTable #dt [value]="dispatchList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+              <p-column field="id" header="ID"></p-column>
+              <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
+              <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
+              <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
+              <p-column field="quantity" header="Quantity"></p-column>
+            </p-dataTable>
+          </div>
+        </div>
+        <br/>
+        <div class='row'>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="invoiceDate">Invoice Date</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched), 'has-success': (formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched)}">
@@ -45,76 +75,7 @@
               </a>
             </div>
           </div>
-          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for="customer">Customer</label> &nbsp;
-            <br/>
-            <div class="ui-inputgroup">
-              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-                [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-              <a routerLink="/pages/customer/form" target="blank">
-                <button pButton type="button" icon="fa-plus-circle"></button>
-              </a>
-            </div>
-          </div>
         </div>
-        <p-panel>
-          <div class="row">
-            <div class=" col-sm-12">
-              <form [formGroup]=" dispatchNoteFormGroup" class="form-horizontal">
-                <div class="row">
-                  <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-12">
-                    <div class="form-group" [ngClass]="{'has-error': (! dispatchNoteFormGroup.controls['dispatchNote'].valid &&  dispatchNoteFormGroup.controls['dispatchNote'].touched), 'has-success': ( dispatchNoteFormGroup.controls['dispatchNote'].valid && dispatchNoteFormGroup.controls['dispatchNote'].touched)}">
-                      <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
-                      <br/>
-                      <div class="ui-inputgroup">
-                        <p-autoComplete id="dispatchNoteSelector" #dispatchNote (keyup.enter)="onEnter(dispatchNote.value,dt)" formControlName="dispatchNote"
-                          [dropdown]="true" field="display" [suggestions]="filteredDispatchNoteList" (completeMethod)="filterDispatchNoteList($event)"
-                          [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
-                          <ng-template let-option pTemplate="option">
-                            <div class="ui-helper-clearfix">
-                              <div>{{option.id}}</div>
-                            </div>
-                          </ng-template>
-                        </p-autoComplete>
-                        <a routerLink="/pages/dispatchNote/form" target="blank">
-                          <button pButton type="button" icon="fa-plus-circle"></button>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <label for="inputFirstName">&nbsp;</label>
-                    <br/>
-                    <div class="form-group form-inline">
-                      <button (click)="onEnter(dispatchNote.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle"
-                        label="Add"></button> &nbsp;&nbsp;
-                    </div>
-                  </div>
-                </div>
-              </form>
-              <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                  <p-dataTable #dt [value]="dispatchList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
-                    <p-column field="id" header="ID"></p-column>
-                    <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
-                    <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
-                    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
-                    <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
-                    <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
-                    <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-                    <p-column field="quantity" header="Quantity"></p-column>
-                  </p-dataTable>
-                </div>
-              </div>
-            </div>
-          </div>
-        </p-panel>
         <br/>
         <div class='row'>
           <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
