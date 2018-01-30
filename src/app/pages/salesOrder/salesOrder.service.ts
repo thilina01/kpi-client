@@ -27,4 +27,9 @@ export class SalesOrderService extends MasterService {
     return this.http.get(this.apiUrl + 'customerAndSalesOrderDurationAndSalesOrderTypePage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&salesOrderType=' + salesOrderType + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
+  getPageByCustomer(customer: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageByCustomer?page=' + page + '&size=' + size, JSON.stringify(customer), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }
+
