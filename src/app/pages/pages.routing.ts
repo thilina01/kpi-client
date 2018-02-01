@@ -45,6 +45,7 @@ export const routes: Routes = [
       // { path: 'deliveryTerm', canActivate: [AuthGuard], loadChildren: 'app/pages/deliveryTerm/deliveryTerm.module#DeliveryTermModule' },
       // { path: 'department', canActivate: [AuthGuard], loadChildren: 'app/pages/department/department.module#DepartmentModule' },
       // { path: 'designation', canActivate: [AuthGuard], loadChildren: 'app/pages/designation/designation.module#DesignationModule' },
+      { path: 'dispatchInformation', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchInformation/dispatchInformation.module#DispatchInformationModule' },
       { path: 'dispatchNote', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchNote/dispatchNote.module#DispatchNoteModule' },
       { path: 'dispatchRelease', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchRelease/dispatchRelease.module#DispatchReleaseModule' },
       { path: 'dispatchSchedule', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchSchedule/dispatchSchedule.module#DispatchScheduleModule' },

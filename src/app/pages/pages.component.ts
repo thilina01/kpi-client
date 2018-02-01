@@ -83,6 +83,7 @@ export class Pages {
     { routerLink: '/pages/deliveryTerms/table', name: 'Delivery Term ', menuType: this.menuType },
     { routerLink: '/pages/departments/table', name: 'Department', menuType: this.menuType },
     { routerLink: '/pages/designations/table', name: 'Designation', menuType: this.menuType },
+    { routerLink: '/pages/dispatchInformation/table', name: 'Dispatch Information', menuType: this.menuType },
     { routerLink: '/pages/dispatchNote/table', name: 'Dispatch Note', menuType: this.menuType },
     { routerLink: '/pages/dispatchRelease/table', name: 'Dispatch Release', menuType: this.menuType },
     { routerLink: '/pages/dispatchSchedule/table', name: 'Dispatch Schedule', menuType: this.menuType },

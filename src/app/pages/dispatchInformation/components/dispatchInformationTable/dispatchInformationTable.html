@@ -1,0 +1,33 @@
+<p-panel>
+	<p-header>
+		<div class="row">
+			<div class="col">
+				<h4>Dispatch Information List</h4>
+			</div>
+			<div class="col">
+				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+			</div>
+		</div>
+	</p-header>
+	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+	 resizableColumns="true" exportFilename="dispatchInformations">
+		<p-column field="id" header="ID"></p-column>
+		<p-column field="dispatchNote.customer.name" header="Customer" [sortable]="true"></p-column>
+		<p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer PO" [sortable]="true"></p-column>
+		<p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true"></p-column>
+		<p-column field="dispatchSchedule.job.item.code" header="OTR Code"></p-column>
+		<p-column field="dispatchSchedule.job.jobNo" header="Job No" [sortable]="true"></p-column>
+		<p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item" [sortable]="true"></p-column>
+		<p-column field="quantity" header="Qty"></p-column>
+		<p-column field="dispatchSchedule.requestDate" header="Request Date" [sortable]="true"></p-column>
+		<p-column field="dispatchSchedule.confirmDate" header="Confirm Date" [sortable]="true"></p-column>
+		<p-column field="dispatchNote.dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
+		<p-column field="dispatchNote.dispatchReleaseTime" header="Dispatch Release" [sortable]="true">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.dispatchNote.dispatchReleaseTime | date:'y-MM-dd HH:mm'}}
+			</ng-template>
+		</p-column>
+	</p-dataTable>
+</p-panel>
