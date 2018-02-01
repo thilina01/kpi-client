@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { HumanResourceKpi } from './humanResourceKpi.component';
 import { routing } from './humanResourceKpi.routing';
@@ -19,7 +19,7 @@ import { ChartService } from '../chart/chart.service';
     CommonModule,
     FormsModule,
     NgaModule,
-    MaterialModule,
+    // MaterialModule,
     PanelModule,
     TabViewModule,
     routing

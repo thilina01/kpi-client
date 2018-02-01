@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { ProductionKpi } from './productionKpi.component';
 import { routing } from './productionKpi.routing';
@@ -23,7 +23,7 @@ import { ScrapValueChart } from './scrapValueChart/scrapValueChart.component';
     CommonModule,
     FormsModule,
     NgaModule,
-    MaterialModule,
+    // MaterialModule,
     PanelModule,
     TabViewModule,
     AutoCompleteModule,

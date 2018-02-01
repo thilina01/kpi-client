@@ -205,10 +205,14 @@ export class BreakdownChart {
       this.categoryTitle = 'Section';
 
       this.chartService.getBreakdown(this.startDate, this.endDate).subscribe((data) => {
-        this.setData(data.json())
+        this.setData(data.json());
       });
 
     } else {
+      this.categoryTitle = 'Date';
+      this.chartService.getBreakdownBySection(this.startDate, this.endDate, this.section).subscribe((data) => {
+        this.setData(data.json());
+      });
     }
   }
 

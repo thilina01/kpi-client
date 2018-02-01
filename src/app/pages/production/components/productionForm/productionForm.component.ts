@@ -1,15 +1,15 @@
-import {Component, ViewEncapsulation, Input} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
-import {ActivatedRoute, Params} from '@angular/router'
-import {FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Params } from '@angular/router'
+import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
-import {SharedService} from '../../../../services/shared.service';
-import {ControlPointService} from '../../../controlPoint/controlPoint.service';
-import {LossTypeService} from '../../../lossType/lossType.service';
-import {ProductionService} from '../../production.service';
-import {ShiftService} from '../../../shift/shift.service';
-import {OrganizationService} from '../../../organization/organization.service';
-import {EmployeeService} from "../../../employee/employee.service";
+import { SharedService } from '../../../../services/shared.service';
+import { ControlPointService } from '../../../controlPoint/controlPoint.service';
+import { LossTypeService } from '../../../lossType/lossType.service';
+import { ProductionService } from '../../production.service';
+import { ShiftService } from '../../../shift/shift.service';
+import { OrganizationService } from '../../../organization/organization.service';
+import { EmployeeService } from "../../../employee/employee.service";
 import 'rxjs/add/operator/take';
 
 @Component({
@@ -41,14 +41,14 @@ export class ProductionForm {
   lossType: any = {}
 
   constructor(protected service: ProductionService,
-              private route: ActivatedRoute,
-              fb: FormBuilder,
-              private sharedService: SharedService,
-              private controlPointService: ControlPointService,
-              private shiftService: ShiftService,
-              private employeeService: EmployeeService,
-              private organizationService: OrganizationService,
-              private lossTypeService: LossTypeService) {
+    private route: ActivatedRoute,
+    fb: FormBuilder,
+    private sharedService: SharedService,
+    private controlPointService: ControlPointService,
+    private shiftService: ShiftService,
+    private employeeService: EmployeeService,
+    private organizationService: OrganizationService,
+    private lossTypeService: LossTypeService) {
     this.formGroup = fb.group({
       plannedDuration: 0,
       actualDuration: 0,
@@ -87,7 +87,7 @@ export class ProductionForm {
         this.loadForm(data);
         if (data != null) {
           this.sharedService.addMessage(
-            {severity: 'info', summary: 'Success', detail: 'Operation Success'}
+            { severity: 'info', summary: 'Success', detail: 'Operation Success' }
           );
         }
       }
@@ -121,13 +121,25 @@ export class ProductionForm {
           (data) => {
             this.loadForm(data);
           }
-        )
+        );
       }
     );
   }
 
+  predicateBy(prop) {
+    return function (a, b) {
+      if (a[prop] > b[prop]) {
+        return 1;
+      } else if (a[prop] < b[prop]) {
+        return -1;
+      }
+      return 0;
+    };
+  }
+
   loadForm(data: any) {
     if (data != null) {
+      data.operationList.sort(this.predicateBy('id'));
       this.production = data;
     }
     this.calculateTotalPlannedProductionQuantity();
@@ -135,7 +147,7 @@ export class ProductionForm {
     this.calculateTotalLossQuantity();
     this.setOperationIdOnLoss();
     this.production.productionEmployeeList = this.production.productionEmployeeList == undefined ? [] : this.production.productionEmployeeList;
-    this.formGroup.patchValue(this.production, {onlySelf: true});
+    this.formGroup.patchValue(this.production, { onlySelf: true });
   }
 
   calculateTotalPlannedProductionQuantity() {
@@ -168,7 +180,7 @@ export class ProductionForm {
       for (let operation of this.production.operationList) {
         if (operation.lossList) {
           for (let loss of operation.lossList) {
-            loss.operation = {id: operation.id}
+            loss.operation = { id: operation.id }
           }
         }
       }
@@ -215,7 +227,7 @@ export class ProductionForm {
     console.log(this.production);
     this.service.save(this.production).subscribe(
       (data) => {
-        this.sharedService.addMessage({severity: 'info', summary: 'Success', detail: 'Operation Success'});
+        this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
       }
     );
   }
@@ -230,9 +242,9 @@ export class ProductionForm {
       return;
     }
 
-    values.lossReason.lossType = {id: values.lossType.id, code: values.lossType.code, name: values.lossType.name};
+    values.lossReason.lossType = { id: values.lossType.id, code: values.lossType.code, name: values.lossType.name };
     let loss = {
-      operation: {id: values.operation.id},
+      operation: { id: values.operation.id },
       lossReason: values.lossReason,
       quantity: values.quantity,
       timestamp: new Date().getTime()
@@ -245,7 +257,7 @@ export class ProductionForm {
     }
     values.operation.lossQuantity = lossQuantity;
     this.qualityFormGroup.reset();
-    this.sharedService.addMessage({severity: 'info', summary: 'Added', detail: 'Loss Detail Added'});
+    this.sharedService.addMessage({ severity: 'info', summary: 'Added', detail: 'Loss Detail Added' });
     //alert(JSON.stringify(values.operation));
   }
 
@@ -257,7 +269,7 @@ export class ProductionForm {
     event.preventDefault();
     if (this.employee != null && this.employee != undefined) {
       let productionEmployee = {
-        employee: {id: this.employee.id, code: this.employee.code, callingName: this.employee.name}
+        employee: { id: this.employee.id, code: this.employee.code, callingName: this.employee.name }
       };
       this.production.productionEmployeeList.push(productionEmployee);
       this.production.productionEmployeeList = this.production.productionEmployeeList.slice();

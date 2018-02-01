@@ -66,4 +66,11 @@ export class InvoiceTable {
       }
     });
   }
+
+  invoiceId: number = 0;
+  print(id: number) {
+    this.invoiceId = 0;
+    this.invoiceId = id;
+  }
+
 }

@@ -1,0 +1,144 @@
+<div id="print" hidden *ngIf="invoice!=undefined">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th colspan="3" style="vertical-align:top">
+          <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+          <br/>
+          <b>{{organization===undefined?'':organization.name}}</b>
+          <br/> No: 218, Minuwangoda Road
+          <br/> Ekala, Ja-Ela
+          <br/> Sri Lanka
+          <br/>
+          <br/>
+        </th>
+        <th colspan="3">
+          <table class="table table-bordered table-sm">
+            <tr>
+              <td colspan="2" class="text-center">
+                <h3>
+                  <b>PRODUCTION CONFIRMATION</b>
+                </h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Order ID</b>
+              </td>
+              <td>{{invoice.id}}</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Date</b>
+              </td>
+              <!-- <td>{{invoice.orderDate}}</td> -->
+            </tr>
+            <tr>
+              <td>
+                <b>Customer</b>
+              </td>
+              <!-- <td>{{invoice.customer.code}} &nbsp; {{invoice.customer.name}}
+              </td> -->
+            </tr>
+            <tr>
+              <td>
+                <b>Customer PO</b>
+              </td>
+              <!-- <td>{{invoice.customerPoNumber}}</td> -->
+            </tr>
+          </table>
+        </th>
+      </tr>
+      <tr>
+        <th>#</th>
+        <th>Job</th>
+        <th style="min-width: 180px">Item</th>
+        <th>Description</th>
+        <th class="text-right">Quantity</th>
+        <th class="text-right" style="min-width: 100px">Date</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th colspan="6">
+          <table class="table text-center" style="border: none !important;">
+            <tr>
+              <td>
+                <b>Prepared By</b>
+              </td>
+              <td>
+                <b>Checked By</b>
+              </td>
+              <td>
+                <b>Tool Checked By</b>
+              </td>
+              <td>
+                <b>Drawing Checked By</b>
+              </td>
+              <td>
+                <b>Approved By</b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <br/>
+                <br/>
+                <br/>
+                <hr/>
+              </td>
+              <td>
+                <br/>
+                <br/>
+                <br/>
+                <hr/>
+              </td>
+              <td>
+                <br/>
+                <br/>
+                <br/>
+                <hr/>
+              </td>
+              <td>
+                <br/>
+                <br/>
+                <br/>
+                <hr/>
+              </td>
+              <td>
+                <br/>
+                <br/>
+                <br/>
+                <hr/>
+              </td>
+            </tr>
+          </table>
+        </th>
+      </tr>
+    </tfoot>
+    <tbody>
+      <!-- <tr *ngFor="let dispatchSchedule of dispatchScheduleList; let i = index">
+        <td style="vertical-align:top"> {{ i+1 }} </td>
+        <td style="vertical-align:top"> {{ dispatchSchedule.job.jobNo }} </td>
+        <td style="vertical-align:top"> {{ dispatchSchedule.job.item.code }}
+          <br/>{{ dispatchSchedule.invoiceItem.customerItem.code }} </td>
+        <td style="vertical-align:top"> {{ dispatchSchedule.invoiceItem.customerItem.name }}
+          <span style="white-space:nowrap"> [{{ dispatchSchedule.job.item.paint.code }}-{{ dispatchSchedule.job.item.paint.name }}]</span>
+          <br/>
+          <br/>
+          <br/>
+        </td>
+        <td class="text-right" style="vertical-align:top"> {{ dispatchSchedule.quantity}} </td>
+        <td class="text-right" style="vertical-align:top"> {{ dispatchSchedule.confirmDate}} </td>
+      </tr> -->
+      <tr>
+        <td colspan="4" class="text-right">
+          <b>Total</b>
+        </td>
+        <td class="text-right">
+          <!-- <b>{{ invoice.quantity}}</b> -->
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { CalendarModule, DropdownModule, DataTableModule, SharedModule, AutoCompleteModule, PanelModule } from 'primeng/primeng';
 
@@ -30,7 +30,7 @@ import { ScrapChart } from './components/scrapChart/scrapChart.component';
     CalendarModule,
     DropdownModule,
     SharedModule,
-    MaterialModule,
+    // MaterialModule,
     PanelModule,
     AutoCompleteModule,
     routing

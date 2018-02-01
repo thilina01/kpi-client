@@ -12,7 +12,7 @@ import { InvoiceForm } from './components/invoiceForm/invoiceForm.component';
 import { routing } from './invoice.routing';
 import { InvoiceService } from './invoice.service';
 import { InvoiceTypeService } from '../invoiceType/invoiceType.service';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 import { DispatchService } from '../../services/dispatch.service';
 import { PackingListService } from '../packingList/packingList.service';
 
@@ -27,7 +27,7 @@ import { PackingListService } from '../packingList/packingList.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
-    MaterialModule,
+    // MaterialModule,
     DialogModule,
     AutoCompleteModule,
     routing

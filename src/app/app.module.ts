@@ -21,7 +21,7 @@ import { APP_CONFIG, AppConfig } from './app.config';
 import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PagesModule } from './pages/pages.module';
 
 import { SharedService } from './services/shared.service';
@@ -57,7 +57,7 @@ export type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
-    NgbModule.forRoot(),
+    // NgbModule.forRoot(),
     PagesModule,
     GrowlModule,
     ConfirmDialogModule,

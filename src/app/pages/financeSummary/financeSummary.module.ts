@@ -4,7 +4,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule } from 'primeng/primeng';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { FinanceSummary } from './financeSummary.component';
 import { LossTypeService } from '../../services/lossType.service';
@@ -23,7 +23,7 @@ import { FinanceSummaryService } from './financeSummary.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    MaterialModule,
+    // MaterialModule,
     SharedModule,
     PanelModule,
     InputTextModule,

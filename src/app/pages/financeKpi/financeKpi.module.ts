@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { FinanceKpi } from './financeKpi.component';
 import { routing } from './financeKpi.routing';
@@ -38,7 +38,7 @@ import { NetProfitChartService } from './netProfitChart/netProfitChart.service';
     CommonModule,
     FormsModule,
     NgaModule,
-    MaterialModule,
+    // MaterialModule,
     PanelModule,
     TabViewModule,
     routing

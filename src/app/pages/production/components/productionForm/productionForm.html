@@ -333,57 +333,15 @@
               <td>{{operation.productType.description}}</td>
               <td>{{operation.operationType.description}}</td>
               <td class="text-right">{{operation.plannedQuantity}}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td *ngFor="let td of [1, 2, 3, 4, 5, 6, 7, 8]"></td>
             </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>&nbsp;</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let tr of [1, 2]">
+              <td *ngFor="let td of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]">&nbsp;</td>
             </tr>
             <tr>
               <td colspan="5" class="text-right">Total</td>
               <td class="text-right">{{totalPlannedProductionQuantity}}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td *ngFor="let td of [1, 2, 3, 4, 5, 6, 7]"></td>
             </tr>
           </tbody>
         </table>
@@ -444,9 +402,7 @@
                 </p>
               </td>
               <td class="text-right">{{production.plannedDuration}}</td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td *ngFor="let td of [1, 2, 3]"></td>
             </tr>
           </tbody>
         </table>
@@ -495,87 +451,20 @@
         </div> -->
 
         <div class="col-sm-8">
-          <p class="text-center">Utilization</p>
+          <p class="text-center">Resource Utilization</p>
           <table class="table table-condensed table-bordered table-striped table-sm">
             <thead>
               <tr>
-                <th>Employee</th>
-                <th>Machine</th>
-                <th class="col-sm-3">Operation</th>
-                <th class="col-sm-2">Start</th>
-                <th class="col-sm-2">End</th>
+                <th>Employee ID</th>
+                <th>Machine ID</th>
+                <th>Operation Type</th>
+                <th>Start Time</th>
+                <th>End Time</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+              <tr *ngFor="let tr of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                <td *ngFor="let td of [1, 2, 3, 4, 5]">&nbsp;</td>
               </tr>
             </tbody>
           </table>

@@ -10,7 +10,7 @@ import { PackingListForm } from './components/packingListForm/packingListForm.co
 
 import { routing } from './packingList.routing';
 import { PackingListService } from './packingList.service';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 import { DispatchService } from '../../services/dispatch.service';
 import { PortService } from '../port/port.service';
 import { ContainerSizeService } from '../containerSize/containerSize.service';
@@ -31,7 +31,7 @@ import { CustomerService } from '../customer/customer.service';
     PanelModule,
     InputTextModule,
     CalendarModule,
-    MaterialModule,
+    // MaterialModule,
     DialogModule,
     AutoCompleteModule,
     routing

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
-import { MaterialModule } from '@angular/material';
+// import { MaterialModule } from '@angular/material';
 
 import { EngineeringKpi } from './engineeringKpi.component';
 import { routing } from './engineeringKpi.routing';
@@ -22,7 +22,7 @@ import { MtbfMttr6MonthsChart } from './mtbfmttr6monthsChart/mtbfmttr6monthsChar
     CommonModule,
     FormsModule,
     NgaModule,
-    MaterialModule,
+    // MaterialModule,
     PanelModule,
     TabViewModule,
     routing

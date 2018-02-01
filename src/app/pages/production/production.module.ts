@@ -36,7 +36,7 @@ import {EmployeeService} from "../employee/employee.service";
     DialogModule,
     CalendarModule,
     PanelModule,
-    MaterialModule,
+    // MaterialModule,
     SharedModule,
     AutoCompleteModule,
     TabViewModule,

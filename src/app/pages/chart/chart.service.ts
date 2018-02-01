@@ -59,12 +59,12 @@ export class ChartService {
     return this.http.get(this.apiUrl + 'scrap?startDate=' + startDate + '&endDate=' + endDate)
       .catch(err => this.handleError(err));
   }
-  
+
   getScrapBySection(startDate: string, endDate: string, section: string): Observable<any> {
     return this.http.get(this.apiUrl + 'scrapBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
       .catch(err => this.handleError(err));
   }
-  
+
   getScrapReasonSummary(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'scrapReasonSummary?startDate=' + startDate + '&endDate=' + endDate)
       .catch(err => this.handleError(err));
@@ -74,7 +74,7 @@ export class ChartService {
     return this.http.get(this.apiUrl + 'scrapReasonSummaryBySection?startDate=' + startDate + '&endDate=' + endDate+ '&section=' + section)
       .catch(err => this.handleError(err));
   }
-  
+
   getScrapReasonSummaryByLossReason(startDate: string, endDate: string, lossReason: string): Observable<any> {
     return this.http.get(this.apiUrl + 'scrapReasonSummaryByLossReason?startDate=' + startDate + '&endDate=' + endDate+ '&lossReason=' + lossReason)
       .catch(err => this.handleError(err));
@@ -87,6 +87,11 @@ export class ChartService {
 
   getBreakdown(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'breakdown?startDate=' + startDate + '&endDate=' + endDate)
+      .catch(err => this.handleError(err));
+  }
+
+  getBreakdownBySection(startDate: string, endDate: string, section: string): Observable<any> {
+    return this.http.get(this.apiUrl + 'breakdownBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
       .catch(err => this.handleError(err));
   }
 
