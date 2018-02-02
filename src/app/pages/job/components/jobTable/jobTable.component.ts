@@ -1,9 +1,11 @@
 
 import { SharedService } from '../../../../services/shared.service';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { JobService } from '../../job.service';
+import { DataTable } from 'primeng/components/datatable/datatable';
+import { ItemService } from '../../../item/item.service';
 
 @Component({
   selector: 'job-table',
@@ -13,31 +15,59 @@ import { JobService } from '../../job.service';
 })
 
 export class JobTable {
+  filteredItems: any[];
+  items: any;
+  filteredJobs: any[];
   rows = [];
   timeout: any;
   totalRecords: number;
+  @ViewChild(DataTable) dataTable: DataTable;
+  item: any = { id: 0, 'code': 'ALL', 'display': 'All Items' }
 
   constructor(protected service: JobService,
     private router: Router,
     private confirmationService: ConfirmationService,
+    private itemService: ItemService,
     private sharedService: SharedService) {
-    this.loadData()
+    this.loadData();
+    this. getItems();
   }
 
   loadData() {
-    this.service.getPage(0, 20).subscribe((data: any) => {
-      this.rows = data.content;
-      this.totalRecords = data.totalElements;
-    });
+    if (this.item.id != undefined && this.item.id != 0) {
+      this.service.getPageByItem(this.item, 0, 20).subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
+      });
+    } else {
+      this.service.getPage(0, 20).subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
+      });
+    }
   }
 
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
-    this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-      this.rows = data.content;
-      this.totalRecords = data.totalElements;
-    });
+    if (this.item.id != undefined && this.item.id != 0) {
+      this.service.getPageByItem(this.item, (event.first / event.rows), event.rows).subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
+      });
+    } else {
+      this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
+      });
+    }
   }
+
+  getItems(): void {
+    this.itemService.getCombo().subscribe(items => {
+        this.items = items;
+        this.items.unshift({ id: 0, 'code': 'ALL', 'display': 'All Items' });
+    });
+}
 
   onPage(event) {
     clearTimeout(this.timeout);
@@ -66,4 +96,26 @@ export class JobTable {
       }
     });
   }
+
+   /*================== Item Filter ===================*/
+   filterItems(event) {
+    let query = event.query.toLowerCase();
+    this.filteredItems = [];
+    for (let i = 0; i < this.items.length; i++) {
+      let item = this.items[i];
+      if (item.code.toLowerCase().indexOf(query) == 0) {
+        this.filteredItems.push(item);
+      }
+    }
+  }
+
+  onItemSelect(item: any) {
+    this.item = item;
+    this.loadData();
+  }
+
+  /*================== End Of Item Filter ===================*/
 }
+
+ 
+

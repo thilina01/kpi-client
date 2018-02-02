@@ -23,8 +23,9 @@ export class DispatchInformationTable {
     private confirmationService: ConfirmationService,
     private sharedService: SharedService) {
     this.loadData()
-    
+
   }
+
 
   loadData() {
     this.service.getPage(0, 20).subscribe((data: any) => {
@@ -34,16 +35,22 @@ export class DispatchInformationTable {
   }
 
   lazy(event: any, table: any) {
-    console.log(event);
+    const search = table.globalFilter ? table.globalFilter.value : null;
+    this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
+      this.rows = data.content;
+      this.totalRecords = data.totalElements;
+    });
   }
 
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
+      console.log('paged!', event);
     }, 100);
   }
-
 }
+
+
 
 
 

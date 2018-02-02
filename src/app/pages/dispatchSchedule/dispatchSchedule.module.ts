@@ -20,6 +20,7 @@ import { JobService } from '../job/job.service';
 import { Print } from './components/dispatchSchedulePrint/print.component';
 import { PrintService } from '../../services/print.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
+import { CustomerService } from '../customer/customer.service';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
     JobService,
     PrintService,
     OperationService,
-    DispatchNoteService
+    DispatchNoteService,
+    CustomerService
   ]
 })
 export class DispatchScheduleModule { }
