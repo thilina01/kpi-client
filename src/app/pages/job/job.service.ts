@@ -27,6 +27,10 @@ export class JobService extends MasterService {
     return this.http.get(this.apiUrl + 'combo/item/' + itemId, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+  getPageByItem(item: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageByItem?page=' + page + '&size=' + size, JSON.stringify(item), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 
 }
 
