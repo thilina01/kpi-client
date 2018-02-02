@@ -27,4 +27,30 @@ export class DispatchScheduleService extends MasterService {
     return this.http.get(this.apiUrl + 'comboByCustomer/' + id, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getByDispatchScheduleDurationPage(startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'dispatchScheduleDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByDispatchScheduleDurationAndJobPage(startDate, endDate, job, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'dispatchScheduleDurationAndJobPage?startDate=' + startDate + '&endDate=' + endDate + '&job=' + job + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByCustomerAndDispatchScheduleDurationPage(customer, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'customerAndDispatchScheduleDurationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByCustomerAndDispatchScheduleDurationAndJobPage(customer, startDate, endDate, job, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'customerAndDispatchScheduleDurationAndJobPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&job=' + job + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getPageByCustomer(customer: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageByCustomer?page=' + page + '&size=' + size, JSON.stringify(customer), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getPageByJob(job: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageByJob?page=' + page + '&size=' + size, JSON.stringify(job), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
 }
