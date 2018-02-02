@@ -107,6 +107,14 @@ export class OperationProgressForm {
       this.confirmationService.confirm({
         message: 'Are you sure that you want to Delete?',
         accept: () => {
+          let operationProgress = this.operation.operationProgressList[id];
+          if (operationProgress.id !== undefined){
+            this.service.delete(operationProgress.id).subscribe(
+              (data) => {
+                this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Delete Success' });
+              }
+            );
+          }
           this.operation.operationProgressList.splice(id, 1);
           this.operation.operationProgressList = this.operation.operationProgressList.slice();
         }
