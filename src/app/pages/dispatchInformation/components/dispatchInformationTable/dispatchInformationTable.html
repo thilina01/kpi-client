@@ -14,6 +14,7 @@
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="dispatchInformations">
 		<p-column field="id" header="ID"></p-column>
+		<p-column field="dispatchNote.id" header="Dispatch No" [sortable]="true"></p-column>
 		<p-column field="dispatchNote.customer.name" header="Customer" [sortable]="true"></p-column>
 		<p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer PO" [sortable]="true"></p-column>
 		<p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true"></p-column>
