@@ -13,6 +13,8 @@ import { DispatchInformationService } from './dispatchInformation.service';
 import { ShiftService } from '../shift/shift.service';
 import { EmployeeService } from '../employee/employee.service';
 import { ProductionService } from '../production/production.service';
+import { ItemService } from '../item/item.service';
+import { CustomerService } from '../customer/customer.service';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { ProductionService } from '../production/production.service';
     SectionService,
     ShiftService,
     EmployeeService,
-    ProductionService
+    ProductionService,
+    CustomerService,
+    ItemService
   ]
 })
 export class DispatchInformationModule { }
