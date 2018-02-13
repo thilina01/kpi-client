@@ -78,6 +78,7 @@ export const routes: Routes = [
       { path: 'mailConfiguration', canActivate: [AuthGuard], loadChildren: 'app/pages/mailConfiguration/mailConfiguration.module#MailConfigurationModule' },
       { path: 'manpower', canActivate: [AuthGuard], loadChildren: 'app/pages/manpower/manpower.module#ManpowerModule' },
       // { path: 'manpowerType', canActivate: [AuthGuard], loadChildren: 'app/pages/manpowerType/manpowerType.module#ManpowerTypeModule' },
+      { path: 'manpowerSummary', canActivate: [AuthGuard], loadChildren: 'app/pages/manpowerSummary/manpowerSummary.module#ManpowerSummaryModule' },
       { path: 'manpowerUtilization', canActivate: [AuthGuard], loadChildren: 'app/pages/manpowerUtilization/manpowerUtilization.module#ManpowerUtilizationModule' },
       // { path: 'notifyParty', canActivate: [AuthGuard], loadChildren: 'app/pages/notifyParty/notifyParty.module#NotifyPartyModule' },
       { path: 'operation', canActivate: [AuthGuard], loadChildren: 'app/pages/operation/operation.module#OperationModule' },

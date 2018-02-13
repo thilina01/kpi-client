@@ -71,17 +71,17 @@ export class ChartService {
   }
 
   getScrapReasonSummaryBySection(startDate: string, endDate: string, section: string): Observable<any> {
-    return this.http.get(this.apiUrl + 'scrapReasonSummaryBySection?startDate=' + startDate + '&endDate=' + endDate+ '&section=' + section)
+    return this.http.get(this.apiUrl + 'scrapReasonSummaryBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
       .catch(err => this.handleError(err));
   }
 
   getScrapReasonSummaryByLossReason(startDate: string, endDate: string, lossReason: string): Observable<any> {
-    return this.http.get(this.apiUrl + 'scrapReasonSummaryByLossReason?startDate=' + startDate + '&endDate=' + endDate+ '&lossReason=' + lossReason)
+    return this.http.get(this.apiUrl + 'scrapReasonSummaryByLossReason?startDate=' + startDate + '&endDate=' + endDate + '&lossReason=' + lossReason)
       .catch(err => this.handleError(err));
   }
 
   getScrapReasonSummaryBySectionAndLossReason(startDate: string, endDate: string, section: string, lossReason: string): Observable<any> {
-    return this.http.get(this.apiUrl + 'scrapReasonSummaryBySectionAndLossReason?startDate=' + startDate + '&endDate=' + endDate+ '&section=' + section+ '&lossReason=' + lossReason)
+    return this.http.get(this.apiUrl + 'scrapReasonSummaryBySectionAndLossReason?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&lossReason=' + lossReason)
       .catch(err => this.handleError(err));
   }
 
@@ -261,6 +261,16 @@ export class ChartService {
 
   getMonthlyNetProfit(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'monthlyNetProfit?startDate=' + startDate + '&endDate=' + endDate)
+      .catch(err => this.handleError(err));
+  }
+
+  getManpowerSummary(startDate, endDate, ): Observable<any> {
+    return this.http.get(this.apiUrl + 'manpowerSummary?startDate=' + startDate + '&endDate=' + endDate)
+      .catch(err => this.handleError(err));
+  }
+
+  getManpowerSummaryBySection(startDate, endDate, section, ): Observable<any> {
+    return this.http.get(this.apiUrl + 'manpowerSummaryBySection?&startDate=' + startDate + '&endDate=' + endDate + '&section=' + section)
       .catch(err => this.handleError(err));
   }
 

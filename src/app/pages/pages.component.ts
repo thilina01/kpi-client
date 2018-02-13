@@ -112,6 +112,7 @@ export class Pages {
     { routerLink: '/pages/mailConfiguration/table', name: 'Mail Configuration ', menuType: this.menuType },
     { routerLink: '/pages/materialCostPerKg/table', name: 'Material Cost Per Kg', menuType: this.menuType },
     { routerLink: '/pages/manpower', name: 'Manpower', menuType: this.menuType },
+    { routerLink: '/pages/manpowerSummary/table', name: 'Manpower Summary', menuType: this.menuType },
     { routerLink: '/pages/manpowerTypes/table', name: 'Manpower Type', menuType: this.menuType },
     { routerLink: '/pages/manpowerUtilization/table', name: 'Manpower Utilization', menuType: this.menuType },
     { routerLink: '/pages/notifyParties/table', name: 'Notify Party', menuType: this.menuType },
