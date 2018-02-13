@@ -67,9 +67,12 @@ export class ManpowerSummaryTable {
   }
 
   fillTable(data: any) {
-    console.log(data);
-    console.log(data.json());
-    this.rows = data.json();
+    let jsonData =  data.json();
+    jsonData.forEach(element => {
+      element.controlPointCode = element.controlPoint.code;
+
+    });
+    this.rows = jsonData;
   }
 
   /*================== Section Filter ===================*/

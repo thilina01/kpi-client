@@ -15,6 +15,7 @@ import { EmployeeService } from '../employee/employee.service';
 import { ProductionService } from '../production/production.service';
 import { ResourceUtilizationService } from '../resourceUtilization/resourceUtilization.service';
 import { ChartService } from '../chart/chart.service';
+import { ManpowerSummaryChart } from './components/manpowerSummaryChart';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { ChartService } from '../chart/chart.service';
   ],
   declarations: [
     ManpowerSummary,
-    ManpowerSummaryTable
+    ManpowerSummaryTable,
+    ManpowerSummaryChart
   ],
   providers: [
     ManpowerSummaryService,

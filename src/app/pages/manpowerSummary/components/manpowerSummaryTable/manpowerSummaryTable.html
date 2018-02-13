@@ -10,7 +10,7 @@
 			</div>
 		</div>
 	</p-header>
-	<p-dataTable #dt [value]="rows" [responsive]="true" 
+	<p-dataTable #dt [value]="rows" [responsive]="true"
 	 selectionMode="single" sortMode="multiple"
 	 resizableColumns="true" exportFilename="manpowerSummarys">
 		<p-header>
@@ -30,7 +30,7 @@
 					<br/>
 					<div class="ui-inputgroup">
 						<p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-						 [size]="30" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+						 [size]="30" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
 						</p-autoComplete>
 						<a routerLink="/pages/section/form" target="blank">
 							<button pButton type="button" icon="fa-plus-circle"></button>
@@ -50,5 +50,6 @@
 		<p-column field="controlPoint.code" header="Control Point Code"></p-column>
 		<p-column field="controlPoint.name" header="Control Point"></p-column>
 		<p-column field="count" header="Employee Count"></p-column>
-	</p-dataTable>
+  </p-dataTable>
+<manpower-summary-chart [data]="rows"></manpower-summary-chart>
 </p-panel>
