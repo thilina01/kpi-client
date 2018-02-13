@@ -1,1 +1,0 @@
-export * from './departmentForm.component';
