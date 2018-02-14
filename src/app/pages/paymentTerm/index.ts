@@ -1,1 +1,0 @@
-export * from './paymentTerm.component';

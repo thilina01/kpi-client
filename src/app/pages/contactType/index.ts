@@ -1,1 +1,0 @@
-export * from './contactType.component';
