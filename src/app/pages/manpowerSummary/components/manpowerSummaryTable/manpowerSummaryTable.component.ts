@@ -28,6 +28,7 @@ export class ManpowerSummaryTable {
   section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' }
   startDate: Date = new Date();
   endDate: Date = new Date();
+  total = 0;
   constructor(protected service: ResourceUtilizationService,
     private router: Router,
     private confirmationService: ConfirmationService,
@@ -67,10 +68,11 @@ export class ManpowerSummaryTable {
   }
 
   fillTable(data: any) {
-    let jsonData =  data.json();
+    let jsonData = data.json();
+    this.total = 0;
     jsonData.forEach(element => {
       element.controlPointCode = element.controlPoint.code;
-
+      this.total += element.count;
     });
     this.rows = jsonData;
   }
@@ -88,7 +90,7 @@ export class ManpowerSummaryTable {
     }
   }
   onSectionSelect(section: any) {
-    console.log(event)
+    console.log(event);
   }
   /*================== End Of Section Filter ===================*/
 
