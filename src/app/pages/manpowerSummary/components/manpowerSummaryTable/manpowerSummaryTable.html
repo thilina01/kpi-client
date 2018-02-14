@@ -1,55 +1,55 @@
 <p-panel>
-	<p-header>
-		<div class="row">
-			<div class="col">
-				<h4>Manpower Summary List</h4>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
-					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-			</div>
-		</div>
-	</p-header>
-	<p-dataTable #dt [value]="rows" [responsive]="true"
-	 selectionMode="single" sortMode="multiple"
-	 resizableColumns="true" exportFilename="manpowerSummarys">
-		<p-header>
-			<div class="row">
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Date Start
-					<br/>
-					<p-calendar id="startDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-				</div>
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Date End
-					<br/>
-					<p-calendar id="endDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-				</div>
-				<div class="col" style="text-align: left">
-					Section
-					<br/>
-					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-						 [size]="30" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
-						</p-autoComplete>
-						<a routerLink="/pages/section/form" target="blank">
-							<button pButton type="button" icon="fa-plus-circle"></button>
-						</a>
-					</div>
-				</div>
-				<div class="col" style="text-align: left">
-					<br/>
-					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
-						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
-					</button> &nbsp;&nbsp;{{totalRecords}}
-				</div>
-			</div>
-		</p-header>
-		<p-column field="controlPoint.workCenter.costCenter.section.code" header="Section Code" [sortable]="true"></p-column>
-		<p-column field="controlPoint.workCenter.costCenter.section.name" header="Section" [sortable]="true"></p-column>
-		<p-column field="controlPoint.code" header="Control Point Code"></p-column>
-		<p-column field="controlPoint.name" header="Control Point"></p-column>
-		<p-column field="count" header="Employee Count"></p-column>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Manpower Summary List</h4>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+      </div>
+    </div>
+  </p-header>
+  <manpower-summary-chart [data]="rows"></manpower-summary-chart>
+  <p-dataTable #dt [value]="rows" [responsive]="true" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowerSummarys">
+    <p-header>
+      <div class="row">
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Date Start
+          <br/>
+          <p-calendar id="startDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd"
+            appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Date End
+          <br/>
+          <p-calendar id="endDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd"
+            appendTo="body"></p-calendar>
+        </div>
+        <div class="col" style="text-align: left">
+          Section
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+              [size]="30" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
+            </p-autoComplete>
+            <a routerLink="/pages/section/form" target="blank">
+              <button pButton type="button" icon="fa-plus-circle"></button>
+            </a>
+          </div>
+        </div>
+        <div class="col" style="text-align: left">
+          <br/>
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+      </div>
+    </p-header>
+    <p-column field="controlPoint.workCenter.costCenter.section.code" header="Section Code" [sortable]="true"></p-column>
+    <p-column field="controlPoint.workCenter.costCenter.section.name" header="Section" [sortable]="true"></p-column>
+    <p-column field="controlPoint.code" header="Control Point Code"></p-column>
+    <p-column field="controlPoint.name" header="Control Point"></p-column>
+    <p-column field="count" header="Employee Count"></p-column>
   </p-dataTable>
-<manpower-summary-chart [data]="rows"></manpower-summary-chart>
 </p-panel>
