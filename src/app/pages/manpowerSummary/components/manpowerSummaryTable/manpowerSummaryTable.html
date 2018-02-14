@@ -2,21 +2,21 @@
   <p-header>
     <div class="row">
       <div class="col">
-        <h4>Manpower Summary List</h4>
+        <h4>Manpower Summary</h4>
       </div>
       <div class="col">
-        <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
-          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+        <!-- <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button> -->
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
         Date Start
         <br/>
         <p-calendar id="startDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd"
           appendTo="body"></p-calendar>
       </div>
-      <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
         Date End
         <br/>
         <p-calendar id="endDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd"
@@ -40,15 +40,15 @@
           <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
         </button>
       </div>
-      <div class="col" style="text-align: right">
+      <div class="col-md-2 col-xl-1" style="text-align: right">
         Total Count
-        <br/>
-        &nbsp;&nbsp;<b>{{total}}</b>
+        <br/> &nbsp;&nbsp;
+        <b>{{total}}</b>
       </div>
     </div>
   </p-header>
-  <manpower-summary-chart [data]="rows"></manpower-summary-chart>
-  <p-dataTable #dt [value]="rows" [responsive]="true" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowerSummarys">
+  <!-- <manpower-summary-chart [data]="rows"></manpower-summary-chart> -->
+  <!-- <p-dataTable #dt [value]="rows" [responsive]="true" selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="manpowerSummarys">
     <p-header>
 
     </p-header>
@@ -57,5 +57,43 @@
     <p-column field="controlPoint.code" header="Control Point Code"></p-column>
     <p-column field="controlPoint.name" header="Control Point"></p-column>
     <p-column field="count" header="Employee Count"></p-column>
-  </p-dataTable>
+  </p-dataTable> -->
+  <br/>
+
+  <div class="row">
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3" *ngFor="let row of rows">
+      <p-panel>
+        <p-header>
+
+          <div class="row">
+              <div class="col" style="text-align: left">
+                  {{row.controlPoint.code}}
+              </div>
+              <div class="col" style="text-align: right">
+                  {{row.count}} / {{total}}
+              </div>
+          </div>
+        </p-header>
+
+        <div class="row">
+
+          <div class="col-sm-6">
+            {{row.controlPoint.code}}
+            <br/> {{row.controlPoint.name}}
+            <br/>
+            <br/> {{row.controlPoint.workCenter.costCenter.section.code}}
+            <br/> {{row.controlPoint.workCenter.costCenter.section.name}}
+            <br/>
+          </div>
+
+          <div class="col-sm-6">
+            <p-chart type="doughnut" [data]="row.chartData" [options]="chartOptions"></p-chart>
+          </div>
+
+        </div>
+      </p-panel>
+    </div>
+
+  </div>
 </p-panel>

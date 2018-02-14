@@ -29,6 +29,11 @@ export class ManpowerSummaryTable {
   startDate: Date = new Date();
   endDate: Date = new Date();
   total = 0;
+  chartOptions = {
+    legend: {
+      display: false
+    }
+  };
   constructor(protected service: ResourceUtilizationService,
     private router: Router,
     private confirmationService: ConfirmationService,
@@ -70,9 +75,34 @@ export class ManpowerSummaryTable {
   fillTable(data: any) {
     let jsonData = data.json();
     this.total = 0;
+
     jsonData.forEach(element => {
       element.controlPointCode = element.controlPoint.code;
       this.total += element.count;
+    });
+
+    jsonData.forEach(element => {
+      element.chartData = {
+        labels: [element.controlPointCode, 'Other'],
+
+        datasets: [
+          {
+            data: [element.count, (this.total - element.count)],
+            backgroundColor: [
+              "#FF6384",
+              "#000000"
+            ],
+            hoverBackgroundColor: [
+              "#FF6384",
+              "#000000"
+            ],
+            options: {
+              legend: {
+                display: false
+              }
+            },
+          }]
+      };
     });
     this.rows = jsonData;
   }

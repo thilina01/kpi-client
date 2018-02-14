@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, ChartModule } from 'primeng/primeng';
 import { ManpowerSummary } from './manpowerSummary.component';
 import { ManpowerSummaryTable } from './components/manpowerSummaryTable/manpowerSummaryTable.component';
 
@@ -28,6 +28,7 @@ import { ManpowerSummaryChart } from './components/manpowerSummaryChart';
     PanelModule,
     CalendarModule,
     AutoCompleteModule,
+    ChartModule,
     routing
   ],
   declarations: [

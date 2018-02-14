@@ -10,6 +10,7 @@ import 'style-loader!./manpowerSummaryChart.scss';
 export class ManpowerSummaryChart {
   @Input()
   data: any;
+  // dataContext: any;
 
   layoutColors = this.baConfig.get().colors;
   graphColor = this.baConfig.get().colors.custom.productionKpiManpowerSummaryChart;
@@ -63,6 +64,12 @@ export class ManpowerSummaryChart {
       "valueWidth": 100,
       "valueAlign": "left"
     },
+    // "listeners": [{
+    //   "event": "clickGraphItem",
+    //   "method": function(event) {
+    //     console.log(event.item.dataContext);
+    //   }
+    // }],
     'dataTableId': 'manpowerSummarychartdata',
     'autoMargins': false,
     'marginLeft': 100,
