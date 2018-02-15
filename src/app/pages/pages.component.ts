@@ -103,6 +103,7 @@ export class Pages {
     { routerLink: '/pages/job/table', name: 'Job', menuType: this.menuType },
     { routerLink: '/pages/jobTypes/table', name: 'Job Type', menuType: this.menuType },
     { routerLink: '/pages/labourCostPerKg/table', name: 'Labour Cost Per Kg', menuType: this.menuType },
+    { routerLink: '/pages/labourTurnover/table', name: 'Labour Turnover', menuType: this.menuType },
     { routerLink: '/pages/labourSources/table', name: 'Labour Source', menuType: this.menuType },
     { routerLink: '/pages/leaveTypes/table', name: 'Leave Type', menuType: this.menuType },
     { routerLink: '/pages/lossReason/table', name: 'Loss Reason', menuType: this.menuType },
