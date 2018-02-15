@@ -34,6 +34,7 @@ export class ManpowerSummaryTable {
       display: false
     }
   };
+  Math: any;
   constructor(protected service: ResourceUtilizationService,
     private router: Router,
     private confirmationService: ConfirmationService,
@@ -45,6 +46,7 @@ export class ManpowerSummaryTable {
     this.endDate.setHours(24, 0, 0, 0);
     this.getSections();
     this.search();
+    this.Math = Math;
   }
 
   getSections(): void {
@@ -105,6 +107,16 @@ export class ManpowerSummaryTable {
       };
     });
     this.rows = jsonData;
+  }
+
+  selectedRow: any;
+  showInfo(row: any, op: any, event: any) {
+    this.selectedRow = row;
+    this.chartService.getResourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween(row.controlPoint.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
+      this.selectedRow.employeeList = data.json();
+      console.log(this.selectedRow);
+      op.show(event);
+    });
   }
 
   /*================== Section Filter ===================*/

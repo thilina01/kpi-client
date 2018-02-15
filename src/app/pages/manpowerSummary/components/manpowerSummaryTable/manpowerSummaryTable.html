@@ -67,12 +67,13 @@
         <p-header>
 
           <div class="row">
-              <div class="col" style="text-align: left">
-                  {{row.controlPoint.code}}
-              </div>
-              <div class="col" style="text-align: right">
-                  {{row.count}} / {{total}}
-              </div>
+            <div class="col-4" style="text-align: left">
+              {{row.controlPoint.code}}
+            </div>
+            <div class="col-8" style="text-align: right">
+              {{row.count}} / {{total}} &nbsp;&nbsp;&nbsp; {{(Math.round((row.count / total)*10000)/100)}}% &nbsp;&nbsp;
+              <i ng-reflect-class-name="fa fa-info-circle" class="fa fa-info-circle text-success" style="cursor: pointer;" (click)="showInfo(row,op,$event)"></i>
+            </div>
           </div>
         </p-header>
 
@@ -97,3 +98,30 @@
 
   </div>
 </p-panel>
+<p-overlayPanel  #op [dismissable]="true" [showCloseIcon]="true">
+    <!-- <p-panel *ngIf="selectedRow!==undefined"> -->
+        <!-- <p-header>
+
+          <div class="row">
+            <div class="col-4" style="text-align: left">
+              {{selectedRow.controlPoint.code}}
+            </div>
+            <div class="col-8" style="text-align: right">
+              {{selectedRow.count}} / {{total}} &nbsp;&nbsp;&nbsp; {{(Math.round((selectedRow.count / total)*10000)/100)}}% &nbsp;&nbsp;
+            </div>
+          </div>
+        </p-header>
+
+
+            {{selectedRow.controlPoint.code}} {{selectedRow.controlPoint.name}}
+            <br/>
+            <br/> {{selectedRow.controlPoint.workCenter.costCenter.section.code}} {{selectedRow.controlPoint.workCenter.costCenter.section.name}}
+            <br/> -->
+
+ <p-dataTable *ngIf="selectedRow!==undefined" [value]="selectedRow.employeeList" [responsive]="true" selectionMode="single" sortMode="multiple" resizableColumns="true">
+    <p-column field="code" header="Code" [sortable]="true"></p-column>
+    <p-column field="callingName" header="Name" [sortable]="true"></p-column>
+  </p-dataTable>
+
+      <!-- </p-panel> -->
+</p-overlayPanel>
