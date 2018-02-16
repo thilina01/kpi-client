@@ -33,5 +33,16 @@ export class OperationProgressService extends MasterService {
     return this.http.get(this.apiUrl + 'sectionAndJobAndProductionDurationAndControlPointPage?section=' + section + '&startDate=' + startDate + '&job=' + job + '&endDate=' + endDate + '&controlPoint=' + controlPoint + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
-
+  getPageBySection(section: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageBySection?page=' + page + '&size=' + size, JSON.stringify(section), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getPageByJob(job: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageByJob?page=' + page + '&size=' + size, JSON.stringify(job), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getPageByControlPoint(controlPoint: any, page, size): Observable<any> {
+    return this.http.post(this.apiUrl + 'pageByControlPoint?page=' + page + '&size=' + size, JSON.stringify(controlPoint), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }

@@ -65,23 +65,68 @@ export class OperationProgressTable {
     }
 
     loadData() {
-        this.service.getPage(0, 20).subscribe((data: any) => {
-            this.rows = data.content;
-            this.totalRecords = data.totalElements;
-        });
+        if (this.job.id != undefined && this.job.id != 0) {
+            this.service.getPageByJob(this.job, 0, 20).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+        }
+        else if (this.section.id != undefined && this.section.id != 0) {
+            this.service.getPageBySection(this.section, 0, 20).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+        }
+        else if (this.controlPoint.id != undefined && this.controlPoint.id != 0) {
+            this.service.getPageByControlPoint(this.controlPoint, 0, 20).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+        } else {
+            this.service.getPage(0, 20).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+        }
     }
 
     lazy(event: any, table: any) {
-        console.log(event);
-        this.search((event.first / event.rows), event.rows);
+        const search = table.globalFilter ? table.globalFilter.value : null;
+
+        if (this.job.id != undefined && this.job.id != 0) {
+            this.service.getPageByJob(this.job, (event.first / event.rows), event.rows).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+        }
+        else if (this.section.id != undefined && this.section.id != 0) {
+            this.service.getPageBySection(this.section, (event.first / event.rows), event.rows).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+        } else if (this.controlPoint.id != undefined && this.controlPoint.id != 0) {
+            this.service.getPageByControlPoint(this.controlPoint, 0, 20).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+            });
+
+        } else {
+            this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
+                this.rows = data.content;
+                this.totalRecords = data.totalElements;
+                this.search((event.first / event.rows), event.rows);
+
+            });
+        }
     }
 
     onPage(event) {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
-              this.search(event.first, event.rows);
+            this.search(event.first, event.rows);
         }, 100);
     }
+
     search(first: number, pageSize: number): void {
         if (this.startDate != undefined &&
             this.endDate != undefined &&
@@ -162,6 +207,8 @@ export class OperationProgressTable {
     }
     onControlPointSelect(controlPoint: any) {
         console.log(event)
+        this.controlPoint = controlPoint;
+        this.loadData();
     }
     /*================== End Of ControlPoint Filter ===================*/
     /*================== Section Filter ===================*/
@@ -178,6 +225,8 @@ export class OperationProgressTable {
     }
     onSectionSelect(section: any) {
         console.log(event)
+        this.section = section;
+        this.loadData();
     }
     /*================== End Of Section Filter ===================*/
     /*================== Job Filter ===================*/
@@ -194,6 +243,8 @@ export class OperationProgressTable {
     }
     onJobSelect(job: any) {
         console.log(event)
+        this.job = job;
+        this.loadData();
     }
     /*================== End Of Job Filter ===================*/
 }
