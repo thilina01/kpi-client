@@ -25,6 +25,7 @@ import {SectionService} from '../section/section.service';
 import {ProductionTable} from "./components/productionTable";
 import {ProductionForm} from "./components/productionForm";
 import {EmployeeService} from "../employee/employee.service";
+import { ControlPointTypeService } from '../controlPointType/controlPointType.service';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import {EmployeeService} from "../employee/employee.service";
     ControlPointService,
     SectionService,
     LossTypeService,
-    EmployeeService
+    EmployeeService,
+    ControlPointTypeService
   ]
 })
 export class ProductionModule {

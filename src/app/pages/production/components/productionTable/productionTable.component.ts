@@ -7,6 +7,7 @@ import { DataTable } from 'primeng/components/datatable/datatable';
 import { Observable } from 'rxjs/Rx';
 import { SectionService } from '../../../section/section.service';
 import { ShiftService } from '../../../shift/shift.service';
+import { ControlPointTypeService } from '../../../controlPointType/controlPointType.service';
 
 @Component({
   selector: 'production-table',
@@ -21,8 +22,10 @@ export class ProductionTable {
   rows = [];
   timeout: any;
   sections: any;
-  section: any = { id: 0, code: 'ALL', display: 'All' };
   shifts: any;
+  controlPointTypes: any;
+  section: any = { id: 0, code: 'ALL', display: 'All' };
+  controlPointType: any = { id: 0, code: 'ALL', display: 'All' };
   shift: any = { id: 0, code: 'ALL', display: 'All' };
   startDate: Date;
   endDate: Date;
@@ -40,12 +43,14 @@ export class ProductionTable {
     private router: Router,
     private confirmationService: ConfirmationService,
     private sectionService: SectionService,
+    private controlPointTypeService: ControlPointTypeService,
     private shiftService: ShiftService,
     private sharedService: SharedService
   ) {
     this.loadData();
     this.getSections();
     this.getShifts();
+    this.getControlPointTypes();
   }
 
   getSections(): void {
@@ -54,10 +59,18 @@ export class ProductionTable {
       this.sections.unshift({ id: 0, code: 'ALL', display: 'All Sections' });
     });
   }
+
   getShifts(): void {
     this.shiftService.getCombo().subscribe(shifts => {
       this.shifts = shifts;
       this.shifts.unshift({ id: 0, code: 'ALL', display: 'All Shifts' });
+    });
+  }
+  
+  getControlPointTypes(): void {
+    this.controlPointTypeService.getCombo().subscribe(controlPointTypes => {
+      this.controlPointTypes = controlPointTypes;
+      this.controlPointTypes.unshift({ id: 0, code: 'ALL', display: 'All ControlPointTypes' });
     });
   }
 
@@ -70,62 +83,46 @@ export class ProductionTable {
 
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
-    if (
-      this.startDate !== undefined &&
-      this.endDate !== undefined &&
-      this.section !== undefined &&
-      this.section.id !== undefined &&
-      this.shift !== undefined &&
-      this.shift.id !== undefined
-    ) {
-      if (this.section.id === 0 && this.shift.id === 0) {
-        this.service
-          .getByProductionDurationPage(
-            this.sharedService.YYYYMMDD(this.startDate),
-            this.sharedService.YYYYMMDD(this.endDate),
-            first,
-            pageSize
-          )
-          .subscribe((data: any) => {
-            this.fillTable(data);
-          });
-      } else if (this.section.id === 0 && this.shift.id > 0) {
-        this.service
-          .getByProductionDurationAndShiftPage(
-            this.sharedService.YYYYMMDD(this.startDate),
-            this.sharedService.YYYYMMDD(this.endDate),
-            this.shift.id,
-            first,
-            pageSize
-          )
-          .subscribe((data: any) => {
-            this.fillTable(data);
-          });
-      } else if (this.section.id > 0 && this.shift.id === 0) {
-        this.service
-          .getBySectionAndProductionDurationPage(
-            this.section.id,
-            this.sharedService.YYYYMMDD(this.startDate),
-            this.sharedService.YYYYMMDD(this.endDate),
-            first,
-            pageSize
-          )
-          .subscribe((data: any) => {
-            this.fillTable(data);
-          });
+    if (this.startDate != undefined &&
+      this.endDate != undefined &&
+      this.section != undefined &&
+      this.section.id != undefined &&
+      this.shift != undefined &&
+      this.shift.id != undefined &&
+      this.controlPointType != undefined &&
+      this.controlPointType.id != undefined) {
+      if (this.section.id == 0 && this.controlPointType.id == 0 && this.shift.id == 0) {
+        this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.section.id == 0 && this.shift.id == 0 && this.controlPointType.id > 0) {
+        this.service.getByProductionDurationAndControlPointTypePage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPointType.id, first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.section.id > 0 && this.controlPointType.id == 0 && this.shift.id == 0) {
+        this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.section.id == 0 && this.controlPointType.id == 0 && this.shift.id > 0) {
+        this.service.getByProductionDurationAndShiftPage(this.shift.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.section.id > 0 && this.controlPointType.id == 0 && this.shift.id > 0) {
+        this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.controlPointType.id > 0 && this.section.id == 0 && this.shift.id > 0) {
+        this.service.getByControlPointTypeAndProductionDurationAndShiftPage(this.controlPointType.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.controlPointType.id > 0 && this.shift.id == 0 && this.section.id > 0) {
+        this.service.getByControlPointTypeAndProductionDurationAndSectionPage(this.controlPointType.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.section.id, first, pageSize).subscribe((data: any) => {
+          this.fillTable(data);
+        });
       } else {
-        this.service
-          .getBySectionAndProductionDurationAndShiftPage(
-            this.section.id,
-            this.sharedService.YYYYMMDD(this.startDate),
-            this.sharedService.YYYYMMDD(this.endDate),
-            this.shift.id,
-            first,
-            pageSize
-          )
-          .subscribe((data: any) => {
-            this.fillTable(data);
-          });
+        this.service.getBySectionAndShiftAndProductionDurationAndControlPointTypePage(this.section.id, this.shift.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPointType.id, first, pageSize, ).subscribe((data: any) => {
+          this.fillTable(data);
+        });
       }
     } else {
       this.service.getPage(first, pageSize).subscribe((data: any) => {
@@ -209,4 +206,21 @@ export class ProductionTable {
     console.log(event);
   }
   /*================== End Of Section Filter ===================*/
+  /*================== Control Point Type Filter ===================*/
+  filteredControlPointTypes: any;
+
+  filterControlPointTypes(event) {
+    let query = event.query.toLowerCase();
+    this.filteredControlPointTypes = [];
+    for (let i = 0; i < this.controlPointTypes.length; i++) {
+      let controlPointType = this.controlPointTypes[i];
+      if (controlPointType.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredControlPointTypes.push(controlPointType);
+      }
+    }
+  }
+  onControlPointTypeSelect(controlPointType: any) {
+    console.log(event);
+  }
+  /*================== End Of Control Point Type Filter ===================*/
 }

@@ -18,35 +18,41 @@
 		<p-header>
 			<div class="row">
 				<div class="col" style="text-align: left">
-					Duration
-					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body">
-					</p-calendar>
-					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body">
-					</p-calendar>
+					Duration Start
+					<br/>
+					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
 				</div>
 				<div class="col" style="text-align: left">
-					Shift
-					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="shift" field="display" [dropdown]="true" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
-						 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect                                                      ($event)">
-						</p-autoComplete>
-						<a routerLink="/pages/shift/form" target="blank">
-							<button pButton type="button" icon="fa-plus-circle"></button>
-						</a>
-					</div>
+					Duration End
+					<br/>
+					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
 				</div>
 				<div class="col" style="text-align: left">
 					Section
 					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="section" field="display" [dropdown]="true" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-						 [size]="30" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+						<p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+						 [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
 						</p-autoComplete>
-						<a routerLink="/pages/section/form" target="blank">
-							<button pButton type="button" icon="fa-plus-circle"></button>
-						</a>
 					</div>
 				</div>
 				<div class="col" style="text-align: left">
+					Shift
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+						 [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					Control Point Type
+					<div class="ui-inputgroup">
+						<p-autoComplete [(ngModel)]="controlPointType" field="display" [suggestions]="filteredControlPointTypes" (completeMethod)="filterControlPointTypes($event)"
+						 [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onControlPointTypeSelect($event)">
+						</p-autoComplete>
+					</div>
+				</div>
+				<div class="col" style="text-align: left">
+					<br/>
 					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
 						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
 					</button> &nbsp;&nbsp;{{totalRecords}}
