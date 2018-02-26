@@ -29,7 +29,7 @@ export class OperationProgressTable {
     job: any = { id: 0, 'code': 'ALL', 'display': 'All Jobs' }
     startDate: Date;
     endDate: Date;
-
+    pageSize = 20;
     constructor(protected service: OperationProgressService,
         private router: Router,
         private sectionService: SectionService,
@@ -92,29 +92,36 @@ export class OperationProgressTable {
 
     lazy(event: any, table: any) {
         const search = table.globalFilter ? table.globalFilter.value : null;
-
         if (this.job.id != undefined && this.job.id != 0) {
             this.service.getPageByJob(this.job, (event.first / event.rows), event.rows).subscribe((data: any) => {
                 this.rows = data.content;
                 this.totalRecords = data.totalElements;
+                this.search((event.first / event.rows), event.rows);
+                this.pageSize = event.rows;
             });
         }
         else if (this.section.id != undefined && this.section.id != 0) {
             this.service.getPageBySection(this.section, (event.first / event.rows), event.rows).subscribe((data: any) => {
                 this.rows = data.content;
                 this.totalRecords = data.totalElements;
+                this.search((event.first / event.rows), event.rows);
+                this.pageSize = event.rows;
             });
+
         } else if (this.controlPoint.id != undefined && this.controlPoint.id != 0) {
             this.service.getPageByControlPoint(this.controlPoint, 0, 20).subscribe((data: any) => {
                 this.rows = data.content;
                 this.totalRecords = data.totalElements;
+                this.search((event.first / event.rows), event.rows);
+                this.pageSize = event.rows;
             });
 
         } else {
-            this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
+            this.service.getPage(event.first / event.rows, event.rows).subscribe((data: any) => {
                 this.rows = data.content;
                 this.totalRecords = data.totalElements;
                 this.search((event.first / event.rows), event.rows);
+                this.pageSize = event.rows;
 
             });
         }
@@ -124,10 +131,12 @@ export class OperationProgressTable {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             this.search(event.first, event.rows);
+            console.log('paged!', event);
         }, 100);
     }
 
     search(first: number, pageSize: number): void {
+        pageSize = pageSize === undefined ? this.pageSize : pageSize;
         if (this.startDate != undefined &&
             this.endDate != undefined &&
             this.section != undefined &&
@@ -144,7 +153,6 @@ export class OperationProgressTable {
                 this.service.getByProductionDurationAndControlPointPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
-
             } else if (this.section.id > 0 && this.controlPoint.id == 0 && this.job.id == 0) {
                 this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
@@ -153,8 +161,20 @@ export class OperationProgressTable {
                 this.service.getByProductionDurationAndJobPage(this.job.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
+            } else if (this.section.id > 0 && this.job.id == 0 && this.controlPoint.id > 0) {
+                this.service.getBySectionAndProductionDurationAndControlPointPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+            } else if (this.section.id > 0 && this.controlPoint.id == 0 && this.job.id > 0) {
+                this.service.getBySectionAndProductionDurationAndJobPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.job.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+            } else if (this.controlPoint.id > 0 && this.section.id == 0 && this.job.id > 0) {
+                this.service.getByControlPointAndProductionDurationAndJobPage(this.controlPoint.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.job.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
             } else {
-                this.service.getBySectionAndJobAndProductionDurationAndControlPointPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.job.id, this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize, ).subscribe((data: any) => {
+                this.service.getBySectionAndJobAndProductionDurationAndControlPointPage(this.section.id, this.job.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize, ).subscribe((data: any) => {
                     this.fillTable(data);
                 });
             }
