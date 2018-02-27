@@ -85,7 +85,7 @@ export class ManpowerSummaryTable {
 
     jsonData.forEach(element => {
       element.chartData = {
-        labels: [element.controlPointCode, 'Other'],
+        labels: [element.code, 'Other'],
 
         datasets: [
           {

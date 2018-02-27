@@ -60,7 +60,7 @@
   </p-dataTable> -->
   <br/>
   <h3 *ngIf="section?.code !== 'ALL'">
-      &nbsp; &nbsp; {{section?.code}} {{section?.name}}
+      &nbsp; &nbsp; {{section?.code}} - {{section?.name}}
       <br/>
   </h3>
   <div class="row">
@@ -84,11 +84,6 @@
 
           <div class="col-sm-6">
             {{row.controlPoint?.name}}{{row.section?.name}}
-            <br/>
-            <span *ngIf="row.controlPoint">
-              <br/> {{row.controlPoint?.workCenter?.costCenter?.section?.code}}
-              <br/> {{row.controlPoint?.workCenter?.costCenter?.section?.name}}
-            </span>
             <br/>
           </div>
 
