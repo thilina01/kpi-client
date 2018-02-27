@@ -21,17 +21,32 @@ export class ProductionService extends MasterService {
     return this.http.get(this.apiUrl + "productionDurationPage?startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
       .catch(err => this.handleError(err));
   }
-
-  getByProductionDurationAndShiftPage(startDate, endDate, shift, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + "productionDurationAndShiftPage?startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+  getByProductionDurationAndShiftPage(shift, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationAndShiftPage?shift=' + shift + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
-  getBySectionAndProductionDurationPage(section, startDate, endDate, page, size):  Observable<any> {
+  getBySectionAndProductionDurationPage(section, startDate, endDate, page, size): Observable<any> {
     return this.http.get(this.apiUrl + "sectionAndProductionDurationPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
       .catch(err => this.handleError(err));
   }
-      getBySectionAndProductionDurationAndShiftPage(section, startDate, endDate, shift, page, size): Observable<any> {
+  getBySectionAndProductionDurationAndShiftPage(section, startDate, endDate, shift, page, size): Observable<any> {
     return this.http.get(this.apiUrl + "sectionAndProductionDurationAndShiftPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+      .catch(err => this.handleError(err));
+  }
+  getByProductionDurationAndControlPointTypePage(startDate, endDate, controlPointType, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'productionDurationAndControlPointTypePage?startDate=' + startDate + '&endDate=' + endDate + '&controlPointType=' + controlPointType + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getBySectionAndShiftAndProductionDurationAndControlPointTypePage(section, shift, startDate, endDate, controlPointType, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'sectionAndShiftAndProductionDurationAndControlPointTypePage?section=' + section + '&shift=' + shift + '&startDate=' + startDate + '&endDate=' + endDate + '&controlPointType=' + controlPointType + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByControlPointTypeAndProductionDurationAndShiftPage(controlPointType, startDate, endDate, shift, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'controlPointTypeAndProductionDurationAndShiftPage?controlPointType=' + controlPointType + '&startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+  getByControlPointTypeAndProductionDurationAndSectionPage(controlPointType, startDate, endDate, section, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'controlPointTypeAndProductionDurationAndSectionPage?controlPointType=' + controlPointType + '&startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
 }
