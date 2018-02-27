@@ -109,6 +109,18 @@ export class ManpowerSummaryTable {
     this.rows = jsonData;
   }
 
+  fillBySection(row: any, op: any, event: any) {
+    if (row.section !== null) {
+      this.section = row.section;
+      this.search();
+    }
+  }
+
+  fillAllSections(op: any, event: any) {
+      this.section = { id: 0, 'code': 'ALL', 'display': 'All Sections' };
+      this.search();
+  }
+
   selectedRow: any;
   showInfo(row: any, op: any, event: any) {
     this.selectedRow = row;
