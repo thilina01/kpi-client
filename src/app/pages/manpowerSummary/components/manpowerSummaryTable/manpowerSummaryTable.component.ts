@@ -112,11 +112,19 @@ export class ManpowerSummaryTable {
   selectedRow: any;
   showInfo(row: any, op: any, event: any) {
     this.selectedRow = row;
-    this.chartService.getResourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween(row.controlPoint.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
-      this.selectedRow.employeeList = data.json();
-      console.log(this.selectedRow);
-      op.show(event);
-    });
+    if (this.section.code === 'ALL') {
+      this.chartService.getResourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween(row.section.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
+        this.selectedRow.employeeList = data.json();
+        console.log(this.selectedRow);
+        op.show(event);
+      });
+    } else {
+      this.chartService.getResourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween(row.controlPoint.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
+        this.selectedRow.employeeList = data.json();
+        console.log(this.selectedRow);
+        op.show(event);
+      });
+    }
   }
 
   /*================== Section Filter ===================*/

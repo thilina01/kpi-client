@@ -274,7 +274,7 @@ export class ChartService {
       .catch(err => this.handleError(err));
   }
 
-  getResourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween(startDate, endDate, section ): Observable<any> {
+  getResourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween(section, startDate, endDate ): Observable<any> {
     return this.http.get(this.apiUrl + 'resourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween?section=' + section+'&startDate=' + startDate + '&endDate=' + endDate )
       .catch(err => this.handleError(err));
   }
