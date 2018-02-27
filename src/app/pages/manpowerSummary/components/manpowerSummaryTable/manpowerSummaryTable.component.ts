@@ -79,7 +79,7 @@ export class ManpowerSummaryTable {
     this.total = 0;
 
     jsonData.forEach(element => {
-      element.controlPointCode = element.controlPoint.code;
+      element.code = element.controlPoint !== null ? element.controlPoint.code : element.section.code;
       this.total += element.count;
     });
 
@@ -133,6 +133,7 @@ export class ManpowerSummaryTable {
   }
   onSectionSelect(section: any) {
     console.log(event);
+    this.search();
   }
   /*================== End Of Section Filter ===================*/
 
