@@ -27,8 +27,9 @@ export class OperationProgressTable {
     section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' }
     controlPoint: any = { id: 0, 'code': 'ALL', 'display': 'All ControlPoints' }
     job: any = { id: 0, 'code': 'ALL', 'display': 'All Jobs' }
-    startDate: Date;
-    endDate: Date;
+    startDate: Date = new Date();
+    endDate: Date = new Date();
+    total = 0;
     pageSize = 20;
     constructor(protected service: OperationProgressService,
         private router: Router,
@@ -41,6 +42,10 @@ export class OperationProgressTable {
         this.getSections();
         this.getControlPoints();
         this.getJobs();
+        this.startDate.setHours(0, 0, 0, 0);
+        this.endDate.setHours(24, 0, 0, 0);
+        this.search(0, 0);
+
     }
 
     getSections(): void {
@@ -65,67 +70,17 @@ export class OperationProgressTable {
     }
 
     loadData() {
-        if (this.job.id != undefined && this.job.id != 0) {
-            this.service.getPageByJob(this.job, 0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        }
-        else if (this.section.id != undefined && this.section.id != 0) {
-            this.service.getPageBySection(this.section, 0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        }
-        else if (this.controlPoint.id != undefined && this.controlPoint.id != 0) {
-            this.service.getPageByControlPoint(this.controlPoint, 0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        } else {
-            this.service.getPage(0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        }
+        this.service.getPage(0, 20).subscribe((data: any) => {
+            this.rows = data.content;
+            this.totalRecords = data.totalElements;
+        });
     }
 
     lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
-        if (this.job.id != undefined && this.job.id != 0) {
-            this.service.getPageByJob(this.job, (event.first / event.rows), event.rows).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-                this.search((event.first / event.rows), event.rows);
-                this.pageSize = event.rows;
-            });
-        }
-        else if (this.section.id != undefined && this.section.id != 0) {
-            this.service.getPageBySection(this.section, (event.first / event.rows), event.rows).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-                this.search((event.first / event.rows), event.rows);
-                this.pageSize = event.rows;
-            });
-
-        } else if (this.controlPoint.id != undefined && this.controlPoint.id != 0) {
-            this.service.getPageByControlPoint(this.controlPoint, 0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-                this.search((event.first / event.rows), event.rows);
-                this.pageSize = event.rows;
-            });
-
-        } else {
-            this.service.getPage(event.first / event.rows, event.rows).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-                this.search((event.first / event.rows), event.rows);
-                this.pageSize = event.rows;
-
-            });
-        }
+        console.log(event);
+        this.search((event.first / event.rows), event.rows);
     }
+
 
     onPage(event) {
         clearTimeout(this.timeout);
@@ -213,6 +168,7 @@ export class OperationProgressTable {
             }
         });
     }
+    
     /*================== ControlPoint Filter ===================*/
     filteredControlPoints: any[];
     filterControlPoints(event) {
@@ -227,8 +183,7 @@ export class OperationProgressTable {
     }
     onControlPointSelect(controlPoint: any) {
         console.log(event)
-        this.controlPoint = controlPoint;
-        this.loadData();
+
     }
     /*================== End Of ControlPoint Filter ===================*/
     /*================== Section Filter ===================*/
@@ -245,8 +200,7 @@ export class OperationProgressTable {
     }
     onSectionSelect(section: any) {
         console.log(event)
-        this.section = section;
-        this.loadData();
+
     }
     /*================== End Of Section Filter ===================*/
     /*================== Job Filter ===================*/
@@ -263,8 +217,7 @@ export class OperationProgressTable {
     }
     onJobSelect(job: any) {
         console.log(event)
-        this.job = job;
-        this.loadData();
+
     }
     /*================== End Of Job Filter ===================*/
 }

@@ -61,6 +61,11 @@
 			</div>
 		</p-header>
 		<p-column field="id" header="ID"></p-column>
+		<p-column field="timeSlot" header="Time Slot" [sortable]="true">
+			<ng-template let-col let-rowData="rowData" pTemplate="body">
+				{{rowData.timeSlot| date:'y-MM-dd HH:mm'}}
+			</ng-template>
+		</p-column>
 		<p-column field="operation.id" header="Operation ID" [sortable]="true"></p-column>
 		<p-column field="operation.production.id" header="Production ID" [sortable]="true"></p-column>
 		<p-column field="operation.production.controlPoint.code" header="Control Point Code" [sortable]="true"></p-column>
@@ -75,11 +80,6 @@
 		<p-column field="operation.production.shift.code" header="Shift" [sortable]="true"></p-column>
 		<p-column field="operation.plannedQuantity" header="Planned Quantity" [sortable]="true"></p-column>
 		<p-column field="quantity" header="Quantity" [sortable]="true"></p-column>
-		<p-column field="timeSlot" header="Time Slot" [sortable]="true">
-			<ng-template let-col let-rowData="rowData" pTemplate="body">
-				{{rowData.timeSlot| date:'y-MM-dd HH:mm'}}
-			</ng-template>
-		</p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/operationProgress/form/'+data.id">
