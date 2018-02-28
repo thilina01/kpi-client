@@ -85,7 +85,7 @@ export class ManpowerSummaryTable {
 
     jsonData.forEach(element => {
       element.chartData = {
-        labels: [element.controlPointCode, 'Other'],
+        labels: [element.code, 'Other'],
 
         datasets: [
           {
@@ -107,6 +107,18 @@ export class ManpowerSummaryTable {
       };
     });
     this.rows = jsonData;
+  }
+
+  fillBySection(row: any, op: any, event: any) {
+    if (row.section !== null) {
+      this.section = row.section;
+      this.search();
+    }
+  }
+
+  fillAllSections(op: any, event: any) {
+      this.section = { id: 0, 'code': 'ALL', 'display': 'All Sections' };
+      this.search();
   }
 
   selectedRow: any;
