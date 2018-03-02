@@ -73,6 +73,7 @@ export class OperationProgressTable {
         this.service.getPage(0, 20).subscribe((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;
+            this.search(0, 0);
         });
     }
 
@@ -143,7 +144,6 @@ export class OperationProgressTable {
     fillTable(data: any) {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
-        this.search(0, 0);
     }
 
     selected(data: any) {
