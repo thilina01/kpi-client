@@ -143,6 +143,7 @@ export class OperationProgressTable {
     fillTable(data: any) {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
+        this.search(0, 0);
     }
 
     selected(data: any) {
@@ -168,7 +169,7 @@ export class OperationProgressTable {
             }
         });
     }
-    
+
     /*================== ControlPoint Filter ===================*/
     filteredControlPoints: any[];
     filterControlPoints(event) {
