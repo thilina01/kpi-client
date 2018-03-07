@@ -31,14 +31,14 @@ export class AbsenteeismChart {
   }
 
   initChart(chart: any) {
-    let zoomChart = () => {
-    };
+    // let zoomChart = () => {
+    // };
 
-    chart.addListener('rendered', zoomChart);
-    zoomChart();
+    // chart.addListener('rendered', zoomChart);
+    // zoomChart();
 
-    if (chart.zoomChart) {
-      chart.zoomChart();
-    }
+    // if (chart.zoomChart) {
+    //   chart.zoomChart();
+    // }
   }
 }
