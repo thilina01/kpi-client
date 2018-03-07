@@ -92,8 +92,8 @@ export class DispatchInformationTable {
       this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
+        console.log(event);
         this.search((event.first / event.rows), event.rows);
-
       });
     }
   }
@@ -127,6 +127,7 @@ export class DispatchInformationTable {
     } else {
       this.service.getPage(first, pageSize).subscribe((data: any) => {
         this.fillTable(data);
+        this.loadData();
       });
     }
   }
@@ -140,6 +141,7 @@ export class DispatchInformationTable {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.search(event.first, event.rows);
+      console.log('paged!', event);
     }, 100);
   }
 
@@ -158,7 +160,6 @@ export class DispatchInformationTable {
   onCustomerSelect(customer: any) {
     console.log(event)
     this.customer = customer;
-    this.loadData();
   }
 
   /*================== End Of Customer Filter ===================*/
@@ -177,7 +178,7 @@ export class DispatchInformationTable {
   onItemSelect(item: any) {
     console.log(event)
     this.item = item;
-    this.loadData();
+
   }
 
   /*================== End Of Item Filter ===================*/
