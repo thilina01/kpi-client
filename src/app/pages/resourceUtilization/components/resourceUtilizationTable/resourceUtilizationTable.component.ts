@@ -16,15 +16,14 @@ import { EmployeeService } from '../../../employee/employee.service';
     styleUrls: ['./resourceUtilizationTable.scss'],
     templateUrl: './resourceUtilizationTable.html',
 })
-export class ResourceUtilizationTable {
-    productionList: any;
 
+export class ResourceUtilizationTable {
+    @ViewChild(DataTable) dataTable: DataTable;
+    productionList: any;
     resourceUtilization = {};
+    totalRecords: number;
     rows = [];
     timeout: any;
-    totalRecords: number;
-    @ViewChild(DataTable) dataTable: DataTable;
-
     startDate: Date;
     endDate: Date;
     employees: any;
@@ -46,18 +45,21 @@ export class ResourceUtilizationTable {
         this.getEmployees();
         this.getMachines();
     }
+
     getShifts(): void {
         this.shiftService.getCombo().subscribe(shifts => {
             this.shifts = shifts;
             this.shifts.unshift({ id: 0, 'code': 'ALL', 'display': 'All Shifts' });
         });
     }
+
     getEmployees(): void {
         this.employeeService.getCombo().subscribe(employees => {
             this.employees = employees;
             this.employees.unshift({ id: 0, 'code': 'ALL', 'display': 'All Employees' });
         });
     }
+
     getMachines(): void {
         this.machineService.getCombo().subscribe(machines => {
             this.machines = machines;
@@ -83,6 +85,7 @@ export class ResourceUtilizationTable {
             this.search(event.first, event.rows);
         }, 100);
     }
+
     search(first: number, pageSize: number): void {
         if (this.startDate != undefined &&
             this.endDate != undefined &&
@@ -96,6 +99,7 @@ export class ResourceUtilizationTable {
                 this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
+
             } else if (this.machine.id == 0 && this.employee.id == 0 && this.shift.id > 0) {
                 this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
@@ -105,20 +109,43 @@ export class ResourceUtilizationTable {
                 this.service.getByMachineAndProductionDurationPage(this.machine.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
+
             } else if (this.machine.id == 0 && this.shift.id == 0 && this.employee.id > 0) {
                 this.service.getByProductionDurationAndEmployeePage(this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
+
+            } else if (this.machine.id > 0 && this.employee.id == 0 && this.shift.id > 0) {
+                this.service.getByMachineAndProductionDurationAndShiftPage(this.machine.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+
+            } else if (this.machine.id > 0 && this.shift.id == 0 && this.employee.id > 0) {
+                this.service.getByMachineAndProductionDurationAndEmployeePage(this.machine.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.employee.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+
+            } else if (this.employee.id > 0 && this.machine.id == 0 && this.shift.id > 0) {
+                this.service.getByEmployeeAndProductionDurationAndShiftPage(this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
+                    this.fillTable(data);
+                });
+
             } else {
-                this.service.getByMachineAndEmployeeAndProductionDurationAndShiftPage(this.machine.id,this.sharedService.YYYYMMDD(this.startDate),this.sharedService.YYYYMMDD(this.endDate),this.employee.id,this.shift.id,first, pageSize).subscribe((data: any) => {
+                this.service.getByMachineAndEmployeeAndProductionDurationAndShiftPage(this.machine.id, this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize, ).subscribe((data: any) => {
                     this.fillTable(data);
                 });
             }
+
         } else {
             this.service.getPage(first, pageSize).subscribe((data: any) => {
                 this.fillTable(data);
             });
         }
+    }
+
+    fillTable(data: any) {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
     }
 
     selected(data: any) {
@@ -131,7 +158,7 @@ export class ResourceUtilizationTable {
     navigateToForm(id: any): void {
         this.router.navigate(['/pages/resourceUtilization/form/' + id]);
     }
-    
+
     delete(id: number) {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to Delete?',
@@ -143,11 +170,6 @@ export class ResourceUtilizationTable {
                 );
             }
         });
-    }
-
-    fillTable(data: any) {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
     }
 
     /*================== Shift Filter ===================*/
@@ -201,6 +223,8 @@ export class ResourceUtilizationTable {
     onEmployeeSelect(employee: any) {
         console.log(event)
     }
+    /*================== Employee Filter ===================*/
+
 }
 
 

@@ -2,7 +2,7 @@
 	<p-header>
 		<div class="row">
 			<div class="col">
-				<h4>ToolBreakdown List</h4>
+				<h4>Tool Breakdown List</h4>
 			</div>
 			<div class="col">
 				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
@@ -17,7 +17,7 @@
 	 (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="toolBreakdowns"
 	 [globalFilter]="gb">
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="toolBreakdownTime" header="ToolBreakdown Time">
+		<p-column field="toolBreakdownTime" header="Tool Breakdown Time">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
 				{{rowData.toolBreakdownTime | date:'y-MM-dd HH:mm'}}
 			</ng-template>
@@ -33,8 +33,8 @@
 			</ng-template>
 		</p-column>
 		<p-column field="tool.code" header="Tool" [sortable]="true"></p-column>
-		<p-column field="toolBreakdownNumber" header="ToolBreakdown Number" [sortable]="true"></p-column>
-		<p-column field="description" header="Descriptiom" [sortable]="true"></p-column>
+		<p-column field="toolBreakdownNumber" header="Tool Breakdown Number" [sortable]="true"></p-column>
+		<p-column field="description" header="Description" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
 				<a [routerLink]="'/pages/toolBreakdown/form/'+data.id">
