@@ -26,6 +26,7 @@ export class DispatchInformationTable {
   items: any;
   startDate: Date;
   endDate: Date;
+  pageSize = 20;
   @ViewChild(DataTable) dataTable: DataTable;
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
   item: any = { id: 0, 'code': 'ALL', 'display': 'All Items' }
@@ -68,37 +69,17 @@ export class DispatchInformationTable {
       });
     } else {
       this.service.getPage(0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
       });
     }
   }
 
   lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
-
-    if (this.customer.id != undefined && this.customer.id != 0) {
-      this.service.getPageByCustomer(this.customer, (event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    }
-    else if (this.item.id != undefined && this.item.id != 0) {
-      this.service.getPageByItem(this.item, (event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    } else {
-      this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-        console.log(event);
-        this.search((event.first / event.rows), event.rows);
-      });
-    }
+    console.log(event);
+    this.search((event.first / event.rows), event.rows);
   }
 
   search(first: number, pageSize: number): void {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
     if (this.startDate != undefined &&
       this.endDate != undefined &&
       this.customer != undefined &&
@@ -126,8 +107,8 @@ export class DispatchInformationTable {
       }
     } else {
       this.service.getPage(first, pageSize).subscribe((data: any) => {
-        this.fillTable(data);
         this.loadData();
+        this.fillTable(data);
       });
     }
   }
@@ -140,7 +121,6 @@ export class DispatchInformationTable {
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      this.search(event.first, event.rows);
       console.log('paged!', event);
     }, 100);
   }
