@@ -244,6 +244,16 @@ export class ChartService {
       .catch(err => this.handleError(err));
   }
 
+  getLossReasonSectionCountByLossReason(startDate: string, endDate: string, lossReason: string): Observable<any> {
+    return this.http.get(this.apiUrl + 'lossReasonSectionCountByLossReason?startDate=' + startDate + '&endDate=' + endDate + '&lossReason=' + lossReason)
+      .catch(err => this.handleError(err));
+  }
+
+  getLossReasonControlPointCountByLossReasonAndSection(startDate: string, endDate: string, lossReason: string, section: string): Observable<any> {
+    return this.http.get(this.apiUrl + 'lossReasonControlPointCountByLossReasonAndSection?startDate=' + startDate + '&endDate=' + endDate + '&lossReason=' + lossReason + '&section=' + section)
+      .catch(err => this.handleError(err));
+  }
+
   getMonthlyRevenue(startDate: string, endDate: string): Observable<any> {
     return this.http.get(this.apiUrl + 'monthlyRevenue?startDate=' + startDate + '&endDate=' + endDate)
       .catch(err => this.handleError(err));
@@ -281,6 +291,16 @@ export class ChartService {
 
   getResourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween(controlPoint, startDate, endDate ): Observable<any> {
     return this.http.get(this.apiUrl + 'resourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween?controlPoint=' + controlPoint+'&startDate=' + startDate + '&endDate=' + endDate )
+      .catch(err => this.handleError(err));
+  }
+
+  getOperationProgressSummary(productionDate): Observable<any> {
+    return this.http.get(this.apiUrl + 'operationProgressSummary?productionDate=' + productionDate )
+      .catch(err => this.handleError(err));
+  }
+
+  getOperationProgressSummaryBySection(sectionId, productionDate): Observable<any> {
+    return this.http.get(this.apiUrl + 'operationProgressSummaryBySection/' + sectionId + '?productionDate=' + productionDate )
       .catch(err => this.handleError(err));
   }
 
