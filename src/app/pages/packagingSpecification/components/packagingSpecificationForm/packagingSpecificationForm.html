@@ -1,0 +1,60 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Packaging Specification Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/packagingSpecification/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for="item">Item</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="item" field="display" [dropdown]="true" [suggestions]="filteredItemList" (completeMethod)="filterItemList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemSelect($event)" appendTo="body">
+              </p-autoComplete>
+              <a routerLink="/pages/item/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for="palletSize">Pallet Size</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="palletSize" field="display" [suggestions]="filteredPalletSizeList" (completeMethod)="filterPalletSizeList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" [dropdown]="true" (onSelect)="onPalletSizeSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/palletSize/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for="perPalletQuantity">Per Pallet Quantity</label>
+            <br/>
+            <input type="number" pInputText formControlName="perPalletQuantity">
+          </div>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
