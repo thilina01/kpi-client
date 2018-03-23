@@ -28,7 +28,8 @@ export class PalletSizeForm {
             code: ['', Validators.required],
             name: ['', Validators.required],
             length: ['', Validators.required],
-            width: ['', Validators.required]
+            width: ['', Validators.required],
+            weight: ['', Validators.required]
         });
     }
 
