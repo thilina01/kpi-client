@@ -19,6 +19,8 @@ import { PaymentTermService } from "../paymentTerm/paymentTerm.service";
 import { CountryService } from "../country/country.service";
 import { AddressTypeService } from "../addressType/addressType.service";
 import { ContactTypeService } from "../contactType/contactType.service";
+import { PortService } from '../port/port.service';
+import { EmployeeService } from '../employee/employee.service';
 
 @NgModule({
   imports: [
@@ -50,6 +52,8 @@ import { ContactTypeService } from "../contactType/contactType.service";
     CountryService,
     AddressTypeService,
     ContactTypeService,
+    PortService,
+    EmployeeService,
     IncotermService
   ]
 })
