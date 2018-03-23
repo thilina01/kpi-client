@@ -14,7 +14,6 @@ import { InvoiceService } from './invoice.service';
 import { InvoiceTypeService } from '../invoiceType/invoiceType.service';
 // import { MaterialModule } from '@angular/material';
 import { DispatchService } from '../../services/dispatch.service';
-import { PackingListService } from '../packingList/packingList.service';
 
 @NgModule({
   imports: [
@@ -40,9 +39,6 @@ import { PackingListService } from '../packingList/packingList.service';
   providers: [
     InvoiceService,
     InvoiceTypeService,
-    PackingListService
-    
-
   ]
 })
 export class InvoiceModule { }

@@ -16,7 +16,7 @@
 	 (onLazyLoad)='lazy($event,dt)' [pageLinks]='5' [rowsPerPageOptions]='[10,20,50,100,10000]' selectionMode='single' sortMode='multiple'
 	 resizableColumns='true' exportFilename='invoices' [globalFilter]='gb' (onRowDblclick)='onRowDblclick($event.data)'>
 		<p-column field='id' header='ID'></p-column>
-		<p-column field='packingList.id' header='Packing List ID' [sortable]='true'></p-column>
+		<!-- <p-column field='packingList.id' header='Packing List ID' [sortable]='true'></p-column> -->
 		<p-column field="invoiceDate" header="Invoice Date">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
 				{{rowData.invoiceDate | date:'y-MM-dd'}}

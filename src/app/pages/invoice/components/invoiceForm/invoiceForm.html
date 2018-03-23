@@ -16,19 +16,6 @@
   <div class='row'>
     <div class='col-sm-12'>
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
-        <div class='row'>
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <label for='packingList'>Packing List ID</label>
-            <br/>
-            <div class="ui-inputgroup">
-              <p-autoComplete  formControlName='packingList' id='packingList' field='display' [dropdown]="true" [suggestions]='filteredPackingListList'
-                (completeMethod)='filterPackingListList($event)' [size]='20' [minLength]='1' placeholder='Search'>
-              </p-autoComplete>
-              <button type="button" class="btn btn-primary btn-xs" (click)="onFillButtonClick()">
-                <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
-            </div>
-          </div>
-        </div>
         <br/>
         <br/>
         <div class="row">
