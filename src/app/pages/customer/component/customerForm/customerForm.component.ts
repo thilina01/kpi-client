@@ -99,14 +99,14 @@ export class CustomerForm {
       incoterm: [this.incoterm, Validators.required],
       currency: [this.currency, Validators.required],
       customerType: [this.customerType, Validators.required],
+      employee: [{}, Validators.compose([Validators.required])],
       contactList: [[]],
       addressList: [[]]
     });
 
     this.contactFormGroup = fb.group({
       contactNumber: "",
-      contactType: [{}, Validators.compose([Validators.required])],
-      employee: [{}, Validators.compose([Validators.required])]
+      contactType: [{}, Validators.compose([Validators.required])]
     });
 
     this.addressFormGroup = fb.group({
@@ -317,7 +317,6 @@ export class CustomerForm {
         this.formGroup.value.contactList = [];
       }
       this.formGroup.value.contactList.push(values);
-      values.employee.callingName = values.employee.name;
       this.contactFormGroup.reset();
       document.getElementById("contactNumber").focus();
       this.formGroup.value.contactList = this.formGroup.value.contactList.slice();

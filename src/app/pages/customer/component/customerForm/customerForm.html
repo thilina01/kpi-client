@@ -60,18 +60,6 @@
                       </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                      <label for='employee'>Contact Person</label>
-                      <br/>
-                      <div class="ui-inputgroup">
-                        <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
-                          [size]="20" [minLength]="1" placeholder="Search">
-                        </p-autoComplete>
-                        <a routerLink="/pages/employee/form" target="blank">
-                          <button pButton type="button" icon="fa-plus-circle"></button>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                       <label for="inputFirstName">&nbsp;</label>
                       <br/>
                       <div class="form-group form-inline">
@@ -85,7 +73,6 @@
                         <p-column field="id" header="ID"></p-column>
                         <p-column field="contactType.name" header="Contact Type"></p-column>
                         <p-column field="contactNumber" header="Contact Number"></p-column>
-                        <p-column field="employee.callingName" header="Contact Person"></p-column>
                         <p-column header="Action" styleClass="text-right">
                           <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
                             <i (click)="removeContact(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
@@ -281,6 +268,18 @@
                           [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onNotifyPartySelect($event)">
                         </p-autoComplete>
                         <a routerLink="/pages/notifyParty/form" target="blank">
+                          <button pButton type="button" icon="fa-plus-circle"></button>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                      <label for='employee'>Contact Person</label>
+                      <br/>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
+                          [size]="20" [minLength]="1" placeholder="Search">
+                        </p-autoComplete>
+                        <a routerLink="/pages/employee/form" target="blank">
                           <button pButton type="button" icon="fa-plus-circle"></button>
                         </a>
                       </div>

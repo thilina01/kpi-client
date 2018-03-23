@@ -25,7 +25,7 @@ export class SalesOrderTable {
     customers: any;
     totalRecords: number;
     @ViewChild(DataTable) dataTable: DataTable;
-    salesOrderType: any = { id: 0, 'code': 'ALL', 'display': 'All SalesOrderTypes' }
+    salesOrderType: any = { id: 0, 'code': 'ALL', 'display': 'All SalesOrderTypes'}
     customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
     startDate: Date;
     endDate: Date;
@@ -46,6 +46,7 @@ export class SalesOrderTable {
             this.customers.unshift({ id: 0, 'code': 'ALL', 'display': 'All Customers' });
         });
     }
+
     getSalesOrderTypes(): void {
         this.salesOrderTypeService.getCombo().subscribe(salesOrderTypes => {
             this.salesOrderTypes = salesOrderTypes;
@@ -54,61 +55,51 @@ export class SalesOrderTable {
     }
 
     loadData() {
-        if (this.customer.id != undefined && this.customer.id != 0) {
-            this.service.getPageByCustomer(this.customer, 0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        } else {
-            this.service.getPage(0, 20).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        }
+      if (this.customer.id !== undefined && this.customer.id !== 0) {
+        this.service.getPageByCustomer(this.customer, 0, 20).subscribe((data: any) => {
+          this.rows = data.content;
+          this.totalRecords = data.totalElements;
+        });
+      }
 
+      else {
+        this.service.getPage(0, 20).subscribe((data: any) => {
+          this.rows = data.content;
+          this.totalRecords = data.totalElements;
+        });
+      }
     }
 
     lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
-        if (this.customer.id != undefined && this.customer.id != 0) {
-            this.service.getPageByCustomer(this.customer, (event.first / event.rows), event.rows).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-            });
-        } else {
-            this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-                this.rows = data.content;
-                this.totalRecords = data.totalElements;
-                this.search((event.first / event.rows), event.rows);
-
-            });
-        }
+      console.log(event);
+      this.search((event.first / event.rows), event.rows);
     }
 
     onPage(event) {
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
             this.search(event.first, event.rows);
+            console.log('paged!', event);
         }, 100);
     }
 
     search(first: number, pageSize: number): void {
-        if (this.startDate != undefined &&
-            this.endDate != undefined &&
-            this.customer != undefined &&
-            this.customer.id != undefined &&
-            this.salesOrderType != undefined &&
-            this.salesOrderType.id != undefined) {
-            if (this.customer.id == 0 && this.salesOrderType.id == 0) {
+        if (this.startDate !== undefined &&
+            this.endDate !== undefined &&
+            this.customer !== undefined &&
+            this.customer.id !== undefined &&
+            this.salesOrderType !== undefined &&
+            this.salesOrderType.id !== undefined) {
+            if (this.customer.id === 0 && this.salesOrderType.id === 0) {
                 this.service.getBySalesOrderDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
-            } else if (this.customer.id == 0 && this.salesOrderType.id > 0) {
+            } else if (this.customer.id === 0 && this.salesOrderType.id > 0) {
                 this.service.getBySalesOrderDurationAndSalesOrderTypePage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.salesOrderType.id, first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
 
-            } else if (this.customer.id > 0 && this.salesOrderType.id == 0) {
+            } else if (this.customer.id > 0 && this.salesOrderType.id === 0) {
                 this.service.getByCustomerAndSalesOrderDurationPage(this.customer.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
                     this.fillTable(data);
                 });
@@ -120,7 +111,8 @@ export class SalesOrderTable {
             }
         } else {
             this.service.getPage(first, pageSize).subscribe((data: any) => {
-                this.fillTable(data);
+              this.loadData();
+              this.fillTable(data);
             });
         }
     }
@@ -147,7 +139,7 @@ export class SalesOrderTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    this.loadData()
+                    this.loadData();
                 }
                 );
             }
@@ -167,7 +159,7 @@ export class SalesOrderTable {
         }
     }
     onSalesOrderTypeSelect(salesOrderType: any) {
-        console.log(event)
+        console.log(event);
     }
 
     /*================== Customer Filter ===================*/
@@ -183,9 +175,8 @@ export class SalesOrderTable {
     }
 
     onCustomerSelect(customer: any) {
-        console.log(event)
-        this.customer = customer;
-        this.loadData();
+        console.log(event);
+        // this.customer = customer;
     }
 
     /*================== End Of Customer Filter ===================*/
