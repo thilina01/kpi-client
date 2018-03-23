@@ -1,0 +1,179 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Loading Plan Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/loadingPlan/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+        <div class='row'>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for="loadingPlanDate">Date</label>
+            <br/>
+            <p-calendar id="orderDatePicker" formControlName="loadingPlanDate" showIcon="true" dateFormat="yy-mm-dd"
+              hourFormat="24"></p-calendar>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for="customer">Customer</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/customer/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for="address">Address</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAddressSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/customer/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='portOfLoading'>Port Of Loading</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName='portOfLoading' id='port' field='display' [dropdown]="true" [suggestions]='filteredPorts'
+                (completeMethod)='filterPorts($event)' [size]='20' [minLength]='1' placeholder='Search'>
+              </p-autoComplete>
+              <a routerLink="/pages/port/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='containerSize'>Container Size</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName='containerSize' id='containerSize' field='display' [dropdown]="true" [suggestions]='filteredContainerSizes'
+                (completeMethod)='filterContainerSizes($event)' [size]='20' [minLength]='1' placeholder='Search'>
+              </p-autoComplete>
+              <a routerLink="/pages/containerSize/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='noOfContainers'>No Of Containers</label>
+            <br/>
+            <input type='number' pInputText formControlName='noOfContainers'>
+          </div>
+        </div>
+        <br/>
+        <p-panel>
+          <div class="row">
+            <div class=" col-sm-12">
+              <form [formGroup]="loadingPlanItemFormGroup" (ngSubmit)="onSubmit(loadingPlanItemFormGroup.value,$event)" class="form-horizontal">
+                <div class="row">
+                  <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
+                    <div class="form-group">
+                      <label for="dispatchSchedule">Dispatch Schedule</label>
+                      <br/>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete [dropdown]="true" id="dispatchScheduleSelector" formControlName="dispatchSchedule" field="display" [suggestions]="filteredDispatchScheduleList"
+                          (completeMethod)="filterDispatchScheduleList($event)" [size]="20" [minLength]="1" placeholder="Search"
+                          (onSelect)="onDispatchScheduleSelect($event)">
+                        </p-autoComplete>
+                        <a routerLink="/pages/dispatchSchedule/form" target="blank">
+                          <button pButton type="button" icon="fa-plus-circle"></button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
+                    <div class="form-group">
+                      <label for="packagingSpecification">Packaging Specification</label>
+                      <br/>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete [dropdown]="true" id="packagingSpecificationSelector" formControlName="packagingSpecification" field="display"
+                          [suggestions]="filteredPackagingSpecificationList" (completeMethod)="filterPackagingSpecificationList($event)"
+                          [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onPackagingSpecificationSelect($event)">
+                        </p-autoComplete>
+                        <a routerLink="/pages/packagingSpecification/form" target="blank">
+                          <button pButton type="button" icon="fa-plus-circle"></button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['cubicMeter'].valid &&  loadingPlanItemFormGroup.controls['cubicMeter'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['cubicMeter'].valid && loadingPlanItemFormGroup.controls['cubicMeter'].touched)}">
+                      <label for='cubicMeter'>CBM</label>
+                      <br/>
+                      <input type='number' pInputText formControlName='cubicMeter'>
+                    </div>
+                  </div>
+                  <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['quantity'].valid &&  loadingPlanItemFormGroup.controls['quantity'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['quantity'].valid && loadingPlanItemFormGroup.controls['quantity'].touched)}">
+                      <label for="quantity"> Quantity</label>
+                      <br/>
+                      <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="inputFirstName">&nbsp;</label>
+                    <br/>
+                    <div class="form-group form-inline">
+                      <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <p-dataTable #dt [value]="formGroup.value.loadingPlanItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                    <p-column field="id" header="ID"></p-column>
+                    <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+                    <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+                    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+                    <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
+                    <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
+                    <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
+                    <p-column field="quantity" header="Quantity"></p-column>
+                    <p-column field="cubicMeter" header="CBM"></p-column>
+                    <p-column field="packagingSpecification.display" header="Packaging Specification"></p-column>
+                    <p-column header="Action" styleClass="text-right">
+                      <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
+                        <i (click)="removeLoadingPlanItem(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                      </ng-template>
+                    </p-column>
+                  </p-dataTable>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <br/>
+        <div class='row'>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
