@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { OperationProgress } from './operationProgress.component';
 import { OperationProgressForm } from './components/operationProgressForm/operationProgressForm.component';
 import { OperationProgressTable } from './components/operationProgressTable/operationProgressTable.component';
+import { OperationProgressSummary } from './components/operationProgressSummary';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
     children: [
       { path: 'form', component: OperationProgressForm },
       { path: 'form/:id', component: OperationProgressForm },
-      { path: 'table', component: OperationProgressTable }
+      { path: 'table', component: OperationProgressTable },
+      { path: 'summary', component: OperationProgressSummary }
     ]
   }
 ];

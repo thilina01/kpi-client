@@ -1,0 +1,100 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h3>Operation Progress Summary </h3>
+        <!--| {{productionDate| date:'y-MM-dd'}}-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" style="text-align: left">
+        Date
+        <br/>
+        <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="productionDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4" style="text-align: left">
+        Section
+        <div class="ui-inputgroup ui-fluid">
+          <p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
+                          [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+          </p-autoComplete>
+        </div>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" *ngFor="let row of rows">
+      <p-panel>
+        <p-header>
+          <div class="row">
+            <div class="col-12" style="text-align: left">
+              <h3>{{row.code}} | {{row.name}}</h3>
+            </div>
+          </div>
+        </p-header>
+
+        <div class="row" *ngFor="let controlPoint of row.controlPointList">
+
+          <div class="col-12">
+            <h3 style="text-align: center">
+              {{controlPoint?.code}} | {{controlPoint?.name}}
+            </h3>
+
+            <div class="row" >
+              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" *ngFor="let operation of controlPoint.production.operationList">
+                <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all" style="cursor: pointer;" (click)="showInfo(operation,op,$event)">
+                  <div class="row">
+                    <div class="col-6" style="text-align: left">
+                      {{operation?.job?.jobNo}} | {{operation?.job?.item?.code}} | <span style="white-space: nowrap">{{operation?.operationType?.description}}</span>
+                    </div>
+                    <div class="col-4" style="text-align: left">
+                      <p-progressBar [value]="Math.round((operation.total / operation.plannedQuantity)*100)"></p-progressBar>
+                    </div>
+                    <div class="col-2" style="text-align: right">
+                      {{operation?.total}} / {{operation?.plannedQuantity}}
+                    </div>
+                  </div>
+                </div>
+                <!--<p-panel>-->
+                  <!--<p-header style="cursor: pointer;" (click)="showInfo(operation,op,$event)">-->
+                    <!--<div class="row">-->
+                      <!--<div class="col-6" style="text-align: left">-->
+                        <!--{{operation?.job?.jobNo}} | {{operation?.job?.item?.code}} | <span style="white-space: nowrap">{{operation?.operationType?.description}}</span>-->
+                      <!--</div>-->
+                      <!--<div class="col-4" style="text-align: left">-->
+                        <!--<p-progressBar [value]="Math.round((operation.total / operation.plannedQuantity)*100)"></p-progressBar>-->
+                      <!--</div>-->
+                      <!--<div class="col-2" style="text-align: right">-->
+                        <!--{{operation?.total}} / {{operation?.plannedQuantity}}-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</p-header>-->
+                <!--</p-panel>-->
+              </div>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+            </div>
+          </div>
+          <br/>
+        </div>
+      </p-panel>
+    </div>
+
+  </div>
+
+</p-panel>
+<p-overlayPanel #op [dismissable]="true" [showCloseIcon]="true">
+  <p-dataTable #dt [value]="selectedOperation?.operationProgressList" [rows]="20" [responsive]="true"
+               selectionMode="single" sortMode="multiple" resizableColumns="true">
+    <p-column field="timeSlot" header="Time Slot" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.timeSlot| date:'HH:mm'}}
+      </ng-template>
+    </p-column>
+    <p-column field="quantity" header="Quantity" [sortable]="true"></p-column>
+  </p-dataTable>
+
+</p-overlayPanel>
