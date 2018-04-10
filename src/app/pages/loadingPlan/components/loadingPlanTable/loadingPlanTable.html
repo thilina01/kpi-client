@@ -14,8 +14,8 @@
   </p-header>
   <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
-    (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="loadingPlans"
-    [globalFilter]="gb">
+    [(selection)]='selectedLoadingPlan' (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true"
+    exportFilename="loadingPlans" [globalFilter]="gb" [contextMenu]="cm">
     <p-column field="id" header="ID"></p-column>
     <p-column field="loadingPlanDate" header="Date">
       <ng-template let-col let-rowData="rowData" pTemplate="body">
@@ -31,8 +31,14 @@
         <a [routerLink]="'/pages/loadingPlan/form/'+data.id">
           <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
         </a> &nbsp; &nbsp;
-        <i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+        <i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>&nbsp; &nbsp;
+        <!-- <i (click)="cm.toggle()" ng-reflect-class-name="fa fa-print" class="fa fa-print"></i> -->
       </ng-template>
     </p-column>
   </p-dataTable>
 </p-panel>
+<p-contextMenu #cm [model]="items"></p-contextMenu>
+<dispatch-note-print [(id)]='dispatchNotePrint'></dispatch-note-print>
+<loading-plan-print [(id)]='loadingPlanPrint'></loading-plan-print>
+<pallet-lable-print [(id)]='palletLablePrint'></pallet-lable-print>
+<packing-list-print [(id)]='packingListPrint'></packing-list-print>

@@ -4,7 +4,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { MaterialModule } from '@angular/material';
 
-import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, InputTextModule, ContextMenuModule } from 'primeng/primeng';
 
 import { LoadingPlan } from './loadingPlan.component';
 import { LossTypeService } from '../../services/lossType.service';
@@ -21,6 +21,11 @@ import { ContainerSizeService } from '../containerSize/containerSize.service';
 import { PackagingSpecificationService } from '../packagingSpecification/packagingSpecification.service';
 import { PortService } from '../port/port.service';
 import { CustomerService } from '../customer/customer.service';
+import { PrintService } from '../../services/print.service';
+import { LoadingPlanPrint } from './components/loadingPlanPrint/loadingPlanPrint.component';
+import { PalletLablePrint } from './components/palletLablePrint';
+import { PackingListPrint } from './components/packingListPrint ';
+import { DispatchNotePrint } from './components/dispatchNotePrint';
 
 @NgModule({
   imports: [
@@ -31,6 +36,7 @@ import { CustomerService } from '../customer/customer.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
+    ContextMenuModule,
     // MaterialModule,
     SharedModule,
     PanelModule,
@@ -41,7 +47,12 @@ import { CustomerService } from '../customer/customer.service';
   declarations: [
     LoadingPlan,
     LoadingPlanTable,
-    LoadingPlanForm
+    LoadingPlanForm,
+    LoadingPlanPrint,
+    PalletLablePrint,
+    PackingListPrint,
+    DispatchNotePrint
+
   ],
   providers:
   [
@@ -53,6 +64,7 @@ import { CustomerService } from '../customer/customer.service';
     CountryService,
     ContainerSizeService,
     CustomerService,
+    PrintService,
     PackagingSpecificationService
   ]
 })

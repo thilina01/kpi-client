@@ -1,0 +1,196 @@
+<div id="packing-list-print" hidden *ngIf="loadingPlan!=undefined" style="font-size: 130%;">
+  <div class="container-fluid" style="padding: 15px;">
+    <div id="xxx"></div>
+    <!-- Page Header  -->
+    <table class="table table-sm" style="border:none">
+      <thead>
+        <tr>
+          <th colspan="6" style="border:none">
+            <div style="float:left; margin-left:6px;">
+              <table class="table table-sm" style="border:none">
+                <tr>
+                  <td class="text-left" style="border:none">
+                    <h3> Packing List No:</h3>
+                  </td>
+                  <td class="text-left" style="border:none">
+                    <h3>
+                      <b>&nbsp;&nbsp;{{loadingPlan.id}}</b>
+                    </h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="left" style="border:none">
+                    Date of Packing List :
+                  </td>
+                  <td class="text-left" style="border:none">
+                    <b>&nbsp;&nbsp;&nbsp;{{loadingPlan.loadingPlanDate}}</b>
+                  </td>
+                </tr>
+              </table>
+              <h2>
+                <b>Packing List </b>
+              </h2>
+            </div>
+          </th>
+          <th colspan="6" style="border:none">
+            <div style="float:right; margin-right:6px;">
+              <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+          </th>
+        </tr>
+      </thead>
+      <th colspan="6">
+        <div style="float:left; margin-left:6px;">
+          <h5>
+            <b>Exporter: </b>
+            <br/> OTR Wheel Engineering Lanka (Pvt) Ltd.
+            <br/>No: 218, Minuwangoda Road
+            <br/> Ekala, Ja-Ela
+            <br/> Sri Lanka
+            <br/> Tele:+94 117595900-01
+            <br/>Fax:+94 11 2226454
+            <br/>
+            <br/>
+            <b>Consignee Address: </b>
+            <br/>
+            <span id="consignee" *ngFor="let line of loadingPlan.customer.consignee.split(',')">
+              {{line}}
+              <br/>
+            </span>
+          </h5>
+        </div>
+      </th>
+      <th colspan="6">
+        <div style="float:right; margin-right:6px;">
+          <h5>
+            <b>Ship Address:</b>
+            <br/> {{loadingPlan.address.line1}}
+            <br/> {{loadingPlan.address.line2}}
+            <br/> {{loadingPlan.address.line3}}
+            <br/> {{loadingPlan.address.line4}}
+            <br/> {{loadingPlan.address.line5}}
+            <br/>
+            <br/>
+            <br/>
+            <b>Contact:</b>
+            <br/>
+            <span *ngFor="let contact of loadingPlan.customer.contactList">
+              {{contact.contactNumber}}
+              <br/>
+            </span>
+          </h5>
+        </div>
+      </th>
+      <table class="table table-bordered text-center">
+        <tr>
+          <td colspan="2">
+            <b>Country of Origin</b>
+          </td>
+          <td colspan="2">
+            <b>Contact Person</b>
+          </td>
+          <td colspan="2">
+            <b>Port of Loading</b>
+          </td>
+          <td colspan="2">
+            <b>Country of Final Destination</b>
+          </td>
+          <td colspan="2">
+            <b>Final Destination</b>
+          </td>
+          <td colspan="2">
+            <b>Container Size</b>
+          </td>
+          <td colspan="2">
+            <b>No of Containers</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">Sri Lanka
+          </td>
+          <td colspan="2">{{loadingPlan.customer.employee.callingName}}
+          </td>
+          <td colspan="2">{{loadingPlan.portOfLoading.name}}
+          </td>
+          <td colspan="2">{{loadingPlan.address.country.name}}
+          </td>
+          <td colspan="2">{{loadingPlan.address.port.name}}
+          </td>
+          <td colspan="2">{{loadingPlan.containerSize.name}}
+          </td>
+          <td colspan="2">{{loadingPlan.noOfContainers}}
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered">
+        <tr>
+          <th class="text-center">No</th>
+          <th class="text-center">P/O No</th>
+          <th class="text-center">Customer Part No</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Job No</th>
+          <th class="text-center">Qty</th>
+          <th class="text-center">PKGS</th>
+          <th class="text-center">Net Weight Kg</th>
+          <th class="text-center">Gross Weight Kg</th>
+          <th class="text-center">CBM</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList; let i = index">
+            <td style="vertical-align:top"> {{ i+1 }} </td>
+            <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}} </td>
+            <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}</td>
+            <td style="vertical-align:top"> {{ loadingPlanItem.dispatchSchedule.job.item.size }}
+              <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
+            <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.jobNo}}</td>
+            <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
+            <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.0-0'}}
+            </td>
+            <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))| number : '1.0-0'}}</td>
+            <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
+              / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)))|
+              number : '1.0-0'}} </td>
+            <td class="text-right" style="vertical-align:top">{{(loadingPlanItem.cubicMeter)| number : '1.0-0'}} </td>
+          </tr>
+          <tr>
+            <td colspan="5" class="text-right">
+              <b>Total</b>
+            </td>
+            <td class="text-right">
+              {{quantity}}
+            </td>
+            <td class="text-right">
+              {{TotalnoOfPackages|number : '1.0-0'}}
+            </td>
+            <td class="text-right">
+              {{(totalWeight)|number : '1.0-0'}}
+            </td>
+            <td class="text-right">
+              {{(TotalGrossWeight)|number : '1.0-0'}}
+            </td>
+            <td class="text-right">
+              {{(cubicMeter)| number : '1.0-0'}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <tr>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <th colspan="6">
+          <b>------------------------------------</b>
+          <br/>Authorized Signature
+        </th>
+      </tr>
+    </table>
+
+
+
+  </div>
+</div>

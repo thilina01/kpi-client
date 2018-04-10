@@ -1,0 +1,181 @@
+<div id="dispatch-note-print" hidden *ngIf="loadingPlan!=undefined" style="font-size: 130%;">
+  <div class="container-fluid" style="padding: 15px;">
+    <!-- Page Header  -->
+    <div class='row'>
+      <div class="col-6">
+        <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+        <br/>
+        <br/>
+        <b>{{organization===undefined?'':organization.name}} </b>
+        <br/> No: 218, Minuwangoda Road,
+        <br/> Ekala, Ja-Ela
+        <br/> Sri Lanka.
+        <br/>
+        <br/>
+      </div>
+      <div class="col-6">
+
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h2 class="panel-title">
+              <b>DISPATCH NOTE</b>
+            </h2>
+          </div>
+          <table class="table table-bordered">
+            <!-- table-bordered table-condensed -->
+            <tr>
+              <td>
+                <b>ID</b>
+              </td>
+              <td>{{loadingPlan.id}}</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Date</b>
+              </td>
+              <td>{{loadingPlan.loadingPlanDate}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <b>Customer</b>
+            </h3>
+          </div>
+          <div class="panel-body">
+            {{loadingPlan.customer.code}}
+            <br/> {{loadingPlan.customer.name}}
+            <br/> {{loadingPlan.address.line1}}
+            <br/> {{loadingPlan.address.line2}}
+            <br/> {{loadingPlan.address.line3}}
+            <br/> {{loadingPlan.address.line4}}
+            <br/> {{loadingPlan.address.line5}}
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <b>Destination</b>
+            </h3>
+          </div>
+          <div class="panel-body">
+            {{loadingPlan.address.line1}}
+            <br/> {{loadingPlan.address.line2}}
+            <br/> {{loadingPlan.address.line3}}
+            <br/> {{loadingPlan.address.line4}}
+            <br/> {{loadingPlan.address.line5}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-12">
+        <br/>
+        <table class="table table-bordered">
+          <tr>
+            <th>#</th>
+            <th>Job</th>
+            <th>PO</th>
+            <th>Customer Item</th>
+            <th>Item Code</th>
+            <th>Description</th>
+            <th>Quantity</th>
+          </tr>
+          <tr *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList; let i = index">
+            <td> {{ i+1 }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.job.jobNo }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.job.item.code }} </td>
+            <td>
+              {{ loadingPlanItem.dispatchSchedule.job.item.size }}
+              <br/> {{ loadingPlanItem.dispatchSchedule.job.item.description }}
+            </td>
+            <td class="text-right"> {{ loadingPlanItem.quantity}} </td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-right">
+              <b>Total</b>
+            </td>
+            <td class="text-right">
+              <b>{{totalQuantity}}</b>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class='divFooter'>
+      <div class='row'>
+        <div class="col-12">
+
+          <table class="table table-bordered text-center">
+            <tr>
+              <td colspan="2">
+                <b>Inventory</b>
+              </td>
+              <td colspan="2">
+                <b>Quality Control</b>
+              </td>
+              <td colspan="2">
+                <b>Production</b>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <br/>
+                <br/>
+                <br/>
+              </td>
+              <td colspan="2">
+                <br/>
+                <br/>
+                <br/>
+              </td>
+              <td colspan="2">
+                <br/>
+                <br/>
+                <br/>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <b>Security</b>
+              </td>
+              <td colspan="3">
+                <b>Received By</b>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              </td>
+              <td colspan="3">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

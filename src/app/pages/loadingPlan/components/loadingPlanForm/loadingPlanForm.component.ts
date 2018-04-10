@@ -26,28 +26,30 @@ import { DataTable, ConfirmationService } from 'primeng/primeng';
   templateUrl: './loadingPlanForm.html'
 })
 export class LoadingPlanForm {
-
+  employee(arg0: any): any {
+    throw new Error("Method not implemented.");
+  }
   @Input('formGroup') public formGroup: FormGroup;
   @ViewChild(DataTable) dataTable: DataTable;
   loadingPlanItemFormGroup: FormGroup;
-  JSON: any = JSON;
-  loadingPlan: any = {};
-  subscription: Subscription;
-  addressList = [];
-  customerList = [];
-  loadingPlanItemList = [];
-  dispatchScheduleList = [];
+  loadingPlanDate: Date = new Date();
   packagingSpecificationList = [];
   packagingSpecifications: any;
   packagingSpecification: any;
+  subscription: Subscription;
+  dispatchScheduleList = [];
+  loadingPlanItemList = [];
+  loadingPlan: any = {};
   dispatchSchedule: any;
   containerSizes: any;
   containerSize: any;
+  customerList = [];
+  JSON: any = JSON;
+  addressList = [];
   customer: any;
   address: any;
   ports: any;
   port: any;
-  loadingPlanDate: Date = new Date();
 
   constructor(
     protected service: LoadingPlanService,
@@ -59,17 +61,18 @@ export class LoadingPlanForm {
     private customerService: CustomerService,
     private addressService: AddressService,
     private portService: PortService,
+    private employeeService: EmployeeService,
     private containerSizeService: ContainerSizeService,
     private packagingSpecificationService: PackagingSpecificationService,
     private dispatchScheduleService: DispatchScheduleService) {
     this.formGroup = fb.group({
       id: '',
+      noOfContainers: '',
       loadingPlanDate: [this.loadingPlanDate, Validators.required],
       customer: [this.customer, Validators.required],
       address: [this.address, Validators.required],
-      noOfContainers: ['', Validators.required],
       portOfLoading: [this.port, Validators.required],
-      containerSize: [this.containerSize, Validators.required],
+      containerSize: [this.containerSize, ''],
       loadingPlanItemList: [[]],
     });
     this.loadingPlanItemFormGroup = fb.group({
@@ -77,6 +80,7 @@ export class LoadingPlanForm {
       packagingSpecification: [this.packagingSpecification, Validators.required],
       quantity: ['', Validators.required],
       cubicMeter: '',
+
     });
   }
 
@@ -85,7 +89,7 @@ export class LoadingPlanForm {
   }
 
   getDispatchScheduleListByCustomer(id: number): void {
-    this.dispatchScheduleService.getComboByCustomer(id).subscribe(
+    this.dispatchScheduleService.getByCustomer(id).subscribe(
         dispatchScheduleList => (this.dispatchScheduleList = dispatchScheduleList)
       );
   }
@@ -102,17 +106,16 @@ export class LoadingPlanForm {
     this.containerSizeService.getCombo().subscribe(containerSizes => this.containerSizes = containerSizes);
   }
 
-  getPackagingSpecificationList(): void {
-  this.packagingSpecificationService.getCombo().subscribe(
-    packagingSpecificationList => (this.packagingSpecificationList = packagingSpecificationList)
-    );
+  getPackagingSpecificationListByDispatchSchedule(id: number): void {
+    this.packagingSpecificationService.getComboByItem(id).subscribe(
+        packagingSpecificationList => (this.packagingSpecificationList = packagingSpecificationList)
+      );
   }
 
   ngOnInit(): void {
     this.getPorts();
     this.getCustomerList();
     this.getContainerSizes();
-    this.getPackagingSpecificationList();
     this.route.params.subscribe((params: Params) => {
       let id = params['id'];
       id = id === undefined ? '0' : id;
@@ -162,6 +165,8 @@ export class LoadingPlanForm {
     });
   }
 
+
+
   public onEnter(quantity: string, dt: DataTable) {
     if (this.loadingPlanItemFormGroup.valid) {
       let values = this.loadingPlanItemFormGroup.value;
@@ -178,6 +183,29 @@ export class LoadingPlanForm {
         });
     }
   }
+
+
+  calculateTotal() {
+    let quantity = 0;
+    let cubicMeter = 0;
+    for (let i = 0; i < this.formGroup.value.loadingPlanItemList.length; i++) {
+        let loadingPlanItem = this.formGroup.value.loadingPlanItemList[i];
+
+        quantity += parseInt(loadingPlanItem.quantity);
+        cubicMeter += parseInt(loadingPlanItem.cubicMeter);
+
+        loadingPlanItem.noOfpackages=(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
+        loadingPlanItem.noOfpackages += parseInt(loadingPlanItem.noOfpackages);
+
+        loadingPlanItem.netWeight =((loadingPlanItem.quantity)*(loadingPlanItem.dispatchSchedule.job.item.weight));
+        loadingPlanItem.netWeight += parseInt(loadingPlanItem.netWeight);
+
+        loadingPlanItem.grossWeight =(loadingPlanItem.netWeight)+((( loadingPlanItem.noOfpackages)*(loadingPlanItem.packagingSpecification.palletSize.weight)));
+        loadingPlanItem.grossWeight += parseInt(loadingPlanItem.grossWeight);
+
+    }
+
+}
 
   public removeLoadingPlanItem(id: number) {
     if (this.formGroup.value.loadingPlanItemList != null) {
@@ -200,7 +228,6 @@ export class LoadingPlanForm {
     this.getPorts();
     this.getCustomerList();
     this.getContainerSizes();
-    this.getPackagingSpecificationList();
 }
 
   public resetForm() {
@@ -257,14 +284,12 @@ export class LoadingPlanForm {
        this.filteredCustomerList = this.customerList;
      }, 100);
    }
-
-   onCustomerSelect(event: any) {
+   onCustomerSelect(customerCombo: any) {
+     this.getDispatchScheduleListByCustomer(+customerCombo.id);
      let customer = this.formGroup.value.customer;
      this.setDisplayOfCustomer(customer);
-     this.getDispatchScheduleListByCustomer(+customer.id);
      this.getaAddressListByCustomer(+customer.id);
    }
-
    setDisplayOfCustomer(customer: any) {
      if (customer != null && customer !== undefined) {
        let display =
@@ -328,8 +353,7 @@ export class LoadingPlanForm {
      for (let i = 0; i < this.dispatchScheduleList.length; i++) {
        let dispatchSchedule = this.dispatchScheduleList[i];
        if (
-         dispatchSchedule.code.toLowerCase().indexOf(query) === 0 ||
-         dispatchSchedule.name.toLowerCase().indexOf(query) === 0
+         dispatchSchedule.display.toLowerCase().indexOf(query) > -1
        ) {
          this.filteredDispatchScheduleList.push(dispatchSchedule);
        }
@@ -345,7 +369,10 @@ export class LoadingPlanForm {
    }
 
    onDispatchScheduleSelect(event: any) {
-     this.setDisplayOfDispatchSchedule();
+     console.log(event);
+     this.packagingSpecificationService.getComboByItem(event.job.item.id).subscribe(
+      packagingSpecificationList => (this.packagingSpecificationList = packagingSpecificationList)
+    );
    }
 
    setDisplayOfDispatchSchedule() {

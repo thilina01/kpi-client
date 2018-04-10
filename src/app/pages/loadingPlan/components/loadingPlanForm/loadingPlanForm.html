@@ -20,8 +20,7 @@
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="loadingPlanDate">Date</label>
             <br/>
-            <p-calendar id="orderDatePicker" formControlName="loadingPlanDate" showIcon="true" dateFormat="yy-mm-dd"
-              hourFormat="24"></p-calendar>
+            <p-calendar id="orderDatePicker" formControlName="loadingPlanDate" showIcon="true" dateFormat="yy-mm-dd" hourFormat="24"></p-calendar>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="customer">Customer</label> &nbsp;
@@ -104,6 +103,13 @@
                     </div>
                   </div>
                   <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['quantity'].valid &&  loadingPlanItemFormGroup.controls['quantity'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['quantity'].valid && loadingPlanItemFormGroup.controls['quantity'].touched)}">
+                      <label for="quantity"> Quantity</label>
+                      <br/>
+                      <input type="number" pInputText formControlName="quantity">
+                    </div>
+                  </div>
+                  <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
                     <div class="form-group">
                       <label for="packagingSpecification">Packaging Specification</label>
                       <br/>
@@ -122,21 +128,14 @@
                     <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['cubicMeter'].valid &&  loadingPlanItemFormGroup.controls['cubicMeter'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['cubicMeter'].valid && loadingPlanItemFormGroup.controls['cubicMeter'].touched)}">
                       <label for='cubicMeter'>CBM</label>
                       <br/>
-                      <input type='number' pInputText formControlName='cubicMeter'>
-                    </div>
-                  </div>
-                  <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
-                    <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['quantity'].valid &&  loadingPlanItemFormGroup.controls['quantity'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['quantity'].valid && loadingPlanItemFormGroup.controls['quantity'].touched)}">
-                      <label for="quantity"> Quantity</label>
-                      <br/>
-                      <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
+                      <input type='number' #cubicMeter (keyup.enter)="onEnter(cubicMeter.value,dt)" pInputText formControlName='cubicMeter'>
                     </div>
                   </div>
                   <div class="col">
                     <label for="inputFirstName">&nbsp;</label>
                     <br/>
                     <div class="form-group form-inline">
-                      <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                      <button (click)="onEnter(cubicMeter.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
                     </div>
                   </div>
                 </div>
@@ -151,9 +150,9 @@
                     <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
                     <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
                     <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-                    <p-column field="quantity" header="Quantity"></p-column>
                     <p-column field="cubicMeter" header="CBM"></p-column>
                     <p-column field="packagingSpecification.display" header="Packaging Specification"></p-column>
+                    <p-column field="quantity" header="Quantity"></p-column>
                     <p-column header="Action" styleClass="text-right">
                       <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
                         <i (click)="removeLoadingPlanItem(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
