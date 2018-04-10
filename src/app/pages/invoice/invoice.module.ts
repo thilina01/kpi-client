@@ -14,6 +14,15 @@ import { InvoiceService } from './invoice.service';
 import { InvoiceTypeService } from '../invoiceType/invoiceType.service';
 // import { MaterialModule } from '@angular/material';
 import { DispatchService } from '../../services/dispatch.service';
+import { LoadingPlanService } from '../loadingPlan/loadingPlan.service';
+import { CustomerService } from '../customer/customer.service';
+import { PrintService } from '../../services/print.service';
+import { ExchangeRateService } from '../exchangeRate/exchangeRate.service';
+import { CurrencyService } from '../currency/currency.service';
+import { CommercialInvoicePrint } from './components/commercialInvoicePrint';
+import { TaxInvoicePrint } from './components/taxInvoicePrint ';
+import { SuspendedInvoicePrint } from './components/suspendedInvoicePrint /suspendedInvoicePrint.component';
+import { EmployeeService } from '../employee/employee.service';
 
 @NgModule({
   imports: [
@@ -34,11 +43,20 @@ import { DispatchService } from '../../services/dispatch.service';
   declarations: [
     Invoice,
     InvoiceTable,
-    InvoiceForm
+    InvoiceForm,
+    CommercialInvoicePrint,
+    TaxInvoicePrint,
+    SuspendedInvoicePrint
   ],
   providers: [
     InvoiceService,
     InvoiceTypeService,
+    LoadingPlanService,
+    PrintService,
+    ExchangeRateService,
+    CurrencyService,
+    CustomerService,
+    EmployeeService
   ]
 })
 export class InvoiceModule { }

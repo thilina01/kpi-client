@@ -16,23 +16,6 @@
   <div class='row'>
     <div class='col-sm-12'>
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
-        <br/>
-        <br/>
-        <div class="row">
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <p-dataTable #dt [value]="dispatchList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
-              <p-column field="id" header="ID"></p-column>
-              <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
-              <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
-              <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
-              <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
-              <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
-              <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-              <p-column field="quantity" header="Quantity"></p-column>
-            </p-dataTable>
-          </div>
-        </div>
-        <br/>
         <div class='row'>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="invoiceDate">Invoice Date</label>
@@ -41,9 +24,21 @@
             </div>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for='invoiceNumber'>Invoice Number</label>
+            <label for="customer">Customer</label> &nbsp;
             <br/>
-            <input type='text' pInputText formControlName='invoiceNumber'>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/customer/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="invoiceType">InvoiceType</label> &nbsp;
@@ -62,8 +57,79 @@
               </a>
             </div>
           </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='invoiceNumber'>Invoice Number</label>
+            <br/>
+            <input type='text' pInputText formControlName='invoiceNumber'>
+          </div>
         </div>
-        <br/>
+      </form>
+      <p-panel>
+        <div class="row">
+          <div class=" col-sm-12">
+            <div class="row">
+              <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label for="loadingPlan">Loading Plan ID</label> &nbsp;
+                <br/>
+                <div class="ui-inputgroup">
+                  <p-autoComplete id="loadingPlanSelector" [(ngModel)]="selectedLoadingPlan" [dropdown]="true" field="display" [suggestions]="filteredLoadingPlans"
+                    (completeMethod)="filterLoadingPlans($event)" [minLength]="1" placeholder="Search" (onSelect)="onLoadingPlanSelect($event)">
+                    <ng-template let-option pTemplate="option">
+                      <div class="ui-helper-clearfix">
+                        <div>{{option.display}}</div>
+                      </div>
+                    </ng-template>
+                  </p-autoComplete>
+                  <a routerLink="/pages/loadingPlan/form" target="blank">
+                    <button pButton type="button" icon="fa-plus-circle"></button>
+                  </a>
+                </div>
+              </div>
+              <div class="col">
+                <label>&nbsp;</label>
+                <br/>
+                <div class="form-group form-inline">
+                  <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                  <p-column field="id" header="ID"></p-column>
+                  <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
+                  <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
+                  <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
+                  <p-column field="packagingSpecification.display" styleClass="text-right" header="Packaging Specification"></p-column>
+                  <p-column field="cubicMeter" styleClass="text-right" header="CBM"></p-column>
+                  <p-column field="quantity" styleClass="text-right" header="Quantity"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.unitPrice" styleClass="text-right" header="Unit Price">
+                    <ng-template let-col let-loadingPlanItemList="rowData" pTemplate="body">
+                      {{loadingPlanItemList.dispatchSchedule.salesOrderItem.unitPrice | number : '1.2-2'}}
+                    </ng-template>
+                  </p-column>
+                  <p-column field="amount" header="Amount" styleClass="text-right">
+                    <ng-template let-col let-loadingPlanItemList="rowData" pTemplate="body">
+                      {{loadingPlanItemList.amount | number : '1.2-2'}}
+                    </ng-template>
+                  </p-column>
+                  <p-footerColumnGroup>
+                    <p-row>
+                      <p-column footer="Total Value" colspan="11" styleClass="text-right"></p-column>
+                      <p-column footer="{{totalAmount|number : '1.2-2'}}" styleClass="text-right"></p-column>
+                    </p-row>
+                  </p-footerColumnGroup>
+                </p-dataTable>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-panel>
+      <br/>
+      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
         <div class='row'>
           <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
             <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>

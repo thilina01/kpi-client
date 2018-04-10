@@ -1,0 +1,213 @@
+<div id="taxInvoicePrint" hidden *ngIf="invoice!=undefined" style="font-size: 130%;">
+  <div class="container-fluid" style="padding: 15px;">
+    <!-- Page Header  -->
+    <table class="table table-sm" style="border:none">
+      <thead>
+        <tr>
+          <th colspan="6" style="border:none">
+            <div style="float:left; margin-left:6px;">
+              <table class="table table-sm" style="border:none">
+                <tr>
+                  <td class="text-left" style="border:none">
+                    <h3> Invoice No:</h3>
+                  </td>
+                  <td class="text-left" style="border:none">
+                    <h3>
+                      <b>&nbsp;&nbsp;{{invoice.invoiceNumber}}</b>
+                    </h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="left" style="border:none">
+                    Date of Invoice:
+                  </td>
+                  <td class="text-left" style="border:none">
+                    <b>&nbsp;&nbsp;&nbsp;{{invoice.invoiceDate}}</b>
+                  </td>
+                </tr>
+              </table>
+              <h2>
+                <b>Tax Invoice</b>
+              </h2>
+            </div>
+          </th>
+          <th colspan="6" style="border:none">
+            <div style="float:right; margin-right:6px;">
+              <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+          </th>
+        </tr>
+      </thead>
+      <th colspan="4">
+        <div style="float:left; margin-left:6px;">
+          <h5>
+            <b>Exporter: </b>
+            <br/> OTR Wheel Engineering Lanka (Pvt) Ltd.
+            <br/>No: 218, Minuwangoda Road
+            <br/> Ekala, Ja-Ela
+            <br/> Sri Lanka
+            <br/> Tele:+94 117595900-01
+            <br/>Fax:+94 11 2226454
+          </h5>
+        </div>
+      </th>
+      <th colspan="4">
+        <div style="float:left; margin-left:6px;">
+          <h5>
+            <b>Consignee: </b>
+            <br/>
+            <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
+              {{line}}
+              <br/>
+            </span>
+          </h5>
+        </div>
+      </th>
+      <th colspan="4">
+        <div style="float:left; margin-left:6px;">
+          <h5>
+            <b>Ship Address:</b>
+            <br/> {{xAddress.line1}}
+            <br/> {{xAddress.line2}}
+            <br/> {{xAddress.line3}}
+            <br/> {{xAddress.line4}}
+            <br/> {{xAddress.line5}}
+          </h5>
+        </div>
+      </th>
+      <table class="table table-bordered text-center">
+        <tr>
+          <td colspan="2">
+            <b>Our VAT No</b>
+          </td>
+          <td colspan="2">
+            <b>Our S-VAT No</b>
+          </td>
+          <td colspan="2">
+            <b>Customer VAT No</b>
+          </td>
+          <td colspan="2">
+            <b>Customer S-VAT No</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            {{organization===undefined?'':organization.vat}}</td>
+          <td colspan="2">
+            {{organization===undefined?'':organization.svat}}</td>
+          <td colspan="2">
+            {{invoice.customer.vatNo}}
+          </td>
+          <td colspan="2">
+            {{invoice.customer.sVatNo}}
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered text-center">
+        <tr>
+          <td colspan="2">
+            <b>Contact Person</b>
+          </td>
+          <td colspan="2">
+            <b>Payment Term</b>
+          </td>
+          <td colspan="2">
+            <b>Inco Term</b>
+          </td>
+          <td colspan="2">
+            <b>Currency</b>
+          </td>
+          <td colspan="2">
+            <b>EX.Rate</b>
+          </td>
+          <td colspan="2">
+            <b>Net Weight</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">{{invoice.customer.employee.callingName}}
+          </td>
+          <td colspan="2">{{invoice.customer.paymentTerm.name}}
+          </td>
+          <td colspan="2">{{invoice.customer.incoterm.name}}
+          </td>
+          <td colspan="2">{{invoice.customer.currency.name}}
+          </td>
+          <td colspan="2">{{invoice.exchangeRate.exchangeRate}}
+          </td>
+          <td colspan="2">{{(totalWeight)| number : '1.2-2'}}
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered">
+        <tr>
+          <th class="text-center">No</th>
+          <th class="text-center">P/O No</th>
+          <th class="text-center">Item</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Qty</th>
+          <th class="text-center">Unit Price</th>
+          <th class="text-center">Amount</th>
+        </tr>
+        <tbody>
+          <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
+            <td style="vertical-align:top"> {{ i+1 }} </td>
+            <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}} </td>
+            <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
+              <br/>{{loadingPlanItem.dispatchSchedule.job.item.code}} </td>
+            <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
+            <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
+            <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice}} </td>
+            <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-right">
+              <b>Value of Supply USD </b>
+            </td>
+            <td class="text-right">
+              {{(totalAmount)| number : '1.2-2'}}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-right">
+              <b>VAT Value USD 15%</b>
+            </td>
+            <td class="text-right">
+              {{((totalAmount)*(15/100))| number : '1.2-2'}} </td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-right">
+              <b>VAT Value LKR 15%</b>
+            </td>
+            <td class="text-right">
+              {{(((totalAmount)*(15/100))*(invoice.exchangeRate.exchangeRate))| number : '1.2-2'}} </td>
+          </tr>
+          <tr>
+            <td colspan="6" class="text-right">
+              <b>Total Value of the Supply USD</b>
+            </td>
+            <td class="text-right">
+              {{((((totalAmount)*(15/100))+totalAmount))| number : '1.2-2'}} </td>
+          </tr>
+        </tbody>
+      </table>
+      <tr>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <th colspan="6">
+          <b>------------------------------------</b>
+          <br/>Authorized Signature
+        </th>
+      </tr>
+    </table>
+
+
+
+  </div>
+</div>

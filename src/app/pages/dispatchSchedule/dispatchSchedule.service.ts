@@ -23,6 +23,11 @@ export class DispatchScheduleService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
+  getByCustomer(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + 'customer/' + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
   getComboByCustomer(id: number): Observable<any> {
     return this.http.get(this.apiUrl + 'comboByCustomer/' + id, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
