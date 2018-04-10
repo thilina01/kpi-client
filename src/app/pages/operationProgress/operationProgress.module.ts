@@ -4,7 +4,10 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { MaterialModule } from '@angular/material';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule, DropdownModule } from 'primeng/primeng';
+import {
+  DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule,
+  DropdownModule, ChartModule, ProgressBarModule, OverlayPanelModule
+} from 'primeng/primeng';
 // import {DropdownModule} from 'primeng/dropdown';
 import { OperationProgress } from './operationProgress.component';
 import { OperationProgressTable } from './components/operationProgressTable/operationProgressTable.component';
@@ -16,6 +19,8 @@ import { OperationService } from '../operation/operation.service';
 import { SectionService } from '../section/section.service';
 import { ControlPointService } from '../controlPoint/controlPoint.service';
 import { JobService } from '../job/job.service';
+import { OperationProgressSummary } from './components/operationProgressSummary/operationProgressSummary.component';
+import { ChartService } from '../chart/chart.service';
 
 @NgModule({
   imports: [
@@ -32,19 +37,24 @@ import { JobService } from '../job/job.service';
     InputTextModule,
     AutoCompleteModule,
     DropdownModule,
+    ChartModule,
+    ProgressBarModule,
+    OverlayPanelModule,
     routing
   ],
   declarations: [
     OperationProgress,
     OperationProgressTable,
-    OperationProgressForm
+    OperationProgressForm,
+    OperationProgressSummary
   ],
   providers: [
     OperationProgressService,
     OperationService,
     SectionService,
     ControlPointService,
-    JobService
+    JobService,
+    ChartService
 
   ]
 })
