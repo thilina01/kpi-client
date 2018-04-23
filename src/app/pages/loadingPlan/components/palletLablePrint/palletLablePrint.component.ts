@@ -10,7 +10,7 @@ import 'rxjs/add/operator/take';
 })
 export class PalletLablePrint {
   xDispatchSchedule: any = null;
-  xPalletSize:any = null;
+  xPackagingSpecification:any = null;
   @Input()
   set id(id: number) {
     if (this.id !== 0) {
@@ -18,7 +18,7 @@ export class PalletLablePrint {
         if (data === null) return;
           this.loadingPlan = data;
           this.xDispatchSchedule = null;
-          this.xPalletSize = null;
+          this.xPackagingSpecification = null;
 
           for (let i = 0; i < this.loadingPlan.loadingPlanItemList.length; i++) {
             let loadingPlanItem = this.loadingPlan.loadingPlanItemList[i];
@@ -27,8 +27,8 @@ export class PalletLablePrint {
               this.xDispatchSchedule = loadingPlanItem.dispatchSchedule;
             }
 
-            if (this.xPalletSize === null) {
-              this.xPalletSize = loadingPlanItem.palletSize;
+            if (this.xPackagingSpecification === null) {
+              this.xPackagingSpecification = loadingPlanItem.packagingSpecification;
             }
           }
 
