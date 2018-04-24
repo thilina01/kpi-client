@@ -67,11 +67,11 @@
         <div style="float:right; margin-right:6px;">
           <h5>
             <b>Ship Address:</b>
-            <br/> {{xAddress.line1}}
-            <br/> {{xAddress.line2}}
-            <br/> {{xAddress.line3}}
-            <br/> {{xAddress.line4}}
-            <br/> {{xAddress.line5}}
+            <br/> {{xAddress?.line1}}
+            <br/> {{xAddress?.line2}}
+            <br/> {{xAddress?.line3}}
+            <br/> {{xAddress?.line4}}
+            <br/> {{xAddress?.line5}}
             <br/>
             <br/>
             <br/>
@@ -111,7 +111,7 @@
         <tr>
           <td colspan="2">Sri Lanka
           </td>
-          <td colspan="2">{{invoice.customer.employee.callingName}}
+          <td colspan="2">{{invoice.customer?.employee?.callingName}}
           </td>
           <td colspan="2">{{invoice.customer.paymentTerm.name}}
           </td>

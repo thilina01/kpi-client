@@ -71,11 +71,11 @@
         <div style="float:left; margin-left:6px;">
           <h5>
             <b>Ship Address:</b>
-            <br/> {{xAddress.line1}}
-            <br/> {{xAddress.line2}}
-            <br/> {{xAddress.line3}}
-            <br/> {{xAddress.line4}}
-            <br/> {{xAddress.line5}}
+            <br/> {{xAddress?.line1}}
+            <br/> {{xAddress?.line2}}
+            <br/> {{xAddress?.line3}}
+            <br/> {{xAddress?.line4}}
+            <br/> {{xAddress?.line5}}
           </h5>
         </div>
       </th>
@@ -129,7 +129,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">{{invoice.customer.employee.callingName}}
+          <td colspan="2">{{invoice.customer?.employee?.callingName}}
           </td>
           <td colspan="2">{{invoice.customer.paymentTerm.name}}
           </td>
@@ -137,7 +137,7 @@
           </td>
           <td colspan="2">{{invoice.customer.currency.name}}
           </td>
-          <td colspan="2">{{invoice.exchangeRate.exchangeRate}}
+          <td colspan="2">{{invoice.exchangeRate?.exchangeRate}}
           </td>
           <td colspan="2">{{(totalWeight)| number : '1.2-2'}}
           </td>
@@ -184,7 +184,7 @@
               <b>Suspended VAT Value LKR 15%</b>
             </td>
             <td class="text-right">
-              {{(((totalAmount)*(15/100))*(invoice.exchangeRate.exchangeRate))| number : '1.2-2'}} </td>
+              {{(((totalAmount)*(15/100))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
           </tr>
         </tbody>
       </table>
