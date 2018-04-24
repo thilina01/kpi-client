@@ -57,7 +57,7 @@
             <br/>
             <b>Consignee Address: </b>
             <br/>
-            <span id="consignee" *ngFor="let line of loadingPlan.customer.consignee.split(',')">
+            <span id="consignee" *ngFor="let line of loadingPlan.customer?.consignee?.split(',')">
               {{line}}
               <br/>
             </span>
@@ -112,13 +112,13 @@
         <tr>
           <td colspan="2">Sri Lanka
           </td>
-          <td colspan="2">{{loadingPlan.customer.employee.callingName}}
+          <td colspan="2">{{loadingPlan.customer?.employee?.callingName}}
           </td>
           <td colspan="2">{{loadingPlan.portOfLoading.name}}
           </td>
-          <td colspan="2">{{loadingPlan.address.country.name}}
+          <td colspan="2">{{loadingPlan.address?.country?.name}}
           </td>
-          <td colspan="2">{{loadingPlan.address.port.name}}
+          <td colspan="2">{{loadingPlan.address?.port?.name}}
           </td>
           <td colspan="2">{{loadingPlan.containerSize.name}}
           </td>
