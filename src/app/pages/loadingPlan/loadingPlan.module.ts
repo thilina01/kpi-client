@@ -25,7 +25,6 @@ import { PrintService } from '../../services/print.service';
 import { LoadingPlanPrint } from './components/loadingPlanPrint/loadingPlanPrint.component';
 import { PalletLablePrint } from './components/palletLablePrint';
 import { PackingListPrint } from './components/packingListPrint ';
-import { DispatchNotePrint } from './components/dispatchNotePrint';
 
 @NgModule({
   imports: [
@@ -50,9 +49,7 @@ import { DispatchNotePrint } from './components/dispatchNotePrint';
     LoadingPlanForm,
     LoadingPlanPrint,
     PalletLablePrint,
-    PackingListPrint,
-    DispatchNotePrint
-
+    PackingListPrint
   ],
   providers:
   [

@@ -50,11 +50,11 @@
           <div class="panel-body">
             {{dispatchNote.customer.code}}
             <br/> {{dispatchNote.customer.name}}
-            <br/> {{dispatchNote.address.line1}}
-            <br/> {{dispatchNote.address.line2}}
-            <br/> {{dispatchNote.address.line3}}
-            <br/> {{dispatchNote.address.line4}}
-            <br/> {{dispatchNote.address.line5}}
+            <br/> {{xAddress?.line1}}
+            <br/> {{xAddress?.line2}}
+            <br/> {{xAddress?.line3}}
+            <br/> {{xAddress?.line4}}
+            <br/> {{xAddress?.line5}}
           </div>
         </div>
       </div>
@@ -66,47 +66,52 @@
             </h3>
           </div>
           <div class="panel-body">
-            {{dispatchNote.address.line1}}
-            <br/> {{dispatchNote.address.line2}}
-            <br/> {{dispatchNote.address.line3}}
-            <br/> {{dispatchNote.address.line4}}
-            <br/> {{dispatchNote.address.line5}}
+            <br/> {{xAddress?.line1}}
+            <br/> {{xAddress?.line2}}
+            <br/> {{xAddress?.line3}}
+            <br/> {{xAddress?.line4}}
+            <br/> {{xAddress?.line5}}
           </div>
         </div>
       </div>
     </div>
-
     <div class='row'>
       <div class="col-12">
         <br/>
         <table class="table table-bordered">
           <tr>
             <th>#</th>
-            <th>Job</th>
-            <th>PO</th>
-            <th>Customer Item</th>
-            <th>Item Code</th>
-            <th>Description</th>
-            <th>Quantity</th>
+            <th class="text-center">Job</th>
+            <th class="text-center">PO</th>
+            <th class="text-center">Customer Item</th>
+            <th class="text-center">Item Code</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">No of Packagers</th>
+            <th class="text-center">Quantity</th>
           </tr>
-          <tr *ngFor="let dispatch of dispatchNote.dispatchList; let i = index">
+          <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
             <td> {{ i+1 }} </td>
-            <td> {{ dispatch.dispatchSchedule.job.jobNo }} </td>
-            <td> {{ dispatch.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </td>
-            <td> {{ dispatch.dispatchSchedule.salesOrderItem.customerItem.code }} </td>
-            <td> {{ dispatch.dispatchSchedule.job.item.code }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.job.jobNo }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code }} </td>
+            <td> {{ loadingPlanItem.dispatchSchedule.job.item.code }} </td>
             <td>
-                {{ dispatch.dispatchSchedule.job.item.size }} <br/>
-                {{ dispatch.dispatchSchedule.job.item.description }}
+              {{ loadingPlanItem.dispatchSchedule.job.item.size }}
+              <br/> {{ loadingPlanItem.dispatchSchedule.job.item.description }}
             </td>
-            <td class="text-right"> {{ dispatch.quantity}} </td>
+            <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.0-0'}}
+            </td>
+            <td class="text-center" style="vertical-align:top"> {{ loadingPlanItem.quantity}} </td>
           </tr>
           <tr>
             <td colspan="6" class="text-right">
               <b>Total</b>
             </td>
-            <td class="text-right">
-              <b>{{ dispatchNote.quantity}}</b>
+            <td class="text-center">
+              <b>{{TotalnoOfPackages|number : '1.0-0'}}</b>
+            </td>
+            <td class="text-center">
+              <b>{{totalQuantity}}</b>
             </td>
           </tr>
         </table>

@@ -3,254 +3,142 @@
 
     <!-- Page Header  -->
     <div class='divFooter'>
-      <div class='row'>
-        <div class="col-xs-12">
-          <table class="table table-bordered table-sm">
-            <tr>
-              <td class="text-center">
-                <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
-              </td>
-              <td class="text-center">
-                <h3>
-                  <b>OTR WHEEL ENGINEERING LANKA (PVT) LTD</b>
-                </h3>
-                <br/>
-                <h4>
-                  <b>PALLET LABLE</b>
-                </h4>
-              </td>
-              <td>
-                <h6>
-                  <b>ID: {{loadingPlan.id}}
-                  </b>
-                  <br/>
-                  <br/>
-                  <b>DATE: {{loadingPlan.loadingPlanDate}}
-                  </b>
-                </h6>
-              </td>
-            </tr>
-          </table>
+      <span *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList">
+        <span *ngFor="let x of loadingPlanItem.pageCount; let i = index">
+          <div class='row' *ngFor="let y of [1,2]">
+            <div class="col-xs-12">
+              <table class="table table-bordered table-sm">
+                <tr>
+                  <td class="text-center">
+                    <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+                  </td>
+                  <td class="text-center">
+                    <h3>
+                      <b>OTR WHEEL ENGINEERING LANKA (PVT) LTD</b>
+                    </h3>
+                    <br/>
+                    <h4>
+                      <b>PALLET LABLE</b>
+                    </h4>
+                  </td>
+                  <td>
+                    <h6>
+                      <b>Loading Plan: {{loadingPlan.id}}
+                      </b>
+                      <br/>
+                      <br/>
+                      <b>Row: {{loadingPlanItem.id}}
+                      </b>
+                      <br/>
+                      <br/>
+                      <b>DATE: {{loadingPlan.loadingPlanDate}}
+                      </b>
+                    </h6>
+                  </td>
+                </tr>
+              </table>
 
-          <th colspan="3">
-            <table class="table table-bordered table-sm">
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>DESTINATION : </b>{{loadingPlan.address?.port?.name}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>CUSTOMER NO : </b>
-                    {{loadingPlan.customer.code}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>ORDER NO : </b>
-                    {{xDispatchSchedule.salesOrderItem.customerItem.code}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>CUSTOMER PART NO : </b>
-                    {{xDispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>OTR LK CODE / ITEM DESCRIPTION : </b>
-                    {{xDispatchSchedule.job.item.code}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>WHEEL / RIM SIZE : </b>
-                    {{xDispatchSchedule.job.item.size}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>JOB NO : </b>
-                    {{xDispatchSchedule.job.jobNo}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>QUANTITY : </b>
-                    {{xPackagingSpecification.perPalletQuantity}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>PACKED BY :
-                    </b>
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h4>
-                    <b>APPROVED BY :</b>
-                  </h4>
-                </td>
-                <td>
-                  <h4>
-                    <b>PACKAGE NO : </b>
-                  </h4>
-                </td>
-              </tr>
-            </table>
-          </th>
+              <th colspan="3">
+                <table class="table table-bordered table-sm">
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>DESTINATION : </b>{{loadingPlan.address?.port?.name}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>CUSTOMER NO : </b>
+                        {{loadingPlan.customer.code}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>ORDER NO : </b>
+                        {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>CUSTOMER PART NO : </b>
+                        {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>OTR LK CODE / ITEM DESCRIPTION : </b>
+                        {{loadingPlanItem.dispatchSchedule.job.item.code}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>WHEEL / RIM SIZE : </b>
+                        {{loadingPlanItem.dispatchSchedule.job.item.size}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>JOB NO : </b>
+                        {{loadingPlanItem.dispatchSchedule.job.jobNo}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>QUANTITY : </b>
+                        {{loadingPlanItem.packagingSpecification.perPalletQuantity}}
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <h4>
+                        <b>PACKED BY :
+                        </b>
+                      </h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h4>
+                        <b>APPROVED BY :</b>
+                      </h4>
+                    </td>
+                    <td>
+                      <h4>
+                        <b>PACKAGE NO : </b>
+                        {{i+1}} / {{loadingPlanItem.pageCount.length}}
+                      </h4>
+                    </td>
+                </table>
+              </th>
 
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
 
-          <table class="table table-bordered table-sm">
-            <tr>
-              <td class="text-center">
-                <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
-              </td>
-              <td class="text-center">
-                <h3>
-                  <b>OTR WHEEL ENGINEERING LANKA (PVT) LTD</b>
-                </h3>
-                <br/>
-                <h4>
-                  <b>PALLET LABLE</b>
-                </h4>
-              </td>
-              <td>
-                <h6>
-                  <b>ID: {{loadingPlan.id}}
-                  </b>
-                  <br/>
-                  <br/>
-                  <b>DATE: {{loadingPlan.loadingPlanDate}}
-                  </b>
-                </h6>
-              </td>
-            </tr>
-          </table>
+            </div>
+          </div>
 
-          <th colspan="3">
-            <table class="table table-bordered table-sm">
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>DESTINATION : </b>{{loadingPlan.address?.port?.name}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>CUSTOMER NO : </b>
-                    {{loadingPlan.customer.code}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>ORDER NO : </b>
-                    {{xDispatchSchedule.salesOrderItem.customerItem.code}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>CUSTOMER PART NO : </b>
-                    {{xDispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>OTR LK CODE / ITEM DESCRIPTION : </b>
-                    {{xDispatchSchedule.job.item.code}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>WHEEL / RIM SIZE : </b>
-                    {{xDispatchSchedule.job.item.size}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>JOB NO : </b>
-                    {{xDispatchSchedule.job.jobNo}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>QUANTITY : </b>
-                    {{xPackagingSpecification.perPalletQuantity}}
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <h4>
-                    <b>PACKED BY :
-                    </b>
-                  </h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <h4>
-                    <b>APPROVED BY :</b>
-                  </h4>
-                </td>
-                <td>
-                  <h4>
-                    <b>PACKAGE NO : </b>
-                  </h4>
-                </td>
-              </tr>
-            </table>
-          </th>
-
-
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-
-
-        </div>
-      </div>
+          <div class="pagebreak"></div>
+        </span>
+      </span>
     </div>
   </div>
 </div>

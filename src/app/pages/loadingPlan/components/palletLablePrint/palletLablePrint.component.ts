@@ -9,27 +9,17 @@ import 'rxjs/add/operator/take';
   templateUrl: './print.html'
 })
 export class PalletLablePrint {
-  xDispatchSchedule: any = null;
-  xPackagingSpecification:any = null;
+  pageCount = [];
   @Input()
   set id(id: number) {
     if (this.id !== 0) {
       this.service.get(+id).take(1).subscribe(data => {
         if (data === null) return;
           this.loadingPlan = data;
-          this.xDispatchSchedule = null;
-          this.xPackagingSpecification = null;
-
           for (let i = 0; i < this.loadingPlan.loadingPlanItemList.length; i++) {
             let loadingPlanItem = this.loadingPlan.loadingPlanItemList[i];
-
-            if (this.xDispatchSchedule === null) {
-              this.xDispatchSchedule = loadingPlanItem.dispatchSchedule;
-            }
-
-            if (this.xPackagingSpecification === null) {
-              this.xPackagingSpecification = loadingPlanItem.packagingSpecification;
-            }
+            let noOfpackages = Math.ceil(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity);
+            loadingPlanItem.pageCount = new Array(noOfpackages);
           }
 
           setTimeout(() => {

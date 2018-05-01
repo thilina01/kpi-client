@@ -30,22 +30,21 @@ export class SuspendedInvoicePrint {
           this.xNoOfContainers = null;
           this.xLoadingPlanItemList = [];
 
-          for (let i = 0; i < this.invoice.loadingPlanList.length; i++) {
-            let yLoadingPlan = this.invoice.loadingPlanList[i];
+          for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+            let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
+                if (this.xAddress === null) {
+                  this.xAddress = yLoadingPlan.address;
+                }
+              }
+            for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+            let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
 
-            if (this.xNoOfContainers === null) {
-              this.xNoOfContainers = yLoadingPlan.noOfContainers;
-            }
-            if (this.xContainerSize === null) {
-              this.xContainerSize = yLoadingPlan.containerSize;
-            }
-            if (this.xAddress === null) {
-              this.xAddress = yLoadingPlan.address;
-            }
+          for (let ii = 0; ii <yLoadingPlanList.length; ii++) {
+            let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
 
-            let yLoadingPlanItemList = yLoadingPlan.loadingPlanItemList;
-            for (let ii = 0; ii < yLoadingPlanItemList.length; ii++) {
-              let xLoadingPlanItem = yLoadingPlanItemList[ii];
+            for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
+              let xLoadingPlanItem = xLoadingPlanItemList[iii];
+
               xLoadingPlanItem.amount =xLoadingPlanItem.quantity *xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
               this.totalAmount += xLoadingPlanItem.amount;
               xLoadingPlanItem.weight =xLoadingPlanItem.quantity * xLoadingPlanItem.dispatchSchedule.job.item.weight;
@@ -53,6 +52,7 @@ export class SuspendedInvoicePrint {
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
           }
+        }
           setTimeout(() => {
             let element = document.getElementById('suspendedInvoicePrint');
             if (element != null) {

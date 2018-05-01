@@ -13,7 +13,6 @@ import { DispatchNoteForm } from './components/dispatchNoteForm/dispatchNoteForm
 import { routing } from './dispatchNote.routing';
 import { LabourSourceService } from '../labourSource/labourSource.service';
 import { DispatchNoteService } from './dispatchNote.service';
-import { DispatchScheduleService } from '../dispatchSchedule/dispatchSchedule.service';
 import { EmployeeService } from '../employee/employee.service';
 import { CustomerService } from '../customer/customer.service';
 import { AddressService } from '../../services/address.service';
@@ -21,7 +20,7 @@ import { CustomerItemService } from '../customerItem/customerItem.service';
 import { PrintService } from '../../services/print.service';
 import { Print } from './components/dispatchNotePrint/print.component';
 import { LossTypeService } from '../../services/lossType.service';
-import { DispatchService } from '../../services/dispatch.service';
+import { LoadingPlanService } from '../loadingPlan/loadingPlan.service';
 
 @NgModule({
   imports: [
@@ -48,11 +47,10 @@ import { DispatchService } from '../../services/dispatch.service';
   providers: [
     CustomerService,
     DispatchNoteService,
-    DispatchService,
     AddressService,
     EmployeeService,
     PrintService,
-    DispatchScheduleService
+    LoadingPlanService,
   ]
 })
 export class DispatchNoteModule { }

@@ -17,7 +17,7 @@
     <div class='col-sm-12'>
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
         <div class='row'>
-          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+          <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="invoiceDate">Invoice Date</label>
             <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched), 'has-success': (formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched)}">
               <p-calendar id="invoiceDatePicker" formControlName="invoiceDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
@@ -45,7 +45,7 @@
             <br/>
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes" (completeMethod)="filterInvoiceTypes($event)"
-                [minLength]="1" placeholder="Search" (onSelect)="onInvoiceTypeSelect($event)">
+                [minLength]="1" size="20" placeholder="Search" >
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>
@@ -57,10 +57,15 @@
               </a>
             </div>
           </div>
-          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+          <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for='invoiceNumber'>Invoice Number</label>
             <br/>
             <input type='text' pInputText formControlName='invoiceNumber'>
+          </div>
+          <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='exchangeRate'>Exchange Rate</label>
+            <br/>
+            {{exchangeRateDate}} : {{exchangeRateAmount}}
           </div>
         </div>
       </form>
@@ -69,11 +74,11 @@
           <div class=" col-sm-12">
             <div class="row">
               <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-                <label for="loadingPlan">Loading Plan ID</label> &nbsp;
+                <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
                 <br/>
                 <div class="ui-inputgroup">
-                  <p-autoComplete id="loadingPlanSelector" [(ngModel)]="selectedLoadingPlan" [dropdown]="true" field="display" [suggestions]="filteredLoadingPlans"
-                    (completeMethod)="filterLoadingPlans($event)" [minLength]="1" placeholder="Search" (onSelect)="onLoadingPlanSelect($event)">
+                  <p-autoComplete id="dispatchNoteSelector" [(ngModel)]="selectedDispatchNote" [dropdown]="true" field="display" [suggestions]="filteredDispatchNotes"
+                    (completeMethod)="filterDispatchNotes($event)" [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
                         <div>{{option.display}}</div>

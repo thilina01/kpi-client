@@ -26,13 +26,13 @@
     <div class="row">
       <div class="col-12 row">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Customer : {{dispatchNote?.customer?.name}} </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Ship To : {{dispatchNote?.address?.line1}} </div>
+        <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Ship To : {{dispatchNote?.address?.line1}} </div> -->
       </div>
     </div>
     <br/>
     <div class="row">
       <div class="col-sm-12">
-        <p-dataTable #dt [value]="dispatchNote.dispatchList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+        <p-dataTable #dt [value]="xLoadingPlanItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
           <p-column field="id" header="ID"></p-column>
           <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
           <p-column field="dispatchSchedule.confirmDate" header="Confirm Date"></p-column>

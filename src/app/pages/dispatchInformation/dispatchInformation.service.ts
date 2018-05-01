@@ -10,7 +10,7 @@ export class DispatchInformationService extends MasterService {
 
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp, aConfig, anAuthService);
-    this.setApiUrl('dispatches/');
+    this.setApiUrl('loadingPlanItems/');
   }
   getByDispatchDurationPage(startDate, endDate, page, size): Observable<any> {
     return this.http.get(this.apiUrl + 'dispatchDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)

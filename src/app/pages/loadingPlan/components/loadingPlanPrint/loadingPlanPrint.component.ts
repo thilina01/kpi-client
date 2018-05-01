@@ -36,12 +36,12 @@ export class LoadingPlanPrint {
         let loadingPlanItem = this.loadingPlan.loadingPlanItemList[i];
 
         this.quantity += parseInt(loadingPlanItem.quantity);
-        this.cubicMeter += parseInt(loadingPlanItem.cubicMeter);
+        this.cubicMeter +=(loadingPlanItem.cubicMeter);
 
         loadingPlanItem.weight =loadingPlanItem.quantity * loadingPlanItem.dispatchSchedule.job.item.weight;
         this.totalWeight += loadingPlanItem.weight;
 
-        loadingPlanItem.noOfpackages =loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity;
+        loadingPlanItem.noOfpackages =Math.ceil(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity);
         this.TotalnoOfPackages += loadingPlanItem.noOfpackages;
 
         loadingPlanItem.grossWeight =((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)));

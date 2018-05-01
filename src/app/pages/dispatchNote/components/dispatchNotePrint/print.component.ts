@@ -9,12 +9,41 @@ import 'rxjs/add/operator/take';
   templateUrl: './print.html'
 })
 export class Print {
+  totalQuantity = 0.0;
+  TotalnoOfPackages= 0.0;
+  xAddress: any = null;
+  xLoadingPlanItemList = [];
 
   @Input() set id(id: number) {
     if (this.id !== 0) {
       this.service.get(+id).take(1).subscribe(
         (data) => {
           this.dispatchNote = data;
+          this.totalQuantity = 0.0;
+          this.TotalnoOfPackages = 0.0;
+          this.xAddress = null;
+          this.xLoadingPlanItemList = [];
+
+          for (let i = 0; i < this.dispatchNote.loadingPlanList.length; i++) {
+            let yLoadingPlan = this.dispatchNote.loadingPlanList[i];
+
+            if (this.xAddress === null) {
+              this.xAddress = yLoadingPlan.address;
+            }
+            let yLoadingPlanItemList = yLoadingPlan.loadingPlanItemList;
+
+            for (let ii = 0; ii < yLoadingPlanItemList.length; ii++) {
+              let xLoadingPlanItem = yLoadingPlanItemList[ii];
+
+              xLoadingPlanItem.quantity =xLoadingPlanItem.quantity;
+              this.totalQuantity += xLoadingPlanItem.quantity;
+
+              xLoadingPlanItem.noOfpackages =Math.ceil(xLoadingPlanItem.quantity / xLoadingPlanItem.packagingSpecification.perPalletQuantity);
+              this.TotalnoOfPackages += xLoadingPlanItem.noOfpackages;
+
+              this.xLoadingPlanItemList.push(xLoadingPlanItem);
+            }
+          }
           setTimeout(() => {
             let element = document.getElementById('print');
             if (element != null) {

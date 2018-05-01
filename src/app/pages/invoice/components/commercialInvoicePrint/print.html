@@ -78,7 +78,7 @@
             <b>Contact:</b>
             <br/>
             <span *ngFor="let contact of invoice.customer.contactList">
-              {{contact.contactNumber}}
+              {{contact?.contactNumber}}
               <br/>
             </span>
           </h5>

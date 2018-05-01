@@ -23,6 +23,7 @@ import { CustomerTypeService } from '../customerType/customerType.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 import { LossTypeService } from '../../services/lossType.service';
 import { LocationService } from '../location/location.service';
+import { LoadingPlanService } from '../loadingPlan/loadingPlan.service';
 
 @NgModule({
   imports: [
@@ -53,7 +54,7 @@ import { LocationService } from '../location/location.service';
     DispatchScheduleService,
     CustomerTypeService,
     DispatchNoteService,
-    DispatchService,
+    LoadingPlanService,
     LocationService
   ]
 })

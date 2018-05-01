@@ -100,10 +100,10 @@
           <td colspan="2">
             {{organization===undefined?'':organization.svat}}</td>
           <td colspan="2">
-            {{invoice.customer.vatNo}}
+            {{invoice.customer?.vatNo}}
           </td>
           <td colspan="2">
-            {{invoice.customer.sVatNo}}
+            {{invoice.customer?.sVatNo}}
           </td>
         </tr>
       </table>
@@ -131,11 +131,11 @@
         <tr>
           <td colspan="2">{{invoice.customer?.employee?.callingName}}
           </td>
-          <td colspan="2">{{invoice.customer.paymentTerm.name}}
+          <td colspan="2">{{invoice.customer?.paymentTerm?.name}}
           </td>
-          <td colspan="2">{{invoice.customer.incoterm.name}}
+          <td colspan="2">{{invoice.customer?.incoterm?.name}}
           </td>
-          <td colspan="2">{{invoice.customer.currency.name}}
+          <td colspan="2">{{invoice.customer?.currency?.name}}
           </td>
           <td colspan="2">{{invoice.exchangeRate?.exchangeRate}}
           </td>

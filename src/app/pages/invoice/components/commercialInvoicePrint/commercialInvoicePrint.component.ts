@@ -23,40 +23,45 @@ export class CommercialInvoicePrint {
       this.service.get(+id).take(1).subscribe(data => {
           if (data === null) return;
           this.invoice = data;
-
           this.totalAmount = 0.0;
           this.totalWeight = 0.0;
           this.xContainerSize = null;
           this.xNoOfContainers = null;
           this.xLoadingPlanItemList = [];
 
-          for (let i = 0; i < this.invoice.loadingPlanList.length; i++) {
-            let yLoadingPlan = this.invoice.loadingPlanList[i];
+          for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+            let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
 
             if (this.xNoOfContainers === null) {
-              this.xNoOfContainers = yLoadingPlan.noOfContainers;
-            }
-            if (this.xContainerSize === null) {
-              this.xContainerSize = yLoadingPlan.containerSize;
-            }
-            if (this.xAddress === null) {
-              this.xAddress = yLoadingPlan.address;
-            }
+                  this.xNoOfContainers = yLoadingPlan.noOfContainers;
+                }
+                if (this.xContainerSize === null) {
+                  this.xContainerSize = yLoadingPlan.containerSize;
+                }
+                if (this.xAddress === null) {
+                  this.xAddress = yLoadingPlan.address;
+                }
+              }
+            for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+            let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
 
-            let yLoadingPlanItemList = yLoadingPlan.loadingPlanItemList;
-            for (let ii = 0; ii < yLoadingPlanItemList.length; ii++) {
-              let xLoadingPlanItem = yLoadingPlanItemList[ii];
-              xLoadingPlanItem.amount =
-                xLoadingPlanItem.quantity *
-                xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+          for (let ii = 0; ii <yLoadingPlanList.length; ii++) {
+            let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
+
+            for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
+              let xLoadingPlanItem = xLoadingPlanItemList[iii];
+
+              xLoadingPlanItem.amount =xLoadingPlanItem.quantity *
+              xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
               this.totalAmount += xLoadingPlanItem.amount;
               xLoadingPlanItem.weight =
-                xLoadingPlanItem.quantity *
-                xLoadingPlanItem.dispatchSchedule.job.item.weight;
+              xLoadingPlanItem.quantity *
+              xLoadingPlanItem.dispatchSchedule.job.item.weight;
               this.totalWeight += xLoadingPlanItem.weight;
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
           }
+        }
           setTimeout(() => {
             let element = document.getElementById("commercialInvoicePrint");
             if (element != null) {

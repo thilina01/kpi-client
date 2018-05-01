@@ -154,7 +154,7 @@
             <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
               / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)))|
               number : '1.0-0'}} </td>
-            <td class="text-right" style="vertical-align:top">{{(loadingPlanItem.cubicMeter)| number : '1.0-0'}} </td>
+            <td class="text-right" style="vertical-align:top">{{(loadingPlanItem.cubicMeter)}} </td>
           </tr>
           <tr>
             <td colspan="5" class="text-right">
@@ -173,7 +173,7 @@
               {{(TotalGrossWeight)|number : '1.0-0'}}
             </td>
             <td class="text-right">
-              {{(cubicMeter)| number : '1.0-0'}}
+              {{(cubicMeter)}}
             </td>
           </tr>
         </tbody>

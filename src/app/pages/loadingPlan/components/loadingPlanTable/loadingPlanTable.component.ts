@@ -19,7 +19,6 @@ export class LoadingPlanTable {
   loadingPlanId: number = 0;
   items: MenuItem[];
   selectedLoadingPlan: any;
-  dispatchNotePrint = 0;
   loadingPlanPrint = 0;
   packingListPrint= 0;
   palletLablePrint= 0;
@@ -32,15 +31,15 @@ export class LoadingPlanTable {
   ) {
     this.loadData();
     this.items = [
-      {label: 'Dispatch Note', icon: 'fa-print', command: (event) => {
-        this.dispatchNotePrint = this.selectedLoadingPlan.id;
-      }},
+
       {label: 'Loading Plan', icon: 'fa-print', command: (event) => {
         this.loadingPlanPrint = this.selectedLoadingPlan.id;
       }},
+
       {label: 'Packing List', icon: 'fa-print', command: (event) => {
         this.packingListPrint = this.selectedLoadingPlan.id;
       }},
+
       {label: 'Pallet Lable', icon: 'fa-print', command: (event) => {
         this.palletLablePrint = this.selectedLoadingPlan.id;
       }}
@@ -67,26 +66,6 @@ export class LoadingPlanTable {
   selected(data: any) {
     console.log(data);
   }
-
-  // print(id: number) {
-  //   this.loadingPlanId = id;
-  // }
-
-  // dispatchNotePrint(id: number) {
-  //   this.loadingPlanId = id;
-  // }
-
-  // loadingPlanPrint(id: number) {
-  //   this.loadingPlanId = id;
-  // }
-
-  // packingListPrint(id: number) {
-  //   this.loadingPlanId = id;
-  // }
-
-  // palletLablePrint(id: number) {
-  //   this.loadingPlanId = id;
-  // }
 
   onRowDblclick(data: any): void {
     this.router.navigate(["/pages/loadingPlan/form/" + data.id]);

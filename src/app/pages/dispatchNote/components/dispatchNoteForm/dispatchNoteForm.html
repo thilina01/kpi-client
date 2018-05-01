@@ -13,16 +13,17 @@
       </div>
     </div>
   </p-header>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="row">
-          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-            <label for=" customer"> Customer</label>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+        <div class='row'>
+
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for="customer">Customer</label> &nbsp;
             <br/>
             <div class="ui-inputgroup">
-              <p-autoComplete [dropdown]="true" formControlName="customer" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-                [size]="50" [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
                     <div>{{option.code}} : {{option.name}}</div>
@@ -34,109 +35,72 @@
               </a>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
-            <!-- <label for="employee">Sales Person</label>
-            <br/>
-            <div class="ui-inputgroup">
-              <p-autoComplete [dropdown]="true" formControlName="employee" field="display" [suggestions]="filteredEmployeeList" (completeMethod)="filterEmployeeList($event)"
-                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeSelect($event)">
-              </p-autoComplete>
-              <a routerLink="/pages/employee/form" target="blank">
-                <button pButton type="button" icon="fa-plus-circle"></button>
-              </a>
-            </div> -->
-          </div>
-          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-            <label for="address">Ship To</label>
-            <br/>
-            <div class="ui-inputgroup">
-              <p-autoComplete [dropdown]="true" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
-                [size]="76" [minLength]="1" placeholder="Search" (onSelect)="onAddressSelect($event)">
-              </p-autoComplete>
-              <a routerLink="/pages/customer/form" target="blank">
-                <button pButton type="button" icon="fa-plus-circle"></button>
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-    &nbsp;
-    <br/>
-    <p-panel>
-      <div class="row">
-        <div class=" col-sm-12">
-          <form [formGroup]="dispatchFormGroup" class="form-horizontal">
+      </form>
+      <br>
+      <p-panel>
+        <div class="row">
+          <div class=" col-sm-12">
             <div class="row">
-              <div class="col-xl-5 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label for="dispatchSchedule">Dispatch Schedule</label>
-                  <br/>
-                  <div class="ui-inputgroup">
-                    <p-autoComplete [dropdown]="true" id="dispatchScheduleSelector" formControlName="dispatchSchedule" field="display" [suggestions]="filteredDispatchScheduleList"
-                      (completeMethod)="filterDispatchScheduleList($event)" [size]="50" [minLength]="1" placeholder="Search"
-                      (onSelect)="onDispatchScheduleSelect($event)">
-                    </p-autoComplete>
-                    <a routerLink="/pages/dispatchSchedule/form" target="blank">
-                      <button pButton type="button" icon="fa-plus-circle"></button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                <div class="form-group" [ngClass]="{'has-error': (! dispatchFormGroup.controls['quantity'].valid &&  dispatchFormGroup.controls['Quantity'].touched), 'has-success': ( dispatchFormGroup.controls['quantity'].valid && dispatchFormGroup.controls['quantity'].touched)}">
-                  <label for="quantity"> Quantity</label>
-                  <br/>
-                  <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
+              <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label for="loadingPlan">Loading Plan ID</label> &nbsp;
+                <br/>
+                <div class="ui-inputgroup">
+                  <p-autoComplete id="loadingPlanSelector" [(ngModel)]="selectedLoadingPlan" [dropdown]="true" field="display" [suggestions]="filteredLoadingPlans"
+                    (completeMethod)="filterLoadingPlans($event)" [minLength]="1" placeholder="Search" (onSelect)="onLoadingPlanSelect($event)">
+                    <ng-template let-option pTemplate="option">
+                      <div class="ui-helper-clearfix">
+                        <div>{{option.display}}</div>
+                      </div>
+                    </ng-template>
+                  </p-autoComplete>
+                  <a routerLink="/pages/loadingPlan/form" target="blank">
+                    <button pButton type="button" icon="fa-plus-circle"></button>
+                  </a>
                 </div>
               </div>
               <div class="col">
-                <label for="inputFirstName">&nbsp;</label>
+                <label>&nbsp;</label>
                 <br/>
                 <div class="form-group form-inline">
-                  <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                  <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
                 </div>
               </div>
             </div>
-          </form>
-          <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <p-dataTable #dt [value]="formGroup.value.dispatchList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
-                <p-column field="id" header="ID"></p-column>
-                <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
-                <p-column field="dispatchSchedule.confirmDate" header="Confirm Date"></p-column>
-                <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
-                <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
-                <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
-                <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Description"></p-column>
-                <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-                <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
-                <p-column header="Action" styleClass="text-right">
-                  <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
-                    <i (click)="removeDispatch(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
-                  </ng-template>
-                </p-column>
-                <p-footerColumnGroup>
-                  <p-row>
-                    <p-column footer="Totals:" colspan="8" styleClass="text-right"></p-column>
-                    <p-column footer="{{formGroup.value.quantity}}" styleClass="text-right"></p-column>
-                    <p-column footer=""></p-column>
-                  </p-row>
-                </p-footerColumnGroup>
-              </p-dataTable>
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                  <p-column field="id" header="ID"></p-column>
+                  <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+                  <p-column field="dispatchSchedule.confirmDate" header="Confirm Date"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+                  <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
+                  <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Description"></p-column>
+                  <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
+                  <p-column field="quantity" header="Quantity"></p-column>
+                  <p-footerColumnGroup>
+                    <p-row>
+                      <p-column footer="Total" colspan="8" styleClass="text-right"></p-column>
+                      <p-column footer="{{totalQuantity}}" styleClass="text-left"></p-column>
+                    </p-row>
+                  </p-footerColumnGroup>
+                </p-dataTable>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </p-panel>
-    <div class="row">
-      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-        &nbsp;
-        <br/>
-        <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-        <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
-      </div>
+      </p-panel>
+      <br/>
+      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+        <div class='row'>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </p-panel>

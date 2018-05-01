@@ -50,8 +50,8 @@
 			</div>
 		</p-header>
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="dispatchNote.id" header="Dispatch No" [sortable]="true"></p-column>
-		<p-column field="dispatchNote.customer.name" header="Customer" [sortable]="true"></p-column>
+		<p-column field="loadingPlan.dispatchNote.id" header="Dispatch No" [sortable]="true"></p-column>
+		<p-column field="loadingPlan.customer.name" header="Customer" [sortable]="true"></p-column>
 		<p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer PO" [sortable]="true"></p-column>
 		<p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true"></p-column>
 		<p-column field="dispatchSchedule.job.item.code" header="OTR Code"></p-column>
@@ -60,11 +60,11 @@
 		<p-column field="quantity" header="Qty"></p-column>
 		<p-column field="dispatchSchedule.requestDate" header="Request Date" [sortable]="true"></p-column>
 		<p-column field="dispatchSchedule.confirmDate" header="Confirm Date" [sortable]="true"></p-column>
-		<p-column field="dispatchNote.dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
-		<p-column field="dispatchNote.dispatchReleaseTime" header="Dispatch Release" [sortable]="true">
+		<p-column field="loadingPlan.dispatchNote.dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
+		<!-- <p-column field="loadingPlan.dispatchNote.dispatchReleaseTime" header="Dispatch Release" [sortable]="true">
 			<ng-template let-col let-rowData="rowData" pTemplate="body">
-				{{rowData.dispatchNote.dispatchReleaseTime | date:'y-MM-dd HH:mm'}}
+				{{rowData.loadingPlan.dispatchNote.dispatchReleaseTime | date:'y-MM-dd HH:mm'}}
 			</ng-template>
-		</p-column>
+		</p-column> -->
 	</p-dataTable>
 </p-panel>

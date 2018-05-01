@@ -9,6 +9,7 @@ import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service'
 import { DispatchService } from '../../../../services/dispatch.service';
 import 'rxjs/add/operator/take';
 import { LocationService } from '../../../location/location.service';
+import { LoadingPlanService } from '../../../loadingPlan/loadingPlan.service';
 
 @Component({
   selector: 'dispatch-release-form',
@@ -24,13 +25,14 @@ export class DispatchReleaseForm {
   JSON: any = JSON;
   idTextField: HTMLInputElement;
   dispatchNote: any = {};
+  xLoadingPlanItemList = [];
 
   constructor(protected service: DispatchNoteService,
     private route: ActivatedRoute,
     private router: Router,
     fb: FormBuilder,
     private confirmationService: ConfirmationService,
-    private dispatchService: DispatchService,
+    private loadingPlanService: LoadingPlanService,
     private sharedService: SharedService,
     private locationService: LocationService) {
     this.formGroup = fb.group({
@@ -71,15 +73,31 @@ export class DispatchReleaseForm {
   }
 
   loadForm(id: any) {
+    this.xLoadingPlanItemList = [];
     this.service.get(+id).take(1).subscribe(
-      (data) => {
-        if (data != null) {
-          if (data.dispatchReleaseTime !== null) {
-            data.dispatchReleaseTime = new Date(data.dispatchReleaseTime);
+      (dispatchNote) => {
+        if (dispatchNote != null) {
+          if (dispatchNote.dispatchReleaseTime !== null) {
+            dispatchNote.dispatchReleaseTime = new Date(dispatchNote.dispatchReleaseTime);
           }
-          this.dispatchNote = data;
+          this.dispatchNote = dispatchNote;
           this.idTextField.disabled = true;
         }
+        console.log(dispatchNote);
+
+        for (let i = 0; i < dispatchNote.loadingPlanList.length; i++) {
+          let loadingPlan = dispatchNote.loadingPlanList[i];
+          if (loadingPlan === undefined) continue;
+
+          for (let ii = 0; ii < loadingPlan.loadingPlanItemList.length; ii++) {
+            let loadingPlanItem = loadingPlan.loadingPlanItemList[ii];
+            if (loadingPlanItem === undefined) continue;
+              console.log(loadingPlanItem);
+              this.xLoadingPlanItemList.push(loadingPlanItem);
+          }
+        }
+        console.log(this.xLoadingPlanItemList);
+        this.xLoadingPlanItemList = this.xLoadingPlanItemList.slice();
         this.formGroup.patchValue(this.dispatchNote, { onlySelf: true });
       }
     );

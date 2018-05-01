@@ -23,6 +23,7 @@ import { CommercialInvoicePrint } from './components/commercialInvoicePrint';
 import { TaxInvoicePrint } from './components/taxInvoicePrint ';
 import { SuspendedInvoicePrint } from './components/suspendedInvoicePrint /suspendedInvoicePrint.component';
 import { EmployeeService } from '../employee/employee.service';
+import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 
 @NgModule({
   imports: [
@@ -51,7 +52,7 @@ import { EmployeeService } from '../employee/employee.service';
   providers: [
     InvoiceService,
     InvoiceTypeService,
-    LoadingPlanService,
+    DispatchNoteService,
     PrintService,
     ExchangeRateService,
     CurrencyService,

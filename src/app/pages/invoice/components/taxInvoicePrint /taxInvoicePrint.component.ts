@@ -29,23 +29,21 @@ export class TaxInvoicePrint {
           this.xContainerSize = null;
           this.xNoOfContainers = null;
           this.xLoadingPlanItemList = [];
+          for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+            let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
+                if (this.xAddress === null) {
+                  this.xAddress = yLoadingPlan.address;
+                }
+              }
+            for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+            let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
 
-          for (let i = 0; i < this.invoice.loadingPlanList.length; i++) {
-            let yLoadingPlan = this.invoice.loadingPlanList[i];
+          for (let ii = 0; ii <yLoadingPlanList.length; ii++) {
+            let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
 
-            if (this.xNoOfContainers === null) {
-              this.xNoOfContainers = yLoadingPlan.noOfContainers;
-            }
-            if (this.xContainerSize === null) {
-              this.xContainerSize = yLoadingPlan.containerSize;
-            }
-            if (this.xAddress === null) {
-              this.xAddress = yLoadingPlan.address;
-            }
+            for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
+              let xLoadingPlanItem = xLoadingPlanItemList[iii];
 
-            let yLoadingPlanItemList = yLoadingPlan.loadingPlanItemList;
-            for (let ii = 0; ii < yLoadingPlanItemList.length; ii++) {
-              let xLoadingPlanItem = yLoadingPlanItemList[ii];
               xLoadingPlanItem.amount =
                 xLoadingPlanItem.quantity *
                 xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
@@ -55,6 +53,7 @@ export class TaxInvoicePrint {
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
           }
+        }
           setTimeout(() => {
             let element = document.getElementById('taxInvoicePrint');
             if (element != null) {
