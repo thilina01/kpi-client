@@ -35,8 +35,8 @@ export class InvoiceForm {
   dispatchNoteList = [];
   loadingPlanList = [];
   customerList = [];
-  exchangeRateDate = '';
-  exchangeRateAmount = 0.0;
+  // exchangeRateDate = '';
+  // exchangeRateAmount = 0.0;
   invoiceTypes: any;
   dispatchNotes: any;
   totalAmount = 0.0;
@@ -122,12 +122,12 @@ export class InvoiceForm {
       .getByCurrencyAndExchangeRateDate(currencyId, startDate, endDate)
       .subscribe(exchangeRateList => {
         this.formGroup.value.exchangeRate = null;
-        this.exchangeRateDate = '';
-        this.exchangeRateAmount = 0.0;
+        // this.exchangeRateDate = '';
+        // this.exchangeRateAmount = 0.0;
         if (exchangeRateList.length > 0){
           let exchangeRate = exchangeRateList[0];
-          this.exchangeRateDate = exchangeRate.exchangeRateDate;
-          this.exchangeRateAmount = exchangeRate.exchangeRate;
+          // this.exchangeRateDate = exchangeRate.exchangeRateDate;
+          // this.exchangeRateAmount = exchangeRate.exchangeRate;
           // this.formGroup.value.exchangeRate = exchangeRate;
           this.formGroup.patchValue({
             exchangeRate: exchangeRate
