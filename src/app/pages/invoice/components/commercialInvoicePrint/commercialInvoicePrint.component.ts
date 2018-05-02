@@ -32,6 +32,7 @@ export class CommercialInvoicePrint {
           for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
             let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
 
+
             if (this.xNoOfContainers === null) {
                   this.xNoOfContainers = yLoadingPlan.noOfContainers;
                 }
@@ -42,8 +43,10 @@ export class CommercialInvoicePrint {
                   this.xAddress = yLoadingPlan.address;
                 }
               }
+
             for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
             let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
+            let xLoadingPlan = yLoadingPlanList[i];
 
           for (let ii = 0; ii <yLoadingPlanList.length; ii++) {
             let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
