@@ -39,7 +39,7 @@
               <p-autoComplete [dropdown]="true" formControlName="supplierType" field="display" [suggestions]="filteredSupplierTypeList"
                 (completeMethod)="filterSupplierTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSupplierTypeSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/supplierType/form" target="blank">
+              <a routerLink="/pages/supplierTypes/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -51,7 +51,7 @@
               <p-autoComplete [dropdown]="true" formControlName="currency" field="display" [suggestions]="filteredCurrencyList" (completeMethod)="filterCurrencyList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onCurrencySelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/currency/form" target="blank">
+              <a routerLink="/pages/currencies/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -88,7 +88,7 @@
               <p-autoComplete [dropdown]="true" formControlName="paymentTerm" field="display" [suggestions]="filteredPaymentTerms" (completeMethod)="filterPaymentTerms($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onPaymentTermSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/paymentTerm/form" target="blank">
+              <a routerLink="/pages/paymentTerms/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -100,7 +100,7 @@
               <p-autoComplete [dropdown]="true" formControlName="deliveryTerm" field="display" [suggestions]="filteredDeliveryTermList"
                 (completeMethod)="filterDeliveryTermList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onDeliveryTermSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/deliveryTerm/form" target="blank">
+              <a routerLink="/pages/deliveryTerms/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>

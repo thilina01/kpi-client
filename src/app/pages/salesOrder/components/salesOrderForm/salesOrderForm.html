@@ -34,7 +34,7 @@
               <p-autoComplete [dropdown]="true" formControlName="salesOrderType" field="display" [suggestions]="filteredSalesOrderTypes"
                 (completeMethod)="filterSalesOrderTypes($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSalesOrderTypeSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/salesOrderType/form" target="blank">
+              <a routerLink="/pages/salesOrderTypes/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>

@@ -59,7 +59,7 @@
               <p-autoComplete formControlName="itemType" [dropdown]="true" field="display" [suggestions]="filteredItemTypes" (completeMethod)="filterItemTypes($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemTypeSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/itemType/form" target="blank">
+              <a routerLink="/pages/itemTypes/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -71,7 +71,7 @@
               <p-autoComplete formControlName="paint" [dropdown]="true" field="display" [suggestions]="filteredPaints" (completeMethod)="filterPaints($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onPaintSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/paint/form" target="blank">
+              <a routerLink="/pages/paints/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>

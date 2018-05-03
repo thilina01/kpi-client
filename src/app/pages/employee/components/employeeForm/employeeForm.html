@@ -51,7 +51,7 @@
               <p-autoComplete formControlName="employeeCategory" [dropdown]="true" field="display" [suggestions]="filteredEmployeeCategorys"
                 (completeMethod)="filterEmployeeCategory($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onEmployeeCategorySelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/employeeCategory/form" target="blank">
+              <a routerLink="/pages/employeeCategories/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -63,7 +63,7 @@
               <p-autoComplete formControlName="designation" [dropdown]="true" field="display" [suggestions]="filteredDesignations" (completeMethod)="filterDesignation($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onDesignationSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/designation/form" target="blank">
+              <a routerLink="/pages/designations/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -75,7 +75,7 @@
               <p-autoComplete formControlName="labourSource" [dropdown]="true" field="display" [suggestions]="filteredLabourSources" (completeMethod)="filterLabourSource($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLabourSourceSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/labourSource/form" target="blank">
+              <a routerLink="/pages/labourSources/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -99,7 +99,7 @@
               <p-autoComplete formControlName="shift" [dropdown]="true" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShift($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/shift/form" target="blank">
+              <a routerLink="/pages/shifts/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>

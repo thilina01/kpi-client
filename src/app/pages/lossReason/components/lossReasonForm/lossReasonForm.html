@@ -24,7 +24,7 @@
               <p-autoComplete formControlName="lossType" field="display" [dropdown]="true" [suggestions]="filteredLossTypes" (completeMethod)="filterLossTypes($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLossTypeSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/lossType/form" target="blank">
+              <a routerLink="/pages/lossTypes/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>

@@ -58,7 +58,7 @@
               <p-autoComplete formControlName='portOfLoading' id='port' field='display' [dropdown]="true" [suggestions]='filteredPorts'
                 (completeMethod)='filterPorts($event)' [size]='20' [minLength]='1' placeholder='Search'>
               </p-autoComplete>
-              <a routerLink="/pages/port/form" target="blank">
+              <a routerLink="/pages/ports/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -70,7 +70,7 @@
               <p-autoComplete formControlName='containerSize' id='containerSize' field='display' [dropdown]="true" [suggestions]='filteredContainerSizes'
                 (completeMethod)='filterContainerSizes($event)' [size]='20' [minLength]='1' placeholder='Search'>
               </p-autoComplete>
-              <a routerLink="/pages/containerSize/form" target="blank">
+              <a routerLink="/pages/containerSizes/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>

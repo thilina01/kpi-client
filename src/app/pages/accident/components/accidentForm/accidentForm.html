@@ -59,7 +59,7 @@
               <p-autoComplete [dropdown]="true" formControlName="shift" field="display" [suggestions]="filteredShiftList" (completeMethod)="filterShiftList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/shift/form" target="blank">
+              <a routerLink="/pages/shifts/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -71,7 +71,7 @@
               <p-autoComplete [dropdown]="true" formControlName="machine" field="display" [suggestions]="filteredMachineList" (completeMethod)="filterMachineList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onMachineSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/machine/form" target="blank">
+              <a routerLink="/pages/machines/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -83,7 +83,7 @@
               <p-autoComplete [dropdown]="true" formControlName="accidentType" field="display" [suggestions]="filteredAccidentTypes" (completeMethod)="filterAccidentTypes($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAccidentTypeSelect($event)">
               </p-autoComplete>
-              <a routerLink="/pages/accidentType/form" target="blank">
+              <a routerLink="/pages/accidentTypes/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
@@ -129,7 +129,7 @@
                       (completeMethod)="filterTreatmentTypes($event)" [dropdown]="true" [size]="20" [minLength]="1" placeholder="Search"
                       (onSelect)="onTreatmentTypeSelect($event)">
                     </p-autoComplete>
-                    <a routerLink="/pages/treatmentType/form" target="blank">
+                    <a routerLink="/pages/treatmentTypes/form" target="blank">
                       <button pButton type="button" icon="fa-plus-circle"></button>
                     </a>
                   </div>
