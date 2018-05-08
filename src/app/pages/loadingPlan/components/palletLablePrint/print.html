@@ -37,94 +37,97 @@
                   </td>
                 </tr>
               </table>
-
-              <th colspan="3">
-                <table class="table table-bordered table-sm">
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>DESTINATION : </b>{{loadingPlan.address?.port?.name}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>CUSTOMER NO : </b>
-                        {{loadingPlan.customer.code}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>ORDER NO : </b>
-                        {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>CUSTOMER PART NO : </b>
-                        {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>OTR LK CODE / ITEM DESCRIPTION : </b>
-                        {{loadingPlanItem.dispatchSchedule.job.item.code}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>WHEEL / RIM SIZE : </b>
-                        {{loadingPlanItem.dispatchSchedule.job.item.size}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>JOB NO : </b>
-                        {{loadingPlanItem.dispatchSchedule.job.jobNo}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>QUANTITY : </b>
-                        {{loadingPlanItem.packagingSpecification.perPalletQuantity}}
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <h4>
-                        <b>PACKED BY :
-                        </b>
-                      </h4>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <h4>
-                        <b>APPROVED BY :</b>
-                      </h4>
-                    </td>
-                    <td>
-                      <h4>
-                        <b>PACKAGE NO : </b>
-                        {{i+1}} / {{loadingPlanItem.pageCount.length}}
-                      </h4>
-                    </td>
-                </table>
-              </th>
+              <table class="table table-bordered table-sm">
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>DESTINATION : </b>{{loadingPlan.address?.port?.name}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>CUSTOMER NO : </b>
+                      {{loadingPlan.customer.code}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>ORDER NO : </b>
+                      {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>CUSTOMER PART NO : </b>
+                      {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>OTR LK CODE / ITEM DESCRIPTION : </b>
+                      {{loadingPlanItem.dispatchSchedule.job.item.code}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>WHEEL / RIM SIZE : </b>
+                      {{loadingPlanItem.dispatchSchedule.job.item.size}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>JOB NO : </b>
+                      {{loadingPlanItem.dispatchSchedule.job.jobNo}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>QUANTITY : </b>
+                      {{loadingPlanItem.packagingSpecification.perPalletQuantity}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <h4>
+                      <b>PACKED BY :
+                      </b>
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h4>
+                      <b>APPROVED BY :</b>
+                    </h4>
+                  </td>
+                  <td>
+                    <h4>
+                      <b>PACKAGE NO : </b>
+                      {{i+1}} / {{loadingPlanItem.pageCount.length}}
+                    </h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                      DOC: ID/001 &nbsp;&nbsp;&nbsp; ISSUE NO: 03 &nbsp;&nbsp;&nbsp;ISSUE DATE: 2018/05/08
+                  </td>
+                </tr>
+              </table>
 
               <br/>
               <br/>
