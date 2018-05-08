@@ -84,7 +84,11 @@ export class PrintService {
                   body {
                       margin: 0 auto;
                   }
-      
+
+                  div.footer {
+                    position: fixed;
+                    bottom: 0;
+                  }
               }
       
               .pagebreak {
