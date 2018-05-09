@@ -79,7 +79,6 @@
               <br/> {{xAddress?.line5}}
               <br/>
               <br/>
-              <br/>
               <b>Contact:</b>
               <br/>
               <span *ngFor="let contact of invoice.customer.contactList">
@@ -148,9 +147,17 @@
           <tbody>
             <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
               <td style="vertical-align:top"> {{ i+1 }} </td>
-              <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}} </td>
+              <td style="vertical-align:top">
+                <span style="white-space:nowrap">
+                  {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}}
+                </span>
+              </td>
               <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
-                <br/>{{loadingPlanItem.dispatchSchedule.job.item.code}} </td>
+                <br/>
+                <span style="white-space:nowrap"> 
+                  {{loadingPlanItem.dispatchSchedule.job.item.code}} 
+                </span>
+              </td>
               <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
               <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.0-0'}}
               </td>
