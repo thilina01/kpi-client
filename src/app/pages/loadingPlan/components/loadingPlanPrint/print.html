@@ -153,7 +153,7 @@
                 <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
               <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.jobNo}}</td>
               <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
-              <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.0-0'}}
+              <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.noOfpackages}}
               </td>
               <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))| number : '1.0-0'}}</td>
               <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
