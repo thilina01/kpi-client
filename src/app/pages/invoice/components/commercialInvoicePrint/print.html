@@ -186,7 +186,7 @@
       </tr>
       <tr>
         <td>
-          <b> Packing List No:</b> PL{{((invoice.dispatchNoteList[0].loadingPlanList[0].id)|number : '5.0-0').replace(',','')}}
+          <b> Packing List No:</b> PL{{((invoice.dispatchNoteList[0]?.loadingPlanList[0]?.id)|number : '5.0-0')?.replace(',','')}}
         </td>
       </tr>
       <tr>

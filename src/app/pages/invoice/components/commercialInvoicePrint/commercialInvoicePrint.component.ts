@@ -21,57 +21,57 @@ export class CommercialInvoicePrint {
   set id(id: number) {
     if (this.id !== 0) {
       this.service.get(+id).take(1).subscribe(data => {
-          if (data === null) return;
-          this.invoice = data;
-          this.totalAmount = 0.0;
-          this.totalWeight = 0.0;
-          this.xContainerSize = null;
-          this.xNoOfContainers = null;
-          this.xLoadingPlanItemList = [];
+        if (data === null) return;
+        this.invoice = data;
+        this.totalAmount = 0.0;
+        this.totalWeight = 0.0;
+        this.xContainerSize = null;
+        this.xNoOfContainers = null;
+        this.xLoadingPlanItemList = [];
 
-          for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
-            let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
-
-
+        for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+          let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
+          if (yLoadingPlan !== undefined) {
             if (this.xNoOfContainers === null) {
-                  this.xNoOfContainers = yLoadingPlan.noOfContainers;
-                }
-                if (this.xContainerSize === null) {
-                  this.xContainerSize = yLoadingPlan.containerSize;
-                }
-                if (this.xAddress === null) {
-                  this.xAddress = yLoadingPlan.address;
-                }
-              }
+              this.xNoOfContainers = yLoadingPlan.noOfContainers;
+            }
+            if (this.xContainerSize === null) {
+              this.xContainerSize = yLoadingPlan.containerSize;
+            }
+            if (this.xAddress === null) {
+              this.xAddress = yLoadingPlan.address;
+            }
+          }
+        }
 
-            for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
-            let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
-            let xLoadingPlan = yLoadingPlanList[i];
+        for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+          let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
+          let xLoadingPlan = yLoadingPlanList[i];
 
-          for (let ii = 0; ii <yLoadingPlanList.length; ii++) {
+          for (let ii = 0; ii < yLoadingPlanList.length; ii++) {
             let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
 
             for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
               let xLoadingPlanItem = xLoadingPlanItemList[iii];
 
-              xLoadingPlanItem.amount =xLoadingPlanItem.quantity *
-              xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+              xLoadingPlanItem.amount = xLoadingPlanItem.quantity *
+                xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
               this.totalAmount += xLoadingPlanItem.amount;
               xLoadingPlanItem.weight =
-              xLoadingPlanItem.quantity *
-              xLoadingPlanItem.dispatchSchedule.job.item.weight;
+                xLoadingPlanItem.quantity *
+                xLoadingPlanItem.dispatchSchedule.job.item.weight;
               this.totalWeight += xLoadingPlanItem.weight;
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
           }
         }
-          setTimeout(() => {
-            let element = document.getElementById("commercialInvoicePrint");
-            if (element != null) {
-              this.printService.printA4(element.innerHTML);
-            }
-          }, 100);
-        });
+        setTimeout(() => {
+          let element = document.getElementById("commercialInvoicePrint");
+          if (element != null) {
+            this.printService.printA4(element.innerHTML);
+          }
+        }, 100);
+      });
     }
   }
 
