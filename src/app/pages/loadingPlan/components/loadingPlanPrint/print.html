@@ -80,11 +80,10 @@
               <br/> {{loadingPlan.address.line5}}
               <br/>
               <br/>
+              <b>Notify Party:</b>
               <br/>
-              <b>Contact:</b>
-              <br/>
-              <span *ngFor="let contact of loadingPlan.customer.contactList">
-                {{contact.contactNumber}}
+              <span id="notifyParty" *ngFor="let line of loadingPlan.customer?.notifyParty?.name.split(',')">
+                {{line}}
                 <br/>
               </span>
             </h5>
