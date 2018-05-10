@@ -18,6 +18,7 @@ export class PackingListPrint {
   TotalnoOfPackages= 0.0;
   cubicMeter = 0.0;
   loadingPlanItemList = [];
+  Math: any;
   @Input()
   set id(id: number) {
     if (this.id !== 0) {
@@ -40,8 +41,12 @@ export class PackingListPrint {
         loadingPlanItem.weight =loadingPlanItem.quantity * loadingPlanItem.dispatchSchedule.job.item.weight;
         this.totalWeight += loadingPlanItem.weight;
 
-        loadingPlanItem.noOfpackages =Math.ceil(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity);
-        this.TotalnoOfPackages += loadingPlanItem.noOfpackages;
+
+        loadingPlanItem.noOfpackages =((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity
+          / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
+
+        // loadingPlanItem.noOfpackages =(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity);
+        this.TotalnoOfPackages += (loadingPlanItem.noOfpackages);
 
         loadingPlanItem.grossWeight =((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)));
         this.TotalGrossWeight += loadingPlanItem.grossWeight;
@@ -64,6 +69,8 @@ export class PackingListPrint {
     private printService: PrintService,
     private organizationService: OrganizationService) {
     this.getOrganization();
+    this.Math = Math;
+
   }
 
   getOrganization() {
