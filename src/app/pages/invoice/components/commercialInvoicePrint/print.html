@@ -6,8 +6,8 @@
     <br/>
     <table class="table table-sm" style="border:none">
       <thead>
-        <tr>
-          <th colspan="6" style="border:none">
+        <tr style="border-bottom: 1px solid ">
+          <th style="border:none">
             <div style="float:left; margin-left:6px;">
               <table class="table table-sm" style="border:none">
                 <tr>
@@ -21,10 +21,10 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="left" style="border:none">
+                  <td class="left" style="border:none;">
                     Date of Invoice:
                   </td>
-                  <td class="text-left" style="border:none">
+                  <td class="text-left" style="border:none;">
                     <b>&nbsp;&nbsp;&nbsp;{{invoice.invoiceDate}}</b>
                   </td>
                 </tr>
@@ -34,9 +34,9 @@
               </h2>
             </div>
           </th>
-          <th colspan="6" style="border:none">
+          <th style="border:none;">
             <div style="float:right; margin-right:6px;">
-              <img height="100px" src="http://kpi.trwlanka.com/assets/img/logo.png" />
+              <img height="120px" src="http://kpi.trwlanka.com/assets/img/logo.png" />
             </div>
             <br/>
             <br/>
@@ -46,151 +46,160 @@
         </tr>
       </thead>
       <tr>
-        <th colspan="6">
-          <div style="float:left; margin-left:6px;">
-            <h5>
-              <b>Exporter: </b>
-              <br/> OTR Wheel Engineering Lanka (Pvt) Ltd.
-              <br/>No: 218, Minuwangoda Road
-              <br/> Ekala, Ja-Ela
-              <br/> Sri Lanka
-              <br/> Tele:+94 117595900-01
-              <br/>Fax:+94 11 2226454
-              <br/>
-              <br/>
-              <b>Consignee Address: </b>
-              <br/>
-              <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
-                {{line}}
-                <br/>
-              </span>
-            </h5>
-          </div>
-        </th>
-        <th colspan="6">
-          <div style="float:right; margin-right:6px;">
-            <h5>
-              <b>Ship Address:</b>
-              <br/> {{invoice.customer.name}}
-              <br/> {{xAddress?.line1}}
-              <br/> {{xAddress?.line2}}
-              <br/> {{xAddress?.line3}}
-              <br/> {{xAddress?.line4}}
-              <br/> {{xAddress?.line5}}
-              <br/>
-              <br/>
-              <b>Contact:</b>
-              <br/>
-              <span *ngFor="let contact of invoice.customer.contactList">
-                {{contact?.contactNumber}}
-                <br/>
-              </span>
-            </h5>
-          </div>
-        </th>
+        <td style="border:none; vertical-align: top;">
+          <b>Shipper: </b>
+          <p style="line-height:150%">
+            OTR Wheel Engineering Lanka (Pvt) Ltd.
+            <br/>No: 218, Minuwangoda Road
+            <br/> Ekala, Ja-Ela
+            <br/> Sri Lanka
+            <br/> Tele:+94 117595900-01
+            <br/>Fax:+94 11 2226454
+          </p>
+        </td>
+        <td style="padding-left: 250px; border: none; vertical-align: top;">
+          <b>Ship Address: </b>
+          <p style="line-height:150%">
+            {{invoice.customer.name}}
+            <br/> {{xAddress?.line1}}
+            <br/> {{xAddress?.line2}}
+            <br/> {{xAddress?.line3}}
+            <br/> {{xAddress?.line4}}
+            <br/> {{xAddress?.line5}}
+          </p>
+        </td>
       </tr>
       <tr>
-        <table class="table table-bordered text-center">
-          <tr>
-            <td colspan="2">
-              <b>Country of Origin</b>
-            </td>
-            <td colspan="2">
-              <b>Contact Person</b>
-            </td>
-            <td colspan="2">
-              <b>Payment Term</b>
-            </td>
-            <td colspan="2">
-              <b>Inco Term</b>
-            </td>
-            <td colspan="2">
-              <b>No of Containers</b>
-            </td>
-            <td colspan="2">
-              <b>Container Size</b>
-            </td>
-            <td colspan="2">
-              <b>Currency</b>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">Sri Lanka
-            </td>
-            <td colspan="2">{{invoice.customer?.employee?.callingName}}
-            </td>
-            <td colspan="2">{{invoice.customer.paymentTerm.name}}
-            </td>
-            <td colspan="2">{{invoice.customer.incoterm.name}}
-            </td>
-            <td colspan="2">{{xNoOfContainers}}
-            </td>
-            <td colspan="2">{{xContainerSize?.name}}
-            </td>
-            <td colspan="2">{{invoice.customer.currency.name}}
-            </td>
-          </tr>
-        </table>
+        <td style="border:none; vertical-align: top;">
+          <br/>
+          <b>Consignee Address: </b>
+          <p style="line-height:150%">
+            <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
+              {{line}}
+              <br/>
+            </span>
+          </p>
+        </td>
+        <td style="padding-left: 250px; border:none; vertical-align: top;">
+          <br/>
+          <b>Contact:</b>
+          <p style="line-height:150%">
+            <span *ngFor="let contact of invoice.customer.contactList">
+              {{contact?.contactNumber}}
+              <br/>
+            </span>
+          </p>
+        </td>
       </tr>
-      <tr>
-        <table class="table table-bordered">
-          <tr>
-            <th class="text-center">No</th>
-            <th class="text-center">P/O No</th>
-            <th class="text-center">Item</th>
-            <th class="text-center">Description</th>
-            <th class="text-center">No of Packagers</th>
-            <th class="text-center">Qty</th>
-            <th class="text-center">Unit Price</th>
-            <th class="text-center">Amount</th>
-          </tr>
-          <tbody>
-            <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
-              <td style="vertical-align:top"> {{ i+1 }} </td>
-              <td style="vertical-align:top">
-                <span style="white-space:nowrap">
-                  {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}}
-                </span>
-              </td>
-              <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
-                <br/>
-                <span style="white-space:nowrap"> 
-                  {{loadingPlanItem.dispatchSchedule.job.item.code}} 
-                </span>
-              </td>
-              <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
-              <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.0-0'}}
-              </td>
-              <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
-              <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice}} </td>
-              <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
-            </tr>
+
+
+      <tr style="border-bottom: 1px solid ">
+        <td colspan="2">
+          <table class="table table-bordered text-center">
             <tr>
-              <td colspan="7" class="text-right">
-                <b>Total Value</b>
+              <td colspan="2">
+                <b>Country of Origin</b>
               </td>
-              <td class="text-right">
-                {{(totalAmount)| number : '1.2-2'}}
+              <td colspan="2">
+                <b>Contact Person</b>
+              </td>
+              <td colspan="2">
+                <b>Payment Term</b>
+              </td>
+              <td colspan="2">
+                <b>Inco Term</b>
+              </td>
+              <td colspan="2">
+                <b>No of Containers</b>
+              </td>
+              <td colspan="2">
+                <b>Container Size</b>
+              </td>
+              <td colspan="2">
+                <b>Currency</b>
               </td>
             </tr>
             <tr>
-              <td colspan="7" class="text-right">
-                <b>Total Weight Kg</b>
+              <td colspan="2">Sri Lanka
               </td>
-              <td class="text-right">
-                {{(totalWeight)| number : '1.2-2'}}
+              <td colspan="2">{{invoice.customer?.employee?.callingName}}
+              </td>
+              <td colspan="2">{{invoice.customer.paymentTerm.name}}
+              </td>
+              <td colspan="2">{{invoice.customer.incoterm.name}}
+              </td>
+              <td colspan="2">{{xNoOfContainers}}
+              </td>
+              <td colspan="2">{{xContainerSize?.name}}
+              </td>
+              <td colspan="2">{{invoice.customer.currency.name}}
               </td>
             </tr>
-          </tbody>
-        </table>
+          </table>
+        </td>
+      </tr>
+      <tr >
+        <td colspan="2">
+          <table class="table table-bordered">
+            <tr>
+              <th class="text-center">No</th>
+              <th class="text-center">P/O No</th>
+              <th class="text-center">Item</th>
+              <th class="text-center">Description</th>
+              <th class="text-center">No of Packages</th>
+              <th class="text-center">Qty</th>
+              <th class="text-center">Unit Price</th>
+              <th class="text-center">Amount</th>
+            </tr>
+            <tbody>
+              <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
+                <td style="vertical-align:top"> {{ i+1 }} </td>
+                <td style="vertical-align:top">
+                  <span style="white-space:nowrap">
+                    {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}}
+                  </span>
+                </td>
+                <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
+                  <br/>
+                  <span style="white-space:nowrap">
+                    {{loadingPlanItem.dispatchSchedule.job.item.code}}
+                  </span>
+                </td>
+                <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule.job.item.size }}
+                  <br/> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
+                <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
+                </td>
+                <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
+                <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice}} </td>
+                <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
+              </tr>
+              <tr>
+                <td colspan="7" class="text-right">
+                  <b>Total Value</b>
+                </td>
+                <td class="text-right">
+                  {{(totalAmount)| number : '1.2-2'}}
+                </td>
+              </tr>
+              <tr>
+                <td colspan="7" class="text-right">
+                  <b>Total Weight Kg</b>
+                </td>
+                <td class="text-right">
+                  {{(totalWeight)| number : '1.2-2'}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
       </tr>
       <tr>
-        <td>
+        <td colspan="2">
           <b> Packing List No:</b> PL{{((invoice.dispatchNoteList[0]?.loadingPlanList[0]?.id)|number : '5.0-0')?.replace(',','')}}
         </td>
       </tr>
       <tr>
-        <th colspan="6">
+        <th colspan="2">
           <br/>
           <br/>
           <br/>
