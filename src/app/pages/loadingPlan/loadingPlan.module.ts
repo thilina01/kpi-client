@@ -24,7 +24,7 @@ import { CustomerService } from '../customer/customer.service';
 import { PrintService } from '../../services/print.service';
 import { LoadingPlanPrint } from './components/loadingPlanPrint/loadingPlanPrint.component';
 import { PalletLablePrint } from './components/palletLablePrint';
-import { PackingListPrint } from './components/packingListPrint ';
+import { PackingListPrint } from './components/packingListPrint';
 
 @NgModule({
   imports: [
