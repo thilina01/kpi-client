@@ -1,28 +1,31 @@
-import { Injectable, Inject } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Injectable, Inject } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class PrintService {
-
   printA4(printContents: string): void {
-    this.print(printContents, '210mm', '297mm');
+    this.print(printContents, "210mm", "297mm");
   }
 
   printA4Landscape(printContents: string): void {
-    this.print(printContents, '297mm', '210mm');
+    this.print(printContents, "297mm", "210mm");
   }
 
   printA5(printContents: string): void {
-    this.print(printContents, '148mm', '210mm');
+    this.print(printContents, "148mm", "210mm");
   }
 
   printA5Landscape(printContents: string): void {
-    this.print(printContents, '210mm', '148mm');
+    this.print(printContents, "210mm", "148mm");
   }
 
   print(printContents: string, width: string, height: string): void {
     let popupWin;
-    popupWin = window.open('', '_blank', 'top=15,left=10,height=100%,width=auto');
+    popupWin = window.open(
+      "",
+      "_blank",
+      "top=15,left=10,height=100%,width=auto"
+    );
     popupWin.document.open();
     popupWin.document.write(`
     <html>
@@ -39,18 +42,18 @@ export class PrintService {
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                   crossorigin="anonymous"></script>
-      
+
           <style>
               .table-condensed {
                   font-size: 9px;
               }
-      
+
               .table > tbody > tr > td {
                   vertical-align: middle;
               }
-      
+
               @media print {
-      
+
                   hr {
                       display: block;
                       height: 1px;
@@ -59,42 +62,60 @@ export class PrintService {
                       margin: 1em 0;
                       padding: 0;
                   }
-      
+
                   div.divFooter {
                       page-break-inside: avoid;
                       bottom: 0;
                       font-size: 10px;
                       margin-bottom: 1em;
                   }
-      
+
                   @page {
                       size: ${width} ${height};
                       margin-left: 0.75in;
                       /* margin: 25mm 25mm 25mm 25mm;  */
                   }
-      
+
                   html, body {
                       width: 1024px;
-      
+
                       font-size: 1em !important;
                       color: #000 !important;
                       font-family: Arial !important;
                   }
-      
+
                   body {
                       margin: 0 auto;
+                  }
+
+                  div.header {
+                    position: fixed;
+                    top: 0;
                   }
 
                   div.footer {
                     position: fixed;
                     bottom: 0;
                   }
+
+                  .table-bordered {
+                    border: 1px solid #000000 !important;
+                  }
+
+                  .table-bordered > tbody > tr > th,
+                  .table-bordered > tfoot > tr > th,
+                  .table-bordered > thead > tr > td,
+                  .table-bordered > tbody > tr > td,
+                  .table-bordered > tfoot > tr > td {
+                    border: 1px solid #000000 !important;
+                  }
+
               }
-      
+
               .pagebreak {
                   page-break-before: always;
               }
-      
+
               /* page-break-after works, as well */
           </style>
       </head>
@@ -103,5 +124,4 @@ export class PrintService {
     `);
     popupWin.document.close();
   }
-
 }
