@@ -99,7 +99,7 @@
               {{ loadingPlanItem.dispatchSchedule.job.item.size }}
               <br/> {{ loadingPlanItem.dispatchSchedule.job.item.description }}
             </td>
-            <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.0-0'}}
+            <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.noOfpackages) | number : '1.0-0'}}
             </td>
             <td class="text-center" style="vertical-align:top"> {{ loadingPlanItem.quantity}} </td>
           </tr>
