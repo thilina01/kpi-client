@@ -167,7 +167,7 @@
                 </td>
                 <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule.job.item.size }}
                   <br/> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
-                <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
+                <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
                 </td>
                 <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
                 <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice}} </td>

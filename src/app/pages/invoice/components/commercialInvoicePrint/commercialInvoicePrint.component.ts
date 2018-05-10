@@ -16,6 +16,7 @@ export class CommercialInvoicePrint {
   xLoadingPlanItemList = [];
   xContainerSize: any = null;
   xNoOfContainers: number = null;
+  Math: any;
 
   @Input()
   set id(id: number) {
@@ -84,6 +85,7 @@ export class CommercialInvoicePrint {
     private organizationService: OrganizationService
   ) {
     this.getOrganization();
+    this.Math = Math;
   }
 
   getOrganization() {

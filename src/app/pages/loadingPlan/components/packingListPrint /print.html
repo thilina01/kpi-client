@@ -129,7 +129,7 @@
           </td>
         </tr>
       </table>
-      <table class="table table-bordered">
+      <table class="table table-sm table-bordered">
         <tr>
           <th class="text-center">No</th>
           <th class="text-center">P/O No</th>
@@ -151,7 +151,7 @@
               <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
             <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.jobNo}}</td>
             <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
-            <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.noOfpackages}}
+            <td class="text-center" style="vertical-align:top"> {{loadingPlanItem.noOfpackages}}
             </td>
             <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))| number : '1.0-0'}}</td>
             <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
@@ -167,7 +167,7 @@
               {{quantity}}
             </td>
             <td class="text-right">
-              {{TotalnoOfPackages|number : '1.0-0'}}
+              {{TotalnoOfPackages}}
             </td>
             <td class="text-right">
               {{(totalWeight)|number : '1.0-0'}}
