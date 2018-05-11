@@ -110,6 +110,22 @@ export class PrintService {
                     border: 1px solid #000000 !important;
                   }
 
+
+                  .table-no-border > tbody > tr > th,
+                  .table-no-border > tfoot > tr > th,
+                  .table-no-border > thead > tr > td,
+                  .table-no-border > tbody > tr > td,
+                  .table-no-border > tfoot > tr > td,
+                  .table-no-border > tr > td {
+                    border: none !important;
+                  }
+                  table, tr, td {
+                    border: none !important;
+                  }
+              }
+
+              .no-border > tr > td {
+                border: none !important;
               }
 
               .pagebreak {

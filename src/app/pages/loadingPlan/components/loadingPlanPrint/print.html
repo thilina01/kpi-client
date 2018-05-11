@@ -2,198 +2,211 @@
   <div class="container-fluid" style="padding: 15px;">
     <br/>
     <br/>
-    <table class="table table-sm" style="border:none">
+    <table class="table table-sm table-bordered">
       <thead>
         <tr>
-          <th colspan="6" style="border:none">
-            <div style="float:left; margin-left:6px;">
-              <table class="table table-sm" style="border:none">
-                <tr>
-                  <td class="text-left" style="border:none">
-                    <h3> Loading Plan No:</h3>
-                  </td>
-                  <td class="text-left" style="border:none">
-                    <h3>
-                      <b>&nbsp;&nbsp;{{loadingPlan.id}}</b>
-                    </h3>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="left" style="border:none">
-                    Date of LoadingPlan:
-                  </td>
-                  <td class="text-left" style="border:none">
-                    <b>&nbsp;&nbsp;&nbsp;{{loadingPlan.loadingPlanDate}}</b>
-                  </td>
-                </tr>
-              </table>
-              <h2>
-                <b>Loading Plan</b>
-              </h2>
-            </div>
-          </th>
-          <th colspan="6" style="border:none">
-            <div style="float:right; margin-right:6px;">
-              <img height="100px" src="http://kpi.trwlanka.com/assets/img/logo.png" />
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-          </th>
+          <td colspan="10" style=" border: 1px solid #ffffff !important;">
+            <table class="table-no-border" width="100%">
+              <tr>
+                <td style=" border-bottom: 1px solid #000000 !important;">
+                  <div style="float:left; margin-left:6px;">
+                    <table class="table table-sm table-no-border">
+                      <tr>
+                        <td class="text-left">
+                          <h3> Loading Plan No:</h3>
+                        </td>
+                        <td class="text-left">
+                          <h3>
+                            <b>&nbsp;&nbsp;{{loadingPlan.id}}</b>
+                          </h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="left">
+                          Date of Loading Plan:
+                        </td>
+                        <td class="text-left">
+                          <b>&nbsp;&nbsp;&nbsp;{{loadingPlan.loadingPlanDate}}</b>
+                        </td>
+                      </tr>
+                    </table>
+                    <h2>
+                      <b> Loading Plan</b>
+                    </h2>
+                  </div>
+                </td>
+                <td style=" border-bottom: 1px solid #000000 !important;">
+                  <div style="float:right; margin-right:6px;">
+                    <img height="120px" src="http://kpi.trwlanka.com/assets/img/logo.png" />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="border:none; vertical-align: top;">
+                  <br/>
+                  <b>Shipper: </b>
+                  <p style="line-height:150%">
+                    OTR Wheel Engineering Lanka (Pvt) Ltd.
+                    <br/>No: 218, Minuwangoda Road
+                    <br/> Ekala, Ja-Ela
+                    <br/> Sri Lanka
+                    <br/> Tele:+94 117595900-01
+                    <br/>Fax:+94 11 2226454
+                  </p>
+                </td>
+                <td style="border:none; vertical-align: top; padding-left: 150px;">
+                  <br/>
+                  <b>Ship Address: </b>
+                  <p style="line-height:150%">
+                    {{loadingPlan.customer.name}}
+                    <br/> {{loadingPlan.address.line1}}
+                    <br/> {{loadingPlan.address.line2}}
+                    <br/> {{loadingPlan.address.line3}}
+                    <br/> {{loadingPlan.address.line4}}
+                    <br/> {{loadingPlan.address.line5}}
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="border:none; vertical-align: top; ">
+                  <br/>
+                  <b>Consignee Address: </b>
+                  <p style="line-height:150%">
+                    {{loadingPlan.customer.name}}
+                    <span id="consignee" *ngFor="let line of loadingPlan.customer.consignee.split(',')">
+                      {{line}}
+                      <br/>
+                    </span>
+                  </p>
+                </td>
+                <td style="border:none; vertical-align: top;padding-left: 150px; ">
+                  <br/>
+                  <b>Notify Party:</b>
+                  <p style="line-height:150%">
+                    <span id="notifyParty" *ngFor="let line of loadingPlan.customer?.notifyParty?.name.split(',')">
+                      {{line}}
+                      <br/>
+                    </span>
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="10" style=" border: 1px solid #ffffff !important;  border-bottom: 1px solid #000000 !important;">
+            <table class="table table-bordered text-center">
+              <tr>
+                <th>
+                  Country of Origin
+                </th>
+                <th>
+                  Contact Person
+                </th>
+                <th>
+                  Port of Loading
+                </th>
+                <th>
+                  Country of Final Destination
+                </th>
+                <th>
+                  Final Destination
+                </th>
+                <th>
+                  Container Size
+                </th>
+                <th>
+                  No of Containers
+                </th>
+              </tr>
+              <td>Sri Lanka
+              </td>
+              <td>{{loadingPlan.customer?.employee?.callingName}}
+              </td>
+              <td>{{loadingPlan.portOfLoading.name}}
+              </td>
+              <td>{{loadingPlan.address?.country?.name}}
+              </td>
+              <td>{{loadingPlan.address?.port?.name}}
+              </td>
+              <td>{{loadingPlan.containerSize.name}}
+              </td>
+              <td>{{loadingPlan.noOfContainers}}
+              </td>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">No</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">P/O No</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">Customer Part No</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">Description</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">Job No</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">Qty</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">PKGS</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">Net Weight Kg</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">Gross Weight Kg</th>
+          <th class="text-center" style=" border: 1px solid #000000 !important;">CBM</th>
         </tr>
       </thead>
-      <tbody>
-        <th colspan="6">
-          <div style="float:left; margin-left:6px;">
-            <h5>
-              <b>Exporter: </b>
-              <br/> OTR Wheel Engineering Lanka (Pvt) Ltd.
-              <br/>No: 218, Minuwangoda Road
-              <br/> Ekala, Ja-Ela
-              <br/> Sri Lanka
-              <br/> Tele:+94 117595900-01
-              <br/>Fax:+94 11 2226454
-              <br/>
-              <br/>
-              <b>Consignee Address: </b>
-              <br/>
-              <span id="consignee" *ngFor="let line of loadingPlan.customer?.consignee?.split(',')">
-                {{line}}
-                <br/>
-              </span>
-            </h5>
-          </div>
-        </th>
-        <th colspan="6">
-          <div style="float:right; margin-right:6px;">
-            <h5>
-              <b>Ship Address:</b>
-              <br/> {{loadingPlan.customer.name}}
-              <br/> {{loadingPlan.address.line1}}
-              <br/> {{loadingPlan.address.line2}}
-              <br/> {{loadingPlan.address.line3}}
-              <br/> {{loadingPlan.address.line4}}
-              <br/> {{loadingPlan.address.line5}}
-              <br/>
-              <br/>
-              <b>Notify Party:</b>
-              <br/>
-              <span id="notifyParty" *ngFor="let line of loadingPlan.customer?.notifyParty?.name.split(',')">
-                {{line}}
-                <br/>
-              </span>
-            </h5>
-          </div>
-        </th>
-        <table class="table table-bordered text-center">
-          <tr>
-            <td colspan="2">
-              <b>Country of Origin</b>
-            </td>
-            <td colspan="2">
-              <b>Contact Person</b>
-            </td>
-            <td colspan="2">
-              <b>Port of Loading</b>
-            </td>
-            <td colspan="2">
-              <b>Country of Final Destination</b>
-            </td>
-            <td colspan="2">
-              <b>Final Destination</b>
-            </td>
-            <td colspan="2">
-              <b>Container Size</b>
-            </td>
-            <td colspan="2">
-              <b>No of Containers</b>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">Sri Lanka
-            </td>
-            <td colspan="2">{{loadingPlan.customer?.employee?.callingName}}
-            </td>
-            <td colspan="2">{{loadingPlan.portOfLoading.name}}
-            </td>
-            <td colspan="2">{{loadingPlan.address?.country?.name}}
-            </td>
-            <td colspan="2">{{loadingPlan.address?.port?.name}}
-            </td>
-            <td colspan="2">{{loadingPlan.containerSize.name}}
-            </td>
-            <td colspan="2">{{loadingPlan.noOfContainers}}
-            </td>
 
-          </tr>
-        </table>
-        <table class="table table-sm table-bordered">
-          <tr>
-            <th class="text-center">No</th>
-            <th class="text-center">P/O No</th>
-            <th class="text-center">Customer Part No</th>
-            <th class="text-center">Description</th>
-            <th class="text-center">Job No</th>
-            <th class="text-center">Qty</th>
-            <th class="text-center">PKGS</th>
-            <th class="text-center">Net Weight Kg</th>
-            <th class="text-center">Gross Weight Kg</th>
-            <th class="text-center">CBM</th>
-          </tr>
-          <tbody>
-            <tr *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList; let i = index">
-              <td style="vertical-align:top"> {{ i+1 }} </td>
-              <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}} </td>
-              <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}</td>
-              <td style="vertical-align:top"> {{ loadingPlanItem.dispatchSchedule.job.item.size }}
-                <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
-              <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.jobNo}}</td>
-              <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
-              <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity
-                / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
-                | number : '1.2-2'}}              </td>
-              <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))| number : '1.0-0'}}</td>
-              <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
-                / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)))|
-                number : '1.0-0'}} </td>
-              <td class="text-right" style="vertical-align:top">{{(loadingPlanItem.cubicMeter)}} </td>
-            </tr>
-            <tr>
-              <td colspan="5" class="text-right">
-                <b>Total</b>
-              </td>
-              <td class="text-right">
-                {{quantity}}
-              </td>
-              <td class="text-right">
-                {{TotalnoOfPackages|number : '1.0-0'}}
-              </td>
-              <td class="text-right">
-                {{(totalWeight)|number : '1.0-0'}}
-              </td>
-              <td class="text-right">
-                {{(TotalGrossWeight)|number : '1.0-0'}}
-              </td>
-              <td class="text-right">
-                {{(cubicMeter)}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <tbody>
+        <tr *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList; let i = index">
+          <td style="vertical-align:top"> {{ i+1 }} </td>
+          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}} </td>
+          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}</td>
+          <td style="vertical-align:top"> {{ loadingPlanItem.dispatchSchedule.job.item.size }}
+            <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
+          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.jobNo}}</td>
+          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
+          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity
+            / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
+            | number : '1.2-2'}}
+          </td>
+          <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))| number : '1.0-0'}}</td>
+          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
+            / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)))|
+            number : '1.0-0'}} </td>
+          <td class="text-right" style="vertical-align:top">{{(loadingPlanItem.cubicMeter)}} </td>
+        </tr>
+
         <tr>
-          <br/>
-          <br/>
-          <br/>
-          <th colspan="6">
+          <td colspan="5" class="text-right">
+            <b>Total</b>
+          </td>
+          <td class="text-right">
+            {{quantity}}
+          </td>
+          <td class="text-right">
+            {{(TotalnoOfPackages)|number : '1.0-0'}}
+          </td>
+          <td class="text-right">
+            {{(totalWeight)|number : '1.0-0'}}
+          </td>
+          <td class="text-right">
+            {{(TotalGrossWeight)|number : '1.0-0'}}
+          </td>
+          <td class="text-right">
+            {{(cubicMeter)}}
+          </td>
+        </tr>
+
+        <tr>
+          <th colspan="10" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <b>------------------------------------</b>
             <br/>Authorized Signature
           </th>
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="footer">
-    DOC: PL/010 &nbsp;&nbsp;&nbsp; ISSUE NO: 01 &nbsp;&nbsp;&nbsp;ISSUE DATE: 2018/05/08
+    <div class="footer">
+      DOC: PL/010 &nbsp;&nbsp;&nbsp; ISSUE NO: 01 &nbsp;&nbsp;&nbsp;ISSUE DATE: 2018/05/08
+    </div>
   </div>
 </div>
