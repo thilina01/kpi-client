@@ -49,9 +49,11 @@
         {{rowData.invoiceDate | date:'y-MM-dd'}}
       </ng-template>
     </p-column>
+    <p-column field='customer.code' header='Customer Code' [sortable]='true'></p-column>
     <p-column field='customer.name' header='Customer' [sortable]='true'></p-column>
     <p-column field='invoiceNumber' header='Invoice Number' [sortable]='true'></p-column>
     <p-column field='invoiceType.name' header='Invoice Type' [sortable]='true'></p-column>
+    <p-column field='exchangeRate.exchangeRate' header='Exchange Rate' [sortable]='true'></p-column>
     <p-column header='Action' styleClass='text-right'>
       <ng-template let-data='rowData' pTemplate='body'>
         <a (click)="print(data)" href="javascript:void(0)">
