@@ -58,4 +58,9 @@ export class DispatchScheduleService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
+  getOrderInformationPage(customer, job, item, salesOrderType, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'orderInformation?customer=' + customer+ '&job=' + job + '&item=' + item + '&salesOrderType=' + salesOrderType + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+
 }

@@ -123,6 +123,7 @@ export class Pages {
     { routerLink: '/pages/operationProgress/summary', name: 'Operation Progress Summary', menuType: this.menuType },
     { routerLink: '/pages/operationProgress/table', name: 'Operation Progress', menuType: this.menuType },
     { routerLink: '/pages/operationType/table', name: 'Operation Type', menuType: this.menuType },
+    { routerLink: '/pages/orderInformation/table', name: 'Master Order Book', menuType: this.menuType },
     { routerLink: '/pages/organization/table', name: 'Organization', menuType: this.menuType },
     { routerLink: '/pages/packagingSpecification/table', name: 'Packaging Specification', menuType: this.menuType },
     { routerLink: '/pages/paints/table', name: 'Paint', menuType: this.menuType },

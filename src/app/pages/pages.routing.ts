@@ -84,6 +84,7 @@ export const routes: Routes = [
       // { path: 'notifyParty', canActivate: [AuthGuard], loadChildren: 'app/pages/notifyParty/notifyParty.module#NotifyPartyModule' },
       { path: 'operation', canActivate: [AuthGuard], loadChildren: 'app/pages/operation/operation.module#OperationModule' },
       { path: 'organization', canActivate: [AuthGuard], loadChildren: 'app/pages/organization/organization.module#OrganizationModule' },
+      { path: 'orderInformation', canActivate: [AuthGuard], loadChildren: 'app/pages/orderInformation/orderInformation.module#OrderInformationModule' },
       { path: 'onTimeDelivery', canActivate: [AuthGuard], loadChildren: 'app/pages/onTimeDelivery/onTimeDelivery.module#OnTimeDeliveryModule' },
       { path: 'operationType', canActivate: [AuthGuard], loadChildren: 'app/pages/operationType/operationType.module#OperationTypeModule' },
       { path: 'packagingSpecification', canActivate: [AuthGuard], loadChildren: 'app/pages/packagingSpecification/packagingSpecification.module#PackagingSpecificationModule' },
