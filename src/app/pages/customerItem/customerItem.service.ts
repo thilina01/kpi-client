@@ -21,4 +21,9 @@ export class CustomerItemService extends MasterService {
     return this.http.post(this.apiUrl + 'pageByCustomer?page=' + page + '&size=' + size, JSON.stringify(customer), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getcustomerAndItem(customer,  item, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'customerItem?customer=' + customer+ '&item=' + item + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 }
