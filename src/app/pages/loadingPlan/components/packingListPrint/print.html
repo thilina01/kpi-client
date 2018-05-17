@@ -73,6 +73,7 @@
                   <b>Consignee Address: </b>
                   <p style="line-height:150%">
                     {{loadingPlan.customer.name}}
+                    <br/>
                     <span id="consignee" *ngFor="let line of loadingPlan.customer.consignee.split(',')">
                       {{line}}
                       <br/>
