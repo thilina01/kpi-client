@@ -28,6 +28,7 @@ export class CommercialInvoicePrint {
         this.totalWeight = 0.0;
         this.xContainerSize = null;
         this.xNoOfContainers = null;
+        this.xAddress = null;
         this.xLoadingPlanItemList = [];
 
         for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
