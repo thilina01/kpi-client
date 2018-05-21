@@ -65,6 +65,7 @@
                   <br/>
                   <b>Consignee: </b>
                   <p style="line-height:150%">
+                    {{invoice.customer.name}}
                     <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
                       {{line}}
                       <br/>
@@ -153,7 +154,7 @@
                 </td>
                 <td>{{invoice.exchangeRate?.exchangeRate}}
                 </td>
-                <td>{{(totalWeight)| number : '1.0-0'}}
+                <td>{{(invoice.totalWeight)| number : '1.0-0'}}
                 </td>
               </tr>
             </table>
