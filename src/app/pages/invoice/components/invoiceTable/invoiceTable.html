@@ -58,9 +58,10 @@
         {{rowData.totalAmount | number : '1.2-2'}}
       </ng-template>
     </p-column>
-    <p-column field="Total Sale LKR" styleClass="text-right" header="Total Sale LKR">
+
+    <p-column field="totalSalesAmount" styleClass="text-right" header="Total Sale LKR">
       <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{(rowData.totalAmount * rowData.exchangeRate.exchangeRate)| number : '1.2-2' }}
+        {{(rowData.totalSalesAmount)| number : '1.2-2' }}
       </ng-template>
     </p-column>
     <p-column field='exchangeRate.exchangeRate' styleClass="text-right" header='Exchange Rate' [sortable]='true'>
@@ -73,11 +74,16 @@
         {{rowData.totalWeight | number : '1.0-0'}}
       </ng-template>
     </p-column>
-    <!-- <p-column field="Suspended Tax Value" styleClass="text-right" header="Suspended Tax Value">
-        <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-          {{(rowData.totalAmount * rowData.exchangeRate.exchangeRate)*0.15| number : '1.2-2' }}
-        </ng-template>
-      </p-column> -->
+    <p-column field='taxRate' styleClass="text-right" header='Tax Rate' [sortable]='true'>
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{((rowData.taxRate)*100)| number : '1.0-0'}}%
+      </ng-template>
+    </p-column>
+    <p-column field="taxValue" styleClass="text-right" header="Tax Value">
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{(rowData.taxValue)| number : '1.2-2' }}
+      </ng-template>
+    </p-column>
     <p-column header='Action' styleClass='text-right'>
       <ng-template let-data='rowData' pTemplate='body'>
         <a (click)="print(data)" href="javascript:void(0)">

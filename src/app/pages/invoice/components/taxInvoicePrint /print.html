@@ -190,24 +190,24 @@
         </tr>
         <tr>
           <td colspan="6" class="text-right">
-            <b>VAT Value USD 15%</b>
+            <b>VAT Value USD {{((invoice.taxRate)*100)| number : '1.0-0'}}%</b>
           </td>
           <td class="text-right">
-            {{((totalAmount)*(15/100))| number : '1.2-2'}} </td>
+            {{((totalAmount)*(invoice.taxRate))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <td colspan="6" class="text-right">
-            <b>VAT Value LKR 15%</b>
+            <b>VAT Value LKR {{((invoice.taxRate)*100)| number : '1.0-0'}}%</b>
           </td>
           <td class="text-right">
-            {{(((totalAmount)*(15/100))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
+            {{(((totalAmount)*(invoice.taxRate))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <td colspan="6" class="text-right">
             <b>Total Value of the Supply USD</b>
           </td>
           <td class="text-right">
-            {{((((totalAmount)*(15/100))+totalAmount))| number : '1.2-2'}} </td>
+            {{((((totalAmount)*(invoice.taxRate))+totalAmount))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <th colspan="7" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">

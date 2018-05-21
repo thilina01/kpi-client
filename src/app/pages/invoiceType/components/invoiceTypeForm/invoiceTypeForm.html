@@ -1,0 +1,44 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Invoice Type Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/invoiceType/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <label for="code">Code</label> &nbsp;
+          <br/>
+          <input type="text" pInputText formControlName="code">
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <label for="name">Name</label> &nbsp;
+          <br/>
+          <input type="text" pInputText formControlName="name">
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <label for="taxRate">Tax Rate</label> &nbsp;
+          <br/>
+          <input type="number" pInputText formControlName="taxRate">
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          &nbsp;
+          <br/>
+          <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+          <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>

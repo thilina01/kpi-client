@@ -41,7 +41,8 @@ export class InvoiceForm {
   dispatchNotes: any;
   totalAmount = 0.0;
   totalWeight = 0.0;
-  salesAmount=0.0;
+  taxValue=0.0;
+  totalSalesAmount=0.0;
   // exchangeRate :any;
   dispatchNote: any;
   invoiceType: any;
@@ -64,13 +65,14 @@ export class InvoiceForm {
     private invoiceTypeService: InvoiceTypeService,
     private dispatchNoteService: DispatchNoteService,
     private exchangeRateService: ExchangeRateService,
-    private confirmationService: ConfirmationService
-  ) {
+    private confirmationService: ConfirmationService) {
     this.formGroup = fb.group({
       id: "",
       totalAmount: "",
       totalWeight:"",
-      salesAmount:"",
+      taxRate:"",
+      taxValue:"",
+      totalSalesAmount:"",
       currency: [null, ""],
       employee: [null, ""],
       dispatchNoteList: [null, Validators.required],
@@ -206,8 +208,6 @@ export class InvoiceForm {
     this.loadingPlanList = [];
     this.totalAmount = 0.0;
     this.totalWeight = 0.0;
-    this.exchangeRateAmount = 0.0;
-
 
     for (let i = 0; i < this.formGroup.value.dispatchNoteList.length; i++) {
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
@@ -249,11 +249,23 @@ export class InvoiceForm {
       alert("loading Plan Required");
       return;
     }
+
+    values.totalAmount = this.totalAmount;
+    let exchangeRate = this.formGroup.value.exchangeRate.exchangeRate;
+    let totalAmount = this.totalAmount;
+    this.totalSalesAmount = totalAmount * exchangeRate;
+
+    values.totalSalesAmount = this.totalSalesAmount;
+    let taxRate = this.formGroup.value.invoiceType.taxRate;
+    let totalSalesAmount = this.totalSalesAmount ;
+    this.taxValue = totalSalesAmount * taxRate;
+
     values.currency = this.currency;
     values.employee = this.employee;
-    values.totalAmount = this.totalAmount;
     values.totalWeight = this.totalWeight;
-    values.salesAmount = this.salesAmount;
+    values.totalSalesAmount = this.totalSalesAmount;
+    values.taxValue = this.taxValue;
+    this.formGroup.value.taxRate = this.formGroup.value.invoiceType.taxRate;
     //values.exchangeRate = this.exchangeRate;
     console.log(values);
     this.service.save(values).subscribe(data => {

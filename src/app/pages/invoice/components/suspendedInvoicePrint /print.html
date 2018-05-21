@@ -66,7 +66,7 @@
                   <b>Consignee: </b>
                   <p style="line-height:150%">
                     {{invoice.customer.name}}
-                  <br/>
+                    <br/>
                     <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
                       {{line}}
                       <br/>
@@ -194,17 +194,17 @@
         </tr>
         <tr>
           <td colspan="6" class="text-right">
-            <b>Suspended VAT Value USD 15%</b>
+            <b>Suspended VAT Value USD {{((invoice.taxRate)*100)| number : '1.0-0'}}%</b>
           </td>
           <td class="text-right">
-            {{((totalAmount)*(15/100))| number : '1.2-2'}} </td>
+            {{((totalAmount)*(invoice.taxRate))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <td colspan="6" class="text-right">
-            <b>Suspended VAT Value LKR 15%</b>
+            <b>Suspended VAT Value LKR {{((invoice.taxRate)*100)| number : '1.0-0'}}%</b>
           </td>
           <td class="text-right">
-            {{(((totalAmount)*(15/100))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
+            {{(((totalAmount)*(invoice.taxRate))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <th colspan="7" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">
