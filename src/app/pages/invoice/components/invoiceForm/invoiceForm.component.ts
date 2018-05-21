@@ -36,10 +36,13 @@ export class InvoiceForm {
   loadingPlanList = [];
   customerList = [];
   // exchangeRateDate = '';
-  // exchangeRateAmount = 0.0;
+  exchangeRateAmount = 0.0;
   invoiceTypes: any;
   dispatchNotes: any;
   totalAmount = 0.0;
+  totalWeight = 0.0;
+  salesAmount=0.0;
+  // exchangeRate :any;
   dispatchNote: any;
   invoiceType: any;
   JSON: any = JSON;
@@ -66,6 +69,8 @@ export class InvoiceForm {
     this.formGroup = fb.group({
       id: "",
       totalAmount: "",
+      totalWeight:"",
+      salesAmount:"",
       currency: [null, ""],
       employee: [null, ""],
       dispatchNoteList: [null, Validators.required],
@@ -200,6 +205,9 @@ export class InvoiceForm {
     this.loadingPlanItemList = [];
     this.loadingPlanList = [];
     this.totalAmount = 0.0;
+    this.totalWeight = 0.0;
+    this.exchangeRateAmount = 0.0;
+
 
     for (let i = 0; i < this.formGroup.value.dispatchNoteList.length; i++) {
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
@@ -213,10 +221,11 @@ export class InvoiceForm {
         for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
           let xLoadingPlanItem = xLoadingPlanItemList[iii];
 
-          xLoadingPlanItem.amount =
-            xLoadingPlanItem.quantity *
-            xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+          xLoadingPlanItem.amount =xLoadingPlanItem.quantity *xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
           this.totalAmount += xLoadingPlanItem.amount;
+
+          xLoadingPlanItem.weight = xLoadingPlanItem.quantity * xLoadingPlanItem.dispatchSchedule.job.item.weight;
+          this.totalWeight += xLoadingPlanItem.weight;
 
           this.loadingPlanItemList.push(xLoadingPlanItem);
         }
@@ -243,6 +252,8 @@ export class InvoiceForm {
     values.currency = this.currency;
     values.employee = this.employee;
     values.totalAmount = this.totalAmount;
+    values.totalWeight = this.totalWeight;
+    values.salesAmount = this.salesAmount;
     //values.exchangeRate = this.exchangeRate;
     console.log(values);
     this.service.save(values).subscribe(data => {

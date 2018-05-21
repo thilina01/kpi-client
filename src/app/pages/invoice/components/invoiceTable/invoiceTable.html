@@ -49,11 +49,35 @@
         {{rowData.invoiceDate | date:'y-MM-dd'}}
       </ng-template>
     </p-column>
-    <p-column field='customer.code' header='Customer Code' [sortable]='true'></p-column>
+    <p-column field='invoiceNumber' header='Invoice Number' styleClass="text-right" [sortable]='true'></p-column>
+    <p-column field='customer.code' header='Customer Code' styleClass="text-right" [sortable]='true'></p-column>
     <p-column field='customer.name' header='Customer' [sortable]='true'></p-column>
-    <p-column field='invoiceNumber' header='Invoice Number' [sortable]='true'></p-column>
     <p-column field='invoiceType.name' header='Invoice Type' [sortable]='true'></p-column>
-    <p-column field='exchangeRate.exchangeRate' header='Exchange Rate' [sortable]='true'></p-column>
+    <p-column field='totalAmount' styleClass="text-right" header='Total Sale USD' [sortable]='true'>
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{rowData.totalAmount | number : '1.2-2'}}
+      </ng-template>
+    </p-column>
+    <p-column field="Total Sale LKR" styleClass="text-right" header="Total Sale LKR">
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{(rowData.totalAmount * rowData.exchangeRate.exchangeRate)| number : '1.2-2' }}
+      </ng-template>
+    </p-column>
+    <p-column field='exchangeRate.exchangeRate' styleClass="text-right" header='Exchange Rate' [sortable]='true'>
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{rowData.exchangeRate.exchangeRate | number : '1.2-2'}}
+      </ng-template>
+    </p-column>
+    <p-column field='totalWeight' header='Total Weight KG' styleClass="text-right" [sortable]='true'>
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{rowData.totalWeight | number : '1.0-0'}}
+      </ng-template>
+    </p-column>
+    <!-- <p-column field="Suspended Tax Value" styleClass="text-right" header="Suspended Tax Value">
+        <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+          {{(rowData.totalAmount * rowData.exchangeRate.exchangeRate)*0.15| number : '1.2-2' }}
+        </ng-template>
+      </p-column> -->
     <p-column header='Action' styleClass='text-right'>
       <ng-template let-data='rowData' pTemplate='body'>
         <a (click)="print(data)" href="javascript:void(0)">
@@ -71,6 +95,6 @@
   </p-dataTable>
 </p-panel>
 
- <commercial-invoice-print [(id)]='commercialInvoiceId'></commercial-invoice-print>
+<commercial-invoice-print [(id)]='commercialInvoiceId'></commercial-invoice-print>
 <suspended-invoice-print [(id)]='suspendedInvoiceId'></suspended-invoice-print>
 <tax-invoice-print [(id)]='taxInvoiceId'></tax-invoice-print>
