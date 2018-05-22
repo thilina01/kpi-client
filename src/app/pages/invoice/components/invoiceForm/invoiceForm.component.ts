@@ -261,10 +261,10 @@ export class InvoiceForm {
     this.taxValue = totalSalesAmount * taxRate;
 
     values.currency = this.currency;
-    values.employee = this.employee;
     values.totalWeight = this.totalWeight;
     values.totalSalesAmount = this.totalSalesAmount;
     values.taxValue = this.taxValue;
+    this.formGroup.value.employee = this.formGroup.value.customer.employee;
     this.formGroup.value.taxRate = this.formGroup.value.invoiceType.taxRate;
     //values.exchangeRate = this.exchangeRate;
     console.log(values);
