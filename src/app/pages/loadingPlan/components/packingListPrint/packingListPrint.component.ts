@@ -36,7 +36,7 @@ export class PackingListPrint {
         let loadingPlanItem = this.loadingPlan.loadingPlanItemList[i];
 
         this.quantity += parseInt(loadingPlanItem.quantity);
-        this.cubicMeter += parseInt(loadingPlanItem.cubicMeter);
+        this.cubicMeter +=(loadingPlanItem.cubicMeter);
 
         loadingPlanItem.weight =loadingPlanItem.quantity * loadingPlanItem.dispatchSchedule.job.item.weight;
         this.totalWeight += loadingPlanItem.weight;
