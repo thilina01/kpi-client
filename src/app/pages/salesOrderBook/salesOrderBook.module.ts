@@ -36,8 +36,7 @@ import { CustomerItemService } from '../customerItem/customerItem.service';
     SalesOrderItemService,
     DispatchScheduleService,
     CustomerService,
-    ItemService,
-    ItemService,
+    CustomerItemService,
     SalesOrderService,
   ]
 })

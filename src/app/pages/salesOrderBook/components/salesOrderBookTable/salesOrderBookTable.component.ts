@@ -11,6 +11,7 @@ import { ItemService } from '../../../item/item.service';
 import { SalesOrderTypeService } from '../../../salesOrderType/salesOrderType.service';
 import { SalesOrderItemService } from '../../../../services/salesOrderItem.service';
 import { SalesOrderService } from '../../../salesOrder/salesOrder.service';
+import { CustomerItemService } from '../../../customerItem/customerItem.service';
 
 @Component({
   selector: 'sales-order-book-table',
@@ -19,6 +20,8 @@ import { SalesOrderService } from '../../../salesOrder/salesOrder.service';
   templateUrl: './salesOrderBookTable.html'
 })
 export class SalesOrderBookTable {
+  customerItems: any;
+  filteredCustomerItems: any[];
   filteredSalesOrders: any[];
   salesOrders: any;
   filteredCustomers: any[];
@@ -33,7 +36,7 @@ export class SalesOrderBookTable {
   jobs: any;
   rows = [];
   @ViewChild(DataTable) dataTable: DataTable;
-  item: any = { id: 0, code: 'ALL', display: 'All Items' };
+  customerItem: any = { id: 0, code: 'ALL', display: 'All Customer Items' };
   customer: any = { id: 0, code: 'ALL', display: 'All Customers' };
   salesOrder: any = { id: 0, code: 'ALL', display: 'All PO Numbers' };
 
@@ -42,12 +45,12 @@ export class SalesOrderBookTable {
     private router: Router,
     private confirmationService: ConfirmationService,
     private customerService: CustomerService,
-    private itemService: ItemService,
+    private customerItemService: CustomerItemService,
     private salesOrderService: SalesOrderService,
     private sharedService: SharedService
   ) {
     this.loadData();
-    this.getItems();
+    this.getCustomerItems();
     this.getCustomers();
     this.getSalesOrders();
   }
@@ -59,10 +62,10 @@ export class SalesOrderBookTable {
     });
   }
 
-  getItems(): void {
-    this.itemService.getCombo().subscribe(items => {
-      this.items = items;
-      this.items.unshift({ id: 0, code: 'ALL', display: 'All Items' });
+  getCustomerItems(): void {
+    this.customerItemService.getCombo().subscribe(customerItems => {
+      this.customerItems = customerItems;
+      this.customerItems.unshift({ id: 0, code: 'ALL', display: 'All Customer Items' });
     });
   }
 
@@ -79,7 +82,7 @@ export class SalesOrderBookTable {
 
   loadData() {
     this.service
-      .getSalesOrderInformationPage(0, 0, 0, '1970-01-01', '2100-12-31', 0, 20)
+      .getSalesOrderBookPage(0, 0, 0, '1970-01-01', '2100-12-31', 0, 20)
       .subscribe((data: any) => {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
@@ -95,9 +98,9 @@ export class SalesOrderBookTable {
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
     this.service
-      .getSalesOrderInformationPage(
+      .getSalesOrderBookPage(
         this.customer !== undefined ? this.customer.id : 0,
-        this.item !== undefined ? this.item.id : 0,
+        this.customerItem !== undefined ? this.customerItem.id : 0,
         this.salesOrder !== undefined ? this.salesOrder.id : 0,
         this.startDate === undefined
           ? '1970-01-01'
@@ -165,23 +168,23 @@ export class SalesOrderBookTable {
   }
 
   /*================== End Of Customer Filter ===================*/
-  /*================== Item Filter ===================*/
-  filterItems(event) {
-    let query = event.query.toLowerCase();
-    this.filteredItems = [];
-    for (let i = 0; i < this.items.length; i++) {
-      let item = this.items[i];
-      if (item.display.toLowerCase().indexOf(query) >= 0) {
-        this.filteredItems.push(item);
-      }
+ /*================== CustomerItem Filter ===================*/
+ filterCustomerItems(event) {
+  let query = event.query.toLowerCase();
+  this.filteredCustomerItems = [];
+  for (let i = 0; i < this.customerItems.length; i++) {
+    let customerItem = this.customerItems[i];
+    if (customerItem.display.toLowerCase().indexOf(query) >= 0) {
+      this.filteredCustomerItems.push(customerItem);
     }
   }
+}
 
-  onItemSelect(item: any) {
-    console.log(event);
-    this.item = item;
-  }
-  /*================== End Of Item Filter ===================*/
+onCustomerItemSelect(customerItem: any) {
+  console.log(event);
+  this.customerItem = customerItem;
+}
+/*================== End Of CustomerItem Filter ===================*/
   /*================== SalesOrder Filter ===================*/
   filterSalesOrders(event) {
     let query = event.query.toLowerCase();

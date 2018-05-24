@@ -34,10 +34,15 @@
           </div>
         </div>
         <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-          OTR Code
+          Customer Item
           <div class="ui-inputgroup">
-            <p-autoComplete [(ngModel)]="item" field="display" [dropdown]="true" [suggestions]="filteredItems" (completeMethod)="filterItems($event)"
-              [size]="12" [minLength]="1" placeholder="Item" (onSelect)="onItemSelect($event)">
+            <p-autoComplete [(ngModel)]="customerItem" field="display" [dropdown]="true" [suggestions]="filteredCustomerItems" (completeMethod)="filterCustomerItems($event)"
+              [size]="12" [minLength]="1" placeholder="CustomerItem" (onSelect)="onCustomerItemSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.display}}</div>
+                </div>
+              </ng-template>
             </p-autoComplete>
           </div>
         </div>
