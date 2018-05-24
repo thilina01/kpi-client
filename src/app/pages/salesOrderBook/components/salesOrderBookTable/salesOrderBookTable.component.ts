@@ -36,9 +36,9 @@ export class SalesOrderBookTable {
   jobs: any;
   rows = [];
   @ViewChild(DataTable) dataTable: DataTable;
-  customerItem: any = { id: 0, code: 'ALL', display: 'All Customer Items' };
-  customer: any = { id: 0, code: 'ALL', display: 'All Customers' };
-  salesOrder: any = { id: 0, code: 'ALL', display: 'All PO Numbers' };
+  customerItem: any = { id: 0, code: 'ALL', display: 'All' };
+  customer: any = { id: 0, code: 'ALL', display: 'All' };
+  salesOrder: any = { id: 0, code: 'ALL', display: 'All' };
 
   constructor(
     protected service: SalesOrderItemService,
@@ -47,25 +47,31 @@ export class SalesOrderBookTable {
     private customerService: CustomerService,
     private customerItemService: CustomerItemService,
     private salesOrderService: SalesOrderService,
-    private sharedService: SharedService
-  ) {
+    private sharedService: SharedService) {
     this.loadData();
-    this.getCustomerItems();
     this.getCustomers();
     this.getSalesOrders();
+    this.getCustomerItems();
   }
 
   getCustomers(): void {
     this.customerService.getCombo().subscribe(customers => {
       this.customers = customers;
-      this.customers.unshift({ id: 0, code: 'ALL', display: 'All Customers' });
+      this.customers.unshift({ id: 0, code: 'ALL', display: 'All' });
     });
   }
 
   getCustomerItems(): void {
     this.customerItemService.getCombo().subscribe(customerItems => {
       this.customerItems = customerItems;
-      this.customerItems.unshift({ id: 0, code: 'ALL', display: 'All Customer Items' });
+      this.customerItems.unshift({ id: 0, code: 'ALL', display: 'All' });
+    });
+  }
+
+  getCustomerItemByCustomer(id: number): void {
+    this.customerItemService.getByCustomer(id).subscribe(customerItems => {
+      this.customerItems = customerItems;
+      this.customerItems.unshift({ id: 0, code: 'ALL', display: 'All' });
     });
   }
 
@@ -75,7 +81,18 @@ export class SalesOrderBookTable {
       this.salesOrders.unshift({
         id: 0,
         code: 'ALL',
-        display: 'All PO Numbers'
+        display: 'All'
+      });
+    });
+  }
+
+  getSalesOrderByCustomer(id: number): void {
+    this.salesOrderService.getComboByCustomer(id).subscribe(salesOrders => {
+      this.salesOrders = salesOrders;
+      this.salesOrders.unshift({
+        id: 0,
+        code: 'ALL',
+        display: 'All'
       });
     });
   }
@@ -97,8 +114,7 @@ export class SalesOrderBookTable {
 
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
-    this.service
-      .getSalesOrderBookPage(
+    this.service.getSalesOrderBookPage(
         this.customer !== undefined ? this.customer.id : 0,
         this.customerItem !== undefined ? this.customerItem.id : 0,
         this.salesOrder !== undefined ? this.salesOrder.id : 0,
@@ -162,11 +178,16 @@ export class SalesOrderBookTable {
     }
   }
 
-  onCustomerSelect(customer: any) {
-    console.log(event);
-    this.customer = customer;
+  onCustomerSelect(selected: any) {
+    console.log(selected);
+    if (selected.id !== 0){
+      this.getCustomerItemByCustomer(+selected.id);
+      this.getSalesOrderByCustomer(+selected.id);
+    }else{
+      this.getCustomerItems();
+      this.getSalesOrders();
+    }
   }
-
   /*================== End Of Customer Filter ===================*/
  /*================== CustomerItem Filter ===================*/
  filterCustomerItems(event) {

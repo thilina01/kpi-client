@@ -31,5 +31,9 @@ export class SalesOrderService extends MasterService {
     return this.http.post(this.apiUrl + 'pageByCustomer?page=' + page + '&size=' + size, JSON.stringify(customer), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+  getComboByCustomer(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + 'comboByCustomer/' + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }
 
