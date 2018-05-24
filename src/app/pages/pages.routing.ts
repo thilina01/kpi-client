@@ -62,7 +62,7 @@ export const routes: Routes = [
       // { path: 'incoterm', canActivate: [AuthGuard], loadChildren: 'app/pages/incoterm/incoterm.module#IncotermModule' },
       { path: 'invoice', canActivate: [AuthGuard], loadChildren: 'app/pages/invoice/invoice.module#InvoiceModule' },
       { path: 'invoiceType', canActivate: [AuthGuard], loadChildren: 'app/pages/invoiceType/invoiceType.module#InvoiceTypeModule' },
-      // { path: 'invoiceInformation', canActivate: [AuthGuard], loadChildren: 'app/pages/invoiceInformation/invoiceInformation.module#InvoiceInformationModule' },
+      { path: 'salesOrderBook', canActivate: [AuthGuard], loadChildren: 'app/pages/salesOrderBook/salesOrderBook.module#SalesOrderBookModule' },
       // { path: 'invoiceType', canActivate: [AuthGuard], loadChildren: 'app/pages/invoiceType/invoiceType.module#InvoiceTypeModule' },
       { path: 'item', canActivate: [AuthGuard], loadChildren: 'app/pages/item/item.module#ItemModule' },
       // { path: 'itemType', canActivate: [AuthGuard], loadChildren: 'app/pages/itemType/itemType.module#ItemTypeModule' },
