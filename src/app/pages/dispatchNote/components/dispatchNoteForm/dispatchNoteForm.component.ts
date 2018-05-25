@@ -139,13 +139,12 @@ export class DispatchNoteForm {
     this.totalQuantity = 0.0;
 
     for (let i = 0; i < this.formGroup.value.loadingPlanList.length; i++) {
-      let xLoadingPlanItemList = this.formGroup.value.loadingPlanList[i].loadingPlanItemList;
+      let loadingPlan = this.formGroup.value.loadingPlanList[i];
+      let xLoadingPlanItemList = loadingPlan.loadingPlanItemList;
 
       for (let ii = 0; ii < xLoadingPlanItemList.length; ii++) {
         let xLoadingPlanItem = xLoadingPlanItemList[ii];
-
-
-        xLoadingPlanItem.quantity =xLoadingPlanItem.quantity;
+        xLoadingPlanItem.loadingPlanId = loadingPlan.id;
         this.totalQuantity += xLoadingPlanItem.quantity;
         this.loadingPlanItemList.push(xLoadingPlanItem);
       }

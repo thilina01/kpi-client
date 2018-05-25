@@ -71,6 +71,7 @@
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
                   <p-column field="id" header="ID"></p-column>
+                  <p-column field="loadingPlanId" header="LoadingPlan"></p-column>
                   <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
                   <p-column field="dispatchSchedule.confirmDate" header="Confirm Date"></p-column>
                   <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
@@ -81,7 +82,7 @@
                   <p-column field="quantity" header="Quantity"></p-column>
                   <p-footerColumnGroup>
                     <p-row>
-                      <p-column footer="Total" colspan="8" styleClass="text-right"></p-column>
+                      <p-column footer="Total" colspan="9" styleClass="text-right"></p-column>
                       <p-column footer="{{totalQuantity}}" styleClass="text-left"></p-column>
                     </p-row>
                   </p-footerColumnGroup>
