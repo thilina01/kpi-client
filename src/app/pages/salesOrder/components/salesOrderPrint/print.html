@@ -1,0 +1,156 @@
+<div id="print" hidden *ngIf="salesOrder!=undefined">
+  <table class="table table-sm table-bordered">
+
+    <thead>
+      <!-- <tr>
+
+        <th colspan="6" style="vertical-align:top" style=" border: 1px solid #ffffff !important;">
+          <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+          <br/>
+          <b>{{organization===undefined?'':organization.name}}</b>
+          <br/> No: 218, Minuwangoda Road
+          <br/> Ekala, Ja-Ela
+          <br/> Sri Lanka
+          <br/>
+          <br/>
+        </th>
+
+        <th colspan="6" style=" border: 1px solid #ffffff !important;">
+          <table class="table table-bordered table-sm">
+            <tr>
+              <td colspan="2" class="text-center">
+                <h3>
+                  <b>SALES ORDER BALANCE</b>
+                </h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Order ID</b>
+              </td>
+              <td>{{salesOrder.id}}</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Date</b>
+              </td>
+              <td>{{salesOrder.orderDate}}</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Customer</b>
+              </td>
+              <td>{{salesOrder.customer.code}} &nbsp; {{salesOrder.customer.name}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Customer PO</b>
+              </td>
+              <td>{{salesOrder.customerPoNumber}}</td>
+            </tr>
+          </table>
+        </th>
+      </tr> -->
+      <tr>
+        <td colspan="6" style=" border: 1px solid #ffffff !important;  border-bottom: 1px solid #000000 !important;">
+          <table width="100%"  class="table-no-border">
+            <tr>
+              <td>
+                  <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+                  <br/>
+                  <b>{{organization===undefined?'':organization.name}}</b>
+                  <br/> No: 218, Minuwangoda Road
+                  <br/> Ekala, Ja-Ela
+                  <br/> Sri Lanka
+                  <br/>
+                  <br/>
+              </td>
+              <td></td>
+              <td><table class="table table-bordered table-sm">
+                  <tr>
+                    <td colspan="2" class="text-center">
+                      <h3>
+                        <b>SALES ORDER BALANCE</b>
+                      </h3>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Order ID</b>
+                    </td>
+                    <td>{{salesOrder.id}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Date</b>
+                    </td>
+                    <td>{{salesOrder.orderDate}}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Customer</b>
+                    </td>
+                    <td>{{salesOrder.customer.code}} &nbsp; {{salesOrder.customer.name}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <b>Customer PO</b>
+                    </td>
+                    <td>{{salesOrder.customerPoNumber}}</td>
+                  </tr>
+                </table></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <th class="text-center" style=" border: 1px solid #000000 !important;">No</th>
+        <th class="text-center" style=" border: 1px solid #000000 !important;">Customer Part#</th>
+        <th class="text-center" style=" border: 1px solid #000000 !important;">Description</th>
+        <th class="text-center" style=" border: 1px solid #000000 !important;">Order Qty</th>
+        <th class="text-center" style=" border: 1px solid #000000 !important;">
+          Invoice
+          <br/>
+          <table>
+            <tr>
+              <th width="30%">Number</th>
+              <th class="text-center">Date</th>
+              <th class="text-right" width="30%">Qty</th>
+            </tr>
+          </table>
+        </th>
+        <th class="text-center" style=" border: 1px solid #000000 !important;"> Balance Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salesOrderItem of salesOrder.salesOrderItemList; let i = index">
+        <td style="vertical-align:top"> {{ i+1 }} </td>
+        <td style="vertical-align:top"> {{salesOrderItem.customerItem.code}} </td>
+        <td style="vertical-align:top"> {{salesOrderItem.customerItem.name}} </td>
+        <td style="vertical-align:top" class="text-right"> {{salesOrderItem.quantity}} </td>
+        <td style="vertical-align:top" class="text-center">
+
+          <table>
+            <tr *ngFor="let invoice of salesOrderItem.invoiceList">
+              <td width="30%">{{invoice?.invoiceNumber}}</td>
+              <td class="text-center" style="white-space: nowrap;">{{invoice?.invoiceDate }}</td>
+              <td class="text-right" width="30%">{{invoice?.quantity }}</td>
+            </tr>
+          </table>
+
+          <!-- <span *ngFor="let invoice of salesOrderItem.invoiceList">
+
+            {{invoice?.invoiceNumber}} | {{invoice?.invoiceDate }} | {{invoice?.quantity }}
+            <br/>
+          </span> -->
+        </td>
+        <td style="vertical-align:top" class="text-right">{{salesOrderItem.quantity - salesOrderItem.invoicedQuantity}} </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <div class="footer">
+    DOC: PL/001 &nbsp;&nbsp;&nbsp; ISSUE NO: 05 &nbsp;&nbsp;&nbsp;ISSUE DATE: 2018/05/08
+  </div> -->
+</div>

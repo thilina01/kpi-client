@@ -11,22 +11,6 @@ export class SalesOrderService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('salesOrders/');
   }
-  getBySalesOrderDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'salesOrderDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getBySalesOrderDurationAndSalesOrderTypePage(startDate, endDate, salesOrderType, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'salesOrderDurationAndSalesOrderTypePage?startDate=' + startDate + '&endDate=' + endDate + '&salesOrderType=' + salesOrderType + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getByCustomerAndSalesOrderDurationPage(customer, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerAndSalesOrderDurationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getByCustomerAndSalesOrderDurationAndSalesOrderTypePage(customer, startDate, endDate, salesOrderType, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerAndSalesOrderDurationAndSalesOrderTypePage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&salesOrderType=' + salesOrderType + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
   getPageByCustomer(customer: any, page, size): Observable<any> {
     return this.http.post(this.apiUrl + 'pageByCustomer?page=' + page + '&size=' + size, JSON.stringify(customer), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
@@ -35,5 +19,14 @@ export class SalesOrderService extends MasterService {
     return this.http.get(this.apiUrl + 'comboByCustomer/' + id, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+  getSalesOrderPage(customer, salesOrderType, customerPoNumber, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'salesOrder?customer=' + customer+ '&salesOrderType=' + salesOrderType +'&customerPoNumber=' + customerPoNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+
+  // getByCustomerPoNumber(customerPoNumber: any): Observable<any> {
+  //   return this.http.get(this.apiUrl + 'customerPoNumber/' + customerPoNumber, { headers: this.getJsonHeaders() })
+  //     .catch(err => this.handleError(err));
+  // }
 }
 
