@@ -22,8 +22,8 @@ export class CustomerItemService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
-  getcustomerAndItem(customer,  item, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerItem?customer=' + customer+ '&item=' + item + '&page=' + page + '&size=' + size)
+  getcustomerItem(customer,  item,code, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'customerItem?customer=' + customer+ '&item=' + item +'&code=' + code + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
 

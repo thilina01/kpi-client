@@ -19,6 +19,7 @@ export class CustomerItemTable {
   [x: string]: any;
   filteredItems: any[];
   items: any;
+  code:any;
   timeout: any;
   customerList: any;
   filteredCustomers: any[];
@@ -53,8 +54,8 @@ export class CustomerItemTable {
   }
 
   loadData() {
-  if (this.customer !== undefined ? this.customer.id : 0, this.item !== undefined ? this.item.id : 0) {
-    this.service.getcustomerAndItem(0, 0, 0, 20).subscribe((data: any) => {
+  if (this.customer !== undefined ? this.customer.id : 0, this.item !== undefined ? this.item.id : 0,this.code !== undefined ? this.code : 0) {
+    this.service.getcustomerItem(0, 0, 0, 0, 20).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
     });
@@ -68,8 +69,8 @@ export class CustomerItemTable {
 
   lazy(event: any, table: any) {
     const search = table.globalFilter ? table.globalFilter.value : null;
-    if (this.customer !== undefined ? this.customer.id : 0, this.item !== undefined ? this.item.id : 0) {
-      this.service.getcustomerAndItem(0, 0, (event.first / event.rows), event.rows).subscribe((data: any) => {
+    if (this.customer !== undefined ? this.customer.id : 0, this.item !== undefined ? this.item.id : 0,this.code !== undefined ? this.code : 0) {
+      this.service.getcustomerItem(0, 0, 0,0, 20).subscribe((data: any) => {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
       });
@@ -84,9 +85,10 @@ export class CustomerItemTable {
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
       this.service
-        .getcustomerAndItem(
+        .getcustomerItem(
           this.customer !== undefined ? this.customer.id : 0,
           this.item !== undefined ? this.item.id : 0,
+          this.code !== undefined ? this.code : 0,
           first,
           pageSize
         )
