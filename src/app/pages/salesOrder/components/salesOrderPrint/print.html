@@ -126,7 +126,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let salesOrderItem of salesOrder.salesOrderItemList; let i = index">
-        <td style="vertical-align:top"> {{ i+1 }} </td>
+        <td style="vertical-align:top"><p style="line-height: 1.3em"> {{ i+1 }}</p></td>
         <td style="vertical-align:top"> {{salesOrderItem.customerItem.code}} </td>
         <td style="vertical-align:top"> {{salesOrderItem.customerItem.name}} </td>
         <td style="vertical-align:top" class="text-right"> {{salesOrderItem.quantity}} </td>
