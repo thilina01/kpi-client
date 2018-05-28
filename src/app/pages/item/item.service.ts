@@ -16,4 +16,10 @@ export class ItemService extends MasterService {
     return this.http.post(this.apiUrl + 'pageByItemType?page=' + page + '&size=' + size, JSON.stringify(itemType), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getItemPage(code, itemSize, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'itemPage?code=' + code + '&itemSize=' + itemSize + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
+
 }
