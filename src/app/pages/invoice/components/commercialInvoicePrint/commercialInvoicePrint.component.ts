@@ -55,6 +55,7 @@ export class CommercialInvoicePrint {
 
             for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
               let xLoadingPlanItem = xLoadingPlanItemList[iii];
+                if (xLoadingPlanItem !== undefined) {
 
               xLoadingPlanItem.amount = xLoadingPlanItem.quantity *
                 xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
@@ -65,6 +66,7 @@ export class CommercialInvoicePrint {
               this.totalWeight += xLoadingPlanItem.weight;
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
+          }
           }
         }
         setTimeout(() => {

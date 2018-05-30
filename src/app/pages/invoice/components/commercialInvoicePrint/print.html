@@ -157,23 +157,23 @@
           <td style="vertical-align:top"> {{ i+1 }} </td>
           <td style="vertical-align:top">
             <span style="white-space:nowrap">
-              {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}}
+              {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.salesOrder?.customerPoNumber}}
             </span>
           </td>
-          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}
+          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.customerItem?.code}}
             <br/>
             <span style="white-space:nowrap">
-              {{loadingPlanItem.dispatchSchedule.job.item.code}}
+              {{loadingPlanItem.dispatchSchedule?.job?.item?.code}}
             </span>
           </td>
-          <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule.job.item.size }}
-            <br/> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
+          <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule?.job?.item?.size }}
+            <br/> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}</td>
           <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity
             / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
             | number : '1.2-2'}}
           </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
-          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice}} </td>
+          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.unitPrice}} </td>
           <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
         </tr>
         <tr>
