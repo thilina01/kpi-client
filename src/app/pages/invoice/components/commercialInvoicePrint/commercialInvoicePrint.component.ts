@@ -49,14 +49,13 @@ export class CommercialInvoicePrint {
         for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
           let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
           let xLoadingPlan = yLoadingPlanList[i];
-
+          if (xLoadingPlan !== undefined) {
           for (let ii = 0; ii < yLoadingPlanList.length; ii++) {
             let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
 
             for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
               let xLoadingPlanItem = xLoadingPlanItemList[iii];
                 if (xLoadingPlanItem !== undefined) {
-
               xLoadingPlanItem.amount = xLoadingPlanItem.quantity *
                 xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
               this.totalAmount += xLoadingPlanItem.amount;
@@ -69,7 +68,8 @@ export class CommercialInvoicePrint {
           }
           }
         }
-        setTimeout(() => {
+      }
+      setTimeout(() => {
           let element = document.getElementById("commercialInvoicePrint");
           if (element != null) {
             this.printService.printA4(element.innerHTML);
