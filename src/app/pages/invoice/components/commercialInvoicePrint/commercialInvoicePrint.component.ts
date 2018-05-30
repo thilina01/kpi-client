@@ -31,6 +31,23 @@ export class CommercialInvoicePrint {
         this.xAddress = null;
         this.xLoadingPlanItemList = [];
 
+
+        for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
+          let dispatchNote = this.invoice.dispatchNoteList[i];
+          if (dispatchNote === undefined) return;
+          let xLoadingPlanList = dispatchNote.loadingPlanList;
+
+          for (let ii = 0; ii < xLoadingPlanList.length; ii++) {
+            let xLoadingPlan = xLoadingPlanList[ii];
+
+            if (this.xAddress === null) {
+                   this.xAddress = xLoadingPlan.address;
+                 }
+          }
+
+        }
+
+
         for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
           let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
           if (yLoadingPlan !== undefined) {
@@ -40,9 +57,9 @@ export class CommercialInvoicePrint {
             if (this.xContainerSize === null) {
               this.xContainerSize = yLoadingPlan.containerSize;
             }
-            if (this.xAddress === null) {
-              this.xAddress = yLoadingPlan.address;
-            }
+            // if (this.xAddress === null) {
+            //   this.xAddress = yLoadingPlan.address;
+            // }
           }
         }
 
