@@ -31,11 +31,13 @@ export class Print {
 
               for (let c = 0; c < dispatchSchedule.loadingPlanItemList.length; c++) {
                 let loadingPlanItem = dispatchSchedule.loadingPlanItemList[c];
+                let xDispatchNote = loadingPlanItem.loadingPlan.dispatchNote;
 
-                let xInvoice = loadingPlanItem.loadingPlan.dispatchNote.invoice;
-                if (xInvoice === null){
+                if (xDispatchNote === null ||  xDispatchNote.invoice === null){
                   continue;
                 }
+
+                let xInvoice = xDispatchNote.invoice;
                 let found = false;
                 for (let d = 0; d < invoiceList.length; d++) {
                   let invoice = invoiceList[d];
@@ -43,14 +45,10 @@ export class Print {
                     invoice.quantity += loadingPlanItem.quantity;
                     invoicedQuantity += loadingPlanItem.quantity;
                     found = true;
-                    // this.balanceQty = salesOrderItem.quantity - invoice.quantity;
                     break;
                   }
-                  // else{
-                  //   this.balanceQty = salesOrderItem.quantity - loadingPlanItem.quantity;
-                  // }
                 }
-                if (!found){
+                if (!found && xInvoice !== undefined){
                   xInvoice.quantity = loadingPlanItem.quantity;
                   invoicedQuantity += loadingPlanItem.quantity;
                   invoiceList.push(xInvoice);
@@ -63,7 +61,6 @@ export class Print {
 
           }
           this.salesOrder.salesOrderItemList = salesOrderItemList;
-          console.log(this.salesOrder);
           setTimeout(() => {
             let element = document.getElementById("print");
             if (element != null) {
