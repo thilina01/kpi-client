@@ -51,6 +51,7 @@ export class DispatchNoteForm {
     this.formGroup = fb.group({
       id: '',
       loadingPlanList: [[]],
+      invoice: [],
       customer: [this.customer, Validators.required],
     });
   }
