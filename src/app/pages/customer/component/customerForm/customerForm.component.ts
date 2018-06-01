@@ -116,7 +116,7 @@ export class CustomerForm {
       line4: "",
       line5: "",
       addressType: [{}, Validators.compose([Validators.required])],
-      port: [{}, Validators.compose([Validators.required])],
+      port: [],
       country: [{}, Validators.compose([Validators.required])]
     });
   }
