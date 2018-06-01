@@ -97,6 +97,7 @@ export class Pages {
     { routerLink: '/pages/incoterms/table', name: 'Incoterm', menuType: this.menuType },
     { routerLink: '/pages/invoiceType/table', name: 'Invoice Type', menuType: this.menuType },
     { routerLink: '/pages/invoice/table', name: 'Invoice', menuType: this.menuType },
+    { routerLink: '/pages/invoiceInformation/table', name: 'Invoice Information', menuType: this.menuType },
     { routerLink: '/pages/salesOrderBook/table', name: 'Sales Order Book', menuType: this.menuType },
     // { routerLink: '/pages/invoiceTypes/table', name: 'Invoice Type', menuType: this.menuType },
     { routerLink: '/pages/item/table', name: 'Item', menuType: this.menuType },

@@ -41,8 +41,8 @@ export class InvoiceForm {
   dispatchNotes: any;
   totalAmount = 0.0;
   totalWeight = 0.0;
-  taxValue=0.0;
-  totalSalesAmount=0.0;
+  taxValue = 0.0;
+  totalSalesAmount = 0.0;
   // exchangeRate :any;
   dispatchNote: any;
   invoiceType: any;
@@ -65,14 +65,15 @@ export class InvoiceForm {
     private invoiceTypeService: InvoiceTypeService,
     private dispatchNoteService: DispatchNoteService,
     private exchangeRateService: ExchangeRateService,
-    private confirmationService: ConfirmationService) {
+    private confirmationService: ConfirmationService
+  ) {
     this.formGroup = fb.group({
       id: "",
       totalAmount: "",
-      totalWeight:"",
-      taxRate:"",
-      taxValue:"",
-      totalSalesAmount:"",
+      totalWeight: "",
+      taxRate: "",
+      taxValue: "",
+      totalSalesAmount: "",
       currency: [null, ""],
       employee: [null, ""],
       dispatchNoteList: [null, Validators.required],
@@ -105,16 +106,14 @@ export class InvoiceForm {
   getEmployeeByCustomer(id: number): void {
     this.employeeService
       .getByCustomer(id)
-      .subscribe(employee =>
-        (this.employee = employee)
-    );
+      .subscribe(employee => (this.employee = employee));
   }
 
   getCurrencyByCustomer(id: number): void {
     this.currencyService.getByCustomer(id).subscribe(currency => {
       this.currency = currency;
       let startDate = new Date(this.invoiceDate.getTime());
-      let endDate =  new Date(this.invoiceDate.getTime());
+      let endDate = new Date(this.invoiceDate.getTime());
       startDate.setDate(startDate.getDate() - 7);
 
       console.log("startDate : " + startDate);
@@ -131,19 +130,18 @@ export class InvoiceForm {
         this.formGroup.value.exchangeRate = null;
         // this.exchangeRateDate = '';
         // this.exchangeRateAmount = 0.0;
-        if (exchangeRateList.length > 0){
+        if (exchangeRateList.length > 0) {
           let exchangeRate = exchangeRateList[0];
           // this.exchangeRateDate = exchangeRate.exchangeRateDate;
           // this.exchangeRateAmount = exchangeRate.exchangeRate;
           // this.formGroup.value.exchangeRate = exchangeRate;
           this.formGroup.patchValue({
             exchangeRate: exchangeRate
-        });
-         console.log(this.formGroup.value.exchangeRate.id);
+          });
+          console.log(this.formGroup.value.exchangeRate.id);
+        } else {
+          alert("Please Update exchange rate");
         }
-         else{
-           alert("Please Update exchange rate")
-         }
       });
   }
 
@@ -188,49 +186,58 @@ export class InvoiceForm {
     for (let i = 0; i < this.formGroup.value.dispatchNoteList.length; i++) {
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
       if (dispatchNote === undefined) return;
-      if (
-        dispatchNote.id ===
-        this.selectedDispatchNote.id
-      ) {
+      if (dispatchNote.id === this.selectedDispatchNote.id) {
         alert("Already Added");
         return;
       }
     }
     this.formGroup.value.dispatchNoteList.push(this.selectedDispatchNote);
     this.formGroup.patchValue({
-      dispatchNoteList : this.formGroup.value.dispatchNoteList
-  });
+      dispatchNoteList: this.formGroup.value.dispatchNoteList.slice()
+    });
     this.fillTable();
   }
 
   public fillTable() {
+    console.log("AAA");
+
     this.loadingPlanItemList = [];
     this.loadingPlanList = [];
     this.totalAmount = 0.0;
     this.totalWeight = 0.0;
 
     for (let i = 0; i < this.formGroup.value.dispatchNoteList.length; i++) {
+      console.log("BBB");
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
-      if (dispatchNote === undefined) return;
-      let yLoadingPlanList = dispatchNote
-        .loadingPlanList;
+      if (dispatchNote === undefined) continue;
+      let yLoadingPlanList = dispatchNote.loadingPlanList;
 
+      console.log("BBC");
       for (let ii = 0; ii < yLoadingPlanList.length; ii++) {
+        console.log("CCC");
         let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
 
         for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
+           console.log("DDD");
           let xLoadingPlanItem = xLoadingPlanItemList[iii];
 
-          xLoadingPlanItem.amount =xLoadingPlanItem.quantity *xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+          xLoadingPlanItem.amount =
+            xLoadingPlanItem.quantity *
+            xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
           this.totalAmount += xLoadingPlanItem.amount;
 
-          xLoadingPlanItem.weight = xLoadingPlanItem.quantity * xLoadingPlanItem.dispatchSchedule.job.item.weight;
+          xLoadingPlanItem.weight =
+            xLoadingPlanItem.quantity *
+            xLoadingPlanItem.dispatchSchedule.job.item.weight;
           this.totalWeight += xLoadingPlanItem.weight;
 
           this.loadingPlanItemList.push(xLoadingPlanItem);
+          console.log(this.loadingPlanItemList);
         }
       }
     }
+    console.log("EEE");
+    this.loadingPlanItemList = this.loadingPlanItemList.slice();
   }
   public resetForm() {
     this.formGroup.reset();
@@ -257,7 +264,7 @@ export class InvoiceForm {
 
     values.totalSalesAmount = this.totalSalesAmount;
     let taxRate = this.formGroup.value.invoiceType.taxRate;
-    let totalSalesAmount = this.totalSalesAmount ;
+    let totalSalesAmount = this.totalSalesAmount;
     this.taxValue = totalSalesAmount * taxRate;
 
     values.currency = this.currency;

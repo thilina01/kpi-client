@@ -24,4 +24,9 @@ export class InvoiceService extends MasterService {
     return this.http.get(this.apiUrl + 'customerPage?customer=' + customer + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
+
+  getInvoicePage(customer, invoiceNumber, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'invoice?customer=' + customer+ '&invoiceNumber='+ invoiceNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 }
