@@ -18,5 +18,8 @@ export class LoadingPlanItemService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
-
+  getDispatchInformationPage(customer, item, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'dispatchInformation?customer=' + customer+  '&item=' + item + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 }

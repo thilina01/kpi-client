@@ -5,9 +5,9 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { DataTable } from 'primeng/components/datatable/datatable';
 import { Observable } from 'rxjs/Rx';
-import { DispatchInformationService } from '../../dispatchInformation.service';
 import { CustomerService } from '../../../customer/customer.service';
 import { ItemService } from '../../../item/item.service';
+import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.service';
 
 @Component({
   selector: 'dispatch-information-table',
@@ -31,7 +31,7 @@ export class DispatchInformationTable {
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
   item: any = { id: 0, 'code': 'ALL', 'display': 'All Items' }
 
-  constructor(protected service: DispatchInformationService,
+  constructor(protected service: LoadingPlanItemService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private customerService: CustomerService,
@@ -48,6 +48,7 @@ export class DispatchInformationTable {
       this.customers.unshift({ id: 0, 'code': 'ALL', 'display': 'All Customers' });
     });
   }
+
   getItems(): void {
     this.itemService.getCombo().subscribe(items => {
       this.items = items;
@@ -56,61 +57,36 @@ export class DispatchInformationTable {
   }
 
   loadData() {
-    if (this.customer.id != undefined && this.customer.id != 0) {
-      this.service.getPageByCustomer(this.customer, 0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
+    this.service
+      .getDispatchInformationPage(0, 0, "1970-01-01", "2100-12-31", 0, 20)
+      .subscribe((data: any) => {
+        this.fillTable(data);
       });
-    }
-    else if (this.item.id != undefined && this.item.id != 0) {
-      this.service.getPageByItem(this.item, 0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    } else {
-      this.service.getPage(0, 20).subscribe((data: any) => {
-      });
-    }
   }
 
   lazy(event: any, table: any) {
     console.log(event);
-    this.search((event.first / event.rows), event.rows);
+    this.search(event.first / event.rows, event.rows);
   }
 
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
-    if (this.startDate != undefined &&
-      this.endDate != undefined &&
-      this.customer != undefined &&
-      this.customer.id != undefined &&
-      this.item != undefined &&
-      this.item.id != undefined) {
-      if (this.customer.id == 0 && this.item.id == 0) {
-        this.service.getByDispatchDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      } else if (this.customer.id == 0 && this.item.id > 0) {
-        this.service.getByDispatchDurationAndItemPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.item.id, first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-
-      } else if (this.customer.id > 0 && this.item.id == 0) {
-        this.service.getByCustomerAndDispatchDurationPage(this.customer.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      }
-      else {
-        this.service.getByCustomerAndDispatchDurationAndItemPage(this.customer.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.item.id, first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      }
-    } else {
-      this.service.getPage(first, pageSize).subscribe((data: any) => {
-        this.loadData();
+    this.service
+      .getDispatchInformationPage(
+        this.customer !== undefined ? this.customer.id : 0,
+        this.item !== undefined ? this.item.id : 0,
+        this.startDate === undefined
+          ? "1970-01-01"
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? "2100-12-31"
+          : this.sharedService.YYYYMMDD(this.endDate),
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
         this.fillTable(data);
       });
-    }
   }
 
   fillTable(data: any) {

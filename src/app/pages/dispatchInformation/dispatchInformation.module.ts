@@ -9,12 +9,12 @@ import { DispatchInformationTable } from './components/dispatchInformationTable/
 
 import { routing } from './dispatchInformation.routing';
 import { SectionService } from '../section/section.service';
-import { DispatchInformationService } from './dispatchInformation.service';
 import { ShiftService } from '../shift/shift.service';
 import { EmployeeService } from '../employee/employee.service';
 import { ProductionService } from '../production/production.service';
 import { ItemService } from '../item/item.service';
 import { CustomerService } from '../customer/customer.service';
+import { LoadingPlanItemService } from '../../services/loadingPlanItem.service';
 
 @NgModule({
   imports: [
@@ -34,7 +34,7 @@ import { CustomerService } from '../customer/customer.service';
     DispatchInformationTable
   ],
   providers: [
-    DispatchInformationService,
+    LoadingPlanItemService,
     SectionService,
     ShiftService,
     EmployeeService,
