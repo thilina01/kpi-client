@@ -2,72 +2,23 @@
   <table class="table table-sm table-bordered">
 
     <thead>
-      <!-- <tr>
-
-        <th colspan="6" style="vertical-align:top" style=" border: 1px solid #ffffff !important;">
-          <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
-          <br/>
-          <b>{{organization===undefined?'':organization.name}}</b>
-          <br/> No: 218, Minuwangoda Road
-          <br/> Ekala, Ja-Ela
-          <br/> Sri Lanka
-          <br/>
-          <br/>
-        </th>
-
-        <th colspan="6" style=" border: 1px solid #ffffff !important;">
-          <table class="table table-bordered table-sm">
-            <tr>
-              <td colspan="2" class="text-center">
-                <h3>
-                  <b>SALES ORDER BALANCE</b>
-                </h3>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>Order ID</b>
-              </td>
-              <td>{{salesOrder.id}}</td>
-            </tr>
-            <tr>
-              <td>
-                <b>Date</b>
-              </td>
-              <td>{{salesOrder.orderDate}}</td>
-            </tr>
-            <tr>
-              <td>
-                <b>Customer</b>
-              </td>
-              <td>{{salesOrder.customer.code}} &nbsp; {{salesOrder.customer.name}}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>Customer PO</b>
-              </td>
-              <td>{{salesOrder.customerPoNumber}}</td>
-            </tr>
-          </table>
-        </th>
-      </tr> -->
       <tr>
         <td colspan="6" style=" border: 1px solid #ffffff !important;  border-bottom: 1px solid #000000 !important;">
-          <table width="100%"  class="table-no-border">
+          <table width="100%" class="table-no-border">
             <tr>
               <td>
-                  <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
-                  <br/>
-                  <b>{{organization===undefined?'':organization.name}}</b>
-                  <br/> No: 218, Minuwangoda Road
-                  <br/> Ekala, Ja-Ela
-                  <br/> Sri Lanka
-                  <br/>
-                  <br/>
+                <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+                <br/>
+                <b>{{organization===undefined?'':organization.name}}</b>
+                <br/> No: 218, Minuwangoda Road
+                <br/> Ekala, Ja-Ela
+                <br/> Sri Lanka
+                <br/>
+                <br/>
               </td>
               <td></td>
-              <td><table class="table table-bordered table-sm">
+              <td>
+                <table class="table table-bordered table-sm">
                   <tr>
                     <td colspan="2" class="text-center">
                       <h3>
@@ -100,7 +51,8 @@
                     </td>
                     <td>{{salesOrder.customerPoNumber}}</td>
                   </tr>
-                </table></td>
+                </table>
+              </td>
             </tr>
           </table>
         </td>
@@ -126,12 +78,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let salesOrderItem of salesOrder.salesOrderItemList; let i = index">
-        <td style="vertical-align:top"><p style="line-height: 1.3em"> {{ i+1 }}</p></td>
+        <td style="vertical-align:top">
+          <p style="line-height: 1.3em"> {{ i+1 }}</p>
+        </td>
         <td style="vertical-align:top"> {{salesOrderItem.customerItem.code}} </td>
         <td style="vertical-align:top"> {{salesOrderItem.customerItem.name}} </td>
         <td style="vertical-align:top" class="text-right"> {{salesOrderItem.quantity}} </td>
         <td style="vertical-align:top" class="text-center">
-
           <table>
             <tr *ngFor="let invoice of salesOrderItem.invoiceList">
               <td width="30%">{{invoice?.invoiceNumber}}</td>
@@ -139,18 +92,19 @@
               <td class="text-right" width="30%">{{invoice?.quantity }}</td>
             </tr>
           </table>
-
-          <!-- <span *ngFor="let invoice of salesOrderItem.invoiceList">
-
-            {{invoice?.invoiceNumber}} | {{invoice?.invoiceDate }} | {{invoice?.quantity }}
-            <br/>
-          </span> -->
         </td>
         <td style="vertical-align:top" class="text-right">{{salesOrderItem.quantity - salesOrderItem.invoicedQuantity}} </td>
       </tr>
+      <tr *ngIf="salesOrder.remarks !== null">
+        <td colspan="6">
+          <br/>
+          <b>Remarks:</b>
+          <br/>
+          <br/>
+          <p>{{salesOrder.remarks}}</p>
+        </td>
+      </tr>
     </tbody>
   </table>
-  <!-- <div class="footer">
-    DOC: PL/001 &nbsp;&nbsp;&nbsp; ISSUE NO: 05 &nbsp;&nbsp;&nbsp;ISSUE DATE: 2018/05/08
-  </div> -->
+
 </div>
