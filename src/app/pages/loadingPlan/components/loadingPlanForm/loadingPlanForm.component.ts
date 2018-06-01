@@ -70,6 +70,7 @@ export class LoadingPlanForm {
       noOfContainers: '',
       loadingPlanDate: [this.loadingPlanDate, Validators.required],
       customer: [this.customer, Validators.required],
+      dispatchNote: [],
       address: [this.address, Validators.required],
       portOfLoading: [this.port, Validators.required],
       containerSize: [this.containerSize, ''],
