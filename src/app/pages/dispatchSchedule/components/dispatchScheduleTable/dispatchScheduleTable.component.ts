@@ -23,6 +23,7 @@ export class DispatchScheduleTable {
   endDate: Date;
   customers: any;
   jobs: any;
+  pageSize = 20;
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
   job: any = { id: 0, 'code': 'ALL', 'display': 'All Jobs' }
 
@@ -49,49 +50,43 @@ export class DispatchScheduleTable {
       this.customers.unshift({ id: 0, 'code': 'ALL', 'display': 'All Customers' });
     });
   }
+
   loadData() {
-    if (this.customer.id != undefined && this.customer.id != 0) {
-      this.service.getPageByCustomer(this.customer, 0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
+    this.service
+      .getDispatchSchedulePage(0, 0, "1970-01-01", "2100-12-31", 0, 20)
+      .subscribe((data: any) => {
+        this.fillTable(data);
       });
-    } 
-  else if (this.job.id != undefined && this.job.id != 0) {
-      this.service.getPageByJob(this.job, 0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    } else {
-      this.service.getPage(0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    }
   }
 
   lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
+    console.log(event);
+    this.search(event.first / event.rows, event.rows);
+  }
 
-    if (this.customer.id != undefined && this.customer.id != 0) {
-      this.service.getPageByCustomer(this.customer, (event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
+  search(first: number, pageSize: number): void {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
+    this.service
+      .getDispatchSchedulePage(
+        this.customer !== undefined ? this.customer.id : 0,
+        this.job !== undefined ? this.job.id : 0,
+        this.startDate === undefined
+          ? "1970-01-01"
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? "2100-12-31"
+          : this.sharedService.YYYYMMDD(this.endDate),
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
+        this.fillTable(data);
       });
-    } 
+  }
 
-   else if (this.job.id != undefined && this.job.id != 0) {
-      this.service.getPageByJob(this.job, (event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    } else {
-      this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-        this.search((event.first / event.rows), event.rows);
-
-      });
-    }
+  fillTable(data: any) {
+    this.rows = data.content;
+    this.totalRecords = data.totalElements;
   }
 
   onPage(event) {
@@ -99,43 +94,6 @@ export class DispatchScheduleTable {
     this.timeout = setTimeout(() => {
       this.search(event.first, event.rows);
     }, 100);
-  }
-
-  search(first: number, pageSize: number): void {
-    if (this.startDate != undefined &&
-      this.endDate != undefined &&
-      this.customer != undefined &&
-      this.customer.id != undefined &&
-      this.job != undefined &&
-      this.job.id != undefined) {
-      if (this.customer.id == 0 && this.job.id == 0) {
-        this.service.getByDispatchScheduleDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      } else if (this.customer.id == 0 && this.job.id > 0) {
-        this.service.getByDispatchScheduleDurationAndJobPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.job.id, first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-
-      } else if (this.customer.id > 0 && this.job.id == 0) {
-        this.service.getByCustomerAndDispatchScheduleDurationPage(this.customer.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      } else {
-        this.service.getByCustomerAndDispatchScheduleDurationAndJobPage(this.customer.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.job.id, first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      }
-    } else {
-      this.service.getPage(first, pageSize).subscribe((data: any) => {
-        this.fillTable(data);
-      });
-    }
-  }
-
-  fillTable(data: any) {
-    this.rows = data.content;
-    this.totalRecords = data.totalElements;
   }
 
   onRowDblclick(data: any): void {
@@ -151,7 +109,7 @@ export class DispatchScheduleTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          this.loadData()
+          this.loadData();
         }
         );
       }
@@ -173,7 +131,6 @@ export class DispatchScheduleTable {
   onCustomerSelect(customer: any) {
     console.log(event)
     this.customer = customer;
-    this.loadData();
   }
   /*================== End Of Customer Filter ===================*/
   /*================== Job Filter ===================*/
@@ -191,7 +148,6 @@ export class DispatchScheduleTable {
   onJobSelect(job: any) {
     console.log(event)
     this.job = job;
-    this.loadData();
   }
   /*================== End Of Job Filter ===================*/
 }
