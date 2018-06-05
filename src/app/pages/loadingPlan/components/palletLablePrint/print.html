@@ -4,7 +4,7 @@
     <!-- Page Header  -->
     <div class='divFooter'>
       <span *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList">
-        <span *ngFor="let x of loadingPlanItem.pageCount; let i = index">
+        <span *ngFor="let page of loadingPlanItem.pageList; let i = index">
           <div class='row' *ngFor="let y of [1,2]">
             <div class="col-xs-12">
               <table class="table table-bordered table-sm">
@@ -97,7 +97,7 @@
                   <td colspan="2">
                     <h4>
                       <b>QUANTITY : </b>
-                      {{loadingPlanItem.packagingSpecification.perPalletQuantity}}
+                      {{page.quantity}}
                     </h4>
                   </td>
                 </tr>
@@ -118,7 +118,7 @@
                   <td>
                     <h4>
                       <b>PACKAGE NO : </b>
-                      {{i+1}} / {{loadingPlanItem.pageCount.length}}
+                      {{i+1}} / {{loadingPlanItem.pageList.length}}
                     </h4>
                   </td>
                 </tr>
