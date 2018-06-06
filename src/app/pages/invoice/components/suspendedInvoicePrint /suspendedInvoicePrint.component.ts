@@ -54,18 +54,18 @@ export class SuspendedInvoicePrint {
               let xItemId = xLoadingPlanItem.dispatchSchedule.job.item.id;
               let xSalesOrderId = xLoadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.id;
               if (yItemId === xItemId && ySalesOrderId === xSalesOrderId){
-                this.totalAmount += yLoadingPlanItem.quantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;;
-                xLoadingPlanItem.quantity += yLoadingPlanItem.quantity;
-                xLoadingPlanItem.amount += yLoadingPlanItem.quantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                this.totalAmount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                xLoadingPlanItem.invoiceQuantity += yLoadingPlanItem.invoiceQuantity;
+                xLoadingPlanItem.amount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
                 found = true;
                 break;
               }
             }
 
             if (!found){
-              yLoadingPlanItem.amount = yLoadingPlanItem.quantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+              yLoadingPlanItem.amount = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
               this.totalAmount += yLoadingPlanItem.amount;
-              yLoadingPlanItem.weight = yLoadingPlanItem.quantity * yLoadingPlanItem.dispatchSchedule.job.item.weight;
+              yLoadingPlanItem.weight = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.job.item.weight;
               this.totalWeight += yLoadingPlanItem.weight;
               this.xLoadingPlanItemList.push(yLoadingPlanItem);
             }

@@ -64,7 +64,7 @@
     <p-column field="dispatchSchedule.job.item.code" header="OTR Code" styleClass="text-right"></p-column>
     <p-column field="dispatchSchedule.job.item.description" header="Description"></p-column>
     <p-column field="dispatchSchedule.job.jobNo" header="Job No" styleClass="text-right" [sortable]="true"></p-column>
-    <p-column field="quantity" header="Quantity" [sortable]="true" styleClass="text-right"></p-column>
+    <p-column field="invoiceQuantity" header="Quantity" [sortable]="true" styleClass="text-right"></p-column>
     <p-column field="dispatchSchedule.job.item.weight" header="Unit Weight" styleClass="text-right" [sortable]="true">
       <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
         {{rowData.dispatchSchedule.job.item.weight | number : '1.3-3'}}

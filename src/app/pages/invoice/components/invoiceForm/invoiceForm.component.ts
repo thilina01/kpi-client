@@ -128,13 +128,8 @@ export class InvoiceForm {
       .getByCurrencyAndExchangeRateDate(currencyId, startDate, endDate)
       .subscribe(exchangeRateList => {
         this.formGroup.value.exchangeRate = null;
-        // this.exchangeRateDate = '';
-        // this.exchangeRateAmount = 0.0;
         if (exchangeRateList.length > 0) {
           let exchangeRate = exchangeRateList[0];
-          // this.exchangeRateDate = exchangeRate.exchangeRateDate;
-          // this.exchangeRateAmount = exchangeRate.exchangeRate;
-          // this.formGroup.value.exchangeRate = exchangeRate;
           this.formGroup.patchValue({
             exchangeRate: exchangeRate
           });
@@ -199,7 +194,6 @@ export class InvoiceForm {
   }
 
   public fillTable() {
-    console.log("AAA");
 
     this.loadingPlanItemList = [];
     this.loadingPlanList = [];
@@ -207,27 +201,23 @@ export class InvoiceForm {
     this.totalWeight = 0.0;
 
     for (let i = 0; i < this.formGroup.value.dispatchNoteList.length; i++) {
-      console.log("BBB");
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
       if (dispatchNote === undefined) continue;
       let yLoadingPlanList = dispatchNote.loadingPlanList;
 
-      console.log("BBC");
       for (let ii = 0; ii < yLoadingPlanList.length; ii++) {
-        console.log("CCC");
         let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
 
         for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
-           console.log("DDD");
           let xLoadingPlanItem = xLoadingPlanItemList[iii];
 
           xLoadingPlanItem.amount =
-            xLoadingPlanItem.quantity *
+            xLoadingPlanItem.invoiceQuantity *
             xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
           this.totalAmount += xLoadingPlanItem.amount;
 
           xLoadingPlanItem.weight =
-            xLoadingPlanItem.quantity *
+            xLoadingPlanItem.invoiceQuantity *
             xLoadingPlanItem.dispatchSchedule.job.item.weight;
           this.totalWeight += xLoadingPlanItem.weight;
 
@@ -236,7 +226,6 @@ export class InvoiceForm {
         }
       }
     }
-    console.log("EEE");
     this.loadingPlanItemList = this.loadingPlanItemList.slice();
   }
   public resetForm() {

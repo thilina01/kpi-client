@@ -168,11 +168,11 @@
           </td>
           <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule?.job?.item?.size }}
             <br/> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}</td>
-          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity
-            / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
+          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.invoiceQuantity
+            / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
             | number : '1.2-2'}}
           </td>
-          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
+          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.invoiceQuantity}} </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.unitPrice}} </td>
           <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
         </tr>

@@ -144,7 +144,7 @@ export class SalesOrderBookTable {
         dispatchSehedule.loadingPlanItemList.forEach(loadingPlanItem => {
           dispatchedQuantity += loadingPlanItem.quantity;
           if (loadingPlanItem.loadingPlan.dispatchNote !== null && loadingPlanItem.loadingPlan.dispatchNote.invoice !== null) {
-            invoicedQuantity += loadingPlanItem.quantity;
+            invoicedQuantity += loadingPlanItem.invoiceQuantity;
           }
         });
       });

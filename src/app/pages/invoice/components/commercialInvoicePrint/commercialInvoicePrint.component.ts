@@ -73,12 +73,9 @@ export class CommercialInvoicePrint {
             for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
               let xLoadingPlanItem = xLoadingPlanItemList[iii];
                 if (xLoadingPlanItem !== undefined) {
-              xLoadingPlanItem.amount = xLoadingPlanItem.quantity *
-                xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+              xLoadingPlanItem.amount = xLoadingPlanItem.invoiceQuantity *xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
               this.totalAmount += xLoadingPlanItem.amount;
-              xLoadingPlanItem.weight =
-                xLoadingPlanItem.quantity *
-                xLoadingPlanItem.dispatchSchedule.job.item.weight;
+              xLoadingPlanItem.weight =xLoadingPlanItem.invoiceQuantity *xLoadingPlanItem.dispatchSchedule.job.item.weight;
               this.totalWeight += xLoadingPlanItem.weight;
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
