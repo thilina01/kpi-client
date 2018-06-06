@@ -12,20 +12,12 @@ export class AccidentService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('accidents/');
   }
-  getByAccidentDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'accidentDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+  getAccidentPage(section, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'accident?section=' + section+ '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
-  getBySectionAndAccidentDurationPage(section, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'sectionAndAccidentDurationPage?section=' + section + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getByEmployeeAndAccidentDurationPage(employee, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'employeeAndAccidentDurationPage?employee=' + employee + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getPageByEmployee(employee: any, page, size): Observable<any> {
-    return this.http.post(this.apiUrl + 'pageByEmployee?page=' + page + '&size=' + size, JSON.stringify(employee), { headers: this.getJsonHeaders() })
+  getTreatmentPage(employee, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'treatment?employee=' + employee+ '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
 }
