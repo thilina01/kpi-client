@@ -85,6 +85,7 @@ export class Pages {
     { routerLink: '/pages/designations/table', name: 'Designation', menuType: this.menuType },
     { routerLink: '/pages/dispatchInformation/table', name: 'Dispatch Information', menuType: this.menuType },
     { routerLink: '/pages/dispatchNote/table', name: 'Dispatch Note', menuType: this.menuType },
+    { routerLink: '/pages/dispatchReject/table', name: 'Dispatch Reject', menuType: this.menuType },
     { routerLink: '/pages/dispatchRelease/table', name: 'Dispatch Release', menuType: this.menuType },
     { routerLink: '/pages/dispatchSchedule/table', name: 'Dispatch Schedule', menuType: this.menuType },
     { routerLink: '/pages/electricityCostPerKg/table', name: 'Electricity Cost Per Kg', menuType: this.menuType },

@@ -1,0 +1,95 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Dispatch Reject Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/dispatchReject/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <p-panel>
+    <div class="row">
+      <div class=" col-sm-12">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <label for="dispatchNote">DispatchNote</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete id="dispatchNote" [(ngModel)]="dispatchNote" [dropdown]="true" field="display" [suggestions]="filteredDispatchNoteList"
+                (completeMethod)="filterDispatchNoteList($event)" [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.code}} : {{option.name}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/dispatchNote/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <label for="loadingPlanItem">Loading Plan Item</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete [(ngModel)]="loadingPlanItem" [dropdown]="true" field="display" [suggestions]="filteredLoadingPlanItems"
+                (completeMethod)="filterLoadingPlanItems($event)" [minLength]="1" placeholder="Search" (onSelect)="onLoadingPlanItemSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.display}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/loadingPlanItem/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <div class="form-group">
+              <label for="rejectedQuantity">Rejected Quantity</label>
+              <br/>
+              <input type="text" [(ngModel)]="rejectedQuantity" id="rejectedQuantity" (keyup.enter)="addDispatchReject()" pInputText>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="inputFirstName">&nbsp;</label>
+            <br/>
+            <div class="form-group form-inline">
+              <button (click)="addDispatchReject()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <p-dataTable #dt [value]="loadingPlanItemListToSave" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+              <p-column field="id" header="ID"></p-column>
+              <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+              <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
+              <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
+              <p-column field="quantity" styleClass="text-right" header="Quantity"></p-column>
+              <p-column field="rejectedQuantity" styleClass="text-right" header="Rejected Quantity"></p-column>
+            </p-dataTable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-panel>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      &nbsp;
+      <br/>
+      <button pButton type="button" (click)="save()" icon="fa-floppy-o" label="Save"></button>
+      <button type="button" pButton class="ui-button-secondary" (click)="reset()" icon="fa-times" label="Reset"></button>
+      <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+    </div>
+  </div>
+</p-panel>

@@ -22,4 +22,14 @@ export class LoadingPlanItemService extends MasterService {
     return this.http.get(this.apiUrl + 'dispatchInformation?customer=' + customer+  '&item=' + item + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
+
+  getByDispatchNote(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + "dispatchNote/" + id, {headers: this.getJsonHeaders()})
+      .catch(err => this.handleError(err));
+  }
+
+  getDispatchRejectPage(customer, item, dispatchNote, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'dispatchReject?customer=' + customer+  '&item=' + item +'&dispatchNote=' + dispatchNote + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 }

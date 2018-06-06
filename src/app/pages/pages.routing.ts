@@ -47,6 +47,7 @@ export const routes: Routes = [
       // { path: 'designation', canActivate: [AuthGuard], loadChildren: 'app/pages/designation/designation.module#DesignationModule' },
       { path: 'dispatchInformation', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchInformation/dispatchInformation.module#DispatchInformationModule' },
       { path: 'dispatchNote', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchNote/dispatchNote.module#DispatchNoteModule' },
+      { path: 'dispatchReject', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchReject/dispatchReject.module#DispatchRejectModule' },
       { path: 'dispatchRelease', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchRelease/dispatchRelease.module#DispatchReleaseModule' },
       { path: 'dispatchSchedule', canActivate: [AuthGuard], loadChildren: 'app/pages/dispatchSchedule/dispatchSchedule.module#DispatchScheduleModule' },
       { path: 'electricityCostPerKg', canActivate: [AuthGuard], loadChildren: 'app/pages/electricityCostPerKg/electricityCostPerKg.module#ElectricityCostPerKgModule' },
