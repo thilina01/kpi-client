@@ -12,16 +12,8 @@ export class BreakdownService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('breakdowns/');
   }
-  getByBreakdownDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'breakdownDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getByBreakdownDurationAndMachinePage(startDate, endDate, machine, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'breakdownDurationAndMachinePage?startDate=' + startDate + '&endDate=' + endDate + '&machine=' + machine + '&page=' + page + '&size=' + size)
-      .catch(err => this.handleError(err));
-  }
-  getPageByMachine(machine: any, page, size): Observable<any> {
-    return this.http.post(this.apiUrl + 'pageByMachine?page=' + page + '&size=' + size, JSON.stringify(machine), { headers: this.getJsonHeaders() })
+   getBreakdownPage(machine, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'breakdown?machine=' +machine+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
 }
