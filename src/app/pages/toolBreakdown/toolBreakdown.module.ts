@@ -36,6 +36,6 @@ import { ToolService } from '../tool/tool.service';
     ToolBreakdownTable,
     ToolBreakdownForm
   ],
-  providers: [ToolBreakdownService, ToolService]
+  providers: [ToolBreakdownService, ToolService,]
 })
 export class ToolBreakdownModule { }

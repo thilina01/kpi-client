@@ -1,72 +1,129 @@
-
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { ToolBreakdownService } from '../../toolBreakdown.service';
+import { ToolService } from '../../../tool/tool.service';
 
 @Component({
-    selector: 'tool-breakdown-table',
-    encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./toolBreakdownTable.scss'],
-    templateUrl: './toolBreakdownTable.html',
+  selector: 'tool-breakdown-table',
+  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./toolBreakdownTable.scss'],
+  templateUrl: './toolBreakdownTable.html'
 })
 export class ToolBreakdownTable {
+  toolBreakdown = {};
+  rows = [];
+  timeout: any;
+  totalRecords: number;
+  startDate: Date;
+  endDate: Date;
+  pageSize = 20;
+  tool: any = { id: 0, code: 'ALL', display: 'All tools' };
+  constructor(
+    protected service: ToolBreakdownService,
+    private router: Router,
+    private confirmationService: ConfirmationService,
+    private toolService: ToolService,
+    private sharedService: SharedService
+  ) {
+    this.loadData();
+    this.getTools();
+  }
 
-    toolBreakdown = {};
-    rows = [];
-    timeout: any;
-    totalRecords: number;
+  getTools(): void {
+    this.toolService.getCombo().subscribe(tools => {
+      this.tools = tools;
+      this.tools.unshift({ id: 0, code: 'ALL', display: 'All Tools' });
+    });
+  }
 
-    constructor(protected service: ToolBreakdownService,
-        private router: Router,
-        private confirmationService: ConfirmationService,
-        private sharedService: SharedService) {
-        this.loadData();
-    }
-    loadData() {
-        this.service.getPage(0, 20).subscribe((data: any) => {
-            this.rows = data.content;
-            this.totalRecords = data.totalElements;
+  loadData() {
+    this.service
+      .getToolBreakdownPage(0, '1970-01-01', '2100-12-31', 0, 20)
+      .subscribe((data: any) => {
+        this.fillTable(data);
+      });
+  }
+
+  lazy(event: any, table: any) {
+    console.log(event);
+    this.search(event.first / event.rows, event.rows);
+  }
+
+  search(first: number, pageSize: number): void {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
+    this.service
+      .getToolBreakdownPage(
+        this.tool !== undefined ? this.tool.id : 0,
+        this.startDate === undefined
+          ? '1970-01-01'
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? '2100-12-31'
+          : this.sharedService.YYYYMMDD(this.endDate),
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
+        this.fillTable(data);
+      });
+  }
+
+  fillTable(data: any) {
+    this.rows = data.content;
+    this.totalRecords = data.totalElements;
+  }
+
+  selected(data: any) {}
+
+  onRowDblclick(data: any): void {
+    this.router.navigate(['/pages/toolBreakdown/form/' + data.id]);
+  }
+
+  navigateToForm(id: any): void {
+    this.router.navigate(['/pages/toolBreakdown/form/' + id]);
+  }
+
+  delete(id: number) {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to Delete?',
+      accept: () => {
+        this.service.delete(id).subscribe(response => {
+          this.sharedService.addMessage({
+            severity: 'info',
+            summary: 'Deleted',
+            detail: 'Delete success'
+          });
+          this.loadData();
         });
-    }
+      }
+    });
+  }
 
-    lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
-        this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-            this.rows = data.content;
-            this.totalRecords = data.totalElements;
-        });
-    }
+  onPage(event) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      console.log('paged!', event);
+    }, 100);
+  }
 
-    selected(data: any) {
+  /*================== Tool Filter ===================*/
+  filterTools(event) {
+    let query = event.query.toLowerCase();
+    this.filteredTools = [];
+    for (let i = 0; i < this.tools.length; i++) {
+      let tool = this.tools[i];
+      if (tool.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredTools.push(tool);
+      }
     }
+  }
 
-    onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/toolBreakdown/form/' + data.id]);
-    }
+  onToolSelect(tool: any) {
+    console.log(event);
+    this.tool = tool;
+  }
 
-    navigateToForm(id: any): void {
-        this.router.navigate(['/pages/toolBreakdown/form/' + id]);
-    }
-
-    delete(id: number) {
-        this.confirmationService.confirm({
-            message: 'Are you sure that you want to Delete?',
-            accept: () => {
-                this.service.delete(id).subscribe(response => {
-                    this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    this.loadData()
-                }
-                );
-            }
-        });
-    }
-
-    onPage(event) {
-        clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-            console.log('paged!', event);
-        }, 100);
-    }
+  /*================== End Of Tool Filter ===================*/
 }

@@ -11,4 +11,8 @@ export class ToolBreakdownService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('toolBreakdowns/');
   }
+   getToolBreakdownPage(tool,startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'toolBreakdown?tool=' +tool+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 }
