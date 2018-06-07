@@ -31,7 +31,8 @@ export class Mdt6MonthsChartService {
         { 'month': ' Jan(2018)  ', 'mdt': 0.8, 'target': 1.1 },
         { 'month': ' Feb(2018)  ', 'mdt': 0.9, 'target': 1.1 },
         { 'month': ' Mar(2018)  ', 'mdt': 0.7, 'target': 1.1 },
-        { 'month': ' Apr(2018)  ', 'mdt': 0.12, 'target': 1.1 }
+        { 'month': ' Apr(2018)  ', 'mdt': 0.12, 'target': 1.1 },
+        { 'month': ' May(2018)  ', 'mdt': 0.1, 'target': 1.1 }
 
       ],
       'valueAxes': [{
