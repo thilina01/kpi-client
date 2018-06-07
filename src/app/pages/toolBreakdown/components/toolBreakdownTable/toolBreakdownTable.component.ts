@@ -20,6 +20,8 @@ export class ToolBreakdownTable {
   endDate: Date;
   pageSize = 20;
   tool: any = { id: 0, code: 'ALL', display: 'All tools' };
+  filteredTools: any;
+  tools: any;
   constructor(
     protected service: ToolBreakdownService,
     private router: Router,

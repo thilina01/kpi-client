@@ -1,27 +1,28 @@
-import { SharedService } from '../../../../services/shared.service';
-import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { ConfirmationService, Message } from 'primeng/primeng';
-import { BreakdownService } from '../../breakdown.service';
-import { DataTable } from 'primeng/components/datatable/datatable';
-import { SectionService } from '../../../section/section.service';
-import { MachineService } from '../../../machine/machine.service';
+import { SharedService } from "../../../../services/shared.service";
+import { Component, ViewEncapsulation, Input, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
+import { ConfirmationService, Message } from "primeng/primeng";
+import { BreakdownService } from "../../breakdown.service";
+import { DataTable } from "primeng/components/datatable/datatable";
+import { SectionService } from "../../../section/section.service";
+import { MachineService } from "../../../machine/machine.service";
 
 @Component({
-  selector: 'breakdown-table',
+  selector: "breakdown-table",
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./breakdownTable.scss'],
-  templateUrl: './breakdownTable.html'
+  styleUrls: ["./breakdownTable.scss"],
+  templateUrl: "./breakdownTable.html"
 })
 export class BreakdownTable {
   filteredMachines: any[];
   breakdown = {};
   rows = [];
+  pageSize = 20;
   timeout: any;
   totalRecords: number;
   machines: any;
   @ViewChild(DataTable) dataTable: DataTable;
-  machine: any = { id: 0, code: 'ALL', display: 'All Machines' };
+  machine: any = { id: 0, code: "ALL", display: "All Machines" };
   startDate: Date;
   endDate: Date;
   constructor(
@@ -38,13 +39,13 @@ export class BreakdownTable {
   getMachines(): void {
     this.machineService.getCombo().subscribe(machines => {
       this.machines = machines;
-      this.machines.unshift({ id: 0, code: 'ALL', display: 'All Machines' });
+      this.machines.unshift({ id: 0, code: "ALL", display: "All Machines" });
     });
   }
 
   loadData() {
     this.service
-      .getBreakdownPage(0, '1970-01-01', '2100-12-31', 0, 20)
+      .getBreakdownPage(0, "1970-01-01", "2100-12-31", 0, 20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
@@ -61,10 +62,10 @@ export class BreakdownTable {
       .getBreakdownPage(
         this.machine !== undefined ? this.machine.id : 0,
         this.startDate === undefined
-          ? '1970-01-01'
+          ? "1970-01-01"
           : this.sharedService.YYYYMMDD(this.startDate),
         this.endDate === undefined
-          ? '2100-12-31'
+          ? "2100-12-31"
           : this.sharedService.YYYYMMDD(this.endDate),
         first,
         pageSize
@@ -82,22 +83,22 @@ export class BreakdownTable {
   selected(data: any) {}
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/breakdown/form/' + data.id]);
+    this.router.navigate(["/pages/breakdown/form/" + data.id]);
   }
 
   navigateToForm(id: any): void {
-    this.router.navigate(['/pages/breakdown/form/' + id]);
+    this.router.navigate(["/pages/breakdown/form/" + id]);
   }
 
   delete(id: number) {
     this.confirmationService.confirm({
-      message: 'Are you sure that you want to Delete?',
+      message: "Are you sure that you want to Delete?",
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({
-            severity: 'info',
-            summary: 'Deleted',
-            detail: 'Delete success'
+            severity: "info",
+            summary: "Deleted",
+            detail: "Delete success"
           });
           //this.msgs.push();
           this.loadData();
