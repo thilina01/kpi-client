@@ -26,7 +26,6 @@ export class Mdt6MonthsChartService {
       },
 
       'dataProvider': [
-        { 'month': ' Nov(2017)  ', 'mdt': 0.9, 'target': 1.1 },
         { 'month': ' Dec(2017)  ', 'mdt': 0.6, 'target': 1.1 },
         { 'month': ' Jan(2018)  ', 'mdt': 0.8, 'target': 1.1 },
         { 'month': ' Feb(2018)  ', 'mdt': 0.9, 'target': 1.1 },
