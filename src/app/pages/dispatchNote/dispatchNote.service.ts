@@ -49,5 +49,9 @@ export class DispatchNoteService extends MasterService {
     return this.http.get(this.apiUrl + 'customerAndDispatchNoteDurationAndLocationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&location=' + location + '&page=' + page + '&size=' + size)
       .catch(err => this.handleError(err));
   }
+  getDispatchNotePage(customer, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'dispatchNote?customer=' + customer+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+      .catch(err => this.handleError(err));
+  }
 
 }

@@ -1,26 +1,30 @@
-import { Component, Input } from '@angular/core';
-import { DispatchNoteService } from '../../dispatchNote.service';
-import { PrintService } from '../../../../services/print.service';
-import { OrganizationService } from '../../../organization/organization.service';
-import 'rxjs/add/operator/take';
+import { Component, Input } from "@angular/core";
+import { DispatchNoteService } from "../../dispatchNote.service";
+import { PrintService } from "../../../../services/print.service";
+import { OrganizationService } from "../../../organization/organization.service";
+import "rxjs/add/operator/take";
 
 @Component({
-  selector: 'print',
-  templateUrl: './print.html'
+  selector: "print",
+  templateUrl: "./print.html"
 })
 export class Print {
   totalQuantity = 0.0;
-  TotalnoOfPackages= 0.0;
+  totalNumberOfPackages = 0.0;
   xAddress: any = null;
   xLoadingPlanItemList = [];
 
-  @Input() set id(id: number) {
+  @Input()
+  set id(id: number) {
     if (this.id !== 0) {
-      this.service.get(+id).take(1).subscribe(
-        (data) => {
+      this.service
+        .get(+id)
+        .take(1)
+        .subscribe(data => {
+          if (data === null) return;
           this.dispatchNote = data;
           this.totalQuantity = 0.0;
-          this.TotalnoOfPackages = 0.0;
+          this.totalNumberOfPackages = 0.0;
           this.xAddress = null;
           this.xLoadingPlanItemList = [];
 
@@ -35,32 +39,36 @@ export class Print {
             for (let ii = 0; ii < yLoadingPlanItemList.length; ii++) {
               let xLoadingPlanItem = yLoadingPlanItemList[ii];
 
-              xLoadingPlanItem.quantity =xLoadingPlanItem.quantity;
+              xLoadingPlanItem.quantity = xLoadingPlanItem.quantity;
               this.totalQuantity += xLoadingPlanItem.quantity;
 
-              xLoadingPlanItem.noOfpackages =Math.ceil(xLoadingPlanItem.quantity / xLoadingPlanItem.packagingSpecification.perPalletQuantity);
-              this.TotalnoOfPackages += xLoadingPlanItem.noOfpackages;
+              xLoadingPlanItem.noOfpackages = Math.ceil(
+                xLoadingPlanItem.quantity /
+                  xLoadingPlanItem.packagingSpecification.perPalletQuantity
+              );
+              this.totalNumberOfPackages += xLoadingPlanItem.noOfpackages;
 
               this.xLoadingPlanItemList.push(xLoadingPlanItem);
             }
           }
           setTimeout(() => {
-            let element = document.getElementById('print');
+            let element = document.getElementById("print");
             if (element != null) {
               this.printService.printA4(element.innerHTML);
             }
           }, 100);
-        }
-      );
+        });
     }
   }
 
   organization: any;
   dispatchNote: any;
 
-  constructor(private service: DispatchNoteService,
+  constructor(
+    private service: DispatchNoteService,
     private printService: PrintService,
-    private organizationService: OrganizationService) {
+    private organizationService: OrganizationService
+  ) {
     this.getOrganization();
   }
 
@@ -70,4 +78,3 @@ export class Print {
     });
   }
 }
-

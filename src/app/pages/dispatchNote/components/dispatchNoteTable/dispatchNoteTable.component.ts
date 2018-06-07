@@ -26,6 +26,7 @@ export class DispatchNoteTable {
   endDate: Date;
   customers: any;
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
+  pageSize= 20;
 
   constructor(protected service: DispatchNoteService,
     private router: Router,
@@ -45,43 +46,43 @@ export class DispatchNoteTable {
   }
 
   loadData() {
-    this.service.getPage(0, 20).subscribe((data: any) => {
-      this.rows = data.content;
-      this.totalRecords = data.totalElements;
-    });
+    this.service
+      .getDispatchNotePage(0, '1970-01-01', '2100-12-31', 0, 20)
+      .subscribe((data: any) => {
+        this.fillTable(data);
+      });
   }
 
   lazy(event: any, table: any) {
     console.log(event);
-    this.search((event.first / event.rows), event.rows);
+    this.search(event.first / event.rows, event.rows);
   }
+
+  search(first: number, pageSize: number): void {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
+    this.service
+      .getDispatchNotePage(
+        this.customer !== undefined ? this.customer.id : 0,
+        this.startDate === undefined
+          ? '1970-01-01'
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? '2100-12-31'
+          : this.sharedService.YYYYMMDD(this.endDate),
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
+        this.fillTable(data);
+      });
+  }
+
 
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.search(event.first, event.rows);
     }, 100);
-  }
-
-  search(first: number, pageSize: number): void {
-    if (this.startDate != undefined &&
-      this.endDate != undefined &&
-      this.customer != undefined &&
-      this.customer.id != undefined) {
-      if (this.customer.id == 0) {
-        this.service.getByDispatchNoteDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      } else if (this.customer.id > 0) {
-        this.service.getByCustomerAndDispatchNoteDurationPage(this.customer.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      }
-    } else {
-      this.service.getPage(first, pageSize).subscribe((data: any) => {
-        this.fillTable(data);
-      });
-    }
   }
 
   fillTable(data: any) {
