@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <a routerLink="/pages/financeSummary/table">
+      <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:10px; margin-top:10px;">
+        <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+      </button>
+    </a>
+    <p-tabView>
+      <p-tabPanel header='Revenue' leftIcon='fa-line-chart '>
+        <p-panel>
+          <p-header>
+            <div class='ui-helper-clearfix center'>
+              <span class='ui-panel-title'>Revenue</span>
+            </div>
+          </p-header>
+          <revenue-chart></revenue-chart>
+        </p-panel>
+      </p-tabPanel>
+      <p-tabPanel header='Gross Profit' leftIcon='fa-line-chart '>
+        <p-panel>
+          <p-header>
+            <div class='ui-helper-clearfix center'>
+              <span class='ui-panel-title'>Gross Profit</span>
+            </div>
+          </p-header>
+          <gross-profit-chart></gross-profit-chart>
+        </p-panel>
+      </p-tabPanel>
+      <p-tabPanel header='EBITDA' leftIcon='fa-line-chart '>
+        <p-panel>
+          <p-header>
+            <div class='ui-helper-clearfix center'>
+              <span class='ui-panel-title'>EBITDA</span>
+            </div>
+          </p-header>
+          <ebitda-chart></ebitda-chart>
+        </p-panel>
+      </p-tabPanel>
+      <p-tabPanel header='Net Profit' leftIcon='fa-line-chart '>
+        <p-panel>
+          <p-header>
+            <div class='ui-helper-clearfix center'>
+              <span class='ui-panel-title'>Net Profit</span>
+            </div>
+          </p-header>
+          <net-profit-chart></net-profit-chart>
+        </p-panel>
+      </p-tabPanel>
+    </p-tabView>
+
+  </div>
+</div>

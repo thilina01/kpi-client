@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, TabViewModule } from 'primeng/primeng';
 // import { MaterialModule } from '@angular/material';
 
 import { FinanceSummary } from './financeSummary.component';
@@ -13,6 +13,16 @@ import { FinanceSummaryForm } from './components/financeSummaryForm/financeSumma
 
 import { routing } from './financeSummary.routing';
 import { FinanceSummaryService } from './financeSummary.service';
+import { ChartService } from '../chart/chart.service';
+import { FinanceSummaryChart } from './components/financeSummaryChart';
+import { RevenueChart } from './components/financeSummaryChart/revenueChart/revenueChart.component';
+import { EbitdaChart } from './components/financeSummaryChart/ebitdaChart/ebitdaChart.component';
+import { GrossProfitChart } from './components/financeSummaryChart/grossProfitChart/grossProfitChart.component';
+import { NetProfitChart } from './components/financeSummaryChart/netProfitChart/netProfitChart.component';
+import { RevenueChartService } from './components/financeSummaryChart/revenueChart/revenueChart.service';
+import { EbitdaChartService } from './components/financeSummaryChart/ebitdaChart/ebitdaChart.service';
+import { GrossProfitChartService } from './components/financeSummaryChart/grossProfitChart/grossProfitChart.service';
+import { NetProfitChartService } from './components/financeSummaryChart/netProfitChart/netProfitChart.service';
 
 @NgModule({
   imports: [
@@ -27,13 +37,26 @@ import { FinanceSummaryService } from './financeSummary.service';
     SharedModule,
     PanelModule,
     InputTextModule,
+    TabViewModule,
     routing
   ],
   declarations: [
     FinanceSummary,
     FinanceSummaryTable,
-    FinanceSummaryForm
+    FinanceSummaryForm,
+    FinanceSummaryChart,
+    RevenueChart,
+    EbitdaChart,
+    GrossProfitChart,
+    NetProfitChart
   ],
-  providers: [FinanceSummaryService]
+  providers: [
+    FinanceSummaryService,
+    ChartService,
+    RevenueChartService,
+    EbitdaChartService,
+    GrossProfitChartService,
+    NetProfitChartService,
+  ]
 })
 export class FinanceSummaryModule { }

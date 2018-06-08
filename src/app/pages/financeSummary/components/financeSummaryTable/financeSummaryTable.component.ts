@@ -51,6 +51,10 @@ export class FinanceSummaryTable {
         this.router.navigate(['/pages/financeSummary/form/' + id]);
     }
 
+    navigateToChart(): void {
+      this.router.navigate(['/pages/financeSummary/chart']);
+    }
+
     delete(id: number) {
         this.confirmationService.confirm({
             message: 'Are you sure that you want to Delete?',
