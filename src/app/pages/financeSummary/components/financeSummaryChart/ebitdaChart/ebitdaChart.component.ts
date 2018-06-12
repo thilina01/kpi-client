@@ -26,7 +26,7 @@ export class EbitdaChart {
       '-' + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyEbitda(startDateText, endDateText).subscribe((data) => {
-      this.amChart.dataProvider = data.json();
+      this.amChart.dataProvider = data;
       this.amChart.validateData();
       this.chartService.fillTable(this.amChart);
     });

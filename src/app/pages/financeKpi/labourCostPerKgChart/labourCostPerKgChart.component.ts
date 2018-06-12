@@ -28,7 +28,7 @@ export class LabourCostPerKgChart {
     let endDateText = endDate.getFullYear() + '-' + (endDate.getMonth() < 10 ? '0' + endDate.getMonth() : endDate.getMonth()) + '-' + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyLabourCostPerKg(startDateText, endDateText).subscribe((data) => {
-      this.amChart.dataProvider = data.json();
+      this.amChart.dataProvider = data;
       this.amChart.validateData();
       this.chartService.fillTable(this.amChart);
     });

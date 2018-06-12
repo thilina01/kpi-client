@@ -26,7 +26,7 @@ export class LabourTurnoverChart {
     let endDateText = endDate.getFullYear() + '-' + (endDate.getMonth() < 10 ? '0' + endDate.getMonth() : endDate.getMonth()) + '-' + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyLabourTurnover(startDateText, endDateText).subscribe((data) => {
-      this.chartData = this._labourTurnoverChartService.getChartData(data.json());
+      this.chartData = this._labourTurnoverChartService.getChartData(data);
       this.amChart = AmCharts.makeChart('labourturnoverchartdiv', this.chartData);
     });
   }

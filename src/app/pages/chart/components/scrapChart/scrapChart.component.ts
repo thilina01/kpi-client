@@ -138,7 +138,7 @@ export class ScrapChart {
       this.categoryTitle = 'Section';
 
       this.chartService.getScrap(this.startDate, this.endDate).subscribe((data) => {
-        this.setData(data.json());
+        this.setData(data);
       });
 
     //   if (this.lossType && this.lossType.id != 0) {
@@ -180,7 +180,7 @@ export class ScrapChart {
     //     });
 
     //   } else {
-      
+
       this.chartService.getScrapReasonSummaryBySection(this.startDate, this.endDate, this.section).subscribe((data) => {
         this.setScrapReasonSummaryData(data.json())
       });
@@ -232,22 +232,22 @@ export class ScrapChart {
 
   //     if (this.lossType && this.lossType.id != 0) {
   //       this.chartService.getLossReasonSummaryByLossType(event.data.date, event.data.date, this.lossType.id).subscribe((data) => {
-  //         this.dateLossReasonSummaryData = data.json();
+  //         this.dateLossReasonSummaryData = data;
   //       });
   //     } else {
   //       this.chartService.getLossReasonSummary(event.data.date, event.data.date).subscribe((data) => {
-  //         this.dateLossReasonSummaryData = data.json();
+  //         this.dateLossReasonSummaryData = data;
   //       });
   //     }
   //   } else {
 
   //     if (this.lossType && this.lossType.id != 0) {
   //       this.chartService.getLossReasonSummaryBySectionAndLossType(event.data.date, event.data.date, this.section, this.lossType.id).subscribe((data) => {
-  //         this.dateLossReasonSummaryData = data.json();
+  //         this.dateLossReasonSummaryData = data;
   //       });
   //     } else {
   //       this.chartService.getLossReasonSummaryBySection(event.data.date, event.data.date, this.section).subscribe((data) => {
-  //         this.dateLossReasonSummaryData = data.json();
+  //         this.dateLossReasonSummaryData = data;
   //       });
   //     }
   //   }
@@ -258,11 +258,11 @@ export class ScrapChart {
     console.log(event);
     if (this.section == '0') {
       this.chartService.getScrapReasonSummaryByLossReason(this.startDate, this.endDate, event.data.lossReason.id).subscribe((data) => {
-        this.dateLossReasonSummaryByLossReasonData = data.json();
+        this.dateLossReasonSummaryByLossReasonData = data;
       });
     } else {
       this.chartService.getScrapReasonSummaryBySectionAndLossReason(this.startDate, this.endDate, this.section, event.data.lossReason.id).subscribe((data) => {
-        this.dateLossReasonSummaryByLossReasonData = data.json();
+        this.dateLossReasonSummaryByLossReasonData = data;
       });
     }
   }

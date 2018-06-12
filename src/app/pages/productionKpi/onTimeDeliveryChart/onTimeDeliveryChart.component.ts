@@ -36,7 +36,7 @@ export class OnTimeDeliveryChart {
   }
 
   fillChart(data: any): void {
-    this.amChart.dataProvider = data.json();
+    this.amChart.dataProvider = data;
     this.amChart.validateData();
     this.chartService.fillTable(this.amChart);
   }

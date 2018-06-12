@@ -35,7 +35,7 @@ export class KwhKvaMainChart {
     let endDateText = endDate.getFullYear() + "-" + (endDate.getMonth() < 10 ? "0" + endDate.getMonth() : endDate.getMonth()) + "-" + (new Date(endDate.getFullYear(), endDate.getMonth(), 0).getDate());
 
     this.chartService.getMonthlyEnergyConsumptionByLocation(startDateText, endDateText, this.location).subscribe((data) => {
-      this.amChart.dataProvider = data.json();
+      this.amChart.dataProvider = data;
       this.amChart.validateData();
     });
   }
