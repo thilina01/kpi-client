@@ -13,11 +13,11 @@ export class AccidentService extends MasterService {
     this.setApiUrl('accidents/');
   }
   getAccidentPage(section, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'accident?section=' + section+ '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'accident?section=' + section+ '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getTreatmentPage(employee, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'treatment?employee=' + employee+ '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'treatment?employee=' + employee+ '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }

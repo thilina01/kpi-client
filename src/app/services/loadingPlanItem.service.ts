@@ -14,12 +14,12 @@ export class LoadingPlanItemService extends MasterService {
   }
 
   getInvoiceInformationPage(invoice, invoiceNumber, customer, job, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'invoiceInformation?invoice=' + invoice +'&invoiceNumber=' + invoiceNumber +'&customer=' + customer+ '&job=' + job+'&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'invoiceInformation?invoice=' + invoice +'&invoiceNumber=' + invoiceNumber +'&customer=' + customer+ '&job=' + job+'&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
   getDispatchInformationPage(customer, item, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'dispatchInformation?customer=' + customer+  '&item=' + item + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'dispatchInformation?customer=' + customer+  '&item=' + item + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
@@ -29,7 +29,7 @@ export class LoadingPlanItemService extends MasterService {
   }
 
   getDispatchRejectPage(customer, item, dispatchNote, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'dispatchReject?customer=' + customer+  '&item=' + item +'&dispatchNote=' + dispatchNote + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'dispatchReject?customer=' + customer+  '&item=' + item +'&dispatchNote=' + dispatchNote + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }

@@ -13,7 +13,7 @@ export class BreakdownService extends MasterService {
     this.setApiUrl('breakdowns/');
   }
    getBreakdownPage(machine, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'breakdown?machine=' +machine+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'breakdown?machine=' +machine+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }

@@ -34,23 +34,23 @@ export class DispatchNoteService extends MasterService {
       .catch(err => this.handleError(err));
   }
   getByDispatchNoteDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'dispatchNoteDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'dispatchNoteDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getByDispatchNoteDurationAndLocationPage(startDate, endDate, location, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'dispatchNoteDurationAndLocationPage?startDate=' + startDate + '&endDate=' + endDate + '&location=' + location + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'dispatchNoteDurationAndLocationPage?startDate=' + startDate + '&endDate=' + endDate + '&location=' + location + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getByCustomerAndDispatchNoteDurationPage(customer, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerAndDispatchNoteDurationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'customerAndDispatchNoteDurationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getByCustomerAndDispatchNoteDurationAndLocationPage(customer, startDate, endDate, location, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerAndDispatchNoteDurationAndLocationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&location=' + location + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'customerAndDispatchNoteDurationAndLocationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&location=' + location + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getDispatchNotePage(customer, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'dispatchNote?customer=' + customer+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'dispatchNote?customer=' + customer+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
