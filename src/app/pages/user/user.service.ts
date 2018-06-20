@@ -7,7 +7,7 @@ import { Injectable, Inject } from '@angular/core';
 
 @Injectable()
 export class UserService extends MasterService{
-  
+
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp,aConfig,anAuthService);
     this.setApiUrl('users/');
@@ -44,28 +44,28 @@ export class UserService extends MasterService{
 //   getAll(): Promise<Array<Object>> {
 //     return this.http.get(this.apiUrl, { headers: this.getJsonHeaders() })
 //       .toPromise()
-//       .then(response => response.json() as Array<Object>)
+//       .then(response => response as Array<Object>)
 //       .catch(this.handleError);
 //   }
 
 //   getPage(page, size): Promise<Array<Object>> {
 //     return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
 //       .toPromise()
-//       .then(response => response.json() as Array<Object>)
+//       .then(response => response as Array<Object>)
 //       .catch(this.handleError);
 //   }
 
 //   getCombo(): Promise<Array<Object>> {
 //     return this.http.get(this.apiUrl + 'combo', { headers: this.getJsonHeaders() })
 //       .toPromise()
-//       .then(response => response.json() as Array<Object>)
+//       .then(response => response as Array<Object>)
 //       .catch(this.handleError);
 //   }
 
 //   getOne(id: number): Promise<Object> {
 //     return this.http.get(this.apiUrl + id, { headers: this.getJsonHeaders() })
 //       .toPromise()
-//       .then(response => response.json() as Object)
+//       .then(response => response as Object)
 //       .catch(this.handleError);
 //   }
 
@@ -73,7 +73,7 @@ export class UserService extends MasterService{
 //     return this.http
 //       .post(this.apiUrl, JSON.stringify(object), { headers: this.getJsonHeaders() })
 //       .toPromise()
-//       .then(res => res.json().data)
+//       .then(res => res.data)
 //       .catch(this.handleError);
 //   }
 
@@ -94,7 +94,7 @@ export class UserService extends MasterService{
 //   getOwn(): Promise<Array<Object>> {
 //     return this.http.get(this.apiUrl + 'own', { headers: this.getJsonHeaders() })
 //       .toPromise()
-//       .then(response => response.json() as Array<Object>)
+//       .then(response => response as Array<Object>)
 //       .catch(this.handleError);
 //   }
 // }

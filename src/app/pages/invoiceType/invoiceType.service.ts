@@ -23,7 +23,7 @@ export class InvoiceTypeService extends MasterService {
   }
 
   getcustomerAndItem(customer,  item, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'invoiceType?customer=' + customer+ '&item=' + item + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'invoiceType?customer=' + customer+ '&item=' + item + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
 }

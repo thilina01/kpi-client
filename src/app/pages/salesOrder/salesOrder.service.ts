@@ -20,7 +20,7 @@ export class SalesOrderService extends MasterService {
       .catch(err => this.handleError(err));
   }
   getSalesOrderPage(customer, salesOrderType, customerPoNumber, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'salesOrder?customer=' + customer+ '&salesOrderType=' + salesOrderType +'&customerPoNumber=' + customerPoNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'salesOrder?customer=' + customer+ '&salesOrderType=' + salesOrderType +'&customerPoNumber=' + customerPoNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
 

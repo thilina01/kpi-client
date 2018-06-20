@@ -14,7 +14,7 @@ export class SalesOrderItemService extends MasterService {
   }
 
   getSalesOrderBookPage(customer, customerItem, salesOrder, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'salesOrderBook?customer=' + customer+ '&customerItem=' + customerItem + '&salesOrder=' + salesOrder +'&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'salesOrderBook?customer=' + customer+ '&customerItem=' + customerItem + '&salesOrder=' + salesOrder +'&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
 }

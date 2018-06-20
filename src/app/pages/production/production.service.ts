@@ -18,35 +18,35 @@ export class ProductionService extends MasterService {
       .catch(err => this.handleError(err));
   }
   getByProductionDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + "productionDurationPage?startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
+    return this.http.get(this.apiUrl + "productionDurationPage?startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getByProductionDurationAndShiftPage(shift, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'productionDurationAndShiftPage?shift=' + shift + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'productionDurationAndShiftPage?shift=' + shift + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getBySectionAndProductionDurationPage(section, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + "sectionAndProductionDurationPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size)
+    return this.http.get(this.apiUrl + "sectionAndProductionDurationPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&page=" + page + "&size=" + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getBySectionAndProductionDurationAndShiftPage(section, startDate, endDate, shift, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + "sectionAndProductionDurationAndShiftPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size)
+    return this.http.get(this.apiUrl + "sectionAndProductionDurationAndShiftPage?section=" + section + "&startDate=" + startDate + "&endDate=" + endDate + "&shift=" + shift + "&page=" + page + "&size=" + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getByProductionDurationAndControlPointTypePage(startDate, endDate, controlPointType, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'productionDurationAndControlPointTypePage?startDate=' + startDate + '&endDate=' + endDate + '&controlPointType=' + controlPointType + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'productionDurationAndControlPointTypePage?startDate=' + startDate + '&endDate=' + endDate + '&controlPointType=' + controlPointType + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getBySectionAndShiftAndProductionDurationAndControlPointTypePage(section, shift, startDate, endDate, controlPointType, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'sectionAndShiftAndProductionDurationAndControlPointTypePage?section=' + section + '&shift=' + shift + '&startDate=' + startDate + '&endDate=' + endDate + '&controlPointType=' + controlPointType + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'sectionAndShiftAndProductionDurationAndControlPointTypePage?section=' + section + '&shift=' + shift + '&startDate=' + startDate + '&endDate=' + endDate + '&controlPointType=' + controlPointType + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getByControlPointTypeAndProductionDurationAndShiftPage(controlPointType, startDate, endDate, shift, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'controlPointTypeAndProductionDurationAndShiftPage?controlPointType=' + controlPointType + '&startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'controlPointTypeAndProductionDurationAndShiftPage?controlPointType=' + controlPointType + '&startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
   getByControlPointTypeAndProductionDurationAndSectionPage(controlPointType, startDate, endDate, section, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'controlPointTypeAndProductionDurationAndSectionPage?controlPointType=' + controlPointType + '&startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'controlPointTypeAndProductionDurationAndSectionPage?controlPointType=' + controlPointType + '&startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
 }
@@ -71,7 +71,7 @@ export class ProductionService extends MasterService {
 //           'Content-Type': 'application/json',
 //           'email': this.authService.email
 //         });
-//       }; 
+//       };
 //     selectionChange: Subject<any> = new Subject<any>();
 
 //     constructor(private http: Http, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {
@@ -82,28 +82,28 @@ export class ProductionService extends MasterService {
 //     getAll(): Promise<Array<Object>> {
 //         return this.http.get(this.apiUrl, { headers: this.getJsonHeaders() })
 //             .toPromise()
-//             .then(response => response.json() as Array<Object>)
+//             .then(response => response as Array<Object>)
 //             .catch(this.handleError);
 //     }
 
 //     getPage(page, size): Promise<Array<Object>> {
 //         return this.http.get(this.apiUrl + "page?page=" + page + "&size=" + size, { headers: this.getJsonHeaders() })
 //             .toPromise()
-//             .then(response => response.json() as Array<Object>)
+//             .then(response => response as Array<Object>)
 //             .catch(this.handleError);
 //     }
 
 //     getOne(id: number): Promise<Object> {
 //         return this.http.get(this.apiUrl + id, { headers: this.getJsonHeaders() })
 //             .toPromise()
-//             .then(response => response.json() as Object)
+//             .then(response => response as Object)
 //             .catch(this.handleError);
 //     }
 //     findByProductionDateAndShiftAndControlPoint(object: Object): Promise<Object> {
 //         return this.http
 //             .post(this.apiUrl + "ByProductionDateAndShiftAndControlPoint", JSON.stringify(object), { headers: this.getJsonHeaders() })
 //             .toPromise()
-//             .then(response => response.json() as Object)
+//             .then(response => response as Object)
 //             .catch(this.handleError);
 //     }
 //     setSelected(id: number) {
@@ -121,7 +121,7 @@ export class ProductionService extends MasterService {
 //         return this.http
 //             .post(this.apiUrl, JSON.stringify(object), { headers: this.getJsonHeaders() })
 //             .toPromise()
-//             .then(res => res.json().data)
+//             .then(res => res.data)
 //             .catch(this.handleError);
 //     }
 
