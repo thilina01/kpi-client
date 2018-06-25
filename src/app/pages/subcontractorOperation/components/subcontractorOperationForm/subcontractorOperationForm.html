@@ -1,0 +1,55 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Subcontractor Operation Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/subcontractorOperation/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class='row'>
+          <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+            <label for="subcontractor">Subcontractor</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="subcontractor" field="display" [dropdown]="true" [suggestions]="filteredSubcontractorList"
+                (completeMethod)="filterSubcontractorList($event)" [minLength]="1" placeholder="Search" (onSelect)="onSubcontractorSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/subcontractor/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <label for="subcontractOperationDefinition">Subcontract Operation Definition</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="subcontractOperationDefinition" [size]="110" field="display" [dropdown]="true" [suggestions]="filteredSubcontractOperationDefinitionList"
+                (completeMethod)="filterSubcontractOperationDefinitionList($event)" [minLength]="1" placeholder="Search" (onSelect)="onSubcontractOperationDefinitionSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/subcontractOperationDefinition/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          &nbsp;
+          <br/>
+          <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+          <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
