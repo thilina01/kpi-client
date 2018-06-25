@@ -1,0 +1,60 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Subcontract Arrival Reject Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/subcontractArrivalReject/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class='row'>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for="subcontractArrival">Subcontract Arrival</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="subcontractArrival" field="display" [dropdown]="true" [suggestions]="filteredSubcontractArrivalList"
+                (completeMethod)="filterSubcontractArrivalList($event)" [minLength]="1" placeholder="Search" (onSelect)="onSubcontractArrivalSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/subcontractArrival/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for="lossReason">Loss Reason</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="lossReason" field="display" [dropdown]="true" [suggestions]="filteredLossReasonList" (completeMethod)="filterLossReasonList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onLossReasonSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/lossReason/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for='quantity'>Quantity</label>
+            <br/>
+            <input type='number' pInputText id='quantity' formControlName='quantity'>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          &nbsp;
+          <br/>
+          <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+          <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
