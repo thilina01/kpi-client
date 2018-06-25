@@ -1,0 +1,65 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Subcontract Operation Rate Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/subcontractOperationRate/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <p-panel>
+    <div class="row">
+      <div class=" col-sm-12">
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <label for="dateOfRate">Date Of Rate</label>
+            <div class="form-group">
+              <p-calendar id="dateOfRatePicker" [(ngModel)]="dateOfRate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+            <label for="subcontractor">Subcontractor</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete id=subcontractorSelector [(ngModel)]="subcontractor" [dropdown]="true" field="display" [suggestions]="filteredSubcontractorList"
+                (completeMethod)="filterSubcontractorList($event)" [minLength]="1" placeholder="Search" (onSelect)="onSubcontractorSelect($event)">
+                <ng-template let-option pTemplate="option">
+                  <div class="ui-helper-clearfix">
+                    <div>{{option.display}}</div>
+                  </div>
+                </ng-template>
+              </p-autoComplete>
+              <a routerLink="/pages/subcontractor/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <p-dataTable #dt [value]="subcontractOperationRateList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+              <p-column field="subcontractorOperation.subcontractOperationDefinition.display" header="Subcontract Operation Definition"></p-column>
+              <p-column field="rate" header="Rate" [editable]="true"></p-column>
+            </p-dataTable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-panel>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      &nbsp;
+      <br/>
+      <button pButton type="button" (click)="save()" icon="fa-floppy-o" label="Save"></button>
+      <button type="button" pButton class="ui-button-secondary" (click)="reset()" icon="fa-times" label="Reset"></button>
+      <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+    </div>
+  </div>
+</p-panel>
