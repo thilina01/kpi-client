@@ -1,0 +1,98 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Subcontract Release Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/subcontractRelease/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" (keydown.enter)="$event.preventDefault()" class="form-horizontal">
+    <div class="row">
+      <div class="col-12">
+        <label for="id">Subcontract Note ID</label>
+        <input type="text" pInputText formControlName="id" id="id" (keydown.enter)="fill()">
+        <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+          <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-12 row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Subcontractor : {{subcontractNote?.subcontractor?.name}} </div>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-sm-12">
+        <p-dataTable #dt [value]="subcontractNote.subcontractOperationList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+          <p-column field="id" header="ID"></p-column>
+          <p-column field="job.display" header="Job"></p-column>
+          <p-column field="subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.display" header="Subcontract Operation Definition"
+            [sortable]="true"></p-column>
+          <p-column field="quantity" header="Quantity" [editable]="true" styleClass="text-right"></p-column>
+        </p-dataTable>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="location">Location</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="location" [dropdown]="true" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/locations/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="subcontractReleaseTime">Time</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['subcontractReleaseTime'].valid && formGroup.controls['subcontractReleaseTime'].touched), 'has-success':(formGroup.controls['subcontractReleaseTime'].valid && formGroup.controls['subcontractReleaseTime'].touched)}">
+              <p-calendar id="timePicker" hourFormat="24" showIcon="true" formControlName="subcontractReleaseTime" showTime="showTime"
+                dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="vehicleNumber">Vehicle Number</label>
+            <br/>
+            <input type="text" pInputText formControlName="vehicleNumber">
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="recipient">Recipient</label>
+            <br/>
+            <input type="text" pInputText formControlName="recipient">
+          </div>
+
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="containerNumber">Container Number</label>
+            <br/>
+            <input type="text" pInputText formControlName="containerNumber">
+          </div>
+        </div>
+      </div>
+    </div>
+    &nbsp;
+    <br/>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        &nbsp;
+        <br/>
+        <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+      </div>
+    </div>
+  </form>
+</p-panel>

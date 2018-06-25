@@ -1,0 +1,78 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Subcontract Release List</h4>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+        <button type="button" class="btn btn-primary btn-xs" (click)="navigateToForm(0)" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i> Add</button>
+      </div>
+    </div>
+  </p-header>
+  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+    (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
+    (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="subcontractReleases">
+    <p-header>
+      <div class="row">
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration Start
+          <br/>
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration End
+          <br/>
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Subcontractor
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="subcontractor" field="display" [dropdown]="true" [suggestions]="filteredSubcontractors" (completeMethod)="filterSubcontractors($event)"
+              [size]="12" [minLength]="1" placeholder="Subcontractor" [size]="20" (onSelect)="onSubcontractorSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Location
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="location" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+              [size]="12" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          <br/>
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+      </div>
+    </p-header>
+    <p-column field="id" header="ID"></p-column>
+    <p-column field="subcontractReleaseTime" header="Subcontract Release Time" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.subcontractReleaseTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+    </p-column>
+    <p-column field="location.code" header="Location Code" [sortable]="true"></p-column>
+    <p-column field="location.name" header="Location Name" [sortable]="true"></p-column>
+    <p-column field="vehicleNumber" header="Vehicle Number" [sortable]="true"></p-column>
+    <p-column field="recipient" header="Recipient" [sortable]="true"></p-column>
+    <p-column field="containerNumber" header="Container Number" [sortable]="true"></p-column>
+    <p-column field="containerNumber" header="Container Number" [sortable]="true"></p-column>
+    <p-column field="subcontractor.name" header="Subcontractor" [sortable]="true"></p-column>
+    <p-column header="Action" styleClass="text-right">
+      <ng-template let-data="rowData" pTemplate="body">
+        <a [routerLink]="'/pages/subcontractRelease/form/'+data.id">
+          <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
+        </a> &nbsp; &nbsp;
+        <i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</p-panel>
