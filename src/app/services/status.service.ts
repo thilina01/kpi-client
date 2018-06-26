@@ -29,7 +29,7 @@ export class StatusService {
   }
 
   getPage(page, size): Promise<Array<Object>> {
-    return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .toPromise()
       .then(response => response as Array<Object>)
       .catch(this.handleError);

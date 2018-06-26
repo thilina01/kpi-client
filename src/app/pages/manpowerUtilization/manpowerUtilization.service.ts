@@ -14,7 +14,7 @@ export class ManpowerUtilizationService extends MasterService {
   }
 
   getByJobPage(job, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'jobPage?job=' + job + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'jobPage?job=' + job + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
@@ -24,24 +24,24 @@ export class ManpowerUtilizationService extends MasterService {
   }
 
   getByProductionDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'productionDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'productionDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
   getByProductionDurationAndShiftPage(startDate, endDate, shift, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'productionDurationAndShiftPage?startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'productionDurationAndShiftPage?startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getBySectionAndProductionDurationPage(section, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'sectionAndProductionDurationPage?section=' + section + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'sectionAndProductionDurationPage?section=' + section + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getByProductionDurationAndEmployeePage(employee, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'productionDurationAndEmployeePage?employee=' + employee + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'productionDurationAndEmployeePage?employee=' + employee + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getBySectionAndEmployeeAndProductionDurationAndShiftPage(section, startDate, employee, endDate, shift, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'sectionAndEmployeeAndProductionDurationAndShiftPage?section=' + section + '&startDate=' + startDate + '&employee=' + employee + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'sectionAndEmployeeAndProductionDurationAndShiftPage?section=' + section + '&startDate=' + startDate + '&employee=' + employee + '&endDate=' + endDate + '&shift=' + shift + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }

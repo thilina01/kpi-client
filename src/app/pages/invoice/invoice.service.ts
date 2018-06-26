@@ -13,20 +13,20 @@ export class InvoiceService extends MasterService {
     this.setApiUrl('invoices/');
   }
   getByInvoiceDurationPage(startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'invoiceDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'invoiceDurationPage?startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getByCustomerAndInvoiceDurationPage(customer, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerAndInvoiceDurationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'customerAndInvoiceDurationPage?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
   getByCustomerDurationPage(customer, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerPage?customer=' + customer + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'customerPage?customer=' + customer + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
   getInvoicePage(customer, invoiceNumber, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'invoice?customer=' + customer+ '&invoiceNumber='+ invoiceNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'invoice?customer=' + customer+ '&invoiceNumber='+ invoiceNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }

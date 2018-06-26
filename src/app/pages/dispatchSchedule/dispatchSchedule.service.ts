@@ -44,12 +44,12 @@ export class DispatchScheduleService extends MasterService {
   }
 
   getOrderInformationPage(customer, job, item, salesOrderType, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'orderInformation?customer=' + customer+ '&job=' + job + '&item=' + item + '&salesOrderType=' + salesOrderType + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'orderInformation?customer=' + customer+ '&job=' + job + '&item=' + item + '&salesOrderType=' + salesOrderType + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
   getDispatchSchedulePage(customer, job,  startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'dispatchSchedule?customer=' + customer+ '&job=' + job + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+    return this.http.get(this.apiUrl + 'dispatchSchedule?customer=' + customer+ '&job=' + job + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
