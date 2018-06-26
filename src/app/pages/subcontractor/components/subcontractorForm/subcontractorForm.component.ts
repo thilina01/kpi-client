@@ -27,6 +27,7 @@ export class SubcontractorForm {
       id: '',
       address: '',
       contact: '',
+      validity: ['', Validators.required],
       code: ['', Validators.required],
       name: ['', Validators.required]
     });
