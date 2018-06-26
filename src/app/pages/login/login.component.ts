@@ -38,7 +38,8 @@ export class Login {
             this.authService.afLogin(values).then((res: any) => {
                 if (!res.code) {
                     this.authService.login(values).subscribe(response => {
-                        if (response) {
+                        if (response) {                            
+                            localStorage.setItem("loginTimeMills", response.loginTimeMills+'');    
                             this.router.navigate([this.authService.redirectUrl]);
                         } else {
                             alert('Login Failed (Internal)')

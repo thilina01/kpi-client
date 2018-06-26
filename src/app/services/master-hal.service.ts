@@ -7,7 +7,7 @@ import { empty } from 'rxjs/observable/empty';
 import { IAppConfig, APP_CONFIG } from '../app.config';
 import { AuthService } from './auth.service';
 
-export class MasterService {
+export class MasterHalService {
   public apiUrl: string;  // URL to web api
   public endPoint: string;  // URL to web api
   private headers: Headers; // = new Headers({ 'Content-Type': 'application/json' });
@@ -34,13 +34,13 @@ export class MasterService {
     this.apiUrl = this.config.apiEndpoint + path;
   }
 
-  getAll(): Observable<any> {
-    return this.http.get(this.apiUrl, { headers: this.getJsonHeaders() })
-      .catch(err => this.handleError(err));
-  }
+  // getAll(): Observable<any> {
+  //   return this.http.get(this.apiUrl, { headers: this.getJsonHeaders() })
+  //     .catch(err => this.handleError(err));
+  // }
 
   getPage(page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'page?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
+    return this.http.get(this.apiUrl + '?page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
@@ -49,8 +49,8 @@ export class MasterService {
       .catch(err => this.handleError(err));
   }
 
-  get(id: number): Observable<any> {
-    return this.http.get(this.apiUrl + id, { headers: this.getJsonHeaders() })
+  get(url): Observable<any> {
+    return this.http.get(url, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
@@ -60,15 +60,21 @@ export class MasterService {
       .catch(err => this.handleError(err));
   }
 
-  saveMany(objects: Object[]): Observable<any> {
+  edit(data: any): Observable<any> {
     return this.http
-      .post(this.apiUrl + 'many', JSON.stringify(objects), { headers: this.getJsonHeaders() })
+      .patch(data._links.self.href, JSON.stringify(data), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
-  delete(id: number): Observable<any> {
+  saveMany(objects: Object[]): Observable<any> {
     return this.http
-      .delete(this.apiUrl + id, { headers: this.getJsonHeaders() })
+      .post(this.apiUrl, JSON.stringify(objects), { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
+  delete(data): Observable<any> {
+    return this.http
+      .delete(data._links.self.href, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
