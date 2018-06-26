@@ -17,4 +17,9 @@ export class PackagingSpecificationService extends MasterService {
     return this.http.get(this.apiUrl + 'comboByItem/' + id, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getPalletSizeAndItemPage(item, palletSize, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'palletSizeAndItemSearch?item=' + item+ '&palletSize=' + palletSize + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }
