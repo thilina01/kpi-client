@@ -19,4 +19,8 @@ export class LoadingPlanService extends MasterService {
     return this.http.get(this.apiUrl + "comboByCustomer/" + id, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
+  getCustomerAndLoadingPlanDateBetweenPage(customer, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'customerAndLoadingPlanDateBetween?customer=' + customer+  '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }
