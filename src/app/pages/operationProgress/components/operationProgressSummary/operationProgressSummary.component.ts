@@ -98,8 +98,6 @@ export class OperationProgressSummary {
 
   search(first: number, pageSize: number): void {
     this.chartService.getOperationProgressSummaryBySection(this.section.id, this.productionDate.getTime()).subscribe((data: any) => {
-      data = JSON.parse(data._body);
-      console.log(data);
 
       let rows = [];
       let rowSection = {id: 0, controlPointList: []};
@@ -206,13 +204,13 @@ export class OperationProgressSummary {
     op.show(event);
     // if (this.section.code === 'ALL') {
     //   this.chartService.getResourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween(row.section.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
-    //     this.selectedRow.employeeList = data.json();
+    //     this.selectedRow.employeeList = data;
     //     console.log(this.selectedRow);
     //     op.show(event);
     //   });
     // } else {
     //   this.chartService.getResourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween(row.controlPoint.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
-    //     this.selectedRow.employeeList = data.json();
+    //     this.selectedRow.employeeList = data;
     //     console.log(this.selectedRow);
     //     op.show(event);
     //   });

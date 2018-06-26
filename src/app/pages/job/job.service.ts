@@ -18,6 +18,11 @@ export class JobService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
+  getJobNoLike(query: any): Observable<any> {
+    return this.http.get(this.apiUrl + 'jobNoLike/' + query, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
   getBySalesOrder(salesOrder: any): Observable<any> {
     return this.http.get(this.apiUrl + 'salesOrder/' + salesOrder, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
@@ -27,13 +32,14 @@ export class JobService extends MasterService {
     return this.http.get(this.apiUrl + 'combo/item/' + itemId, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
   getPageByItem(item: any, page, size): Observable<any> {
     return this.http.post(this.apiUrl + 'pageByItem?page=' + page + '&size=' + size, JSON.stringify(item), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 
   getItemPage(jobNo, item,  page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'pageByItem?jobNo=' + jobNo + '&item=' + item + '&page=' + page + '&size=' + size)
+    return this.http.get(this.apiUrl + 'pageByItem?jobNo=' + jobNo + '&item=' + item + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
       .catch(err => this.handleError(err));
   }
 
