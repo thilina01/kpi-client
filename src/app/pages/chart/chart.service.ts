@@ -19,7 +19,8 @@ export class ChartService {
   public getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'email': this.authService.email
+      // 'email': this.authService.email,      
+      // 'loginTimeMills':localStorage.getItem('loginTimeMills')
     });
   };
 

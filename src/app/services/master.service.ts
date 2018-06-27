@@ -15,8 +15,8 @@ export class MasterService {
   public getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'email': this.authService.email,
-      'loginTimeMills': localStorage.getItem('loginTimeMills')
+      // 'email': this.authService.email,
+      //'loginTimeMills': localStorage.getItem('loginTimeMills')
     });
   };
 

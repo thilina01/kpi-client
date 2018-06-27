@@ -18,13 +18,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         let url: string = state.url;
         let result = this.checkLogin(url);
         if (result) {
-            return this.userService.getOwn().toPromise().then((response: any) => {
-                let result = false;
-                if(response!==undefined){                    
-                    result = (response.status.name) === 'active';
-                }
-                return result;
-            })
+            if(localStorage.getItem('loginTimeMills')){
+                return this.userService.getOwn().toPromise().then((response: any) => {
+                    if (response === undefined || response === null || response.status === undefined) {
+                        return false;
+                    }
+                    return response.status.name === 'active';
+                })
+            }
         }
     }
 

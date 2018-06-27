@@ -28,8 +28,9 @@ import { SharedService } from './services/shared.service';
 import { UserService } from './user.service';
 import { environment } from '../environments/environment';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { AppInterceptor } from './app.interceptor';
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
@@ -71,7 +72,12 @@ export type StoreType = {
     SharedService,
     AuthService,
     AngularFireAuth,
-    { provide: APP_CONFIG, useValue: AppConfig }
+    { provide: APP_CONFIG, useValue: AppConfig },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppInterceptor,
+      multi: true
+    }
   ]
 })
 

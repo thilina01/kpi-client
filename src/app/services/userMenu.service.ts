@@ -15,7 +15,7 @@ export class UserMenuService {
   private getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'email': this.authService.email
+      // 'loginTimeMills': localStorage.getItem('loginTimeMills')
     });
   };
   constructor(private http: HttpClient, @Inject(APP_CONFIG) private config: IAppConfig, private authService: AuthService) {

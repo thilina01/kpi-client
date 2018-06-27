@@ -14,7 +14,7 @@ export class AuthService {
   private getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      'email': this.email
+      //'loginTimeMills': localStorage.getItem('loginTimeMills')
     });
   };
   redirectUrl: string = '/pages/home';
@@ -45,6 +45,11 @@ export class AuthService {
 
   logout() {
     if (this.afireauth.auth.currentUser) {
+      this.http.get(this.apiUrl + 'logout', { headers: this.getJsonHeaders() }).subscribe(
+        (data) => {
+          localStorage.removeItem('loginTimeMills');
+        }
+    );
       this.afireauth.auth.signOut();
     }
 
