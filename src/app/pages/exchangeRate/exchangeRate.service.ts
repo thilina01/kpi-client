@@ -19,7 +19,7 @@ export class ExchangeRateService extends MasterService {
   // }
 
   getByCurrencyAndExchangeRateDate(currencyId, startDate, endDate): Observable<any> {
-    return this.http.get(this.apiUrl + 'currencyAndExchangeRateDuration?currencyId=' + currencyId + '&startDate=' + startDate+ '&endDate=' + endDate )
+    return this.http.get(this.apiUrl + 'currencyAndExchangeRateDuration?currencyId=' + currencyId + '&startDate=' + startDate+ '&endDate=' + endDate, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }
