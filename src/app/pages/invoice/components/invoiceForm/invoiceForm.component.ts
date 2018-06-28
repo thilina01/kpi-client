@@ -41,8 +41,6 @@ export class InvoiceForm {
   dispatchNotes: any;
   totalAmount = 0.0;
   totalWeight = 0.0;
-  taxValue = 0.0;
-  totalSalesAmount = 0.0;
   // exchangeRate :any;
   dispatchNote: any;
   invoiceType: any;
@@ -70,10 +68,7 @@ export class InvoiceForm {
     this.formGroup = fb.group({
       id: "",
       totalAmount: "",
-      totalWeight: "",
       taxRate: "",
-      taxValue: "",
-      totalSalesAmount: "",
       currency: [null, ""],
       employee: [null, ""],
       dispatchNoteList: [null, Validators.required],
@@ -194,7 +189,6 @@ export class InvoiceForm {
   }
 
   public fillTable() {
-
     this.loadingPlanItemList = [];
     this.loadingPlanList = [];
     this.totalAmount = 0.0;
@@ -246,23 +240,10 @@ export class InvoiceForm {
       return;
     }
 
-    values.totalAmount = this.totalAmount;
-    let exchangeRate = this.formGroup.value.exchangeRate.exchangeRate;
-    let totalAmount = this.totalAmount;
-    this.totalSalesAmount = totalAmount * exchangeRate;
-
-    values.totalSalesAmount = this.totalSalesAmount;
-    let taxRate = this.formGroup.value.invoiceType.taxRate;
-    let totalSalesAmount = this.totalSalesAmount;
-    this.taxValue = totalSalesAmount * taxRate;
-
     values.currency = this.currency;
     values.totalWeight = this.totalWeight;
-    values.totalSalesAmount = this.totalSalesAmount;
-    values.taxValue = this.taxValue;
     this.formGroup.value.employee = this.formGroup.value.customer.employee;
     this.formGroup.value.taxRate = this.formGroup.value.invoiceType.taxRate;
-    //values.exchangeRate = this.exchangeRate;
     console.log(values);
     this.service.save(values).subscribe(data => {
       this.sharedService.addMessage({

@@ -89,12 +89,29 @@ export class InvoiceInformationTable {
         pageSize
       )
       .subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
         this.fillTable(data);
       });
   }
 
   fillTable(data: any) {
-    this.rows = data.content;
+    let loadingPlanItemList = data.content;
+    loadingPlanItemList.forEach(loadingPlanItem => {
+      let totalWeight = 0;
+      let totalAmount = 0.0;
+
+      loadingPlanItem.weight = loadingPlanItem.invoiceQuantity * loadingPlanItem.dispatchSchedule.job.item.weight;
+      totalWeight += loadingPlanItem.weight;
+      loadingPlanItem.totalWeight = totalWeight;
+
+      loadingPlanItem.amount = loadingPlanItem.invoiceQuantity *loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+      totalAmount += loadingPlanItem.amount;
+      loadingPlanItem.totalAmount = totalAmount;
+
+    });
+
+    this.rows = loadingPlanItemList;
     this.totalRecords = data.totalElements;
   }
 

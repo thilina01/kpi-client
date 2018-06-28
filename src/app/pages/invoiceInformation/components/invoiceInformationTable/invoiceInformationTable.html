@@ -72,14 +72,14 @@
       </ng-template>
     </p-column>
     <p-column field="dispatchSchedule.salesOrderItem.unitPrice" styleClass="text-right" header="Unit Price" [sortable]="true"></p-column>
-    <p-column field="loadingPlan.dispatchNote.invoice.totalAmount" styleClass="text-right" header="Total Value" [sortable]="true">
+    <p-column field="totalAmount" styleClass="text-right" header="Total Value" [sortable]="true">
       <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{rowData.loadingPlan.dispatchNote.invoice.totalAmount | number : '1.2-2'}}
+        {{rowData.totalAmount | number : '1.2-2'}}
       </ng-template>
     </p-column>
-    <p-column field="loadingPlan.dispatchNote.invoice.totalWeight" header="Total Weight" styleClass="text-right" [sortable]="true">
+    <p-column field="totalWeight" header="Total Weight" styleClass="text-right" [sortable]="true">
       <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{rowData.loadingPlan.dispatchNote.invoice.totalWeight | number : '1.3-3'}}
+        {{rowData.totalWeight | number : '1.3-3'}}
       </ng-template>
     </p-column>
   </p-dataTable>

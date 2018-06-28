@@ -149,7 +149,7 @@
                 </td>
                 <td>{{invoice.exchangeRate?.exchangeRate}}
                 </td>
-                <td>{{(invoice.totalWeight)| number : '1.3-3'}}
+                <td>{{(totalWeight)| number : '1.3-3'}}
                 </td>
               </tr>
             </table>
@@ -174,7 +174,7 @@
           <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule.job.item.size }}
             <br/> {{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
           <td class="text-right" style="vertical-align:top">
-            {{loadingPlanItem.invoiceQuantity}}  </td>
+            {{loadingPlanItem.invoiceQuantity}} </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice}} </td>
           <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
         </tr>
