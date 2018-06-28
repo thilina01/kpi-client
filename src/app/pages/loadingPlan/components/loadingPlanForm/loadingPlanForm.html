@@ -17,6 +17,11 @@
     <div class='col-sm-12'>
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
         <div class='row'>
+          <div *ngIf="loadingPlan.id" class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for='id'>Loading Plan No</label>
+            <br/>
+            <label>{{loadingPlan?.id}}</label>
+          </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="loadingPlanDate">Date</label>
             <br/>
@@ -168,7 +173,7 @@
         <div class='row'>
           <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
             <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="reset()" icon="fa-times" label="Reset"></button>
             <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
           </div>
         </div>
