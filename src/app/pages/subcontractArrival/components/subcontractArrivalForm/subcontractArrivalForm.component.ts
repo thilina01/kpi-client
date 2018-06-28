@@ -44,7 +44,7 @@ export class SubcontractArrivalForm {
       id: '',
       quantity: ['', Validators.required],
       arrivalTime: [this.arrivalTime, Validators.required],
-      subcontractNote: [this.subcontractNote, Validators.required],
+      subcontractNote: [],
       subcontractOperation: [this.subcontractOperation, Validators.required]
     });
   }
