@@ -149,15 +149,15 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <p-dataTable #dt [value]="formGroup.value.loadingPlanItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
                     <p-column field="id" header="ID"></p-column>
-                    <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
-                    <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
-                    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+                    <p-column field="dispatchSchedule.job.jobNo" header="Job No" styleClass="text-left"></p-column>
+                    <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po" styleClass="text-right"></p-column>
+                    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" styleClass="text-right"></p-column>
                     <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
                     <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
                     <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-                    <p-column field="cubicMeter" header="CBM"></p-column>
+                    <p-column field="cubicMeter" header="CBM"[editable]="true" styleClass="text-right"></p-column>
                     <p-column field="packagingSpecification.display" header="Packaging Specification"></p-column>
-                    <p-column field="quantity" header="Quantity" [editable]="true"></p-column>
+                    <p-column field="quantity" header="Quantity" [editable]="true" styleClass="text-right"></p-column>
                     <p-column header="Action" styleClass="text-right">
                       <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
                         <i (click)="removeLoadingPlanItem(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
