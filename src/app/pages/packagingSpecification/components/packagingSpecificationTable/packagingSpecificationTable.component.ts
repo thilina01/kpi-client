@@ -57,39 +57,21 @@ export class PackagingSpecificationTable {
   }
 
   loadData() {
-    if (
-      (this.palletSize !== undefined ? this.palletSize.id : 0,
-      this.item !== undefined ? this.item.id : 0)
-    ) {
-      this.service
-        .getPalletSizeAndItemPage(0, 0, 0, 20)
-        .subscribe((data: any) => {
-          this.rows = data.content;
-          this.totalRecords = data.totalElements;
-        });
-    } else {
       this.service.getPage(0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
+      this.fillTable(data);
       });
-    }
   }
 
   lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
-    if (
-      (this.palletSize !== undefined ? this.palletSize.id : 0,
-      this.item !== undefined ? this.item.id : 0)
-    ) {
-      this.service
-        .getPalletSizeAndItemPage(0, 0, 0, 20)
-        .subscribe((data: any) => {
-          this.fillTable(data);
-        });
-    } else {
-      this.service
-        .getPage(event.first / event.rows, event.rows)
-        .subscribe((data: any) => {});
+    if (this.palletSize !== undefined ? this.palletSize.id : 0, this.item !== undefined ? this.item.id : 0) {
+      this.service.getPalletSizeAndItemPage(0, 0, 0, 20).subscribe((data: any) => {
+        this.fillTable(data);
+      });
+    }
+    else {
+      this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
+        this.fillTable(data);
+      });
     }
   }
 
