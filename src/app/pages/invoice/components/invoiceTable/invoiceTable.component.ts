@@ -31,7 +31,6 @@ export class InvoiceTable {
     private customerService: CustomerService,
     private sharedService: SharedService) {
     this.loadData();
-    this.search(0, 0);
     this.getCustomers();
     this.startDate.setDate(1);
   }
@@ -47,9 +46,7 @@ export class InvoiceTable {
     this.service
       .getCustomerAndInvoiceDateBetweenPage(0, '1970-01-01', '2100-12-31', 0, 20)
       .subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-        this.fillTable(data);
+        this.search(0, 0);
       });
   }
 
