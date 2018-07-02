@@ -110,6 +110,7 @@ export class Pages {
     { routerLink: '/pages/subcontractNote/table', name: 'Subcontract Note', menuType: this.menuType },
     // { routerLink: '/pages/invoiceTypes/table', name: 'Invoice Type', menuType: this.menuType },
     { routerLink: '/pages/item/table', name: 'Item', menuType: this.menuType },
+    { routerLink: '/pages/itemSegments/table', name: 'Item Segment', menuType: this.menuType },
     { routerLink: '/pages/itemTypes/table', name: 'Item Type', menuType: this.menuType },
     { routerLink: '/pages/job/info', name: 'Job Information', menuType: this.menuType },
     { routerLink: '/pages/job/table', name: 'Job', menuType: this.menuType },
