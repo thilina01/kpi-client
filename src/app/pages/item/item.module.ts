@@ -13,6 +13,7 @@ import { routing } from './item.routing';
 import { ItemService } from './item.service';
 import { ItemTypeService } from '../itemType/itemType.service';
 import { PaintService } from '../paint/paint.service';
+import { ItemSegmentService } from '../itemSegment/itemSegment.service';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { PaintService } from '../paint/paint.service';
   providers: [
     ItemService,
     ItemTypeService,
-    PaintService
+    PaintService,
+    ItemSegmentService
   ]
 })
 export class ItemModule { }

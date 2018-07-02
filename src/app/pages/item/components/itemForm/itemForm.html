@@ -77,6 +77,18 @@
             </div>
           </div>
           <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="itemSegment">Item Segment</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="itemSegment" field="display" [dropdown]="true" [suggestions]="filteredItemSegmentList" (completeMethod)="filterItemSegmentList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onItemSegmentSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/itemSegment/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
             <label for="drawingApproval">Drawing Approval</label>
             <p-checkbox binary="true" formControlName="drawingApproval" label="{{formGroup.value.drawingApproval?'Yes':'No'}}"> </p-checkbox>
           </div>
