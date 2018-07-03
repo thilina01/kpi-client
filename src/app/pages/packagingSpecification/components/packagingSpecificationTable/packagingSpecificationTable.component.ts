@@ -57,36 +57,44 @@ export class PackagingSpecificationTable {
   }
 
   loadData() {
-      this.service.getPage(0, 20).subscribe((data: any) => {
+    this.service.getPage(0, 20).subscribe((data: any) => {
       this.fillTable(data);
-      });
+    });
   }
 
   lazy(event: any, table: any) {
-    if (this.palletSize !== undefined ? this.palletSize.id : 0, this.item !== undefined ? this.item.id : 0) {
-      this.service.getPalletSizeAndItemPage(0, 0, 0, 20).subscribe((data: any) => {
-        this.fillTable(data);
-      });
-    }
-    else {
-      this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.fillTable(data);
-      });
-    }
+    this.search(event.first / event.rows, event.rows);
   }
 
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
-    this.service
-      .getPalletSizeAndItemPage(
-        this.item !== undefined ? this.item.id : 0,
-        this.palletSize !== undefined ? this.palletSize.id : 0,
-        first,
-        pageSize
-      )
-      .subscribe((data: any) => {
+    if (this.item !== undefined ? this.item.id : 0) {
+      this.service
+        .getPalletSizeAndItemPage(
+          this.item !== undefined ? this.item.id : 0,
+          this.palletSize !== undefined ? this.palletSize.id : 0,
+          first,
+          pageSize
+        )
+        .subscribe((data: any) => {
+          this.fillTable(data);
+        });
+    } else if (this.palletSize !== undefined ? this.palletSize.id : 0) {
+      this.service
+        .getPalletSizeAndItemPage(
+          this.item !== undefined ? this.item.id : 0,
+          this.palletSize !== undefined ? this.palletSize.id : 0,
+          first,
+          pageSize
+        )
+        .subscribe((data: any) => {
+          this.fillTable(data);
+        });
+    } else {
+      this.service.getPage(first, pageSize).subscribe((data: any) => {
         this.fillTable(data);
       });
+    }
   }
 
   fillTable(data: any) {
