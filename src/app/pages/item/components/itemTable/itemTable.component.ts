@@ -1,15 +1,15 @@
-import { SharedService } from "../../../../services/shared.service";
-import { Component, ViewEncapsulation, ViewChild } from "@angular/core";
-import { ConfirmationService, Message, DataTable } from "primeng/primeng";
-import { Router } from "@angular/router";
-import { ItemService } from "../../item.service";
-import { ItemTypeService } from "../../../itemType/itemType.service";
+import { SharedService } from '../../../../services/shared.service';
+import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
+import { ConfirmationService, Message, DataTable } from 'primeng/primeng';
+import { Router } from '@angular/router';
+import { ItemService } from '../../item.service';
+import { ItemTypeService } from '../../../itemType/itemType.service';
 
 @Component({
-  selector: "item-table",
+  selector: 'item-table',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ["./itemTable.scss"],
-  templateUrl: "./itemTable.html"
+  styleUrls: ['./itemTable.scss'],
+  templateUrl: './itemTable.html'
 })
 export class ItemTable {
   rows = [];
@@ -20,14 +20,15 @@ export class ItemTable {
   itemSize: any;
   pageSize = 20;
   @ViewChild(DataTable) dataTable: DataTable;
-  itemType: any = { id: 0, code: "ALL", display: "All ItemTypes" };
+  itemType: any = { id: 0, code: 'ALL', display: 'All ItemTypes' };
 
   constructor(
     protected service: ItemService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private itemTypeService: ItemTypeService,
-    private sharedService: SharedService) {
+    private sharedService: SharedService
+  ) {
     this.loadData();
     this.getItemTypes();
   }
@@ -35,38 +36,19 @@ export class ItemTable {
   getItemTypes(): void {
     this.itemTypeService.getCombo().subscribe(itemTypes => {
       this.itemTypes = itemTypes;
-      this.itemTypes.unshift({ id: 0, code: "ALL", display: "All ItemTypes" });
+      this.itemTypes.unshift({ id: 0, code: 'ALL', display: 'All ItemTypes' });
     });
   }
 
   loadData() {
-    if (this.code != undefined && this.code!= 0 && this.itemSize != undefined && this.itemSize!= 0) {
-      this.service.getItemPage(0, 0, 0,20).subscribe((data: any) => {
-        this.fillTable(data);
-      });
-    } else {
-      this.service.getPage(0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    }
+    this.service.getPage(0, 20).subscribe((data: any) => {
+      this.fillTable(data);
+    });
   }
 
   lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
-    if (this.code!= undefined && this.code != 0 &&this.itemSize!= undefined && this.itemSize != 0) {
-      this.service.getItemPage(0, 0, 0, 20).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    } else {
-      this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
-        this.rows = data.content;
-        this.totalRecords = data.totalElements;
-      });
-    }
+    this.search(event.first / event.rows, event.rows);
   }
-
 
   fillTable(data: any) {
     this.rows = data.content;
@@ -75,38 +57,59 @@ export class ItemTable {
 
   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
-    this.service
-      .getItemPage(this.code !== undefined ? this.code : 0,
-        this.itemSize !== undefined ? this.itemSize : 0, first, pageSize)
-      .subscribe((data: any) => {
+    if (this.code !== undefined ? this.code : 0) {
+      this.service
+        .getItemPage(
+          this.code !== undefined ? this.code : 0,
+          this.itemSize !== undefined ? this.itemSize : 0,
+          first,
+          pageSize
+        )
+        .subscribe((data: any) => {
+          this.fillTable(data);
+        });
+    } else if (this.itemSize !== undefined ? this.itemSize : 0) {
+      this.service
+        .getItemPage(
+          this.code !== undefined ? this.code : 0,
+          this.itemSize !== undefined ? this.itemSize : 0,
+          first,
+          pageSize
+        )
+        .subscribe((data: any) => {
+          this.fillTable(data);
+        });
+    } else {
+      this.service.getPage(first, pageSize).subscribe((data: any) => {
         this.fillTable(data);
       });
+    }
   }
 
   onPage(event) {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      console.log("paged!", event);
+      console.log('paged!', event);
     }, 100);
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(["/pages/item/form/" + data.id]);
+    this.router.navigate(['/pages/item/form/' + data.id]);
   }
 
   navigateToForm(id: any): void {
-    this.router.navigate(["/pages/item/form/" + id]);
+    this.router.navigate(['/pages/item/form/' + id]);
   }
 
   delete(id: number) {
     this.confirmationService.confirm({
-      message: "Are you sure that you want to Delete?",
+      message: 'Are you sure that you want to Delete?',
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({
-            severity: "info",
-            summary: "Deleted",
-            detail: "Delete success"
+            severity: 'info',
+            summary: 'Deleted',
+            detail: 'Delete success'
           });
           this.loadData();
         });
