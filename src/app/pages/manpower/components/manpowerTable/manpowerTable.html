@@ -12,7 +12,51 @@
   </p-header>
   <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-    resizableColumns="true" exportFilename="manpowers" [globalFilter]="gb">
+    resizableColumns="true" exportFilename="manpowers">
+    <p-header>
+      <div class="row">
+        <div class="col" style="text-align: left">
+          Duration Start
+          <br/>
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col" style="text-align: left">
+          Duration End
+          <br/>
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col" style="text-align: left">
+          Shift
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+              [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col" style="text-align: left">
+          ControlPoint
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="controlPoint" field="display" [suggestions]="filteredControlPoints" (completeMethod)="filterControlPoints($event)"
+              [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onControlPointSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col" style="text-align: left">
+          ManpowerType
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="manpowerType" field="display" [suggestions]="filteredManpowerTypes" (completeMethod)="filterManpowerTypes($event)"
+              [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onManpowerTypeSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col" style="text-align: left">
+          <br/>
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+      </div>
+    </p-header>
     <p-column field="id" header="ID"></p-column>
     <p-column field="production.controlPoint.code" header="Control Point" [sortable]="true"></p-column>
     <p-column field="production.productionDate" header="Production Date" [sortable]="true"></p-column>
