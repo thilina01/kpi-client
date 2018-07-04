@@ -90,10 +90,10 @@ export class Plan {
         alert('Jobs Required');
         return;
       }
-      if (values.manpowerList === null || values.manpowerList.length === 0) {
-        alert('Manpower Required');
-        return;
-      }
+      // if (values.manpowerList === null || values.manpowerList.length === 0) {
+      //   alert('Manpower Required');
+      //   return;
+      // }
       console.log(values);
       this.productionService.save(values).subscribe(
         (data) => {
