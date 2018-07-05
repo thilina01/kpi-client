@@ -29,9 +29,10 @@ export class ResourceUtilizationTable {
     employees: any;
     shifts: any;
     machines: any;
-    shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' }
-    employee: any = { id: 0, 'code': 'ALL', 'display': 'All Employees' }
-    machine: any = { id: 0, 'code': 'ALL', 'display': 'All Machines' }
+    shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' };
+    employee: any = { id: 0, 'code': 'ALL', 'display': 'All Employees' };
+    machine: any = { id: 0, 'code': 'ALL', 'display': 'All Machines' };
+    pageSize = 20;
 
     constructor(protected service: ResourceUtilizationService,
         private router: Router,
@@ -68,15 +69,16 @@ export class ResourceUtilizationTable {
     }
 
     loadData() {
-        this.service.getPage(0, 20).subscribe((data: any) => {
-            this.rows = data.content;
-            this.totalRecords = data.totalElements;
+      this.service
+        .getMachineAndEmployeeAndShiftAndProductionDateBetweenPage(0, 0, '1970-01-01', '2100-12-31', 0, 0, 20)
+        .subscribe((data: any) => {
+          this.fillTable(data);
         });
     }
 
     lazy(event: any, table: any) {
-        console.log(event);
-        this.search((event.first / event.rows), event.rows);
+      console.log(event);
+      this.search(event.first / event.rows, event.rows);
     }
 
     onPage(event) {
@@ -87,60 +89,24 @@ export class ResourceUtilizationTable {
     }
 
     search(first: number, pageSize: number): void {
-        if (this.startDate != undefined &&
-            this.endDate != undefined &&
-            this.machine != undefined &&
-            this.machine.id != undefined &&
-            this.employee != undefined &&
-            this.employee.id != undefined &&
-            this.shift != undefined &&
-            this.shift.id != undefined) {
-            if (this.machine.id == 0 && this.shift.id == 0 && this.employee.id == 0) {
-                this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else if (this.machine.id == 0 && this.employee.id == 0 && this.shift.id > 0) {
-                this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else if (this.machine.id > 0 && this.shift.id == 0 && this.employee.id == 0) {
-                this.service.getByMachineAndProductionDurationPage(this.machine.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else if (this.machine.id == 0 && this.shift.id == 0 && this.employee.id > 0) {
-                this.service.getByProductionDurationAndEmployeePage(this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else if (this.machine.id > 0 && this.employee.id == 0 && this.shift.id > 0) {
-                this.service.getByMachineAndProductionDurationAndShiftPage(this.machine.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else if (this.machine.id > 0 && this.shift.id == 0 && this.employee.id > 0) {
-                this.service.getByMachineAndProductionDurationAndEmployeePage(this.machine.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.employee.id, first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else if (this.employee.id > 0 && this.machine.id == 0 && this.shift.id > 0) {
-                this.service.getByEmployeeAndProductionDurationAndShiftPage(this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-
-            } else {
-                this.service.getByMachineAndEmployeeAndProductionDurationAndShiftPage(this.machine.id, this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize, ).subscribe((data: any) => {
-                    this.fillTable(data);
-                });
-            }
-
-        } else {
-            this.service.getPage(first, pageSize).subscribe((data: any) => {
-                this.fillTable(data);
-            });
-        }
+      pageSize = pageSize === undefined ? this.pageSize : pageSize;
+      this.service
+        .getMachineAndEmployeeAndShiftAndProductionDateBetweenPage(
+          this.machine !== undefined ? this.machine.id : 0,
+          this.employee !== undefined ? this.employee.id : 0,
+          this.startDate === undefined
+            ? '1970-01-01'
+            : this.sharedService.YYYYMMDD(this.startDate),
+          this.endDate === undefined
+            ? '2100-12-31'
+            : this.sharedService.YYYYMMDD(this.endDate),
+          this.shift !== undefined ? this.shift.id : 0,
+          first,
+          pageSize
+        )
+        .subscribe((data: any) => {
+          this.fillTable(data);
+        });
     }
 
     fillTable(data: any) {
