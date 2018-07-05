@@ -34,6 +34,7 @@ export class Login {
 
     public onSubmit(values: Object): void {
         this.submitted = true;
+        localStorage.removeItem("loginTimeMills");
         if (this.form.valid) {
             this.authService.afLogin(values).then((res: any) => {
                 if (!res.code) {
