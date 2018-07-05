@@ -95,6 +95,11 @@ export class ChartService {
       .catch(err => this.handleError(err));
   }
 
+  getBreakdownSixMonths(): Observable<any> {
+    return this.http.get(this.apiUrl + 'breakdownSixMonths', { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  
   getBreakdownBySection(startDate: string, endDate: string, section: string): Observable<any> {
     return this.http.get(this.apiUrl + 'breakdownBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));

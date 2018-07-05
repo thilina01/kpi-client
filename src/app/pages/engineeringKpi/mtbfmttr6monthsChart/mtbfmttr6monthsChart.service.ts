@@ -16,8 +16,8 @@ export class MtbfMttr6MonthsChartService {
       'type': 'serial',
       'addClassNames': true,
       'theme': 'blur',
-      'depth3D': 20,
-      'angle': 30,
+      // 'depth3D': 20,
+      // 'angle': 30,
       'balloon': {
         'adjustBorderColor': false,
         'horizontalPadding': 10,
@@ -26,12 +26,12 @@ export class MtbfMttr6MonthsChartService {
       },
 
       'dataProvider': [
-        { 'month': ' Dec(2017)  ', 'mtbf': 181.20, 'mttr': 1.12 },
-        { 'month': ' Jan(2018)  ', 'mtbf': 107.51, 'mttr': 0.88 },
-        { 'month': ' Feb(2018)  ', 'mtbf': 133.18, 'mttr': 1.28 },
-        { 'month': ' Mar(2018)  ', 'mtbf': 166.33, 'mttr': 1.18 },
-        { 'month': ' Apr(2018)  ', 'mtbf': 548.18, 'mttr': 0.70 },
-        { 'month': ' May(2018)  ', 'mtbf': 252.25, 'mttr': 1.03 }
+        { 'month': ' Dec(2017)  ', 'mtbfInHours': 181.20, 'mttrInHours': 1.12 },
+        { 'month': ' Jan(2018)  ', 'mtbfInHours': 107.51, 'mttrInHours': 0.88 },
+        { 'month': ' Feb(2018)  ', 'mtbfInHours': 133.18, 'mttrInHours': 1.28 },
+        { 'month': ' Mar(2018)  ', 'mtbfInHours': 166.33, 'mttrInHours': 1.18 },
+        { 'month': ' Apr(2018)  ', 'mtbfInHours': 548.18, 'mttrInHours': 0.70 },
+        { 'month': ' May(2018)  ', 'mtbfInHours': 252.25, 'mttrInHours': 1.03 }
       ],
       'valueAxes': [{
         'id': 'v1',
@@ -50,9 +50,10 @@ export class MtbfMttr6MonthsChartService {
         'fillAlphas': 1,
         'title': 'MTBF',
         'type': 'column',
-        'valueField': 'mtbf',
-        'labelText': '[[mtbf]]',
-        'labelPosition': 'left'
+        'valueField': 'mtbfInHours',
+        'labelText': '[[mtbfInHours]]',
+        'fontSize': 20,
+        'labelPosition': 'top'
       }, {
         'valueAxis': 'v2',
         'id': 'graph2',
@@ -67,9 +68,10 @@ export class MtbfMttr6MonthsChartService {
         'fillAlphas': 0,
         'lineAlpha': 1,
         'title': 'MTTR',
-        'valueField': 'mttr',
+        'valueField': 'mttrInHours',
         'dashLengthField': 'dashLengthLine',
-        'labelText': '[[mttr]]',
+        'labelText': '[[mttrInHours]]',
+        'fontSize': 20,
         'labelPosition': 'right'
       }],
       'categoryField': 'month',

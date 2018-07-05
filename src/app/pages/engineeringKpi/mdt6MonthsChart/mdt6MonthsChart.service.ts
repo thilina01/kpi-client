@@ -16,8 +16,8 @@ export class Mdt6MonthsChartService {
       'type': 'serial',
       'addClassNames': true,
       'theme': 'blur',
-      'depth3D': 20,
-      'angle': 30,
+      // 'depth3D': 20,
+      // 'angle': 30,
       'balloon': {
         'adjustBorderColor': false,
         'horizontalPadding': 10,
@@ -47,7 +47,9 @@ export class Mdt6MonthsChartService {
         'title': 'MDT',
         'type': 'column',
         'valueField': 'mdt',
-        'labelText': '[[mdt]]%'
+        'labelText': '[[mdt]]%',
+        'fontSize': 20,
+        'labelPosition': 'top'
       }, {
         'id': 'graph2',
         'balloonText': '<span style="font-size:12px;">[[title]] in [[category]]:<br><span style="font-size:20px;">[[value]]</span> [[additional]]</span>',
