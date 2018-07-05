@@ -24,14 +24,15 @@ export class OperationTable {
   @ViewChild(DataTable) dataTable: DataTable;
 
   sections: any;
-  section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' }
+  section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' };
   shifts: any;
-  shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' }
+  shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' };
 
   startDate: Date;
   endDate: Date;
   selectedOpertion: any;
   display: boolean = false;
+  pageSize = 20;
 
   constructor(protected service: OperationService,
     private router: Router,
@@ -59,15 +60,16 @@ export class OperationTable {
   }
 
   loadData() {
-    this.service.getPage(0, 20).subscribe((data: any) => {
-      this.rows = data.content;
-      this.totalRecords = data.totalElements;
-    });
+    this.service
+      .getSectionAndShiftAndProductionDateBetweenPage(0 , '1970-01-01', '2100-12-31', 0, 0, 20)
+      .subscribe((data: any) => {
+        this.fillTable(data);
+      });
   }
 
   lazy(event: any, table: any) {
     console.log(event);
-    this.search((event.first / event.rows), event.rows);
+    this.search(event.first / event.rows, event.rows);
   }
 
   onPage(event) {
@@ -78,35 +80,23 @@ export class OperationTable {
   }
 
   search(first: number, pageSize: number): void {
-    if (this.startDate != undefined &&
-      this.endDate != undefined &&
-      this.section != undefined &&
-      this.section.id != undefined &&
-      this.shift != undefined &&
-      this.shift.id != undefined) {
-      if (this.section.id == 0 && this.shift.id == 0) {
-        this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      } else if (this.section.id == 0 && this.shift.id > 0) {
-        this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-
-      } else if (this.section.id > 0 && this.shift.id == 0) {
-        this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      } else {
-        this.service.getBySectionAndProductionDurationAndShiftPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
-          this.fillTable(data);
-        });
-      }
-    } else {
-      this.service.getPage(first, pageSize).subscribe((data: any) => {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
+    this.service
+      .getSectionAndShiftAndProductionDateBetweenPage(
+        this.section !== undefined ? this.section.id : 0,
+        this.startDate === undefined
+          ? '1970-01-01'
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? '2100-12-31'
+          : this.sharedService.YYYYMMDD(this.endDate),
+        this.shift !== undefined ? this.shift.id : 0,
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
         this.fillTable(data);
       });
-    }
   }
 
   fillTable(data: any) {
