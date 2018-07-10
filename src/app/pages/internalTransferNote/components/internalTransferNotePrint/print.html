@@ -1,0 +1,176 @@
+<div id="print" hidden *ngIf="internalTransferNote!=undefined" style="font-size: 130%;">
+  <div class="container-fluid" style="padding: 15px;">
+    <!-- Page Header  -->
+    <div class='row'>
+      <div class="col-6">
+        <img src="http://kpi.trwlanka.com/assets/img/logo.png" />
+        <br/>
+        <br/>
+        <b>{{organization===undefined?'':organization.name}} </b>
+        <br/> No: 218, Minuwangoda Road,
+        <br/> Ekala, Ja-Ela
+        <br/> Sri Lanka.
+        <br/>
+        <br/>
+      </div>
+      <div class="col-6">
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <h3 class="panel-title">
+              <b>INTERNAL TRANSFER NOTE</b>
+            </h3>
+          </div>
+          <table class="table table-bordered">
+            <tr>
+              <td>
+                <b>ID</b>
+              </td>
+              <td>
+                INT {{internalTransferNote.id}}</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Date</b>
+              </td>
+              <td>
+                {{internalTransferNote.noteDate|date:'y-MM-dd'}}
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <b>From</b>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <span id="address" *ngFor="let line of internalTransferNote.fromLocation?.address.split(',')">
+              {{line}}
+              <br/>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <b>To</b>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="panel-body">
+              <span id="address" *ngFor="let line of internalTransferNote.toLocation?.address.split(',')">
+                {{line}}
+                <br/>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-12">
+        <br/>
+        <table class="table table-bordered">
+          <tr>
+            <th>#</th>
+            <th class="text-center">Job</th>
+            <th class="text-center">Item</th>
+            <th class="text-center">Product Type</th>
+            <th class="text-center">Quantity</th>
+          </tr>
+          <tr *ngFor="let internalTransferItem of internalTransferNote.internalTransferItemList; let i = index">
+            <td> {{ i+1 }} </td>
+            <td class="text-left">{{internalTransferItem.job.jobNo}}
+            </td>
+            <td class="text-left">{{internalTransferItem.job.item.code}}
+            </td>
+            <td class="text-left">{{internalTransferItem.productType.code}}
+              <br/>{{internalTransferItem.productType.description}}
+            </td>
+            <td class="text-right">{{internalTransferItem.quantity }} </td>
+          </tr>
+          <tr>
+            <td colspan="4" class="text-right">
+              <b>Total</b>
+            </td>
+            <td class="text-right">
+              <b>{{totalQuantity}} </b>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class='divFooter'>
+      <div class='row'>
+        <div class="col-12">
+
+          <table class="table table-bordered text-center">
+            <tr>
+              <td colspan="2">
+                <b>Inventory</b>
+              </td>
+              <td colspan="2">
+                <b>Production</b>
+              </td>
+              <td colspan="2">
+                <b>Finance</b>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <br/>
+                <br/>
+                <br/>
+              </td>
+              <td colspan="2">
+                <br/>
+                <br/>
+                <br/>
+              </td>
+              <td colspan="2">
+                <br/>
+                <br/>
+                <br/>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="3">
+                <b>Security</b>
+              </td>
+              <td colspan="3">
+                <b>Received By</b>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              </td>
+              <td colspan="3">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

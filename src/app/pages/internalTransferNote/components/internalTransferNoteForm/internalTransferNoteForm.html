@@ -1,0 +1,134 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Internal Transfer Note Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/internalTransferNote/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+        <div class="row">
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for="noteDate">Date</label>
+            <br/>
+            <p-calendar id="orderDatePicker" formControlName="noteDate" showIcon="true" dateFormat="yy-mm-dd" hourFormat="24"></p-calendar>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="fromLocation">From Location</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="fromLocation" [dropdown]="true" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/locations/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="toLocation">To Location</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="toLocation" [dropdown]="true" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/locations/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+            <label for="description">Description</label>
+            <br/>
+            <input type="text" pInputText formControlName="description" [size]="40">
+          </div>
+        </div>
+        <br/>
+        <p-panel>
+          <div class="row">
+            <div class=" col-sm-12">
+              <form [formGroup]="internalTransferItemFormGroup" (ngSubmit)="onSubmit(internalTransferItemFormGroup.value,$event)" class="form-horizontal">
+                <div class="row">
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group">
+                      <label for="job">Job</label>
+                      <br/>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete id="jobSelector" formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+                          [minLength]="1" [size]=30 placeholder="Search" (onSelect)="onJobSelect($event)">
+                        </p-autoComplete>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group">
+                      <label for="productType">Product Type</label>
+                      <br/>
+                      <div class="ui-inputgroup">
+                        <p-autoComplete [dropdown]="true" id="productTypeSelector" formControlName="productType" field="display" [suggestions]="filteredProductTypeList"
+                          (completeMethod)="filterProductTypeList($event)" [size]="20" [minLength]="1" placeholder="Search"
+                          (onSelect)="onProductTypeSelect($event)">
+                        </p-autoComplete>
+                        <a routerLink="/pages/productType/form" target="blank">
+                          <button pButton type="button" icon="fa-plus-circle"></button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <div class="form-group" [ngClass]="{'has-error': (! internalTransferItemFormGroup.controls['quantity'].valid &&  internalTransferItemFormGroup.controls['quantity'].touched), 'has-success': ( internalTransferItemFormGroup.controls['quantity'].valid && internalTransferItemFormGroup.controls['quantity'].touched)}">
+                      <label for="quantity">Quantity</label>
+                      <br/>
+                      <input type="number" #quantity (keyup.enter)="onEnter(quantity.value,dt)" pInputText formControlName="quantity">
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label for="inputFirstName">&nbsp;</label>
+                    <br/>
+                    <div class="form-group form-inline">
+                      <button (click)="onEnter(quantity.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <p-dataTable #dt [value]="formGroup.value.internalTransferItemList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+                    <p-column field="id" header="ID"></p-column>
+                    <p-column field="job.jobNo" header="Job" styleClass="text-left"></p-column>
+                    <p-column field="job.item.code" header="Item" styleClass="text-left"></p-column>
+                    <p-column field="productType.display" header="Product Type" [sortable]="true" styleClass="text-left"></p-column>
+                    <p-column field="quantity" header="Quantity" [editable]="true" styleClass="text-right"></p-column>
+                    <p-column header="Action" styleClass="text-right">
+                      <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
+                        <i (click)="removeInternalTransferItem(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
+                      </ng-template>
+                    </p-column>
+                  </p-dataTable>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+        <br/>
+        <div class='row'>
+          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+        <br/>
+      </form>
+    </div>
+  </div>
+</p-panel>
