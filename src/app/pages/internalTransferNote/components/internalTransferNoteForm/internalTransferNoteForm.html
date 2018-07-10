@@ -107,7 +107,7 @@
                     <p-column field="job.jobNo" header="Job" styleClass="text-left"></p-column>
                     <p-column field="job.item.code" header="Item" styleClass="text-left"></p-column>
                     <p-column field="productType.display" header="Product Type" [sortable]="true" styleClass="text-left"></p-column>
-                    <p-column field="quantity" header="Quantity" [editable]="true" styleClass="text-right"></p-column>
+                    <p-column field="quantity" header="Quantity"styleClass="text-right"></p-column>
                     <p-column header="Action" styleClass="text-right">
                       <ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body">
                         <i (click)="removeInternalTransferItem(rowIndex,data)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>
