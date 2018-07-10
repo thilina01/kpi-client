@@ -1,0 +1,66 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Internal Transfer Arrival Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/internalTransferArrival/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" (keydown.enter)="$event.preventDefault()" class="form-horizontal">
+    <div class="row">
+      <div class="col-12">
+        <label for="id">Internal Transfer Note ID</label>
+        <input type="text" pInputText formControlName="id" id="id" (keydown.enter)="fill()">
+        <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+          <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-12 row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Recipient : {{internalTransferNote.recipient}} </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Vehicle Number : {{internalTransferNote.vehicleNumber}} </div>
+      </div>
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-sm-12">
+        <p-dataTable #dt [value]="internalTransferNote.internalTransferItemList" [editable]="true" [rows]="20" [responsive]="true"
+          resizableColumns="true">
+          <p-column field="id" header="ID"></p-column>
+          <p-column field="job.jobNo" header="Job" styleClass="text-left"></p-column>
+          <p-column field="job.item.code" header="Item" styleClass="text-left"></p-column>
+          <p-column field="productType.code" header="Product Type Code" [sortable]="true" styleClass="text-left"></p-column>
+          <p-column field="productType.description" header="Product Type" [sortable]="true" styleClass="text-left"></p-column>
+          <p-column field="quantity" header="Quantity" [editable]="true" styleClass="text-right"></p-column>
+        </p-dataTable>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+        <label for="arrivalTime">Arrival Time</label>
+        <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['arrivalTime'].valid && formGroup.controls['arrivalTime'].touched), 'has-success':(formGroup.controls['arrivalTime'].valid && formGroup.controls['arrivalTime'].touched)}">
+          <p-calendar id="timePicker" hourFormat="24" showIcon="true" formControlName="arrivalTime" showTime="showTime" dateFormat="yy-mm-dd"
+            appendTo="body"></p-calendar>
+        </div>
+      </div>
+    </div>
+    &nbsp;
+    <br/>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        &nbsp;
+        <br/>
+        <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+        <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+      </div>
+    </div>
+  </form>
+</p-panel>
