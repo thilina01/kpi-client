@@ -32,8 +32,7 @@ export class ScrapCostPerKgTable {
         });
     }
 
-    lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
+    lazy(event: any) {
         this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;

@@ -4,9 +4,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { AccidentService } from "../../accident.service";
-import { AccidentTypeService } from "../../../accidentType/accidentType.service";
-import { DataTable, ConfirmationService } from "primeng/primeng";
+import { AccidentService } from '../../accident.service';
+import { AccidentTypeService } from '../../../accidentType/accidentType.service';
+import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { EmployeeService } from '../../../employee/employee.service';
 import { SectionService } from '../../../section/section.service';
 import { ShiftService } from '../../../shift/shift.service';

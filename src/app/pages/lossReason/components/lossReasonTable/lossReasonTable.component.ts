@@ -21,7 +21,7 @@ export class LossReasonTable {
   rows = [];
   timeout: any;
   totalRecords: number;
-  lossType: any = { id: 0, 'code': 'ALL', 'name': '' }
+  lossType: any = { id: 0, 'code': 'ALL', 'name': '' };
   @ViewChild(DataTable) dataTable: DataTable;
 
   constructor(protected service: LossReasonService,
@@ -30,7 +30,7 @@ export class LossReasonTable {
     private lossTypeService: LossTypeService,
     private sharedService: SharedService) {
     this.getLossTypes();
-    this.loadData()
+    this.loadData();
   }
 
   getLossTypes(): void {
@@ -41,7 +41,7 @@ export class LossReasonTable {
   }
 
   loadData() {
-    if (this.lossType.id != undefined && this.lossType.id != 0) {
+    if (this.lossType.id !== undefined && this.lossType.id !== 0) {
       this.service.getPageByLossType(this.lossType, 0, 20).subscribe((data: any) => {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
@@ -54,9 +54,8 @@ export class LossReasonTable {
     }
   }
 
-  lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
-    if (this.lossType.id != undefined && this.lossType.id != 0) {
+  lazy(event: any) {
+    if (this.lossType.id !== undefined && this.lossType.id !== 0) {
       this.service.getPageByLossType(this.lossType, (event.first / event.rows), event.rows).subscribe((data: any) => {
         this.rows = data.content;
         this.totalRecords = data.totalElements;
@@ -90,7 +89,7 @@ export class LossReasonTable {
       accept: () => {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-          this.loadData()
+          this.loadData();
         }
         );
       }

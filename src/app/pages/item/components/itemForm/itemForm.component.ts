@@ -83,8 +83,8 @@ export class ItemForm {
     this.getItemSegmentList();
     this.route.params.subscribe((params: Params) => {
       let id = params['id'];
-      id = id == undefined ? '0' : id;
-      if (id != '0') {
+      id = id === undefined ? '0' : id;
+      if (id !== '0') {
         this.service
           .get(+id)
           .take(1)
@@ -111,8 +111,8 @@ export class ItemForm {
     this.item.productionToolAvailability =
       this.item.productionToolAvailability === 'yes' ? true : false;
     this.formGroup.patchValue(this.item, { onlySelf: true });
-    this.itemType = this.item.itemType;
   }
+
   public onSubmit(values: any, event: Event): void {
     event.preventDefault();
     console.log(values);

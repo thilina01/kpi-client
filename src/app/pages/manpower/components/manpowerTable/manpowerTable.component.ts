@@ -87,7 +87,7 @@ export class ManpowerTable {
       });
   }
 
-  lazy(event: any, table: any) {
+  lazy(event: any) {
     console.log(event);
     this.search(event.first / event.rows, event.rows);
   }

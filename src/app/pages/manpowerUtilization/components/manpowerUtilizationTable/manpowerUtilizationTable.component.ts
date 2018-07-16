@@ -39,7 +39,7 @@ export class ManpowerUtilizationTable {
     private sectionService: SectionService,
     private employeeService: EmployeeService,
     private shiftService: ShiftService) {
-    this.loadData()
+    this.loadData();
     this.getSections();
     this.getShifts();
     this.getEmployees();
@@ -72,7 +72,7 @@ export class ManpowerUtilizationTable {
     });
   }
 
-  lazy(event: any, table: any) {
+  lazy(event: any) {
     console.log(event);
     this.search((event.first / event.rows), event.rows);
   }
@@ -85,28 +85,28 @@ export class ManpowerUtilizationTable {
   }
 
   search(first: number, pageSize: number): void {
-    if (this.startDate != undefined &&
-      this.endDate != undefined &&
-      this.section != undefined &&
-      this.section.id != undefined &&
-      this.employee != undefined &&
-      this.employee.id != undefined &&
-      this.shift != undefined &&
-      this.shift.id != undefined) {
-      if (this.section.id == 0 && this.shift.id == 0 && this.employee.id == 0) {
+    if (this.startDate !== undefined &&
+      this.endDate !== undefined &&
+      this.section !== undefined &&
+      this.section.id !== undefined &&
+      this.employee !== undefined &&
+      this.employee.id !== undefined &&
+      this.shift !== undefined &&
+      this.shift.id !== undefined) {
+      if (this.section.id === 0 && this.shift.id === 0 && this.employee.id === 0) {
         this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
-      } else if (this.section.id == 0 && this.employee.id == 0 && this.shift.id > 0) {
+      } else if (this.section.id === 0 && this.employee.id === 0 && this.shift.id > 0) {
         this.service.getByProductionDurationAndShiftPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.shift.id, first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
 
-      } else if (this.section.id > 0 && this.shift.id == 0 && this.employee.id == 0) {
+      } else if (this.section.id > 0 && this.shift.id === 0 && this.employee.id === 0) {
         this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
-      } else if (this.section.id == 0 && this.shift.id == 0 && this.employee.id > 0) {
+      } else if (this.section.id === 0 && this.shift.id === 0 && this.employee.id > 0) {
         this.service.getByProductionDurationAndEmployeePage(this.employee.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
           this.fillTable(data);
         });
@@ -140,7 +140,7 @@ export class ManpowerUtilizationTable {
     }
   }
   onShiftSelect(shift: any) {
-    console.log(event)
+    console.log(event);
   }
   /*================== End Of Shift Filter ===================*/
   /*================== Section Filter ===================*/
@@ -156,7 +156,7 @@ export class ManpowerUtilizationTable {
     }
   }
   onSectionSelect(section: any) {
-    console.log(event)
+    console.log(event);
   }
   /*================== End Of Section Filter ===================*/
   /*================== Employee Filter ===================*/
@@ -172,7 +172,7 @@ export class ManpowerUtilizationTable {
     }
   }
   onEmployeeSelect(employee: any) {
-    console.log(event)
+    console.log(event);
   }
   /*================== End Of Employee Filter ===================*/
 

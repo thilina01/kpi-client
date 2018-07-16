@@ -24,6 +24,7 @@ export class PalletSizeTable {
         private sharedService: SharedService) {
         this.loadData();
     }
+
     loadData() {
         this.service.getPage(0, 20).subscribe((data: any) => {
             this.rows = data.content;
@@ -31,8 +32,7 @@ export class PalletSizeTable {
         });
     }
 
-    lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
+    lazy(event: any) {
         this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;
@@ -56,7 +56,7 @@ export class PalletSizeTable {
             accept: () => {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
-                    this.loadData()
+                    this.loadData();
                 }
                 );
             }

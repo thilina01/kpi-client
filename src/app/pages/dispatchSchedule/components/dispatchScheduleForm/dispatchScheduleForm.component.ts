@@ -6,9 +6,7 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { SharedService } from '../../../../services/shared.service';
 import { ItemService } from '../../../item/item.service';
 import { DispatchScheduleService } from '../../dispatchSchedule.service';
-import { DispatchScheduleTypeService } from '../../../dispatchScheduleType/dispatchScheduleType.service';
 import { CustomerItemService } from '../../../customerItem/customerItem.service';
-import { CustomerPoNumberService } from '../../../customerPoNumber/customerPoNumber.service';
 import { SalesOrderService } from '../../../salesOrder/salesOrder.service';
 import { JobService } from '../../../job/job.service';
 

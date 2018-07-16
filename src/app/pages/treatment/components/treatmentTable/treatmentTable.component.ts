@@ -3,8 +3,6 @@ import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { DataTable } from 'primeng/components/datatable/datatable';
-import { Observable } from 'rxjs/Rx';
-import { TreatmentService } from '../../treatment.service';
 import { AccidentService } from '../../../accident/accident.service';
 import { EmployeeService } from '../../../employee/employee.service';
 
@@ -31,7 +29,6 @@ export class TreatmentTable {
     private confirmationService: ConfirmationService,
     private sharedService: SharedService,
     private employeeService: EmployeeService,
-    private accidentService: AccidentService
   ) {
     this.loadData();
     this.getEmployees();

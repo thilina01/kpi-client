@@ -11,8 +11,6 @@ import { SectionForm } from './components/sectionForm/sectionForm.component';
 
 import { routing } from './section.routing';
 import { SectionService } from './section.service';
-import { WorkCenterService } from '../workCenter/workCenter.service';
-import { SectionTypeService } from '../sectionType/sectionType.service';
 
 @NgModule({
   imports: [
@@ -33,9 +31,7 @@ import { SectionTypeService } from '../sectionType/sectionType.service';
     SectionForm
   ],
   providers: [
-    SectionService,
-    SectionTypeService,
-    WorkCenterService
+    SectionService
   ]
 })
 export class SectionModule { }

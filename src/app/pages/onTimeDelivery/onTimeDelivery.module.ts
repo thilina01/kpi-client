@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
 
 import { OnTimeDelivery } from './onTimeDelivery.component';
-import { LossTypeService } from '../../services/lossType.service';
 import { OnTimeDeliveryTable } from './components/onTimeDeliveryTable/onTimeDeliveryTable.component';
 import { OnTimeDeliveryForm } from './components/onTimeDeliveryForm/onTimeDeliveryForm.component';
 
@@ -24,7 +22,6 @@ import { CustomerService } from '../customer/customer.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    // MaterialModule,
     SharedModule,
     PanelModule,
     InputTextModule,

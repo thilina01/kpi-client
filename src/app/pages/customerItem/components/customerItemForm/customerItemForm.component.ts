@@ -25,8 +25,8 @@ export class CustomerItemForm {
 
     customerList = [];
     itemList = [];
-    customer: any = { id: '', code: '', name: '' }
-    item: any = { id: '', code: '', name: '' }
+    customer: any = { id: '', code: '', name: '' };
+    item: any = { id: '', code: '', name: '' };
     customerItemType: any;
 
     constructor(protected service: CustomerItemService,
@@ -58,8 +58,8 @@ export class CustomerItemForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);

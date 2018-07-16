@@ -3,7 +3,6 @@ import { MasterService } from '../../services/master.service';
 import { HttpClient } from '@angular/common/http';
 import { APP_CONFIG, IAppConfig } from '../../app.config';
 import { AuthService } from '../../services/auth.service';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TreatmentService extends MasterService {

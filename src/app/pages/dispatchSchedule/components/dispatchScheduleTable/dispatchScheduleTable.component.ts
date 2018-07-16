@@ -129,7 +129,7 @@ export class DispatchScheduleTable {
     }
   }
   onCustomerSelect(customer: any) {
-    console.log(event)
+    console.log(event);
     this.customer = customer;
   }
   /*================== End Of Customer Filter ===================*/
@@ -146,7 +146,7 @@ export class DispatchScheduleTable {
     }
   }
   onJobSelect(job: any) {
-    console.log(event)
+    console.log(event);
     this.job = job;
   }
   /*================== End Of Job Filter ===================*/

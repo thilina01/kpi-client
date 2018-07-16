@@ -1,25 +1,25 @@
-import { Component, ViewEncapsulation, Input, ViewChild } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
   FormGroup,
   AbstractControl,
   FormBuilder,
   Validators
-} from "@angular/forms";
+} from '@angular/forms';
 
-import { SharedService } from "../../../../services/shared.service";
-import { SubcontractOperationRateService } from "../../subcontractOperationRate.service";
-import "rxjs/add/operator/take";
-import { SubcontractorOperationService } from "../../../subcontractorOperation/subcontractorOperation.service";
-import { SubcontractorService } from "../../../subcontractor/subcontractor.service";
-import { DataTable } from "primeng/primeng";
+import { SharedService } from '../../../../services/shared.service';
+import { SubcontractOperationRateService } from '../../subcontractOperationRate.service';
+import 'rxjs/add/operator/take';
+import { SubcontractorOperationService } from '../../../subcontractorOperation/subcontractorOperation.service';
+import { SubcontractorService } from '../../../subcontractor/subcontractor.service';
+import { DataTable } from 'primeng/primeng';
 
 @Component({
-  selector: "subcontract-operation-rate-form",
+  selector: 'subcontract-operation-rate-form',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ["./subcontractOperationRateForm.scss"],
-  templateUrl: "./subcontractOperationRateForm.html"
+  styleUrls: ['./subcontractOperationRateForm.scss'],
+  templateUrl: './subcontractOperationRateForm.html'
 })
 export class SubcontractOperationRateForm {
   @ViewChild(DataTable) dataTable: DataTable;
@@ -56,8 +56,6 @@ export class SubcontractOperationRateForm {
         this.fillSubcontractOperationRateList(subcontractorOperationList);
       });
   }
-
-  getBySubcontractOperationRateList(subcontractorOperationId): void {}
 
   fillSubcontractOperationRateList(subcontractorOperationList: any[]) {
     this.subcontractOperationRateList = [];
@@ -105,9 +103,9 @@ export class SubcontractOperationRateForm {
           .saveMany(subcontractOperationRateToSave)
           .subscribe(data => {
             this.sharedService.addMessage({
-              severity: "info",
-              summary: "Success",
-              detail: "Operation Success"
+              severity: 'info',
+              summary: 'Success',
+              detail: 'Operation Success'
             });
             this.reset();
           });

@@ -5,7 +5,6 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 
 import { SharedService } from '../../../../services/shared.service';
 import { PalletSizeService } from '../../palletSize.service';
-import { ToolService } from '../../../tool/tool.service';
 import 'rxjs/add/operator/take';
 
 @Component({
@@ -37,8 +36,8 @@ export class PalletSizeForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);

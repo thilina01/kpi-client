@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
 
@@ -11,17 +10,13 @@ import { DispatchReleaseTable } from './components/dispatchReleaseTable/dispatch
 import { DispatchReleaseForm } from './components/dispatchReleaseForm/dispatchReleaseForm.component';
 
 import { routing } from './dispatchRelease.routing';
-import { LabourSourceService } from '../labourSource/labourSource.service';
 import { DispatchReleaseService } from './dispatchRelease.service';
 import { DispatchScheduleService } from '../dispatchSchedule/dispatchSchedule.service';
 import { EmployeeService } from '../employee/employee.service';
 import { CustomerService } from '../customer/customer.service';
 import { AddressService } from '../../services/address.service';
-import { CustomerItemService } from '../customerItem/customerItem.service';
-import { DispatchService } from '../../services/dispatch.service';
 import { CustomerTypeService } from '../customerType/customerType.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
-import { LossTypeService } from '../../services/lossType.service';
 import { LocationService } from '../location/location.service';
 import { LoadingPlanService } from '../loadingPlan/loadingPlan.service';
 
@@ -34,7 +29,6 @@ import { LoadingPlanService } from '../loadingPlan/loadingPlan.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    // MaterialModule,
     SharedModule,
     PanelModule,
     InputTextModule,

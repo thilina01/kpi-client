@@ -15,14 +15,12 @@ import 'rxjs/add/operator/take';
     templateUrl: './costCenterForm.html',
 })
 export class CostCenterForm {
+    public formGroup: FormGroup;
+    subscription: Subscription;
+    JSON: any = JSON;
     sections: any;
     section: any;
-    JSON: any = JSON;
-
-    public formGroup: FormGroup;
     costCenter: any = {};
-    subscription: Subscription;
-    costCenterType: any;
 
     constructor(protected service: CostCenterService,
         private route: ActivatedRoute,
@@ -47,8 +45,8 @@ export class CostCenterForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
@@ -69,7 +67,6 @@ export class CostCenterForm {
             this.costCenter = data;
         }
         this.formGroup.patchValue(this.costCenter, { onlySelf: true });
-        this.costCenterType = this.costCenter.costCenterType;
     }
 
     public onSubmit(values: any, event: Event): void {

@@ -90,7 +90,6 @@ export class DispatchRejectTable {
         this.customer !== undefined ? this.customer.id : 0,
         this.item !== undefined ? this.item.id : 0,
         this.dispatchNote !== undefined ? this.dispatchNote.id : 0,
-        // this.rejectedQuantity !== undefined ? this.rejectedQuantity : 0,
         this.startDate === undefined
           ? '1970-01-01'
           : this.sharedService.YYYYMMDD(this.startDate),

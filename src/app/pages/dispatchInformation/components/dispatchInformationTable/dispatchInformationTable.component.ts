@@ -4,7 +4,6 @@ import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { DataTable } from 'primeng/components/datatable/datatable';
-import { Observable } from 'rxjs/Rx';
 import { CustomerService } from '../../../customer/customer.service';
 import { ItemService } from '../../../item/item.service';
 import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.service';
@@ -28,8 +27,8 @@ export class DispatchInformationTable {
   endDate: Date;
   pageSize = 20;
   @ViewChild(DataTable) dataTable: DataTable;
-  customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
-  item: any = { id: 0, 'code': 'ALL', 'display': 'All Items' }
+  customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' };
+  item: any = { id: 0, 'code': 'ALL', 'display': 'All Items' };
 
   constructor(protected service: LoadingPlanItemService,
     private router: Router,
@@ -37,7 +36,7 @@ export class DispatchInformationTable {
     private customerService: CustomerService,
     private itemService: ItemService,
     private sharedService: SharedService) {
-    this.loadData()
+    this.loadData();
     this.getCustomers();
     this.getItems();
   }
@@ -58,7 +57,7 @@ export class DispatchInformationTable {
 
   loadData() {
     this.service
-      .getDispatchInformationPage(0, 0, "1970-01-01", "2100-12-31", 0, 20)
+      .getDispatchInformationPage(0, 0, '1970-01-01', '2100-12-31', 0, 20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
@@ -76,10 +75,10 @@ export class DispatchInformationTable {
         this.customer !== undefined ? this.customer.id : 0,
         this.item !== undefined ? this.item.id : 0,
         this.startDate === undefined
-          ? "1970-01-01"
+          ? '1970-01-01'
           : this.sharedService.YYYYMMDD(this.startDate),
         this.endDate === undefined
-          ? "2100-12-31"
+          ? '2100-12-31'
           : this.sharedService.YYYYMMDD(this.endDate),
         first,
         pageSize
@@ -114,7 +113,7 @@ export class DispatchInformationTable {
   }
 
   onCustomerSelect(customer: any) {
-    console.log(event)
+    console.log(event);
     this.customer = customer;
   }
 
@@ -132,7 +131,7 @@ export class DispatchInformationTable {
   }
 
   onItemSelect(item: any) {
-    console.log(event)
+    console.log(event);
     this.item = item;
 
   }

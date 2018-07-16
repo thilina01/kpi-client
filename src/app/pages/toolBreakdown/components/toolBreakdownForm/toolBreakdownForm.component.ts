@@ -25,7 +25,7 @@ export class ToolBreakdownForm {
     tools: any;
     toolBreakdownTime: Date = new Date();
     recoveryTime: Date = new Date();
-    tool: any = { id: '', code: '' }
+    tool: any = { id: '', code: '' };
 
     constructor(protected service: ToolBreakdownService,
         private route: ActivatedRoute,
@@ -51,8 +51,8 @@ export class ToolBreakdownForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
@@ -75,7 +75,6 @@ export class ToolBreakdownForm {
             this.toolBreakdown.toolBreakdownTime = new Date(data.toolBreakdownTime);
         }
         this.formGroup.patchValue(this.toolBreakdown, { onlySelf: true });
-        this.tool = this.toolBreakdown.tool;
     }
 
     public onSubmit(values: any, event: Event): void {

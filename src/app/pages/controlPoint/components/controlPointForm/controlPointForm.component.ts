@@ -24,8 +24,8 @@ export class ControlPointForm {
     controlPointTypeList: Array<any>;
     workCenters: any;
 
-    controlPointType: any = { id: '', code: '', name: '' }
-    workCenter: any = { id: '', code: '', name: '' }
+    controlPointType: any = { id: '', code: '', name: '' };
+    workCenter: any = { id: '', code: '', name: '' };
 
     constructor(protected service: ControlPointService,
         private route: ActivatedRoute,

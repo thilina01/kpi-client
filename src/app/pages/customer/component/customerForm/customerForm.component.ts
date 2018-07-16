@@ -1,33 +1,33 @@
-import { Component, ViewEncapsulation, Input, ViewChild } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
   FormGroup,
   AbstractControl,
   FormBuilder,
   Validators
-} from "@angular/forms";
+} from '@angular/forms';
 
-import { SharedService } from "../../../../services/shared.service";
-import { CustomerService } from "../../customer.service";
-import { CustomerTypeService } from "../../../customerType/customerType.service";
-import { IncotermService } from "../../../incoterm/incoterm.service";
-import { CurrencyService } from "../../../currency/currency.service";
-import { NotifyPartyService } from "../../../notifyParty/notifyParty.service";
-import { PaymentTermService } from "../../../paymentTerm/paymentTerm.service";
-import { CountryService } from "../../../country/country.service";
-import { AddressTypeService } from "../../../addressType/addressType.service";
-import { ContactTypeService } from "../../../contactType/contactType.service";
-import { DataTable, ConfirmationService } from "primeng/primeng";
-import "rxjs/add/operator/take";
-import { PortService } from "../../../port/port.service";
-import { EmployeeService } from "../../../employee/employee.service";
+import { SharedService } from '../../../../services/shared.service';
+import { CustomerService } from '../../customer.service';
+import { CustomerTypeService } from '../../../customerType/customerType.service';
+import { IncotermService } from '../../../incoterm/incoterm.service';
+import { CurrencyService } from '../../../currency/currency.service';
+import { NotifyPartyService } from '../../../notifyParty/notifyParty.service';
+import { PaymentTermService } from '../../../paymentTerm/paymentTerm.service';
+import { CountryService } from '../../../country/country.service';
+import { AddressTypeService } from '../../../addressType/addressType.service';
+import { ContactTypeService } from '../../../contactType/contactType.service';
+import { DataTable, ConfirmationService } from 'primeng/primeng';
+import 'rxjs/add/operator/take';
+import { PortService } from '../../../port/port.service';
+import { EmployeeService } from '../../../employee/employee.service';
 
 @Component({
-  selector: "customer-form",
+  selector: 'customer-form',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ["./customerForm.scss"],
-  templateUrl: "./customerForm.html"
+  styleUrls: ['./customerForm.scss'],
+  templateUrl: './customerForm.html'
 })
 export class CustomerForm {
   public formGroup: FormGroup;
@@ -52,17 +52,17 @@ export class CustomerForm {
   employeeList = [];
   portList = [];
 
-  paymentTerm: any = { id: "", code: "", name: "" };
-  notifyParty: any = { id: "", code: "", name: "" };
-  incoterm: any = { id: "", code: "", name: "" };
-  currency: any = { id: "", code: "", name: "" };
-  customerType: any = { id: "", code: "", name: "" };
-  country: any = { id: "", code: "", name: "" };
-  customer: any = { id: "", code: "", name: "" };
-  addressType: any = { id: "", code: "", name: "" };
-  contactType: any = { id: "", code: "", name: "" };
-  port: any = { id: "", code: "", name: "" };
-  employee: any = { id: "", code: "", name: "" };
+  paymentTerm: any = { id: '', code: '', name: '' };
+  notifyParty: any = { id: '', code: '', name: '' };
+  incoterm: any = { id: '', code: '', name: '' };
+  currency: any = { id: '', code: '', name: '' };
+  customerType: any = { id: '', code: '', name: '' };
+  country: any = { id: '', code: '', name: '' };
+  customer: any = { id: '', code: '', name: '' };
+  addressType: any = { id: '', code: '', name: '' };
+  contactType: any = { id: '', code: '', name: '' };
+  port: any = { id: '', code: '', name: '' };
+  employee: any = { id: '', code: '', name: '' };
 
   constructor(
     protected service: CustomerService,
@@ -83,19 +83,19 @@ export class CustomerForm {
     private notifyPartyService: NotifyPartyService
   ) {
     this.formGroup = fb.group({
-      id: "",
-      shortName: "",
-      code: ["", Validators.required],
-      name: ["", Validators.required],
-      consignee: "",
-      continent: "",
-      specialRequirements: "",
-      note: "",
-      vatNo: "",
-      sVatNo: "",
-      finalDestination: "",
-      paymentTerm: ["", Validators.required],
-      notifyParty: ["", Validators.required],
+      id: '',
+      shortName: '',
+      code: ['', Validators.required],
+      name: ['', Validators.required],
+      consignee: '',
+      continent: '',
+      specialRequirements: '',
+      note: '',
+      vatNo: '',
+      sVatNo: '',
+      finalDestination: '',
+      paymentTerm: ['', Validators.required],
+      notifyParty: ['', Validators.required],
       incoterm: [this.incoterm, Validators.required],
       currency: [this.currency, Validators.required],
       customerType: [this.customerType, Validators.required],
@@ -105,16 +105,16 @@ export class CustomerForm {
     });
 
     this.contactFormGroup = fb.group({
-      contactNumber: "",
+      contactNumber: '',
       contactType: [{}, Validators.compose([Validators.required])]
     });
 
     this.addressFormGroup = fb.group({
-      line1: "",
-      line2: "",
-      line3: "",
-      line4: "",
-      line5: "",
+      line1: '',
+      line2: '',
+      line3: '',
+      line4: '',
+      line5: '',
       addressType: [{}, Validators.compose([Validators.required])],
       port: [],
       country: [{}, Validators.compose([Validators.required])]
@@ -221,9 +221,9 @@ export class CustomerForm {
     this.getEmployeeList();
     this.getPortList();
     this.route.params.subscribe((params: Params) => {
-      let id = params["id"];
-      id = id == undefined ? "0" : id;
-      if (id != "0") {
+      let id = params['id'];
+      id = id == undefined ? '0' : id;
+      if (id != '0') {
         this.service
           .get(+id)
           .take(1)
@@ -256,12 +256,12 @@ export class CustomerForm {
     this.submitted = true;
     if (this.formGroup.valid) {
       if (values.contactList === null || values.contactList.length === 0) {
-        alert("contact Required");
+        alert('contact Required');
         return;
       }
 
       if (values.addressList === null || values.addressList.length === 0) {
-        alert("address Required");
+        alert('address Required');
         return;
       }
 
@@ -270,12 +270,12 @@ export class CustomerForm {
 
       this.service.save(values).subscribe(data => {
         this.sharedService.addMessage({
-          severity: "info",
-          summary: "Success",
-          detail: "Operation Success"
+          severity: 'info',
+          summary: 'Success',
+          detail: 'Operation Success'
         });
         this.resetForm();
-        this.router.navigate(["/pages/customer/form/"]);
+        this.router.navigate(['/pages/customer/form/']);
       });
     }
   }
@@ -289,7 +289,7 @@ export class CustomerForm {
   public removeContact(id: number) {
     if (this.formGroup.value.contactList != null) {
       this.confirmationService.confirm({
-        message: "Are you sure that you want to Delete?",
+        message: 'Are you sure that you want to Delete?',
         accept: () => {
           this.formGroup.value.contactList.splice(id, 1);
           this.fillContacts();
@@ -301,7 +301,7 @@ export class CustomerForm {
   public removeAddress(id: number) {
     if (this.formGroup.value.addressList != null) {
       this.confirmationService.confirm({
-        message: "Are you sure that you want to Delete?",
+        message: 'Are you sure that you want to Delete?',
         accept: () => {
           this.formGroup.value.addressList.splice(id, 1);
           this.fillAddresses();
@@ -318,7 +318,7 @@ export class CustomerForm {
       }
       this.formGroup.value.contactList.push(values);
       this.contactFormGroup.reset();
-      document.getElementById("contactNumber").focus();
+      document.getElementById('contactNumber').focus();
       this.formGroup.value.contactList = this.formGroup.value.contactList.slice();
     } else {
       console.log(this.contactFormGroup.errors);
@@ -334,7 +334,7 @@ export class CustomerForm {
 
       this.formGroup.value.addressList.push(values);
       this.addressFormGroup.reset();
-      document.getElementById("line5").focus();
+      document.getElementById('line5').focus();
       this.formGroup.value.addressList = this.formGroup.value.addressList.slice();
     } else {
       console.log(this.addressFormGroup.errors);

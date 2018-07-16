@@ -1,8 +1,7 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { NgaModule } from "../../theme/nga.module";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-// import { MaterialModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NgaModule } from '../../theme/nga.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   DataTableModule,
@@ -12,17 +11,16 @@ import {
   PanelModule,
   InputTextModule,
   AutoCompleteModule
-} from "primeng/primeng";
+} from 'primeng/primeng';
 
-import { SubcontractorOperation } from "./subcontractorOperation.component";
-import { LossTypeService } from "../../services/lossType.service";
-import { SubcontractorOperationTable } from "./components/subcontractorOperationTable/subcontractorOperationTable.component";
-import { SubcontractorOperationForm } from "./components/subcontractorOperationForm/subcontractorOperationForm.component";
+import { SubcontractorOperation } from './subcontractorOperation.component';
+import { SubcontractorOperationTable } from './components/subcontractorOperationTable/subcontractorOperationTable.component';
+import { SubcontractorOperationForm } from './components/subcontractorOperationForm/subcontractorOperationForm.component';
 
-import { routing } from "./subcontractorOperation.routing";
-import { SubcontractorOperationService } from "./subcontractorOperation.service";
-import { SubcontractorService } from "../subcontractor/subcontractor.service";
-import { SubcontractOperationDefinitionService } from "../subcontractOperationDefinition/subcontractOperationDefinition.service";
+import { routing } from './subcontractorOperation.routing';
+import { SubcontractorOperationService } from './subcontractorOperation.service';
+import { SubcontractorService } from '../subcontractor/subcontractor.service';
+import { SubcontractOperationDefinitionService } from '../subcontractOperationDefinition/subcontractOperationDefinition.service';
 
 @NgModule({
   imports: [

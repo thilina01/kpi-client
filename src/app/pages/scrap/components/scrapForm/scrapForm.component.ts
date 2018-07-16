@@ -85,8 +85,8 @@ export class ScrapForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);

@@ -72,8 +72,8 @@ export class ResourceUtilizationForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.loadForm(id);
                 }
             }
@@ -83,7 +83,7 @@ export class ResourceUtilizationForm {
     fill(): void {
         this.clear();
         let id = this.formGroup.value.id;
-        if (id == undefined || id == '') { return; }
+        if (id === undefined || id === '') { return; }
         this.loadForm(id);
     }
 
@@ -148,9 +148,9 @@ export class ResourceUtilizationForm {
     }
 
     public save(): void {
-        delete this.production["manpowerList"];
-        delete this.production["operationList"];
-        delete this.production["productionEmployeeList"];
+        delete this.production['manpowerList'];
+        delete this.production['operationList'];
+        delete this.production['productionEmployeeList'];
         this.service.save(this.production).subscribe(
             (data) => {
                 this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });

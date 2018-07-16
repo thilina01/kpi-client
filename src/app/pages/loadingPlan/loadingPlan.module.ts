@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, InputTextModule, ContextMenuModule } from 'primeng/primeng';
 
@@ -36,7 +35,6 @@ import { PackingListPrint } from './components/packingListPrint';
     DialogModule,
     CalendarModule,
     ContextMenuModule,
-    // MaterialModule,
     SharedModule,
     PanelModule,
     AutoCompleteModule,

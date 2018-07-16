@@ -40,7 +40,7 @@ export class OperationTable {
     private sharedService: SharedService,
     private sectionService: SectionService,
     private shiftService: ShiftService) {
-    this.loadData()
+    this.loadData();
     this.getSections();
     this.getShifts();
   }
@@ -67,7 +67,7 @@ export class OperationTable {
       });
   }
 
-  lazy(event: any, table: any) {
+  lazy(event: any) {
     console.log(event);
     this.search(event.first / event.rows, event.rows);
   }

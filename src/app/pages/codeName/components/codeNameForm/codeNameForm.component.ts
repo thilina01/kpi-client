@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
-import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router'
+import { ActivatedRoute, Params, Router, NavigationEnd } from '@angular/router';
 import { AbstractControl, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -43,9 +43,6 @@ export class CodeNameForm {
             this.service.get(+id).take(1).subscribe(codeName => { if (codeName) this.codeName = codeName; });
         }
     }
-
-    // ngOnInit(): void {
-    // }
 
     public save(codeName: any): void {
         this.service.save(codeName).subscribe(

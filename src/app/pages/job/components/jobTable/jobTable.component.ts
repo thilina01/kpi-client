@@ -48,7 +48,7 @@ export class JobTable {
     });
   }
 
-  lazy(event: any, table: any) {
+  lazy(event: any) {
     this.search(event.first / event.rows, event.rows);
   }
 

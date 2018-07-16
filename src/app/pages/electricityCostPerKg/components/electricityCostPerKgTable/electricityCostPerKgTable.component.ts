@@ -6,7 +6,7 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 import { ElectricityCostPerKgService } from '../../electricityCostPerKg.service';
 
 @Component({
-    selector: 'electricity-cost-per-kg------table',
+    selector: 'electricity-cost-per-kg-table',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./electricityCostPerKgTable.scss'],
     templateUrl: './electricityCostPerKgTable.html',
@@ -32,8 +32,7 @@ export class ElectricityCostPerKgTable {
         });
     }
 
-    lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
+    lazy(event: any) {
         this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;

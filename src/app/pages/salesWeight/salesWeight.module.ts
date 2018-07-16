@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
@@ -12,7 +11,6 @@ import { SalesWeightTable } from './components/salesWeightTable/salesWeightTable
 import { SalesWeightForm } from './components/salesWeightForm/salesWeightForm.component';
 
 import { routing } from './salesWeight.routing';
-import { LabourSourceService } from '../labourSource/labourSource.service';
 import { SalesWeightService } from './salesWeight.service';
 
 
@@ -25,7 +23,6 @@ import { SalesWeightService } from './salesWeight.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    // MaterialModule,
     SharedModule,
     PanelModule,
     InputTextModule,
@@ -36,6 +33,6 @@ import { SalesWeightService } from './salesWeight.service';
     SalesWeightTable,
     SalesWeightForm
   ],
-  providers: [SalesWeightService, LabourSourceService]
+  providers: [SalesWeightService]
 })
 export class SalesWeightModule { }

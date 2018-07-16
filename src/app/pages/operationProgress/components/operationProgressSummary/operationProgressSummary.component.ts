@@ -14,7 +14,7 @@ import { forEach } from '@angular/router/src/utils/collection';
   selector: 'operation-progress-summary',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./operationProgressSummary.scss'],
-  templateUrl: './operationProgressSummary.html',
+  templateUrl: './operationProgressSummary.html'
 })
 export class OperationProgressSummary {
   @ViewChild(DataTable) dataTable: DataTable;
@@ -25,24 +25,25 @@ export class OperationProgressSummary {
   sections: any;
   jobs: any;
   controlPoints: any;
-  section: any = {id: 0, 'code': 'Select', 'display': 'Select'};
-  controlPoint: any = {id: 0, 'code': 'ALL', 'display': 'All ControlPoints'};
-  job: any = {id: 0, 'code': 'ALL', 'display': 'All Jobs'};
+  section: any = { id: 0, code: 'Select', display: 'Select' };
+  controlPoint: any = { id: 0, code: 'ALL', display: 'All ControlPoints' };
+  job: any = { id: 0, code: 'ALL', display: 'All Jobs' };
   productionDate: Date = new Date();
   endDate: Date = new Date();
   total = 0;
   pageSize = 20;
-  // productionDate = 1519929000000;//1519756200000;
-  Math:any;
+  Math: any;
 
-  constructor(protected service: OperationProgressService,
-              private router: Router,
-              private sectionService: SectionService,
-              private chartService: ChartService,
-              private controlPointService: ControlPointService,
-              private jobService: JobService,
-              private confirmationService: ConfirmationService,
-              private sharedService: SharedService) {
+  constructor(
+    protected service: OperationProgressService,
+    private router: Router,
+    private sectionService: SectionService,
+    private chartService: ChartService,
+    private controlPointService: ControlPointService,
+    private jobService: JobService,
+    private confirmationService: ConfirmationService,
+    private sharedService: SharedService
+  ) {
     this.getSections();
     this.getControlPoints();
     this.getJobs();
@@ -50,27 +51,34 @@ export class OperationProgressSummary {
     this.endDate.setHours(24, 0, 0, 0);
     this.loadData();
     this.Math = Math;
-
   }
 
   getSections(): void {
     this.sectionService.getCombo().subscribe(sections => {
       this.sections = sections;
-      this.sections.unshift({id: 0, 'code': 'Select', 'display': 'Select a Sections'});
+      this.sections.unshift({
+        id: 0,
+        code: 'Select',
+        display: 'Select a Sections'
+      });
     });
   }
 
   getJobs(): void {
     this.jobService.getCombo().subscribe(jobs => {
       this.jobs = jobs;
-      this.jobs.unshift({id: 0, 'code': 'ALL', 'display': 'All Jobs'});
+      this.jobs.unshift({ id: 0, code: 'ALL', display: 'All Jobs' });
     });
   }
 
   getControlPoints(): void {
     this.controlPointService.getCombo().subscribe(controlPoints => {
       this.controlPoints = controlPoints;
-      this.controlPoints.unshift({id: 0, 'code': 'ALL', 'display': 'All ControlPoints'});
+      this.controlPoints.unshift({
+        id: 0,
+        code: 'ALL',
+        display: 'All ControlPoints'
+      });
     });
   }
 
@@ -84,9 +92,8 @@ export class OperationProgressSummary {
 
   lazy(event: any, table: any) {
     console.log(event);
-    this.search((event.first / event.rows), event.rows);
+    this.search(event.first / event.rows, event.rows);
   }
-
 
   onPage(event) {
     clearTimeout(this.timeout);
@@ -97,124 +104,65 @@ export class OperationProgressSummary {
   }
 
   search(first: number, pageSize: number): void {
-    this.chartService.getOperationProgressSummaryBySection(this.section.id, this.productionDate.getTime()).subscribe((data: any) => {
-
-      let rows = [];
-      let rowSection = {id: 0, controlPointList: []};
-      for (let element of data) {
-
-        if (element.section.id !== rowSection.id) {
-          if (rowSection.id !== 0) {
-            rows.push(rowSection);
+    this.chartService
+      .getOperationProgressSummaryBySection(
+        this.section.id,
+        this.productionDate.getTime()
+      )
+      .subscribe((data: any) => {
+        let rows = [];
+        let rowSection = { id: 0, controlPointList: [] };
+        for (let element of data) {
+          if (element.section.id !== rowSection.id) {
+            if (rowSection.id !== 0) {
+              rows.push(rowSection);
+            }
+            rowSection = element.section;
           }
-          rowSection = element.section;
-        }
-        for (let operation of element.production.operationList) {
-          let total = 0;
-          for (let operationProgress of operation.operationProgressList) {
-            total += operationProgress.quantity;
-          }
-          operation.total = total;
-          operation.chartData = {
-            labels: [operation.id, 'Loss'],
+          for (let operation of element.production.operationList) {
+            let total = 0;
+            for (let operationProgress of operation.operationProgressList) {
+              total += operationProgress.quantity;
+            }
+            operation.total = total;
+            operation.chartData = {
+              labels: [operation.id, 'Loss'],
 
-            datasets: [
-              {
-                data: [operation.total, (operation.plannedQuantity - operation.total)],
-                backgroundColor: [
-                  "#FF6384",
-                  "#000000"
-                ],
-                hoverBackgroundColor: [
-                  "#FF6384",
-                  "#000000"
-                ],
-                options: {
-                  legend: {
-                    display: false
+              datasets: [
+                {
+                  data: [
+                    operation.total,
+                    operation.plannedQuantity - operation.total
+                  ],
+                  backgroundColor: ['#FF6384', '#000000'],
+                  hoverBackgroundColor: ['#FF6384', '#000000'],
+                  options: {
+                    legend: {
+                      display: false
+                    }
                   }
-                },
-              }]
-          };
+                }
+              ]
+            };
+          }
+          element.controlPoint.production = element.production;
+          if (rowSection.controlPointList === undefined) {
+            rowSection.controlPointList = [];
+          }
+          rowSection.controlPointList.push(element.controlPoint);
         }
-        element.controlPoint.production = element.production;
-        if (rowSection.controlPointList === undefined) {
-          rowSection.controlPointList = [];
+        if (rowSection.id !== 0) {
+          rows.push(rowSection);
         }
-        rowSection.controlPointList.push(element.controlPoint);
-      }
-      if(rowSection.id !== 0){
-        rows.push(rowSection);
-      }
-      this.rows = rows;
-      console.log(rows);
-    });
-    // pageSize = pageSize === undefined ? this.pageSize : pageSize;
-    // if (this.startDate != undefined &&
-    //     this.endDate != undefined &&
-    //     this.section != undefined &&
-    //     this.section.id != undefined &&
-    //     this.job != undefined &&
-    //     this.job.id != undefined &&
-    //     this.controlPoint != undefined &&
-    //     this.controlPoint.id != undefined) {
-    //     if (this.section.id == 0 && this.controlPoint.id == 0 && this.job.id == 0) {
-    //         this.service.getByProductionDurationPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else if (this.section.id == 0 && this.job.id == 0 && this.controlPoint.id > 0) {
-    //         this.service.getByProductionDurationAndControlPointPage(this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else if (this.section.id > 0 && this.controlPoint.id == 0 && this.job.id == 0) {
-    //         this.service.getBySectionAndProductionDurationPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else if (this.section.id == 0 && this.controlPoint.id == 0 && this.job.id > 0) {
-    //         this.service.getByProductionDurationAndJobPage(this.job.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else if (this.section.id > 0 && this.job.id == 0 && this.controlPoint.id > 0) {
-    //         this.service.getBySectionAndProductionDurationAndControlPointPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else if (this.section.id > 0 && this.controlPoint.id == 0 && this.job.id > 0) {
-    //         this.service.getBySectionAndProductionDurationAndJobPage(this.section.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.job.id, first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else if (this.controlPoint.id > 0 && this.section.id == 0 && this.job.id > 0) {
-    //         this.service.getByControlPointAndProductionDurationAndJobPage(this.controlPoint.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.job.id, first, pageSize).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     } else {
-    //         this.service.getBySectionAndJobAndProductionDurationAndControlPointPage(this.section.id, this.job.id, this.sharedService.YYYYMMDD(this.startDate), this.sharedService.YYYYMMDD(this.endDate), this.controlPoint.id, first, pageSize, ).subscribe((data: any) => {
-    //             this.fillTable(data);
-    //         });
-    //     }
-    // } else {
-    //     this.service.getPage(first, pageSize).subscribe((data: any) => {
-    //         this.fillTable(data);
-    //     });
-    // }
+        this.rows = rows;
+        console.log(rows);
+      });
   }
 
   selectedOperation: any;
   showInfo(operation: any, op: any, event: any) {
     this.selectedOperation = operation;
     op.show(event);
-    // if (this.section.code === 'ALL') {
-    //   this.chartService.getResourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween(row.section.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
-    //     this.selectedRow.employeeList = data;
-    //     console.log(this.selectedRow);
-    //     op.show(event);
-    //   });
-    // } else {
-    //   this.chartService.getResourceUtilizationDistinctEmployeeByControlPointAndStartTimeBetween(row.controlPoint.id, this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
-    //     this.selectedRow.employeeList = data;
-    //     console.log(this.selectedRow);
-    //     op.show(event);
-    //   });
-    // }
   }
 
   fillTable(data: any) {
@@ -222,11 +170,12 @@ export class OperationProgressSummary {
     this.totalRecords = data.totalElements;
   }
 
-  selected(data: any) {
-  }
+  selected(data: any) {}
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/operationProgress/form/' + data.operation.id]);
+    this.router.navigate([
+      '/pages/operationProgress/form/' + data.operation.id
+    ]);
   }
 
   navigateToForm(id: any): void {
@@ -238,10 +187,13 @@ export class OperationProgressSummary {
       message: 'Are you sure that you want to Delete?',
       accept: () => {
         this.service.delete(id).subscribe(response => {
-            this.sharedService.addMessage({severity: 'info', summary: 'Deleted', detail: 'Delete success'});
-            this.loadData();
-          }
-        );
+          this.sharedService.addMessage({
+            severity: 'info',
+            summary: 'Deleted',
+            detail: 'Delete success'
+          });
+          this.loadData();
+        });
       }
     });
   }
@@ -262,7 +214,6 @@ export class OperationProgressSummary {
 
   onControlPointSelect(controlPoint: any) {
     console.log(event);
-
   }
 
   /*================== End Of ControlPoint Filter ===================*/
@@ -282,8 +233,7 @@ export class OperationProgressSummary {
 
   onSectionSelect(section: any) {
     console.log(event);
-    this.search(0,0 );
-
+    this.search(0, 0);
   }
 
   /*================== End Of Section Filter ===================*/
@@ -303,7 +253,6 @@ export class OperationProgressSummary {
 
   onJobSelect(job: any) {
     console.log(event);
-
   }
 
   /*================== End Of Job Filter ===================*/

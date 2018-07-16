@@ -2,13 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { MaterialModule } from '@angular/material';
 
 import {
   DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule,
   DropdownModule, ChartModule, ProgressBarModule, OverlayPanelModule
 } from 'primeng/primeng';
-// import {DropdownModule} from 'primeng/dropdown';
 import { OperationProgress } from './operationProgress.component';
 import { OperationProgressTable } from './components/operationProgressTable/operationProgressTable.component';
 import { OperationProgressForm } from './components/operationProgressForm/operationProgressForm.component';
@@ -31,7 +29,6 @@ import { ChartService } from '../chart/chart.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    // MaterialModule,
     SharedModule,
     PanelModule,
     InputTextModule,

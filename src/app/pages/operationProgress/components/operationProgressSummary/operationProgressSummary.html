@@ -3,7 +3,6 @@
     <div class="row">
       <div class="col">
         <h3>Operation Progress Summary </h3>
-        <!--| {{productionDate| date:'y-MM-dd'}}-->
       </div>
     </div>
     <div class="row">
@@ -16,7 +15,7 @@
         Section
         <div class="ui-inputgroup ui-fluid">
           <p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-                          [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+            [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
           </p-autoComplete>
         </div>
       </div>
@@ -41,12 +40,13 @@
               {{controlPoint?.code}} | {{controlPoint?.name}}
             </h3>
 
-            <div class="row" >
+            <div class="row">
               <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" *ngFor="let operation of controlPoint.production.operationList">
                 <div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all" style="cursor: pointer;" (click)="showInfo(operation,op,$event)">
                   <div class="row">
                     <div class="col-6" style="text-align: left">
-                      {{operation?.job?.jobNo}} | {{operation?.job?.item?.code}} | <span style="white-space: nowrap">{{operation?.operationType?.description}}</span>
+                      {{operation?.job?.jobNo}} | {{operation?.job?.item?.code}} |
+                      <span style="white-space: nowrap">{{operation?.operationType?.description}}</span>
                     </div>
                     <div class="col-4" style="text-align: left">
                       <p-progressBar [value]="Math.round((operation.total / operation.plannedQuantity)*100)"></p-progressBar>
@@ -56,21 +56,6 @@
                     </div>
                   </div>
                 </div>
-                <!--<p-panel>-->
-                  <!--<p-header style="cursor: pointer;" (click)="showInfo(operation,op,$event)">-->
-                    <!--<div class="row">-->
-                      <!--<div class="col-6" style="text-align: left">-->
-                        <!--{{operation?.job?.jobNo}} | {{operation?.job?.item?.code}} | <span style="white-space: nowrap">{{operation?.operationType?.description}}</span>-->
-                      <!--</div>-->
-                      <!--<div class="col-4" style="text-align: left">-->
-                        <!--<p-progressBar [value]="Math.round((operation.total / operation.plannedQuantity)*100)"></p-progressBar>-->
-                      <!--</div>-->
-                      <!--<div class="col-2" style="text-align: right">-->
-                        <!--{{operation?.total}} / {{operation?.plannedQuantity}}-->
-                      <!--</div>-->
-                    <!--</div>-->
-                  <!--</p-header>-->
-                <!--</p-panel>-->
               </div>
               <br/>
               <br/>
@@ -87,8 +72,8 @@
 
 </p-panel>
 <p-overlayPanel #op [dismissable]="true" [showCloseIcon]="true">
-  <p-dataTable #dt [value]="selectedOperation?.operationProgressList" [rows]="20" [responsive]="true"
-               selectionMode="single" sortMode="multiple" resizableColumns="true">
+  <p-dataTable #dt [value]="selectedOperation?.operationProgressList" [rows]="20" [responsive]="true" selectionMode="single"
+    sortMode="multiple" resizableColumns="true">
     <p-column field="timeSlot" header="Time Slot" [sortable]="true">
       <ng-template let-col let-rowData="rowData" pTemplate="body">
         {{rowData.timeSlot| date:'HH:mm'}}

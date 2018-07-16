@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// // import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, InputTextModule } from 'primeng/primeng';
 
 import { Breakdown } from './breakdown.component';
-import { LossTypeService } from '../../services/lossType.service';
 import { BreakdownTable } from './components/breakdownTable/breakdownTable.component';
 import { BreakdownForm } from './components/breakdownForm/breakdownForm.component';
 
@@ -24,7 +22,6 @@ import { MachineService } from '../machine/machine.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    // // MaterialModule,
     SharedModule,
     PanelModule,
     AutoCompleteModule,

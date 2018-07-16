@@ -94,7 +94,6 @@ export class SubcontractOperationDefinitionTable {
   }
 
   lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
     if (
       (this.item !== undefined ? this.item.id : 0,
       this.productType !== undefined ? this.productType.id : 0,

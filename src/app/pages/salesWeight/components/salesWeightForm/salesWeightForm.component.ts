@@ -4,7 +4,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
-import { LabourSourceService } from '../../../labourSource/labourSource.service';
 import { SalesWeightService } from '../../salesWeight.service';
 import 'rxjs/add/operator/take';
 
@@ -16,20 +15,17 @@ import 'rxjs/add/operator/take';
 })
 export class SalesWeightForm {
     JSON: any = JSON;
-
     public formGroup: FormGroup;
     salesWeight: any = {};
     subscription: Subscription;
-
     effectiveMonth: Date;
-    labourSource: any = { id: '', code: '' }
+    labourSource: any = { id: '', code: '' };
 
     constructor(protected service: SalesWeightService,
         private route: ActivatedRoute,
         private router: Router,
         fb: FormBuilder,
-        private sharedService: SharedService,
-        private labourSourceService: LabourSourceService) {
+        private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
             effectiveMonth: [this.effectiveMonth, Validators.required],
@@ -42,8 +38,8 @@ export class SalesWeightForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
@@ -60,7 +56,6 @@ export class SalesWeightForm {
             this.salesWeight = data;
         }
         this.formGroup.patchValue(this.salesWeight, { onlySelf: true });
-        this.labourSource = this.salesWeight.labourSource;
     }
 
     public onSubmit(values: any, event: Event): void {

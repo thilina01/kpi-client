@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { SharedService } from '../../../../services/shared.service';
@@ -49,8 +49,8 @@ export class WorkCenterForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);
@@ -71,7 +71,6 @@ export class WorkCenterForm {
             this.workCenter = data;
         }
         this.formGroup.patchValue(this.workCenter, { onlySelf: true });
-        this.workCenterType = this.workCenter.workCenterType;
     }
 
     public onSubmit(values: any, event: Event): void {

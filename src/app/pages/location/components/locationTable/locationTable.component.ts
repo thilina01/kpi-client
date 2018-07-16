@@ -3,7 +3,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { LocationService } from '../../location.service';
-import { SectionService } from '../../../section/section.service';
 
 @Component({
   selector: 'location-table',
@@ -33,8 +32,7 @@ export class LocationTable {
     });
   }
 
-  lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
+  lazy(event: any) {
     this.service
       .getPage(event.first / event.rows, event.rows)
       .subscribe((data: any) => {

@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { MaterialModule } from '@angular/material';
 
 import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule } from 'primeng/primeng';
 
 import { ElectricityCostPerKg } from './electricityCostPerKg.component';
-import { LossTypeService } from '../../services/lossType.service';
 import { ElectricityCostPerKgTable } from './components/electricityCostPerKgTable/electricityCostPerKgTable.component';
 import { ElectricityCostPerKgForm } from './components/electricityCostPerKgForm/electricityCostPerKgForm.component';
 import { routing } from './electricityCostPerKg.routing';
@@ -22,7 +20,6 @@ import { ElectricityCostPerKgService } from './electricityCostPerKg.service';
     DataTableModule,
     DialogModule,
     CalendarModule,
-    // MaterialModule,
     SharedModule,
     PanelModule,
     InputTextModule,

@@ -4,8 +4,6 @@ import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule, AutoCompleteModule, PanelModule, ButtonModule, InputTextModule, TabViewModule, DataTableModule, SharedModule } from 'primeng/primeng';
 
-// import { MaterialModule } from '@angular/material';
-
 import { Plan } from './plan.component';
 import { routing } from './plan.routing';
 import { PlanFormTop } from './components/planFormTop/planFormTop.component';
@@ -20,7 +18,6 @@ import { OperationService } from '../operation/operation.service';
     NgaModule,
     CalendarModule,
     AutoCompleteModule,
-    // MaterialModule,
     InputTextModule,
     routing,
     FormsModule,

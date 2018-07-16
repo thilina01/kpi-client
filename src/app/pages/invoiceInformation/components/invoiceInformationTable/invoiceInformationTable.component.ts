@@ -4,7 +4,6 @@ import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { DataTable } from 'primeng/components/datatable/datatable';
-import { Observable } from 'rxjs/Rx';
 import { CustomerService } from '../../../customer/customer.service';
 import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.service';
 import { JobService } from '../../../job/job.service';

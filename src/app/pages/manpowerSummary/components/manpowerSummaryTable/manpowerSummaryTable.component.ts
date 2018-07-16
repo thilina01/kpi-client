@@ -4,11 +4,7 @@ import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { DataTable } from 'primeng/components/datatable/datatable';
-import { Observable } from 'rxjs/Rx';
 import { SectionService } from '../../../section/section.service';
-import { ManpowerSummaryService } from '../../manpowerSummary.service';
-import { ShiftService } from '../../../shift/shift.service';
-import { EmployeeService } from '../../../employee/employee.service';
 import { ResourceUtilizationService } from '../../../resourceUtilization/resourceUtilization.service';
 import { ChartService } from '../../../chart/chart.service';
 
@@ -40,8 +36,7 @@ export class ManpowerSummaryTable {
     private confirmationService: ConfirmationService,
     private chartService: ChartService,
     private sharedService: SharedService,
-    private sectionService: SectionService,
-    private shiftService: ShiftService) {
+    private sectionService: SectionService) {
     this.startDate.setHours(0, 0, 0, 0);
     this.endDate.setHours(24, 0, 0, 0);
     this.getSections();
@@ -57,11 +52,11 @@ export class ManpowerSummaryTable {
   }
 
   search(): void {
-    if (this.startDate != undefined &&
-      this.endDate != undefined &&
-      this.section != undefined &&
-      this.section.id != undefined) {
-      if (this.section.id == 0) {
+    if (this.startDate !== undefined &&
+      this.endDate !== undefined &&
+      this.section !== undefined &&
+      this.section.id !== undefined) {
+      if (this.section.id === 0) {
         this.chartService.getManpowerSummary(this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
           this.fillTable(data);
         });

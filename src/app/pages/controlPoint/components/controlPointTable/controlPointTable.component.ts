@@ -20,7 +20,7 @@ export class ControlPointTable {
     private router: Router,
     private confirmationService: ConfirmationService,
     private sharedService: SharedService) {
-    this.loadData()
+    this.loadData();
   }
 
   loadData() {
@@ -30,8 +30,7 @@ export class ControlPointTable {
     });
   }
 
-  lazy(event: any, table: any) {
-    const search = table.globalFilter ? table.globalFilter.value : null;
+  lazy(event: any) {
     this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
       this.rows = data.content;
       this.totalRecords = data.totalElements;
@@ -60,7 +59,7 @@ export class ControlPointTable {
         this.service.delete(id).subscribe(response => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
           //this.msgs.push();
-          this.loadData()
+          this.loadData();
         }
         );
       }

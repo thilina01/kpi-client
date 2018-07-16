@@ -18,9 +18,9 @@ export class ConsumableCostPerKgTable {
     timeout: any;
     totalRecords: number;
 
-    constructor(protected service: ConsumableCostPerKgService, 
-        private router: Router, 
-        private confirmationService: ConfirmationService, 
+    constructor(protected service: ConsumableCostPerKgService,
+        private router: Router,
+        private confirmationService: ConfirmationService,
         private sharedService: SharedService) {
         this.loadData();
     }
@@ -32,8 +32,7 @@ export class ConsumableCostPerKgTable {
         });
     }
 
-    lazy(event: any, table: any) {
-        const search = table.globalFilter ? table.globalFilter.value : null;
+    lazy(event: any) {
         this.service.getPage((event.first / event.rows), event.rows).subscribe((data: any) => {
             this.rows = data.content;
             this.totalRecords = data.totalElements;
@@ -58,7 +57,7 @@ export class ConsumableCostPerKgTable {
                 this.service.delete(id).subscribe(response => {
                     this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Delete success' });
                     //this.msgs.push();
-                    this.loadData()
+                    this.loadData();
                 }
                 );
             }

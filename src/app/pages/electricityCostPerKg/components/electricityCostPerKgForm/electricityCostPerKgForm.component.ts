@@ -8,7 +8,7 @@ import { ElectricityCostPerKgService } from '../../electricityCostPerKg.service'
 import 'rxjs/add/operator/take';
 
 @Component({
-    selector: 'electricity-cost-per-kg------form',
+    selector: 'electricity-cost-per-kg-form',
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./electricityCostPerKgForm.scss'],
     templateUrl: './electricityCostPerKgForm.html',
@@ -39,8 +39,8 @@ export class ElectricityCostPerKgForm {
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
-                id = id == undefined ? '0' : id;
-                if (id != '0') {
+                id = id === undefined ? '0' : id;
+                if (id !== '0') {
                     this.service.get(+id).take(1).subscribe(
                         (data) => {
                             this.loadForm(data);

@@ -6,11 +6,9 @@ import { SharedService } from '../../../../services/shared.service';
 import { DispatchNoteService } from '../../dispatchNote.service';
 import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { LoadingPlanService } from '../../../loadingPlan/loadingPlan.service';
-import { EmployeeService } from '../../../employee/employee.service';
 import { CustomerService } from '../../../customer/customer.service';
 import { AddressService } from '../../../../services/address.service';
 import 'rxjs/add/operator/take';
-import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.service';
 
 @Component({
   selector: 'dispatch-note-form',

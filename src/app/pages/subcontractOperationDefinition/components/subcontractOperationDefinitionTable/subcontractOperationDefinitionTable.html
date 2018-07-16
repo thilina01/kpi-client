@@ -14,7 +14,7 @@
   </p-header>
   <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-    resizableColumns="true" exportFilename="subcontractOperationDefinitions" [globalFilter]="gb" (onRowDblclick)="onRowDblclick($event.data)">
+    resizableColumns="true" exportFilename="subcontractOperationDefinitions" (onRowDblclick)="onRowDblclick($event.data)">
     <p-header>
       <div class="row">
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">

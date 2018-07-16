@@ -9,6 +9,5 @@ export class CodeNameService extends MasterService {
 
   constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
     super(anHttp, aConfig, anAuthService);
-    //this.setApiUrl('countries/');
   }
 }

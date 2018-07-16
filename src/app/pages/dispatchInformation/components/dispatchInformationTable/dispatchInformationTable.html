@@ -1,70 +1,65 @@
 <p-panel>
-	<p-header>
-		<div class="row">
-			<div class="col">
-				<h4>Dispatch Information List</h4>
-			</div>
-			<div class="col">
-				<button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
-					<i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
-			</div>
-		</div>
-	</p-header>
-	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
-	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-	 resizableColumns="true" exportFilename="dispatchInformations">
-		<p-header>
-			<div class="row">
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Duration Start
-					<br/>
-					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-				</div>
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Duration End
-					<br/>
-					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-				</div>
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Customer
-					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="customer" field="display" [dropdown]="true" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
-						 [size]="12" [minLength]="1" placeholder="Customer" (onSelect)="onCustomerSelect($event)">
-						</p-autoComplete>
-					</div>
-				</div>
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					OTR Code
-					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="item" field="display" [dropdown]="true" [suggestions]="filteredItems" (completeMethod)="filterItems($event)"
-						 [size]="12" [minLength]="1" placeholder="Item" (onSelect)="onItemSelect($event)">
-						</p-autoComplete>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					<br/>
-					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
-						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
-					</button> &nbsp;&nbsp;{{totalRecords}}
-				</div>
-			</div>
-		</p-header>
-		<p-column field="id" header="ID"></p-column>
-		<p-column field="loadingPlan.dispatchNote.id" header="Dispatch No" [sortable]="true"></p-column>
-		<p-column field="loadingPlan.customer.name" header="Customer" [sortable]="true"></p-column>
-		<p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer PO" [sortable]="true"></p-column>
-		<p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true"></p-column>
-		<p-column field="dispatchSchedule.job.item.code" header="OTR Code"></p-column>
-		<p-column field="dispatchSchedule.job.jobNo" header="Job No" [sortable]="true"></p-column>
-		<p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item" [sortable]="true"></p-column>
-		<p-column field="quantity" header="Qty"></p-column>
-		<p-column field="dispatchSchedule.requestDate" header="Request Date" [sortable]="true"></p-column>
-		<p-column field="dispatchSchedule.confirmDate" header="Confirm Date" [sortable]="true"></p-column>
-		<p-column field="loadingPlan.dispatchNote.dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
-		<!-- <p-column field="loadingPlan.dispatchNote.dispatchReleaseTime" header="Dispatch Release" [sortable]="true">
-			<ng-template let-col let-rowData="rowData" pTemplate="body">
-				{{rowData.loadingPlan.dispatchNote.dispatchReleaseTime | date:'y-MM-dd HH:mm'}}
-			</ng-template>
-		</p-column> -->
-	</p-dataTable>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Dispatch Information List</h4>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+      </div>
+    </div>
+  </p-header>
+  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+    (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+    resizableColumns="true" exportFilename="dispatchInformations">
+    <p-header>
+      <div class="row">
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration Start
+          <br/>
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration End
+          <br/>
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Customer
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="customer" field="display" [dropdown]="true" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
+              [size]="12" [minLength]="1" placeholder="Customer" (onSelect)="onCustomerSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          OTR Code
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="item" field="display" [dropdown]="true" [suggestions]="filteredItems" (completeMethod)="filterItems($event)"
+              [size]="12" [minLength]="1" placeholder="Item" (onSelect)="onItemSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          <br/>
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+      </div>
+    </p-header>
+    <p-column field="id" header="ID"></p-column>
+    <p-column field="loadingPlan.dispatchNote.id" header="Dispatch No" [sortable]="true"></p-column>
+    <p-column field="loadingPlan.customer.name" header="Customer" [sortable]="true"></p-column>
+    <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer PO" [sortable]="true"></p-column>
+    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true"></p-column>
+    <p-column field="dispatchSchedule.job.item.code" header="OTR Code"></p-column>
+    <p-column field="dispatchSchedule.job.jobNo" header="Job No" [sortable]="true"></p-column>
+    <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item" [sortable]="true"></p-column>
+    <p-column field="quantity" header="Qty"></p-column>
+    <p-column field="dispatchSchedule.requestDate" header="Request Date" [sortable]="true"></p-column>
+    <p-column field="dispatchSchedule.confirmDate" header="Confirm Date" [sortable]="true"></p-column>
+    <p-column field="loadingPlan.dispatchNote.dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
+  </p-dataTable>
 </p-panel>

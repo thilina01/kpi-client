@@ -1,33 +1,32 @@
-import { Component, ViewEncapsulation, Input, ViewChild } from "@angular/core";
-import { Subscription } from "rxjs/Subscription";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import {
   FormGroup,
   AbstractControl,
   FormBuilder,
   Validators
-} from "@angular/forms";
-import { SharedService } from "../../../../services/shared.service";
-import { InvoiceService } from "../../invoice.service";
-import { InvoiceTypeService } from "../../../invoiceType/invoiceType.service";
-import { DataTable, ConfirmationService } from "primeng/primeng";
-import { DispatchService } from "../../../../services/dispatch.service";
-import "rxjs/add/operator/take";
-import { DispatchNoteService } from "../../../dispatchNote/dispatchNote.service";
-import { CustomerService } from "../../../customer/customer.service";
-import { ExchangeRateService } from "../../../exchangeRate/exchangeRate.service";
-import { CurrencyService } from "../../../currency/currency.service";
-import { EmployeeService } from "../../../employee/employee.service";
+} from '@angular/forms';
+import { SharedService } from '../../../../services/shared.service';
+import { InvoiceService } from '../../invoice.service';
+import { InvoiceTypeService } from '../../../invoiceType/invoiceType.service';
+import { DataTable, ConfirmationService } from 'primeng/primeng';
+import 'rxjs/add/operator/take';
+import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service';
+import { CustomerService } from '../../../customer/customer.service';
+import { ExchangeRateService } from '../../../exchangeRate/exchangeRate.service';
+import { CurrencyService } from '../../../currency/currency.service';
+import { EmployeeService } from '../../../employee/employee.service';
 
 @Component({
-  selector: "invoice-form",
+  selector: 'invoice-form',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ["./invoiceForm.scss"],
-  templateUrl: "./invoiceForm.html"
+  styleUrls: ['./invoiceForm.scss'],
+  templateUrl: './invoiceForm.html'
 })
 export class InvoiceForm {
   employee: any;
-  @Input("formGroup") public formGroup: FormGroup;
+  @Input('formGroup') public formGroup: FormGroup;
   @ViewChild(DataTable) dataTable: DataTable;
   invoiceDate: Date = new Date();
   subscription: Subscription;
@@ -35,13 +34,11 @@ export class InvoiceForm {
   dispatchNoteList = [];
   loadingPlanList = [];
   customerList = [];
-  // exchangeRateDate = '';
   exchangeRateAmount = 0.0;
   invoiceTypes: any;
   dispatchNotes: any;
   totalAmount = 0.0;
   totalWeight = 0.0;
-  // exchangeRate :any;
   dispatchNote: any;
   invoiceType: any;
   JSON: any = JSON;
@@ -66,15 +63,15 @@ export class InvoiceForm {
     private confirmationService: ConfirmationService
   ) {
     this.formGroup = fb.group({
-      id: "",
-      totalAmount: "",
-      taxRate: "",
-      currency: [null, ""],
-      employee: [null, ""],
+      id: '',
+      totalAmount: '',
+      taxRate: '',
+      currency: [null, ''],
+      employee: [null, ''],
       dispatchNoteList: [null, Validators.required],
       exchangeRate: [null, Validators.required],
       customer: [null, Validators.required],
-      invoiceNumber: ["", Validators.required],
+      invoiceNumber: ['', Validators.required],
       invoiceDate: [this.invoiceDate, Validators.required],
       invoiceType: [this.invoiceType, Validators.required]
     });
@@ -111,8 +108,8 @@ export class InvoiceForm {
       let endDate = new Date(this.invoiceDate.getTime());
       startDate.setDate(startDate.getDate() - 7);
 
-      console.log("startDate : " + startDate);
-      console.log("endDate : " + endDate);
+      console.log('startDate : ' + startDate);
+      console.log('endDate : ' + endDate);
 
       this.getExchangeRate(currency.id, startDate.getTime(), endDate.getTime());
     });
@@ -130,7 +127,7 @@ export class InvoiceForm {
           });
           console.log(this.formGroup.value.exchangeRate.id);
         } else {
-          alert("Please Update exchange rate");
+          alert('Please Update exchange rate');
         }
       });
   }
@@ -139,9 +136,9 @@ export class InvoiceForm {
     this.getInvoiceTypes();
     this.getCustomerList();
     this.route.params.subscribe((params: Params) => {
-      let id = params["id"];
-      id = id === undefined ? "0" : id;
-      if (id !== "0") {
+      let id = params['id'];
+      id = id === undefined ? '0' : id;
+      if (id !== '0') {
         this.service
           .get(+id)
           .take(1)
@@ -177,7 +174,7 @@ export class InvoiceForm {
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
       if (dispatchNote === undefined) return;
       if (dispatchNote.id === this.selectedDispatchNote.id) {
-        alert("Already Added");
+        alert('Already Added');
         return;
       }
     }
@@ -236,7 +233,7 @@ export class InvoiceForm {
       values.dispatchNoteList === null ||
       values.dispatchNoteList.length === 0
     ) {
-      alert("loading Plan Required");
+      alert('loading Plan Required');
       return;
     }
 
@@ -247,12 +244,12 @@ export class InvoiceForm {
     console.log(values);
     this.service.save(values).subscribe(data => {
       this.sharedService.addMessage({
-        severity: "info",
-        summary: "Success",
-        detail: "Operation Success"
+        severity: 'info',
+        summary: 'Success',
+        detail: 'Operation Success'
       });
       this.resetForm();
-      this.router.navigate(["/pages/invoice/form/"]);
+      this.router.navigate(['/pages/invoice/form/']);
     });
   }
 
@@ -295,12 +292,12 @@ export class InvoiceForm {
     if (dispatchNote != null && dispatchNote !== undefined) {
       let display =
         dispatchNote.code != null && dispatchNote.code !== undefined
-          ? dispatchNote.code + " : "
-          : "";
+          ? dispatchNote.code + ' : '
+          : '';
       display +=
         dispatchNote.name != null && dispatchNote.name !== undefined
           ? dispatchNote.name
-          : "";
+          : '';
       this.formGroup.value.dispatchNote.display = display;
     }
   }
@@ -344,12 +341,12 @@ export class InvoiceForm {
     if (customer != null && customer !== undefined) {
       let display =
         customer.code != null && customer.code !== undefined
-          ? customer.code + " : "
-          : "";
+          ? customer.code + ' : '
+          : '';
       display +=
         customer.name != null && customer.name !== undefined
           ? customer.name
-          : "";
+          : '';
       this.formGroup.value.customer.display = display;
     }
   }

@@ -77,8 +77,7 @@ export class SubcontractOperationRateTable {
     }
   }
 
-    lazy(event: any, table: any) {
-      const search = table.globalFilter ? table.globalFilter.value : null;
+    lazy(event: any) {
       if (this.subcontractor !== undefined ? this.subcontractor.id : 0, this.subcontractOperationDefinition !== undefined ? this.subcontractOperationDefinition.id : 0) {
         this.service.getSubcontractOperationRatePage(0, 0, 0, 20).subscribe((data: any) => {
           this.rows = data.content;
@@ -119,10 +118,6 @@ export class SubcontractOperationRateTable {
       console.log('paged!', event);
     }, 100);
   }
-
-  // onRowDblclick(data: any): void {
-  //   this.router.navigate(['/pages/subcontractOperationRate/form/' + data.id]);
-  // }
 
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/subcontractOperationRate/form/' + id]);

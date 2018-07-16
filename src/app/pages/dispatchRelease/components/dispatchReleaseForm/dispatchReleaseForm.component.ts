@@ -6,7 +6,6 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { SharedService } from '../../../../services/shared.service';
 import { DataTable, ConfirmationService } from 'primeng/primeng';
 import { DispatchNoteService } from '../../../dispatchNote/dispatchNote.service';
-import { DispatchService } from '../../../../services/dispatch.service';
 import 'rxjs/add/operator/take';
 import { LocationService } from '../../../location/location.service';
 import { LoadingPlanService } from '../../../loadingPlan/loadingPlan.service';
