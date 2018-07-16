@@ -27,7 +27,7 @@
               <td>
                 <b>ID</b>
               </td>
-              <td>SUB {{subcontractNote.id}}</td>
+              <td>SUB {{((subcontractNote.id)|number : '5.0-0').replace(',','') }}</td>
             </tr>
             <tr>
               <td>
@@ -65,6 +65,8 @@
             </h3>
           </div>
           <div class="panel-body">
+            {{subcontractNote.subcontractor.name}}
+            <br/>
             <span id="address" *ngFor="let line of subcontractNote.subcontractor.address.split(',')">
               {{line}}
               <br/>
