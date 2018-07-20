@@ -18,6 +18,7 @@ export class OnTimeDeliveryChart {
   endDate = new Date();
   startDateText: string;
   endDateText: string;
+  numberOfMonths: number = 12;
 
   constructor(
     private _onTimeDeliveryChartService: OnTimeDeliveryChartService,
@@ -25,14 +26,22 @@ export class OnTimeDeliveryChart {
     private customerService: CustomerService) {
 
     this.chartData = this._onTimeDeliveryChartService.getChartData([]);
-    this.startDate.setMonth(this.startDate.getMonth() - 6);
+    this.fillChartX();
+  }
+
+  onOptionChange(value): void {
+    this.fillChartX();
+  }
+
+  fillChartX() {
+    this.startDate = new Date();
+    this.startDate.setMonth(this.startDate.getMonth() - this.numberOfMonths);
     let monthText: string;
     monthText = ((this.startDate.getMonth() + 1) < 10 ? '0' + (this.startDate.getMonth() + 1) : (this.startDate.getMonth() + 1)) + '';
     this.startDateText = this.startDate.getFullYear() + '-' + monthText.slice(-2) + '-01';
 
     this.endDateText = this.endDate.getFullYear() + '-' + (this.endDate.getMonth() < 10 ? '0' + this.endDate.getMonth() : this.endDate.getMonth()) + '-' + (new Date(this.endDate.getFullYear(), this.endDate.getMonth(), 0).getDate());
     this.getData();
-
   }
 
   fillChart(data: any): void {

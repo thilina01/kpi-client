@@ -12,11 +12,20 @@ import { ChartService } from '../../chart/chart.service';
 export class AbsenteeismChart {
 
   amChart: any;
+  numberOfMonths: number = 12;
 
   constructor(private _absenteeismChartService: AbsenteeismChartService, private chartService: ChartService) {
+    this.fillChart();
+  }
+
+  onOptionChange(value): void {
+    this.fillChart();
+  }
+
+  fillChart() {
 
     let startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - 6);
+    startDate.setMonth(startDate.getMonth() - this.numberOfMonths);
     let monthText: string;
     monthText = ((startDate.getMonth() + 1) < 10 ? '0' + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + '';
     let startDateText = startDate.getFullYear() + '-' + monthText.slice(-2) + '-01';

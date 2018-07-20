@@ -13,11 +13,16 @@ export class MaterialCostPerKgChart {
 
   amChart: any;
   chartData: any;
+  numberOfMonths: number = 12;
 
   constructor(private _materialCostPerKgChartService: MaterialCostPerKgChartService, private chartService: ChartService) {
     this.chartData = this._materialCostPerKgChartService.getChartData([]);
+    this.fillChart();
+  }
+
+  fillChart() {
     let startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - 6);
+    startDate.setMonth(startDate.getMonth() - this.numberOfMonths);
     let monthText: string;
     monthText = ((startDate.getMonth() + 1) < 10 ? '0' + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + '';
     let startDateText = startDate.getFullYear() + '-' + monthText.slice(-2) + '-01';
@@ -34,5 +39,9 @@ export class MaterialCostPerKgChart {
 
   initChart(chart: any) {
     this.amChart = chart;
+  }
+
+  onOptionChange(value): void {
+    this.fillChart();
   }
 }
