@@ -8,8 +8,10 @@ import 'style-loader!./chartistJs.scss';
   templateUrl: './financeKpi.html'
 })
 export class FinanceKpi {
-
+  selectedTabIndex: number = 0;
+  handleChange(e) {
+    this.selectedTabIndex = e.index;
+  }
   constructor(private baConfig: BaThemeConfigProvider) {
   }
-
 }

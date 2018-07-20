@@ -8,6 +8,11 @@ import { BaThemeConfigProvider } from '../../../../theme';
 })
 export class FinanceSummaryChart {
 
+  selectedTabIndex: number = 0;
+  handleChange(e) {
+    this.selectedTabIndex = e.index;
+  }
+  
   constructor(private baConfig: BaThemeConfigProvider) {
   }
 

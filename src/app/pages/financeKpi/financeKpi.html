@@ -1,4 +1,4 @@
-<p-tabView>
+<p-tabView (onChange)="handleChange($event)">
   <p-tabPanel header='Sales Per Kg' leftIcon='fa-line-chart '>
     <p-panel>
       <p-header>
@@ -6,7 +6,7 @@
           <span class='ui-panel-title'>Sales Per Kg</span>
         </div>
       </p-header>
-      <sales-per-kg-chart></sales-per-kg-chart>
+      <sales-per-kg-chart [selected]="selectedTabIndex === 0"></sales-per-kg-chart>
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header='Material Cost Per Kg' leftIcon='fa-line-chart '>
@@ -16,7 +16,7 @@
           <span class='ui-panel-title'>Material Cost Per Kg</span>
         </div>
       </p-header>
-      <material-cost-per-kg-chart></material-cost-per-kg-chart>
+      <material-cost-per-kg-chart [selected]="selectedTabIndex === 1"></material-cost-per-kg-chart>
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header='Production Overhead Cost Per Kg' leftIcon='fa-line-chart '>
@@ -26,7 +26,7 @@
           <span class='ui-panel-title'>Production Overhead Cost Per Kg</span>
         </div>
       </p-header>
-      <production-overhead-cost-per-kg-chart></production-overhead-cost-per-kg-chart>
+      <production-overhead-cost-per-kg-chart [selected]="selectedTabIndex === 2"></production-overhead-cost-per-kg-chart>
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header='consumable Cost Per Kg' leftIcon='fa-line-chart '>
@@ -36,7 +36,7 @@
           <span class='ui-panel-title'>Consumable Cost Per Kg</span>
         </div>
       </p-header>
-      <consumable-cost-per-kg-chart></consumable-cost-per-kg-chart>
+      <consumable-cost-per-kg-chart [selected]="selectedTabIndex === 3"></consumable-cost-per-kg-chart>
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header='Electricity Cost Per Kg' leftIcon='fa-line-chart '>
@@ -46,7 +46,7 @@
           <span class='ui-panel-title'>Electricity Cost Per Kg</span>
         </div>
       </p-header>
-      <electricity-cost-per-kg-chart></electricity-cost-per-kg-chart>
+      <electricity-cost-per-kg-chart [selected]="selectedTabIndex === 4"></electricity-cost-per-kg-chart>
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header='Scrap Cost Per Kg' leftIcon='fa-line-chart '>
@@ -56,7 +56,7 @@
           <span class='ui-panel-title'>Scrap Cost Per Kg</span>
         </div>
       </p-header>
-      <scrap-cost-per-kg-chart></scrap-cost-per-kg-chart>
+      <scrap-cost-per-kg-chart [selected]="selectedTabIndex === 5"></scrap-cost-per-kg-chart>
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header='Labour Cost Per Kg' leftIcon='fa-line-chart '>
@@ -66,7 +66,7 @@
           <span class='ui-panel-title'>Labour Cost Per Kg</span>
         </div>
       </p-header>
-      <labour-cost-per-kg-chart></labour-cost-per-kg-chart>
+      <labour-cost-per-kg-chart [selected]="selectedTabIndex === 6"></labour-cost-per-kg-chart>
     </p-panel>
   </p-tabPanel>
 </p-tabView>

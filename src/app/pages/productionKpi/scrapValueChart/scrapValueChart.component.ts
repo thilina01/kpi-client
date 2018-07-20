@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { ScrapValueChartService } from './scrapValueChart.service';
 import { BaThemeConfigProvider } from '../../../theme';
@@ -12,6 +12,17 @@ import { ChartService } from "../../chart/chart.service";
 })
 export class ScrapValueChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   layoutColors = this.baConfig.get().colors;
   graphColor = this.baConfig.get().colors.custom.productionKpiScrapValueChart;
 
@@ -67,7 +78,6 @@ export class ScrapValueChart {
   numberOfMonths: number = 12;
 
   constructor(private baConfig: BaThemeConfigProvider, private chartService: ChartService) {
-    this.fillChart();
   }
 
   onOptionChange(value): void {

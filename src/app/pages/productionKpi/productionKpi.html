@@ -1,4 +1,4 @@
-<p-tabView>
+<p-tabView (onChange)="handleChange($event)">
 	<p-tabPanel header="Schedule Adherence" leftIcon="fa-line-chart ">
 		<p-panel>
 			<p-header>
@@ -6,7 +6,7 @@
 					<span class="ui-panel-title">Schedule Adherence</span>
 				</div>
 			</p-header>
-			<schedule-adherence-factory-six-months-chart></schedule-adherence-factory-six-months-chart>
+			<schedule-adherence-factory-six-months-chart [selected]="selectedTabIndex === 0"></schedule-adherence-factory-six-months-chart>
 		</p-panel>
 	</p-tabPanel>
 	<p-tabPanel header="On Time Delivery" leftIcon="fa-line-chart ">
@@ -16,7 +16,7 @@
 					<span class="ui-panel-title">On Time Delivery</span>
 				</div>
 			</p-header>
-			<on-time-delivery-chart></on-time-delivery-chart>
+			<on-time-delivery-chart [selected]="selectedTabIndex === 1"></on-time-delivery-chart>
 		</p-panel>
 	</p-tabPanel>
 	<p-tabPanel header="Scrap Value " leftIcon="fa-line-chart ">
@@ -26,7 +26,7 @@
 					<span class="ui-panel-title">Scrap Value </span>
 				</div>
 			</p-header>
-			<scrap-value-chart></scrap-value-chart>
+			<scrap-value-chart [selected]="selectedTabIndex === 2"></scrap-value-chart>
 		</p-panel>
 	</p-tabPanel>
 </p-tabView>

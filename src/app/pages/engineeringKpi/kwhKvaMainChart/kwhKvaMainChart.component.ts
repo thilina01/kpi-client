@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { KwhKvaMainChartService } from './kwhKvaMainChart.service';
 
@@ -17,6 +17,17 @@ export class KwhKvaMainChart {
   @Input('location')
   public location: string;
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   chartData: Object;
   amChart: any;
   numberOfMonths: number = 12;
@@ -25,8 +36,7 @@ export class KwhKvaMainChart {
   }
 
   ngOnInit(): void {
-    this.chartData = this._kwhKvaMainChartService.getData();    
-    this.fillChart();
+    this.chartData = this._kwhKvaMainChartService.getData(); 
   }
 
   onOptionChange(value): void {

@@ -1,5 +1,5 @@
 <ba-am-chart [hidden]="true"></ba-am-chart>
-<p-tabView>
+<p-tabView (onChange)="handleChange($event)">
 	<p-tabPanel header="Absenteeism" leftIcon="fa-line-chart ">
 		<p-panel>
 			<p-header>
@@ -7,7 +7,7 @@
 					<span class="ui-panel-title">Absenteeism</span>
 				</div>
 			</p-header>
-			<absenteeism-chart></absenteeism-chart>
+			<absenteeism-chart [selected]="selectedTabIndex === 0"></absenteeism-chart>
 		</p-panel>
 	</p-tabPanel>
 	<p-tabPanel header="Labour Turnovert" leftIcon="fa-line-chart ">
@@ -17,7 +17,7 @@
 					<span class="ui-panel-title">Labour Turnover</span>
 				</div>
 			</p-header>
-			<labour-turnover-chart></labour-turnover-chart>
+			<labour-turnover-chart [selected]="selectedTabIndex === 1"></labour-turnover-chart>
 		</p-panel>
 	</p-tabPanel>
 </p-tabView>

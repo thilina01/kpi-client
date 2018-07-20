@@ -9,6 +9,11 @@ import 'style-loader!./chartistJs.scss';
 })
 export class HumanResourceKpi {
 
+  selectedTabIndex: number = 0;
+  handleChange(e) {
+    this.selectedTabIndex = e.index;
+  }
+  
   constructor(private baConfig: BaThemeConfigProvider) {
   }
 

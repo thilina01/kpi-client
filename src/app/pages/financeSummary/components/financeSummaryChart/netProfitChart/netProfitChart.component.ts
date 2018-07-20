@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { NetProfitChartService } from './netProfitChart.service';
 
@@ -11,13 +11,23 @@ import { ChartService } from '../../../../chart/chart.service';
 })
 export class NetProfitChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   amChart: any;
   chartData: any;
   numberOfMonths: number = 12;
 
   constructor(private _netProfitChartService: NetProfitChartService, private chartService: ChartService) {
     this.chartData = this._netProfitChartService.getChartData([]);
-    this.fillChart();
   }
 
   onOptionChange(value): void {

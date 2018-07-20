@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { EbitdaChartService } from './ebitdaChart.service';
 import 'style-loader!./ebitdaChart.scss';
 import { ChartService } from '../../../../chart/chart.service';
@@ -9,13 +9,23 @@ import { ChartService } from '../../../../chart/chart.service';
 })
 export class EbitdaChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   amChart: any;
   chartData: any;
   numberOfMonths: number = 12;
 
   constructor(private _ebitdaChartService: EbitdaChartService, private chartService: ChartService) {
     this.chartData = this._ebitdaChartService.getChartData([]);
-    this.fillChart();
   }
 
   onOptionChange(value): void {

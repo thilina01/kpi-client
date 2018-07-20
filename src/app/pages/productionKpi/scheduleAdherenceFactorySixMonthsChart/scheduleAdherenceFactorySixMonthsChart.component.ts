@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { ScheduleAdherenceFactorySixMonthsChartService } from './scheduleAdherenceFactorySixMonthsChart.service';
 import { BaThemeConfigProvider } from '../../../theme';
@@ -12,6 +12,17 @@ import { ChartService } from "../../chart/chart.service";
 })
 export class ScheduleAdherenceFactorySixMonthsChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   layoutColors = this.baConfig.get().colors;
   graphColor = this.baConfig.get().colors.custom.productionKpiScheduleAdherenceChart;
 
@@ -67,7 +78,6 @@ export class ScheduleAdherenceFactorySixMonthsChart {
   numberOfMonths: number = 12;
 
   constructor(private baConfig: BaThemeConfigProvider, private chartService: ChartService) {
-    this.fillChart();
   }
 
   onOptionChange(value): void {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { ProductionOverheadCostPerKgChartService } from './productionOverheadCostPerKgChart.service';
 
@@ -11,13 +11,23 @@ import { ChartService } from '../../chart/chart.service';
 })
 export class ProductionOverheadCostPerKgChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   amChart: any;
   chartData: any;
   numberOfMonths: number = 12;
 
   constructor(private _productionOverheadCostPerKgChartService: ProductionOverheadCostPerKgChartService, private chartService: ChartService) {
     this.chartData = this._productionOverheadCostPerKgChartService.getChartData([]);
-    this.fillChart();
   }
 
   fillChart() {

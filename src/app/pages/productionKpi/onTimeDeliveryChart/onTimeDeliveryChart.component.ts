@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { OnTimeDeliveryChartService } from './onTimeDeliveryChart.service';
 
@@ -12,6 +12,17 @@ import { CustomerService } from '../../customer/customer.service';
 })
 export class OnTimeDeliveryChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChartX();
+      this.firstSelect = false;
+    }    
+  }
+  
   amChart: any;
   chartData: any;
   startDate = new Date();
@@ -24,9 +35,7 @@ export class OnTimeDeliveryChart {
     private _onTimeDeliveryChartService: OnTimeDeliveryChartService,
     private chartService: ChartService,
     private customerService: CustomerService) {
-
     this.chartData = this._onTimeDeliveryChartService.getChartData([]);
-    this.fillChartX();
   }
 
   onOptionChange(value): void {

@@ -1,5 +1,5 @@
 <ba-am-chart [hidden]="true"></ba-am-chart>
-<p-tabView>
+<p-tabView (onChange)="handleChange($event)">
 	<p-tabPanel header="MTBF/MTTR 6 Months" leftIcon="fa-line-chart ">
 		<p-panel>
 			<p-header>
@@ -27,7 +27,7 @@
 					<span class="ui-panel-title">KWH / KVA Main</span>
 				</div>
 			</p-header>
-			<kwh-kva-main-chart [dataSource]="'main'" [location]="'1'"></kwh-kva-main-chart>
+			<kwh-kva-main-chart [dataSource]="'main'" [location]="'1'" [selected]="selectedTabIndex === 2"></kwh-kva-main-chart>
 		</p-panel>
 	</p-tabPanel>
 	<p-tabPanel header="Energy Cost Main" leftIcon="fa-line-chart ">
@@ -37,7 +37,7 @@
 					<span class="ui-panel-title">Energy Cost Main</span>
 				</div>
 			</p-header>
-			<energy-cost-main-chart [dataSource]="'main'" [location]="'1'"></energy-cost-main-chart>
+			<energy-cost-main-chart [dataSource]="'main'" [location]="'1'" [selected]="selectedTabIndex === 3"></energy-cost-main-chart>
 		</p-panel>
 	</p-tabPanel>
 	<p-tabPanel header="KWH / KVA Paint" leftIcon="fa-line-chart ">
@@ -47,7 +47,7 @@
 					<span class="ui-panel-title">KWH / KVA Paint</span>
 				</div>
 			</p-header>
-			<kwh-kva-main-chart [dataSource]="'paint'" [location]="'2'"></kwh-kva-main-chart>
+			<kwh-kva-main-chart [dataSource]="'paint'" [location]="'2'" [selected]="selectedTabIndex === 4"></kwh-kva-main-chart>
 		</p-panel>
 	</p-tabPanel>
 	<p-tabPanel header="Energy Cost Paint" leftIcon="fa-line-chart ">
@@ -57,7 +57,7 @@
 					<span class="ui-panel-title">Energy Cost Paint</span>
 				</div>
 			</p-header>
-			<energy-cost-main-chart [dataSource]="'paint'" [location]="'2'"></energy-cost-main-chart>
+			<energy-cost-main-chart [dataSource]="'paint'" [location]="'2'" [selected]="selectedTabIndex === 5"></energy-cost-main-chart>
 		</p-panel>
 	</p-tabPanel>
 

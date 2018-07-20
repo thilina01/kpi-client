@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { SalesValueChartService } from './salesValueChart.service';
 
@@ -11,13 +11,23 @@ import { ChartService } from '../../chart/chart.service';
 })
 export class SalesValueChart {
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   amChart: any;
   chartData: any;
   numberOfMonths: number = 12;
 
   constructor(private _salesValueChartService: SalesValueChartService, private chartService: ChartService) {
     this.chartData = this._salesValueChartService.getChartData([]);
-    this.fillChart();
   }
 
   initChart(chart: any) {

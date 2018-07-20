@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges, SimpleChange } from '@angular/core';
 
 import { LabourCostPerKgChartService } from './labourCostPerKgChart.service';
 
@@ -11,14 +11,22 @@ import { ChartService } from '../../chart/chart.service';
   templateUrl: './labourCostPerKgChart.html'
 })
 export class LabourCostPerKgChart {
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
 
   amChart: any;
   chartData: any;
   numberOfMonths: number = 12;
-
   constructor(private _labourCostPerKgChartService: LabourCostPerKgChartService, private chartService: ChartService) {
     this.chartData = this._labourCostPerKgChartService.getChartData([]);
-    this.fillChart();
   }
 
   fillChart() {

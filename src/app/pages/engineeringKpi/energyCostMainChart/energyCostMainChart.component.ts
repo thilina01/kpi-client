@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 
 import { EnergyCostMainChartService } from './energyCostMainChart.service';
 
@@ -17,6 +17,17 @@ export class EnergyCostMainChart {
   @Input('location')
   public location: string;
 
+  @Input()
+  selected : boolean;  
+  firstSelect: boolean = true;
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if(this.selected && this.firstSelect){
+      this.fillChart();
+      this.firstSelect = false;
+    }    
+  }
+  
   chartData: Object;
   amChart: any;
   numberOfMonths: number = 12;
@@ -26,7 +37,6 @@ export class EnergyCostMainChart {
 
   ngOnInit(): void {
     this.chartData = this._energyCostMainChartService.getData();
-    this.fillChart();
   }
 
   onOptionChange(value): void {

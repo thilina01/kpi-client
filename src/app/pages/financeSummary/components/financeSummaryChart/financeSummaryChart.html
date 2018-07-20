@@ -5,7 +5,7 @@
         <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
       </button>
     </a>
-    <p-tabView>
+    <p-tabView (onChange)="handleChange($event)">
       <p-tabPanel header='Revenue' leftIcon='fa-line-chart '>
         <p-panel>
           <p-header>
@@ -13,7 +13,7 @@
               <span class='ui-panel-title'>Revenue</span>
             </div>
           </p-header>
-          <revenue-chart></revenue-chart>
+          <revenue-chart [selected]="selectedTabIndex === 0"></revenue-chart>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header='Gross Profit' leftIcon='fa-line-chart '>
@@ -23,7 +23,7 @@
               <span class='ui-panel-title'>Gross Profit</span>
             </div>
           </p-header>
-          <gross-profit-chart></gross-profit-chart>
+          <gross-profit-chart [selected]="selectedTabIndex === 1"></gross-profit-chart>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header='EBITDA' leftIcon='fa-line-chart '>
@@ -33,7 +33,7 @@
               <span class='ui-panel-title'>EBITDA</span>
             </div>
           </p-header>
-          <ebitda-chart></ebitda-chart>
+          <ebitda-chart [selected]="selectedTabIndex === 2"></ebitda-chart>
         </p-panel>
       </p-tabPanel>
       <p-tabPanel header='Net Profit' leftIcon='fa-line-chart '>
@@ -43,7 +43,7 @@
               <span class='ui-panel-title'>Net Profit</span>
             </div>
           </p-header>
-          <net-profit-chart></net-profit-chart>
+          <net-profit-chart [selected]="selectedTabIndex === 3"></net-profit-chart>
         </p-panel>
       </p-tabPanel>
     </p-tabView>
