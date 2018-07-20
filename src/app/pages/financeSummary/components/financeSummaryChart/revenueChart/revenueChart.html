@@ -1,2 +1,14 @@
-<ba-am-chart id='revenuechartdiv' baAmChartClass='finance-summary-chart-revenue-chart' [baAmChartConfiguration]='chartData' (onChartReady)='initChart($event)'></ba-am-chart>
+<div class="form-group form-inline">
+    <label for="sel1">Number of months:</label> &nbsp; &nbsp;
+    <select class="form-control" id="numberOfMonths" [(ngModel)]="numberOfMonths" (change)="onOptionChange($event.target.value)">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="6">6</option>
+        <option value="9">9</option>
+        <option value="12">12</option>
+    </select>
+</div>
+<ba-am-chart id='revenuechartdiv' baAmChartClass='finance-summary-chart-revenue-chart' [baAmChartConfiguration]='chartData'
+    (onChartReady)='initChart($event)'></ba-am-chart>
 <div id='revenuechartdata' class='chartdata'></div>

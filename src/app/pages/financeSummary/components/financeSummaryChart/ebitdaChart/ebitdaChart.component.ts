@@ -11,11 +11,20 @@ export class EbitdaChart {
 
   amChart: any;
   chartData: any;
+  numberOfMonths: number = 12;
 
   constructor(private _ebitdaChartService: EbitdaChartService, private chartService: ChartService) {
     this.chartData = this._ebitdaChartService.getChartData([]);
+    this.fillChart();
+  }
+
+  onOptionChange(value): void {
+    this.fillChart();
+  }
+
+  fillChart() {
     let startDate = new Date();
-    startDate.setMonth(startDate.getMonth() - 6);
+    startDate.setMonth(startDate.getMonth() - this.numberOfMonths);
     let monthText: string;
     monthText = ((startDate.getMonth() + 1) < 10 ? '0' + (startDate.getMonth() + 1) : (startDate.getMonth() + 1)) + '';
     let startDateText = startDate.getFullYear() + '-' + monthText.slice(-2) + '-01';
