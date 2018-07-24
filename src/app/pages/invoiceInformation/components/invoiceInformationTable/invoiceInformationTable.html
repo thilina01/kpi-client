@@ -54,24 +54,30 @@
         </div>
       </div>
     </p-header>
-    <p-column field="id" header="ID"></p-column>
-    <p-column field="loadingPlan.dispatchNote.invoice.invoiceDate" header="Invoice Date" [sortable]="true"></p-column>
-    <p-column field="loadingPlan.dispatchNote.invoice.invoiceNumber" header="Invoice No" [sortable]="true" styleClass="text-right"></p-column>
-    <p-column field="loadingPlan.dispatchNote.invoice.customer.code" header="Customer Code" [sortable]="true" styleClass="text-right"></p-column>
-    <p-column field="loadingPlan.dispatchNote.invoice.customer.name" header="Customer Name" [sortable]="true"></p-column>
-    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true" styleClass="text-right"></p-column>
-    <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer PO" [sortable]="true" styleClass="text-right"></p-column>
-    <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code" [sortable]="true" styleClass="text-right"></p-column>
-    <p-column field="dispatchSchedule.job.item.code" header="OTR Code" styleClass="text-right"></p-column>
-    <p-column field="dispatchSchedule.job.item.description" header="Description"></p-column>
-    <p-column field="dispatchSchedule.job.jobNo" header="Job No" styleClass="text-right" [sortable]="true"></p-column>
-    <p-column field="invoiceQuantity" header="Quantity" [sortable]="true" styleClass="text-right"></p-column>
-    <p-column field="dispatchSchedule.job.item.weight" header="Unit Weight" styleClass="text-right" [sortable]="true">
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{rowData.dispatchSchedule.job.item.weight | number : '1.3-3'}}
+    <p-column field="invoiceDate" header="Invoice Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.invoiceDate | date:'y-MM-dd'}}
       </ng-template>
     </p-column>
-    <p-column field="dispatchSchedule.salesOrderItem.unitPrice" styleClass="text-right" header="Unit Price" [sortable]="true"></p-column>
+    <p-column field="invoiceNumber" header="Invoice No" [sortable]="true" styleClass="text-right"></p-column>
+    <p-column field="customerCode" header="Customer Code" [sortable]="true" styleClass="text-right"></p-column>
+    <p-column field="customerName" header="Customer Name" [sortable]="true"></p-column>
+    <p-column field="customerItemCode" header="Customer Item Code" [sortable]="true" styleClass="text-right"></p-column>
+    <p-column field="customerPoNumber" header="Customer PO" [sortable]="true" styleClass="text-right"></p-column>
+    <p-column field="itemCode" header="OTR Code" styleClass="text-right"></p-column>
+    <p-column field="description" header="Description"></p-column>
+    <p-column field="jobNo" header="Job No" styleClass="text-right" [sortable]="true"></p-column>
+    <p-column header="Quantity" [sortable]="true" styleClass="text-right">
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{(rowData.quantity - rowData.rejectedQuantity)}}
+      </ng-template>
+    </p-column>
+    <p-column field="weight" header="Unit Weight" styleClass="text-right" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+        {{rowData.weight | number : '1.3-3'}}
+      </ng-template>
+    </p-column>
+    <p-column field="unitPrice" styleClass="text-right" header="Unit Price" [sortable]="true"></p-column>
     <p-column field="totalAmount" styleClass="text-right" header="Total Value" [sortable]="true">
       <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
         {{rowData.totalAmount | number : '1.2-2'}}

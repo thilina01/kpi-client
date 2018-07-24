@@ -5,8 +5,8 @@ import { ConfirmationService, Message } from 'primeng/primeng';
 import { Router } from '@angular/router';
 import { DataTable } from 'primeng/components/datatable/datatable';
 import { CustomerService } from '../../../customer/customer.service';
-import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.service';
 import { JobService } from '../../../job/job.service';
+import { InvoiceInformationService } from '../../invoiceInformation.service';
 
 @Component({
   selector: 'invoice-information-table',
@@ -32,7 +32,7 @@ export class InvoiceInformationTable {
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' };
   job: any = { id: 0, 'code': 'ALL', 'display': 'All Jobs' };
 
-  constructor(protected service: LoadingPlanItemService,
+  constructor(protected service: InvoiceInformationService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private customerService: CustomerService,
@@ -59,7 +59,7 @@ export class InvoiceInformationTable {
 
   loadData() {
     this.service
-      .getInvoiceInformationPage(0, 0, 0, 0, "1970-01-01", "2100-12-31", 0, 20)
+      .getInvoiceInformation( "1970-01-01","2100-12-31",0,0,0,0,20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
@@ -70,21 +70,20 @@ export class InvoiceInformationTable {
     this.search(event.first / event.rows, event.rows);
   }
 
-  search(first: number, pageSize: number): void {
+   search(first: number, pageSize: number): void {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
     this.service
-      .getInvoiceInformationPage(
-        this.invoice !== undefined ? this.invoice.id : 0,
-        this.invoiceNumber !== undefined ? this.invoiceNumber : 0,
-        this.customer !== undefined ? this.customer.id : 0,
-        this.job !== undefined ? this.job.id : 0,
+      .getInvoiceInformation(
         this.startDate === undefined
           ? "1970-01-01"
           : this.sharedService.YYYYMMDD(this.startDate),
         this.endDate === undefined
           ? "2100-12-31"
           : this.sharedService.YYYYMMDD(this.endDate),
-        first,
+          this.job !== undefined ? this.job.id : 0,
+          this.customer !== undefined ? this.customer.id : 0,
+          this.invoiceNumber !== undefined ? this.invoiceNumber : 0,
+          first,
         pageSize
       )
       .subscribe((data: any) => {
@@ -94,23 +93,23 @@ export class InvoiceInformationTable {
       });
   }
 
-  fillTable(data: any) {
-    let loadingPlanItemList = data.content;
-    loadingPlanItemList.forEach(loadingPlanItem => {
+   fillTable(data: any) {
+    let invoiceInformationList = data.content;
+    invoiceInformationList.forEach(invoiceInformation => {
       let totalWeight = 0;
       let totalAmount = 0.0;
 
-      loadingPlanItem.weight = loadingPlanItem.invoiceQuantity * loadingPlanItem.dispatchSchedule.job.item.weight;
-      totalWeight += loadingPlanItem.weight;
-      loadingPlanItem.totalWeight = totalWeight;
+      invoiceInformation.weight = (invoiceInformation.quantity-invoiceInformation.rejectedQuantity)*invoiceInformation.weight;
+      totalWeight += invoiceInformation.weight;
+      invoiceInformation.totalWeight = totalWeight;
 
-      loadingPlanItem.amount = loadingPlanItem.invoiceQuantity *loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
-      totalAmount += loadingPlanItem.amount;
-      loadingPlanItem.totalAmount = totalAmount;
+      invoiceInformation.amount = (invoiceInformation.quantity-invoiceInformation.rejectedQuantity)*invoiceInformation.unitPrice;
+      totalAmount += invoiceInformation.amount;
+      invoiceInformation.totalAmount = totalAmount;
 
     });
 
-    this.rows = loadingPlanItemList;
+    this.rows = invoiceInformationList;
     this.totalRecords = data.totalElements;
   }
 

@@ -11,7 +11,7 @@ import { routing } from './invoiceInformation.routing';
 import { CustomerService } from '../customer/customer.service';
 import { LoadingPlanItemService } from '../../services/loadingPlanItem.service';
 import { JobService } from '../job/job.service';
-import { InvoiceService } from '../invoice/invoice.service';
+import { InvoiceInformationService } from './invoiceInformation.service';
 
 @NgModule({
   imports: [
@@ -34,8 +34,8 @@ import { InvoiceService } from '../invoice/invoice.service';
   providers: [
     LoadingPlanItemService,
     CustomerService,
-    InvoiceService,
-    JobService
+    JobService,
+    InvoiceInformationService
   ]
 })
 export class InvoiceInformationModule { }
