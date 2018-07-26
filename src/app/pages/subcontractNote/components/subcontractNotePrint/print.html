@@ -11,7 +11,6 @@
         <br/> Ekala, Ja-Ela
         <br/> Sri Lanka.
         <br/>
-        <br/>
       </div>
       <div class="col-6">
 
@@ -88,21 +87,39 @@
             <th class="text-center">Quantity</th>
             <th class="text-center">Total Cost</th>
           </tr>
-          <tr *ngFor="let subcontractOperation of subcontractNote.subcontractOperationList; let i = index">
+          <tr *ngFor="let row of rowList; let i = index">
             <td> {{ i+1 }} </td>
-            <td class="text-center">{{subcontractOperation.job.jobNo}}
+            <td class="text-center">
+              {{row.jobNo}}
             </td>
-            <td class="text-left">{{subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.item.code}}
-              <br/>{{subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.productType.description}}
+            <td class="text-left">
+              {{row.itemCode}}
+              <br/>{{row.productTypeDescription}}
             </td>
-            <td>{{subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.operationType.code}}
-              {{subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.operationType.description}}
-              <br/>{{subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.description}}
+            <td>
+              <ul class="list-unstyled">
+                <li *ngFor="let subRow of row.subRowList">
+                  {{subRow.operationType}}
+                </li>
+              </ul>
             </td>
-            <td class="text-right">{{(subcontractOperation.subcontractOperationRate.rate)|number : '1.2-2'}}
+            <td class="text-right">
+              <ul class="list-unstyled">
+                <li *ngFor="let subRow of row.subRowList">
+                  {{subRow.unitRate | number : '1.2-2'}}
+                </li>
+              </ul>
             </td>
-            <td class="text-right">{{subcontractOperation.quantity }} </td>
-            <td class="text-right">{{(subcontractOperation.quantity * subcontractOperation.subcontractOperationRate.rate)|number : '1.2-2'}} </td>
+            <td class="text-right">
+              {{row.quantity | number : '1.2-2'}}
+            </td>
+            <td class="text-right">
+              <ul class="list-unstyled">
+                <li *ngFor="let subRow of row.subRowList">
+                  {{subRow.amount | number : '1.2-2'}}
+                </li>
+              </ul>
+            </td>
           </tr>
           <tr>
             <td colspan="5" class="text-right">
