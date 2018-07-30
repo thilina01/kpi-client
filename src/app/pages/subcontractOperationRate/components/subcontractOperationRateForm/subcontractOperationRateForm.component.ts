@@ -95,8 +95,10 @@ export class SubcontractOperationRateForm {
 
   public save(): void {
     let subcontractOperationRateToSave = [];
+    let subcontractOperationRate;
     for (let i = 0; i < this.subcontractOperationRateList.length; i++) {
-      let subcontractOperationRate = this.subcontractOperationRateList[i];
+      subcontractOperationRate = this.subcontractOperationRateList[i];
+     }
       if (subcontractOperationRate.rate > 0) {
         subcontractOperationRateToSave.push(subcontractOperationRate);
         this.service
@@ -110,7 +112,6 @@ export class SubcontractOperationRateForm {
             this.reset();
           });
       }
-    }
   }
 
   public resetForm() {
