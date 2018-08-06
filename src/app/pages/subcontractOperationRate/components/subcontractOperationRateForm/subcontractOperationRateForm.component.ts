@@ -95,12 +95,13 @@ export class SubcontractOperationRateForm {
 
   public save(): void {
     let subcontractOperationRateToSave = [];
-    let subcontractOperationRate;
+    let xsubcontractOperationRate;
     for (let i = 0; i < this.subcontractOperationRateList.length; i++) {
-      subcontractOperationRate = this.subcontractOperationRateList[i];
-     }
-      if (subcontractOperationRate.rate > 0) {
-        subcontractOperationRateToSave.push(subcontractOperationRate);
+      xsubcontractOperationRate = this.subcontractOperationRateList[i];
+      if (xsubcontractOperationRate.rate > 0) {
+        subcontractOperationRateToSave.push(xsubcontractOperationRate);
+      }
+    }
         this.service
           .saveMany(subcontractOperationRateToSave)
           .subscribe(data => {
@@ -111,7 +112,6 @@ export class SubcontractOperationRateForm {
             });
             this.reset();
           });
-      }
   }
 
   public resetForm() {

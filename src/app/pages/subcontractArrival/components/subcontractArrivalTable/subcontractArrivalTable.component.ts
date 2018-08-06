@@ -42,9 +42,9 @@ export class SubcontractArrivalTable {
     selected(data: any) {
     }
 
-    onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/subcontractArrival/form/' + data.id]);
-    }
+    // onRowDblclick(data: any): void {
+    //     this.router.navigate(['/pages/subcontractArrival/form/' + data.id]);
+    // }
 
     navigateToForm(id: any): void {
         this.router.navigate(['/pages/subcontractArrival/form/' + id]);
