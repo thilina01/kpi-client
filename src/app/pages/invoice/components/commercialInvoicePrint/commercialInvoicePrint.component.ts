@@ -72,14 +72,17 @@ export class CommercialInvoicePrint {
 
             for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
               let xLoadingPlanItem = xLoadingPlanItemList[iii];
-                if (xLoadingPlanItem !== undefined) {
-              xLoadingPlanItem.amount = xLoadingPlanItem.invoiceQuantity *xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
-              this.totalAmount += xLoadingPlanItem.amount;
-              xLoadingPlanItem.weight =xLoadingPlanItem.invoiceQuantity *xLoadingPlanItem.dispatchSchedule.job.item.weight;
-              this.totalWeight += xLoadingPlanItem.weight;
-              this.xLoadingPlanItemList.push(xLoadingPlanItem);
+              if (xLoadingPlanItem !== undefined) {
+                if (xLoadingPlanItem.unitPrice === null || xLoadingPlanItem.unitPrice === undefined){
+                  xLoadingPlanItem.unitPrice = xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                }
+                xLoadingPlanItem.amount = xLoadingPlanItem.invoiceQuantity * xLoadingPlanItem.unitPrice;
+                this.totalAmount += xLoadingPlanItem.amount;
+                xLoadingPlanItem.weight = xLoadingPlanItem.invoiceQuantity * xLoadingPlanItem.dispatchSchedule.job.item.weight;
+                this.totalWeight += xLoadingPlanItem.weight;
+                this.xLoadingPlanItemList.push(xLoadingPlanItem);
+              }
             }
-          }
           }
         }
       }

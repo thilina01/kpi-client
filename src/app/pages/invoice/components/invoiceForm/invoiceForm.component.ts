@@ -17,6 +17,7 @@ import { CustomerService } from '../../../customer/customer.service';
 import { ExchangeRateService } from '../../../exchangeRate/exchangeRate.service';
 import { CurrencyService } from '../../../currency/currency.service';
 import { EmployeeService } from '../../../employee/employee.service';
+import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.service';
 
 @Component({
   selector: 'invoice-form',
@@ -50,6 +51,7 @@ export class InvoiceForm {
 
   constructor(
     protected service: InvoiceService,
+    protected loadingPlanItemService: LoadingPlanItemService,
     fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -185,6 +187,20 @@ export class InvoiceForm {
     this.fillTable();
   }
 
+  onEditComplete (row) {
+    this.loadingPlanItemList[row.index].unitPrice = Number(this.loadingPlanItemList[row.index].unitPrice);
+    this.loadingPlanItemList[row.index].amount = this.loadingPlanItemList[row.index].quantity * this.loadingPlanItemList[row.index].unitPrice;
+
+    this.calculateTotal();
+  };
+
+  calculateTotal(){
+    this.totalAmount = 0;
+    for (let i = 0; i < this.loadingPlanItemList.length; i++) {
+      this.totalAmount += this.loadingPlanItemList[i].amount;
+    }
+  }
+
   public fillTable() {
     this.loadingPlanItemList = [];
     this.loadingPlanList = [];
@@ -197,14 +213,19 @@ export class InvoiceForm {
       let yLoadingPlanList = dispatchNote.loadingPlanList;
 
       for (let ii = 0; ii < yLoadingPlanList.length; ii++) {
-        let xLoadingPlanItemList = yLoadingPlanList[ii].loadingPlanItemList;
+        let yLoadingPlan = yLoadingPlanList[ii];
+        let xLoadingPlanItemList = yLoadingPlan.loadingPlanItemList;
 
         for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
           let xLoadingPlanItem = xLoadingPlanItemList[iii];
+          xLoadingPlanItem.loadingPlan = {id : yLoadingPlan.id};
+          if (xLoadingPlanItem.unitPrice === null || xLoadingPlanItem.unitPrice === undefined){
+            xLoadingPlanItem.unitPrice = xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+          }
 
           xLoadingPlanItem.amount =
             xLoadingPlanItem.invoiceQuantity *
-            xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+            xLoadingPlanItem.unitPrice;
           this.totalAmount += xLoadingPlanItem.amount;
 
           xLoadingPlanItem.weight =
@@ -219,6 +240,7 @@ export class InvoiceForm {
     }
     this.loadingPlanItemList = this.loadingPlanItemList.slice();
   }
+
   public resetForm() {
     this.formGroup.reset();
     this.totalAmount = 0.0;
@@ -242,7 +264,10 @@ export class InvoiceForm {
     this.formGroup.value.employee = this.formGroup.value.customer.employee;
     this.formGroup.value.taxRate = this.formGroup.value.invoiceType.taxRate;
     console.log(values);
+
+    console.log(this.loadingPlanItemList);
     this.service.save(values).subscribe(data => {
+      this.loadingPlanItemService.saveMany(this.loadingPlanItemList).subscribe(xData => {
       this.sharedService.addMessage({
         severity: 'info',
         summary: 'Success',
@@ -250,6 +275,7 @@ export class InvoiceForm {
       });
       this.resetForm();
       this.router.navigate(['/pages/invoice/form/']);
+      });
     });
   }
 

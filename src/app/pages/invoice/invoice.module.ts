@@ -24,6 +24,7 @@ import { TaxInvoicePrint } from './components/taxInvoicePrint ';
 import { SuspendedInvoicePrint } from './components/suspendedInvoicePrint /suspendedInvoicePrint.component';
 import { EmployeeService } from '../employee/employee.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
+import { LoadingPlanItemService } from '../../services/loadingPlanItem.service';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
     ExchangeRateService,
     CurrencyService,
     CustomerService,
-    EmployeeService
+    EmployeeService,
+    LoadingPlanItemService
   ]
 })
 export class InvoiceModule { }
