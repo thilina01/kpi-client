@@ -14,8 +14,6 @@ export class SuspendedInvoicePrint {
   totalWeight = 0.0;
   xAddress: any = null;
   xLoadingPlanItemList = [];
-  xContainerSize: any = null;
-  xNoOfContainers: number = null;
 
   @Input()
   set id(id: number) {
@@ -26,17 +24,23 @@ export class SuspendedInvoicePrint {
 
           this.totalAmount = 0.0;
           this.totalWeight = 0.0;
-          this.xContainerSize = null;
-          this.xNoOfContainers = null;
           this.xAddress = null;
           this.xLoadingPlanItemList = [];
 
           for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
-            let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
-                if (this.xAddress === null) {
-                  this.xAddress = yLoadingPlan.address;
-                }
+            let dispatchNote = this.invoice.dispatchNoteList[i];
+            if (dispatchNote === undefined) return;
+            let xLoadingPlanList = dispatchNote.loadingPlanList;
+
+            for (let ii = 0; ii < xLoadingPlanList.length; ii++) {
+              let xLoadingPlan = xLoadingPlanList[ii];
+
+              if (this.xAddress === null) {
+                     this.xAddress = xLoadingPlan.address;
+                      }
+                  }
               }
+
             for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
             let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
 
