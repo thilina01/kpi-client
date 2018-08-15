@@ -99,11 +99,13 @@ export class InvoiceInformationTable {
       let totalWeight = 0;
       let totalAmount = 0.0;
 
-      invoiceInformation.itemWeight = (invoiceInformation.quantity-invoiceInformation.rejectedQuantity)*invoiceInformation.weight;
+      invoiceInformation.quantity = (invoiceInformation.quantity - invoiceInformation.rejectedQuantity);
+
+      invoiceInformation.itemWeight = invoiceInformation.quantity * invoiceInformation.weight;
       totalWeight += invoiceInformation.itemWeight;
       invoiceInformation.totalWeight = totalWeight;
 
-      invoiceInformation.amount = (invoiceInformation.quantity-invoiceInformation.rejectedQuantity)*invoiceInformation.unitPrice;
+      invoiceInformation.amount = invoiceInformation.quantity * invoiceInformation.unitPrice;
       totalAmount += invoiceInformation.amount;
       invoiceInformation.totalAmount = totalAmount;
 

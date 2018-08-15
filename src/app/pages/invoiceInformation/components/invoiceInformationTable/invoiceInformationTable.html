@@ -67,11 +67,7 @@
     <p-column field="itemCode" header="OTR Code" styleClass="text-right"></p-column>
     <p-column field="description" header="Description"></p-column>
     <p-column field="jobNo" header="Job No" styleClass="text-right" [sortable]="true"></p-column>
-    <p-column header="Quantity" [sortable]="true" styleClass="text-right">
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{(rowData.quantity - rowData.rejectedQuantity)}}
-      </ng-template>
-    </p-column>
+    <p-column field="quantity" header="Quantity" styleClass="text-right" [sortable]="true"></p-column>
     <p-column field="weight" header="Unit Weight" styleClass="text-right" [sortable]="true">
       <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
         {{rowData.weight | number : '1.3-3'}}
