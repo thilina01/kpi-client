@@ -59,11 +59,24 @@
                   <b>Ship Address: </b>
                   <p style="line-height:150%">
                     {{loadingPlan.customer.name}}
-                    <br/> {{loadingPlan.address.line1}}
-                    <br/> {{loadingPlan.address.line2}}
-                    <br/> {{loadingPlan.address.line3}}
-                    <br/> {{loadingPlan.address.line4}}
-                    <br/> {{loadingPlan.address.line5}}
+                    <span *ngIf="(loadingPlan.address.line1!=null&&loadingPlan.address.line1!=''&&loadingPlan.address.line1!=undefined)">
+                      <br/> {{loadingPlan.address.line1}}
+                    </span>
+                    <span *ngIf="(loadingPlan.address.line2!=null&&loadingPlan.address.line2!=''&&loadingPlan.address.line2!=undefined)">
+                      <br/> {{loadingPlan.address.line2}}
+                    </span>
+                    <span *ngIf="(loadingPlan.address.line3!=null&&loadingPlan.address.line3!=''&&loadingPlan.address.line3!=undefined)">
+                      <br/> {{loadingPlan.address.line3}}
+                    </span>
+                    <span *ngIf="(loadingPlan.address.line4!=null&&loadingPlan.address.line4!=''&&loadingPlan.address.line4!=undefined)">
+                      <br/> {{loadingPlan.address.line4}}
+                    </span>
+                    <span *ngIf="(loadingPlan.address.line5!=null&&loadingPlan.address.line5!=''&&loadingPlan.address.line5!=undefined)">
+                      <br/> {{loadingPlan.address.line5}}
+                    </span>
+                    <span *ngIf="(loadingPlan.address.country.name!=null&&loadingPlan.address.country.name!=''&&loadingPlan.address.country.name!=undefined)">
+                      <br/>{{loadingPlan.address.country.name}}
+                    </span>
                   </p>
                 </td>
               </tr>
@@ -76,6 +89,7 @@
                       {{line}}
                       <br/>
                     </span>
+                    {{loadingPlan.address.country.name}}
                   </p>
                 </td>
                 <td style="border:none; vertical-align: top;padding-left: 150px; ">
@@ -152,17 +166,20 @@
       <tbody>
         <tr *ngFor="let loadingPlanItem of loadingPlan.loadingPlanItemList; let i = index">
           <td style="vertical-align:top"> {{ i+1 }} </td>
-          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}} </td>
+          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber}}
+          </td>
           <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code}}</td>
           <td style="vertical-align:top"> {{ loadingPlanItem.dispatchSchedule.job.item.size }}
-            <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}</td>
+            <br/>{{loadingPlanItem.dispatchSchedule.job.item.description}}
+          </td>
           <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule.job.jobNo}}</td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.quantity}} </td>
-          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.quantity
-            / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
-            | number : '1.2-2'}}
+          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1?
+            Math.ceil((loadingPlanItem.quantity / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.quantity
+            / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
           </td>
-          <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))| number : '1.3-3'}}</td>
+          <td class="text-right" style="vertical-align:top">{{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))|
+            number : '1.3-3'}}</td>
           <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.quantity )* (loadingPlanItem.dispatchSchedule.job.item.weight))+(((loadingPlanItem.quantity
             / loadingPlanItem.packagingSpecification.perPalletQuantity)*(loadingPlanItem.packagingSpecification.palletSize.weight)))|
             number : '1.3-3'}} </td>

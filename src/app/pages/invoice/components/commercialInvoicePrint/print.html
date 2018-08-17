@@ -23,7 +23,6 @@
                           </h3>
                         </td>
                       </tr>
-
                       <tr>
                         <td class="left">
                           Date of Invoice:
@@ -62,11 +61,24 @@
                   <b>Ship Address: </b>
                   <p style="line-height:150%">
                     {{invoice.customer.name}}
-                    <br/> {{xAddress?.line1}}
-                    <br/> {{xAddress?.line2}}
-                    <br/> {{xAddress?.line3}}
-                    <br/> {{xAddress?.line4}}
-                    {{xAddress?.country?.name}}
+                    <span *ngIf="(xAddress?.line1!=''&&xAddress?.line1!=null&&xAddress?.line1!=undefined)">
+                      <br/> {{xAddress?.line1}}
+                    </span>
+                    <span *ngIf="(xAddress?.line2 !=''&&xAddress?.line2!=null&&xAddress?.line2!=undefined)">
+                      <br/> {{xAddress?.line2}}
+                    </span>
+                    <span *ngIf="(xAddress?.line3 !=''&&xAddress?.line3!=null&&xAddress?.line3!=undefined)">
+                      <br/> {{xAddress?.line3}}
+                    </span>
+                    <span *ngIf="(xAddress?.line4 !=''&&xAddress?.line4!=null&&xAddress?.line4!=undefined)">
+                      <br/>{{xAddress?.line4}}
+                    </span>
+                    <span *ngIf="(xAddress?.line5!=''&&xAddress?.line5!=null&&xAddress?.line5!=undefined)">
+                      <br/>{{xAddress?.line5}}
+                    </span>
+                    <span *ngIf="(xAddress?.country?.name!=''&&xAddress?.country?.name!=null&&xAddress?.country?.name!=undefined)">
+                      <br/>{{xAddress?.country?.name}}
+                    </span>
                   </p>
                 </td>
               </tr>
