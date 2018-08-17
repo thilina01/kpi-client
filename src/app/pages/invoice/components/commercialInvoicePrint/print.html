@@ -66,7 +66,7 @@
                     <br/> {{xAddress?.line2}}
                     <br/> {{xAddress?.line3}}
                     <br/> {{xAddress?.line4}}
-                    <br/> {{xAddress?.line5}}
+                    {{xAddress?.country?.name}}
                   </p>
                 </td>
               </tr>
@@ -79,6 +79,7 @@
                       {{line}}
                       <br/>
                     </span>
+                    {{xAddress?.country?.name}}
                   </p>
                 </td>
                 <td style="border:none; vertical-align: top;padding-left: 150px; ">
@@ -167,10 +168,11 @@
             </span>
           </td>
           <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule?.job?.item?.size }}
-            <br/> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}</td>
-          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1? Math.ceil((loadingPlanItem.invoiceQuantity
-            / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity)
-            | number : '1.2-2'}}
+            <br/> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}
+          </td>
+          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1?
+            Math.ceil((loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.invoiceQuantity
+            / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
           </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.invoiceQuantity}} </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.unitPrice}} </td>
