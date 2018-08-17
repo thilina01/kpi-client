@@ -22,6 +22,7 @@ import { DataTable, ConfirmationService } from 'primeng/primeng';
 import 'rxjs/add/operator/take';
 import { PortService } from '../../../port/port.service';
 import { EmployeeService } from '../../../employee/employee.service';
+import { AddressService } from '../../../../services/address.service';
 
 @Component({
   selector: 'customer-form',
@@ -38,7 +39,6 @@ export class CustomerForm {
   [x: string]: any;
   JSON: any = JSON;
   subscription: Subscription;
-
   contactList = [];
   addressList = [];
   paymentTermList = [];
@@ -77,6 +77,7 @@ export class CustomerForm {
     private paymentTermService: PaymentTermService,
     private countryService: CountryService,
     private addressTypeService: AddressTypeService,
+    private addressService: AddressService,
     private portService: PortService,
     private employeeService: EmployeeService,
     private contactTypeService: ContactTypeService,
@@ -303,8 +304,11 @@ export class CustomerForm {
       this.confirmationService.confirm({
         message: 'Are you sure that you want to Delete?',
         accept: () => {
+          this.addressService.delete(this.formGroup.value.addressList[id].id).subscribe(response => {
+          this.sharedService.addMessage({ severity: 'info', summary: 'Deleted', detail: 'Address Deleted'});
           this.formGroup.value.addressList.splice(id, 1);
           this.fillAddresses();
+          });
         }
       });
     }

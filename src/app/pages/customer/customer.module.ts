@@ -21,6 +21,7 @@ import { AddressTypeService } from '../addressType/addressType.service';
 import { ContactTypeService } from '../contactType/contactType.service';
 import { PortService } from '../port/port.service';
 import { EmployeeService } from '../employee/employee.service';
+import { AddressService } from '../../services/address.service';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { EmployeeService } from '../employee/employee.service';
     ContactTypeService,
     PortService,
     EmployeeService,
-    IncotermService
+    IncotermService,
+    AddressService
   ]
 })
 export class CustomerModule { }
