@@ -15,21 +15,37 @@
   </p-header>
   <div class="row">
     <div class="col-sm-12">
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+      <form [formGroup]="subcontractArrivalRejectFormGroup" class="form-horizontal">
         <div class='row'>
-          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+          <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+            <label for="arrivalRejectDate">Date</label>
+            <div class="form-group" [ngClass]="{'has-error': (!subcontractArrivalRejectFormGroup.controls['arrivalRejectDate'].valid && subcontractArrivalRejectFormGroup.controls['arrivalRejectDate'].touched), 'has-success': (subcontractArrivalRejectFormGroup.controls['arrivalRejectDate'].valid && subcontractArrivalRejectFormGroup.controls['arrivalRejectDate'].touched)}">
+              <p-calendar id="arrivalRejectDatePicker" formControlName="arrivalRejectDate" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                hourFormat="24"></p-calendar>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+            <label for="subcontractNote">Subcontract Note ID</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete id="subcontractNoteSelector" formControlName="subcontractNote" field="display" [suggestions]="filteredSubcontractNoteList"
+                (completeMethod)="filterSubcontractNoteList($event)" [minLength]="1" (onSelect)="onSubcontractNoteSelect($event)">
+              </p-autoComplete>
+            </div>
+          </div>
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <label for="subcontractArrival">Subcontract Arrival</label> &nbsp;
             <br/>
             <div class="ui-inputgroup">
               <p-autoComplete formControlName="subcontractArrival" field="display" [dropdown]="true" [suggestions]="filteredSubcontractArrivalList"
-                (completeMethod)="filterSubcontractArrivalList($event)" [minLength]="1" placeholder="Search" (onSelect)="onSubcontractArrivalSelect($event)">
+                (completeMethod)="filterSubcontractArrivalList($event)" [size]='100' [minLength]="1" placeholder="Search" (onSelect)="onSubcontractArrivalSelect($event)">
               </p-autoComplete>
               <a routerLink="/pages/subcontractArrival/form" target="blank">
                 <button pButton type="button" icon="fa-plus-circle"></button>
               </a>
             </div>
           </div>
-          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+          <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
             <label for="lossReason">Loss Reason</label> &nbsp;
             <br/>
             <div class="ui-inputgroup">
@@ -41,17 +57,40 @@
               </a>
             </div>
           </div>
-          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-            <label for='quantity'>Quantity</label>
+          <div class="col-xl-4 col-lg-3 col-md-6 col-sm-12 col-12">
+            <div class="form-group" [ngClass]="{'has-error': (! subcontractArrivalRejectFormGroup.controls['quantity'].valid &&  subcontractArrivalRejectFormGroup.controls['quantity'].touched), 'has-success': ( subcontractArrivalRejectFormGroup.controls['quantity'].valid && subcontractArrivalRejectFormGroup.controls['quantity'].touched)}">
+              <label for="quantity">Reject Quantity</label>
+              <br/>
+              <input type="number" #quantity (keyup.enter)="onEnter()" pInputText formControlName="quantity">
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+            <label for="addButton">&nbsp;</label>
             <br/>
-            <input type='number' pInputText id='quantity' formControlName='quantity'>
+            <div class="form-group form-inline">
+              <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>
+              &nbsp;&nbsp;
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <p-dataTable #dt [value]="subcontractArrivalRejectList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+              <p-column field="subcontractArrival.subcontractOperation.job.display" header="Job"></p-column>
+              <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.display"
+                header="Subcontract Operation Definition" [sortable]="true"></p-column>
+              <p-column field="subcontractArrival.subcontractOperation.quantity" header="Dispatch Quantity" styleClass="text-right"></p-column>
+              <p-column field="lossReason.name" [editable]="true" header="Loss Reason" styleClass="text-right"></p-column>
+              <p-column field="quantity" [editable]="true" header=" Reject Quantity" styleClass="text-right"></p-column>
+            </p-dataTable>
           </div>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           &nbsp;
           <br/>
-          <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-          <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+          <button pButton type="button" (click)="save()" icon="fa-floppy-o" label="Save"></button>
+          <button type="button" pButton (click)="resetForm()" class="ui-button-secondary" icon="fa-times" label="Reset"></button>
           <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
         </div>
       </form>

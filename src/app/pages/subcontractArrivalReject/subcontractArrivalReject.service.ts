@@ -12,4 +12,12 @@ export class SubcontractArrivalRejectService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('subcontractArrivalRejects/');
   }
+  getSubcontractArrivalReject(subcontractor, job, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'subcontractArrivalReject?subcontractor=' + subcontractor + '&job=' + job +'&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+      .catch(err => this.handleError(err));
+  }
+  getBySubcontractor(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + 'subcontractor/' + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }

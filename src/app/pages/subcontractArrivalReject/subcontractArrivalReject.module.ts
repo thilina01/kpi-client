@@ -21,6 +21,9 @@ import { routing } from './subcontractArrivalReject.routing';
 import { SubcontractArrivalRejectService } from './subcontractArrivalReject.service';
 import { LossReasonService } from '../lossReason/lossReason.service';
 import { SubcontractArrivalService } from '../subcontractArrival/subcontractArrival.service';
+import { SubcontractNoteService } from '../subcontractNote/subcontractNote.service';
+import { SubcontractorService } from '../subcontractor/subcontractor.service';
+import { JobService } from '../job/job.service';
 
 @NgModule({
   imports: [
@@ -45,7 +48,10 @@ import { SubcontractArrivalService } from '../subcontractArrival/subcontractArri
   providers: [
     SubcontractArrivalRejectService,
     LossReasonService,
-    SubcontractArrivalService
+    SubcontractArrivalService,
+    SubcontractNoteService,
+    SubcontractorService,
+    JobService
   ]
 })
 export class SubcontractArrivalRejectModule {}
