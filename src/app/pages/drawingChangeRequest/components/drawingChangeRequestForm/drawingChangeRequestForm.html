@@ -1,0 +1,54 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Drawing Change Request Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/drawingChangeRequest/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <label for="changeRequestDate">Date</label>
+            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['changeRequestDate'].valid && formGroup.controls['changeRequestDate'].touched), 'has-success': (formGroup.controls['changeRequestDate'].valid && formGroup.controls['changeRequestDate'].touched)}">
+              <p-calendar id="changeRequestDatePicker" formControlName="changeRequestDate" showIcon="true" dateFormat="yy-mm-dd" hourFormat="24"></p-calendar>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <label for="drawingVersion">Drawing Version</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="drawingVersion" field="display" [dropdown]="true" [suggestions]="filteredDrawingVersionList"
+                (completeMethod)="filterDrawingVersionList($event)" [minLength]="1" placeholder="Search" (onSelect)="onDrawingVersionSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/drawingVersion/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <label for="description">Description</label>
+            <br/>
+            <input type="text" pInputText formControlName="description" [size]="70">
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
