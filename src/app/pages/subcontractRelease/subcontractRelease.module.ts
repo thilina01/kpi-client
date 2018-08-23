@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, CalendarModule, PanelModule, InputTextModule, AutoCompleteModule,TabViewModule } from 'primeng/primeng';
 
 import { SubcontractRelease } from './subcontractRelease.component';
 import { SubcontractReleaseTable } from './components/subcontractReleaseTable/subcontractReleaseTable.component';
@@ -14,6 +14,7 @@ import { SubcontractReleaseService } from './subcontractRelease.service';
 import { LocationService } from '../location/location.service';
 import { SubcontractorService } from '../subcontractor/subcontractor.service';
 import { SubcontractNoteService } from '../subcontractNote/subcontractNote.service';
+import { SubcontractReworkNoteService } from '../../services/subcontractReworkNote.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { SubcontractNoteService } from '../subcontractNote/subcontractNote.servi
     SharedModule,
     PanelModule,
     InputTextModule,
+    TabViewModule,
     AutoCompleteModule,
     routing
   ],
@@ -39,7 +41,8 @@ import { SubcontractNoteService } from '../subcontractNote/subcontractNote.servi
     SubcontractReleaseService,
     LocationService,
     SubcontractorService,
-    SubcontractNoteService
+    SubcontractNoteService,
+    SubcontractReworkNoteService
 
   ]
 })

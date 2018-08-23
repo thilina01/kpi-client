@@ -13,31 +13,42 @@
       </div>
     </div>
   </p-header>
+  <div class="row">
+    <div class="col">
+      <label for="id"> Note ID</label>
+      <input type="text" #id [(ngModel)]="subcontractNoteId" (keyDown.enter)="fill()" pInputText>
+      <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
+        <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
+    </div>
+  </div>
+  <br/>
   <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" (keydown.enter)="$event.preventDefault()" class="form-horizontal">
     <div class="row">
-      <div class="col-12">
-        <label for="id">Subcontract Note ID</label>
-        <input type="text" pInputText formControlName="id" id="id" (keydown.enter)="fill()">
-        <button type="button" class="btn btn-primary btn-xs" (click)="fill()">
-          <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Fill</button>
-      </div>
-    </div>
-    <br/>
-    <div class="row">
       <div class="col-12 row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Subcontractor : {{subcontractNote?.subcontractor?.name}} </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">Subcontractor : {{subcontractNote?.subcontractor?.name}} {{subcontractReworkNote?.subcontractor?.name}}</div>
       </div>
     </div>
     <br/>
     <div class="row">
       <div class="col-sm-12">
-        <p-dataTable #dt [value]="subcontractNote.subcontractOperationList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
-          <p-column field="id" header="ID"></p-column>
-          <p-column field="job.display" header="Job"></p-column>
-          <p-column field="subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.display" header="Subcontract Operation Definition"
-            [sortable]="true"></p-column>
-          <p-column field="quantity" header="Quantity" [editable]="true" styleClass="text-right"></p-column>
-        </p-dataTable>
+        <div *ngIf="subcontractNote.subcontractOperationList; else reworknote">
+          <p-dataTable #dt [value]="subcontractNote.subcontractOperationList" [editable]="true" [rows]="20" [responsive]="true" resizableColumns="true">
+            <p-column field="id" header="ID"></p-column>
+            <p-column field="job.display" header="Job"></p-column>
+            <p-column field="subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.display" header="Subcontract Operation Definition"
+              [sortable]="true"></p-column>
+            <p-column field="quantity" header="Quantity" styleClass="text-right"></p-column>
+          </p-dataTable>
+        </div>
+        <ng-template #reworknote>
+          <p-dataTable #dt [value]="subcontractReworkNote.subcontractReworkOperationList" [rows]="20" [responsive]="true" resizableColumns="true">
+            <p-column field="id" header="ID"></p-column>
+            <p-column field="subcontractArrivalReject.subcontractArrival.subcontractOperation.job.display" header="Job"></p-column>
+            <p-column field="subcontractArrivalReject.subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.display"
+              header="Subcontract Operation Definition" [sortable]="true"></p-column>
+            <p-column field="quantity" header="Quantity" styleClass="text-right"></p-column>
+          </p-dataTable>
+        </ng-template>
       </div>
     </div>
     <br/>
@@ -75,7 +86,6 @@
             <br/>
             <input type="text" pInputText formControlName="recipient">
           </div>
-
           <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
             <label for="containerNumber">Container Number</label>
             <br/>

@@ -6,6 +6,7 @@ import { SubcontractNoteService } from '../../../subcontractNote/subcontractNote
 import { DataTable } from 'primeng/components/datatable/datatable';
 import { LocationService } from '../../../location/location.service';
 import { SubcontractorService } from '../../../subcontractor/subcontractor.service';
+import { SubcontractReworkNoteService } from '../../../../services/subcontractReworkNote.service';
 
 @Component({
   selector: 'subcontract-release-table',
@@ -14,30 +15,36 @@ import { SubcontractorService } from '../../../subcontractor/subcontractor.servi
   templateUrl: './subcontractReleaseTable.html'
 })
 export class SubcontractReleaseTable {
+  subcontractReworkReleaseTotalRecords: number;
+  subcontractReworkReleaseRows = [];
+  subcontractReworkNote = {};
   subcontractRelease = {};
-  rows = [];
-  timeout: any;
+  @ViewChild(DataTable)
+  dataTable: DataTable;
   totalRecords: number;
-  @ViewChild(DataTable) dataTable: DataTable;
+  subcontractors: any;
   startDate: Date;
-  endDate: Date;
   locations: any;
+  endDate: Date;
+  pageSize = 20;
+  timeout: any;
+  rows = [];
   subcontractor: any = { id: 0, code: 'ALL', display: 'All Subcontractors' };
   location: any = { id: 0, code: 'ALL', display: 'All Locations' };
-  subcontractors: any;
-  pageSize= 20;
 
   constructor(
     protected service: SubcontractNoteService,
     private router: Router,
-    private subcontractorService: SubcontractorService,
+    private sharedService: SharedService,
     private locationService: LocationService,
     private confirmationService: ConfirmationService,
-    private sharedService: SharedService
+    private subcontractorService: SubcontractorService,
+    private subcontractReworkNoteService: SubcontractReworkNoteService
   ) {
     this.loadData();
     this.getLocations();
     this.getSubcontractors();
+    this.subcontractReworkReleaseLoadData();
   }
 
   getSubcontractors(): void {
@@ -58,24 +65,20 @@ export class SubcontractReleaseTable {
     });
   }
 
-  onPage(event) {
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(() => {
-      this.search(event.first, event.rows);
-    }, 100);
+  subcontractReworkReleaseLoadData() {
+    this.subcontractReworkNoteService
+      .getSubcontractReworkRelease(0, 0, '1970-01-01', '2100-12-31', 0, 20)
+      .subscribe((data: any) => {
+        this.subcontractReworkReleaseFillTable(data);
+      });
   }
 
   loadData() {
     this.service
-      .getSubcontractRelease(0, 0,  '1970-01-01', '2100-12-31', 0, 20)
+      .getSubcontractRelease(0, 0, '1970-01-01', '2100-12-31', 0, 20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
-  }
-
-  lazy(event: any, table: any) {
-    console.log(event);
-    this.search(event.first / event.rows, event.rows);
   }
 
   search(first: number, pageSize: number): void {
@@ -98,15 +101,49 @@ export class SubcontractReleaseTable {
       });
   }
 
+  subcontractReworkReleaseSearch(first: number, pageSize: number): void {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
+    this.subcontractReworkNoteService
+      .getSubcontractReworkRelease(
+        this.location !== undefined ? this.location.id : 0,
+        this.subcontractor !== undefined ? this.subcontractor.id : 0,
+        this.startDate === undefined
+          ? '1970-01-01'
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? '2100-12-31'
+          : this.sharedService.YYYYMMDD(this.endDate),
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
+        this.subcontractReworkReleaseFillTable(data);
+      });
+  }
+
   fillTable(data: any) {
     this.rows = data.content;
     this.totalRecords = data.totalElements;
   }
 
-  selected(data: any) {}
+  subcontractReworkReleaseFillTable(data: any) {
+    this.subcontractReworkReleaseRows = data.content;
+    this.subcontractReworkReleaseTotalRecords = data.totalElements;
+  }
 
-  onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/subcontractRelease/form/' + data.id]);
+  lazy(event: any) {
+    this.search(event.first / event.rows, event.rows);
+    this.subcontractReworkReleaseSearch(
+      event.first / event.subcontractReworkReleaseRows,
+      event.subcontractReworkReleaseRows
+    );
+  }
+
+  onPage(event) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      console.log('paged!', event);
+    }, 100);
   }
 
   navigateToForm(id: any): void {
@@ -128,6 +165,7 @@ export class SubcontractReleaseTable {
       }
     });
   }
+
   /*================== Subcontractor Filter ===================*/
   filteredSubcontractors: any[];
   filterSubcontractors(event) {
@@ -160,7 +198,6 @@ export class SubcontractReleaseTable {
   onLocationSelect(location: any) {
     console.log(event);
     this.location = location;
-
   }
   /*================== End Of Location Filter ===================*/
 }
