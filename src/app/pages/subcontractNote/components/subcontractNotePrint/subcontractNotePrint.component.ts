@@ -1,7 +1,4 @@
 
-
-
-
 import { Component, Input } from '@angular/core';
 import { SubcontractNoteService } from '../../subcontractNote.service';
 import { PrintService } from '../../../../services/print.service';
@@ -9,10 +6,10 @@ import { OrganizationService } from '../../../organization/organization.service'
 import 'rxjs/add/operator/take';
 
 @Component({
-  selector: 'print',
+  selector: 'subcontract-note-print',
   templateUrl: './print.html'
 })
-export class Print {
+export class SubcontractNotePrint {
   totalQuantity = 0.0;
   totalCost= 0.0;
   @Input()
@@ -54,7 +51,7 @@ export class Print {
           }
 
           setTimeout(() => {
-            let element = document.getElementById('print');
+            let element = document.getElementById('subcontract-note-print');
             if (element != null) {
               this.printService.printA4(element.innerHTML);
             }

@@ -1,4 +1,4 @@
-<div id="subcontract-note-print" hidden *ngIf="subcontractNote!=undefined" style="font-size: 130%;">
+<div id="subcontract-rework-note-print" hidden *ngIf="subcontractReworkNote!=undefined" style="font-size: 130%;">
   <div class="container-fluid" style="padding: 15px;">
     <!-- Page Header  -->
     <div class='row'>
@@ -17,22 +17,26 @@
         <div class="panel panel-default">
           <div class="panel-heading text-center">
             <h3 class="panel-title">
-              <b>SUBCONTRACT DISPATCH NOTE</b>
+              <span style="white-space:nowrap">
+                <b>SUBCONTRACT DISPATCH</b>
+              </span>
+              <span style="white-space:nowrap">
+                <b>REJECT NOTE</b>
+              </span>
             </h3>
           </div>
           <table class="table table-bordered">
-            <!-- table-bordered table-condensed -->
             <tr>
               <td>
                 <b>ID</b>
               </td>
-              <td>SUB {{((subcontractNote.id)|number : '5.0-0').replace(',','') }}</td>
+              <td>SUB R{{((subcontractReworkNote.id)|number : '5.0-0').replace(',','') }}</td>
             </tr>
             <tr>
               <td>
                 <b>Date</b>
               </td>
-              <td>{{subcontractNote.noteTime|date:'y-MM-dd'}}
+              <td>{{subcontractReworkNote.noteTime|date:'y-MM-dd'}}
             </tr>
           </table>
         </div>
@@ -47,9 +51,9 @@
             </h3>
           </div>
           <div class="panel-body">
-            {{subcontractNote.subcontractor.name}}
+            {{subcontractReworkNote.subcontractor.name}}
             <br/>
-            <span id="address" *ngFor="let line of subcontractNote.subcontractor.address.split(',')">
+            <span id="address" *ngFor="let line of subcontractReworkNote.subcontractor.address.split(',')">
               {{line}}
               <br/>
             </span>
@@ -64,9 +68,9 @@
             </h3>
           </div>
           <div class="panel-body">
-            {{subcontractNote.subcontractor.name}}
+            {{subcontractReworkNote.subcontractor.name}}
             <br/>
-            <span id="address" *ngFor="let line of subcontractNote.subcontractor.address.split(',')">
+            <span id="address" *ngFor="let line of subcontractReworkNote.subcontractor.address.split(',')">
               {{line}}
               <br/>
             </span>
@@ -84,7 +88,7 @@
             <th class="text-center">Product Type</th>
             <th class="text-center">Operation Type</th>
             <th class="text-center">Unit Rate</th>
-            <th class="text-center">Quantity</th>
+            <th class="text-center">Reject Quantity</th>
             <th class="text-center">Total Cost</th>
           </tr>
           <tr *ngFor="let row of rowList; let i = index">

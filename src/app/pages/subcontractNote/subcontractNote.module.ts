@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgaModule } from '../../theme/nga.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, InputTextModule, ContextMenuModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, DialogModule, PanelModule, CalendarModule, AutoCompleteModule, InputTextModule, ContextMenuModule, DropdownModule, ProgressBarModule, OverlayPanelModule, TabViewModule } from 'primeng/primeng';
 
 import { SubcontractNote } from './subcontractNote.component';
 import { SubcontractNoteTable } from './components/subcontractNoteTable/subcontractNoteTable.component';
@@ -14,9 +14,11 @@ import { SubcontractNoteService } from './subcontractNote.service';
 import { SubcontractorService } from '../subcontractor/subcontractor.service';
 import { JobService } from '../job/job.service';
 import { SubcontractOperationRateService } from '../subcontractOperationRate/subcontractOperationRate.service';
-import { Print } from './components/subcontractNotePrint/print.component';
+import { SubcontractArrivalRejectService } from '../subcontractArrivalReject/subcontractArrivalReject.service';
+import { SubcontractReworkNoteService } from '../../services/subcontractReworkNote.service';
 import { PrintService } from '../../services/print.service';
-
+import { SubcontractReworkNotePrint } from './components/subcontractReworkNotePrint';
+import { SubcontractNotePrint } from './components/subcontractNotePrint/subcontractNotePrint.component';
 
 @NgModule({
   imports: [
@@ -31,15 +33,19 @@ import { PrintService } from '../../services/print.service';
     SharedModule,
     PanelModule,
     AutoCompleteModule,
+    DropdownModule,
+    ProgressBarModule,
+    OverlayPanelModule,
+    TabViewModule,
     InputTextModule,
-    routing
+    routing,
   ],
   declarations: [
     SubcontractNote,
     SubcontractNoteTable,
     SubcontractNoteForm,
-    Print
-
+    SubcontractReworkNotePrint,
+    SubcontractNotePrint
 
   ],
   providers:
@@ -48,6 +54,8 @@ import { PrintService } from '../../services/print.service';
     SubcontractorService,
     JobService,
     SubcontractOperationRateService,
+    SubcontractArrivalRejectService,
+    SubcontractReworkNoteService,
     PrintService
 
   ]

@@ -1,1 +1,1 @@
-export * from './print.component';
+export * from './subcontractNotePrint.component';
