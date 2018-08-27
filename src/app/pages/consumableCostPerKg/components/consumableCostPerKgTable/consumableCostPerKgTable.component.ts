@@ -43,7 +43,7 @@ export class ConsumableCostPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/consumableCostPerKg/form/' + data.id]);
+        window.open('/#/pages/consumableCostPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

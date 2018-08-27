@@ -96,7 +96,7 @@ export class JobTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/job/form/' + data.id]);
+    window.open('/#/pages/job/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

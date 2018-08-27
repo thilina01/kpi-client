@@ -76,7 +76,7 @@ export class InternalTransferArrivalTable {
   selected(data: any) {}
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/internalTransferArrival/form/' + data.id]);
+    window.open('/#/pages/internalTransferArrival/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

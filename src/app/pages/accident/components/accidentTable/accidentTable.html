@@ -60,7 +60,7 @@
 		<p-column field="responsiblePerson.callingName" header="Responsible Person" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
-				<a [routerLink]="'/pages/accident/form/'+data.id">
+				<a [routerLink]="'/pages/accident/form/'+data.id" target="blank">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
 				</a> &nbsp; &nbsp;
 				<i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

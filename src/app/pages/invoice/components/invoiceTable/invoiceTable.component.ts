@@ -122,7 +122,7 @@ export class InvoiceTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/invoice/form/' + data.id]);
+    window.open('/#/pages/invoice/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

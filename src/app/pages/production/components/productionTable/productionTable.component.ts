@@ -116,7 +116,7 @@ export class ProductionTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/production/form/' + data.id]);
+    window.open('/#/pages/production/form/' + data.id, '_blank');
   }
 
   delete(id: number) {

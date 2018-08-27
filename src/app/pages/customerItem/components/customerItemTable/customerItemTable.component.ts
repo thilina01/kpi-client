@@ -122,7 +122,7 @@ export class CustomerItemTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/customerItem/form/' + data.id]);
+    window.open('/#/pages/customerItem/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

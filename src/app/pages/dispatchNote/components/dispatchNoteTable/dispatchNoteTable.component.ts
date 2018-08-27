@@ -94,7 +94,7 @@ export class DispatchNoteTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/dispatchNote/form/' + data.id]);
+    window.open('/#/pages/dispatchNote/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

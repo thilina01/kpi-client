@@ -20,7 +20,7 @@
     <p-column field="name" header="Name" [sortable]="true"> </p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">
-        <a [routerLink]="'/pages/location/form/'+data.id">
+        <a [routerLink]="'/pages/location/form/'+data.id"target="blank">
           <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
         </a> &nbsp; &nbsp;
         <i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

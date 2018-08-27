@@ -54,7 +54,7 @@ export class LocationTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/location/form/' + data.id]);
+    window.open('/#/pages/location/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

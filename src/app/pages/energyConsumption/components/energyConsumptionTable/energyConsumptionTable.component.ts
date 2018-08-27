@@ -44,7 +44,7 @@ export class EnergyConsumptionTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/energyConsumption/form/' + data.id]);
+      window.open('/#/pages/energyConsumption/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

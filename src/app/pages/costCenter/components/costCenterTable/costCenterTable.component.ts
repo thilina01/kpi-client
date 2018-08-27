@@ -46,7 +46,7 @@ export class CostCenterTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/costCenter/form/' + data.id]);
+    window.open('/#/pages/costCenter/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

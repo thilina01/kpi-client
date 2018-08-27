@@ -34,21 +34,12 @@
             <br/>
             <input type="text" pInputText formControlName="version">
           </div>
-
-          <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-            <label for="filePath">File Upload</label>
-            <br/>
-            <input type="file" (change)= "onFileSelected($event)" formControlName="filePath" accept=".pdf">
-          </div> -->
-
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label for="filePath">File Upload</label>
             <br/>
             <input type="file" (change)="onFileSelected($event)" formControlName="filePath" accept=".pdf">
             <button type="button" pButton (click)="onUpload()" label="Upload"></button>
           </div>
-
-
           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <label for="description">Description</label>
             <br/>

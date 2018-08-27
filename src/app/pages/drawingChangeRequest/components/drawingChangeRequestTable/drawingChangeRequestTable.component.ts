@@ -43,8 +43,7 @@ export class DrawingChangeRequestTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/drawingChangeRequest/form/' + data.id]);
-    }
+    window.open('/#/pages/drawingChangeRequest/form/' + data.id, '_blank');    }
 
     navigateToForm(id: any): void {
         this.router.navigate(['/pages/drawingChangeRequest/form/' + id]);

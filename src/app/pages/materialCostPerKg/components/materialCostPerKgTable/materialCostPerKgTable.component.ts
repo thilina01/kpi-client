@@ -43,7 +43,7 @@ export class MaterialCostPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/materialCostPerKg/form/' + data.id]);
+      window.open('/#/pages/materialCostPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

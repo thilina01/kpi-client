@@ -139,7 +139,7 @@ export class SubcontractNoteTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/subcontractNote/form/' + data.id]);
+    window.open('/#/pages/subcontractNote/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

@@ -42,7 +42,7 @@ export class ProductionOverheadCostPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/productionOverheadCostPerKg/form/' + data.id]);
+      window.open('/#/pages/productionOverheadCostPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

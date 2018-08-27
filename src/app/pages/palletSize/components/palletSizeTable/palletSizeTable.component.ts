@@ -43,7 +43,7 @@ export class PalletSizeTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/palletSize/form/' + data.id]);
+      window.open('/#/pages/palletSize/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

@@ -43,7 +43,7 @@ export class ElectricityCostPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/electricityCostPerKg/form/' + data.id]);
+      window.open('/#/pages/electricityCostPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

@@ -113,7 +113,7 @@ export class LoadingPlanTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(["/pages/loadingPlan/form/" + data.id]);
+    window.open('/#/pages/loadingPlan/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

@@ -46,7 +46,7 @@ export class ExchangeRateTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/exchangeRate/form/' + data.id]);
+    window.open('/#/pages/exchangeRate/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

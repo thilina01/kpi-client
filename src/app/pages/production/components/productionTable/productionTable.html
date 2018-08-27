@@ -14,7 +14,7 @@
 	</p-header>
 	<p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
 	 (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowDblclick)="onRowDblclick($event.data)"
-	 sortMode="multiple" resizableColumns="true" exportFilename="productions" [globalFilter]="gb">
+	 sortMode="multiple" resizableColumns="true" exportFilename="productions">
 		<p-header>
 			<div class="row">
 				<div class="col" style="text-align: left">
@@ -67,7 +67,7 @@
 		<p-column field="actualDuration" header="Actual Duration" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" pTemplate="body">
-				<a [routerLink]="'/pages/production/form/'+data.id">
+				<a [routerLink]="'/pages/production/form/'+data.id"target="blank">
 					<i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil"></i>
 				</a> &nbsp; &nbsp;
 				<a [routerLink]="'/pages/plan/'+data.id">

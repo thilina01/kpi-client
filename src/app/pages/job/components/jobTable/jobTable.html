@@ -46,7 +46,7 @@
     <p-column field="item.code" header="Item" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">
-        <a [routerLink]="'/pages/job/form/'+data.id">
+        <a [routerLink]="'/pages/job/form/'+data.id"target="blank">
           <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
         </a>
         &nbsp; &nbsp;

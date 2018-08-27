@@ -43,7 +43,7 @@ export class ScrapCostPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/scrapCostPerKg/form/' + data.id]);
+      window.open('/#/pages/scrapCostPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

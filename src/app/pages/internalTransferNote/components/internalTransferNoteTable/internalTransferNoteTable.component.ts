@@ -91,7 +91,7 @@ export class InternalTransferNoteTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/internalTransferNote/form/' + data.id]);
+    window.open('/#/pages/internalTransferNote/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

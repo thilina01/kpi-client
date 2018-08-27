@@ -46,7 +46,7 @@ export class ComputerTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/computer/form/' + data.id]);
+    window.open('/#/pages/computer/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

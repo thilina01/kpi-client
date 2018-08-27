@@ -46,7 +46,7 @@ export class ApplicationTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/application/form/' + data.id]);
+    window.open('/#/pages/application/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

@@ -43,7 +43,7 @@ export class LabourTurnoverTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/labourTurnover/form/' + data.id]);
+      window.open('/#/pages/labourTurnover/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

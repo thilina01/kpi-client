@@ -94,7 +94,7 @@ export class ItemTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/item/form/' + data.id]);
+    window.open('/#/pages/item/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

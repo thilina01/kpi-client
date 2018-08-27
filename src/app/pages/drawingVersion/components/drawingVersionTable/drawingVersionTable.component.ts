@@ -43,7 +43,7 @@ export class DrawingVersionTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/drawingVersion/form/' + data.id]);
+      window.open('/#/pages/drawingVersion/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

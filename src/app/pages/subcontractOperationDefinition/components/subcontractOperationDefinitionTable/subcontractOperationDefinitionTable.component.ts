@@ -143,9 +143,7 @@ export class SubcontractOperationDefinitionTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate([
-      '/pages/subcontractOperationDefinition/form/' + data.id
-    ]);
+    window.open('/#/pages/subcontractOperationDefinition/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

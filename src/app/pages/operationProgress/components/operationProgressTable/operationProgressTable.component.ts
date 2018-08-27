@@ -134,9 +134,7 @@ export class OperationProgressTable {
   selected(data: any) {}
 
   onRowDblclick(data: any): void {
-    this.router.navigate([
-      '/pages/operationProgress/form/' + data.operation.id
-    ]);
+    window.open('/#/pages/operationProgress/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

@@ -43,7 +43,7 @@ export class LabourCostPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/labourCostPerKg/form/' + data.id]);
+      window.open('/#/pages/labourCostPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {
