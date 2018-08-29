@@ -46,7 +46,7 @@ export class ControlPointMachineTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/controlPointMachine/form/' + data.id]);
+    window.open('/#/pages/controlPointMachine/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

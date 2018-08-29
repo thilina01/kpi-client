@@ -34,9 +34,10 @@ export class SubcontractNoteService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
-  saveRelease(object: Object): Observable<any> {
+  saveSubcontractNoteRelease(object: Object): Observable<any> {
     return this.http
       .post(this.apiUrl + 'release', JSON.stringify(object), { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
 }

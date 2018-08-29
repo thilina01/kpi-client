@@ -108,7 +108,7 @@ export class InvoiceTypeTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/invoiceType/form/' + data.id]);
+    window.open('/#/pages/invoiceType/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

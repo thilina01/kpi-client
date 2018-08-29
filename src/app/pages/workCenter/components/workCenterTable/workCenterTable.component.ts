@@ -46,7 +46,7 @@ export class WorkCenterTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/workCenter/form/' + data.id]);
+    window.open('/#/pages/workCenter/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

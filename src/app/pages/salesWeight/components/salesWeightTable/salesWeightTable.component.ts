@@ -43,7 +43,7 @@ export class SalesWeightTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/salesWeight/form/' + data.id]);
+      window.open('/#/pages/salesWeight/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

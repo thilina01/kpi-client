@@ -46,7 +46,7 @@ export class ProductTypeTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/productType/form/' + data.id]);
+    window.open('/#/pages/productType/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

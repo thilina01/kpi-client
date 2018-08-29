@@ -12,4 +12,21 @@ export class SubcontractArrivalService extends MasterService {
     super(anHttp, aConfig, anAuthService);
     this.setApiUrl('subcontractArrivals/');
   }
+
+  getLatestBySubcontractOperation(subcontractOperationId): Observable<any> {
+    return this.http.get(this.apiUrl + 'latestBySubcontractOperationId?subcontractOperationId=' + subcontractOperationId, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getAllBySubcontractOperation(subcontractOperationId): Observable<any> {
+    return this.http.get(this.apiUrl + 'allBySubcontractOperationId?subcontractOperationId=' + subcontractOperationId, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getBySubcontractNote(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + 'subcontractNote/' + id, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+  getSubcontractArrival(subcontractor, job, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'subcontractArrival?subcontractor=' + subcontractor + '&job=' + job +'&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, {headers: this.getJsonHeaders()})
+      .catch(err => this.handleError(err));
+  }
 }

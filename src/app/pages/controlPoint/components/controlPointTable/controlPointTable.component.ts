@@ -45,7 +45,7 @@ export class ControlPointTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/controlPoint/form/' + data.id]);
+    window.open('/#/pages/controlPoint/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

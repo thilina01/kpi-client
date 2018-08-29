@@ -43,7 +43,7 @@ export class CumulativeSalesPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/cumulativeSalesPerKg/form/' + data.id]);
+      window.open('/#/pages/cumulativeSalesPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

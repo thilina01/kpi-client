@@ -13,6 +13,7 @@ import { SubcontractArrivalRejectService } from '../../subcontractArrivalReject.
 import 'rxjs/add/operator/take';
 import { LossReasonService } from '../../../lossReason/lossReason.service';
 import { SubcontractArrivalService } from '../../../subcontractArrival/subcontractArrival.service';
+import { SubcontractNoteService } from '../../../subcontractNote/subcontractNote.service';
 
 @Component({
   selector: 'subcontract-arrival-reject-reject-reject-reject-form',
@@ -21,14 +22,19 @@ import { SubcontractArrivalService } from '../../../subcontractArrival/subcontra
   templateUrl: './subcontractArrivalRejectForm.html'
 })
 export class SubcontractArrivalRejectForm {
-  JSON: any = JSON;
-  subscription: Subscription;
-  public formGroup: FormGroup;
+  public subcontractArrivalRejectFormGroup: FormGroup;
+  arrivalRejectDate: Date = new Date();
   subcontractArrivalReject: any = {};
-  lossReason: any;
-  subcontractArrival: any;
-  lossReasonList: any;
+  subcontractArrivalRejectList = [];
   subcontractArrivalList: any;
+  subscription: Subscription;
+  subcontractNoteId: number;
+  subcontractNoteList: any;
+  subcontractArrival: any;
+  subcontractNote: any;
+  lossReasonList: any;
+  JSON: any = JSON;
+  lossReason: any;
 
   constructor(
     protected service: SubcontractArrivalRejectService,
@@ -37,14 +43,34 @@ export class SubcontractArrivalRejectForm {
     private route: ActivatedRoute,
     private sharedService: SharedService,
     private lossReasonService: LossReasonService,
+    private subcontractNoteService: SubcontractNoteService,
     private subcontractArrivalService: SubcontractArrivalService
   ) {
-    this.formGroup = fb.group({
+    this.subcontractArrivalRejectFormGroup = fb.group({
       id: '',
       quantity: ['', Validators.required],
       lossReason: [this.lossReason, Validators.required],
+      subcontractNote: [this.subcontractNote, Validators.required],
+      arrivalRejectDate: [this.arrivalRejectDate, Validators.required],
       subcontractArrival: [this.subcontractArrival, Validators.required]
     });
+  }
+
+  getSubcontractNoteList(): void {
+    this.subcontractNoteService
+      .getCombo()
+      .subscribe(
+        subcontractNoteList => (this.subcontractNoteList = subcontractNoteList)
+      );
+  }
+
+  getSubcontractArrivalListBySubcontractNote(id: number): void {
+    this.subcontractArrivalService
+      .getBySubcontractNote(id)
+      .subscribe(
+        subcontractArrivalList =>
+          (this.subcontractArrivalList = subcontractArrivalList)
+      );
   }
 
   getLossReasonList(): void {
@@ -53,18 +79,9 @@ export class SubcontractArrivalRejectForm {
       .subscribe(lossReasonList => (this.lossReasonList = lossReasonList));
   }
 
-  getSubcontractArrivalList(): void {
-    this.subcontractArrivalService
-      .getCombo()
-      .subscribe(
-        subcontractArrivalList =>
-          (this.subcontractArrivalList = subcontractArrivalList)
-      );
-  }
-
   ngOnInit(): void {
     this.getLossReasonList();
-    this.getSubcontractArrivalList();
+    this.getSubcontractNoteList();
     this.route.params.subscribe((params: Params) => {
       let id = params['id'];
       id = id === undefined ? '0' : id;
@@ -72,44 +89,53 @@ export class SubcontractArrivalRejectForm {
         this.service
           .get(+id)
           .take(1)
-          .subscribe(data => {
-            this.loadForm(data);
-          });
+          .subscribe(data => {});
       }
     });
   }
 
-  loadForm(data: any) {
-    if (data != null) {
-      data.arrivalTime = new Date(data.arrivalTime);
-      this.subcontractArrivalReject = data;
+  public onEnter() {
+    if (this.subcontractArrivalRejectFormGroup.valid) {
+      let values = this.subcontractArrivalRejectFormGroup.value;
+      if (this.subcontractArrivalRejectList == null) {
+        this.subcontractArrivalRejectList = [];
+      }
+      values.arrivalRejectDate = this.arrivalRejectDate;
+      this.subcontractArrivalRejectList.push(values);
+      this.subcontractArrivalRejectFormGroup.reset();
+      document.getElementById('subcontractNoteSelector').focus();
+      this.subcontractArrivalRejectList = this.subcontractArrivalRejectList.slice();
     }
-    this.formGroup.patchValue(this.subcontractArrivalReject, {
-      onlySelf: true
-    });
   }
 
-  public onSubmit(values: any, event: Event): void {
-    event.preventDefault();
-    console.log(values);
-    this.service.save(values).subscribe(data => {
+  public save() {
+    if (
+      this.subcontractArrivalRejectList === null ||
+      this.subcontractArrivalRejectList.length === 0
+    ) {
+      alert('Subcontract Arrival Reject Required');
+      return;
+    }
+    this.service.saveMany(this.subcontractArrivalRejectList).subscribe(data => {
       this.sharedService.addMessage({
         severity: 'info',
         summary: 'Success',
         detail: 'Operation Success'
       });
       this.resetForm();
-      this.router.navigate(['/pages/subcontractArrivalReject/form/']);
     });
   }
 
   refresh(): void {
     this.getLossReasonList();
-    this.getSubcontractArrivalList();
+    this.getSubcontractNoteList();
   }
 
   public resetForm() {
-    this.formGroup.reset();
+    this.subcontractArrivalRejectFormGroup.reset();
+    this.subcontractArrivalRejectList = [];
+    this.subcontractArrivalReject = null;
+    this.subcontractArrivalRejectList = this.subcontractArrivalRejectList.slice();
   }
 
   /*================== SubcontractArrivalFilter ===================*/
@@ -142,4 +168,21 @@ export class SubcontractArrivalRejectForm {
   }
   onLossReasonSelect(event: any) {}
   /*================== LossReasonFilter ===================*/
+  /*================== SubcontractNoteFilter ===================*/
+  filteredSubcontractNoteList: any[];
+
+  filterSubcontractNoteList(event) {
+    let query = event.query.toLowerCase();
+    this.filteredSubcontractNoteList = [];
+    for (let i = 0; i < this.subcontractNoteList.length; i++) {
+      let subcontractNote = this.subcontractNoteList[i];
+      if (subcontractNote.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredSubcontractNoteList.push(subcontractNote);
+      }
+    }
+  }
+  onSubcontractNoteSelect(subcontractNoteCombo: any) {
+    this.getSubcontractArrivalListBySubcontractNote(+subcontractNoteCombo.id);
+  }
+  /*================== SubcontractNoteFilter ===================*/
 }

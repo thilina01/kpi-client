@@ -21,15 +21,17 @@ import { SubcontractNoteService } from '../../../subcontractNote/subcontractNote
   templateUrl: './subcontractArrivalForm.html'
 })
 export class SubcontractArrivalForm {
+  quantity = 0.0;
   JSON: any = JSON;
+  subcontractNote: any;
+  subcontractNoteList: any;
   subcontractOperation: any;
   subscription: Subscription;
   public formGroup: FormGroup;
+  subcontractArrivalList = [];
   subcontractArrival: any = {};
-  subcontractOperationList: any;
+  subcontractOperationList = [];
   arrivalTime: Date = new Date();
-  subcontractNote: any;
-  subcontractNoteList: any;
 
   constructor(
     protected service: SubcontractArrivalService,
@@ -39,15 +41,7 @@ export class SubcontractArrivalForm {
     private sharedService: SharedService,
     private subcontractNoteService: SubcontractNoteService,
     private subcontractOperationService: SubcontractOperationService
-  ) {
-    this.formGroup = fb.group({
-      id: '',
-      quantity: ['', Validators.required],
-      arrivalTime: [this.arrivalTime, Validators.required],
-      subcontractNote: [],
-      subcontractOperation: [this.subcontractOperation, Validators.required]
-    });
-  }
+  ) {}
 
   getSubcontractNoteList(): void {
     this.subcontractNoteService
@@ -60,10 +54,9 @@ export class SubcontractArrivalForm {
   getSubcontractOperationListBySubcontractNote(id: number): void {
     this.subcontractOperationService
       .getBySubcontractNote(id)
-      .subscribe(
-        subcontractOperationList =>
-          (this.subcontractOperationList = subcontractOperationList)
-      );
+      .subscribe(subcontractOperationList => {
+        this.fillSubcontractArrivalList(subcontractOperationList);
+      });
   }
 
   ngOnInit(): void {
@@ -90,17 +83,54 @@ export class SubcontractArrivalForm {
     this.formGroup.patchValue(this.subcontractArrival, { onlySelf: true });
   }
 
-  public onSubmit(values: any, event: Event): void {
-    event.preventDefault();
-    console.log(values);
-    this.service.save(values).subscribe(data => {
+  fillSubcontractArrivalList(subcontractOperationList: any[]) {
+    this.subcontractArrivalList = [];
+    for (let i = 0; i < subcontractOperationList.length; i++) {
+      let subcontractOperation = subcontractOperationList[i];
+      let xSubcontractArrivalList = subcontractOperation.subcontractArrivalList;
+      let totalReceivedQuantity = 0;
+      for (let ii = 0; ii < xSubcontractArrivalList.length; ii++) {
+        let xSubcontractArrival = xSubcontractArrivalList[ii];
+
+        totalReceivedQuantity += xSubcontractArrival.quantity;
+      }
+
+      let newSubcontractArrival = {
+        arrivalTime: this.arrivalTime,
+        quantity: 0,
+        totalReceivedQuantity: totalReceivedQuantity,
+        subcontractOperation: subcontractOperation
+      };
+
+      this.subcontractArrivalList.push(newSubcontractArrival);
+      this.subcontractArrivalList = this.subcontractArrivalList.slice();
+    }
+  }
+
+  public save(): void {
+    let subcontractArrivalToSave = [];
+    let xSubcontractArrival;
+    for (let i = 0; i < this.subcontractArrivalList.length; i++) {
+      xSubcontractArrival = this.subcontractArrivalList[i];
+      if (xSubcontractArrival.quantity > 0) {
+        if (
+          xSubcontractArrival.quantity >
+          xSubcontractArrival.subcontractOperation.quantity
+        ) {
+          alert('Added incorrect Received Quantity Please Check');
+          return;
+        }
+        subcontractArrivalToSave.push(xSubcontractArrival);
+      }
+    }
+
+    this.service.saveMany(subcontractArrivalToSave).subscribe(data => {
       this.sharedService.addMessage({
         severity: 'info',
         summary: 'Success',
         detail: 'Operation Success'
       });
-      this.resetForm();
-      this.router.navigate(['/pages/subcontractArrival/form/']);
+      this.reset();
     });
   }
 
@@ -108,8 +138,15 @@ export class SubcontractArrivalForm {
     this.getSubcontractNoteList();
   }
 
+  reset() {
+    this.resetForm();
+  }
+
   public resetForm() {
-    this.formGroup.reset();
+    this.quantity = 0.0;
+    this.subcontractNote = null;
+    this.subcontractArrivalList = [];
+    this.subcontractArrivalList = this.subcontractArrivalList.slice();
   }
 
   /*================== SubcontractOperationFilter ===================*/
@@ -142,7 +179,6 @@ export class SubcontractArrivalForm {
   }
   onSubcontractNoteSelect(subcontractNoteCombo: any) {
     this.getSubcontractOperationListBySubcontractNote(+subcontractNoteCombo.id);
-
   }
   /*================== SubcontractNoteFilter ===================*/
 }

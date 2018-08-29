@@ -97,6 +97,7 @@ export class DispatchScheduleTable {
   }
 
   onRowDblclick(data: any): void {
+    window.open('/#/pages/dispatchSchedule/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

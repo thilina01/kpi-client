@@ -61,7 +61,7 @@ export class CodeNameTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/' + this.service.endPoint + '/form/' + data.id]);
+    window.open('/#/pages/' + this.service.endPoint + '/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

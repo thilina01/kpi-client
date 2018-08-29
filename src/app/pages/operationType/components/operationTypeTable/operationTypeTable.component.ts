@@ -46,7 +46,7 @@ export class OperationTypeTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/operationType/form/' + data.id]);
+    window.open('/#/pages/operationType/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

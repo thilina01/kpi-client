@@ -43,7 +43,7 @@ export class FinanceSummaryTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/financeSummary/form/' + data.id]);
+      window.open('/#/pages/financeSummary/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

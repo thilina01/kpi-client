@@ -8,6 +8,7 @@ import { DataTable, ConfirmationService } from 'primeng/primeng';
 import 'rxjs/add/operator/take';
 import { LocationService } from '../../../location/location.service';
 import { SubcontractNoteService } from '../../../subcontractNote/subcontractNote.service';
+import { SubcontractReworkNoteService } from '../../../../services/subcontractReworkNote.service';
 
 @Component({
   selector: 'subcontract-release-form',
@@ -23,6 +24,11 @@ export class SubcontractReleaseForm {
   JSON: any = JSON;
   idTextField: HTMLInputElement;
   subcontractNote: any = {};
+  subcontractReworkNote: any = {};
+  subcontractReworkNotes: any;
+  subcontractNoteId: any;
+  subcontractReworkOperationList = [];
+  subcontractReworkNoteId: any;
 
   constructor(protected service: SubcontractNoteService,
     private route: ActivatedRoute,
@@ -30,7 +36,8 @@ export class SubcontractReleaseForm {
     fb: FormBuilder,
     private confirmationService: ConfirmationService,
     private sharedService: SharedService,
-    private locationService: LocationService) {
+    private locationService: LocationService,
+    private subcontractReworkNoteService: SubcontractReworkNoteService) {
     this.formGroup = fb.group({
       id: '',
       location: '',
@@ -41,6 +48,10 @@ export class SubcontractReleaseForm {
     });
   }
 
+  getLocations(): void {
+    this.locationService.getAll().subscribe(locations => this.locations = locations);
+  }
+
   ngOnInit(): void {
     this.getLocations();
     this.idTextField = <HTMLInputElement>document.getElementById('id');
@@ -49,7 +60,6 @@ export class SubcontractReleaseForm {
         let id = params['id'];
         id = id === undefined ? '0' : id;
         if (id !== '0') {
-          this.loadForm(id);
         }
       }
     );
@@ -57,9 +67,45 @@ export class SubcontractReleaseForm {
 
   fill(): void {
     this.clear();
-    let id = this.formGroup.value.id;
-    if (id === undefined || id === '') { return; }
-    this.loadForm(id);
+    if (this.subcontractNoteId.startsWith('R') || this.subcontractNoteId.startsWith('r')){
+        let id = this.subcontractNoteId.substring(1);
+        this.subcontractReworkNoteService.get(id).take(1).subscribe(
+        (data) => {
+          if (data != null) {
+            this.subcontractReworkNote = data;
+            if (this.subcontractReworkNote.subcontractReleaseTime !== null) {
+              this.subcontractReworkNote.subcontractReleaseTime = new Date(this.subcontractReworkNote.subcontractReleaseTime);
+            }
+          }
+           this.formGroup.patchValue(this.subcontractReworkNote, { onlySelf: true });
+           this.formGroup.value.subcontractReleaseTime = this.subcontractReworkNote.subcontractReleaseTime;
+           this.formGroup.value.vehicleNumber = this.subcontractReworkNote.vehicleNumber;
+           this.formGroup.value.containerNumber = this.subcontractReworkNote.containerNumber;
+           this.formGroup.value.recipient = this.subcontractReworkNote.recipient;
+           this.formGroup.value.location = this.subcontractReworkNote.location;
+
+            }
+          );
+        }
+
+    else {
+      this.service.get(this.subcontractNoteId).take(1).subscribe(
+        (data) => {
+          if (data != null) {
+            this.subcontractNote = data;
+            if (this.subcontractNote.subcontractReleaseTime !== null) {
+              this.subcontractNote.subcontractReleaseTime = new Date(this.subcontractNote.subcontractReleaseTime);
+            }
+          }
+          this.formGroup.patchValue(this.subcontractNote, { onlySelf: true });
+           this.formGroup.value.subcontractReleaseTime = this.subcontractNote.subcontractReleaseTime;
+            this.formGroup.value.vehicleNumber = this.subcontractNote.vehicleNumber;
+            this.formGroup.value.containerNumber = this.subcontractNote.containerNumber;
+            this.formGroup.value.recipient = this.subcontractNote.recipient;
+            this.formGroup.value.location = this.subcontractNote.location;
+        }
+      );
+    }
   }
 
   clear(): void {
@@ -69,45 +115,46 @@ export class SubcontractReleaseForm {
     }
   }
 
-  loadForm(id: any) {
-             this.service.get(+id).subscribe(
-              (subcontractNote) => {
-                    if (subcontractNote != null) {
-                      if (subcontractNote.subcontractReleaseTime !== null) {
-                         subcontractNote.subcontractReleaseTime = new Date(subcontractNote.subcontractReleaseTime);
-                       }
-                       this.subcontractNote = subcontractNote;
-                      this.idTextField.disabled = true;
-                    }
-                    this.formGroup.patchValue(this.subcontractNote, { onlySelf: true });
-                }
-            )
-        }
-
   public onSubmit(values: any, event: Event): void {
     event.preventDefault();
-    this.service.saveRelease(values).subscribe(
-      (data) => {
-        this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
-        this.resetForm();
-      }
-    );
+    values = this.formGroup.value;
+
+    if (this.subcontractNote.id != null){
+
+      this.service.saveSubcontractNoteRelease(values).subscribe(data => {
+        this.sharedService.addMessage({
+        severity: 'info',
+        summary: 'Success',
+        detail: 'Operation Success'
+      });
+      this.resetForm();
+      this.router.navigate(['/pages/subcontractRelease/form/']);
+      });
+    }
+
+    else{
+      this.subcontractReworkNoteService.saveSubcontractReworkNoteRelease(values).subscribe(xData => {
+        this.sharedService.addMessage({
+        severity: 'info',
+        summary: 'Success',
+        detail: 'Operation Success'
+      });
+      this.resetForm();
+      this.router.navigate(['/pages/subcontractRelease/form/']);
+      });
+    }
   }
 
   public resetForm() {
-    this.idTextField.disabled = false;
+    this.subcontractReworkNote = {};
     this.formGroup.reset();
-    this.fill();
-
+    this.subcontractNoteId = '';
+    this.subcontractNote = {};
   }
 
   /*================== Location Filter ===================*/
   locations: any;
   filteredLocations: any[];
-
-  getLocations(): void {
-    this.locationService.getAll().subscribe(locations => this.locations = locations);
-  }
 
   filterLocations(event) {
     let query = event.query.toLowerCase();

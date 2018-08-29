@@ -105,7 +105,7 @@ export class PackagingSpecificationTable {
   selected(data: any) {}
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/packagingSpecification/form/' + data.id]);
+    window.open('/#/pages/packagingSpecification/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

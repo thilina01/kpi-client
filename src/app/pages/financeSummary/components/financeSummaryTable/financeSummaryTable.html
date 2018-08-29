@@ -16,7 +16,7 @@
   </p-header>
   <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
-    (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="financeSummarys">
+    (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="financeSummaries">
     <p-column field="id" header="ID"></p-column>
     <p-column field="effectiveMonth" header="Effective Month">
       <ng-template let-col let-rowData="rowData" pTemplate="body">
@@ -33,7 +33,7 @@
     <p-column field="budgetEbitda" header="Budget EBITDA" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">
-        <a [routerLink]="'/pages/financeSummary/form/'+data.id">
+        <a [routerLink]="'/pages/financeSummary/form/'+data.id" target="blank">
           <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
         </a> &nbsp; &nbsp;
         <i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

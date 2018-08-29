@@ -99,7 +99,10 @@ export class InvoiceTable {
             loadingPlanItem.weight = loadingPlanItem.invoiceQuantity * loadingPlanItem.dispatchSchedule.job.item.weight;
             totalWeight += loadingPlanItem.weight;
 
-            loadingPlanItem.amount = loadingPlanItem.invoiceQuantity *loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+            if (loadingPlanItem.unitPrice === null || loadingPlanItem.unitPrice === undefined){
+              loadingPlanItem.unitPrice = loadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+            }
+            loadingPlanItem.amount = loadingPlanItem.invoiceQuantity * loadingPlanItem.unitPrice;
               totalAmount += loadingPlanItem.amount;
 
           });
@@ -119,7 +122,7 @@ export class InvoiceTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/invoice/form/' + data.id]);
+    window.open('/#/pages/invoice/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

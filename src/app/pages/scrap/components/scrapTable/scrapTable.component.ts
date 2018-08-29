@@ -84,7 +84,7 @@ export class ScrapTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/scrap/form/' + data.id]);
+    window.open('/#/pages/scrap/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

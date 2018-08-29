@@ -46,7 +46,7 @@ export class EmployeeTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/employee/form/' + data.id]);
+    window.open('/#/pages/employee/form/' + data.id, '_blank');
   }
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/employee/form/' + id]);

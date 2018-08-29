@@ -46,7 +46,7 @@ export class SupplierTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/supplier/form/' + data.id]);
+    window.open('/#/pages/supplier/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

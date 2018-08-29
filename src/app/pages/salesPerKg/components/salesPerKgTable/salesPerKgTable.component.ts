@@ -43,7 +43,7 @@ export class SalesPerKgTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/salesPerKg/form/' + data.id]);
+      window.open('/#/pages/salesPerKg/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

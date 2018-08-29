@@ -46,7 +46,7 @@ export class OrganizationTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/organization/form/' + data.id]);
+    window.open('/#/pages/organization/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

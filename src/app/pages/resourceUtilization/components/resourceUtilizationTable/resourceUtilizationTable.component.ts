@@ -118,7 +118,7 @@ export class ResourceUtilizationTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/resourceUtilization/form/' + data.production.id]);
+      window.open('/#/pages/resourceUtilization/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

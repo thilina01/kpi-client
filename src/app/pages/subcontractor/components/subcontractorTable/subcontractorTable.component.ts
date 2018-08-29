@@ -42,7 +42,7 @@ export class SubcontractorTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/subcontractor/form/' + data.id]);
+      window.open('/#/pages/subcontractor/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

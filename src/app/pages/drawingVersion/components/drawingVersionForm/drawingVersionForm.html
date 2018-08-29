@@ -1,0 +1,71 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Drawing Version Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/drawingVersion/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value,$event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label for="item">Item</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="item" field="display" [dropdown]="true" [suggestions]="filteredItemList" (completeMethod)="filterItemList($event)"
+                [minLength]="1" placeholder="Search" (onSelect)="onItemSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/item/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label for="version">Version</label>
+            <br/>
+            <input type="text" pInputText formControlName="version">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label for="filePath">File Upload</label>
+            <br/>
+            <input type="file" (change)="onFileSelected($event)" formControlName="filePath" accept=".pdf">
+            <button type="button" pButton (click)="onUpload()" label="Upload"></button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label for="description">Description</label>
+            <br/>
+            <input type="text" pInputText formControlName="description" [size]="50">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <label for="drawingChangeRequest">Drawing Change Request</label> &nbsp;
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="drawingChangeRequest" field="display" [dropdown]="true" [suggestions]="filteredDrawingChangeRequestList"
+                (completeMethod)="filterDrawingChangeRequestList($event)" [minLength]="1" placeholder="Search" (onSelect)="onDrawingChangeRequestSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/drawingChangeRequest/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>

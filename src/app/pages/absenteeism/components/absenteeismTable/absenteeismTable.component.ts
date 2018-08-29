@@ -42,7 +42,7 @@ export class AbsenteeismTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/absenteeism/form/' + data.id]);
+      window.open('/#/pages/absenteeism/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

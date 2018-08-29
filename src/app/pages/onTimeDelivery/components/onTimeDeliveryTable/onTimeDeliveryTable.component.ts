@@ -43,7 +43,7 @@ export class OnTimeDeliveryTable {
     }
 
     onRowDblclick(data: any): void {
-        this.router.navigate(['/pages/onTimeDelivery/form/' + data.id]);
+      window.open('/#/pages/onTimeDelivery/form/' + data.id, '_blank');
     }
 
     navigateToForm(id: any): void {

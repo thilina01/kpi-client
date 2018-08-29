@@ -14,13 +14,75 @@
   </p-header>
   <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
     (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" (onRowSelect)="selected($event.data)"
-    (onRowDblclick)="onRowDblclick($event.data)" sortMode="multiple" resizableColumns="true" exportFilename="subcontractArrivalRejects">
+    sortMode="multiple" resizableColumns="true" exportFilename="subcontractArrivalRejects">
+    <p-header>
+      <div class="row">
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration Start
+          <br/>
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration End
+          <br/>
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Subcontractor
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="subcontractor" field="display" [dropdown]="true" [suggestions]="filteredSubcontractors" (completeMethod)="filterSubcontractors($event)"
+              [size]="12" [minLength]="1" placeholder="Subcontractor" [size]="20" (onSelect)="onSubcontractorSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Job
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobs" (completeMethod)="filterJobs($event)" [size]="15"
+              [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onJobSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          <br/>
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+      </div>
+    </p-header>
     <p-column field="id" header="ID"></p-column>
-    <p-column field="lossReason.name" header="Loss Reason" [sortable]="true"></p-column>
-    <p-column field="quantity" header="Quantity" styleClass="text-right" [sortable]="true"></p-column>
+    <p-column field="arrivalRejectDate" header="Reject Date">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.arrivalRejectDate|date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column field="subcontractArrival.arrivalTime" header="Arrival Date">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.subcontractArrival.arrivalTime|date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractor.name"
+      header="Subcontractor" [sortable]="true"></p-column>
+    <p-column field="subcontractArrival.subcontractOperation.job.jobNo" header="Job" [sortable]="true"></p-column>
+    <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.item.code"
+      header="Item Code" [sortable]="true"></p-column>
+    <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.productType.code"
+      header="Product Type Code" [sortable]="true"></p-column>
+    <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.productType.description"
+      header="Product Type Description" [sortable]="true"></p-column>
+    <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.operationType.code"
+      header="Operation Type Code" [sortable]="true"></p-column>
+    <p-column field="subcontractArrival.subcontractOperation.subcontractOperationRate.subcontractorOperation.subcontractOperationDefinition.operationType.description"
+      header="Operation Type Description" [sortable]="true"></p-column>
+    <p-column field="lossReason.code" header="Loss Reason Code" [sortable]="true"></p-column>
+    <p-column field="lossReason.name" header="Loss Reason Name" [sortable]="true"></p-column>
+    <p-column field="quantity" header=" Reject Quantity" styleClass="text-right" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">
-        <a [routerLink]="'/pages/subcontractArrivalReject/form/'+data.id">
+        <a [routerLink]="'/pages/subcontractArrivalReject/form/'+data.id" target="blank">
           <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
         </a> &nbsp; &nbsp;
         <i (click)="delete(data.id)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

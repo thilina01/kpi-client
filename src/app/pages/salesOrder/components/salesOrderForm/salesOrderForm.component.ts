@@ -54,7 +54,6 @@ export class SalesOrderForm {
             id: '',
             quantity: 0,
             amount: 0,
-            remarks: '',
             customerPoNumber: ['', Validators.required],
             salesOrderNumber: ['', Validators.required],
             orderDate: [this.orderDate, Validators.required],
@@ -67,6 +66,7 @@ export class SalesOrderForm {
             unitPrice: '',
             quantity: '',
             amount: '',
+            remarks: '',
             customerItem: [{}, Validators.compose([Validators.required])],
         });
     }

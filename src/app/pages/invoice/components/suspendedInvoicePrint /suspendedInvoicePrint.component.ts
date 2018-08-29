@@ -14,8 +14,6 @@ export class SuspendedInvoicePrint {
   totalWeight = 0.0;
   xAddress: any = null;
   xLoadingPlanItemList = [];
-  xContainerSize: any = null;
-  xNoOfContainers: number = null;
 
   @Input()
   set id(id: number) {
@@ -26,17 +24,23 @@ export class SuspendedInvoicePrint {
 
           this.totalAmount = 0.0;
           this.totalWeight = 0.0;
-          this.xContainerSize = null;
-          this.xNoOfContainers = null;
           this.xAddress = null;
           this.xLoadingPlanItemList = [];
 
           for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
-            let yLoadingPlan = this.invoice.dispatchNoteList[i].loadingPlanList[i];
-                if (this.xAddress === null) {
-                  this.xAddress = yLoadingPlan.address;
-                }
+            let dispatchNote = this.invoice.dispatchNoteList[i];
+            if (dispatchNote === undefined) return;
+            let xLoadingPlanList = dispatchNote.loadingPlanList;
+
+            for (let ii = 0; ii < xLoadingPlanList.length; ii++) {
+              let xLoadingPlan = xLoadingPlanList[ii];
+
+              if (this.xAddress === null) {
+                     this.xAddress = xLoadingPlan.address;
+                      }
+                  }
               }
+
             for (let i = 0; i < this.invoice.dispatchNoteList.length; i++) {
             let yLoadingPlanList = this.invoice.dispatchNoteList[i].loadingPlanList;
 
@@ -54,16 +58,22 @@ export class SuspendedInvoicePrint {
               let xItemId = xLoadingPlanItem.dispatchSchedule.job.item.id;
               let xSalesOrderId = xLoadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.id;
               if (yItemId === xItemId && ySalesOrderId === xSalesOrderId){
-                this.totalAmount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                if (yLoadingPlanItem.unitPrice === null || yLoadingPlanItem.unitPrice === undefined){
+                  yLoadingPlanItem.unitPrice = yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                }
+                this.totalAmount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
                 xLoadingPlanItem.invoiceQuantity += yLoadingPlanItem.invoiceQuantity;
-                xLoadingPlanItem.amount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                xLoadingPlanItem.amount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
                 found = true;
                 break;
               }
             }
 
             if (!found){
-              yLoadingPlanItem.amount = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+              if (yLoadingPlanItem.unitPrice === null || yLoadingPlanItem.unitPrice === undefined){
+                yLoadingPlanItem.unitPrice = yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+              }
+              yLoadingPlanItem.amount = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
               this.totalAmount += yLoadingPlanItem.amount;
               yLoadingPlanItem.weight = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.job.item.weight;
               this.totalWeight += yLoadingPlanItem.weight;

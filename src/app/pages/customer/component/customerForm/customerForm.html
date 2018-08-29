@@ -166,14 +166,14 @@
                     </div>
                     &nbsp;&nbsp;
                     <div class="row col-12">
-                      <p-dataTable #dt [value]="formGroup.value.addressList" [rows]="20" [responsive]="true" resizableColumns="true" selectionMode="single">
+                      <p-dataTable #dt [value]="formGroup.value.addressList" [rows]="20"[editable]="true" [responsive]="true" resizableColumns="true">
                         <p-column field="id" header="ID"></p-column>
-                        <p-column field="line1" header="Line1"></p-column>
-                        <p-column field="line2" header="Line2"></p-column>
-                        <p-column field="line3" header="Line3"></p-column>
-                        <p-column field="line4" header="Line4"></p-column>
-                        <p-column field="line5" header="Line5"></p-column>
-                        <p-column field="addressType.name" header="Address Type"></p-column>
+                        <p-column field="line1" header="Line1" [editable]="true"></p-column>
+                        <p-column field="line2" header="Line2" [editable]="true"></p-column>
+                        <p-column field="line3" header="Line3" [editable]="true"></p-column>
+                        <p-column field="line4" header="Line4" [editable]="true"></p-column>
+                        <p-column field="line5" header="Line5" [editable]="true"></p-column>
+                        <p-column field="addressType.name" header="Address Type" ></p-column>
                         <p-column field="country.name" header="Country"></p-column>
                         <p-column field="port.name" header="Port"></p-column>
                         <p-column header="Action" styleClass="text-right">

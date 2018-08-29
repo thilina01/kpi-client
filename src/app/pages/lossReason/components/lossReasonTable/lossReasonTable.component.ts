@@ -76,7 +76,7 @@ export class LossReasonTable {
   }
 
   onRowDblclick(data: any): void {
-    this.router.navigate(['/pages/lossReason/form/' + data.id]);
+    window.open('/#/pages/lossReason/form/' + data.id, '_blank');
   }
 
   navigateToForm(id: any): void {

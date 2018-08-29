@@ -66,18 +66,25 @@
         <div class=" col-sm-12">
           <form [formGroup]="salesOrderItemFormGroup" class="form-horizontal">
             <div class="row">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                   <label for="customerItem">Customer Item</label>
                   <br/>
                   <div class="ui-inputgroup">
                     <p-autoComplete id="customerItemSelector" [dropdown]="true" formControlName="customerItem" field="display" [suggestions]="filteredCustomerItems"
-                      (completeMethod)="filterCustomerItems($event)" [size]="95" [minLength]="1" placeholder="Search" (onSelect)="onCustomerItemSelect($event)">
+                      (completeMethod)="filterCustomerItems($event)" [size]="70" [minLength]="1" placeholder="Search" (onSelect)="onCustomerItemSelect($event)">
                     </p-autoComplete>
                     <a routerLink="/pages/customerItem/form" target="blank">
                       <button pButton type="button" icon="fa-plus-circle"></button>
                     </a>
                   </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group" [ngClass]="{'has-error': (! salesOrderItemFormGroup.controls['remarks'].valid &&  salesOrderItemFormGroup.controls['remarks'].touched), 'has-success': ( salesOrderItemFormGroup.controls['remarks'].valid && salesOrderItemFormGroup.controls['remarks'].touched)}">
+                  <label for="remarks">Remarks</label>
+                  <br/>
+                  <input type="text" [size]="80" pInputText formControlName="remarks">
                 </div>
               </div>
               <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
@@ -109,6 +116,7 @@
                 [responsive]="true" resizableColumns="true">
                 <p-column field="id" header="ID"></p-column>
                 <p-column field="customerItem.code" header="Customer Item"></p-column>
+                <p-column field="remarks" header="Remarks"></p-column>
                 <p-column field="unitPrice" header="Unit Price" styleClass="text-right" [editable]="true">
                   <ng-template let-col let-salesOrderItem="rowData" pTemplate="body">
                     {{ salesOrderItem.unitPrice | number : '1.2-2' }}
@@ -127,7 +135,7 @@
                 </p-column>
                 <p-footerColumnGroup>
                   <p-row>
-                    <p-column footer="Totals:" colspan="3" styleClass="text-right"></p-column>
+                    <p-column footer="Totals:" colspan="4" styleClass="text-right"></p-column>
                     <p-column footer="{{formGroup.value.quantity}}" styleClass="text-right"></p-column>
                     <p-column footer="{{formGroup.value.amount | number : '1.2-2' }}" styleClass="text-right"></p-column>
                     <p-column footer=""></p-column>
@@ -139,12 +147,6 @@
         </div>
       </div>
     </p-panel>
-    <br/>
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-      <label for="remarks">Remarks</label>
-      <br/>
-      <input type="text" pInputText formControlName="remarks" [size]="182">
-    </div>
     <br/>
     <div class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
