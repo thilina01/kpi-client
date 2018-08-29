@@ -27,4 +27,6 @@ script:
   - yarn run build:ci
 
 notifications:
-  slack: akveo:q559HckfZMSyZRb803aiLcjH
+  email: # only receive email when the build status changes (someone broke the build!) 
+    on_failure: change
+    on_success: change
