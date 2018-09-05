@@ -58,6 +58,11 @@
     <p-column field="dispatchSchedule.job.jobNo" header="Job No" [sortable]="true"></p-column>
     <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item" [sortable]="true"></p-column>
     <p-column field="quantity" header="Qty"></p-column>
+    <p-column field="noOfpackages"styleClass="text-right" header="No Of Packages">
+      <ng-template let-col let-rowData="rowData"pTemplate="body">
+        {{(rowData.noOfpackages)| number : '1.0-0' }}
+      </ng-template>
+    </p-column>
     <p-column field="dispatchSchedule.requestDate" header="Request Date" [sortable]="true"></p-column>
     <p-column field="dispatchSchedule.confirmDate" header="Confirm Date" [sortable]="true"></p-column>
     <p-column field="loadingPlan.dispatchNote.dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>

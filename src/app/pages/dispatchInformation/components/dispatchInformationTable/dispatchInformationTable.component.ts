@@ -1,4 +1,3 @@
-
 import { SharedService } from '../../../../services/shared.service';
 import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ConfirmationService, Message } from 'primeng/primeng';
@@ -12,9 +11,8 @@ import { LoadingPlanItemService } from '../../../../services/loadingPlanItem.ser
   selector: 'dispatch-information-table',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./dispatchInformationTable.scss'],
-  templateUrl: './dispatchInformationTable.html',
+  templateUrl: './dispatchInformationTable.html'
 })
-
 export class DispatchInformationTable {
   filteredItems: any[];
   filteredCustomers: any[];
@@ -26,16 +24,19 @@ export class DispatchInformationTable {
   startDate: Date;
   endDate: Date;
   pageSize = 20;
-  @ViewChild(DataTable) dataTable: DataTable;
-  customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' };
-  item: any = { id: 0, 'code': 'ALL', 'display': 'All Items' };
+  @ViewChild(DataTable)
+  dataTable: DataTable;
+  customer: any = { id: 0, code: 'ALL', display: 'All Customers' };
+  item: any = { id: 0, code: 'ALL', display: 'All Items' };
 
-  constructor(protected service: LoadingPlanItemService,
+  constructor(
+    protected service: LoadingPlanItemService,
     private router: Router,
     private confirmationService: ConfirmationService,
     private customerService: CustomerService,
     private itemService: ItemService,
-    private sharedService: SharedService) {
+    private sharedService: SharedService
+  ) {
     this.loadData();
     this.getCustomers();
     this.getItems();
@@ -44,14 +45,14 @@ export class DispatchInformationTable {
   getCustomers(): void {
     this.customerService.getCombo().subscribe(customers => {
       this.customers = customers;
-      this.customers.unshift({ id: 0, 'code': 'ALL', 'display': 'All Customers' });
+      this.customers.unshift({ id: 0, code: 'ALL', display: 'All Customers' });
     });
   }
 
   getItems(): void {
     this.itemService.getCombo().subscribe(items => {
       this.items = items;
-      this.items.unshift({ id: 0, 'code': 'ALL', 'display': 'All Items' });
+      this.items.unshift({ id: 0, code: 'ALL', display: 'All Items' });
     });
   }
 
@@ -84,12 +85,20 @@ export class DispatchInformationTable {
         pageSize
       )
       .subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
         this.fillTable(data);
       });
   }
 
   fillTable(data: any) {
-    this.rows = data.content;
+    let loadingPlanItemList = data.content;
+    loadingPlanItemList.forEach(loadingPlanItem => {
+      loadingPlanItem.noOfpackages =
+        loadingPlanItem.quantity /
+        loadingPlanItem.packagingSpecification.perPalletQuantity;
+    });
+    this.rows = loadingPlanItemList;
     this.totalRecords = data.totalElements;
   }
 
@@ -133,14 +142,7 @@ export class DispatchInformationTable {
   onItemSelect(item: any) {
     console.log(event);
     this.item = item;
-
   }
 
   /*================== End Of Item Filter ===================*/
 }
-
-
-
-
-
-
