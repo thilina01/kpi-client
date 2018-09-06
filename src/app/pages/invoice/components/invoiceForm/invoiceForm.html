@@ -1,149 +1,157 @@
-<p-panel>
-  <p-header>
-    <div class='row'>
-      <div class='col'>
-        <h4>Invoice Form</h4>
-      </div>
-      <div class='col'>
-        <a routerLink='/pages/invoice/table'>
-          <button type='button' class='btn btn-primary btn-xs' style='float:right; margin-right:6px;'>
-            <i ng-reflect-class-name='fa fa-file-text-o' class='ui-button-icon-left ui-clickable fa fa-fw fa-close'></i>
-          </button>
-        </a>
-      </div>
-    </div>
-  </p-header>
-  <div class='row'>
-    <div class='col-sm-12'>
-      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+<p-tabView>
+  <p-tabPanel header="Invoice">
+    <p-panel>
+      <p-header>
         <div class='row'>
-          <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for="invoiceDate">Invoice Date</label>
-            <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched), 'has-success': (formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched)}">
-              <p-calendar id="invoiceDatePicker" formControlName="invoiceDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
-            </div>
+          <div class='col'>
+            <h4>Invoice Form</h4>
           </div>
-          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for="customer">Customer</label> &nbsp;
-            <br/>
-            <div class="ui-inputgroup">
-              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-                [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-              <a routerLink="/pages/customer/form" target="blank">
-                <button pButton type="button" icon="fa-plus-circle"></button>
-              </a>
-            </div>
-          </div>
-          <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for="invoiceType">InvoiceType</label> &nbsp;
-            <br/>
-            <div class="ui-inputgroup">
-              <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes" (completeMethod)="filterInvoiceTypes($event)"
-                [minLength]="1" size="20" placeholder="Search" >
-                <ng-template let-option pTemplate="option">
-                  <div class="ui-helper-clearfix">
-                    <div>{{option.code}} : {{option.name}}</div>
-                  </div>
-                </ng-template>
-              </p-autoComplete>
-              <a routerLink="/pages/invoiceTypes/form" target="blank">
-                <button pButton type="button" icon="fa-plus-circle"></button>
-              </a>
-            </div>
-          </div>
-          <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for='invoiceNumber'>Invoice Number</label>
-            <br/>
-            <input type='text' pInputText formControlName='invoiceNumber'>
-          </div>
-          <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for='exchangeRate'>Exchange Rate</label>
-            <br/>
-            {{formGroup.value.exchangeRate?.exchangeRateDate}} : {{formGroup.value.exchangeRate?.exchangeRate}}
+          <div class='col'>
+            <a routerLink='/pages/invoice/table'>
+              <button type='button' class='btn btn-primary btn-xs' style='float:right; margin-right:6px;'>
+                <i ng-reflect-class-name='fa fa-file-text-o' class='ui-button-icon-left ui-clickable fa fa-fw fa-close'></i>
+              </button>
+            </a>
           </div>
         </div>
-      </form>
-      <p-panel>
-        <div class="row">
-          <div class=" col-sm-12">
-            <div class="row">
+      </p-header>
+      <div class='row'>
+        <div class='col-sm-12'>
+          <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+            <div class='row'>
+              <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label for="invoiceDate">Invoice Date</label>
+                <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched), 'has-success': (formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched)}">
+                  <p-calendar id="invoiceDatePicker" formControlName="invoiceDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+                </div>
+              </div>
               <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-                <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
+                <label for="customer">Customer</label> &nbsp;
                 <br/>
                 <div class="ui-inputgroup">
-                  <p-autoComplete id="dispatchNoteSelector" [(ngModel)]="selectedDispatchNote" [dropdown]="true" field="display" [suggestions]="filteredDispatchNotes"
-                    (completeMethod)="filterDispatchNotes($event)" [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
+                  <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+                    [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
-                        <div>{{option.display}}</div>
+                        <div>{{option.code}} : {{option.name}}</div>
                       </div>
                     </ng-template>
                   </p-autoComplete>
-                  <a routerLink="/pages/loadingPlan/form" target="blank">
+                  <a routerLink="/pages/customer/form" target="blank">
                     <button pButton type="button" icon="fa-plus-circle"></button>
                   </a>
                 </div>
               </div>
-              <div class="col">
-                <label>&nbsp;</label>
+              <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label for="invoiceType">InvoiceType</label> &nbsp;
                 <br/>
-                <div class="form-group form-inline">
-                  <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
+                <div class="ui-inputgroup">
+                  <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes" (completeMethod)="filterInvoiceTypes($event)"
+                    [minLength]="1" size="20" placeholder="Search">
+                    <ng-template let-option pTemplate="option">
+                      <div class="ui-helper-clearfix">
+                        <div>{{option.code}} : {{option.name}}</div>
+                      </div>
+                    </ng-template>
+                  </p-autoComplete>
+                  <a routerLink="/pages/invoiceTypes/form" target="blank">
+                    <button pButton type="button" icon="fa-plus-circle"></button>
+                  </a>
+                </div>
+              </div>
+              <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label for='invoiceNumber'>Invoice Number</label>
+                <br/>
+                <input type='text' pInputText formControlName='invoiceNumber'>
+              </div>
+              <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label for='exchangeRate'>Exchange Rate</label>
+                <br/> {{formGroup.value.exchangeRate?.exchangeRateDate}} : {{formGroup.value.exchangeRate?.exchangeRate}}
+              </div>
+            </div>
+          </form>
+          <p-panel>
+            <div class="row">
+              <div class=" col-sm-12">
+                <div class="row">
+                  <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
+                    <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
+                    <br/>
+                    <div class="ui-inputgroup">
+                      <p-autoComplete id="dispatchNoteSelector" [(ngModel)]="selectedDispatchNote" [dropdown]="true" field="display" [suggestions]="filteredDispatchNotes"
+                        (completeMethod)="filterDispatchNotes($event)" [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
+                        <ng-template let-option pTemplate="option">
+                          <div class="ui-helper-clearfix">
+                            <div>{{option.display}}</div>
+                          </div>
+                        </ng-template>
+                      </p-autoComplete>
+                      <a routerLink="/pages/loadingPlan/form" target="blank">
+                        <button pButton type="button" icon="fa-plus-circle"></button>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <label>&nbsp;</label>
+                    <br/>
+                    <div class="form-group form-inline">
+                      <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>
+                      &nbsp;&nbsp;
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" (onEditComplete)="onEditComplete($event)" [rows]="20" [responsive]="true"
+                      resizableColumns="true">
+                      <p-column field="id" header="ID"></p-column>
+                      <p-column field="dispatchSchedule.id" header="Dispatch No"></p-column>
+                      <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
+                      <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
+                      <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
+                      <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
+                      <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
+                      <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
+                      <p-column field="packagingSpecification.display" styleClass="text-right" header="Packaging Specification"></p-column>
+                      <p-column field="cubicMeter" styleClass="text-right" header="CBM"></p-column>
+                      <p-column field="invoiceQuantity" styleClass="text-right" header="Quantity"></p-column>
+                      <p-column field="unitPrice" [editable]="true" styleClass="text-right" header="Unit Price">
+                        <!--                     <ng-template let-col let-loadingPlanItem="rowData" pTemplate="body">
+                      {{loadingPlanItem.unitPrice | number : '1.2-2'}}
+                    </ng-template> -->
+                      </p-column>
+                      <p-column field="amount" header="Amount" styleClass="text-right">
+                        <ng-template let-col let-loadingPlanItem="rowData" pTemplate="body">
+                          {{loadingPlanItem.amount | number : '1.2-2'}}
+                        </ng-template>
+                      </p-column>
+                      <p-footerColumnGroup>
+                        <p-row>
+                          <p-column footer="Total Value" colspan="12" styleClass="text-right"></p-column>
+                          <p-column footer="{{totalAmount|number : '1.2-2'}}" styleClass="text-right"></p-column>
+                        </p-row>
+                      </p-footerColumnGroup>
+                    </p-dataTable>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" (onEditComplete)="onEditComplete($event)"  [rows]="20" [responsive]="true" resizableColumns="true">
-                  <p-column field="id" header="ID"></p-column>
-                  <p-column field="dispatchSchedule.id" header="Dispatch No"></p-column>
-                  <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
-                  <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
-                  <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
-                  <p-column field="dispatchSchedule.salesOrderItem.customerItem.name" header="Customer Item Name"></p-column>
-                  <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>
-                  <p-column field="dispatchSchedule.job.item.size" header="Size"></p-column>
-                  <p-column field="packagingSpecification.display" styleClass="text-right" header="Packaging Specification"></p-column>
-                  <p-column field="cubicMeter" styleClass="text-right" header="CBM"></p-column>
-                  <p-column field="invoiceQuantity" styleClass="text-right" header="Quantity"></p-column>
-                  <p-column field="unitPrice"[editable]="true" styleClass="text-right" header="Unit Price">
-<!--                     <ng-template let-col let-loadingPlanItem="rowData" pTemplate="body">
-                      {{loadingPlanItem.unitPrice | number : '1.2-2'}}
-                    </ng-template> -->
-                  </p-column>
-                  <p-column field="amount" header="Amount" styleClass="text-right">
-                    <ng-template let-col let-loadingPlanItem="rowData" pTemplate="body">
-                      {{loadingPlanItem.amount | number : '1.2-2'}}
-                    </ng-template>
-                  </p-column>
-                  <p-footerColumnGroup>
-                    <p-row>
-                      <p-column footer="Total Value" colspan="12" styleClass="text-right"></p-column>
-                      <p-column footer="{{totalAmount|number : '1.2-2'}}" styleClass="text-right"></p-column>
-                    </p-row>
-                  </p-footerColumnGroup>
-                </p-dataTable>
+          </p-panel>
+          <br/>
+          <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+            <div class='row'>
+              <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
+                <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+                <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+                <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
-      </p-panel>
-      <br/>
-      <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
-        <div class='row'>
-          <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
-            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
-            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
-            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</p-panel>
+      </div>
+    </p-panel>
+  </p-tabPanel>
+  <p-tabPanel header="Credit Note">
+    <credit-note-form> </credit-note-form>
+  </p-tabPanel>
+</p-tabView>
