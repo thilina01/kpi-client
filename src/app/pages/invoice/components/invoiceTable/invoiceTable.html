@@ -1,105 +1,113 @@
-<p-panel>
-  <p-header>
-    <div class='row'>
-      <div class='col'>
-        <h4>Invoice List</h4>
-      </div>
-      <div class='col'>
-        <button type='button' class='btn btn-primary btn-xs' (click)='dt.exportCSV()' style='float:right; margin-right:6px;'>
-          <i ng-reflect-class-name='fa fa-file-text-o' class='fa fa-file-text-o'></i> Export</button>
-        <button type='button' class='btn btn-primary btn-xs' (click)='navigateToForm(0)' style='float:right; margin-right:6px;'>
-          <i ng-reflect-class-name='fa fa-pencil-square-o' class='fa fa-pencil-square-o'></i> Add</button>
-      </div>
-    </div>
-  </p-header>
-  <p-dataTable #dt [value]='rows' [rows]='20' [responsive]='true' [paginator]='true' [totalRecords]='totalRecords' [lazy]='true'
-    (onLazyLoad)='lazy($event,dt)' [pageLinks]='5' [rowsPerPageOptions]='[10,20,50,100,10000]' selectionMode='single' sortMode='multiple'
-    resizableColumns='true' exportFilename='invoices' (onRowDblclick)='onRowDblclick($event.data)'>
-    <p-header>
-      <div class="row">
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-          Duration Start
-          <br/>
-          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-          Duration End
-          <br/>
-          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-          Customer
-          <div class="ui-inputgroup">
-            <p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
-              [size]="25" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-            </p-autoComplete>
+<p-tabView>
+  <p-tabPanel header="Invoice">
+    <p-panel>
+      <p-header>
+        <div class='row'>
+          <div class='col'>
+            <h4>Invoice List</h4>
+          </div>
+          <div class='col'>
+            <button type='button' class='btn btn-primary btn-xs' (click)='dt.exportCSV()' style='float:right; margin-right:6px;'>
+              <i ng-reflect-class-name='fa fa-file-text-o' class='fa fa-file-text-o'></i> Export</button>
+            <button type='button' class='btn btn-primary btn-xs' (click)='navigateToForm(0)' style='float:right; margin-right:6px;'>
+              <i ng-reflect-class-name='fa fa-pencil-square-o' class='fa fa-pencil-square-o'></i> Add</button>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-          <br/>
-          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
-            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
-          </button> &nbsp;&nbsp;{{totalRecords}}
-        </div>
-      </div>
-    </p-header>
-    <p-column field='id' header='ID'></p-column>
-    <p-column field="invoiceDate" header="Invoice Date">
-      <ng-template let-col let-rowData="rowData" pTemplate="body">
-        {{rowData.invoiceDate | date:'y-MM-dd'}}
-      </ng-template>
-    </p-column>
-    <p-column field='invoiceNumber' header='Invoice Number' styleClass="text-right" [sortable]='true'></p-column>
-    <p-column field='customer.code' header='Customer Code' styleClass="text-right" [sortable]='true'></p-column>
-    <p-column field='customer.name' header='Customer' [sortable]='true'></p-column>
-    <p-column field='invoiceType.name' header='Invoice Type' [sortable]='true'></p-column>
-    <p-column field='totalAmount' styleClass="text-right" header='Total Sale USD' [sortable]='true'>
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{rowData.totalAmount | number : '1.2-2'}}
-      </ng-template>
-    </p-column>
+      </p-header>
+      <p-dataTable #dt [value]='rows' [rows]='20' [responsive]='true' [paginator]='true' [totalRecords]='totalRecords' [lazy]='true'
+        (onLazyLoad)='lazy($event,dt)' [pageLinks]='5' [rowsPerPageOptions]='[10,20,50,100,10000]' selectionMode='single' sortMode='multiple'
+        resizableColumns='true' exportFilename='invoices' (onRowDblclick)='onRowDblclick($event.data)'>
+        <p-header>
+          <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+              Duration Start
+              <br/>
+              <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+              Duration End
+              <br/>
+              <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+              Customer
+              <div class="ui-inputgroup">
+                <p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
+                  [size]="25" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                </p-autoComplete>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+              <br/>
+              <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+                <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+              </button> &nbsp;&nbsp;{{totalRecords}}
+            </div>
+          </div>
+        </p-header>
+        <p-column field='id' header='ID'></p-column>
+        <p-column field="invoiceDate" header="Invoice Date">
+          <ng-template let-col let-rowData="rowData" pTemplate="body">
+            {{rowData.invoiceDate | date:'y-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column field='invoiceNumber' header='Invoice Number' styleClass="text-right" [sortable]='true'></p-column>
+        <p-column field='customer.code' header='Customer Code' styleClass="text-right" [sortable]='true'></p-column>
+        <p-column field='customer.name' header='Customer' [sortable]='true'></p-column>
+        <p-column field='invoiceType.name' header='Invoice Type' [sortable]='true'></p-column>
+        <p-column field='totalAmount' styleClass="text-right" header='Total Sale USD' [sortable]='true'>
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{rowData.totalAmount | number : '1.2-2'}}
+          </ng-template>
+        </p-column>
 
-    <p-column field="totalSalesAmount" styleClass="text-right" header="Total Sale LKR">
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{(rowData.totalSalesAmount)| number : '1.2-2' }}
-      </ng-template>
-    </p-column>
-    <p-column field='exchangeRate.exchangeRate' styleClass="text-right" header='Exchange Rate' [sortable]='true'>
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{rowData.exchangeRate.exchangeRate | number : '1.2-2'}}
-      </ng-template>
-    </p-column>
-    <p-column field='totalWeight' header='Total Weight KG' styleClass="text-right" [sortable]='true'>
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{rowData.totalWeight | number : '1.0-0'}}
-      </ng-template>
-    </p-column>
-    <p-column field='taxRate' styleClass="text-right" header='Tax Rate' [sortable]='true'>
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{((rowData.taxRate)*100)| number : '1.0-0'}}%
-      </ng-template>
-    </p-column>
-    <p-column field="taxValue" styleClass="text-right" header="Tax Value">
-      <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
-        {{(rowData.taxValue)| number : '1.2-2' }}
-      </ng-template>
-    </p-column>
-    <p-column header='Action' styleClass='text-right'>
-      <ng-template let-data='rowData' pTemplate='body'>
-        <a (click)="print(data)" href="javascript:void(0)">
-          &nbsp;
-          <i ng-reflect-class-name="fa fa-print" class="fa fa-print"></i>
-          &nbsp;
-        </a>
-        <a [routerLink]='"/pages/invoice/form/"+data.id'target="blank">
-          <i ng-reflect-class-name='fa fa-pencil-square-o' class='fa fa-pencil-square-o'></i>
-        </a>
-        &nbsp; &nbsp;
-        <i (click)='delete(data.id)' ng-reflect-class-name='fa fa-trash-o' class='fa fa-trash-o'></i>
-      </ng-template>
-    </p-column>
-  </p-dataTable>
-</p-panel>
+        <p-column field="totalSalesAmount" styleClass="text-right" header="Total Sale LKR">
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{(rowData.totalSalesAmount)| number : '1.2-2' }}
+          </ng-template>
+        </p-column>
+        <p-column field='exchangeRate.exchangeRate' styleClass="text-right" header='Exchange Rate' [sortable]='true'>
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{rowData.exchangeRate.exchangeRate | number : '1.2-2'}}
+          </ng-template>
+        </p-column>
+        <p-column field='totalWeight' header='Total Weight KG' styleClass="text-right" [sortable]='true'>
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{rowData.totalWeight | number : '1.0-0'}}
+          </ng-template>
+        </p-column>
+        <p-column field='taxRate' styleClass="text-right" header='Tax Rate' [sortable]='true'>
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{((rowData.taxRate)*100)| number : '1.0-0'}}%
+          </ng-template>
+        </p-column>
+        <p-column field="taxValue" styleClass="text-right" header="Tax Value">
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{(rowData.taxValue)| number : '1.2-2' }}
+          </ng-template>
+        </p-column>
+        <p-column header='Action' styleClass='text-right'>
+          <ng-template let-data='rowData' pTemplate='body'>
+            <a (click)="print(data)" href="javascript:void(0)">
+              &nbsp;
+              <i ng-reflect-class-name="fa fa-print" class="fa fa-print"></i>
+              &nbsp;
+            </a>
+            <a [routerLink]='"/pages/invoice/form/"+data.id' target="blank">
+              <i ng-reflect-class-name='fa fa-pencil-square-o' class='fa fa-pencil-square-o'></i>
+            </a>
+            &nbsp; &nbsp;
+            <i (click)='delete(data.id)' ng-reflect-class-name='fa fa-trash-o' class='fa fa-trash-o'></i>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </p-panel>
+  </p-tabPanel>
+  <p-tabPanel header="Credit Note">
+  <credit-note-table> </credit-note-table>
+  </p-tabPanel>
+</p-tabView>
+
 
 <commercial-invoice-print [(id)]='commercialInvoiceId'></commercial-invoice-print>
 <suspended-invoice-print [(id)]='suspendedInvoiceId'></suspended-invoice-print>

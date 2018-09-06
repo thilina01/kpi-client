@@ -32,4 +32,9 @@ export class LoadingPlanItemService extends MasterService {
     return this.http.get(this.apiUrl + 'dispatchReject?customer=' + customer+  '&item=' + item +'&dispatchNote=' + dispatchNote + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
+
+  getByInvoice(invoiceId): Observable<any> {
+    return this.http.get(this.apiUrl + 'byInvoiceId?invoiceId=' + invoiceId, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
 }
