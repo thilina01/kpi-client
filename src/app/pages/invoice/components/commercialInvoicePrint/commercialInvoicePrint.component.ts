@@ -76,6 +76,8 @@ export class CommercialInvoicePrint {
                   this.totalAmount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
                   xLoadingPlanItem.invoiceQuantity += yLoadingPlanItem.invoiceQuantity;
                   xLoadingPlanItem.amount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
+                  xLoadingPlanItem.weight = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.job.item.weight;
+                  this.totalWeight += xLoadingPlanItem.weight;
                   found = true;
                   break;
                 }
