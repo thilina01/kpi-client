@@ -186,7 +186,7 @@
             / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
           </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.invoiceQuantity}} </td>
-          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.unitPrice}} </td>
+          <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.unitPrice)|number : '1.2-2'}} </td>
           <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
         </tr>
         <tr>
