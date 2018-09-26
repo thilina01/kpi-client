@@ -160,7 +160,7 @@
                 </td>
                 <td>{{invoice.customer?.currency?.name}}
                 </td>
-                <td>{{invoice.exchangeRate?.exchangeRate}}
+                <td>{{(invoice.exchangeRate?.exchangeRate)| number : '1.5-5'}}
                 </td>
                 <td>{{(totalWeight)| number : '1.3-3'}}
                 </td>
