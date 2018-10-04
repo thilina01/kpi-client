@@ -55,6 +55,11 @@
         <p-column field='customer.code' header='Customer Code' styleClass="text-right" [sortable]='true'></p-column>
         <p-column field='customer.name' header='Customer' [sortable]='true'></p-column>
         <p-column field='invoiceType.name' header='Invoice Type' [sortable]='true'></p-column>
+        <p-column field='containerSize' header='Container Size' [sortable]='true'>
+          <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
+            {{rowData.containerSize}}
+          </ng-template>
+        </p-column>
         <p-column field='totalAmount' styleClass="text-right" header='Total Sale USD' [sortable]='true'>
           <ng-template let-col let-rowData="rowData" styleClass="text-right" pTemplate="body">
             {{rowData.totalAmount | number : '1.2-2'}}

@@ -91,9 +91,11 @@ export class InvoiceTable {
       let totalAmount = 0.0;
       let totalSalesAmount = 0.0;
       let  taxValue = 0.0;
+      let containerSize = null;
 
       invoice.dispatchNoteList.forEach(dispatchNote => {
         dispatchNote.loadingPlanList.forEach(loadingPlan => {
+          containerSize = loadingPlan.containerSize.name;
           loadingPlan.loadingPlanItemList.forEach(loadingPlanItem => {
 
             loadingPlanItem.weight = loadingPlanItem.invoiceQuantity * loadingPlanItem.dispatchSchedule.job.item.weight;
@@ -114,6 +116,7 @@ export class InvoiceTable {
       invoice.totalSalesAmount = invoice.totalAmount * invoice.exchangeRate.exchangeRate;
       invoice.taxValue = taxValue;
       invoice.taxValue = invoice.totalSalesAmount * invoice.taxRate;
+      invoice.containerSize = containerSize;
 
     });
 
