@@ -164,19 +164,28 @@ export class SalesOrderForm {
     }
 
     public onEnter(unitPrice: string, dt: DataTable) {
-        if (this.salesOrderItemFormGroup.valid) {
-            let values = this.salesOrderItemFormGroup.value;
-            if (this.formGroup.value.salesOrderItemList == null) {
-                this.formGroup.value.salesOrderItemList = [];
-            }
-            values.amount = values.unitPrice * values.quantity;
-            this.formGroup.value.salesOrderItemList.push(values);
-            this.calculateTotal();
-            this.salesOrderItemFormGroup.reset();
-            document.getElementById('customerItemSelector').focus();
-            this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
+      if (this.salesOrderItemFormGroup.valid) {
+        let values = this.salesOrderItemFormGroup.value;
+        if (this.formGroup.value.salesOrderItemList == null) {
+          this.formGroup.value.salesOrderItemList = [];
         }
 
+        for (let i = 0; i < this.formGroup.value.salesOrderItemList.length; i++) {
+          let salesOrderItem = this.formGroup.value.salesOrderItemList[i];
+          if (salesOrderItem === undefined) return;
+          if (salesOrderItem.customerItem.id === this.selectedCustomerItem.id) {
+            alert('Already Added');
+            return;
+          }
+        }
+
+        values.amount = values.unitPrice * values.quantity;
+        this.formGroup.value.salesOrderItemList.push(values);
+        this.calculateTotal();
+        this.salesOrderItemFormGroup.reset();
+        document.getElementById('customerItemSelector').focus();
+        this.formGroup.value.salesOrderItemList = this.formGroup.value.salesOrderItemList.slice();
+      }
     }
 
     calculateTotal() {
@@ -194,6 +203,7 @@ export class SalesOrderForm {
 
     /*================== Customer Item Filter ===================*/
     filteredCustomerItems: any[];
+    selectedCustomerItem: any;
 
     filterCustomerItems(event) {
         let query = event.query.toLowerCase();
