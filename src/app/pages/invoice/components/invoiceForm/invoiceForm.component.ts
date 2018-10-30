@@ -244,6 +244,7 @@ export class InvoiceForm {
   public resetForm() {
     this.formGroup.reset();
     this.totalAmount = 0.0;
+    this.selectedDispatchNote = '';
     this.loadingPlanItemList = [];
     this.loadingPlanItemList = this.loadingPlanItemList.slice();
   }
@@ -355,8 +356,8 @@ export class InvoiceForm {
 
   onCustomerSelect(event: any) {
     let customer = this.formGroup.value.customer;
-    this.invoiceDate = this.formGroup.value.invoiceDate;
-    console.log(this.invoiceDate);
+    this.resetForm();
+    this.formGroup.patchValue({customer: customer, invoiceDate : new Date()}, { onlySelf: true });
     this.setDisplayOfCustomer(customer);
     this.getDispatchNoteListByCustomer(+customer.id);
     this.getCurrencyByCustomer(+customer.id);
