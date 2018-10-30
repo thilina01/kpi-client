@@ -115,6 +115,8 @@ export class DispatchNoteForm {
 
   public resetForm() {
     this.formGroup.reset();
+    this.totalQuantity = 0.0;
+    this.selectedLoadingPlan = '';
     this.loadingPlanItemList = [];
     this.loadingPlanItemList = this.loadingPlanItemList.slice();
   }
@@ -177,6 +179,8 @@ export class DispatchNoteForm {
 
   onCustomerSelect(event: any) {
     let customer = this.formGroup.value.customer;
+    this.resetForm();
+    this.formGroup.patchValue({customer: customer}, { onlySelf: true });
     this.setDisplayOfCustomer(customer);
     this.getLoadingPlanListByCustomer(+customer.id);
   }
