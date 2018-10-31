@@ -22,6 +22,7 @@ export class InvoiceTable {
   totalRecords: number;
   customers: any;
   timeout: any;
+  invoiceNumber: any;
   rows = [];
   customer: any = { id: 0, code: 'ALL', display: 'All Customers' };
   pageSize = 20;
@@ -44,7 +45,7 @@ export class InvoiceTable {
 
   loadData() {
     this.service
-      .getCustomerAndInvoiceDateBetweenPage(0, '1970-01-01', '2100-12-31', 0, 20)
+      .getCustomerAndInvoiceDateBetweenPage(0, 0, '1970-01-01', '2100-12-31', 0, 20)
       .subscribe((data: any) => {
         this.search(0, 0);
       });
@@ -59,6 +60,7 @@ export class InvoiceTable {
     pageSize = pageSize === undefined ? this.pageSize : pageSize;
     this.service.getCustomerAndInvoiceDateBetweenPage(
         this.customer !== undefined ? this.customer.id : 0,
+        this.invoiceNumber !== undefined ? this.invoiceNumber : 0,
         this.startDate === undefined
           ? '1970-01-01'
           : this.sharedService.YYYYMMDD(this.startDate),

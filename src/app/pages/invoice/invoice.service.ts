@@ -30,8 +30,8 @@ export class InvoiceService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
-  getCustomerAndInvoiceDateBetweenPage(customer, startDate, endDate, page, size): Observable<any> {
-    return this.http.get(this.apiUrl + 'customerAndInvoiceDateBetween?customer=' + customer + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
+  getCustomerAndInvoiceDateBetweenPage(customer, invoiceNumber, startDate, endDate, page, size): Observable<any> {
+    return this.http.get(this.apiUrl + 'customerAndInvoiceDateBetween?customer=' + customer +'&invoiceNumber=' + invoiceNumber + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 }
