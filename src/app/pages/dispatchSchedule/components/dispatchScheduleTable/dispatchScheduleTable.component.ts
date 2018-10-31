@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { DispatchScheduleService } from '../../dispatchSchedule.service';
 import { CustomerService } from '../../../customer/customer.service';
 import { JobService } from '../../../job/job.service';
+import { SalesOrderService } from '../../../salesOrder/salesOrder.service';
 
 @Component({
   selector: 'dispatch-schedule-table',
@@ -22,21 +23,24 @@ export class DispatchScheduleTable {
   startDate: Date;
   endDate: Date;
   customers: any;
+  salesOrders: any;
   jobs: any;
   pageSize = 20;
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
   job: any = { id: 0, 'code': 'ALL', 'display': 'All Jobs' }
+  salesOrder: any = { id: 0, code: 'ALL', display: 'All' };
 
   constructor(protected service: DispatchScheduleService,
     private router: Router,
     private customerService: CustomerService,
     private jobService: JobService,
+    private salesOrderService: SalesOrderService,
     private confirmationService: ConfirmationService,
     private sharedService: SharedService) {
     this.loadData();
     this.getCustomers();
     this.getJobs();
-
+    this.getSalesOrders();
   }
   getJobs(): void {
     this.jobService.getCombo().subscribe(jobs => {
@@ -51,9 +55,20 @@ export class DispatchScheduleTable {
     });
   }
 
+  getSalesOrders(): void {
+    this.salesOrderService.getCombo().subscribe(salesOrders => {
+      this.salesOrders = salesOrders;
+      this.salesOrders.unshift({
+        id: 0,
+        code: 'ALL',
+        display: 'All'
+      });
+    });
+  }
+
   loadData() {
     this.service
-      .getDispatchSchedulePage(0, 0, "1970-01-01", "2100-12-31", 0, 20)
+      .getDispatchSchedulePage(0, 0, 0, "1970-01-01", "2100-12-31", 0, 20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
@@ -70,6 +85,7 @@ export class DispatchScheduleTable {
       .getDispatchSchedulePage(
         this.customer !== undefined ? this.customer.id : 0,
         this.job !== undefined ? this.job.id : 0,
+        this.salesOrder !== undefined ? this.salesOrder.id : 0,
         this.startDate === undefined
           ? "1970-01-01"
           : this.sharedService.YYYYMMDD(this.startDate),
@@ -151,4 +167,23 @@ export class DispatchScheduleTable {
     this.job = job;
   }
   /*================== End Of Job Filter ===================*/
+   /*================== SalesOrder Filter ===================*/
+   filteredSalesOrders: any[];
+
+   filterSalesOrders(event) {
+    let query = event.query.toLowerCase();
+    this.filteredSalesOrders = [];
+    for (let i = 0; i < this.salesOrders.length; i++) {
+      let salesOrder = this.salesOrders[i];
+      if (salesOrder.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredSalesOrders.push(salesOrder);
+      }
+    }
+  }
+
+  onSalesOrderSelect(salesOrder: any) {
+    console.log(event);
+    this.salesOrder = salesOrder;
+  }
+  /*================== End Of SalesOrder Filter ===================*/
 }
