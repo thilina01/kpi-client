@@ -12,9 +12,38 @@
       </div>
     </div>
   </p-header>
-  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
-    (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-    resizableColumns="true" exportFilename="exchangeRates" (onRowDblclick)="onRowDblclick($event.data)">
+  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
+    [lazy]="true" (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]"
+    selectionMode="single" sortMode="multiple" resizableColumns="true" exportFilename="exchangeRates" (onRowDblclick)="onRowDblclick($event.data)">
+    <p-header>
+      <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration Start
+          <br />
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration End
+          <br />
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Currency
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="currency" field="display" [suggestions]="filteredCurrencyList"
+              (completeMethod)="filterCurrencyList($event)" [size]="25" [minLength]="1" [dropdown]="true" placeholder="Search"
+              (onSelect)="onCurrencySelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          <br />
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+      </div>
+    </p-header>
     <p-column field="id" header="ID"></p-column>
     <p-column field="exchangeRateDate" header="Date">
       <ng-template let-col let-rowData="rowData" pTemplate="body">
@@ -25,7 +54,7 @@
     <p-column field="exchangeRate" header="Ex.Rate" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">
-        <a [routerLink]="'/pages/exchangeRate/form/'+data.id"target="blank">
+        <a [routerLink]="'/pages/exchangeRate/form/'+data.id" target="blank">
           <i ng-reflect-class-name="fa fa-pencil-square-o" class="fa fa-pencil-square-o"></i>
         </a>
         &nbsp; &nbsp;
