@@ -314,9 +314,12 @@ export class LoadingPlanForm {
       this.filteredCustomerList = this.customerList;
     }, 100);
   }
-  onCustomerSelect(customerCombo: any) {
-    this.getDispatchScheduleListByCustomer(+customerCombo.id);
+
+  onCustomerSelect(event: any) {
     let customer = this.formGroup.value.customer;
+    // this.reset();
+    // this.formGroup.patchValue({customer: customer, loadingPlanDate : new Date()}, { onlySelf: true });
+    this.getDispatchScheduleListByCustomer(+customer.id);
     this.setDisplayOfCustomer(customer);
     this.getaAddressListByCustomer(+customer.id);
   }
