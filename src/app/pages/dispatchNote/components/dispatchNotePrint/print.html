@@ -4,14 +4,14 @@
     <div class='row'>
       <div class="col-6">
         <img src="/assets/img/logo.png" />
-        <br/>
-        <br/>
+        <br />
+        <br />
         <b>{{organization===undefined?'':organization.name}} </b>
-        <br/> No: 218, Minuwangoda Road,
-        <br/> Ekala, Ja-Ela
-        <br/> Sri Lanka.
-        <br/>
-        <br/>
+        <br /> No: 218, Minuwangoda Road,
+        <br /> Ekala, Ja-Ela
+        <br /> Sri Lanka.
+        <br />
+        <br />
       </div>
       <div class="col-6">
 
@@ -22,18 +22,17 @@
             </h2>
           </div>
           <table class="table table-bordered">
-            <!-- table-bordered table-condensed -->
             <tr>
-              <td>
+              <td style="font-size: 20px">
                 <b>ID</b>
               </td>
-              <td>{{dispatchNote.id}}</td>
+              <td style="font-size: 20px">{{dispatchNote.id}}</td>
             </tr>
             <tr>
-              <td>
+              <td style="font-size: 20px">
                 <b>Date</b>
               </td>
-              <td>{{dispatchNote.dispatchDate}}</td>
+              <td style="font-size: 20px">{{dispatchNote.dispatchDate}}</td>
             </tr>
           </table>
         </div>
@@ -47,14 +46,14 @@
               <b>Customer</b>
             </h3>
           </div>
-          <div class="panel-body">
+          <div style="font-size: 20px " class="panel-body">
             {{dispatchNote.customer.code}}
-            <br/> {{dispatchNote.customer.name}}
-            <br/> {{xAddress?.line1}}
-            <br/> {{xAddress?.line2}}
-            <br/> {{xAddress?.line3}}
-            <br/> {{xAddress?.line4}}
-            <br/> {{xAddress?.line5}}
+            <br /> {{dispatchNote.customer.name}}
+            <br /> {{xAddress?.line1}}
+            <br /> {{xAddress?.line2}}
+            <br /> {{xAddress?.line3}}
+            <br /> {{xAddress?.line4}}
+            <br /> {{xAddress?.line5}}
           </div>
         </div>
       </div>
@@ -65,52 +64,62 @@
               <b>Destination</b>
             </h3>
           </div>
-          <div class="panel-body">
-            <br/> {{xAddress?.line1}}
-            <br/> {{xAddress?.line2}}
-            <br/> {{xAddress?.line3}}
-            <br/> {{xAddress?.line4}}
-            <br/> {{xAddress?.line5}}
+          <div style="font-size: 20px " class="panel-body">
+            {{dispatchNote.customer.name}}
+            <br /> {{xAddress?.line1}}
+            <br /> {{xAddress?.line2}}
+            <br /> {{xAddress?.line3}}
+            <br /> {{xAddress?.line4}}
+            <br /> {{xAddress?.line5}}
           </div>
         </div>
       </div>
     </div>
     <div class='row'>
       <div class="col-12">
-        <br/>
+        <br />
         <table class="table table-bordered">
           <tr>
-            <th>#</th>
-            <th class="text-center">Job</th>
-            <th class="text-center">PO</th>
-            <th class="text-center">Customer Item</th>
-            <th class="text-center">Item Code</th>
-            <th class="text-center">Description</th>
-            <th class="text-center">No of Packagers</th>
-            <th class="text-center">Quantity</th>
+            <th style="font-size: 20px ">#</th>
+            <th style="font-size: 20px " class="text-center">Job</th>
+            <th style="font-size: 20px " class="text-center">PO</th>
+            <th style="font-size: 20px " class="text-center">Item Code</th>
+            <th style="font-size: 20px " class="text-center">Description</th>
+            <th style="font-size: 20px " class="text-center">No of Packagers</th>
+            <th style="font-size: 20px " class="text-center">Quantity</th>
           </tr>
           <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
-            <td> {{ i+1 }} </td>
-            <td> {{ loadingPlanItem.dispatchSchedule.job.jobNo }} </td>
-            <td> {{ loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </td>
-            <td> {{ loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code }} </td>
-            <td> {{ loadingPlanItem.dispatchSchedule.job.item.code }} </td>
-            <td>
+            <td style="font-size: 20px "> {{ i+1 }} </td>
+            <td style="font-size: 20px "> {{ loadingPlanItem.dispatchSchedule.job.jobNo }} </td>
+            <td style="font-size: 20px ">
+              <span style="white-space:nowrap">
+                {{ loadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber }} </span>
+            </td>
+            <td style="font-size: 20px "><span style="white-space:nowrap"> {{
+                loadingPlanItem.dispatchSchedule.salesOrderItem.customerItem.code }} </span>
+              <br />
+              <span style="white-space:nowrap">
+                {{ loadingPlanItem.dispatchSchedule.job.item.code }} </span>
+            </td>
+            <td style="font-size: 20px">
               {{ loadingPlanItem.dispatchSchedule.job.item.size }}
-              <br/> {{ loadingPlanItem.dispatchSchedule.job.item.description }}
+              <br />
+              <span style="white-space:normal">{{ loadingPlanItem.dispatchSchedule.job.item.description }}</span>
             </td>
-            <td class="text-center" style="vertical-align:top"> {{(loadingPlanItem.noOfpackages) | number : '1.0-0'}}
+            <td class="text-center" style="vertical-align:top;font-size: 20px">
+              {{(loadingPlanItem.noOfpackages) | number : '1.0-0'}}
             </td>
-            <td class="text-center" style="vertical-align:top"> {{ loadingPlanItem.quantity}} </td>
+            <td class="text-center" style="vertical-align:top;font-size: 20px"> {{ loadingPlanItem.quantity}}
+            </td>
           </tr>
           <tr>
-            <td colspan="6" class="text-right">
+            <td style="font-size: 20px " colspan="5" class="text-right">
               <b>Total</b>
             </td>
-            <td class="text-center">
+            <td style="width:10%;font-size: 21px " class="text-center">
               <b>{{totalNumberOfPackages|number : '1.0-0'}}</b>
             </td>
-            <td class="text-center">
+            <td style="font-size: 21px " class="text-center">
               <b>{{totalQuantity}}</b>
             </td>
           </tr>
@@ -123,58 +132,58 @@
 
           <table class="table table-bordered text-center">
             <tr>
-              <td colspan="2">
+              <td style="font-size: 20px " colspan="2">
                 <b>Inventory</b>
               </td>
-              <td colspan="2">
+              <td style="font-size: 20px " colspan="2">
                 <b>Quality Control</b>
               </td>
-              <td colspan="2">
+              <td style="font-size: 20px " colspan="2">
                 <b>Production</b>
               </td>
             </tr>
             <tr>
               <td colspan="2">
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
               </td>
               <td colspan="2">
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
               </td>
               <td colspan="2">
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
               </td>
             </tr>
 
             <tr>
-              <td colspan="3">
+              <td style="font-size: 20px " colspan="3">
                 <b>Security</b>
               </td>
-              <td colspan="3">
+              <td style="font-size: 20px " colspan="3">
                 <b>Received By</b>
               </td>
             </tr>
             <tr>
               <td colspan="3">
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
               </td>
               <td colspan="3">
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
               </td>
             </tr>
           </table>
