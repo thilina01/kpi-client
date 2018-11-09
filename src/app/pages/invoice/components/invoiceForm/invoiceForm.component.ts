@@ -165,6 +165,8 @@ export class InvoiceForm {
     this.setDisplayOfCustomer(this.invoice.customer);
     this.setDisplayOfDispatchNote();
     this.fillTable();
+    this.getDispatchNoteListByCustomer(this.invoice.customer.id);
+
   }
 
   public onEnter() {
