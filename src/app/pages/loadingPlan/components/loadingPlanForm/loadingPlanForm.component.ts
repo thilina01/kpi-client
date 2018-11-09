@@ -168,6 +168,7 @@ export class LoadingPlanForm {
     this.setDisplayOfDispatchSchedule();
     this.setDisplayOfPackagingSpecification();
     this.getaAddressListByCustomer(this.loadingPlan.customer.id);
+    this.getDispatchScheduleListByCustomer(this.loadingPlan.customer.id);
   }
 
   public onSubmit(values: any, event: Event): void {
