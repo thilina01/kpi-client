@@ -167,6 +167,7 @@ export class LoadingPlanForm {
     this.setDisplayOfAddress();
     this.setDisplayOfDispatchSchedule();
     this.setDisplayOfPackagingSpecification();
+    this.getaAddressListByCustomer(this.loadingPlan.customer.id);
   }
 
   public onSubmit(values: any, event: Event): void {
