@@ -27,10 +27,10 @@
               </div>
               <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
                 <label for="customer">Customer</label> &nbsp;
-                <br/>
+                <br />
                 <div class="ui-inputgroup">
-                  <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
-                    [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                  <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList"
+                    (completeMethod)="filterCustomerList($event)" [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
                         <div>{{option.code}} : {{option.name}}</div>
@@ -44,10 +44,10 @@
               </div>
               <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
                 <label for="invoiceType">InvoiceType</label> &nbsp;
-                <br/>
+                <br />
                 <div class="ui-inputgroup">
-                  <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes" (completeMethod)="filterInvoiceTypes($event)"
-                    [minLength]="1" size="20" placeholder="Search">
+                  <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes"
+                    (completeMethod)="filterInvoiceTypes($event)" [minLength]="1" size="20" placeholder="Search">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
                         <div>{{option.code}} : {{option.name}}</div>
@@ -61,12 +61,13 @@
               </div>
               <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
                 <label for='invoiceNumber'>Invoice Number</label>
-                <br/>
+                <br />
                 <input type='text' pInputText formControlName='invoiceNumber'>
               </div>
               <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
                 <label for='exchangeRate'>Exchange Rate</label>
-                <br/> {{formGroup.value.exchangeRate?.exchangeRateDate}} : {{formGroup.value.exchangeRate?.exchangeRate}}
+                <br /> {{formGroup.value.exchangeRate?.exchangeRateDate}} :
+                {{formGroup.value.exchangeRate?.exchangeRate}}
               </div>
             </div>
           </form>
@@ -76,10 +77,11 @@
                 <div class="row">
                   <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
                     <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
-                    <br/>
+                    <br />
                     <div class="ui-inputgroup">
-                      <p-autoComplete id="dispatchNoteSelector" [(ngModel)]="selectedDispatchNote" [dropdown]="true" field="display" [suggestions]="filteredDispatchNotes"
-                        (completeMethod)="filterDispatchNotes($event)" [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
+                      <p-autoComplete id="dispatchNoteSelector" [(ngModel)]="selectedDispatchNote" [dropdown]="true"
+                        field="display" [suggestions]="filteredDispatchNotes" (completeMethod)="filterDispatchNotes($event)"
+                        [minLength]="1" placeholder="Search" (onSelect)="onDispatchNoteSelect($event)">
                         <ng-template let-option pTemplate="option">
                           <div class="ui-helper-clearfix">
                             <div>{{option.display}}</div>
@@ -93,17 +95,18 @@
                   </div>
                   <div class="col">
                     <label>&nbsp;</label>
-                    <br/>
+                    <br />
                     <div class="form-group form-inline">
-                      <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button>
+                      <button (click)="onEnter()" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle"
+                        label="Add"></button>
                       &nbsp;&nbsp;
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" (onEditComplete)="onEditComplete($event)" [rows]="20" [responsive]="true"
-                      resizableColumns="true">
+                    <p-dataTable #dt [value]="loadingPlanItemList" [editable]="true" (onEditComplete)="onEditComplete($event)"
+                      [rows]="20" [responsive]="true" resizableColumns="true">
                       <p-column field="id" header="ID"></p-column>
                       <p-column field="dispatchSchedule.id" header="Dispatch No"></p-column>
                       <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
@@ -128,7 +131,7 @@
                       <p-footerColumnGroup>
                         <p-row>
                           <p-column footer="Total Value" colspan="12" styleClass="text-right"></p-column>
-                          <p-column footer="{{totalAmount|number : '1.2-2'}}" styleClass="text-right"></p-column>
+                          <p-column footer="{{totalCost|number : '1.2-2'}}" styleClass="text-right"></p-column>
                         </p-row>
                       </p-footerColumnGroup>
                     </p-dataTable>
@@ -137,8 +140,25 @@
               </div>
             </div>
           </p-panel>
-          <br/>
+          <br />
           <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
+            <div class="row">
+              <div class=" col-sm-12">
+                <div class="row">
+                  <div class='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12'>
+                    <label for='other'>Miscellaneous Charges</label>
+                    <br />
+                    <input type='text'[size]="60"pInputText formControlName='other'>
+                  </div>
+                  <div class='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12'>
+                      <label for='otherAmount'>Amount</label>
+                    <br />
+                    <input type='number' pInputText formControlName='otherAmount'>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
             <div class='row'>
               <div class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'>
                 <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
