@@ -12,6 +12,7 @@ export class CommercialInvoicePrint {
   amount = 0;
   totalAmount = 0.0;
   totalWeight = 0.0;
+  otherAmount  = 0.0;
   xAddress: any = null;
   xLoadingPlanItemList = [];
   xContainerSize: any = null;
