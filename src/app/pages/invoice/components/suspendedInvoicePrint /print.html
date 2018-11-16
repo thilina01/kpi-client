@@ -206,19 +206,35 @@
             {{(totalAmount)| number : '1.2-2'}}
           </td>
         </tr>
+        <tr *ngIf="invoice.other !== null">
+          <td colspan="6" class="text-right">
+            <b>{{invoice.other}}</b>
+          </td>
+          <td class="text-right" >
+            {{(invoice.otherAmount)| number : '1.2-2'}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 18px " colspan="6" class="text-right">
+              <b>Total Value of Supply USD</b>
+          </td>
+          <td style="font-size: 18px " class="text-right">
+              <b>{{(totalAmount + invoice.otherAmount)| number : '1.2-2'}}</b>
+          </td>
+        </tr>
         <tr>
           <td colspan="6" class="text-right">
             <b>Suspended VAT Value USD {{((invoice.taxRate)*100)| number : '1.0-0'}}%</b>
           </td>
           <td class="text-right">
-            {{((totalAmount)*(invoice.taxRate))| number : '1.2-2'}} </td>
+            {{((totalAmount + invoice.otherAmount)*(invoice.taxRate))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <td colspan="6" class="text-right">
             <b>Suspended VAT Value LKR {{((invoice.taxRate)*100)| number : '1.0-0'}}%</b>
           </td>
           <td class="text-right">
-            {{(((totalAmount)*(invoice.taxRate))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
+            {{(((totalAmount + invoice.otherAmount)*(invoice.taxRate))*(invoice.exchangeRate?.exchangeRate))| number : '1.2-2'}} </td>
         </tr>
         <tr>
           <th colspan="7" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">

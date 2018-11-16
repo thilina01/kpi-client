@@ -1,9 +1,9 @@
 <div id="commercialInvoicePrint" hidden *ngIf="invoice!=undefined" style="font-size: 130%;">
   <div class="container-fluid" style="padding: 15px;">
     <!-- Page Header  -->
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
     <table class="table table-sm table-bordered">
       <thead>
         <tr>
@@ -45,61 +45,61 @@
               </tr>
               <tr>
                 <td style="border:none; vertical-align: top;">
-                  <br/>
+                  <br />
                   <b>Shipper: </b>
                   <p style="line-height:150%">
                     OTR Wheel Engineering Lanka (Pvt) Ltd.
-                    <br/>No: 218, Minuwangoda Road
-                    <br/> Ekala, Ja-Ela
-                    <br/> Sri Lanka
-                    <br/> Tele:+94 117595900-01
-                    <br/>Fax:+94 11 2226454
+                    <br />No: 218, Minuwangoda Road
+                    <br /> Ekala, Ja-Ela
+                    <br /> Sri Lanka
+                    <br /> Tele:+94 117595900-01
+                    <br />Fax:+94 11 2226454
                   </p>
                 </td>
                 <td style="border:none; vertical-align: top; padding-left: 150px;">
-                  <br/>
+                  <br />
                   <b>Ship Address: </b>
                   <p style="line-height:150%">
                     {{invoice.customer.name}}
                     <span *ngIf="(xAddress?.line1!=''&&xAddress?.line1!=null&&xAddress?.line1!=undefined)">
-                      <br/> {{xAddress?.line1}}
+                      <br /> {{xAddress?.line1}}
                     </span>
                     <span *ngIf="(xAddress?.line2 !=''&&xAddress?.line2!=null&&xAddress?.line2!=undefined)">
-                      <br/> {{xAddress?.line2}}
+                      <br /> {{xAddress?.line2}}
                     </span>
                     <span *ngIf="(xAddress?.line3 !=''&&xAddress?.line3!=null&&xAddress?.line3!=undefined)">
-                      <br/> {{xAddress?.line3}}
+                      <br /> {{xAddress?.line3}}
                     </span>
                     <span *ngIf="(xAddress?.line4 !=''&&xAddress?.line4!=null&&xAddress?.line4!=undefined)">
-                      <br/>{{xAddress?.line4}}
+                      <br />{{xAddress?.line4}}
                     </span>
                     <span *ngIf="(xAddress?.line5!=''&&xAddress?.line5!=null&&xAddress?.line5!=undefined)">
-                      <br/>{{xAddress?.line5}}
+                      <br />{{xAddress?.line5}}
                     </span>
                     <span *ngIf="(xAddress?.country?.name!=''&&xAddress?.country?.name!=null&&xAddress?.country?.name!=undefined)">
-                      <br/>{{xAddress?.country?.name}}
+                      <br />{{xAddress?.country?.name}}
                     </span>
                   </p>
                 </td>
               </tr>
               <tr>
                 <td style="border:none; vertical-align: top; ">
-                  <br/>
+                  <br />
                   <b>Consignee Address: </b>
                   <p style="line-height:150%">
                     <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
                       {{line}}
-                      <br/>
+                      <br />
                     </span>
                   </p>
                 </td>
                 <td style="border:none; vertical-align: top;padding-left: 150px; ">
-                  <br/>
+                  <br />
                   <b>Contact: </b>
                   <p style="line-height:150%">
                     <span *ngFor="let contact of invoice.customer.contactList">
                       {{contact?.contactNumber}}
-                      <br/>
+                      <br />
                     </span>
                   </p>
                 </td>
@@ -173,16 +173,18 @@
             </span>
           </td>
           <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.customerItem?.code}}
-            <br/>
+            <br />
             <span style="white-space:nowrap">
               {{loadingPlanItem.dispatchSchedule?.job?.item?.code}}
             </span>
           </td>
           <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule?.job?.item?.size }}
-            <br/> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}
+            <br /> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}
           </td>
-          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity))>=1?
-            Math.ceil((loadingPlanItem.invoiceQuantity / loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.invoiceQuantity
+          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.invoiceQuantity /
+            loadingPlanItem.packagingSpecification.perPalletQuantity))>=1?
+            Math.ceil((loadingPlanItem.invoiceQuantity /
+            loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.invoiceQuantity
             / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
           </td>
           <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.invoiceQuantity}} </td>
@@ -197,6 +199,22 @@
             {{(totalAmount)| number : '1.2-2'}}
           </td>
         </tr>
+        <tr *ngIf="invoice.other !== null">
+          <td colspan="7" class="text-right">
+            <b>{{invoice.other}}</b>
+          </td>
+          <td class="text-right" >
+            {{(invoice.otherAmount)| number : '1.2-2'}}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 18px " colspan="7" class="text-right">
+              <b>Total Invoice Amount</b>
+          </td>
+          <td style="font-size: 18px " class="text-right">
+              <b>{{(totalAmount + invoice.otherAmount)| number : '1.2-2'}}</b>
+          </td>
+        </tr>
         <tr>
           <td colspan="7" class="text-right">
             <b>Total Weight Kg</b>
@@ -207,7 +225,7 @@
         </tr>
         <tr>
           <td colspan="8" style=" border: 1px solid #ffffff !important; ">
-            <br/>
+            <br />
             <p>
               <b> Packing List No:</b> PL{{((xLoadingPlanId)|number : '5.0-0').replace(',','')}}
             </p>
@@ -215,13 +233,13 @@
         </tr>
         <tr>
           <th colspan="8" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <b>------------------------------------</b>
-            <br/>Authorized Signature
+            <br />Authorized Signature
           </th>
         </tr>
       </tbody>

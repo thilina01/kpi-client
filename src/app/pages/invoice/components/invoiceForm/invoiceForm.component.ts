@@ -40,6 +40,8 @@ export class InvoiceForm {
   dispatchNotes: any;
   totalAmount = 0.0;
   totalWeight = 0.0;
+  otherAmount  = 0.0;
+  totalCost = 0.0;
   dispatchNote: any;
   invoiceType: any;
   JSON: any = JSON;
@@ -68,6 +70,8 @@ export class InvoiceForm {
       id: '',
       totalAmount: '',
       taxRate: '',
+      other: '',
+      otherAmount: 0,
       currency: [null, ''],
       employee: [null, ''],
       dispatchNoteList: [null, Validators.required],
@@ -198,8 +202,10 @@ export class InvoiceForm {
 
   calculateTotal(){
     this.totalAmount = 0;
+    this.totalCost = 0;
     for (let i = 0; i < this.loadingPlanItemList.length; i++) {
       this.totalAmount += this.loadingPlanItemList[i].amount;
+      this.totalCost = this.totalAmount + this.formGroup.value.otherAmount;
     }
   }
 
@@ -208,6 +214,7 @@ export class InvoiceForm {
     this.loadingPlanList = [];
     this.totalAmount = 0.0;
     this.totalWeight = 0.0;
+    this.totalCost = 0.0;
 
     for (let i = 0; i < this.formGroup.value.dispatchNoteList.length; i++) {
       let dispatchNote = this.formGroup.value.dispatchNoteList[i];
@@ -229,6 +236,7 @@ export class InvoiceForm {
             xLoadingPlanItem.invoiceQuantity *
             xLoadingPlanItem.unitPrice;
           this.totalAmount += xLoadingPlanItem.amount;
+          this.totalCost = this.totalAmount + this.formGroup.value.otherAmount;
 
           xLoadingPlanItem.weight =
             xLoadingPlanItem.invoiceQuantity *
