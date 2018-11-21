@@ -22,6 +22,7 @@ export class DispatchScheduleTable {
   startDate: Date;
   endDate: Date;
   customers: any;
+  customerPoNumber: any;
   jobs: any;
   pageSize = 20;
   customer: any = { id: 0, 'code': 'ALL', 'display': 'All Customers' }
@@ -53,7 +54,7 @@ export class DispatchScheduleTable {
 
   loadData() {
     this.service
-      .getDispatchSchedulePage(0, 0, "1970-01-01", "2100-12-31", 0, 20)
+      .getDispatchSchedulePage(0, 0, 0, "1970-01-01", "2100-12-31", 0, 20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
@@ -69,6 +70,7 @@ export class DispatchScheduleTable {
     this.service
       .getDispatchSchedulePage(
         this.customer !== undefined ? this.customer.id : 0,
+        this.customerPoNumber !== undefined ? this.customerPoNumber : 0,
         this.job !== undefined ? this.job.id : 0,
         this.startDate === undefined
           ? "1970-01-01"
