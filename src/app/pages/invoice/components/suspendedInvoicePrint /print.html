@@ -214,7 +214,7 @@
             {{(invoice.otherAmount)| number : '1.2-2'}}
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="invoice.other !== null">
           <td style="font-size: 18px " colspan="6" class="text-right">
               <b>Total Value of Supply USD</b>
           </td>
