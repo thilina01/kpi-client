@@ -34,17 +34,12 @@ export class DispatchScheduleForm {
   dispatchSchedule: any = {};
   dispatchScheduleList: Array<any> = [];
   subscription: Subscription;
-
-  dispatchScheduleTypes: any;
   items: any;
-
   dispatchDate: Date;
   confirmDate: Date;
   requestDate: Date;
-  dispatchScheduleTime: Date = new Date();
-  recoveryTime: Date = new Date();
-  dispatchScheduleType: any = { id: '', code: '', type: '' }
-  item: any = { id: '', code: '', description: '' }
+  dispatchScheduleDate: Date = new Date();
+  item: any = { id: '', code: '', description: '' };
   jobNumber = '';
 
   constructor(protected service: DispatchScheduleService,
@@ -61,6 +56,7 @@ export class DispatchScheduleForm {
       id: '',
       quantity: ['', Validators.required],
       confirmDate: '',
+      dispatchScheduleDate: '',
       requestDate: [this.requestDate, Validators.required],
       item: [{}, Validators.required],
       job: [undefined, Validators.required],
@@ -105,6 +101,7 @@ export class DispatchScheduleForm {
       if (values.job.id == 0) {
         values.job = { jobNo: this.jobNumber, quantity: values.quantity, item: values.item };
       }
+      values.dispatchScheduleDate = new Date();
       this.service.save(values).subscribe(
         (data) => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Operation Success' });
