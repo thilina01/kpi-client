@@ -56,38 +56,36 @@
                     <br />Fax:+94 11 2226454
                   </p>
                 </td>
-                <td style="border:none; vertical-align: top; padding-left: 150px;">
+                <!-- <td style="border:none; vertical-align: top; padding-left: 150px;">
                   <br />
                   <b>Ship Address: </b>
                   <p style="line-height:150%">
-                    {{customer.name}}
-                    <span *ngIf="(address?.line1!=''&&address?.line1!=null&&address?.line1!=undefined)">
-                      <br /> {{address?.line1}}
+                    {{creditNote.customerName}}
+                    <span *ngIf="(line1!=''&&line1!=null&&line1!=undefined)">
+                      <br /> {{line1}}
                     </span>
-                    <span *ngIf="(address?.line2 !=''&&address?.line2!=null&&address?.line2!=undefined)">
-                      <br /> {{address?.line2}}
+                    <span *ngIf="(line2 !=''&&line2!=null&&line2!=undefined)">
+                      <br /> {{line2}}
                     </span>
-                    <span *ngIf="(address?.line3 !=''&&address?.line3!=null&&address?.line3!=undefined)">
-                      <br /> {{address?.line3}}
+                    <span *ngIf="(line3 !=''&&line3!=null&&line3!=undefined)">
+                      <br /> {{line3}}
                     </span>
-                    <span *ngIf="(address?.line4 !=''&&address?.line4!=null&&address?.line4!=undefined)">
-                      <br />{{address?.line4}}
+                    <span *ngIf="(line4 !=''&&line4!=null&&line4!=undefined)">
+                      <br />{{line4}}
                     </span>
-                    <span *ngIf="(address?.line5!=''&&address?.line5!=null&&address?.line5!=undefined)">
-                      <br />{{address?.line5}}
+                    <span *ngIf="(line5!=''&&line5!=null&&line5!=undefined)">
+                      <br />{{line5}}
                     </span>
-                    <span *ngIf="(address?.country?.name!=''&&address?.country?.name!=null&&address?.country?.name!=undefined)">
-                      <br />{{address?.country?.name}}
-                    </span>
+                    {{countryName}}
                   </p>
-                </td>
+                </td> -->
               </tr>
-              <tr>
+              <!-- <tr>
                 <td style="border:none; vertical-align: top; ">
                   <br />
                   <b>Consignee Address: </b>
                   <p style="line-height:150%">
-                    <span id="consignee" *ngFor="let line of customer.consignee.split(',')">
+                    <span id="consignee" *ngFor="let line of creditNote.consignee.split(',')">
                       {{line}}
                       <br />
                     </span>
@@ -96,14 +94,14 @@
                 <td style="border:none; vertical-align: top;padding-left: 150px; ">
                   <br />
                   <b>Contact: </b>
-                  <p style="line-height:150%">
-                    <span *ngFor="let contact of customer.contactList">
+                  <p style="line-height:150%"> -->
+                    <!-- <span *ngFor="let contact of customer.contactList">
                       {{contact?.contactNumber}}
                       <br />
-                    </span>
-                  </p>
+                    </span> -->
+                  <!-- </p>
                 </td>
-              </tr>
+              </tr> -->
             </table>
           </td>
         </tr>
@@ -131,13 +129,13 @@
               <tr>
                 <td>Sri Lanka
                 </td>
-                <td>{{customer.employee?.callingName}}
+                <td>{{creditNote.employeeName}}
                 </td>
-                <td>{{customer.paymentTerm.name}}
+                <td>{{creditNote.paymentTermName}}
                 </td>
-                <td>{{customer.incoterm.name}}
+                <td>{{creditNote.incotermName}}
                 </td>
-                <td>{{customer.currency.name}}
+                <td>{{creditNote.currencyName}}
                 </td>
               </tr>
             </table>
@@ -154,7 +152,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let creditNoteItem of creditNote.creditNoteItemList; let i = index">
+        <!-- <tr *ngFor="let creditNoteItemRow of creditNote.creditNoteItemRowList; let i = index">
           <td style="vertical-align:top">
             {{ i+1 }} </td>
           <td style="vertical-align:top">
@@ -169,14 +167,20 @@
               {{creditNoteItem.itemCode}}
             </span>
           </td>
-          <td style="vertical-align:top">{{ creditNoteItem.loadingPlanItem.dispatchSchedule?.job?.item?.size }}
+          <td style="vertical-align:top">
+            {{ creditNoteItem.loadingPlanItem.dispatchSchedule?.job?.item?.size }}
             <br /> {{creditNoteItem.itemDescription}}
           </td>
-          <td class="text-right" style="vertical-align:top"> {{creditNoteItem.quantity}} </td>
-          <td class="text-right" style="vertical-align:top"> {{(creditNoteItem.unitPrice)| number : '1.2-2'}} </td>
-          <td class="text-right" style="vertical-align:top"> {{(creditNoteItem.amount)| number : '1.2-2'}}
+          <td class="text-right" style="vertical-align:top">
+            {{creditNoteItem.quantity}}
           </td>
-        </tr>
+          <td class="text-right" style="vertical-align:top">
+            {{(creditNoteItem.unitPrice)| number : '1.2-2'}}
+          </td>
+          <td class="text-right" style="vertical-align:top">
+             {{(creditNoteItem.amount)| number : '1.2-2'}}
+          </td>
+        </tr>-->
         <tr>
           <td colspan="6" class="text-right">
             <b>Total Value</b>

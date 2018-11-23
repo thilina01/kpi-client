@@ -17,7 +17,7 @@ export class CreditNoteTable {
   creditNote = {};
   rows = [];
   creditNoteId = 0;
-  suspendedcreditNoteId = 0;
+  suspendedCreditNoteId = 0;
   timeout: any;
   totalRecords: number;
   @ViewChild(DataTable)
@@ -48,10 +48,30 @@ export class CreditNoteTable {
   }
 
   loadData() {
-    this.service.getPage(0, 20).subscribe((data: any) => {
-      this.rows = data.content;
-      this.totalRecords = data.totalElements;
-    });
+    this.service
+      .getCreditNoteDetails('1970-01-01', '2100-12-31', 0, 20)
+      .subscribe((data: any) => {
+        this.search(0, 0);
+      });
+  }
+
+  search(first: number, pageSize: number): void {
+    pageSize = pageSize === undefined ? this.pageSize : pageSize;
+    this.service.getCreditNoteDetails(
+        this.startDate === undefined
+          ? '1970-01-01'
+          : this.sharedService.YYYYMMDD(this.startDate),
+        this.endDate === undefined
+          ? '2100-12-31'
+          : this.sharedService.YYYYMMDD(this.endDate),
+        first,
+        pageSize
+      )
+      .subscribe((data: any) => {
+        this.rows = data.content;
+        this.totalRecords = data.totalElements;
+        this.fillTable(data);
+      });
   }
 
   lazy(event: any, table: any) {
@@ -72,12 +92,12 @@ export class CreditNoteTable {
 
   print(creditNote: any) {
     //6 creditNote
-    //7 suspendedcreditNote
+    //7 suspendedCreditNote
 
-    if (creditNote.invoiceType.id === 6) {
+    if (creditNote.invoiceTypeId === 6) {
       this.creditNoteId = creditNote.id;
-    } else if (creditNote.invoiceType.id === 7) {
-      this.suspendedcreditNoteId = creditNote.id;
+    } else if (creditNote.invoiceTypeId === 7) {
+      this.suspendedCreditNoteId = creditNote.id;
     }
   }
 
