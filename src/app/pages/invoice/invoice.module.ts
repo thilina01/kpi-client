@@ -26,8 +26,8 @@ import { CustomerService } from '../customer/customer.service';
 import { PrintService } from '../../services/print.service';
 import { ExchangeRateService } from '../exchangeRate/exchangeRate.service';
 import { CurrencyService } from '../currency/currency.service';
-import { TaxInvoicePrint } from './components/taxInvoicePrint ';
-import { SuspendedInvoicePrint } from './components/suspendedInvoicePrint /suspendedInvoicePrint.component';
+import { TaxInvoicePrint } from './components/taxInvoicePrint';
+import { SuspendedInvoicePrint } from './components/suspendedInvoicePrint/suspendedInvoicePrint.component';
 import { EmployeeService } from '../employee/employee.service';
 import { DispatchNoteService } from '../dispatchNote/dispatchNote.service';
 import { LoadingPlanItemService } from '../../services/loadingPlanItem.service';
@@ -35,8 +35,8 @@ import { CreditNoteForm } from './components/creditNote/creditNoteForm.component
 import { CreditNoteService } from './components/creditNote/creditNote.service';
 import { CreditNoteTable } from './components/creditNoteTable/creditNoteTable.component';
 import { CommercialInvoicePrint } from './components/commercialInvoicePrint/commercialInvoicePrint.component';
-import { CreditNotePrint } from './components/creditNotePrint /creditNotePrint.component';
-import { SuspendedCreditNotePrint } from './components/suspendedCreditNotePrint /suspendedCreditNotePrint.component';
+import { CreditNotePrint } from './components/creditNotePrint/creditNotePrint.component';
+import { SuspendedCreditNotePrint } from './components/suspendedCreditNotePrint/suspendedCreditNotePrint.component';
 
 @NgModule({
   imports: [
