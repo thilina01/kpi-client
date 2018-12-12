@@ -1,4 +1,4 @@
-<div id="commercialInvoicePrint" hidden *ngIf="invoice!=undefined" style="font-size: 130%;">
+<div id="creditNotePrint" hidden *ngIf="creditNote!=undefined" style="font-size: 130%;">
   <div class="container-fluid" style="padding: 15px;">
     <!-- Page Header  -->
     <br />
@@ -7,7 +7,7 @@
     <table class="table table-sm table-bordered">
       <thead>
         <tr>
-          <td colspan="8" style=" border: 1px solid #ffffff !important;">
+          <td colspan="7" style=" border: 1px solid #ffffff !important;">
             <table class="table-no-border" width="100%">
               <tr>
                 <td style=" border-bottom: 1px solid #000000 !important;">
@@ -15,31 +15,31 @@
                     <table class="table table-sm table-no-border">
                       <tr>
                         <td class="text-left">
-                          <h3> Invoice No:</h3>
+                          <h3>Credit Note No:</h3>
                         </td>
                         <td class="text-left">
                           <h3>
-                            <b>&nbsp;&nbsp;{{invoice.invoiceNumber}}</b>
+                            <b>&nbsp;&nbsp;CR{{creditNote.creditNoteNumber}}</b>
                           </h3>
                         </td>
                       </tr>
                       <tr>
                         <td class="left">
-                          Date of Invoice:
+                          Date of Credit Note:
                         </td>
                         <td class="text-left">
-                          <b>&nbsp;&nbsp;&nbsp;{{invoice.invoiceDate}}</b>
+                          <b>&nbsp;&nbsp;&nbsp;{{creditNote.dateOfCreditNote}}</b>
                         </td>
                       </tr>
                     </table>
                     <h2>
-                      <b>Commercial Invoice</b>
+                      <b>Credit Note</b>
                     </h2>
                   </div>
                 </td>
                 <td style=" border-bottom: 1px solid #000000 !important;">
                   <div style="float:right; margin-right:6px;">
-                    <img height="120px" src="/assets/img/logo.png" />
+                    <img height="120px" src="http://kpi.trwlanka.com/assets/img/logo.png" />
                   </div>
                 </td>
               </tr>
@@ -60,24 +60,24 @@
                   <br />
                   <b>Ship Address: </b>
                   <p style="line-height:150%">
-                    {{invoice.customer.name}}
-                    <span *ngIf="(xAddress?.line1!=''&&xAddress?.line1!=null&&xAddress?.line1!=undefined)">
-                      <br /> {{xAddress?.line1}}
+                    {{customer.name}}
+                    <span *ngIf="(address?.line1!=''&&address?.line1!=null&&address?.line1!=undefined)">
+                      <br /> {{address?.line1}}
                     </span>
-                    <span *ngIf="(xAddress?.line2 !=''&&xAddress?.line2!=null&&xAddress?.line2!=undefined)">
-                      <br /> {{xAddress?.line2}}
+                    <span *ngIf="(address?.line2 !=''&&address?.line2!=null&&address?.line2!=undefined)">
+                      <br /> {{address?.line2}}
                     </span>
-                    <span *ngIf="(xAddress?.line3 !=''&&xAddress?.line3!=null&&xAddress?.line3!=undefined)">
-                      <br /> {{xAddress?.line3}}
+                    <span *ngIf="(address?.line3 !=''&&address?.line3!=null&&address?.line3!=undefined)">
+                      <br /> {{address?.line3}}
                     </span>
-                    <span *ngIf="(xAddress?.line4 !=''&&xAddress?.line4!=null&&xAddress?.line4!=undefined)">
-                      <br />{{xAddress?.line4}}
+                    <span *ngIf="(address?.line4 !=''&&address?.line4!=null&&address?.line4!=undefined)">
+                      <br />{{address?.line4}}
                     </span>
-                    <span *ngIf="(xAddress?.line5!=''&&xAddress?.line5!=null&&xAddress?.line5!=undefined)">
-                      <br />{{xAddress?.line5}}
+                    <span *ngIf="(address?.line5!=''&&address?.line5!=null&&address?.line5!=undefined)">
+                      <br />{{address?.line5}}
                     </span>
-                    <span *ngIf="(xAddress?.country?.name!=''&&xAddress?.country?.name!=null&&xAddress?.country?.name!=undefined)">
-                      <br />{{xAddress?.country?.name}}
+                    <span *ngIf="(address?.country?.name!=''&&address?.country?.name!=null&&address?.country?.name!=undefined)">
+                      <br />{{address?.country?.name}}
                     </span>
                   </p>
                 </td>
@@ -87,7 +87,7 @@
                   <br />
                   <b>Consignee Address: </b>
                   <p style="line-height:150%">
-                    <span id="consignee" *ngFor="let line of invoice.customer.consignee.split(',')">
+                    <span id="consignee" *ngFor="let line of customer.consignee.split(',')">
                       {{line}}
                       <br />
                     </span>
@@ -97,7 +97,7 @@
                   <br />
                   <b>Contact: </b>
                   <p style="line-height:150%">
-                    <span *ngFor="let contact of invoice.customer.contactList">
+                    <span *ngFor="let contact of customer.contactList">
                       {{contact?.contactNumber}}
                       <br />
                     </span>
@@ -108,7 +108,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="8" style=" border: 1px solid #ffffff !important;  border-bottom: 1px solid #000000 !important;">
+          <td colspan="7" style=" border: 1px solid #ffffff !important;  border-bottom: 1px solid #000000 !important;">
             <table class="table table-bordered text-center">
 
               <tr>
@@ -125,29 +125,19 @@
                   Inco Term
                 </th>
                 <th>
-                  No of Containers
-                </th>
-                <th>
-                  Container Size
-                </th>
-                <th>
                   Currency
                 </th>
               </tr>
               <tr>
                 <td>Sri Lanka
                 </td>
-                <td>{{invoice.customer?.employee?.callingName}}
+                <td>{{customer.employee?.callingName}}
                 </td>
-                <td>{{invoice.customer.paymentTerm.name}}
+                <td>{{customer.paymentTerm.name}}
                 </td>
-                <td>{{invoice.customer.incoterm.name}}
+                <td>{{customer.incoterm.name}}
                 </td>
-                <td>{{xNoOfContainers}}
-                </td>
-                <td>{{xContainerSize?.name}}
-                </td>
-                <td>{{invoice.customer.currency.name}}
+                <td>{{customer.currency.name}}
                 </td>
               </tr>
             </table>
@@ -158,65 +148,45 @@
           <th class="text-center" style=" border: 1px solid #000000 !important;">P/O No</th>
           <th class="text-center" style=" border: 1px solid #000000 !important;">Item</th>
           <th class="text-center" style=" border: 1px solid #000000 !important;">Description</th>
-          <th class="text-center" style=" border: 1px solid #000000 !important;">PKGS</th>
           <th class="text-center" style=" border: 1px solid #000000 !important;">Qty</th>
           <th class="text-center" style=" border: 1px solid #000000 !important;">Unit Price</th>
           <th class="text-center" style=" border: 1px solid #000000 !important;">Amount</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let loadingPlanItem of xLoadingPlanItemList; let i = index">
-          <td style="vertical-align:top"> {{ i+1 }} </td>
+        <tr *ngFor="let creditNoteItem of creditNote.creditNoteItemList; let i = index">
+          <td style="vertical-align:top">
+            {{ i+1 }} </td>
           <td style="vertical-align:top">
             <span style="white-space:nowrap">
-              {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.salesOrder?.customerPoNumber}}
+              {{creditNoteItem.loadingPlanItem.dispatchSchedule?.salesOrderItem?.salesOrder?.customerPoNumber}}
             </span>
           </td>
-          <td style="vertical-align:top"> {{loadingPlanItem.dispatchSchedule?.salesOrderItem?.customerItem?.code}}
+          <td style="vertical-align:top">
+            {{creditNoteItem.loadingPlanItem.dispatchSchedule?.salesOrderItem?.customerItem?.code}}
             <br />
             <span style="white-space:nowrap">
-              {{loadingPlanItem.dispatchSchedule?.job?.item?.code}}
+              {{creditNoteItem.itemCode}}
             </span>
           </td>
-          <td style="vertical-align:top">{{ loadingPlanItem.dispatchSchedule?.job?.item?.size }}
-            <br /> {{loadingPlanItem.dispatchSchedule?.job?.item?.description}}
+          <td style="vertical-align:top">{{ creditNoteItem.loadingPlanItem.dispatchSchedule?.job?.item?.size }}
+            <br /> {{creditNoteItem.itemDescription}}
           </td>
-          <td class="text-right" style="vertical-align:top"> {{((loadingPlanItem.invoiceQuantity /
-            loadingPlanItem.packagingSpecification.perPalletQuantity))>=1?
-            Math.ceil((loadingPlanItem.invoiceQuantity /
-            loadingPlanItem.packagingSpecification.perPalletQuantity)):(loadingPlanItem.invoiceQuantity
-            / loadingPlanItem.packagingSpecification.perPalletQuantity) | number : '1.2-2'}}
+          <td class="text-right" style="vertical-align:top"> {{creditNoteItem.quantity}} </td>
+          <td class="text-right" style="vertical-align:top"> {{(creditNoteItem.unitPrice)| number : '1.2-2'}} </td>
+          <td class="text-right" style="vertical-align:top"> {{(creditNoteItem.amount)| number : '1.2-2'}}
           </td>
-          <td class="text-right" style="vertical-align:top"> {{loadingPlanItem.invoiceQuantity}} </td>
-          <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.unitPrice)|number : '1.2-2'}} </td>
-          <td class="text-right" style="vertical-align:top"> {{(loadingPlanItem.amount)| number : '1.2-2'}} </td>
         </tr>
         <tr>
-          <td colspan="7" class="text-right">
+          <td colspan="6" class="text-right">
             <b>Total Value</b>
           </td>
           <td class="text-right">
             {{(totalAmount)| number : '1.2-2'}}
           </td>
         </tr>
-        <tr *ngIf="invoice.other !== null">
-          <td colspan="7" class="text-right">
-            <b>{{invoice.other}}</b>
-          </td>
-          <td class="text-right" >
-            {{(invoice.otherAmount)| number : '1.2-2'}}
-          </td>
-        </tr>
-        <tr *ngIf="invoice.other !== null">
-          <td style="font-size: 18px " colspan="7" class="text-right">
-              <b>Total Invoice Amount</b>
-          </td>
-          <td style="font-size: 18px " class="text-right">
-              <b>{{(totalAmount + invoice.otherAmount)| number : '1.2-2'}}</b>
-          </td>
-        </tr>
         <tr>
-          <td colspan="7" class="text-right">
+          <td colspan="6" class="text-right">
             <b>Total Weight Kg</b>
           </td>
           <td class="text-right">
@@ -224,15 +194,7 @@
           </td>
         </tr>
         <tr>
-          <td colspan="8" style=" border: 1px solid #ffffff !important; ">
-            <br />
-            <p>
-              <b> Packing List No:</b> PL{{((xLoadingPlanId)|number : '5.0-0').replace(',','')}}
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="8" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">
+          <th colspan="7" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">
             <br />
             <br />
             <br />

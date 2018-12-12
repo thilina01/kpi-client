@@ -17,35 +17,38 @@
 	 resizableColumns="true" exportFilename="dispatchSchedules"(onRowDblclick)="onRowDblclick($event.data)">
 		<p-header>
 			<div class="row">
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Duration Start
-					<br/>
-					<p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-				</div>
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Duration End
-					<br/>
-					<p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
-				</div>
-				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-					Customer
-					<br/>
-					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
-						 [size]="12" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
-						</p-autoComplete>
-					</div>
-				</div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration Start
+          <br/>
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration End
+          <br/>
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Customer
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="customer" field="display" [dropdown]="true" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
+              [size]="12" [minLength]="1" placeholder="Customer" (onSelect)="onCustomerSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
 				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
 					Job
 					<br/>
 					<div class="ui-inputgroup">
-						<p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobs" (completeMethod)="filterJobs($event)" [size]="15"
+						<p-autoComplete [(ngModel)]="job" field="display" [suggestions]="filteredJobs" (completeMethod)="filterJobs($event)" [size]="12"
 						 [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onJobSelect($event)">
 						</p-autoComplete>
-					</div>
-				</div>
-				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          PO Number
+          <input type="text" pInputText [(ngModel)]="customerPoNumber" id="customerPoNumber">
+        </div>
+				<div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
 					<br/>
 					<button type="button" class="btn btn-primary btn-xs" (click)="search()">
 						<i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
@@ -54,6 +57,7 @@
 			</div>
 		</p-header>
 		<p-column field="id" header="ID"></p-column>
+		<p-column field="dispatchScheduleDate" header="Schedule Date" [sortable]="true"></p-column>
 		<p-column field="requestDate" header="Request Date" [sortable]="true"></p-column>
 		<p-column field="confirmDate" header="Confirm Date" [sortable]="true"></p-column>
 		<p-column field="salesOrderItem.salesOrder.orderDate" header="Order Date" [sortable]="true"></p-column>

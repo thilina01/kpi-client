@@ -12,6 +12,7 @@ export class CommercialInvoicePrint {
   amount = 0;
   totalAmount = 0.0;
   totalWeight = 0.0;
+  otherAmount  = 0.0;
   xAddress: any = null;
   xLoadingPlanItemList = [];
   xContainerSize: any = null;
@@ -56,29 +57,44 @@ export class CommercialInvoicePrint {
               if (this.xLoadingPlanId === null) {
                 this.xLoadingPlanId = xLoadingPlan.id;
               }
-              let xLoadingPlanItemList = xLoadingPlan.loadingPlanItemList;
 
-              for (let iii = 0; iii < xLoadingPlanItemList.length; iii++) {
-                let xLoadingPlanItem = xLoadingPlanItemList[iii];
+              let yLoadingPlanItemList = xLoadingPlanList[ii].loadingPlanItemList;
 
-                if (
-                  xLoadingPlanItem.unitPrice === null ||
-                  xLoadingPlanItem.unitPrice === undefined
-                ) {
-                  xLoadingPlanItem.unitPrice =
-                    xLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+              for (let iii = 0; iii < yLoadingPlanItemList.length; iii++) {
+                let yLoadingPlanItem = yLoadingPlanItemList[iii];
+
+                let yItemId = yLoadingPlanItem.dispatchSchedule.job.item.id;
+                let ySalesOrderId = yLoadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.id;
+                let found = false;
+              for (let iiii = 0; iiii < this.xLoadingPlanItemList.length; iiii++) {
+                let xLoadingPlanItem = this.xLoadingPlanItemList[iiii];
+                let xItemId = xLoadingPlanItem.dispatchSchedule.job.item.id;
+                let xSalesOrderId = xLoadingPlanItem.dispatchSchedule.salesOrderItem.salesOrder.id;
+                if (yItemId === xItemId && ySalesOrderId === xSalesOrderId){
+                  if (yLoadingPlanItem.unitPrice === null || yLoadingPlanItem.unitPrice === undefined){
+                    yLoadingPlanItem.unitPrice = yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                  }
+                  this.totalAmount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
+                  xLoadingPlanItem.invoiceQuantity += yLoadingPlanItem.invoiceQuantity;
+                  xLoadingPlanItem.amount += yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
+                  xLoadingPlanItem.weight = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.job.item.weight;
+                  this.totalWeight += xLoadingPlanItem.weight;
+                  found = true;
+                  break;
                 }
-
-                xLoadingPlanItem.amount =
-                  xLoadingPlanItem.invoiceQuantity * xLoadingPlanItem.unitPrice;
-                this.totalAmount += xLoadingPlanItem.amount;
-                xLoadingPlanItem.weight =
-                  xLoadingPlanItem.invoiceQuantity *
-                  xLoadingPlanItem.dispatchSchedule.job.item.weight;
-                this.totalWeight += xLoadingPlanItem.weight;
-
-                this.xLoadingPlanItemList.push(xLoadingPlanItem);
               }
+
+              if (!found){
+                if (yLoadingPlanItem.unitPrice === null || yLoadingPlanItem.unitPrice === undefined){
+                  yLoadingPlanItem.unitPrice = yLoadingPlanItem.dispatchSchedule.salesOrderItem.unitPrice;
+                }
+                yLoadingPlanItem.amount = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.unitPrice;
+                this.totalAmount += yLoadingPlanItem.amount;
+                yLoadingPlanItem.weight = yLoadingPlanItem.invoiceQuantity * yLoadingPlanItem.dispatchSchedule.job.item.weight;
+                this.totalWeight += yLoadingPlanItem.weight;
+                this.xLoadingPlanItemList.push(yLoadingPlanItem);
+              }
+               }
             }
           }
 

@@ -167,6 +167,8 @@ export class LoadingPlanForm {
     this.setDisplayOfAddress();
     this.setDisplayOfDispatchSchedule();
     this.setDisplayOfPackagingSpecification();
+    this.getaAddressListByCustomer(this.loadingPlan.customer.id);
+    this.getDispatchScheduleListByCustomer(this.loadingPlan.customer.id);
   }
 
   public onSubmit(values: any, event: Event): void {
@@ -314,9 +316,12 @@ export class LoadingPlanForm {
       this.filteredCustomerList = this.customerList;
     }, 100);
   }
-  onCustomerSelect(customerCombo: any) {
-    this.getDispatchScheduleListByCustomer(+customerCombo.id);
+
+  onCustomerSelect(event: any) {
     let customer = this.formGroup.value.customer;
+    this.reset();
+    this.formGroup.patchValue({customer: customer, loadingPlanDate : new Date()}, { onlySelf: true });
+    this.getDispatchScheduleListByCustomer(+customer.id);
     this.setDisplayOfCustomer(customer);
     this.getaAddressListByCustomer(+customer.id);
   }
