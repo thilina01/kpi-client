@@ -3,13 +3,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { APP_CONFIG, IAppConfig } from '../app.config';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
 
-  isLoggedIn: boolean = false;
+  isLoggedIn(): boolean {
+    let loginTimeMills = localStorage.getItem('loginTimeMills');
+    console.log(loginTimeMills);
+    return loginTimeMills !== null;
+  };
+
   email: string = '';
   private getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
@@ -24,35 +29,47 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     @Inject(APP_CONFIG) private config: IAppConfig,
-    public afireauth: AngularFireAuth) {
+    // public afireauth: AngularFireAuth
+  ) {
     this.apiUrl = config.apiEndpoint + 'accounts/';
-    this.afireauth.authState.subscribe(auth => {
-      if (auth) {
-        this.isLoggedIn = true;
-        this.email = auth.email;
-      } else {
-        this.isLoggedIn = false;
-        this.email = '';
-      }
-    });
+
+    // this.afireauth.authState.subscribe(auth => {
+    //   if (auth) {
+    //     this.isLoggedIn = true;
+    //     this.email = auth.email;
+    //   } else {
+    //     this.isLoggedIn = false;
+    //     this.email = '';
+    //   }
+    // });
   }
 
   login(values: any): Observable<any> {
     values.passwordAgain = values.password;
     return this.http.post(this.apiUrl + 'login', JSON.stringify(values), { headers: this.getJsonHeaders() });
-
   }
 
-  logout() {
-    if (this.afireauth.auth.currentUser) {
-      this.http.get(this.apiUrl + 'logout', { headers: this.getJsonHeaders() }).subscribe(
-        (data) => {
-          localStorage.removeItem('loginTimeMills');
-        }
-    );
-      this.afireauth.auth.signOut();
-    }
+  // logout() {
+  //   if (this.afireauth.auth.currentUser) {
+  //     this.http.get(this.apiUrl + 'logout', { headers: this.getJsonHeaders() }).subscribe(
+  //       (data) => {
+  //         localStorage.removeItem('loginTimeMills');
+  //       }
+  //     );
+  //     this.afireauth.auth.signOut();
+  //   }
+  // }
 
+  logout() {
+    // if (this.afireauth.auth.currentUser) {
+    if (this.isLoggedIn()) {
+      this.http.get(this.apiUrl + 'logout', { headers: this.getJsonHeaders() }).subscribe(
+        (data) => { }
+      );
+    }
+    localStorage.removeItem('loginTimeMills');
+    //   this.afireauth.auth.signOut();
+    // }
   }
 
   private handleError(error: any) {
@@ -65,33 +82,34 @@ export class AuthService {
   }
   /*********************************/
 
-  afLogin(credentials: any) {
-    let promise = new Promise((resolve, reject) => {
-      this.afireauth.auth.signInWithEmailAndPassword(credentials.email, credentials.password).then(() => {
+  // afLogin(credentials: any) {
+  //   let promise = new Promise((resolve, reject) => {
+  //     this.afireauth.auth.signInWithEmailAndPassword(credentials.email, credentials.password).then(() => {
 
-        resolve(false);
-      }).catch((err) => {
-        this.handleError(err);
-        reject(err);
-      })
-    })
-    return promise;
-  }
-  addUser(newuser) {
-    let promise = new Promise((resolve, reject) => {
-      this.afireauth.auth.createUserWithEmailAndPassword(newuser.email, newuser.password).then(() => {
-        this.afireauth.auth.currentUser.updateProfile({
-          displayName: newuser.displayName,
-          photoURL: ''
-        }).then(() => {
-          resolve({ success: true });
-        }).catch((err) => {
-          reject(err);
-        })
-      }).catch((err) => {
-        reject(err);
-      })
-    })
-    return promise;
-  }
+  //       resolve(false);
+  //     }).catch((err) => {
+  //       this.handleError(err);
+  //       reject(err);
+  //     })
+  //   })
+  //   return promise;
+  // }
+
+  // addUser(newuser) {
+  //   let promise = new Promise((resolve, reject) => {
+  //     this.afireauth.auth.createUserWithEmailAndPassword(newuser.email, newuser.password).then(() => {
+  //       this.afireauth.auth.currentUser.updateProfile({
+  //         displayName: newuser.displayName,
+  //         photoURL: ''
+  //       }).then(() => {
+  //         resolve({ success: true });
+  //       }).catch((err) => {
+  //         reject(err);
+  //       })
+  //     }).catch((err) => {
+  //       reject(err);
+  //     })
+  //   })
+  //   return promise;
+  // }
 }

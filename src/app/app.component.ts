@@ -11,7 +11,7 @@ import { SharedService } from './services/shared.service';
 import { Subscription } from 'rxjs/Subscription';
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
-import { AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
@@ -34,7 +34,7 @@ export class App {
     private viewContainerRef: ViewContainerRef,
     private themeConfig: BaThemeConfig,
     private sharedService: SharedService,
-    public afAuth: AngularFireAuth,
+    // public afAuth: AngularFireAuth,
     public authService: AuthService,
     public router: Router) {
     themeConfig.config();
@@ -46,13 +46,13 @@ export class App {
     });
     sharedService.messageSubject.subscribe(message => { this.msgs.push(message); });
 
-    this.afAuth.authState.subscribe(auth => {
-      if (auth) {
-        this.router.navigate([authService.redirectUrl]);
-      } else {
-        this.router.navigate(['/login']);
-      }
-    });
+    // this.afAuth.authState.subscribe(auth => {
+    //   if (auth) {
+    //     this.router.navigate([authService.redirectUrl]);
+    //   } else {
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
   }
 
   public ngAfterViewInit(): void {

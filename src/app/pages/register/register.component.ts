@@ -53,8 +53,8 @@ export class Register {
     this.submitted = true;
     if (this.form.valid) {
       values.password = values.passwords.password;
-      this.authService.addUser(values).then((res: any) => {
-        if (res.success) {
+      // this.authService.addUser(values).then((res: any) => {
+      //   if (res.success) {
           this.userService.save(values).subscribe(
             data => {
               this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Wait for the activation confirmation mail.' });
@@ -62,10 +62,10 @@ export class Register {
               this.router.navigate(['/login']);
             }
           );
-        }
-        else
-          alert('Error' + res);
-      })
+        // }
+      //   else
+      //     alert('Error' + res);
+      // })
     }
   }
 }

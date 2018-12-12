@@ -7,8 +7,8 @@ import 'amcharts3/amcharts/plugins/responsive/responsive.js';
 import 'amcharts3/amcharts/serial.js';
 import 'amcharts3/amcharts/pie.js';
 
-import 'ammap3';
-import 'ammap3/ammap/maps/js/worldLow';
+// import 'ammap3';
+// import 'ammap3/ammap/maps/js/worldLow';
 
 
 import { BaAmChartThemeService } from './baAmChartTheme.service';

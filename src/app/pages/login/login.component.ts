@@ -28,6 +28,7 @@ export class Login {
         this.email = this.form.controls['email'];
         this.password = this.form.controls['password'];
     }
+    
     ngOnInit() {
         this.authService.logout();
     }
@@ -36,20 +37,20 @@ export class Login {
         this.submitted = true;
         localStorage.removeItem("loginTimeMills");
         if (this.form.valid) {
-            this.authService.afLogin(values).then((res: any) => {
-                if (!res.code) {
-                    this.authService.login(values).subscribe(response => {
-                        if (response) {                            
-                            localStorage.setItem("loginTimeMills", response.loginTimeMills+'');    
-                            this.router.navigate([this.authService.redirectUrl]);
-                        } else {
-                            alert('Login Failed (Internal)')
-                        }
-                    });
+            // this.authService.afLogin(values).then((res: any) => {
+            //     if (!res.code) {
+            this.authService.login(values).subscribe(response => {
+                if (response) {
+                    localStorage.setItem("loginTimeMills", response.loginTimeMills + '');
+                    this.router.navigate([this.authService.redirectUrl]);
                 } else {
-                    alert('Login Failed (External)');
+                    alert('Login Failed (Internal)');
                 }
-            })
+            });
+            //     } else {
+            //         alert('Login Failed (External)');
+            //     }
+            // })
         }
     }
 }

@@ -18,13 +18,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         let url: string = state.url;
         let result = this.checkLogin(url);
         if (result) {
-            if(localStorage.getItem('loginTimeMills')){
+            if (localStorage.getItem('loginTimeMills')) {
                 return this.userService.getOwn().toPromise().then((response: any) => {
                     if (response === undefined || response === null || response.status === undefined) {
                         return false;
                     }
                     return response.status.name === 'active';
-                })
+                });
             }
         }
     }
@@ -36,7 +36,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     checkLogin(url: string): boolean {
         // Store the attempted URL for redirecting
         this.authService.redirectUrl = url;
-        if (this.authService.isLoggedIn) {
+        if (this.authService.isLoggedIn()) {
             return true;
         } else {
             // Navigate to the login page with extras
