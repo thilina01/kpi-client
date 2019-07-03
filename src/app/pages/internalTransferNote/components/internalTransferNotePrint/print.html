@@ -44,11 +44,11 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <b>From</b>
+              <b>From: </b>{{internalTransferNote.fromLocation?.name}}
             </h3>
           </div>
-          <div class="panel-body">
-            <span id="address" *ngFor="let line of internalTransferNote.fromLocation?.address.split(',')">
+          <div class="panel-body" *ngIf="internalTransferNote.fromLocation?.address !== null">
+            <span id="address" *ngFor="let line of internalTransferNote.fromLocation?.address?.split(',')">
               {{line}}
               <br/>
             </span>
@@ -59,11 +59,11 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              <b>To</b>
+              <b>To </b>{{internalTransferNote.toLocation?.name}}
             </h3>
           </div>
           <div class="panel-body">
-            <div class="panel-body">
+            <div class="panel-body" *ngIf="internalTransferNote.toLocation?.address !== null">
               <span id="address" *ngFor="let line of internalTransferNote.toLocation?.address.split(',')">
                 {{line}}
                 <br/>
