@@ -46,6 +46,8 @@
         {{rowData.releaseTime | date:'y-MM-dd HH:mm'}}
       </ng-template>
     </p-column>
+    <p-column field="fromLocation.name" header="From Location" [sortable]="true"></p-column>
+    <p-column field="toLocation.name" header="To Location" [sortable]="true"></p-column>
     <p-column field="vehicleNumber" header="Vehicle Number" [sortable]="true"></p-column>
     <p-column field="recipient" header="Recipient" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
