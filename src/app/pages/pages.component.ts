@@ -173,6 +173,7 @@ export class Pages {
     { routerLink: '/pages/tools/table', name: 'Tool', menuType: this.menuType },
     { routerLink: '/pages/treatment/table', name: 'Treatment', menuType: this.menuType },
     { routerLink: '/pages/treatmentTypes/table', name: 'Treatment Type', menuType: this.menuType },
+    { routerLink: '/pages/standardUnits/table', name: 'Standard Unit', menuType: this.menuType },
     { routerLink: '/pages/workCenter/table', name: 'Work Center', menuType: this.menuType }
   ];
   main;
