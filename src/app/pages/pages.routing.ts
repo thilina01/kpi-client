@@ -68,6 +68,7 @@ export const routes: Routes = [
       { path: 'internalTransferArrival', canActivate: [AuthGuard], loadChildren: 'app/pages/internalTransferArrival/internalTransferArrival.module#InternalTransferArrivalModule' },
       { path: 'internalTransferNote', canActivate: [AuthGuard], loadChildren: 'app/pages/internalTransferNote/internalTransferNote.module#InternalTransferNoteModule' },
       { path: 'internalTransferRelease', canActivate: [AuthGuard], loadChildren: 'app/pages/internalTransferRelease/internalTransferRelease.module#InternalTransferReleaseModule' },
+      { path: 'internalTransferInformation', canActivate: [AuthGuard], loadChildren: 'app/pages/internalTransferInformation/internalTransferInformation.module#InternalTransferInformationModule' },
       { path: 'invoiceType', canActivate: [AuthGuard], loadChildren: 'app/pages/invoiceType/invoiceType.module#InvoiceTypeModule' },
       { path: 'salesOrderBook', canActivate: [AuthGuard], loadChildren: 'app/pages/salesOrderBook/salesOrderBook.module#SalesOrderBookModule' },
       { path: 'subcontractArrival', canActivate: [AuthGuard], loadChildren: 'app/pages/subcontractArrival/subcontractArrival.module#SubcontractArrivalModule' },
