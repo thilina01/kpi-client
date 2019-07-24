@@ -80,6 +80,7 @@ export class AccidentForm {
         this.treatmentFormGroup = fb.group({
             treatmentType: [{}, Validators.compose([Validators.required])],
             description: ['', Validators.required],
+            treatmentCost: ['', Validators.required],
             startTime: [this.startTime, Validators.required],
             endTime: [this.endTime, Validators.required],
         });

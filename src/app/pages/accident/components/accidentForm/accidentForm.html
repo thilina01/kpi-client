@@ -159,6 +159,13 @@
                     dateFormat="yy-mm-dd" showTime="showTime" hourFormat="24"></p-calendar>
                 </div>
               </div>
+              <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12">
+                <div class="form-group" [ngClass]="{'has-error': (! treatmentFormGroup.controls['treatmentCost'].valid &&  treatmentFormGroup.controls['treatmentCost'].touched), 'has-success': ( treatmentFormGroup.controls['treatmentCost'].valid && treatmentFormGroup.controls['treatmentCost'].touched)}">
+                  <label for="treatmentCost">Treatment Cost</label>
+                  <br/>
+                  <input type="number"  pInputText formControlName="treatmentCost">
+                </div>
+              </div>
               <div class="col">
                 <label for="inputFirstName">&nbsp;</label>
                 <br/>
@@ -184,6 +191,11 @@
                 <p-column field="endTime" header="End Time">
                   <ng-template let-col let-rowData="rowData" pTemplate="body">
                     {{rowData.endTime|date:'y-MM-dd HH:mm'}}
+                  </ng-template>
+                </p-column>
+                <p-column field="treatmentCost" header="Treatment Cost" styleClass="text-right">
+                  <ng-template let-col let-treatment="rowData" pTemplate="body">
+                    {{treatment.treatmentCost| number : '1.2-2'}}
                   </ng-template>
                 </p-column>
                 <p-column header="Action" styleClass="text-right">
