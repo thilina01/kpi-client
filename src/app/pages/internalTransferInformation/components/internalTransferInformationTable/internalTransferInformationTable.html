@@ -1,0 +1,88 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Internal Transfer Information List</h4>
+      </div>
+      <div class="col">
+        <button type="button" class="btn btn-primary btn-xs" (click)="dt.exportCSV()" style="float:right; margin-right:6px;">
+          <i ng-reflect-class-name="fa fa-file-text-o" class="fa fa-file-text-o"></i> Export</button>
+      </div>
+    </div>
+  </p-header>
+  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
+    (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
+    resizableColumns="true" exportFilename="internalTransferInformations">
+    <p-header>
+      <div class="row">
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration Start
+          <br/>
+          <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Duration End
+          <br/>
+          <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          From Location
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="fromLocation" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+              [size]="12" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          To Location
+          <br/>
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="toLocation" field="display" [suggestions]="filteredLocations" (completeMethod)="filterLocations($event)"
+              [size]="12" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onLocationSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          Job
+          <div class="ui-inputgroup">
+            <p-autoComplete [(ngModel)]="job" field="display" [dropdown]="true" [suggestions]="filteredJobs" (completeMethod)="filterJobs($event)"
+              [size]="12" [minLength]="1" placeholder="Job" (onSelect)="onJobSelect($event)">
+            </p-autoComplete>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+          <br/>
+          <button type="button" class="btn btn-primary btn-xs" (click)="search()">
+            <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
+          </button> &nbsp;&nbsp;{{totalRecords}}
+        </div>
+    </div>
+    </p-header>
+    <p-column field="internalTransferNote.id" header="Note ID" [sortable]="true"></p-column>
+    <p-column field="internalTransferNote.noteDate" header="Note Date" [sortable]="true">
+        <ng-template let-col let-rowData="rowData" pTemplate="body">
+          {{rowData.internalTransferNote.noteDate | date:'y-MM-dd'}}
+        </ng-template>
+    </p-column>
+    <p-column field="internalTransferNote.fromLocation.name" header="From Location" [sortable]="true"></p-column>
+    <p-column field="internalTransferNote.toLocation.name" header="To Location" [sortable]="true"></p-column>
+    <p-column field="job.jobNo" header="Job No" [sortable]="true"></p-column>
+    <p-column field="job.item.code" header="Item Code" [sortable]="true"></p-column>
+    <p-column field="productType.code" header="Product Type Code"></p-column>
+    <p-column field="job.item.description" header="Item Description" [sortable]="true"></p-column>
+    <p-column field="productType.description" header="Product Type Description " [sortable]="true"></p-column>
+    <p-column field="quantity" header="Qty"></p-column>
+    <p-column field="internalTransferNote.arrivalTime" header="Arrival Time" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.internalTransferNote.arrivalTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+    </p-column>
+    <p-column field="internalTransferNote.releaseTime" header="Release Time" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.internalTransferNote.releaseTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+      <p-column field="internalTransferNote.recipient" header="Recipient" [sortable]="true"></p-column>
+    </p-column>
+  </p-dataTable>
+</p-panel>

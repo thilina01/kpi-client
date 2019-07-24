@@ -103,6 +103,7 @@ export class Pages {
     { routerLink: '/pages/internalTransferArrival/table', name: 'Internal Transfer Arrival', menuType: this.menuType },
     { routerLink: '/pages/internalTransferNote/table', name: 'Internal Transfer Note', menuType: this.menuType },
     { routerLink: '/pages/internalTransferRelease/table', name: 'Internal Transfer Release', menuType: this.menuType },
+    { routerLink: '/pages/internalTransferInformation/table', name: 'Internal Transfer Information', menuType: this.menuType },
     { routerLink: '/pages/invoiceInformation/table', name: 'Invoice Information', menuType: this.menuType },
     { routerLink: '/pages/salesOrderBook/table', name: 'Sales Order Book', menuType: this.menuType },
     { routerLink: '/pages/subcontractArrival/table', name: 'Subcontract Arrival', menuType: this.menuType },
