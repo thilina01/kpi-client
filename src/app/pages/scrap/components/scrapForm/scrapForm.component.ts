@@ -45,8 +45,8 @@ export class ScrapForm {
         private sharedService: SharedService) {
         this.formGroup = fb.group({
             id: '',
+            unitValue: '',
             quantity: ['', Validators.required],
-            unitValue: ['', Validators.required],
             scrapDate: [this.scrapDate, Validators.required],
             job: ['', Validators.required],
             operationType: ['', Validators.required],
