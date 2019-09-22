@@ -1,13 +1,11 @@
-
-import { SharedService } from '../../../../services/shared.service';
-import { Component, ViewEncapsulation, ViewChild } from '@angular/core';
-import { ConfirmationService, Message } from 'primeng/primeng';
-import { Router } from '@angular/router';
-import { DataTable } from 'primeng/components/datatable/datatable';
-import { Observable } from 'rxjs/Rx';
-import { SectionService } from '../../../section/section.service';
-import { OperationService } from '../../operation.service';
-import { ShiftService } from '../../../shift/shift.service';
+import {SharedService} from '../../../../services/shared.service';
+import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
+import {ConfirmationService} from 'primeng/primeng';
+import {Router} from '@angular/router';
+import {DataTable} from 'primeng/components/datatable/datatable';
+import {SectionService} from '../../../section/section.service';
+import {OperationService} from '../../operation.service';
+import {ShiftService} from '../../../shift/shift.service';
 
 @Component({
   selector: 'operation-table',
@@ -24,9 +22,9 @@ export class OperationTable {
   @ViewChild(DataTable) dataTable: DataTable;
 
   sections: any;
-  section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' };
+  section: any = {id: 0, 'code': 'ALL', 'display': 'All Sections'};
   shifts: any;
-  shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' };
+  shift: any = {id: 0, 'code': 'ALL', 'display': 'All Shifts'};
 
   startDate: Date;
   endDate: Date;
@@ -35,11 +33,11 @@ export class OperationTable {
   pageSize = 20;
 
   constructor(protected service: OperationService,
-    private router: Router,
-    private confirmationService: ConfirmationService,
-    private sharedService: SharedService,
-    private sectionService: SectionService,
-    private shiftService: ShiftService) {
+              private router: Router,
+              private confirmationService: ConfirmationService,
+              private sharedService: SharedService,
+              private sectionService: SectionService,
+              private shiftService: ShiftService) {
     this.loadData();
     this.getSections();
     this.getShifts();
@@ -48,20 +46,20 @@ export class OperationTable {
   getSections(): void {
     this.sectionService.getCombo().subscribe(sections => {
       this.sections = sections;
-      this.sections.unshift({ id: 0, 'code': 'ALL', 'display': 'All Sections' });
+      this.sections.unshift({id: 0, 'code': 'ALL', 'display': 'All Sections'});
     });
   }
 
   getShifts(): void {
     this.shiftService.getCombo().subscribe(shifts => {
       this.shifts = shifts;
-      this.shifts.unshift({ id: 0, 'code': 'ALL', 'display': 'All Shifts' });
+      this.shifts.unshift({id: 0, 'code': 'ALL', 'display': 'All Shifts'});
     });
   }
 
   loadData() {
     this.service
-      .getSectionAndShiftAndProductionDateBetweenPage(0 , '1970-01-01', '2100-12-31', 0, 0, 20)
+      .getSectionAndShiftAndProductionDateBetweenPage(0, '1970-01-01', '2100-12-31', 0, 0, 20)
       .subscribe((data: any) => {
         this.fillTable(data);
       });
@@ -104,9 +102,11 @@ export class OperationTable {
     this.totalRecords = data.totalElements;
   }
 
-  onRowDblclick(data: any): void {
+  onRowClick(data: any): void {
     this.selectedOpertion = data;
-    this.showDialog();
+    if (data.actualQuantity !== undefined && data.actualQuantity !== null && data.plannedQuantity > data.actualQuantity) {
+      this.showDialog();
+    }
   }
 
   showDialog() {
@@ -124,12 +124,15 @@ export class OperationTable {
       }
     }
   }
+
   onShiftSelect(shift: any) {
     console.log(event)
   }
+
   /*================== End Of Shift Filter ===================*/
   /*================== Section Filter ===================*/
   filteredSections: any[];
+
   filterSections(event) {
     let query = event.query.toLowerCase();
     this.filteredSections = [];
@@ -140,8 +143,10 @@ export class OperationTable {
       }
     }
   }
+
   onSectionSelect(section: any) {
     console.log(event)
   }
+
   /*================== End Of Section Filter ===================*/
 }

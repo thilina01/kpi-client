@@ -10,9 +10,11 @@
       </div>
     </div>
   </p-header>
-  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords" [lazy]="true"
-    (onLazyLoad)="lazy($event,dt)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]" selectionMode="single" sortMode="multiple"
-    resizableColumns="true" exportFilename="operations" (onRowDblclick)="onRowDblclick($event.data)">
+  <p-dataTable #dt [value]="rows" [rows]="20" [responsive]="true" [paginator]="true" [totalRecords]="totalRecords"
+               [lazy]="true"
+               (onLazyLoad)="lazy($event)" [pageLinks]="5" [rowsPerPageOptions]="[10,20,50,100,10000]"
+               selectionMode="single" sortMode="multiple"
+               resizableColumns="true" exportFilename="operations" (onRowClick)="onRowClick($event.data)">
     <p-header>
       <div class="row">
         <div class="col" style="text-align: left">
@@ -56,7 +58,13 @@
     <p-column field="job.jobNo" header="Job"></p-column>
     <p-column field="job.item.code" header="Item"></p-column>
     <p-column field="plannedQuantity" header="Planned Quantity" styleClass="text-right"></p-column>
-    <p-column field="actualQuantity" header="Actual Quantity" styleClass="text-right"></p-column>
+    <p-column field="actualQuantity" header="Actual Quantity" styleClass="text-right">
+      <template let-col let-rep="rowData" pTemplate>
+        <div [ngStyle]="{'background-color': rep.actualQuantity < rep.plannedQuantity ? '#f44336' : ''}">
+          {{rep.actualQuantity}}
+        </div>
+      </template>
+    </p-column>
     <p-column field="productType.description" header="Product Type"></p-column>
     <p-column field="operationType.description" header="Operation Type"></p-column>
   </p-dataTable>
@@ -64,6 +72,9 @@
 <p-dialog *ngIf="selectedOpertion" header="Loss Of Operation: {{selectedOpertion.id}}" [(visible)]="display" modal="modal"
   [responsive]="true">
   <div>
+    <label>Planned: </label> {{selectedOpertion.plannedQuantity}} &nbsp; &nbsp;
+    <label>Actual: </label> {{selectedOpertion.actualQuantity}} &nbsp; &nbsp;
+    [ {{(selectedOpertion.actualQuantity / selectedOpertion.plannedQuantity) * 100 | number : '1.2-2'}} % ]
     <p-dataTable [value]="selectedOpertion.lossList">
       <p-column field="quantity" header="Quantity"></p-column>
       <p-column field="lossReason.code" header="Reason Code"></p-column>
