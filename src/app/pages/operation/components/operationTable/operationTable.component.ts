@@ -149,4 +149,101 @@ export class OperationTable {
   }
 
   /*================== End Of Section Filter ===================*/
+
+  obj2csv() {
+    let obj = [];
+    this.rows.forEach(row => {
+      const data = {
+        operationType: row.operationType.description,
+        productType: row.productType.description,
+        scrap: 0,
+        defect: 0,
+        loss: 0,
+        actual: row.actualQuantity | 0,
+        planned: row.plannedQuantity | 0,
+        item: row.job.item.code,
+        job: row.job.jobNo,
+        productionDate: row.production.productionDate,
+        controlPoint: row.production.controlPoint.code,
+        productionID: row.production.id,
+        operationID: row.id,
+      };
+      let scrapCount = 0;
+      let defectCount = 0;
+      let lossCount = 0;
+
+      row.lossList.forEach(lossData => {
+        scrapCount = lossData.lossReason.lossType.code == 'ST' ? scrapCount + lossData.quantity : scrapCount;
+        defectCount = lossData.lossReason.lossType.code == 'DT' ? defectCount + lossData.quantity : defectCount;
+        lossCount = lossData.lossReason.lossType.code == 'LR' ? lossCount + lossData.quantity : lossCount;
+      });
+
+      data.loss = lossCount;
+      data.defect = defectCount;
+      data.scrap = scrapCount;
+      obj.push(data);
+    });
+    if (typeof obj !== 'object') return null;
+    const opt: any = {};
+    let scopechar = opt.scopechar || '/';
+    let delimeter = opt.delimeter || ',';
+    if (Array.isArray(obj) === false) obj = [obj];
+    let curs, name, rownum, key, queue, values = [], rows = [], headers = {}, headersArr = [];
+    for (rownum = 0; rownum < obj.length; rownum++) {
+      queue = [obj[rownum], ''];
+      rows[rownum] = {};
+      while (queue.length > 0) {
+        name = queue.pop();
+        curs = queue.pop();
+        if (curs !== null && typeof curs === 'object') {
+          for (key in curs) {
+            if (curs.hasOwnProperty(key)) {
+              queue.push(curs[key]);
+              queue.push(name + (name ? scopechar : '') + key);
+            }
+          }
+        } else {
+          if (headers[name] === undefined) headers[name] = true;
+          rows[rownum][name] = curs;
+        }
+      }
+      values[rownum] = [];
+    }
+    // create csv text
+    for (key in headers) {
+      if (headers.hasOwnProperty(key)) {
+        headersArr.push(key);
+        for (rownum = 0; rownum < obj.length; rownum++) {
+          values[rownum].push(rows[rownum][key] === undefined
+            ? ''
+            : JSON.stringify(rows[rownum][key]));
+        }
+      }
+    }
+    for (rownum = 0; rownum < obj.length; rownum++) {
+      values[rownum] = values[rownum].join(delimeter);
+    }
+    const result = '"' + headersArr.join('"' + delimeter + '"') + '"\n' + values.join('\n');
+    this.download(result, 'OperationData-' + new Date().getTime() + '.csv', 'text/plain');
+    return result;
+  }
+
+// Function to download data to a file
+  download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+      window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+      var a = document.createElement("a"),
+        url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 0);
+    }
+  }
 }
