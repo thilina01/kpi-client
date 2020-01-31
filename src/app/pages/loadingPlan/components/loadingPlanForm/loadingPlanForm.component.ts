@@ -144,6 +144,8 @@ export class LoadingPlanForm {
           .subscribe(data => {
             this.loadForm(data);
           });
+      } else {
+        this.reset();
       }
     });
   }
@@ -157,18 +159,20 @@ export class LoadingPlanForm {
     if (data != null) {
       data.loadingPlanDate = new Date(data.loadingPlanDate);
       this.loadingPlan = data;
-    }
 
-    this.formGroup.patchValue(this.loadingPlan, { onlySelf: true });
-    this.customer = this.loadingPlan.customer;
-    this.address = this.loadingPlan.address;
-    this.dispatchSchedule = this.loadingPlan.dispatchSchedule;
-    this.setDisplayOfCustomer(this.loadingPlan.customer);
-    this.setDisplayOfAddress();
-    this.setDisplayOfDispatchSchedule();
-    this.setDisplayOfPackagingSpecification();
-    this.getaAddressListByCustomer(this.loadingPlan.customer.id);
-    this.getDispatchScheduleListByCustomer(this.loadingPlan.customer.id);
+      this.formGroup.patchValue(this.loadingPlan, {onlySelf: true});
+      this.customer = this.loadingPlan.customer;
+      this.address = this.loadingPlan.address;
+      this.dispatchSchedule = this.loadingPlan.dispatchSchedule;
+      this.setDisplayOfCustomer(this.loadingPlan.customer);
+      this.setDisplayOfAddress();
+      this.setDisplayOfDispatchSchedule();
+      this.setDisplayOfPackagingSpecification();
+      this.getaAddressListByCustomer(this.loadingPlan.customer.id);
+      this.getDispatchScheduleListByCustomer(this.loadingPlan.customer.id);
+    } else {
+      this.reset();
+    }
   }
 
   public onSubmit(values: any, event: Event): void {
