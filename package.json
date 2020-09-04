@@ -47,7 +47,7 @@
     "ng2-validation": "^4.2.0",
     "ngx-uploader": "^2.2.8",
     "normalize.css": "^6.0.0",
-    "papaparse": "^4.3.6",
+    "papaparse": "^5.2.0",
     "pluralize": "^7.0.0",
     "primeng": "^4.3.0",
     "promise-polyfill": "^6.0.2",
