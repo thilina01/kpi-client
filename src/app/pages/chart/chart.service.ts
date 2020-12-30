@@ -19,7 +19,7 @@ export class ChartService {
   public getJsonHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
-      // 'email': this.authService.email,      
+      // 'email': this.authService.email,
       // 'loginTimeMills':localStorage.getItem('loginTimeMills')
     });
   };
@@ -99,7 +99,7 @@ export class ChartService {
     return this.http.get(this.apiUrl + 'breakdownSixMonths', { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
-  
+
   getBreakdownBySection(startDate: string, endDate: string, section: string): Observable<any> {
     return this.http.get(this.apiUrl + 'breakdownBySection?startDate=' + startDate + '&endDate=' + endDate + '&section=' + section, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
@@ -311,6 +311,11 @@ export class ChartService {
 
   getOperationProgressSummaryBySection(sectionId, productionDate): Observable<any> {
     return this.http.get(this.apiUrl + 'operationProgressSummaryBySection/' + sectionId + '?productionDate=' + productionDate, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
+  getOperationProgressSummaryBySectionAndShift(sectionId, shiftId, productionDate): Observable<any> {
+    return this.http.get(this.apiUrl + 'operationProgressSummaryBySectionAndShift/' + sectionId + '/' + shiftId + '?productionDate=' + productionDate, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
   }
 

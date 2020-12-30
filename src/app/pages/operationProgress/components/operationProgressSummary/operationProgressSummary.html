@@ -15,7 +15,15 @@
         Section
         <div class="ui-inputgroup ui-fluid">
           <p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-            [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+                          [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)">
+          </p-autoComplete>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4" style="text-align: left">
+      Shift
+        <div class="ui-inputgroup ui-fluid">
+          <p-autoComplete [(ngModel)]="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+                          [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)">
           </p-autoComplete>
         </div>
       </div>

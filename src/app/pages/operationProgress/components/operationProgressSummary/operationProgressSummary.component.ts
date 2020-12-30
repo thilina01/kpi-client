@@ -9,6 +9,7 @@ import { ControlPointService } from '../../../controlPoint/controlPoint.service'
 import { JobService } from '../../../job/job.service';
 import { ChartService } from '../../../chart/chart.service';
 import { forEach } from '@angular/router/src/utils/collection';
+import {ShiftService} from "../../../shift/shift.service";
 
 @Component({
   selector: 'operation-progress-summary',
@@ -23,9 +24,11 @@ export class OperationProgressSummary {
   timeout: any;
   totalRecords: number;
   sections: any;
+  shifts: any;
   jobs: any;
   controlPoints: any;
   section: any = { id: 0, code: 'Select', display: 'Select' };
+  shift: any = { id: 0, code: 'Select', display: 'Select' };
   controlPoint: any = { id: 0, code: 'ALL', display: 'All ControlPoints' };
   job: any = { id: 0, code: 'ALL', display: 'All Jobs' };
   productionDate: Date = new Date();
@@ -38,6 +41,7 @@ export class OperationProgressSummary {
     protected service: OperationProgressService,
     private router: Router,
     private sectionService: SectionService,
+    private shiftService: ShiftService,
     private chartService: ChartService,
     private controlPointService: ControlPointService,
     private jobService: JobService,
@@ -45,11 +49,12 @@ export class OperationProgressSummary {
     private sharedService: SharedService
   ) {
     this.getSections();
+    this.getShifts();
     this.getControlPoints();
     this.getJobs();
     this.productionDate.setHours(0, 0, 0, 0);
     this.endDate.setHours(24, 0, 0, 0);
-    this.loadData();
+    // this.loadData();
     this.Math = Math;
   }
 
@@ -60,6 +65,17 @@ export class OperationProgressSummary {
         id: 0,
         code: 'Select',
         display: 'Select a Sections'
+      });
+    });
+  }
+
+  getShifts(): void {
+    this.shiftService.getCombo().subscribe(shifts => {
+      this.shifts = shifts;
+      this.shifts.unshift({
+        id: 0,
+        code: 'Select',
+        display: 'Select a Shift'
       });
     });
   }
@@ -105,8 +121,9 @@ export class OperationProgressSummary {
 
   search(first: number, pageSize: number): void {
     this.chartService
-      .getOperationProgressSummaryBySection(
+      .getOperationProgressSummaryBySectionAndShift(
         this.section.id,
+        this.shift.id,
         this.productionDate.getTime()
       )
       .subscribe((data: any) => {
@@ -232,6 +249,25 @@ export class OperationProgressSummary {
   }
 
   onSectionSelect(section: any) {
+    console.log(event);
+    // this.search(0, 0);
+  }
+  /*================== Shift Filter ===================*/
+  filteredShifts: any[];
+
+  filterShifts(event) {
+    let query = event.query.toLowerCase();
+    this.filteredShifts = [];
+    for (let i = 0; i < this.shifts.length; i++) {
+      let shift = this.shifts[i];
+      if (shift.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredShifts.push(shift);
+      }
+    }
+  }
+
+
+  onShiftSelect(section: any) {
     console.log(event);
     this.search(0, 0);
   }
