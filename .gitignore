@@ -68,3 +68,4 @@ npm-debug.log
 *.ngsummary.json
 *.shim.ngstyle.ts
 /nbproject/private/
+/OTR-KPI.iml
