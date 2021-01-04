@@ -2,39 +2,70 @@
 	<form [formGroup]="jobFormGroup">
 
 		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="jobSelector">Job Number</label>
+<!--					<select id="jobSelector" class="form-control" formControlName="job">-->
+<!--						<option *ngFor="let job of jobs" [ngValue]="job">{{job.jobNo}}</option>-->
+<!--					</select>-->
+<!--          <br/>-->
+          <div class="ui-inputgroup">
+            <p-autoComplete id="jobSelector" formControlName="job" [dropdown]="true" field="display" [suggestions]="filteredJobs" (completeMethod)="filterJobs($event)"
+                            [size]="25" [minLength]="1" placeholder="Search" (onSelect)="onJobSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.jobNo}} </div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="productTypeSelector">Product Type</label>
+<!--					<select class="form-control" formControlName="productType">-->
+<!--						<option *ngFor="let productType of productTypes" [ngValue]="productType">{{productType.code}} | {{productType.description}}</option>-->
+<!--					</select>-->
+          <div class="ui-inputgroup">
+            <p-autoComplete id="productTypeSelector" formControlName="productType" [dropdown]="true" field="display" [suggestions]="filteredProductTypes" (completeMethod)="filterProductTypes($event)"
+                            [size]="25" [minLength]="1" placeholder="Search" (onSelect)="onProductTypeSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} | {{option.description}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="operationTypeSelector">Operation Type</label>
+<!--					<select class="form-control" formControlName="operationType">-->
+<!--						<option *ngFor="let operationType of operationTypes" [ngValue]="operationType">{{operationType.code}} | {{operationType.description}}</option>-->
+<!--					</select>-->
+          <div class="ui-inputgroup">
+            <p-autoComplete id="operationTypeSelector" formControlName="operationType" [dropdown]="true" field="display" [suggestions]="filteredOperationTypes" (completeMethod)="filterOperationTypes($event)"
+                            [size]="25" [minLength]="1" placeholder="Search" (onSelect)="onOperationTypeSelect($event)">
+              <ng-template let-option pTemplate="option">
+                <div class="ui-helper-clearfix">
+                  <div>{{option.code}} | {{option.description}}</div>
+                </div>
+              </ng-template>
+            </p-autoComplete>
+          </div>
+				</div>
+			</div>
 			<div class="col-sm-3">
-				<div class="form-group">
-					<label for="inputFirstName">Job Number</label>
-					<select id="jobSelector" class="form-control" formControlName="job">
-						<option *ngFor="let job of jobs" [ngValue]="job">{{job.jobNo}}</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="form-group">
-					<label for="inputFirstName">Product Type</label>
-					<select class="form-control" formControlName="productType">
-						<option *ngFor="let productType of productTypes" [ngValue]="productType">{{productType.code}} | {{productType.description}}</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-2">
-				<div class="form-group">
-					<label for="inputFirstName">Operation Type</label>
-					<select class="form-control" formControlName="operationType">
-						<option *ngFor="let operationType of operationTypes" [ngValue]="operationType">{{operationType.code}} | {{operationType.description}}</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-2">
 				<div class="form-group" [ngClass]="{'has-error': (!jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched), 'has-success': (jobFormGroup.controls['plannedQuantity'].valid && jobFormGroup.controls['plannedQuantity'].touched)}">
-					<label for="inputFirstName">Quantity</label>
-					<input type="number" class="form-control " placeholder="quantity" #plannedQuantity (keyup.enter)="onEnter(plannedQuantity.value,dt)"
+					<label for="plannedQuantity">Quantity</label>
+					<input id="plannedQuantity" type="number" class="form-control " placeholder="quantity" #plannedQuantity (keyup.enter)="onEnter(plannedQuantity.value,dt)"
 					 formControlName="plannedQuantity">
 				</div>
 			</div>
 			<div class="col-sm-3">
-				<label for="inputFirstName">&nbsp;</label>
+				<label >&nbsp;</label>
 				<div class="form-group form-inline">
 					<button (click)="onEnter(plannedQuantity.value,dt)" pButton type="button" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;
 					<button type="button" pButton (click)="refresh()" class="ui-button-secondary" icon="fa-refresh" label="Refresh"></button>

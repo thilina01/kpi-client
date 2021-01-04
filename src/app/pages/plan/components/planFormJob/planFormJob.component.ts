@@ -72,7 +72,7 @@ export class PlanFormJob {
   }
 
   fillOperations(): void {
-    this.formGroup.value.operationList = this.formGroup.value.operationList.slice();
+    this.formGroup.value.operationList = this.formGroup.value.operationList ? this.formGroup.value.operationList.slice() : [];
     this.dataTable.reset();
   }
 
@@ -119,4 +119,103 @@ export class PlanFormJob {
     }
 
   }
+
+  /*================== Job Filter ===================*/
+  filteredJobs: any[];
+  job: any;
+
+  filterJobs(event) {
+    let query = event.query.toLowerCase();
+    this.filteredJobs = [];
+    for (let i = 0; i < this.jobs.length; i++) {
+      let job = this.jobs[i];
+      if (job.jobNo && (job.jobNo.toLowerCase().indexOf(query) == 0)) {
+        this.filteredJobs.push(job);
+      }
+    }
+  }
+
+  handleJobDropdownClick() {
+    this.filteredJobs = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredJobs = this.jobs;
+    }, 100)
+  }
+
+  onJobSelect(event: any) {
+    let job = this.formGroup.value.job;
+    if (job != null && job != undefined) {
+      let display = job.jobNo != null && job.jobNo != undefined ? job.jobNo + ' : ' : '';
+      this.formGroup.value.job.display = display;
+    }
+  }
+  /*================== End Of Job Filter ===================*/
+
+
+  /*================== Product Type Filter ===================*/
+  filteredProductTypes: any[];
+  productType: any;
+
+  filterProductTypes(event) {
+    let query = event.query.toLowerCase();
+    this.filteredProductTypes = [];
+    for (let i = 0; i < this.productTypes.length; i++) {
+      let productType = this.productTypes[i];
+      if (productType.code && (productType.code.toLowerCase().indexOf(query) == 0 || productType.description.toLowerCase().indexOf(query) == 0)) {
+        this.filteredProductTypes.push(productType);
+      }
+    }
+  }
+
+  handleProductTypeDropdownClick() {
+    this.filteredProductTypes = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredProductTypes = this.productTypes;
+    }, 100)
+  }
+
+  onProductTypeSelect(event: any) {
+    let productType = this.formGroup.value.productType;
+    if (productType != null && productType != undefined) {
+      let display = productType.code != null && productType.code != undefined ? productType.code + ' : ' : '';
+      display += productType.description != null && productType.description != undefined ? productType.description : '';
+      this.formGroup.value.productType.display = display;
+    }
+  }
+  /*================== End Of Product Type Filter ===================*/
+
+  /*================== Operation Type Filter ===================*/
+  filteredOperationTypes: any[];
+  operationType: any;
+
+  filterOperationTypes(event) {
+    let query = event.query.toLowerCase();
+    this.filteredOperationTypes = [];
+    for (let i = 0; i < this.operationTypes.length; i++) {
+      let operationType = this.operationTypes[i];
+      if (operationType.code && (operationType.code.toLowerCase().indexOf(query) == 0 || operationType.description.toLowerCase().indexOf(query) == 0)) {
+        this.filteredOperationTypes.push(operationType);
+      }
+    }
+  }
+
+  handleOperationTypeDropdownClick() {
+    this.filteredOperationTypes = [];
+    //mimic remote call
+    setTimeout(() => {
+      this.filteredOperationTypes = this.operationTypes;
+    }, 100)
+  }
+
+  onOperationTypeSelect(event: any) {
+    let operationType = this.formGroup.value.operationType;
+    if (operationType != null && operationType != undefined) {
+      let display = operationType.code != null && operationType.code != undefined ? operationType.code + ' : ' : '';
+      display += operationType.description != null && operationType.description != undefined ? operationType.description : '';
+      this.formGroup.value.operationType.display = display;
+    }
+  }
+  /*================== End Of Operation Type Filter ===================*/
 }
