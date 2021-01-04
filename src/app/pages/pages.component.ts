@@ -80,6 +80,7 @@ export class Pages {
     { routerLink: '/pages/customerItem/table', name: 'Customer Item', menuType: this.menuType },
     { routerLink: '/pages/customerTypes/table', name: 'Customer Type', menuType: this.menuType },
     { routerLink: '/pages/dashboard', name: 'Dashboard', menuType: this.menuType },
+    { routerLink: '/pages/defect/table', name: 'Defect', menuType: this.menuType },
     { routerLink: '/pages/departments/table', name: 'Department', menuType: this.menuType },
     { routerLink: '/pages/designations/table', name: 'Designation', menuType: this.menuType },
     { routerLink: '/pages/drawingChangeRequest/table', name: 'Drawing Change Request', menuType: this.menuType },
