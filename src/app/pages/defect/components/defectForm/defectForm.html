@@ -1,0 +1,106 @@
+<p-panel>
+  <p-header>
+    <div class="row">
+      <div class="col">
+        <h4>Defect Form</h4>
+      </div>
+      <div class="col">
+        <a routerLink="/pages/defect/table">
+          <button type="button" class="btn btn-primary btn-xs" style="float:right; margin-right:6px;">
+            <i ng-reflect-class-name="fa fa-file-text-o" class="ui-button-icon-left ui-clickable fa fa-fw fa-close"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </p-header>
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value, $event)" class="form-horizontal">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="defectDate">Defect Date</label>
+            <br/>
+            <p-calendar id="datePicker" formControlName="defectDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="job">Job Number</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="job" field="display" [suggestions]="filteredJobList" (completeMethod)="filterJobList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onJobSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/job/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="itemType">Item Type</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="itemType" field="display" [suggestions]="filteredItemTypeList" (completeMethod)="filterItemTypeList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onItemTypeSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/itemType/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="operationType">Operation Type</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="operationType" field="display" [suggestions]="filteredOperationTypeList"
+                (completeMethod)="filterOperationTypeList($event)" [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onOperationTypeSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/operationType/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="lossReason">Defect Reason</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete [dropdown]="true" formControlName="lossReason" field="display" [suggestions]="filteredLossReasons" (completeMethod)="filterLossReasons($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onLossReasonSelect($event)">
+              </p-autoComplete>
+              <a routerLink="/pages/lossReason/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="section">Section</label>
+            <br/>
+            <div class="ui-inputgroup">
+              <p-autoComplete formControlName="section" field="display" [dropdown]="true" [suggestions]="filteredSectionList" (completeMethod)="filterSectionList($event)"
+                [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
+              </p-autoComplete>
+              <a routerLink="/pages/section/form" target="blank">
+                <button pButton type="button" icon="fa-plus-circle"></button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="quantity">Quantity</label>
+            <br/>
+            <input type="number" pInputText formControlName="quantity">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <label for="unitValue">Unit Value</label>
+            <br/>
+            <input type="number" pInputText formControlName="unitValue">
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            &nbsp;
+            <br/>
+            <button pButton [disabled]="!formGroup.valid" type="submit" icon="fa-floppy-o" label="Save"></button>
+            <button type="button" pButton class="ui-button-secondary" (click)="resetForm()" icon="fa-times" label="Reset"></button>
+            <button type="button" pButton (click)="refresh()" class="ui-button-info" icon="fa-refresh" label="Refresh"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</p-panel>
