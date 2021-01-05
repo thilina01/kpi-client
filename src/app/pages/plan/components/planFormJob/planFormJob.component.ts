@@ -41,8 +41,9 @@ export class PlanFormJob {
       job: [{}, Validators.compose([Validators.required])],
       productType: [{}, Validators.compose([Validators.required])],
       operationType: [{}, Validators.compose([Validators.required])],
-      plannedQuantity: ['', Validators.compose([Validators.required, , CustomValidators.range([1, 1000])]
-      )]
+      plannedQuantity: ['', Validators.compose([Validators.required, CustomValidators.range([1, 1000])])],
+      startTime: [new Date(), Validators.compose([Validators.required])],
+      endTime: [new Date(), Validators.compose([Validators.required])]
     });
   }
 

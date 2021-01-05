@@ -64,6 +64,20 @@
 					 formControlName="plannedQuantity">
 				</div>
 			</div>
+      <div class="col-sm-3">
+        <label for="startTimePicker">Start Time</label>
+        <div class="form-group" [ngClass]="{'has-error': (!jobFormGroup.controls['startTime'].valid && jobFormGroup.controls['startTime'].touched), 'has-success': (jobFormGroup.controls['startTime'].valid && jobFormGroup.controls['startTime'].touched)}">
+          <p-calendar id="startTimePicker" formControlName="startTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                      hourFormat="24"></p-calendar>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label for="endTimePicker">End Time</label>
+        <div class="form-group" [ngClass]="{'has-error': (!jobFormGroup.controls['endTime'].valid && jobFormGroup.controls['endTime'].touched), 'has-success': (jobFormGroup.controls['endTime'].valid && jobFormGroup.controls['endTime'].touched)}">
+          <p-calendar id="endTimePicker" formControlName="endTime" showIcon="true" dateFormat="yy-mm-dd" showTime="showTime"
+                      hourFormat="24"></p-calendar>
+        </div>
+      </div>
 			<div class="col-sm-3">
 				<label >&nbsp;</label>
 				<div class="form-group form-inline">
@@ -83,6 +97,16 @@
 		<p-column field="operationType.code" header="Operation Type"></p-column>
 		<p-column field="plannedQuantity" header="Quantity"></p-column>
 		<p-column field="job.quantity" header="Job Quantity"></p-column>
+    <p-column field="startTime" header="Start Time">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.startTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+    </p-column>
+    <p-column field="endTime" header="End Time">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.endTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+    </p-column>
 		<p-column header="Action" styleClass="text-right">
 			<ng-template let-data="rowData" let-rowIndex="rowIndex" pTemplate="body" style="float:right">
 				<i (click)="removeOperation(rowIndex)" ng-reflect-class-name="fa fa-trash-o" class="fa fa-trash-o"></i>

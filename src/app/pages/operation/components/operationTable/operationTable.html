@@ -57,6 +57,16 @@
     <p-column field="production.id" header="Production ID"></p-column>
     <p-column field="production.controlPoint.code" header="Control Point"></p-column>
     <p-column field="production.productionDate" header="Production Date"></p-column>
+    <p-column field="startTime" header="Start Time">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.startTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+    </p-column>
+    <p-column field="endTime" header="End Time">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.endTime | date:'y-MM-dd HH:mm'}}
+      </ng-template>
+    </p-column>
     <p-column field="job.jobNo" header="Job"></p-column>
     <p-column field="job.item.code" header="Item"></p-column>
     <p-column field="plannedQuantity" header="Planned Quantity" styleClass="text-right"></p-column>
