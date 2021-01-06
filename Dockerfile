@@ -1,14 +1,11 @@
-FROM node:6.9.5
+# Stage 1: Build an Angular Docker Image
+FROM node:14.15.4-alpine as build
+WORKDIR /app
+COPY package*.json /app/
+RUN npm install
+COPY . /app
+RUN npm run prebuild:prod && npm run build:prod
 
-RUN git clone https://github.com/akveo/ng2-admin.git /var/www \
-    && cd /var/www \
-    && npm install --global rimraf \
-    && npm run clean \
-    && npm install --global webpack webpack-dev-server typescript@2.1.5 \
-    && npm install \
-    && npm run prebuild:prod && npm run build:prod
-
-EXPOSE 8080
-
-WORKDIR /var/www
-ENTRYPOINT ["npm", "run", "server:prod"]
+# Stage 2, use the compiled app, ready for production with Nginx
+FROM nginx
+COPY --from=build /app/dist/ /usr/share/nginx/html
