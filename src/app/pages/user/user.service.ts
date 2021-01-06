@@ -1,20 +1,26 @@
-import { Injectable, Inject } from '@angular/core';
- import { MasterService } from '../../services/master.service';
- import { HttpClient } from '@angular/common/http';
- import { APP_CONFIG, IAppConfig } from '../../app.config';
- import { AuthService } from '../../services/auth.service';
- import { Observable } from 'rxjs/Observable';
+import {Injectable, Inject} from '@angular/core';
+import {MasterService} from '../../services/master.service';
+import {HttpClient} from '@angular/common/http';
+import {APP_CONFIG, IAppConfig} from '../../app.config';
+import {AuthService} from '../../services/auth.service';
+import {Observable} from 'rxjs/Observable';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class UserService extends MasterService{
 
-  constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig, private anAuthService: AuthService) {
+  constructor(private anHttp: HttpClient, @Inject(APP_CONFIG) private aConfig: IAppConfig,
+              private anAuthService: AuthService,
+              private router: Router) {
     super(anHttp,aConfig,anAuthService);
     this.setApiUrl('users/');
   }
     getOwn(): Observable<any> {
     return this.http.get(this.apiUrl + 'own', { headers: this.getJsonHeaders() })
-      .catch(err => this.handleError(err));
+      .catch(err => {
+        this.router.navigate(['/login']);
+        return this.handleError(err)
+      });
   }
 }
 // import { Injectable, Inject } from '@angular/core';
