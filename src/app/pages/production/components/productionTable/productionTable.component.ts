@@ -144,6 +144,11 @@ export class ProductionTable {
   navigateToForm(id: any): void {
     this.router.navigate(['/pages/plan']);
   }
+
+  navigateToImport(): void {
+    this.router.navigate(['/pages/production/import']);
+  }
+
   /*================== Shift Filter ===================*/
   filteredShifts: any;
 

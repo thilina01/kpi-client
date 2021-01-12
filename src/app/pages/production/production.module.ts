@@ -11,7 +11,8 @@ import {
   CalendarModule,
   PanelModule,
   AutoCompleteModule,
-  TabViewModule
+  TabViewModule,
+  FileUploadModule
 } from 'primeng/primeng';
 
 import {Production} from './production.component';
@@ -26,11 +27,13 @@ import {ProductionTable} from "./components/productionTable";
 import {ProductionForm} from "./components/productionForm";
 import {EmployeeService} from "../employee/employee.service";
 import { ControlPointTypeService } from '../controlPointType/controlPointType.service';
+import {ProductionImport} from "./components/productionImport";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    FileUploadModule,
     ReactiveFormsModule,
     NgaModule,
     DataTableModule,
@@ -46,7 +49,8 @@ import { ControlPointTypeService } from '../controlPointType/controlPointType.se
   declarations: [
     Production,
     ProductionTable,
-    ProductionForm
+    ProductionForm,
+    ProductionImport
   ],
   providers: [
     ProductionService,
