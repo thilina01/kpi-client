@@ -38,6 +38,7 @@ export class ProductionImport {
       {field: 'plannedQuantity', header: 'Planned Quantity'},
       {field: 'productType', header: 'Product Type'},
       {field: 'operationType', header: 'Operation Type'},
+      {field: 'scheduleId', header: 'Schedule Id'},
       {field: 'startTime', header: 'Start Time'},
       {field: 'endTime', header: 'End Time'}
     ];
@@ -60,6 +61,7 @@ export class ProductionImport {
           "code": value.operationType
         },
         "plannedQuantity": value.plannedQuantity,
+        "scheduleId": value.scheduleId,
         "startTime": value.startTime,
         "endTime": value.endTime
       };

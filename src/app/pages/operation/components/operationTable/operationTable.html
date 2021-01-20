@@ -57,6 +57,7 @@
     <p-column field="production.id" header="Production ID"></p-column>
     <p-column field="production.controlPoint.code" header="Control Point"></p-column>
     <p-column field="production.productionDate" header="Production Date"></p-column>
+    <p-column field="scheduleId" header="Schedule Id"></p-column>
     <p-column field="startTime" header="Start Time">
       <ng-template let-col let-rowData="rowData" pTemplate="body">
         {{rowData.startTime | date:'y-MM-dd HH:mm'}}
