@@ -314,6 +314,8 @@
               <th>Product Type</th>
               <th>Operation Type</th>
               <th>Planned</th>
+              <th>Start</th>
+              <th>End</th>
               <th>&nbsp;&nbsp;10&nbsp;</th>
               <th>&nbsp;&nbsp;13&nbsp;</th>
               <th>&nbsp;&nbsp;16&nbsp;</th>
@@ -333,10 +335,12 @@
               <td>{{operation.productType.description}}</td>
               <td>{{operation.operationType.description}}</td>
               <td class="text-right">{{operation.plannedQuantity}}</td>
+              <td class="text-right">{{operation.startTime | date:'HH:mm'}}</td>
+              <td class="text-right">{{operation.endTime | date:'HH:mm'}}</td>
               <td *ngFor="let td of [1, 2, 3, 4, 5, 6, 7, 8]"></td>
             </tr>
             <tr *ngFor="let tr of [1, 2]">
-              <td *ngFor="let td of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]">&nbsp;</td>
+              <td *ngFor="let td of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]">&nbsp;</td>
             </tr>
             <tr>
               <td colspan="5" class="text-right">Total</td>
