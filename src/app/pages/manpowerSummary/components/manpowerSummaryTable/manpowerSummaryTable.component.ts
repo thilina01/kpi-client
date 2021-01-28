@@ -7,6 +7,7 @@ import { DataTable } from 'primeng/components/datatable/datatable';
 import { SectionService } from '../../../section/section.service';
 import { ResourceUtilizationService } from '../../../resourceUtilization/resourceUtilization.service';
 import { ChartService } from '../../../chart/chart.service';
+import {ShiftService} from "../../../shift/shift.service";
 
 @Component({
   selector: 'manpower-summary-table',
@@ -22,6 +23,8 @@ export class ManpowerSummaryTable {
   @ViewChild(DataTable) dataTable: DataTable;
   sections: any;
   section: any = { id: 0, 'code': 'ALL', 'display': 'All Sections' }
+  shifts: any;
+  shift: any = { id: 0, 'code': 'ALL', 'display': 'All Shifts' }
   startDate: Date = new Date();
   endDate: Date = new Date();
   total = 0;
@@ -36,10 +39,12 @@ export class ManpowerSummaryTable {
     private confirmationService: ConfirmationService,
     private chartService: ChartService,
     private sharedService: SharedService,
-    private sectionService: SectionService) {
+    private sectionService: SectionService,
+    private shiftService: ShiftService) {
     this.startDate.setHours(0, 0, 0, 0);
     this.endDate.setHours(24, 0, 0, 0);
     this.getSections();
+    this.getShifts();
     this.search();
     this.Math = Math;
   }
@@ -51,17 +56,34 @@ export class ManpowerSummaryTable {
     });
   }
 
+  getShifts(): void {
+    this.shiftService.getCombo().subscribe(shifts => {
+      this.shifts = shifts;
+      this.shifts.unshift({ id: 0, 'code': 'ALL', 'display': 'All Shifts' });
+    });
+  }
+
   search(): void {
     if (this.startDate !== undefined &&
       this.endDate !== undefined &&
       this.section !== undefined &&
-      this.section.id !== undefined) {
-      if (this.section.id === 0) {
+      this.shift !== undefined &&
+      this.section.id !== undefined &&
+      this.shift.id !== undefined) {
+      if (this.section.id === 0 && this.shift.id === 0) {
         this.chartService.getManpowerSummary(this.startDate.getTime(), this.endDate.getTime()).subscribe((data: any) => {
           this.fillTable(data);
         });
-      } else if (this.section.id > 0) {
+      } else if (this.section.id > 0 && this.shift.id === 0) {
         this.chartService.getManpowerSummaryBySection(this.startDate.getTime(), this.endDate.getTime(), this.section.id).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.shift.id > 0 && this.section.id === 0) {
+        this.chartService.getManpowerSummaryByShift(this.startDate.getTime(), this.endDate.getTime(), this.shift.id).subscribe((data: any) => {
+          this.fillTable(data);
+        });
+      } else if (this.shift.id > 0 && this.section.id > 0) {
+        this.chartService.getManpowerSummaryBySectionAndShift(this.startDate.getTime(), this.endDate.getTime(), this.section.id, this.shift.id).subscribe((data: any) => {
           this.fillTable(data);
         });
       }
@@ -150,6 +172,24 @@ export class ManpowerSummaryTable {
     this.search();
   }
   /*================== End Of Section Filter ===================*/
+
+  /*================== Shift Filter ===================*/
+  filteredShifts: any[];
+  filterShifts(event) {
+    let query = event.query.toLowerCase();
+    this.filteredShifts = [];
+    for (let i = 0; i < this.shifts.length; i++) {
+      let shift = this.shifts[i];
+      if (shift.display.toLowerCase().indexOf(query) >= 0) {
+        this.filteredShifts.push(shift);
+      }
+    }
+  }
+  onShiftSelect(shift: any) {
+    console.log(event);
+    this.search();
+  }
+  /*================== End Of Shift Filter ===================*/
 
 }
 

@@ -294,6 +294,16 @@ export class ChartService {
       .catch(err => this.handleError(err));
   }
 
+  getManpowerSummaryBySectionAndShift(startDate, endDate, section, shift): Observable<any> {
+    return this.http.get(this.apiUrl + 'manpowerSummaryBySectionAndShift?&startDate=' + startDate + '&endDate=' + endDate + '&section=' + section + '&shift=' + shift, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
+  getManpowerSummaryByShift(startDate, endDate, shift): Observable<any> {
+    return this.http.get(this.apiUrl + 'manpowerSummaryByShift?&startDate=' + startDate + '&endDate=' + endDate + '&shift=' + shift, { headers: this.getJsonHeaders() })
+      .catch(err => this.handleError(err));
+  }
+
   getResourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween(section, startDate, endDate ): Observable<any> {
     return this.http.get(this.apiUrl + 'resourceUtilizationDistinctEmployeeBySectionAndStartTimeBetween?section=' + section+'&startDate=' + startDate + '&endDate=' + endDate, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));

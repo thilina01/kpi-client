@@ -8,24 +8,36 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+      <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12" style="text-align: left">
         Date Start
         <br/>
         <p-calendar id="startDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd"
           appendTo="body"></p-calendar>
       </div>
-      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+      <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12" style="text-align: left">
         Date End
         <br/>
         <p-calendar id="endDatePicker" hourFormat="24" showTime="showTime" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd"
           appendTo="body"></p-calendar>
       </div>
-      <div class="col" style="text-align: left">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+        Shift
+        <br/>
+        <div class="ui-inputgroup">
+          <p-autoComplete [(ngModel)]="shift" field="display" [suggestions]="filteredShifts" (completeMethod)="filterShifts($event)"
+                          [size]="15" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onShiftSelect($event)" appendTo="body">
+          </p-autoComplete>
+          <a routerLink="/pages/shift/form" target="blank">
+            <button pButton type="button" icon="fa-plus-circle"></button>
+          </a>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
         Section
         <br/>
         <div class="ui-inputgroup">
           <p-autoComplete [(ngModel)]="section" field="display" [suggestions]="filteredSections" (completeMethod)="filterSections($event)"
-            [size]="30" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
+                          [size]="20" [dropdown]="true" [minLength]="1" placeholder="Search" (onSelect)="onSectionSelect($event)" appendTo="body">
           </p-autoComplete>
           <a routerLink="/pages/section/form" target="blank">
             <button pButton type="button" icon="fa-plus-circle"></button>
