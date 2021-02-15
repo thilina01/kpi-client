@@ -78,6 +78,7 @@ export class InvoiceForm {
       exchangeRate: [null, Validators.required],
       customer: [null, Validators.required],
       invoiceNumber: ['', Validators.required],
+      sysproInvoiceNumber: '',
       invoiceDate: [this.invoiceDate, Validators.required],
       invoiceType: [this.invoiceType, Validators.required]
     });

@@ -20,7 +20,7 @@
           <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
             <div class='row'>
               <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
-                <label for="invoiceDate">Invoice Date</label>
+                <label for="invoiceDatePicker">Invoice Date</label>
                 <div class="form-group" [ngClass]="{'has-error': (!formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched), 'has-success': (formGroup.controls['invoiceDate'].valid && formGroup.controls['invoiceDate'].touched)}">
                   <p-calendar id="invoiceDatePicker" formControlName="invoiceDate" showIcon="true" dateFormat="yy-mm-dd"></p-calendar>
                 </div>
@@ -29,7 +29,7 @@
                 <label for="customer">Customer</label> &nbsp;
                 <br />
                 <div class="ui-inputgroup">
-                  <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList"
+                  <p-autoComplete id="customer" formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList"
                     (completeMethod)="filterCustomerList($event)" [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
@@ -46,7 +46,7 @@
                 <label for="invoiceType">InvoiceType</label> &nbsp;
                 <br />
                 <div class="ui-inputgroup">
-                  <p-autoComplete formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes"
+                  <p-autoComplete id="invoiceType" formControlName="invoiceType" [dropdown]="true" field="display" [suggestions]="filteredInvoiceTypes"
                     (completeMethod)="filterInvoiceTypes($event)" [minLength]="1" size="20" placeholder="Search">
                     <ng-template let-option pTemplate="option">
                       <div class="ui-helper-clearfix">
@@ -62,10 +62,15 @@
               <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
                 <label for='invoiceNumber'>Invoice Number</label>
                 <br />
-                <input type='text' pInputText formControlName='invoiceNumber'>
+                <input type='text' pInputText id='invoiceNumber' formControlName='invoiceNumber'>
               </div>
               <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
-                <label for='exchangeRate'>Exchange Rate</label>
+                <label for='sysproInvoiceNumber'>Syspro Invoice Number</label>
+                <br />
+                <input type='text' pInputText id='sysproInvoiceNumber' formControlName='sysproInvoiceNumber'>
+              </div>
+              <div class='col-xl-2 col-lg-4 col-md-5 col-sm-6 col-12'>
+                <label>Exchange Rate</label>
                 <br /> {{formGroup.value.exchangeRate?.exchangeRateDate}} :
                 {{formGroup.value.exchangeRate?.exchangeRate}}
               </div>
@@ -76,7 +81,7 @@
               <div class=" col-sm-12">
                 <div class="row">
                   <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-                    <label for="dispatchNote">Dispatch Note ID</label> &nbsp;
+                    <label for="dispatchNoteSelector">Dispatch Note ID</label> &nbsp;
                     <br />
                     <div class="ui-inputgroup">
                       <p-autoComplete id="dispatchNoteSelector" [(ngModel)]="selectedDispatchNote" [dropdown]="true"
@@ -148,12 +153,12 @@
                   <div class='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12'>
                     <label for='other'>Miscellaneous Charges</label>
                     <br />
-                    <input type='text'[size]="60"pInputText formControlName='other'>
+                    <input type='text'[size]="60"pInputText id='other' formControlName='other'>
                   </div>
                   <div class='col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12'>
                       <label for='otherAmount'>Amount</label>
                     <br />
-                    <input type='number' pInputText formControlName='otherAmount'>
+                    <input type='number' pInputText id='otherAmount' formControlName='otherAmount'>
                   </div>
                 </div>
               </div>

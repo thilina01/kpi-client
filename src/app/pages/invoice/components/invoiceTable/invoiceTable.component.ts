@@ -95,7 +95,7 @@ export class InvoiceTable {
 
       invoice.dispatchNoteList.forEach(dispatchNote => {
         dispatchNote.loadingPlanList.forEach(loadingPlan => {
-          containerSize = loadingPlan.containerSize.name;
+          containerSize = loadingPlan.containerSize ? loadingPlan.containerSize.name : '';
           loadingPlan.loadingPlanItemList.forEach(loadingPlanItem => {
 
             loadingPlanItem.weight = loadingPlanItem.invoiceQuantity * loadingPlanItem.dispatchSchedule.job.item.weight;
