@@ -18,6 +18,7 @@ import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { AutoCompleteModule } from 'primeng/components/autocomplete/autocomplete';
 import { OperationTypeService } from '../operationType/operationType.service';
 import { ItemTypeService } from '../itemType/itemType.service';
+import {OperationService} from "../operation/operation.service";
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { ItemTypeService } from '../itemType/itemType.service';
     ItemTypeService,
     OperationTypeService,
     SectionService,
-    LossReasonService
+    LossReasonService,
+    OperationService
   ]
 })
 export class DefectModule { }

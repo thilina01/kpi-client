@@ -11,6 +11,7 @@ import { LossReasonService } from '../../../lossReason/lossReason.service';
 import { OperationTypeService } from '../../../operationType/operationType.service';
 import { ItemTypeService } from '../../../itemType/itemType.service';
 import 'rxjs/add/operator/take';
+import {OperationService} from "../../../operation/operation.service";
 
 @Component({
     selector: 'defect-form',
@@ -24,14 +25,15 @@ export class DefectForm {
 
     public formGroup: FormGroup;
     defect: any = {};
+    operation: any = {};
     subscription: Subscription;
     defectDate: Date;
 
-    sectionList = [];
+    // sectionList = [];
     lossReasonList = [];
-    operationTypeList = [];
-    jobList = [];
-    itemTypeList = [];
+    // operationTypeList = [];
+    // jobList = [];
+    // itemTypeList = [];
 
     constructor(protected service: DefectService,
         private route: ActivatedRoute,
@@ -42,46 +44,48 @@ export class DefectForm {
         private sectionService: SectionService,
         private lossReasonService: LossReasonService,
         private itemTypeService: ItemTypeService,
+        private operationService: OperationService,
         private sharedService: SharedService) {
         this.formGroup = fb.group({
-            id: '',
-            unitValue: '',
-            quantity: ['', Validators.required],
-            defectDate: [this.defectDate, Validators.required],
-            job: ['', Validators.required],
-            operationType: ['', Validators.required],
-            lossReason: ['', Validators.required],
-            section: ['', Validators.required],
-            itemType: ['', Validators.required]
+          id: '',
+          operation: ['', Validators.required],
+          lossReason: ['', Validators.required],
+          quantity: ['', Validators.required],
+          unitValue: ''
+          // defectDate: [this.defectDate, Validators.required],
+          // job: ['', Validators.required],
+          // operationType: ['', Validators.required],
+          // section: ['', Validators.required],
+          // itemType: ['', Validators.required]
         });
     }
 
-    getJobList(): void {
-        this.jobService.getCombo().subscribe(jobList => this.jobList = jobList);
-    }
+    // getJobList(): void {
+    //     this.jobService.getCombo().subscribe(jobList => this.jobList = jobList);
+    // }
 
-    getOperationTypeList(): void {
-        this.operationTypeService.getCombo().subscribe(operationTypeList => this.operationTypeList = operationTypeList);
-    }
+    // getOperationTypeList(): void {
+    //     this.operationTypeService.getCombo().subscribe(operationTypeList => this.operationTypeList = operationTypeList);
+    // }
 
     getDefectReasonList(): void {
         this.lossReasonService.getComboByLossType({ code: 'DT' }).subscribe(lossReasonList => this.lossReasonList = lossReasonList);
     }
 
-    getSectionList(): void {
-        this.sectionService.getCombo().subscribe(sectionList => this.sectionList = sectionList);
-    }
+    // getSectionList(): void {
+    //     this.sectionService.getCombo().subscribe(sectionList => this.sectionList = sectionList);
+    // }
 
-    getItemTypeList(): void {
-        this.itemTypeService.getCombo().subscribe(itemTypeList => this.itemTypeList = itemTypeList);
-    }
+    // getItemTypeList(): void {
+    //     this.itemTypeService.getCombo().subscribe(itemTypeList => this.itemTypeList = itemTypeList);
+    // }
 
     ngOnInit(): void {
-        this.getJobList();
-        this.getOperationTypeList();
+        // this.getJobList();
+        // this.getOperationTypeList();
         this.getDefectReasonList();
-        this.getSectionList();
-        this.getItemTypeList();
+        // this.getSectionList();
+        // this.getItemTypeList();
         this.route.params.subscribe(
             (params: Params) => {
                 let id = params['id'];
@@ -98,11 +102,11 @@ export class DefectForm {
     }
 
     refresh(): void {
-        this.getJobList();
-        this.getOperationTypeList();
-        this.getDefectReasonList();
-        this.getSectionList();
-        this.getItemTypeList();
+      this.getDefectReasonList();
+        // this.getJobList();
+        // this.getOperationTypeList();
+        // this.getSectionList();
+        // this.getItemTypeList();
     }
 
     loadForm(data: any) {
@@ -118,6 +122,7 @@ export class DefectForm {
 
     public onSubmit(values: any, event: Event): void {
         event.preventDefault();
+        values.operation = {id: this.operation.id};
         console.log(values);
         this.service.save(values).subscribe(
             (data) => {
@@ -133,22 +138,28 @@ export class DefectForm {
 
     }
 
-    /*================== ItemTypeFilter ===================*/
-    filteredItemTypeList: any[];
-
-    filterItemTypeList(event) {
-        let query = event.query.toLowerCase();
-        this.filteredItemTypeList = [];
-        for (let i = 0; i < this.itemTypeList.length; i++) {
-            let itemType = this.itemTypeList[i];
-            if (itemType.display.toLowerCase().indexOf(query) >= 0) {
-                this.filteredItemTypeList.push(itemType);
-            }
-        }
+    public loadOperation(){
+      console.log(this.formGroup.value.operation);
+      this.operationService.get(this.formGroup.value.operation).subscribe(
+        operation => this.operation = operation
+      );
     }
-
-    onItemTypeSelect(event: any) {
-    }
+    // /*================== ItemTypeFilter ===================*/
+    // filteredItemTypeList: any[];
+    //
+    // filterItemTypeList(event) {
+    //     let query = event.query.toLowerCase();
+    //     this.filteredItemTypeList = [];
+    //     for (let i = 0; i < this.itemTypeList.length; i++) {
+    //         let itemType = this.itemTypeList[i];
+    //         if (itemType.display.toLowerCase().indexOf(query) >= 0) {
+    //             this.filteredItemTypeList.push(itemType);
+    //         }
+    //     }
+    // }
+    //
+    // onItemTypeSelect(event: any) {
+    // }
     /*================== Loss Reason Filter ===================*/
     filteredLossReasons: any[];
 
@@ -167,53 +178,53 @@ export class DefectForm {
 
     }
     /*================== End Of Loss Reason Filter ===================*/
-    /*================== SectionFilter ===================*/
-    filteredSectionList: any[];
-
-    filterSectionList(event) {
-        let query = event.query.toLowerCase();
-        this.filteredSectionList = [];
-        for (let i = 0; i < this.sectionList.length; i++) {
-            let section = this.sectionList[i];
-            if (section.display.toLowerCase().indexOf(query) >= 0) {
-                this.filteredSectionList.push(section);
-            }
-        }
-    }
-
-    onSectionSelect(event: any) {
-    }
-
-    /*================== JobFilter ===================*/
-    filteredJobList: any[];
-
-    filterJobList(event) {
-        let query = event.query.toLowerCase();
-        this.filteredJobList = [];
-        for (let i = 0; i < this.jobList.length; i++) {
-            let job = this.jobList[i];
-            if (job.display.toLowerCase().indexOf(query) >= 0) {
-                this.filteredJobList.push(job);
-            }
-        }
-    }
-
-    onJobSelect(event: any) {
-    }
-    /*================== OperationTypeFilter ===================*/
-    filteredOperationTypeList: any[];
-
-    filterOperationTypeList(event) {
-        let query = event.query.toLowerCase();
-        this.filteredOperationTypeList = [];
-        for (let i = 0; i < this.operationTypeList.length; i++) {
-            let operationType = this.operationTypeList[i];
-            if (operationType.display.toLowerCase().indexOf(query) >= 0) {
-                this.filteredOperationTypeList.push(operationType);
-            }
-        }
-    }
-
-    onOperationTypeSelect(event: any) {
-    }
+    // /*================== SectionFilter ===================*/
+    // filteredSectionList: any[];
+    //
+    // filterSectionList(event) {
+    //     let query = event.query.toLowerCase();
+    //     this.filteredSectionList = [];
+    //     for (let i = 0; i < this.sectionList.length; i++) {
+    //         let section = this.sectionList[i];
+    //         if (section.display.toLowerCase().indexOf(query) >= 0) {
+    //             this.filteredSectionList.push(section);
+    //         }
+    //     }
+    // }
+    //
+    // onSectionSelect(event: any) {
+    // }
+    //
+    // /*================== JobFilter ===================*/
+    // filteredJobList: any[];
+    //
+    // filterJobList(event) {
+    //     let query = event.query.toLowerCase();
+    //     this.filteredJobList = [];
+    //     for (let i = 0; i < this.jobList.length; i++) {
+    //         let job = this.jobList[i];
+    //         if (job.display.toLowerCase().indexOf(query) >= 0) {
+    //             this.filteredJobList.push(job);
+    //         }
+    //     }
+    // }
+    //
+    // onJobSelect(event: any) {
+    // }
+    // /*================== OperationTypeFilter ===================*/
+    // filteredOperationTypeList: any[];
+    //
+    // filterOperationTypeList(event) {
+    //     let query = event.query.toLowerCase();
+    //     this.filteredOperationTypeList = [];
+    //     for (let i = 0; i < this.operationTypeList.length; i++) {
+    //         let operationType = this.operationTypeList[i];
+    //         if (operationType.display.toLowerCase().indexOf(query) >= 0) {
+    //             this.filteredOperationTypeList.push(operationType);
+    //         }
+    //     }
+    // }
+    //
+    // onOperationTypeSelect(event: any) {
+    // }
 }
