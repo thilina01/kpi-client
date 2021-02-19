@@ -24,16 +24,6 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-left">
-                          <h3> Syspro Invoice No:</h3>
-                        </td>
-                        <td class="text-left">
-                          <h3>
-                            <b>&nbsp;&nbsp;{{invoice.sysproInvoiceNumber}}</b>
-                          </h3>
-                        </td>
-                      </tr>
-                      <tr>
                         <td class="left">
                           Date of Invoice:
                         </td>
@@ -232,6 +222,13 @@
           </td>
           <td class="text-right">
             {{((((totalAmount)*(invoice.taxRate))+totalAmount))| number : '1.2-2'}} </td>
+        </tr>
+        <tr *ngIf="invoice.sysproInvoiceNumber">
+          <td colspan="7" style=" border: 1px solid #ffffff !important; ">
+            <p>
+              System Reference No: {{invoice.sysproInvoiceNumber}}
+            </p>
+          </td>
         </tr>
         <tr>
           <th colspan="7" style=" border: 1px solid #ffffff !important;  border-top: 1px solid #000000 !important;">

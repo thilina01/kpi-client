@@ -24,16 +24,6 @@
                         </td>
                       </tr>
                       <tr>
-                        <td class="text-left">
-                          <h3> Syspro Invoice No:</h3>
-                        </td>
-                        <td class="text-left">
-                          <h3>
-                            <b>&nbsp;&nbsp;{{invoice.sysproInvoiceNumber}}</b>
-                          </h3>
-                        </td>
-                      </tr>
-                      <tr>
                         <td class="left">
                           Date of Invoice:
                         </td>
@@ -238,6 +228,9 @@
             <br />
             <p>
               <b> Packing List No:</b> PL{{((xLoadingPlanId)|number : '5.0-0').replace(',','')}}
+            </p>
+            <p *ngIf="invoice.sysproInvoiceNumber">
+              System Reference No: {{invoice.sysproInvoiceNumber}}
             </p>
           </td>
         </tr>
