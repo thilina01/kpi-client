@@ -1,23 +1,24 @@
-import { Component, ViewEncapsulation, Input, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Component, ViewEncapsulation, Input, ViewChild} from '@angular/core';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {
   FormGroup,
   AbstractControl,
   FormBuilder,
   Validators
 } from '@angular/forms';
-import { SharedService } from '../../../../services/shared.service';
-import { LoadingPlanService } from '../../loadingPlan.service';
+import {SharedService} from '../../../../services/shared.service';
+import {LoadingPlanService} from '../../loadingPlan.service';
 import 'rxjs/add/operator/take';
-import { CustomerService } from '../../../customer/customer.service';
-import { DispatchScheduleService } from '../../../dispatchSchedule/dispatchSchedule.service';
-import { AddressService } from '../../../../services/address.service';
-import { PortService } from '../../../port/port.service';
-import { ContainerSizeService } from '../../../containerSize/containerSize.service';
-import { PackagingSpecificationService } from '../../../packagingSpecification/packagingSpecification.service';
-import { EmployeeService } from '../../../employee/employee.service';
-import { DataTable, ConfirmationService } from 'primeng/primeng';
+import {CustomerService} from '../../../customer/customer.service';
+import {DispatchScheduleService} from '../../../dispatchSchedule/dispatchSchedule.service';
+import {AddressService} from '../../../../services/address.service';
+import {PortService} from '../../../port/port.service';
+import {ContainerSizeService} from '../../../containerSize/containerSize.service';
+import {PackagingSpecificationService} from '../../../packagingSpecification/packagingSpecification.service';
+import {EmployeeService} from '../../../employee/employee.service';
+import {DataTable, ConfirmationService} from 'primeng/primeng';
+import {LoadingPlanItemService} from "../../../../services/loadingPlanItem.service";
 
 @Component({
   selector: 'loading-plan-form',
@@ -29,6 +30,7 @@ export class LoadingPlanForm {
   employee(arg0: any): any {
     throw new Error('Method not implemented.');
   }
+
   @Input('formGroup') public formGroup: FormGroup;
   @ViewChild(DataTable) dataTable: DataTable;
   loadingPlanItemFormGroup: FormGroup;
@@ -54,6 +56,7 @@ export class LoadingPlanForm {
 
   constructor(
     protected service: LoadingPlanService,
+    protected loadingPlanItemService: LoadingPlanItemService,
     private route: ActivatedRoute,
     private router: Router,
     fb: FormBuilder,
@@ -199,19 +202,57 @@ export class LoadingPlanForm {
   public onEnter(quantity: string, dt: DataTable) {
     if (this.loadingPlanItemFormGroup.valid) {
       let values = this.loadingPlanItemFormGroup.value;
-      if (this.formGroup.value.loadingPlanItemList == null) {
-        this.formGroup.value.loadingPlanItemList = [];
-      }
+      if (values.quantity < 1) {
 
-      this.dispatchScheduleService
-        .get(+values.dispatchSchedule.id)
-        .subscribe(dispatchSchedule => {
-          values.dispatchSchedule = dispatchSchedule;
-          this.formGroup.value.loadingPlanItemList.push(values);
-          this.loadingPlanItemFormGroup.reset();
-          document.getElementById('dispatchScheduleSelector').focus();
-          this.formGroup.value.loadingPlanItemList = this.formGroup.value.loadingPlanItemList.slice();
+        this.sharedService.addMessage({
+          severity: 'warn',
+          summary: 'Invalid quantity',
+          detail: values.quantity + ' not allowed'
         });
+        return;
+      }
+      let loadingPlannedQuantity = 0;
+      this.loadingPlanItemService
+        .getByDispatchSchedule(values.dispatchSchedule.id)
+        .subscribe(
+          loadingPlanItemList => {
+            loadingPlanItemList.forEach(element => {
+              loadingPlannedQuantity += element.quantity;
+            });
+            let allowedQuantity = values.dispatchSchedule.quantity - loadingPlannedQuantity;
+
+            if (allowedQuantity == 0) {
+              this.sharedService.addMessage({
+                severity: 'info',
+                summary: 'Schedule already completed',
+                detail: ''
+              });
+            } else if (values.quantity <= allowedQuantity) {
+              // let values = this.loadingPlanItemFormGroup.value;
+              if (this.formGroup.value.loadingPlanItemList == null) {
+                this.formGroup.value.loadingPlanItemList = [];
+              }
+
+              this.dispatchScheduleService
+                .get(+values.dispatchSchedule.id)
+                .subscribe(dispatchSchedule => {
+                  values.dispatchSchedule = dispatchSchedule;
+                  this.formGroup.value.loadingPlanItemList.push(values);
+                  this.loadingPlanItemFormGroup.reset();
+                  document.getElementById('dispatchScheduleSelector').focus();
+                  this.formGroup.value.loadingPlanItemList = this.formGroup.value.loadingPlanItemList.slice();
+                });
+            } else {
+              this.sharedService.addMessage({
+                severity: 'warn',
+                summary: 'Limit exceeded',
+                detail: 'allowed ' + allowedQuantity + ' only'
+              });
+            }
+          }
+        );
+
+
     }
   }
 
@@ -237,7 +278,7 @@ export class LoadingPlanForm {
       loadingPlanItem.grossWeight =
         loadingPlanItem.netWeight +
         loadingPlanItem.noOfpackages *
-          loadingPlanItem.packagingSpecification.palletSize.weight;
+        loadingPlanItem.packagingSpecification.palletSize.weight;
       loadingPlanItem.grossWeight += parseInt(loadingPlanItem.grossWeight);
     }
   }
@@ -324,11 +365,12 @@ export class LoadingPlanForm {
   onCustomerSelect(event: any) {
     let customer = this.formGroup.value.customer;
     this.reset();
-    this.formGroup.patchValue({customer: customer, loadingPlanDate : new Date()}, { onlySelf: true });
+    this.formGroup.patchValue({customer: customer, loadingPlanDate: new Date()}, {onlySelf: true});
     this.getDispatchScheduleListByCustomer(+customer.id);
     this.setDisplayOfCustomer(customer);
     this.getaAddressListByCustomer(+customer.id);
   }
+
   setDisplayOfCustomer(customer: any) {
     if (customer != null && customer !== undefined) {
       let display =
@@ -342,6 +384,7 @@ export class LoadingPlanForm {
       this.formGroup.value.customer.display = display;
     }
   }
+
   /*================== AddressFilter ===================*/
   filteredAddressList: any[];
 
@@ -383,6 +426,7 @@ export class LoadingPlanForm {
       this.formGroup.value.address.display = display;
     }
   }
+
   /*================== DispatchScheduleFilter ===================*/
   filteredDispatchScheduleList: any[];
 
@@ -429,6 +473,7 @@ export class LoadingPlanForm {
       this.formGroup.value.dispatchSchedule.display = display;
     }
   }
+
   /*================== Packaging Specification Filter ===================*/
   filteredPackagingSpecificationList: any[];
 
@@ -477,5 +522,6 @@ export class LoadingPlanForm {
       this.formGroup.value.packagingSpecification.display = display;
     }
   }
+
   /*================== Packaging Specification Filter ===================*/
 }

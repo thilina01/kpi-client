@@ -18,20 +18,20 @@
       <form [formGroup]='formGroup' (ngSubmit)='onSubmit(formGroup.value,$event)' class='form-horizontal'>
         <div class='row'>
           <div *ngIf="loadingPlan.id" class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for='id'>Loading Plan No</label>
+            <label >Loading Plan No</label>
             <br/>
             <label>{{loadingPlan?.id}}</label>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="loadingPlanDate">Date</label>
             <br/>
-            <p-calendar id="orderDatePicker" formControlName="loadingPlanDate" showIcon="true" dateFormat="yy-mm-dd" hourFormat="24"></p-calendar>
+            <p-calendar id="loadingPlanDate" formControlName="loadingPlanDate" showIcon="true" dateFormat="yy-mm-dd" hourFormat="24"></p-calendar>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for="customer">Customer</label> &nbsp;
             <br/>
             <div class="ui-inputgroup">
-              <p-autoComplete formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
+              <p-autoComplete id="customer" formControlName="customer" [dropdown]="true" field="display" [suggestions]="filteredCustomerList" (completeMethod)="filterCustomerList($event)"
                 [minLength]="1" placeholder="Search" (onSelect)="onCustomerSelect($event)">
                 <ng-template let-option pTemplate="option">
                   <div class="ui-helper-clearfix">
@@ -48,7 +48,7 @@
             <label for="address">Address</label>
             <br/>
             <div class="ui-inputgroup">
-              <p-autoComplete [dropdown]="true" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
+              <p-autoComplete [dropdown]="true" id="address" formControlName="address" field="display" [suggestions]="filteredAddressList" (completeMethod)="filterAddressList($event)"
                 [size]="20" [minLength]="1" placeholder="Search" (onSelect)="onAddressSelect($event)">
               </p-autoComplete>
               <a routerLink="/pages/customer/form" target="blank">
@@ -57,7 +57,7 @@
             </div>
           </div>
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
-            <label for='portOfLoading'>Port Of Loading</label>
+            <label for='port'>Port Of Loading</label>
             <br/>
             <div class="ui-inputgroup">
               <p-autoComplete formControlName='portOfLoading' id='port' field='display' [dropdown]="true" [suggestions]='filteredPorts'
@@ -83,7 +83,7 @@
           <div class='col-xl-3 col-lg-4 col-md-5 col-sm-6 col-12'>
             <label for='noOfContainers'>No Of Containers</label>
             <br/>
-            <input type='number' pInputText formControlName='noOfContainers'>
+            <input type='number' pInputText id='noOfContainers' formControlName='noOfContainers'>
           </div>
         </div>
         <br/>
@@ -94,7 +94,7 @@
                 <div class="row">
                   <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
                     <div class="form-group">
-                      <label for="dispatchSchedule">Dispatch Schedule</label>
+                      <label for="dispatchScheduleSelector">Dispatch Schedule</label>
                       <br/>
                       <div class="ui-inputgroup">
                         <p-autoComplete [dropdown]="true" id="dispatchScheduleSelector" formControlName="dispatchSchedule" field="display" [suggestions]="filteredDispatchScheduleList"
@@ -109,14 +109,14 @@
                   </div>
                   <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
                     <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['quantity'].valid &&  loadingPlanItemFormGroup.controls['quantity'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['quantity'].valid && loadingPlanItemFormGroup.controls['quantity'].touched)}">
-                      <label for="quantity"> Quantity</label>
+                      <label for="quantity">Quantity</label>
                       <br/>
-                      <input type="number" pInputText formControlName="quantity">
+                      <input type="number" pInputText id="quantity" formControlName="quantity">
                     </div>
                   </div>
                   <div class='col-xl-4 col-lg-3 col-md-6 col-sm-6 col-12'>
                     <div class="form-group">
-                      <label for="packagingSpecification">Packaging Specification</label>
+                      <label for="packagingSpecificationSelector">Packaging Specification</label>
                       <br/>
                       <div class="ui-inputgroup">
                         <p-autoComplete [dropdown]="true" id="packagingSpecificationSelector" formControlName="packagingSpecification" field="display"
@@ -133,11 +133,11 @@
                     <div class="form-group" [ngClass]="{'has-error': (! loadingPlanItemFormGroup.controls['cubicMeter'].valid &&  loadingPlanItemFormGroup.controls['cubicMeter'].touched), 'has-success': ( loadingPlanItemFormGroup.controls['cubicMeter'].valid && loadingPlanItemFormGroup.controls['cubicMeter'].touched)}">
                       <label for='cubicMeter'>CBM</label>
                       <br/>
-                      <input type='number' #cubicMeter (keyup.enter)="onEnter(cubicMeter.value,dt)" pInputText formControlName='cubicMeter'>
+                      <input type='number' id="cubicMeter"  #cubicMeter (keyup.enter)="onEnter(cubicMeter.value,dt)" pInputText formControlName='cubicMeter'>
                     </div>
                   </div>
                   <div class="col">
-                    <label for="inputFirstName">&nbsp;</label>
+                    <label>&nbsp;</label>
                     <br/>
                     <div class="form-group form-inline">
                       <button (click)="onEnter(cubicMeter.value,dt)" pButton type="button" class="ui-button-secondary" icon="fa-plus-circle" label="Add"></button> &nbsp;&nbsp;

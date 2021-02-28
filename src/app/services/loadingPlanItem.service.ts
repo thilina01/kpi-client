@@ -28,6 +28,11 @@ export class LoadingPlanItemService extends MasterService {
       .catch(err => this.handleError(err));
   }
 
+  getByDispatchSchedule(id: number): Observable<any> {
+    return this.http.get(this.apiUrl + "dispatchSchedule/" + id, {headers: this.getJsonHeaders()})
+      .catch(err => this.handleError(err));
+  }
+
   getDispatchRejectPage(customer, item, dispatchNote, startDate, endDate, page, size): Observable<any> {
     return this.http.get(this.apiUrl + 'dispatchReject?customer=' + customer+  '&item=' + item +'&dispatchNote=' + dispatchNote + '&startDate=' + startDate + '&endDate=' + endDate + '&page=' + page + '&size=' + size, { headers: this.getJsonHeaders() })
       .catch(err => this.handleError(err));
