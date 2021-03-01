@@ -140,6 +140,15 @@ export class ProductionForm {
   loadForm(data: any) {
     if (data != null) {
       data.operationList.sort(this.predicateBy('id'));
+      data.operationList.forEach(operation => {
+        if(operation.actualQuantity == null){
+          let progressTotal = 0;
+          operation.operationProgressList.forEach(operationProgress => {
+            progressTotal += operationProgress.quantity;
+          })
+          operation.actualQuantity = progressTotal;
+        }
+      });
       this.production = data;
     }
     this.calculateTotalPlannedProductionQuantity();
