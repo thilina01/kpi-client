@@ -147,6 +147,7 @@ export class ProductionForm {
             progressTotal += operationProgress.quantity;
           })
           operation.actualQuantity = progressTotal;
+          delete operation.operationProgressList;
         }
       });
       this.production = data;
