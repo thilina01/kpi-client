@@ -113,7 +113,9 @@ export class JobInfo {
         this.filteredJobList = [];
         for (let i = 0; i < this.jobList.length; i++) {
             let job = this.jobList[i];
-            if (job.code.toLowerCase().indexOf(query) == 0 || job.name.toLowerCase().indexOf(query) == 0) {
+            let code = job.code ? job.code : "";
+            let name = job.name ? job.name : "";
+            if (code.toLowerCase().indexOf(query) == 0 || name.toLowerCase().indexOf(query) == 0) {
                 this.filteredJobList.push(job);
             }
         }
