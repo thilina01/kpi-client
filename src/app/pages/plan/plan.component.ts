@@ -21,6 +21,7 @@ export class Plan {
   public submitted: boolean = false;
   shift: any = { id: '', code: '', name: '' };
   controlPoint: any = { id: '', code: '', name: '' };
+  loadedProduction = null;
 
   constructor(fb: FormBuilder,
     private productionService: ProductionService,
@@ -47,9 +48,10 @@ export class Plan {
         id = id == undefined ? '0' : id;
         if (id != '0') {
           this.productionService.get(+id).subscribe(
-            (data) => {
-              this.loadForm(data);
-              console.log(data);
+            (loadedProduction) => {
+              this.loadedProduction = loadedProduction;
+              this.loadForm(loadedProduction);
+              console.log(loadedProduction);
             }
           )
         }
@@ -94,14 +96,46 @@ export class Plan {
       //   alert('Manpower Required');
       //   return;
       // }
-      console.log(values);
-      this.productionService.save(values).subscribe(
+      this.productionService.save(this.cleanse(values)).subscribe(
         (data) => {
           this.sharedService.addMessage({ severity: 'info', summary: 'Success', detail: 'Plan Added' });
           this.resetForm();
         }
       );
     }
+  }
+
+  private cleanse(values: any) {
+    values = JSON.parse(JSON.stringify(values));
+    if(values.id && this.loadedProduction && this.loadedProduction == values.id){
+      values.actualDuration = this.loadedProduction.actualDuration;
+    }
+    values.controlPoint = {
+      id: values.controlPoint.id
+    }
+    values.shift = {
+      id: values.shift.id
+    }
+    values.shiftType = {
+      id: values.shiftType.id
+    }
+
+
+    values.operationList.forEach(operation => {
+      delete operation.operationProgressList;
+      operation.job = {
+        id: operation.job.id
+      }
+      operation.operationType = {
+        id: operation.operationType.id
+      }
+      operation.productType = {
+        id: operation.productType.id
+      }
+    });
+
+    console.log(values);
+    return values;
   }
 
   public resetForm() {
