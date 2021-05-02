@@ -3,7 +3,7 @@ sudo: false
 language: node_js
 
 node_js:
-  - "6"
+   - node # will use latest node
 
 addons:
   apt:
@@ -12,19 +12,11 @@ addons:
     packages:
       - g++-4.8
 
-before_install:
-  - curl -o- -L https://yarnpkg.com/install.sh | bash
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - npm config set spin false
+before_script: # commands to run before the build step
+   - npm install -g --silent @angular/cli
 
-before_script:
-  - npm i -g npm@4
-
-install:
-  - yarn
-
-script:
-  - yarn run build:ci
+script: # the build step
+   - ng build --prod 
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!) 
