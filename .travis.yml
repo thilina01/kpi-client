@@ -3,7 +3,7 @@ sudo: false
 language: node_js
 
 node_js:
-   - node # will use latest node
+   - 14
 
 addons:
   apt:
