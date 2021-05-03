@@ -1,22 +1,18 @@
-sudo: false
-
 language: node_js
 
-node_js:
-   - 14
+services:
+  - docker
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
+before_install:
+  - docker build -t thilina01/tms:latest -t thilina01/tms:0.0.1 .
+  - docker run -d -p 80:80 thilina01/tms:0.0.1
+  - docker ps -a
 
-before_script: # commands to run before the build step
-   - npm install -g --silent @angular/cli
-
-script: # the build step
-   - npm run prebuild:prod && npm run build:prod
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!) 
