@@ -5,8 +5,14 @@ services:
 
 before_install:
   - docker build -t thilina01/tms:latest -t thilina01/tms:0.0.1 .
-  - docker run -d -p 80:80 thilina01/tms:0.0.1
+  - docker run --rm -d thilina01/tms:0.0.1
   - docker ps -a
+
+install:
+  - echo "install nothing!"
+
+script:
+  - echo "no tests!"
 
 deploy:
   provider: script
