@@ -13,7 +13,7 @@ let apiEndpoint =
   hostname === 'kpi.otrlanka.com'
     ? 'http://api.otrlanka.com/'
     : hostname === '192.168.1.171'
-      ? 'http://' + hostname + ':8080/file-manager-api/'
+      ? 'http://' + hostname + '/api/'
       : 'http://' + hostname + ':8080/';
 
 export const AppConfig: IAppConfig = {
