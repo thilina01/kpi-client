@@ -1,10 +1,12 @@
 name: Docker Image CI
 
 on:
-#  push:
+  push:
 #    branches:
 #      - 'master'
-  workflow_dispatch:
+    tags:
+      - "*.*.*"
+#  workflow_dispatch:
 
 jobs:
   docker:
@@ -24,6 +26,12 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
+      - name: Get the tag
+        id: get_tag
+        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}      
+      - 
+        name: Show extracted Maven project version
+        run: echo ${{ steps.get_tag.outputs.tag }}
       - 
         name: Login to DockerHub
         uses: docker/login-action@v1
@@ -36,7 +44,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: thilina01/tms:latest, thilina01/tms:0.0.1
+          tags: thilina01/tms:latest, thilina01/tms:${{ steps.get_tag.outputs.tag }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
       -
