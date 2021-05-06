@@ -8,4 +8,5 @@ RUN npm run prebuild:prod && npm run build:prod
 
 # Stage 2, use the compiled app, ready for production with Nginx
 FROM nginx
+RUN ln -sf /usr/share/zoneinfo/Asia/Colombo /etc/localtime
 COPY --from=build /app/dist/ /usr/share/nginx/html
