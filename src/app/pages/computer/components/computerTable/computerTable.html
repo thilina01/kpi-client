@@ -28,8 +28,16 @@
 		<p-column field="lanIp" header="Lan Ip" [sortable]="true"></p-column>
 		<p-column field="wlanIp" header="Wlan Ip" [sortable]="true"></p-column>
 		<p-column field="value" header="Value" [sortable]="true"></p-column>
-		<p-column field="purchaseDate" header="Purchase Date" [sortable]="true"></p-column>
-		<p-column field="transferDate" header="Transfer Date" [sortable]="true"></p-column>
+		<p-column field="purchaseDate" header="Purchase Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.purchaseDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+		<p-column field="transferDate" header="Transfer Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.transferDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
 		<p-column field="employee.firstName" header="Employee" [sortable]="true"></p-column>
 		<p-column field="computerType.name" header="Computer Type" [sortable]="true"></p-column>
 		<p-column header="Action" styleClass="text-right">

@@ -36,7 +36,7 @@
                     <td>
                       <b>Date</b>
                     </td>
-                    <td>{{salesOrder.orderDate}}</td>
+                    <td>{{salesOrder.orderDate | date:'y-MM-dd'}}</td>
                   </tr>
                   <tr>
                     <td>
@@ -88,7 +88,7 @@
           <table>
             <tr *ngFor="let invoice of salesOrderItem.invoiceList">
               <td width="30%">{{invoice?.invoiceNumber}}</td>
-              <td class="text-center" style="white-space: nowrap;">{{invoice?.invoiceDate }}</td>
+              <td class="text-center" style="white-space: nowrap;">{{invoice?.invoiceDate | date:'y-MM-dd'}}</td>
               <td class="text-right" width="30%">{{invoice?.quantity }}</td>
             </tr>
           </table>

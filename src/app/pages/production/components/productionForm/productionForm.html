@@ -65,7 +65,7 @@
             </div>
 
             <div class="col-sm-1 ">
-              <label>{{production.productionDate}}</label>
+              <label>{{production.productionDate | date:'y-MM-dd'}}</label>
             </div>
             <div class="col-sm-1 ">
               <label *ngIf="production.shift != undefined">{{production.shift.name}} </label>
@@ -267,7 +267,7 @@
           <tbody>
             <tr>
               <td>{{production.id}}</td>
-              <td>{{production.productionDate}}</td>
+              <td>{{production.productionDate | date:'y-MM-dd'}}</td>
               <td>
                 <div *ngIf="production.shift != undefined && production.shift.code != undefined">
                   {{production.shift.name}}
@@ -379,7 +379,7 @@
           <tbody>
             <tr>
               <td>{{production.id}}</td>
-              <td>{{production.productionDate}}</td>
+              <td>{{production.productionDate | date:'y-MM-dd'}}</td>
               <td>
                 <p *ngIf="production.shift != undefined && production.shift.code != undefined">
                   {{production.shift.name}}</p>

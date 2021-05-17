@@ -97,6 +97,11 @@ export class DispatchInformationTable {
       loadingPlanItem.noOfpackages =
         loadingPlanItem.quantity /
         loadingPlanItem.packagingSpecification.perPalletQuantity;
+
+      loadingPlanItem.dispatchSchedule.requestDate = this.sharedService.YYYYMMDD(loadingPlanItem.dispatchSchedule.requestDate);
+      loadingPlanItem.dispatchSchedule.confirmDate = this.sharedService.YYYYMMDD(loadingPlanItem.dispatchSchedule.confirmDate);
+      loadingPlanItem.loadingPlan.dispatchNote.dispatchDate = this.sharedService.YYYYMMDD(loadingPlanItem.loadingPlan.dispatchNote.dispatchDate);
+
     });
     this.rows = loadingPlanItemList;
     this.totalRecords = data.totalElements;

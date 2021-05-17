@@ -31,7 +31,7 @@
               <td>
                 <b>Date</b>
               </td>
-              <td>{{salesOrder.orderDate}}</td>
+              <td>{{salesOrder.orderDate | date:'y-MM-dd'}}</td>
             </tr>
             <tr>
               <td>
@@ -142,7 +142,7 @@
         </td>
         <td class="text-right" style="vertical-align:top"> {{ dispatchSchedule.quantity}} </td>
         <td class="text-right" style="vertical-align:top">
-          <span style="white-space:nowrap">{{ dispatchSchedule.confirmDate}} </span>
+          <span style="white-space:nowrap">{{ dispatchSchedule.confirmDate | date:'y-MM-dd'}} </span>
         </td>
       </tr>
       <tr>

@@ -41,7 +41,11 @@
     </p-header>
     <p-column field="id" header="ID"></p-column>
     <p-column field="jobNo" header="Job Number" [sortable]="true"></p-column>
-    <p-column field="jobDate" header="Date" [sortable]="true"></p-column>
+    <p-column field="jobDate" header="Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.jobDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
     <p-column field="jobType.name" header="Type" [sortable]="true"></p-column>
     <p-column field="item.code" header="Item" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">

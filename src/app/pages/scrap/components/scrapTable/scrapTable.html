@@ -44,7 +44,11 @@
       </div>
     </p-header>
     <p-column field="id" header="ID"></p-column>
-    <p-column field="scrapDate" header="Date" [sortable]="true"> </p-column>
+    <p-column field="scrapDate" header="Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.scrapDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
     <p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
     <p-column field="itemType.name" header="Item Type" [sortable]="true"></p-column>
     <p-column field="operationType.description" header="Operation Type" [sortable]="true"></p-column>

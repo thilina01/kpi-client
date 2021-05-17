@@ -64,7 +64,11 @@
 		</p-header>
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="controlPoint.code" header="Control Point" [sortable]="true"></p-column>
-		<p-column field="productionDate" header="Production Date" [sortable]="true"></p-column>
+		<p-column field="productionDate" header="Production Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.productionDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
 		<p-column field="shift.name" header="Shift" [sortable]="true"></p-column>
 		<p-column field="plannedDuration" header="Planned Duration" [sortable]="true"></p-column>
 		<p-column field="actualDuration" header="Actual Duration" [sortable]="true"></p-column>

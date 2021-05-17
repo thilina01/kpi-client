@@ -57,11 +57,31 @@
 			</div>
 		</p-header>
 		<p-column field="id" header="ID"></p-column>
-		<p-column field="dispatchScheduleDate" header="Schedule Date" [sortable]="true"></p-column>
-		<p-column field="requestDate" header="Request Date" [sortable]="true"></p-column>
-		<p-column field="confirmDate" header="Confirm Date" [sortable]="true"></p-column>
-		<p-column field="salesOrderItem.salesOrder.orderDate" header="Order Date" [sortable]="true"></p-column>
-		<p-column field="dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
+		<p-column field="dispatchScheduleDate" header="Schedule Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.dispatchScheduleDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+		<p-column field="requestDate" header="Request Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.requestDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+		<p-column field="confirmDate" header="Confirm Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.confirmDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+		<p-column field="salesOrderItem.salesOrder.orderDate" header="Order Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.salesOrderItem.salesOrder.orderDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+		<p-column field="dispatchDate" header="Dispatch Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.dispatchDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
 		<p-column field="job.jobNo" header="Job Number" [sortable]="true"></p-column>
 		<p-column field="job.item.code" header="Item" [sortable]="true"></p-column>
 		<p-column field="salesOrderItem.salesOrder.customer.name" header="Customer" [sortable]="true"></p-column>

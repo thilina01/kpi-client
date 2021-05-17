@@ -59,7 +59,11 @@
     </p-header>
     <p-column field="id" header="ID"></p-column>
     <p-column field="salesOrderNumber" header="Sales Order Number" [sortable]="true"></p-column>
-    <p-column field="orderDate" header="Order Date" [sortable]="true"></p-column>
+    <p-column field="orderDate" header="Order Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.orderDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
     <p-column field="salesOrderType.code" header=" Sales Order Type" [sortable]="true"></p-column>
     <p-column field="customer.name" header="Customer" [sortable]="true"></p-column>
     <p-column field="customerPoNumber" header="Customer PO Number" [sortable]="true"></p-column>

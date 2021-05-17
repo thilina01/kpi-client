@@ -45,7 +45,7 @@
   <div class="row" *ngIf="salesOrder!=undefined">
     <div class="col-md-3 col-sm-6 col-xs-12">
       <label>Date : </label>
-      <label>{{salesOrder.orderDate}}</label>
+      <label>{{salesOrder.orderDate | date:'y-MM-dd'}}</label>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <label>Type : </label>
@@ -90,9 +90,21 @@
         <p-column field="job.item.code" header="Item"></p-column>
         <p-column field="job.jobNo" header="Job"></p-column>
         <p-column field="quantity" header="Quantity" styleClass="text-right" [editable]="true"></p-column>
-        <p-column field="requestDate" header="Request Date"></p-column>
-        <p-column field="confirmDate" header="Confirm Date"></p-column>
-        <p-column field="dispatchDate" header="Dispatch Date"></p-column>
+        <p-column field="requestDate" header="Request Date">
+          <ng-template let-col let-rowData="rowData" pTemplate="body">
+            {{rowData.requestDate | date:'y-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column field="confirmDate" header="Confirm Date">
+          <ng-template let-col let-rowData="rowData" pTemplate="body">
+            {{rowData.confirmDate | date:'y-MM-dd'}}
+          </ng-template>
+        </p-column>
+        <p-column field="dispatchDate" header="Dispatch Date">
+          <ng-template let-col let-rowData="rowData" pTemplate="body">
+            {{rowData.dispatchDate | date:'y-MM-dd'}}
+          </ng-template>
+        </p-column>
       </p-dataTable>
     </div>
   </div>

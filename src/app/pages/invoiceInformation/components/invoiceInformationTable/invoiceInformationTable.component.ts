@@ -109,6 +109,8 @@ export class InvoiceInformationTable {
       totalAmount += invoiceInformation.amount;
       invoiceInformation.totalAmount = totalAmount;
 
+      invoiceInformation.invoiceDate = this.sharedService.YYYYMMDD(invoiceInformation.invoiceDate);
+
     });
 
     this.rows = invoiceInformationList;

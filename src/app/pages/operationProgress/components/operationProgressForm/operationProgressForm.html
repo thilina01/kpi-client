@@ -27,7 +27,7 @@
       <span [hidden]="operation?.production?.id == undefined"> {{operation?.production?.id}} </span>
     </div>
     <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Date :
-      <span [hidden]="operation?.production?.productionDate == undefined">{{operation?.production?.productionDate}}</span>
+      <span [hidden]="operation?.production?.productionDate == undefined">{{operation?.production?.productionDate | date:'y-MM-dd'}}</span>
     </div>
     <div style="margin-top:12px;" class="scol-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">Control Point :
       <span [hidden]="operation?.production?.controlPoint.name == undefined">{{operation?.production?.controlPoint?.code+' '+operation?.production?.controlPoint?.name}}</span>

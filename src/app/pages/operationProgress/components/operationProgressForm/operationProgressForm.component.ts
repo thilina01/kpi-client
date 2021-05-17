@@ -89,7 +89,7 @@ export class OperationProgressForm {
       let productionDate = this.operation.production.productionDate;
       let operationProgress = {
         quantity: values.quantity,
-        timeSlot: new Date(productionDate + ' ' + values.timeSlot.code + ':00')
+        timeSlot: new Date(this.sharedService.YYYYMMDD(productionDate) + ' ' + values.timeSlot.code + ':00')
 
       };
       this.operation.operationProgressList.push(operationProgress);

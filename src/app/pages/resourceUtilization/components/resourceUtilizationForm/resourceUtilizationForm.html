@@ -25,13 +25,13 @@
     <br/>
     <div class="row">
       <div class="col-12 row">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.productionDate == undefined || production.productionDate == undefined">Date : {{production==null || production.id == undefined?'':production.productionDate}}</div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.productionDate == undefined || production.productionDate == undefined">Date : {{production==null || production.id == undefined?'':production.productionDate | date:'y-MM-dd'}}</div>
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.shift == undefined || production.shift.name == undefined">Shift : {{production==null || production.id == undefined?'':production.shift.name}}</div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="production==null || production.controlPoint == undefined ||  production.controlPoint.name == undefined">Control Point : {{production==null || production.id == undefined?'':production.controlPoint.code + ' ' + production.controlPoint.name}}</div>
       </div>
     </div>
     <br/>
-    <p-panel>
+    <p-panel *ngIf="production.id">
       <div class="row">
         <div class=" col-sm-12">
           <form [formGroup]="resourceUtilizationFormGroup" (ngSubmit)="onSubmit(resourceUtilizationFormGroup.value,$event)" class="form-horizontal">
@@ -113,7 +113,7 @@
         </div>
       </div>
     </p-panel>
-    <div class="row">
+    <div *ngIf="production.id" class="row">
       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         &nbsp;
         <br/>

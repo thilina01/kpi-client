@@ -2,8 +2,8 @@
   "name": "otr-kpi-client",
   "version": "0.0.1",
   "description": "KPI for OTR",
-  "author": "akveo",
-  "homepage": "http://kpi.trwlanka.com",
+  "author": "thilina",
+  "homepage": "http://kpi.otrlanka.com",
   "license": "MIT",
   "dependencies": {
     "@angular-devkit/schematics": "^10.1.4",
@@ -178,13 +178,6 @@
     "build:aot": "npm run build:aot:prod",
     "clean:aot": "npm run rimraf -- compiled",
     "build:ci": "npm run build:prod && npm run build:aot"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/akveo/ng2-admin.git"
-  },
-  "bugs": {
-    "url": "https://github.com/akveo/ng2-admin/issues"
   },
   "engines": {
     "node": ">= 5.4.1 < 9"

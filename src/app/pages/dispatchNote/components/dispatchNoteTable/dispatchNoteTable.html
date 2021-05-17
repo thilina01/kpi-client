@@ -44,7 +44,11 @@
       </div>
     </p-header>
     <p-column field="id" header="ID"></p-column>
-    <p-column field="dispatchDate" header="Dispatch Date" [sortable]="true"></p-column>
+    <p-column field="dispatchDate" header="Dispatch Date" [sortable]="true">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.dispatchDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
     <p-column field="customer.name" header="Customer" [sortable]="true"></p-column>
     <p-column header="Action" styleClass="text-right">
       <ng-template let-data="rowData" pTemplate="body">

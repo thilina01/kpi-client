@@ -67,7 +67,11 @@
     </p-header>
     <p-column field="id" header="ID"></p-column>
     <p-column field="job.jobNo" header="Job No" [sortable]="true"></p-column>
-    <p-column field="salesOrderItem.salesOrder.orderDate" header="Order Receive Date"></p-column>
+    <p-column field="salesOrderItem.salesOrder.orderDate" header="Order Receive Date">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.salesOrderItem.salesOrder.orderDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
     <p-column field="salesOrderItem.salesOrder.salesOrderType.name" header="Order Type" [sortable]="true"></p-column>
     <p-column field="salesOrderItem.salesOrder.customer.code" header="Customer Code" [sortable]="true"></p-column>
     <p-column field="salesOrderItem.salesOrder.customer.name" header="Customer Name" [sortable]="true"></p-column>
@@ -82,7 +86,15 @@
     <p-column field="dispatchedQuantity" header="Dispatched Quantity" [sortable]="true"></p-column>
     <p-column field="remainingQuantity" header="Remaining Quantity" [sortable]="true"></p-column>
     <p-column field="job.item.weight" header="Unit Weight KG" [sortable]="true"></p-column>
-    <p-column field="requestDate" header="Customer Request Date"></p-column>
-    <p-column field="confirmDate" header="OTR Confirm Date"></p-column>
+    <p-column field="requestDate" header="Customer Request Date">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.requestDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
+    <p-column field="confirmDate" header="OTR Confirm Date">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.confirmDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
   </p-dataTable>
 </p-panel>

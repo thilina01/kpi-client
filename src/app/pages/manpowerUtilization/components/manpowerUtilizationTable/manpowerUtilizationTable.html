@@ -68,7 +68,11 @@
 		<p-column field="id" header="ID"></p-column>
 		<p-column field="employee.callingName" header="Employee" [sortable]="true"></p-column>
 		<p-column field="production.controlPoint.code" header="Control Point"></p-column>
-		<p-column field="production.productionDate" header="Production Date"></p-column>
+		<p-column field="production.productionDate" header="Production Date">
+      <ng-template let-col let-rowData="rowData" pTemplate="body">
+        {{rowData.production.productionDate | date:'y-MM-dd'}}
+      </ng-template>
+    </p-column>
 		<p-column field="production.shift.name" header="Shift" [sortable]="true"></p-column>
 		<p-column field="production.plannedDuration" header="Planned Duration" styleClass="text-right"></p-column>
 		<p-column field="production.actualDuration" header="Actual Duration" styleClass="text-right"></p-column>

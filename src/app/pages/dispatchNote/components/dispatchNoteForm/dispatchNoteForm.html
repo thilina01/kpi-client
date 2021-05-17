@@ -73,7 +73,11 @@
                   <p-column field="id" header="ID"></p-column>
                   <p-column field="loadingPlanId" header="LoadingPlan"></p-column>
                   <p-column field="dispatchSchedule.job.jobNo" header="Job No"></p-column>
-                  <p-column field="dispatchSchedule.confirmDate" header="Confirm Date"></p-column>
+                  <p-column field="dispatchSchedule.confirmDate" header="Confirm Date">
+                    <ng-template let-col let-rowData="rowData" pTemplate="body">
+                      {{rowData.dispatchSchedule.confirmDate | date:'y-MM-dd'}}
+                    </ng-template>
+                  </p-column>
                   <p-column field="dispatchSchedule.salesOrderItem.salesOrder.customerPoNumber" header="Customer Po"></p-column>
                   <p-column field="dispatchSchedule.salesOrderItem.customerItem.code" header="Customer Item Code"></p-column>
                   <p-column field="dispatchSchedule.job.item.code" header="Item Code"></p-column>

@@ -119,13 +119,12 @@ export class ResourceUtilizationForm {
         value.startTime = value.startTime.replace(/\./g, ':');
         value.endTime = value.endTime.replace(/\./g, ':');
 
-        value.startTime = new Date(this.production.productionDate + ' ' + value.startTime + ':00');
-        value.endTime = new Date(this.production.productionDate + ' ' + value.endTime + ':00');
+        value.startTime = new Date(this.sharedService.YYYYMMDD(this.production.productionDate) + ' ' + value.startTime + ':00');
+        value.endTime = new Date(this.sharedService.YYYYMMDD(this.production.productionDate) + ' ' + value.endTime + ':00');
         value.employee.callingName = value.employee.name;
         this.production.resourceUtilizationList.push(value);
         this.production.resourceUtilizationList = this.production.resourceUtilizationList.slice();
         this.resourceUtilizationFormGroup.reset();
-        console.log(this.production);
     }
 
     public onSubmit(values: any, event: Event): void {

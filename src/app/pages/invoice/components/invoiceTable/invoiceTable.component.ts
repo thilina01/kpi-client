@@ -117,6 +117,7 @@ export class InvoiceTable {
       invoice.taxValue = taxValue;
       invoice.taxValue = invoice.totalSalesAmount * invoice.taxRate;
       invoice.containerSize = containerSize;
+      invoice.invoiceDate = this.sharedService.YYYYMMDD(invoice.invoiceDate);
 
     });
 

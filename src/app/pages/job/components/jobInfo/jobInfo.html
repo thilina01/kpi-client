@@ -20,7 +20,7 @@
       <div class="col-12 row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">ID: {{job==null || job.id == undefined?'':job.id}}</div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Job: {{job==null || job.id == undefined?'':job.jobNo}}</div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate}}</div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Date: {{job==null || job.id == undefined?'':job.jobDate | date:'y-MM-dd'}}</div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12" [hidden]="job==null || job.id == undefined">Quantity: {{job==null || job.id == undefined?'':job.quantity}}</div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12" [hidden]="job==null || job.item == undefined">Item: {{job==null || job.id == undefined?'':job.item.code}} </div>
       </div>
@@ -43,7 +43,11 @@
           sortMode="multiple" resizableColumns="true" exportFilename="operations">
           <p-column field="id" header="ID"></p-column>
           <p-column field="production.controlPoint.code" header="Control Point"></p-column>
-          <p-column field="production.productionDate" header="Production Date"></p-column>
+          <p-column field="production.productionDate" header="Production Date">
+            <ng-template let-col let-rowData="rowData" pTemplate="body">
+              {{rowData.production.productionDate | date:'y-MM-dd'}}
+            </ng-template>
+          </p-column>
           <p-column field="plannedQuantity" header="Planned Quantity" styleClass="text-right"></p-column>
           <p-column field="actualQuantity" header="Actual Quantity" styleClass="text-right"></p-column>
           <p-column field="productType.description" header="Product Type"></p-column>

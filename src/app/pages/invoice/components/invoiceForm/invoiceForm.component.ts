@@ -166,11 +166,13 @@ export class InvoiceForm {
       data.invoiceDate = new Date(data.invoiceDate);
       this.invoice = data;
     }
-    this.formGroup.patchValue(this.invoice, { onlySelf: true });
-    this.setDisplayOfCustomer(this.invoice.customer);
-    this.setDisplayOfDispatchNote();
-    this.fillTable();
-    this.getDispatchNoteListByCustomer(this.invoice.customer.id);
+    if(this.invoice){
+      this.formGroup.patchValue(this.invoice, { onlySelf: true });
+      this.setDisplayOfCustomer(this.invoice.customer);
+      this.setDisplayOfDispatchNote();
+      this.fillTable();
+      this.getDispatchNoteListByCustomer(this.invoice.customer.id);
+    }
 
   }
 
