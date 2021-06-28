@@ -49,7 +49,7 @@ export class LoadingPlanTable {
         this.packingListPrint = this.selectedLoadingPlan.id;
       }},
 
-      {label: 'Pallet Lable', icon: 'fa-print', command: (event) => {
+      {label: 'Pallet Label', icon: 'fa-print', command: (event) => {
         this.palletLablePrint = this.selectedLoadingPlan.id;
       }}
   ];
