@@ -14,31 +14,36 @@
           </div>
         </div>
       </p-header>
-      <p-dataTable #dt [value]='rows' [rows]='20' [responsive]='true' [paginator]='true' [totalRecords]='totalRecords' [lazy]='true'
-        (onLazyLoad)='lazy($event,dt)' [pageLinks]='5' [rowsPerPageOptions]='[10,20,50,100,10000]' selectionMode='single' sortMode='multiple'
-        resizableColumns='true' exportFilename='invoices' (onRowDblclick)='onRowDblclick($event.data)'>
+      <p-dataTable #dt [value]='rows' [rows]='20' [responsive]='true' [paginator]='true' [totalRecords]='totalRecords'
+        [lazy]='true' (onLazyLoad)='lazy($event,dt)' [pageLinks]='5' [rowsPerPageOptions]='[10,20,50,100,10000]'
+        selectionMode='single' sortMode='multiple' resizableColumns='true' exportFilename='invoices' (onRowDblclick)='onRowDblclick($event.data)'>
         <p-header>
           <div class="row">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
               Duration Start
-              <br/>
+              <br />
               <p-calendar id="startDatePicker" showIcon="true" [(ngModel)]="startDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
               Duration End
-              <br/>
+              <br />
               <p-calendar id="endDatePicker" showIcon="true" [(ngModel)]="endDate" dateFormat="yy-mm-dd" appendTo="body"></p-calendar>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
               Customer
               <div class="ui-inputgroup">
-                <p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomers" (completeMethod)="filterCustomers($event)"
-                  [size]="25" [minLength]="1" [dropdown]="true" placeholder="Search" (onSelect)="onCustomerSelect($event)">
+                <p-autoComplete [(ngModel)]="customer" field="display" [suggestions]="filteredCustomers"
+                  (completeMethod)="filterCustomers($event)" [size]="12" [minLength]="1" [dropdown]="true" placeholder="Search"
+                  (onSelect)="onCustomerSelect($event)">
                 </p-autoComplete>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
-              <br/>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+              Invoice Number
+              <input type="text" pInputText [(ngModel)]="invoiceNumber" id="invoiceNumber">
+            </div>
+            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12" style="text-align: left">
+              <br />
               <button type="button" class="btn btn-primary btn-xs" (click)="search()">
                 <i ng-reflect-class-name="fa fa-search" class="fa fa-search"></i> Search
               </button> &nbsp;&nbsp;{{totalRecords}}
@@ -109,7 +114,7 @@
     </p-panel>
   </p-tabPanel>
   <p-tabPanel header="Credit Note">
-  <credit-note-table> </credit-note-table>
+    <credit-note-table> </credit-note-table>
   </p-tabPanel>
 </p-tabView>
 
