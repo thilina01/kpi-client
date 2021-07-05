@@ -252,7 +252,10 @@ export class SalesOrderForm {
     }
 
     onCustomerSelect(event: any) {
-        this.getCustomerItemList();
+    let customer = this.formGroup.value.customer;
+    this.resetForm();
+    this.formGroup.patchValue({customer: customer}, { onlySelf: true });
+    this.getCustomerItemList();
     }
 
 }
