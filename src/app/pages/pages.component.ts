@@ -114,7 +114,7 @@ export class Pages {
     { routerLink: '/pages/subcontractOperationDefinition/table', name: 'Subcontract Operation Definition', menuType: this.menuType },
     { routerLink: '/pages/subcontractOperationRate/table', name: 'Subcontract Operation Rate', menuType: this.menuType },
     { routerLink: '/pages/subcontractRelease/table', name: 'Subcontract Release', menuType: this.menuType },
-    { routerLink: '/pages/subcontractNote/table', name: 'Subcontract Note', menuType: this.menuType },
+    { routerLink: '/pages/subcontractNote/table', name: 'Subcontract Request Note', menuType: this.menuType },
     // { routerLink: '/pages/invoiceTypes/table', name: 'Invoice Type', menuType: this.menuType },
     { routerLink: '/pages/item/table', name: 'Item', menuType: this.menuType },
     { routerLink: '/pages/itemSegments/table', name: 'Item Segment', menuType: this.menuType },
