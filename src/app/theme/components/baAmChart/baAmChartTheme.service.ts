@@ -66,7 +66,7 @@ export class BaAmChartThemeService {
       },
 
       AmLegend: {
-        color: "#FFFFFF"
+        color: "#0078ae"
       },
 
       AmGraph: {
